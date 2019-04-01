@@ -1,6 +1,6 @@
 ﻿namespace LabelMaker
 {
-    partial class Form1
+    partial class formLabel
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // formLabel
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(963, 741);
+            this.Name = "formLabel";
+            this.Text = "formLabel";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-
