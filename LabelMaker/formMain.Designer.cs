@@ -40,7 +40,7 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageManual = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPlantData = new System.Windows.Forms.GroupBox();
             this.bindingNavigatorPlants = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingSourcePlants = new System.Windows.Forms.BindingSource(this.components);
@@ -78,7 +78,14 @@
             this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBoxPrice = new System.Windows.Forms.CheckBox();
+            this.checkBoxQty = new System.Windows.Forms.CheckBox();
+            this.textBoxQtyAuto = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.textBoxPriceAuto = new System.Windows.Forms.TextBox();
+            this.textBoxQty = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -112,23 +119,19 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.panelLabelPreview = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageManual.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.groupBoxPlantData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorPlants)).BeginInit();
             this.bindingNavigatorPlants.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePlants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetPlants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -247,7 +250,8 @@
             // 
             // tabPageManual
             // 
-            this.tabPageManual.Controls.Add(this.groupBox6);
+            this.tabPageManual.Controls.Add(this.panelLabelPreview);
+            this.tabPageManual.Controls.Add(this.groupBoxPlantData);
             this.tabPageManual.Controls.Add(this.groupBox5);
             this.tabPageManual.Controls.Add(this.groupBox4);
             this.tabPageManual.Controls.Add(this.groupBox3);
@@ -266,16 +270,16 @@
             this.tabPageManual.UseVisualStyleBackColor = true;
             this.tabPageManual.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // groupBox6
+            // groupBoxPlantData
             // 
-            this.groupBox6.Controls.Add(this.bindingNavigatorPlants);
-            this.groupBox6.Controls.Add(this.dataGridViewPlants);
-            this.groupBox6.Location = new System.Drawing.Point(400, 13);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(651, 451);
-            this.groupBox6.TabIndex = 14;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "groupBox6";
+            this.groupBoxPlantData.Controls.Add(this.bindingNavigatorPlants);
+            this.groupBoxPlantData.Controls.Add(this.dataGridViewPlants);
+            this.groupBoxPlantData.Location = new System.Drawing.Point(400, 13);
+            this.groupBoxPlantData.Name = "groupBoxPlantData";
+            this.groupBoxPlantData.Size = new System.Drawing.Size(651, 451);
+            this.groupBoxPlantData.TabIndex = 14;
+            this.groupBoxPlantData.TabStop = false;
+            this.groupBoxPlantData.Text = "Plant Database";
             // 
             // bindingNavigatorPlants
             // 
@@ -432,7 +436,7 @@
             this.dataGridViewPlants.DataSource = this.bindingSourcePlants;
             this.dataGridViewPlants.Location = new System.Drawing.Point(13, 20);
             this.dataGridViewPlants.Name = "dataGridViewPlants";
-            this.dataGridViewPlants.Size = new System.Drawing.Size(624, 326);
+            this.dataGridViewPlants.Size = new System.Drawing.Size(624, 380);
             this.dataGridViewPlants.TabIndex = 0;
             this.dataGridViewPlants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlants_CellContentClick);
             // 
@@ -565,12 +569,12 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.checkBox2);
-            this.groupBox5.Controls.Add(this.checkBox1);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.textBox3);
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.checkBoxPrice);
+            this.groupBox5.Controls.Add(this.checkBoxQty);
+            this.groupBox5.Controls.Add(this.textBoxQtyAuto);
+            this.groupBox5.Controls.Add(this.textBoxPrice);
+            this.groupBox5.Controls.Add(this.textBoxPriceAuto);
+            this.groupBox5.Controls.Add(this.textBoxQty);
             this.groupBox5.Location = new System.Drawing.Point(176, 13);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(146, 117);
@@ -579,14 +583,83 @@
             this.groupBox5.Text = "Quantity and Price";
             this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
+            // checkBoxPrice
+            // 
+            this.checkBoxPrice.AutoSize = true;
+            this.checkBoxPrice.Location = new System.Drawing.Point(6, 70);
+            this.checkBoxPrice.Name = "checkBoxPrice";
+            this.checkBoxPrice.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxPrice.TabIndex = 5;
+            this.checkBoxPrice.UseVisualStyleBackColor = true;
+            this.checkBoxPrice.CheckedChanged += new System.EventHandler(this.checkBoxPrice_CheckedChanged);
+            // 
+            // checkBoxQty
+            // 
+            this.checkBoxQty.AutoSize = true;
+            this.checkBoxQty.Location = new System.Drawing.Point(6, 35);
+            this.checkBoxQty.Name = "checkBoxQty";
+            this.checkBoxQty.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxQty.TabIndex = 4;
+            this.checkBoxQty.UseVisualStyleBackColor = true;
+            this.checkBoxQty.CheckedChanged += new System.EventHandler(this.checkBoxQty_CheckedChanged);
+            // 
+            // textBoxQtyAuto
+            // 
+            this.textBoxQtyAuto.Enabled = false;
+            this.textBoxQtyAuto.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBoxQtyAuto.Location = new System.Drawing.Point(27, 35);
+            this.textBoxQtyAuto.Name = "textBoxQtyAuto";
+            this.textBoxQtyAuto.Size = new System.Drawing.Size(49, 20);
+            this.textBoxQtyAuto.TabIndex = 3;
+            this.textBoxQtyAuto.Text = "1";
+            this.textBoxQtyAuto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxPrice
+            // 
+            this.textBoxPrice.Location = new System.Drawing.Point(83, 70);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(57, 20);
+            this.textBoxPrice.TabIndex = 2;
+            this.textBoxPrice.Text = "0";
+            this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxPriceAuto
+            // 
+            this.textBoxPriceAuto.Enabled = false;
+            this.textBoxPriceAuto.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBoxPriceAuto.Location = new System.Drawing.Point(27, 70);
+            this.textBoxPriceAuto.Name = "textBoxPriceAuto";
+            this.textBoxPriceAuto.Size = new System.Drawing.Size(49, 20);
+            this.textBoxPriceAuto.TabIndex = 1;
+            this.textBoxPriceAuto.Text = "0";
+            this.textBoxPriceAuto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxQty
+            // 
+            this.textBoxQty.Location = new System.Drawing.Point(83, 35);
+            this.textBoxQty.Name = "textBoxQty";
+            this.textBoxQty.Size = new System.Drawing.Size(57, 20);
+            this.textBoxQty.TabIndex = 0;
+            this.textBoxQty.Text = "1";
+            this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.listBox1);
             this.groupBox4.Location = new System.Drawing.Point(6, 264);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(316, 228);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "current Text";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(13, 23);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(290, 199);
+            this.listBox1.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -625,6 +698,7 @@
             this.groupBoxAlpha.Size = new System.Drawing.Size(56, 663);
             this.groupBoxAlpha.TabIndex = 10;
             this.groupBoxAlpha.TabStop = false;
+            this.groupBoxAlpha.Enter += new System.EventHandler(this.groupBoxAlpha_Enter);
             // 
             // buttonAlphaA
             // 
@@ -920,63 +994,14 @@
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
             // 
-            // textBox1
+            // panelLabelPreview
             // 
-            this.textBox1.Location = new System.Drawing.Point(83, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(57, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox2.Location = new System.Drawing.Point(27, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(49, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "0";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(83, 70);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(57, 20);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "0";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Enabled = false;
-            this.textBox4.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox4.Location = new System.Drawing.Point(27, 35);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(49, 20);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "1";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 35);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 70);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 5;
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.panelLabelPreview.BackColor = System.Drawing.Color.Transparent;
+            this.panelLabelPreview.Location = new System.Drawing.Point(177, 136);
+            this.panelLabelPreview.Name = "panelLabelPreview";
+            this.panelLabelPreview.Size = new System.Drawing.Size(139, 122);
+            this.panelLabelPreview.TabIndex = 15;
+            this.panelLabelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelPreview_Paint);
             // 
             // formMain
             // 
@@ -984,9 +1009,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1508, 841);
-            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tabControl2);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formMain";
             this.Text = "LabelMaker";
@@ -997,8 +1022,8 @@
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPageManual.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.groupBoxPlantData.ResumeLayout(false);
+            this.groupBoxPlantData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorPlants)).EndInit();
             this.bindingNavigatorPlants.ResumeLayout(false);
             this.bindingNavigatorPlants.PerformLayout();
@@ -1007,6 +1032,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -1072,7 +1098,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelColourCount;
         private System.Windows.Forms.Label labelMainCount;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBoxPlantData;
         private System.Windows.Forms.BindingNavigator bindingNavigatorPlants;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -1110,12 +1136,14 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn hideDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn labelStockDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBoxQtyAuto;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.TextBox textBoxPriceAuto;
+        private System.Windows.Forms.TextBox textBoxQty;
+        private System.Windows.Forms.CheckBox checkBoxPrice;
+        private System.Windows.Forms.CheckBox checkBoxQty;
+        private System.Windows.Forms.Panel panelLabelPreview;
+        public System.Windows.Forms.ListBox listBox1;
     }
 }
 

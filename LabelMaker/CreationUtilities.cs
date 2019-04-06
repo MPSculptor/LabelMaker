@@ -12,7 +12,7 @@ namespace CreationUtilities
         public static string[] SplitText(string toSplit, int pieces)
         {
             string decisionText;
-            string partialText = "";
+            //string partialText = "";
             int finalCount = 0;
             int finalPieces = pieces;
             int splits;
@@ -109,7 +109,7 @@ namespace CreationUtilities
                 //trim of segment ready to go again
                 decisionText = splitString[1].Trim();
 
-                //set index fro final segment assignment
+                //set index for final segment assignment
                 finalCount = count + 1;
 
                 //reduce segements as we go
@@ -227,7 +227,7 @@ namespace CreationUtilities
 
     /// @author Martin
     /// This Routine handles the creation of a label
-    /// which is printed with Graphics 2D onto a JFrame Container
+    /// which is printed with Graphics onto a panel Container
     /// </summary>
 
     
