@@ -14,6 +14,8 @@ namespace LabelMaker
 {
     public partial class formMain : Form
     {
+        public object dataGridView1 { get; private set; }
+
         public formMain()
         {
             InitializeComponent();
@@ -28,8 +30,21 @@ namespace LabelMaker
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
+            this.tablePlantsTableAdapter.Fill(this.databaseLabelsDataSet.TablePlants);
 
             this.BackColor = Color.DarkGray;
+
+            //dataGridViewPlants.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewPlants.Columns[0].Width = 0;
+            dataGridViewPlants.Columns[1].Width = 10;
+            dataGridViewPlants.Columns[2].Width = 100;
+            dataGridViewPlants.Columns[3].Width = 10;
+            dataGridViewPlants.Columns[4].Width = 100;
+            dataGridViewPlants.Columns[5].Width = 100;
+            dataGridViewPlants.Columns[6].Width = 100;
+
+
+
 
         }
 
@@ -44,7 +59,7 @@ namespace LabelMaker
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TempMakeALabel();
+            TempMakeALabel(panelLabelPreview);
             
         }
 
@@ -53,7 +68,7 @@ namespace LabelMaker
 
         }
 
-        public void TempMakeALabel()
+        public void TempMakeALabel(Panel whichPanel)
         {
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
             //file with sample queue entry;
@@ -89,18 +104,18 @@ namespace LabelMaker
             name = whereFiles + "defaults.txt";
             string[] defaultsString = CreationUtilities.dataReader.readFile(name);
 
-            Form formLabel = new formLabel(queueString, labelString, defaultsString);
-            formLabel.Visible = false;
-            formLabel.ShowDialog();
+            //Form formLabel = new formLabel(queueString, labelString, defaultsString);
+            //formLabel.Visible = false;
+            //formLabel.ShowDialog();
 
-            LabelPreview(queueString, labelString, defaultsString);
+            LabelPreview(queueString, labelString, defaultsString, whichPanel);
 
         }
 
-        public void LabelPreview(string[] queueData, string[] labelData, string[] defaultsString)
+        public void LabelPreview(string[] queueData, string[] labelData, string[] defaultsString, Panel whichPanel)
         {
             //Clear the panel
-            foreach (Control ctrl in panelLabelPreview.Controls)
+            foreach (Control ctrl in whichPanel.Controls)
             {
                 ctrl.Dispose();
             }
@@ -122,14 +137,14 @@ namespace LabelMaker
             switch (orientation)
             {
                 case "portrait":
-                    float Ysizep = panelLabelPreview.ClientRectangle.Height - 4;
+                    float Ysizep = whichPanel.ClientRectangle.Height - 4;
                     float Xsizep = Ysizep / labelHeight * labelWidth;
                     finalHeight = Ysizep;
                     finalWidth = Xsizep;
                     break;
 
                 case "landscape":
-                    float Xsizel = panelLabelPreview.ClientRectangle.Width - 4;
+                    float Xsizel = whichPanel.ClientRectangle.Width - 4;
                     float Ysizel = Xsizel / labelWidth * labelHeight;
                     finalHeight = Ysizel;
                     finalWidth = Xsizel;
@@ -148,7 +163,7 @@ namespace LabelMaker
             whereToTwo.Location = new Point(2, 2);
             whereToTwo.BorderStyle = BorderStyle.FixedSingle;
 
-            panelLabelPreview.Controls.Add(whereToTwo);
+            whichPanel.Controls.Add(whereToTwo);
         }
 
 
@@ -186,8 +201,175 @@ namespace LabelMaker
             
         }
 
+        private void dataGridViewPlants_Click(object sender, DataGridViewCellEventArgs e)
+        {
+            //String NameText = "Hello";
+            labelPlantName.Text = getPlantName(e); 
+        }
+
+
         private void dataGridViewPlants_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //String NameText = "Hello";
+            updateMainDetails(e);
+        }
+
+        public void updateMainDetails(DataGridViewCellEventArgs e)
+        {
+            //get picture position
+            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+            //file with sample queue entry;
+            string name = whereFiles + "defaults.txt";
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string filePlace = defaultsString[0];
+
+            //Plant name as one string
+            labelPlantName.Text = getPlantName(e);
+            //Description
+            richTextBoxDesc.Text = dataGridViewPlants.Rows[e.RowIndex].Cells[8].Value.ToString();
+
+            //Thumbnails and Main Picture
+            try // #1
+            {    
+                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[12].Value.ToString();
+                string pictureFile = filePlace + fileName;
+                pictureBoxThumb1.Image = Image.FromFile(pictureFile);
+            }
+            catch (IOException)
+            {
+                string pictureFile = "";
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[12].Value.ToString()))
+                    {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                }
+                else
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                }
+                pictureBoxThumb1.Image = Image.FromFile(pictureFile);
+            }
+
+            try // #2
+            {
+                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[13].Value.ToString();
+                string pictureFile = filePlace + fileName;
+                pictureBoxThumb2.Image = Image.FromFile(pictureFile);
+            }
+            catch (IOException)
+            {
+                string pictureFile = "";
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[13].Value.ToString()))
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                }
+                else
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                }
+                pictureBoxThumb2.Image = Image.FromFile(pictureFile);
+            }
+
+            try // #3
+            {
+                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[14].Value.ToString();
+                string pictureFile = filePlace + fileName;
+                pictureBoxThumb3.Image = Image.FromFile(pictureFile);
+            }
+            catch (IOException)
+            {
+                string pictureFile = "";
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[14].Value.ToString()))
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                }
+                else
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                }
+                pictureBoxThumb3.Image = Image.FromFile(pictureFile);
+            }
+
+
+            try // #4
+            {
+                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[15].Value.ToString();
+                string pictureFile = filePlace + fileName;
+                label4.Text = pictureFile;
+                pictureBoxThumb4.Image = Image.FromFile(pictureFile);
+            }
+            catch (IOException)
+            {
+                string pictureFile = "";
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[15].Value.ToString()))
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                }
+                else
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                }
+                pictureBoxThumb4.Image = Image.FromFile(pictureFile);
+            }
+
+            updateMainPicture(filePlace,e);
+
+
+        }
+
+        public void updateMainPicture(string filePlace, DataGridViewCellEventArgs e)
+        {
+
+            int whichOne = 12;
+            if (radioButtonImage4.Checked){ whichOne = 15; }
+            else if (radioButtonImage3.Checked) { whichOne = 14; }
+            else if (radioButtonImage2.Checked){ whichOne = 13; }
+            else { whichOne = 12; }
+
+
+            try // #Main
+            {
+                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[whichOne].Value.ToString();
+                string pictureFile = filePlace + fileName;
+                pictureBoxMain.Image = Image.FromFile(pictureFile);
+            }
+            catch (IOException)
+            {
+                string pictureFile = "";
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[whichOne].Value.ToString()))
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                }
+                else
+                {
+                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                }
+                pictureBoxMain.Image = Image.FromFile(pictureFile);
+            }
+        }
+
+        public String getPlantName(DataGridViewCellEventArgs e)
+        {
+            //Turn Genus etc fields into one string
+            string Name = "";
+
+            int currentRow = dataGridViewPlants.CurrentRow.Index;
+            if (dataGridViewPlants.Rows[e.RowIndex].Cells[1].Value.ToString() == "x")
+            {
+                Name = Name + "x";
+            }
+            Name = Name + dataGridViewPlants.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            if (dataGridViewPlants.Rows[e.RowIndex].Cells[3].Value.ToString() == "x")
+            {
+                Name = Name + " x";
+            }
+
+            Name = Name + " " + dataGridViewPlants.Rows[e.RowIndex].Cells[4].Value.ToString() ;
+            Name = Name + " " + dataGridViewPlants.Rows[e.RowIndex].Cells[5].Value.ToString();
+            
+
+            return Name;
+            
 
         }
 
@@ -234,6 +416,39 @@ namespace LabelMaker
         private void panelLabelPreview_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        private void groupBoxPlantData_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click_1(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void tabControlMain_SelectedIndexChanged( object sender, EventArgs e)
+        {
+            if (tabControlMain.SelectedTab == tabPagePreview)
+            {
+                TempMakeALabel(panelLabelTab);                
+            }
+        }
+
+        private void panelLabelTab_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

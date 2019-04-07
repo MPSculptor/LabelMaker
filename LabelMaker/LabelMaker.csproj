@@ -63,10 +63,10 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="CreationUtilities.cs" />
-    <Compile Include="DatabaseLabelsDataSet1.Designer.cs">
+    <Compile Include="DatabaseLabelsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+      <DependentUpon>DatabaseLabelsDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="formLabel.cs">
       <SubType>Form</SubType>
@@ -98,16 +98,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="DatabaseLabelsDataSet1.xsc">
-      <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+    <None Include="DatabaseLabelsDataSet.xsc">
+      <DependentUpon>DatabaseLabelsDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DatabaseLabelsDataSet1.xsd">
+    <None Include="DatabaseLabelsDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseLabelsDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DatabaseLabelsDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DatabaseLabelsDataSet1.xss">
-      <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+    <None Include="DatabaseLabelsDataSet.xss">
+      <DependentUpon>DatabaseLabelsDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

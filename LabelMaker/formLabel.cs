@@ -66,6 +66,11 @@ namespace LabelMaker
             Visible = true;
             return;
         }
+
+        private void formLabel_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

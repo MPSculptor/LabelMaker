@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(922, 526);
             this.Name = "formLabel";
             this.Text = "formLabel";
+            this.Load += new System.EventHandler(this.formLabel_Load);
             this.ResumeLayout(false);
 
         }

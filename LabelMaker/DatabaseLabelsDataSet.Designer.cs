@@ -20,9 +20,9 @@ namespace LabelMaker {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DatabaseLabelsDataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DatabaseLabelsDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DatabaseLabelsDataSet1 : global::System.Data.DataSet {
+    public partial class DatabaseLabelsDataSet : global::System.Data.DataSet {
         
         private TablePlantsDataTable tableTablePlants;
         
@@ -30,7 +30,7 @@ namespace LabelMaker {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public DatabaseLabelsDataSet1() {
+        public DatabaseLabelsDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace LabelMaker {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected DatabaseLabelsDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DatabaseLabelsDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace LabelMaker {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DatabaseLabelsDataSet1 cln = ((DatabaseLabelsDataSet1)(base.Clone()));
+            DatabaseLabelsDataSet cln = ((DatabaseLabelsDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace LabelMaker {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DatabaseLabelsDataSet1";
+            this.DataSetName = "DatabaseLabelsDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DatabaseLabelsDataSet1.xsd";
+            this.Namespace = "http://tempuri.org/DatabaseLabelsDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableTablePlants = new TablePlantsDataTable();
@@ -225,7 +225,7 @@ namespace LabelMaker {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DatabaseLabelsDataSet1 ds = new DatabaseLabelsDataSet1();
+            DatabaseLabelsDataSet ds = new DatabaseLabelsDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -713,7 +713,7 @@ namespace LabelMaker {
                 this.columnSpeciesCross.MaxLength = 1;
                 this.columnSpecies.MaxLength = 50;
                 this.columnVariety.MaxLength = 50;
-                this.columnCommon.MaxLength = 50;
+                this.columnCommon.MaxLength = 100;
                 this.columnSKU.MaxLength = 20;
                 this.columnDesc.MaxLength = 500;
                 this.columnPotSize.MaxLength = 10;
@@ -796,7 +796,7 @@ namespace LabelMaker {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DatabaseLabelsDataSet1 ds = new DatabaseLabelsDataSet1();
+                DatabaseLabelsDataSet ds = new DatabaseLabelsDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1391,7 +1391,7 @@ namespace LabelMaker {
         }
     }
 }
-namespace LabelMaker.DatabaseLabelsDataSet1TableAdapters {
+namespace LabelMaker.DatabaseLabelsDataSetTableAdapters {
     
     
     /// <summary>
@@ -1734,7 +1734,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DatabaseLabelsDataSet1.TablePlantsDataTable dataTable) {
+        public virtual int Fill(DatabaseLabelsDataSet.TablePlantsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1747,9 +1747,9 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DatabaseLabelsDataSet1.TablePlantsDataTable GetData() {
+        public virtual DatabaseLabelsDataSet.TablePlantsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DatabaseLabelsDataSet1.TablePlantsDataTable dataTable = new DatabaseLabelsDataSet1.TablePlantsDataTable();
+            DatabaseLabelsDataSet.TablePlantsDataTable dataTable = new DatabaseLabelsDataSet.TablePlantsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1757,14 +1757,14 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DatabaseLabelsDataSet1.TablePlantsDataTable dataTable) {
+        public virtual int Update(DatabaseLabelsDataSet.TablePlantsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DatabaseLabelsDataSet1 dataSet) {
+        public virtual int Update(DatabaseLabelsDataSet dataSet) {
             return this.Adapter.Update(dataSet, "TablePlants");
         }
         
@@ -2533,7 +2533,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateUpdatedRows(DatabaseLabelsDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DatabaseLabelsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._tablePlantsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.TablePlants.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -2552,7 +2552,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateInsertedRows(DatabaseLabelsDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DatabaseLabelsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._tablePlantsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.TablePlants.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -2570,7 +2570,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateDeletedRows(DatabaseLabelsDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DatabaseLabelsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._tablePlantsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TablePlants.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -2612,7 +2612,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public virtual int UpdateAll(DatabaseLabelsDataSet1 dataSet) {
+        public virtual int UpdateAll(DatabaseLabelsDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -38,23 +37,11 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageManual = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panelLabelPreview = new System.Windows.Forms.Panel();
             this.groupBoxPlantData = new System.Windows.Forms.GroupBox();
-            this.bindingNavigatorPlants = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingSourcePlants = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetPlants = new LabelMaker.DatabaseLabelsDataSet1();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dataGridViewPlants = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genusCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +64,11 @@
             this.hideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tablePlantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSet = new LabelMaker.DatabaseLabelsDataSet();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkBoxPrice = new System.Windows.Forms.CheckBox();
             this.checkBoxQty = new System.Windows.Forms.CheckBox();
@@ -85,10 +77,9 @@
             this.textBoxPriceAuto = new System.Windows.Forms.TextBox();
             this.textBoxQty = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.labelPlantName = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.richTextBoxDesc = new System.Windows.Forms.RichTextBox();
             this.groupBoxAlpha = new System.Windows.Forms.GroupBox();
             this.buttonAlphaA = new System.Windows.Forms.Button();
             this.groupBoxPrint = new System.Windows.Forms.GroupBox();
@@ -106,12 +97,14 @@
             this.radioButtonImage2 = new System.Windows.Forms.RadioButton();
             this.radioButtonImage3 = new System.Windows.Forms.RadioButton();
             this.radioButtonImage1 = new System.Windows.Forms.RadioButton();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxThumb4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxThumb3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxThumb2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxThumb1 = new System.Windows.Forms.PictureBox();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
+            this.tabPagePreview = new System.Windows.Forms.TabPage();
+            this.panelLabelTab = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPageMainQueue = new System.Windows.Forms.TabPage();
             this.tabPageColourQueue = new System.Windows.Forms.TabPage();
@@ -119,36 +112,34 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.panelLabelPreview = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControlMain.SuspendLayout();
             this.tabPageManual.SuspendLayout();
             this.groupBoxPlantData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorPlants)).BeginInit();
-            this.bindingNavigatorPlants.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePlants)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetPlants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBoxAlpha.SuspendLayout();
             this.groupBoxPrint.SuspendLayout();
             this.groupBoxImages.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb1)).BeginInit();
+            this.tabPagePreview.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(400, 470);
+            this.button2.Location = new System.Drawing.Point(655, 663);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 22);
             this.button2.TabIndex = 1;
@@ -160,7 +151,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(400, 498);
+            this.groupBox1.Location = new System.Drawing.Point(655, 692);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 74);
             this.groupBox1.TabIndex = 6;
@@ -194,12 +185,13 @@
             this.groupBox2.Controls.Add(this.radioButton5);
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Location = new System.Drawing.Point(400, 578);
+            this.groupBox2.Location = new System.Drawing.Point(861, 659);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 151);
+            this.groupBox2.Size = new System.Drawing.Size(200, 107);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Plant to Display";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // radioButton5
             // 
@@ -234,27 +226,30 @@
             this.radioButton3.Text = "Aconite";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // tabControlMain
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPageManual);
-            this.tabControl1.Controls.Add(this.tabPageAuto);
-            this.tabControl1.Controls.Add(this.tabPageDatabase);
-            this.tabControl1.Location = new System.Drawing.Point(12, 34);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1075, 798);
-            this.tabControl1.TabIndex = 0;
+            this.tabControlMain.Controls.Add(this.tabPageManual);
+            this.tabControlMain.Controls.Add(this.tabPageAuto);
+            this.tabControlMain.Controls.Add(this.tabPageDatabase);
+            this.tabControlMain.Controls.Add(this.tabPagePreview);
+            this.tabControlMain.Location = new System.Drawing.Point(12, 34);
+            this.tabControlMain.Name = "tabControlMain";
+            this.tabControlMain.SelectedIndex = 0;
+            this.tabControlMain.Size = new System.Drawing.Size(1075, 798);
+            this.tabControlMain.TabIndex = 0;
+            this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
             // tabPageManual
             // 
+            this.tabPageManual.Controls.Add(this.label4);
             this.tabPageManual.Controls.Add(this.panelLabelPreview);
             this.tabPageManual.Controls.Add(this.groupBoxPlantData);
+            this.tabPageManual.Controls.Add(this.groupBox3);
             this.tabPageManual.Controls.Add(this.groupBox5);
             this.tabPageManual.Controls.Add(this.groupBox4);
-            this.tabPageManual.Controls.Add(this.groupBox3);
             this.tabPageManual.Controls.Add(this.groupBoxAlpha);
             this.tabPageManual.Controls.Add(this.groupBoxPrint);
             this.tabPageManual.Controls.Add(this.groupBoxImages);
@@ -270,144 +265,41 @@
             this.tabPageManual.UseVisualStyleBackColor = true;
             this.tabPageManual.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(328, 686);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "label4";
+            // 
+            // panelLabelPreview
+            // 
+            this.panelLabelPreview.BackColor = System.Drawing.Color.Transparent;
+            this.panelLabelPreview.Location = new System.Drawing.Point(167, 370);
+            this.panelLabelPreview.Name = "panelLabelPreview";
+            this.panelLabelPreview.Size = new System.Drawing.Size(154, 122);
+            this.panelLabelPreview.TabIndex = 15;
+            this.panelLabelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelPreview_Paint);
+            // 
             // groupBoxPlantData
             // 
-            this.groupBoxPlantData.Controls.Add(this.bindingNavigatorPlants);
             this.groupBoxPlantData.Controls.Add(this.dataGridViewPlants);
             this.groupBoxPlantData.Location = new System.Drawing.Point(400, 13);
             this.groupBoxPlantData.Name = "groupBoxPlantData";
-            this.groupBoxPlantData.Size = new System.Drawing.Size(651, 451);
+            this.groupBoxPlantData.Size = new System.Drawing.Size(651, 640);
             this.groupBoxPlantData.TabIndex = 14;
             this.groupBoxPlantData.TabStop = false;
             this.groupBoxPlantData.Text = "Plant Database";
-            // 
-            // bindingNavigatorPlants
-            // 
-            this.bindingNavigatorPlants.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigatorPlants.BindingSource = this.bindingSourcePlants;
-            this.bindingNavigatorPlants.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigatorPlants.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigatorPlants.Dock = System.Windows.Forms.DockStyle.None;
-            this.bindingNavigatorPlants.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.bindingNavigatorPlants.Location = new System.Drawing.Point(13, 413);
-            this.bindingNavigatorPlants.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigatorPlants.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigatorPlants.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigatorPlants.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigatorPlants.Name = "bindingNavigatorPlants";
-            this.bindingNavigatorPlants.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorPlants.Size = new System.Drawing.Size(255, 25);
-            this.bindingNavigatorPlants.TabIndex = 10;
-            this.bindingNavigatorPlants.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingSourcePlants
-            // 
-            this.bindingSourcePlants.DataSource = this.databaseLabelsDataSetPlants;
-            this.bindingSourcePlants.Position = 0;
-            // 
-            // databaseLabelsDataSetPlants
-            // 
-            this.databaseLabelsDataSetPlants.DataSetName = "DatabaseLabelsDataSetPlants";
-            this.databaseLabelsDataSetPlants.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "1";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.groupBoxPlantData.Enter += new System.EventHandler(this.groupBoxPlantData_Enter);
             // 
             // dataGridViewPlants
             // 
+            this.dataGridViewPlants.AllowUserToAddRows = false;
+            this.dataGridViewPlants.AllowUserToDeleteRows = false;
+            this.dataGridViewPlants.AllowUserToResizeColumns = false;
+            this.dataGridViewPlants.AllowUserToResizeRows = false;
             this.dataGridViewPlants.AutoGenerateColumns = false;
             this.dataGridViewPlants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPlants.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -432,11 +324,12 @@
             this.hideDataGridViewCheckBoxColumn,
             this.notesDataGridViewTextBoxColumn,
             this.labelStockDataGridViewCheckBoxColumn});
-            this.dataGridViewPlants.DataMember = "TablePlants";
-            this.dataGridViewPlants.DataSource = this.bindingSourcePlants;
+            this.dataGridViewPlants.DataSource = this.tablePlantsBindingSource;
             this.dataGridViewPlants.Location = new System.Drawing.Point(13, 20);
             this.dataGridViewPlants.Name = "dataGridViewPlants";
-            this.dataGridViewPlants.Size = new System.Drawing.Size(624, 380);
+            this.dataGridViewPlants.ReadOnly = true;
+            this.dataGridViewPlants.RowHeadersVisible = false;
+            this.dataGridViewPlants.Size = new System.Drawing.Size(624, 609);
             this.dataGridViewPlants.TabIndex = 0;
             this.dataGridViewPlants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlants_CellContentClick);
             // 
@@ -452,120 +345,180 @@
             this.genusCrossDataGridViewTextBoxColumn.DataPropertyName = "GenusCross";
             this.genusCrossDataGridViewTextBoxColumn.HeaderText = "GenusCross";
             this.genusCrossDataGridViewTextBoxColumn.Name = "genusCrossDataGridViewTextBoxColumn";
+            this.genusCrossDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // genusDataGridViewTextBoxColumn
             // 
             this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
             this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
             this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
+            this.genusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // speciesCrossDataGridViewTextBoxColumn
             // 
             this.speciesCrossDataGridViewTextBoxColumn.DataPropertyName = "SpeciesCross";
             this.speciesCrossDataGridViewTextBoxColumn.HeaderText = "SpeciesCross";
             this.speciesCrossDataGridViewTextBoxColumn.Name = "speciesCrossDataGridViewTextBoxColumn";
+            this.speciesCrossDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // speciesDataGridViewTextBoxColumn
             // 
             this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
             this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
             this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
+            this.speciesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // varietyDataGridViewTextBoxColumn
             // 
             this.varietyDataGridViewTextBoxColumn.DataPropertyName = "Variety";
             this.varietyDataGridViewTextBoxColumn.HeaderText = "Variety";
             this.varietyDataGridViewTextBoxColumn.Name = "varietyDataGridViewTextBoxColumn";
+            this.varietyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // commonDataGridViewTextBoxColumn
             // 
             this.commonDataGridViewTextBoxColumn.DataPropertyName = "Common";
             this.commonDataGridViewTextBoxColumn.HeaderText = "Common";
             this.commonDataGridViewTextBoxColumn.Name = "commonDataGridViewTextBoxColumn";
+            this.commonDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // sKUDataGridViewTextBoxColumn
             // 
             this.sKUDataGridViewTextBoxColumn.DataPropertyName = "SKU";
             this.sKUDataGridViewTextBoxColumn.HeaderText = "SKU";
             this.sKUDataGridViewTextBoxColumn.Name = "sKUDataGridViewTextBoxColumn";
+            this.sKUDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descDataGridViewTextBoxColumn
             // 
             this.descDataGridViewTextBoxColumn.DataPropertyName = "Desc";
             this.descDataGridViewTextBoxColumn.HeaderText = "Desc";
             this.descDataGridViewTextBoxColumn.Name = "descDataGridViewTextBoxColumn";
+            this.descDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // potSizeDataGridViewTextBoxColumn
             // 
             this.potSizeDataGridViewTextBoxColumn.DataPropertyName = "PotSize";
             this.potSizeDataGridViewTextBoxColumn.HeaderText = "PotSize";
             this.potSizeDataGridViewTextBoxColumn.Name = "potSizeDataGridViewTextBoxColumn";
+            this.potSizeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // colourQueueDataGridViewCheckBoxColumn
             // 
             this.colourQueueDataGridViewCheckBoxColumn.DataPropertyName = "ColourQueue";
             this.colourQueueDataGridViewCheckBoxColumn.HeaderText = "ColourQueue";
             this.colourQueueDataGridViewCheckBoxColumn.Name = "colourQueueDataGridViewCheckBoxColumn";
+            this.colourQueueDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // barcodeDataGridViewTextBoxColumn
             // 
             this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
             this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
             this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // picture1DataGridViewTextBoxColumn
             // 
             this.picture1DataGridViewTextBoxColumn.DataPropertyName = "Picture1";
             this.picture1DataGridViewTextBoxColumn.HeaderText = "Picture1";
             this.picture1DataGridViewTextBoxColumn.Name = "picture1DataGridViewTextBoxColumn";
+            this.picture1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // picture2DataGridViewTextBoxColumn
             // 
             this.picture2DataGridViewTextBoxColumn.DataPropertyName = "Picture2";
             this.picture2DataGridViewTextBoxColumn.HeaderText = "Picture2";
             this.picture2DataGridViewTextBoxColumn.Name = "picture2DataGridViewTextBoxColumn";
+            this.picture2DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // picture3DataGridViewTextBoxColumn
             // 
             this.picture3DataGridViewTextBoxColumn.DataPropertyName = "Picture3";
             this.picture3DataGridViewTextBoxColumn.HeaderText = "Picture3";
             this.picture3DataGridViewTextBoxColumn.Name = "picture3DataGridViewTextBoxColumn";
+            this.picture3DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // picture4DataGridViewTextBoxColumn
             // 
             this.picture4DataGridViewTextBoxColumn.DataPropertyName = "Picture4";
             this.picture4DataGridViewTextBoxColumn.HeaderText = "Picture4";
             this.picture4DataGridViewTextBoxColumn.Name = "picture4DataGridViewTextBoxColumn";
+            this.picture4DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // aGMDataGridViewCheckBoxColumn
             // 
             this.aGMDataGridViewCheckBoxColumn.DataPropertyName = "AGM";
             this.aGMDataGridViewCheckBoxColumn.HeaderText = "AGM";
             this.aGMDataGridViewCheckBoxColumn.Name = "aGMDataGridViewCheckBoxColumn";
+            this.aGMDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // labelColourDataGridViewTextBoxColumn
             // 
             this.labelColourDataGridViewTextBoxColumn.DataPropertyName = "LabelColour";
             this.labelColourDataGridViewTextBoxColumn.HeaderText = "LabelColour";
             this.labelColourDataGridViewTextBoxColumn.Name = "labelColourDataGridViewTextBoxColumn";
+            this.labelColourDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // hideDataGridViewCheckBoxColumn
             // 
             this.hideDataGridViewCheckBoxColumn.DataPropertyName = "Hide";
             this.hideDataGridViewCheckBoxColumn.HeaderText = "Hide";
             this.hideDataGridViewCheckBoxColumn.Name = "hideDataGridViewCheckBoxColumn";
+            this.hideDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // notesDataGridViewTextBoxColumn
             // 
             this.notesDataGridViewTextBoxColumn.DataPropertyName = "notes";
             this.notesDataGridViewTextBoxColumn.HeaderText = "notes";
             this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // labelStockDataGridViewCheckBoxColumn
             // 
             this.labelStockDataGridViewCheckBoxColumn.DataPropertyName = "LabelStock";
             this.labelStockDataGridViewCheckBoxColumn.HeaderText = "LabelStock";
             this.labelStockDataGridViewCheckBoxColumn.Name = "labelStockDataGridViewCheckBoxColumn";
+            this.labelStockDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // tablePlantsBindingSource
+            // 
+            this.tablePlantsBindingSource.DataMember = "TablePlants";
+            this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
+            // 
+            // databaseLabelsDataSet
+            // 
+            this.databaseLabelsDataSet.DataSetName = "DatabaseLabelsDataSet";
+            this.databaseLabelsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.panel1);
+            this.groupBox3.Location = new System.Drawing.Point(7, 272);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(154, 220);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "current Picture";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBoxMain);
+            this.panel1.Location = new System.Drawing.Point(10, 20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(134, 185);
+            this.panel1.TabIndex = 14;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // pictureBoxMain
+            // 
+            this.pictureBoxMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxMain.Location = new System.Drawing.Point(5, 3);
+            this.pictureBoxMain.Name = "pictureBoxMain";
+            this.pictureBoxMain.Size = new System.Drawing.Size(124, 177);
+            this.pictureBoxMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMain.TabIndex = 0;
+            this.pictureBoxMain.TabStop = false;
             // 
             // groupBox5
             // 
@@ -645,50 +598,45 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listBox1);
-            this.groupBox4.Location = new System.Drawing.Point(6, 264);
+            this.groupBox4.Controls.Add(this.labelPlantName);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.richTextBoxDesc);
+            this.groupBox4.Location = new System.Drawing.Point(6, 136);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(316, 228);
+            this.groupBox4.Size = new System.Drawing.Size(316, 130);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "current Text";
             // 
-            // listBox1
+            // labelPlantName
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(13, 23);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(290, 199);
-            this.listBox1.TabIndex = 0;
+            this.labelPlantName.AutoSize = true;
+            this.labelPlantName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlantName.Location = new System.Drawing.Point(13, 20);
+            this.labelPlantName.Name = "labelPlantName";
+            this.labelPlantName.Size = new System.Drawing.Size(57, 20);
+            this.labelPlantName.TabIndex = 3;
+            this.labelPlantName.Text = "label4";
             // 
-            // groupBox3
+            // label3
             // 
-            this.groupBox3.Controls.Add(this.panel1);
-            this.groupBox3.Location = new System.Drawing.Point(7, 13);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(154, 245);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "current Picture";
+            this.label3.AutoSize = true;
+            this.label3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tablePlantsBindingSource, "Common", true));
+            this.label3.Location = new System.Drawing.Point(9, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "label3";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // panel1
+            // richTextBoxDesc
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Location = new System.Drawing.Point(10, 20);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(134, 185);
-            this.panel1.TabIndex = 14;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(13, 14);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(106, 153);
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
+            this.richTextBoxDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxDesc.Location = new System.Drawing.Point(13, 56);
+            this.richTextBoxDesc.Name = "richTextBoxDesc";
+            this.richTextBoxDesc.Size = new System.Drawing.Size(290, 68);
+            this.richTextBoxDesc.TabIndex = 1;
+            this.richTextBoxDesc.Text = "";
             // 
             // groupBoxAlpha
             // 
@@ -824,10 +772,10 @@
             this.groupBoxImages.Controls.Add(this.radioButtonImage2);
             this.groupBoxImages.Controls.Add(this.radioButtonImage3);
             this.groupBoxImages.Controls.Add(this.radioButtonImage1);
-            this.groupBoxImages.Controls.Add(this.pictureBox4);
-            this.groupBoxImages.Controls.Add(this.pictureBox3);
-            this.groupBoxImages.Controls.Add(this.pictureBox2);
-            this.groupBoxImages.Controls.Add(this.pictureBox1);
+            this.groupBoxImages.Controls.Add(this.pictureBoxThumb4);
+            this.groupBoxImages.Controls.Add(this.pictureBoxThumb3);
+            this.groupBoxImages.Controls.Add(this.pictureBoxThumb2);
+            this.groupBoxImages.Controls.Add(this.pictureBoxThumb1);
             this.groupBoxImages.Location = new System.Drawing.Point(6, 498);
             this.groupBoxImages.Name = "groupBoxImages";
             this.groupBoxImages.Size = new System.Drawing.Size(316, 144);
@@ -877,41 +825,46 @@
             this.radioButtonImage1.Text = "1";
             this.radioButtonImage1.UseVisualStyleBackColor = true;
             // 
-            // pictureBox4
+            // pictureBoxThumb4
             // 
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(235, 20);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(68, 92);
-            this.pictureBox4.TabIndex = 3;
-            this.pictureBox4.TabStop = false;
+            this.pictureBoxThumb4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxThumb4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxThumb4.Location = new System.Drawing.Point(235, 20);
+            this.pictureBoxThumb4.Name = "pictureBoxThumb4";
+            this.pictureBoxThumb4.Size = new System.Drawing.Size(68, 92);
+            this.pictureBoxThumb4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxThumb4.TabIndex = 3;
+            this.pictureBoxThumb4.TabStop = false;
             // 
-            // pictureBox3
+            // pictureBoxThumb3
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(161, 19);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(68, 92);
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
+            this.pictureBoxThumb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxThumb3.Location = new System.Drawing.Point(161, 19);
+            this.pictureBoxThumb3.Name = "pictureBoxThumb3";
+            this.pictureBoxThumb3.Size = new System.Drawing.Size(68, 92);
+            this.pictureBoxThumb3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxThumb3.TabIndex = 2;
+            this.pictureBoxThumb3.TabStop = false;
             // 
-            // pictureBox2
+            // pictureBoxThumb2
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(87, 20);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(68, 92);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxThumb2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxThumb2.Location = new System.Drawing.Point(87, 20);
+            this.pictureBoxThumb2.Name = "pictureBoxThumb2";
+            this.pictureBoxThumb2.Size = new System.Drawing.Size(68, 92);
+            this.pictureBoxThumb2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxThumb2.TabIndex = 1;
+            this.pictureBoxThumb2.TabStop = false;
             // 
-            // pictureBox1
+            // pictureBoxThumb1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(68, 92);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxThumb1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxThumb1.Location = new System.Drawing.Point(13, 20);
+            this.pictureBoxThumb1.Name = "pictureBoxThumb1";
+            this.pictureBoxThumb1.Size = new System.Drawing.Size(68, 92);
+            this.pictureBoxThumb1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxThumb1.TabIndex = 0;
+            this.pictureBoxThumb1.TabStop = false;
             // 
             // tabPageAuto
             // 
@@ -931,6 +884,27 @@
             this.tabPageDatabase.TabIndex = 2;
             this.tabPageDatabase.Text = "     Database Entry     ";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
+            // 
+            // tabPagePreview
+            // 
+            this.tabPagePreview.Controls.Add(this.panelLabelTab);
+            this.tabPagePreview.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePreview.Name = "tabPagePreview";
+            this.tabPagePreview.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePreview.Size = new System.Drawing.Size(1067, 772);
+            this.tabPagePreview.TabIndex = 3;
+            this.tabPagePreview.Text = "     Label Preview";
+            this.tabPagePreview.UseVisualStyleBackColor = true;
+            this.tabPagePreview.Click += new System.EventHandler(this.tabPage1_Click_1);
+            // 
+            // panelLabelTab
+            // 
+            this.panelLabelTab.BackColor = System.Drawing.Color.DimGray;
+            this.panelLabelTab.Location = new System.Drawing.Point(7, 7);
+            this.panelLabelTab.Name = "panelLabelTab";
+            this.panelLabelTab.Size = new System.Drawing.Size(1054, 759);
+            this.panelLabelTab.TabIndex = 0;
+            this.panelLabelTab.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelTab_Paint);
             // 
             // tabControl2
             // 
@@ -994,22 +968,13 @@
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
             // 
-            // panelLabelPreview
-            // 
-            this.panelLabelPreview.BackColor = System.Drawing.Color.Transparent;
-            this.panelLabelPreview.Location = new System.Drawing.Point(177, 136);
-            this.panelLabelPreview.Name = "panelLabelPreview";
-            this.panelLabelPreview.Size = new System.Drawing.Size(139, 122);
-            this.panelLabelPreview.TabIndex = 15;
-            this.panelLabelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelPreview_Paint);
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1508, 841);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl2);
             this.MainMenuStrip = this.menuStrip1;
@@ -1020,31 +985,30 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlMain.ResumeLayout(false);
             this.tabPageManual.ResumeLayout(false);
+            this.tabPageManual.PerformLayout();
             this.groupBoxPlantData.ResumeLayout(false);
-            this.groupBoxPlantData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorPlants)).EndInit();
-            this.bindingNavigatorPlants.ResumeLayout(false);
-            this.bindingNavigatorPlants.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePlants)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetPlants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.groupBox4.PerformLayout();
             this.groupBoxAlpha.ResumeLayout(false);
             this.groupBoxPrint.ResumeLayout(false);
             this.groupBoxPrint.PerformLayout();
             this.groupBoxImages.ResumeLayout(false);
             this.groupBoxImages.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb1)).EndInit();
+            this.tabPagePreview.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1062,7 +1026,7 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.TabPage tabPageManual;
         private System.Windows.Forms.TabPage tabPageAuto;
         private System.Windows.Forms.TabControl tabControl2;
@@ -1084,37 +1048,32 @@
         private System.Windows.Forms.RadioButton radioButtonImage2;
         private System.Windows.Forms.RadioButton radioButtonImage3;
         private System.Windows.Forms.RadioButton radioButtonImage1;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxThumb4;
+        private System.Windows.Forms.PictureBox pictureBoxThumb3;
+        private System.Windows.Forms.PictureBox pictureBoxThumb2;
+        private System.Windows.Forms.PictureBox pictureBoxThumb1;
         private System.Windows.Forms.Button buttonAlphaA;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBoxMain;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelColourCount;
         private System.Windows.Forms.Label labelMainCount;
         private System.Windows.Forms.GroupBox groupBoxPlantData;
-        private System.Windows.Forms.BindingNavigator bindingNavigatorPlants;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.DataGridView dataGridViewPlants;
-        private System.Windows.Forms.BindingSource bindingSourcePlants;
+        private System.Windows.Forms.TextBox textBoxQtyAuto;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.TextBox textBoxPriceAuto;
+        private System.Windows.Forms.TextBox textBoxQty;
+        private System.Windows.Forms.CheckBox checkBoxPrice;
+        private System.Windows.Forms.CheckBox checkBoxQty;
+        private System.Windows.Forms.Panel panelLabelPreview;
+        private DatabaseLabelsDataSet databaseLabelsDataSet;
+        private System.Windows.Forms.BindingSource tablePlantsBindingSource;
         private DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter tablePlantsTableAdapter;
-        private DatabaseLabelsDataSet1 databaseLabelsDataSetPlants;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genusCrossDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genusDataGridViewTextBoxColumn;
@@ -1136,14 +1095,12 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn hideDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn labelStockDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.TextBox textBoxQtyAuto;
-        private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.TextBox textBoxPriceAuto;
-        private System.Windows.Forms.TextBox textBoxQty;
-        private System.Windows.Forms.CheckBox checkBoxPrice;
-        private System.Windows.Forms.CheckBox checkBoxQty;
-        private System.Windows.Forms.Panel panelLabelPreview;
-        public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxDesc;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelPlantName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage tabPagePreview;
+        private System.Windows.Forms.Panel panelLabelTab;
     }
 }
 
