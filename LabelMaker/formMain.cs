@@ -50,17 +50,16 @@ namespace LabelMaker
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void button4_Click(object sender, EventArgs e)
         {
-             
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             TempMakeALabel(panelLabelPreview);
-            
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -71,8 +70,14 @@ namespace LabelMaker
         public void TempMakeALabel(Panel whichPanel)
         {
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+            
+            //file with default settings
+            string name = whereFiles + "defaults.txt";
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+
+            
             //file with sample queue entry;
-            string name = whereFiles + "ColourQueue.txt";
+            name = whereFiles + "ColourQueue.txt";
             string[] queueString = CreationUtilities.dataReader.readFile(name);
 
             string radioChoice;
@@ -88,11 +93,48 @@ namespace LabelMaker
             {
                 radioChoice = whereFiles + "bmColourQueue.txt";
             }
-            queueString = CreationUtilities.dataReader.readFile(radioChoice );
+            //queueString = CreationUtilities.dataReader.readFile(radioChoice);
+            int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
+            string[] sendData = new String[21];
+            string[] findName = new String[5];
+            string[] moreData = new String[12];
+
+            // get general plant data
+            for (int i=0; i <= 20; i++)
+            {
+                sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString();
+            }
+
+            // get various concatenated Name strings 
+            for (int i = 0; i <= 4; i++)
+            {
+                findName[i] = dataGridViewPlants.Rows[currentRow].Cells[1 + i].Value.ToString();
+            }
+            string[] sendName = getPlantName(findName);
+
+            //get main pcture
+            if (radioButtonImage1.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[12].Value.ToString(); }
+            if (radioButtonImage2.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[13].Value.ToString(); }
+            if (radioButtonImage3.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[14].Value.ToString(); }
+            if (radioButtonImage4.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[15].Value.ToString(); }
+
+            // Check AGM Status
+            if ( dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString() == "True")
+            {
+                MessageBox.Show(dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString());
+                moreData[1] = "AGM.ico";
+            }
+            else
+            {
+                moreData[1] = "AGMBlank.ico";
+            }
+
+            queueString = dataReader.readQueue(sendData,sendName, moreData);
 
             //file with a sample label definition;
             if (radioButton1.Checked)
             {
+
                 name = whereFiles + "LabelsText.txt";
             }
             else
@@ -100,9 +142,8 @@ namespace LabelMaker
                 name = whereFiles + "LabelsColour.txt";
             }
             string[] labelString = CreationUtilities.dataReader.readFile(name);
-            //file with default settings
-            name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            
+            
 
             //Form formLabel = new formLabel(queueString, labelString, defaultsString);
             //formLabel.Visible = false;
@@ -151,11 +192,11 @@ namespace LabelMaker
                     break;
             }
 
-            int finalWidthInt = (int) finalWidth;
-            int finalHeightInt = (int) finalHeight;
+            int finalWidthInt = (int)finalWidth;
+            int finalHeightInt = (int)finalHeight;
 
             whereToNow whereToTwo = new whereToNow(queueData, labelData, defaultsString, finalWidthInt, finalHeightInt);
-            whereToTwo.BackColor = Color.White;            
+            whereToTwo.BackColor = Color.White;
 
             whereToTwo.Width = finalWidthInt;
             whereToTwo.Height = finalHeightInt;
@@ -184,7 +225,7 @@ namespace LabelMaker
 
         private void tablePlantsBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-                    }
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -193,24 +234,22 @@ namespace LabelMaker
 
         private void tabPageMainQueue_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tabPageColourQueue_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridViewPlants_Click(object sender, DataGridViewCellEventArgs e)
         {
-            //String NameText = "Hello";
-            labelPlantName.Text = getPlantName(e); 
+            
         }
 
 
         private void dataGridViewPlants_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //String NameText = "Hello";
             updateMainDetails(e);
         }
 
@@ -224,13 +263,21 @@ namespace LabelMaker
             string filePlace = defaultsString[0];
 
             //Plant name as one string
-            labelPlantName.Text = getPlantName(e);
+            string[] PlantNames = new String[5];
+            string[] sendData = new String[5];
+            for (int i = 0; i <= 4; i++)
+            {
+                sendData[i] = dataGridViewPlants.Rows[e.RowIndex].Cells[1+i].Value.ToString();
+            }
+
+            PlantNames = getPlantName(sendData);
+            labelPlantName.Text = PlantNames[0];
             //Description
             richTextBoxDesc.Text = dataGridViewPlants.Rows[e.RowIndex].Cells[8].Value.ToString();
 
             //Thumbnails and Main Picture
             try // #1
-            {    
+            {
                 string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[12].Value.ToString();
                 string pictureFile = filePlace + fileName;
                 pictureBoxThumb1.Image = Image.FromFile(pictureFile);
@@ -239,7 +286,7 @@ namespace LabelMaker
             {
                 string pictureFile = "";
                 if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[12].Value.ToString()))
-                    {
+                {
                     pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
                 }
                 else
@@ -311,7 +358,7 @@ namespace LabelMaker
                 pictureBoxThumb4.Image = Image.FromFile(pictureFile);
             }
 
-            updateMainPicture(filePlace,e);
+            updateMainPicture(filePlace, e);
 
 
         }
@@ -320,9 +367,9 @@ namespace LabelMaker
         {
 
             int whichOne = 12;
-            if (radioButtonImage4.Checked){ whichOne = 15; }
+            if (radioButtonImage4.Checked) { whichOne = 15; }
             else if (radioButtonImage3.Checked) { whichOne = 14; }
-            else if (radioButtonImage2.Checked){ whichOne = 13; }
+            else if (radioButtonImage2.Checked) { whichOne = 13; }
             else { whichOne = 12; }
 
 
@@ -347,29 +394,34 @@ namespace LabelMaker
             }
         }
 
-        public String getPlantName(DataGridViewCellEventArgs e)
+        public String[] getPlantName(string[] sentData)
         {
             //Turn Genus etc fields into one string
-            string Name = "";
+            string[] Name = new String[4];
 
-            int currentRow = dataGridViewPlants.CurrentRow.Index;
-            if (dataGridViewPlants.Rows[e.RowIndex].Cells[1].Value.ToString() == "x")
+            //int currentRow = dataGridViewPlants.CurrentRow.Index;
+            if (sentData[0] == "x")
             {
-                Name = Name + "x";
+                Name[0] = Name[0] + "x";
+                Name[1] = Name[1] + "x";
             }
-            Name = Name + dataGridViewPlants.Rows[e.RowIndex].Cells[2].Value.ToString();
+            Name[0] = Name[0] + sentData[1];
+            Name[1] = Name[1] + sentData[1];
 
-            if (dataGridViewPlants.Rows[e.RowIndex].Cells[3].Value.ToString() == "x")
+            if (sentData[2] == "x")
             {
-                Name = Name + " x";
+                Name[0] = Name[0] + " x";
+                Name[2] = Name[2] + " x";
             }
 
-            Name = Name + " " + dataGridViewPlants.Rows[e.RowIndex].Cells[4].Value.ToString() ;
-            Name = Name + " " + dataGridViewPlants.Rows[e.RowIndex].Cells[5].Value.ToString();
-            
+            Name[0] = Name[0] + " " + sentData[3];
+            Name[0] = Name[0] + " " + sentData[4];
+            Name[2] = Name[2] + " " + sentData[3];
+            Name[3] = Name[3] + " " + sentData[4];
+
 
             return Name;
-            
+
 
         }
 
@@ -380,16 +432,16 @@ namespace LabelMaker
 
         private void checkBoxQty_CheckedChanged(object sender, EventArgs e)
         {
-            switch (checkBoxQty.Checked )
+            switch (checkBoxQty.Checked)
             {
                 case true:
                     textBoxQtyAuto.Enabled = true;
-                    textBoxQtyAuto.ForeColor = SystemColors.ActiveCaptionText ;
+                    textBoxQtyAuto.ForeColor = SystemColors.ActiveCaptionText;
                     break;
                 case false:
                     textBoxQtyAuto.Enabled = false;
                     textBoxQtyAuto.ForeColor = SystemColors.InactiveCaptionText;
-                    break;                    
+                    break;
             }
         }
 
@@ -415,7 +467,7 @@ namespace LabelMaker
 
         private void panelLabelPreview_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void groupBoxPlantData_Enter(object sender, EventArgs e)
@@ -435,14 +487,25 @@ namespace LabelMaker
 
         private void tabPage1_Click_1(object sender, EventArgs e)
         {
-           
+
         }
 
-        private void tabControlMain_SelectedIndexChanged( object sender, EventArgs e)
+        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+            clearPanelLabel();
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
-                TempMakeALabel(panelLabelTab);                
+                TempMakeALabel(panelLabelTab);
+            }
+
+        }
+
+        private void clearPanelLabel()
+        {
+            //Clear the panel
+            foreach (Control ctrl in panelLabelPreview.Controls)
+            {
+                ctrl.Dispose();
             }
         }
 

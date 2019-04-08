@@ -150,9 +150,9 @@ namespace LabelMaker
                 bool? isFontItalic = bool.Parse(labelData[start + 18]);
                 string sentColour = (labelData[start + 19]);
 
-                string profileTextColour = (queueData[12]);
-                string profileBorderColour = (queueData[15]);
-                string profileBackgroundColour = (queueData[16]);
+                string profileTextColour = (queueData[10]);
+                string profileBorderColour = (queueData[13]);
+                string profileBackgroundColour = (queueData[14]);
 
                 //set justification as an integer
                 int justifyInt = 0;
@@ -251,7 +251,7 @@ namespace LabelMaker
                         string pictureString = "";
                         if (isProfile.Value)
                         {
-                            pictureString = (defaultsString[0] + queueData[10]);
+                            pictureString = (defaultsString[0] + queueData[listboxNo]);
                         }
                         else
                         {

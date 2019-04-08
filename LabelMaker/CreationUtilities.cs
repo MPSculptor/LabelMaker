@@ -167,9 +167,42 @@ namespace CreationUtilities
     // Its purpose is to collect data for one label from a couple of temporary text files
     // replace by database reader in time
 
+
+
     public class dataReader
     {
+        public static string[] readQueue( string[] sentData, string[] sentName, string[] moreData)
+        {
+            string[] queueData = new string[25];
 
+            queueData[0] = sentName[0];
+            queueData[1] = "2";
+            queueData[2] = "£5.50";
+            queueData[3] = sentData[9];
+            queueData[4] = "Derek Wellington";
+            queueData[5] = sentData[11];
+            queueData[6] = sentData[8];
+            queueData[7] = sentData[6];
+            queueData[8] = moreData[0];
+            queueData[9] = "Arial";
+            queueData[10] = "4210688";
+            queueData[11] = "1";
+            queueData[12] = "0";
+            queueData[13] = "4227072";
+            queueData[14] = "16777183";
+            queueData[15] = sentData[19];
+            queueData[16] = sentName[1]; 
+            queueData[17] = sentName[2];
+            queueData[18] = sentName[3];
+            queueData[19] = moreData[1];
+            queueData[20] = sentData[12];
+            queueData[21] = sentData[13];
+            queueData[22] = sentData[14];
+            queueData[23] = sentData[15];
+            queueData[24] = "#9527";
+
+            return queueData;
+        }
         public static string[] readFile(string fileName)
         {
             try
