@@ -59,7 +59,7 @@ namespace LabelMaker
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TempMakeALabel(panelLabelPreview);
+            TempMakeALabel(panelLabelPreview, "Main");
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace LabelMaker
 
         }
 
-        public void TempMakeALabel(Panel whichPanel)
+        public void TempMakeALabel(Panel whichPanel, string whichLabel)
         {
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
             
@@ -80,20 +80,6 @@ namespace LabelMaker
             name = whereFiles + "ColourQueue.txt";
             string[] queueString = CreationUtilities.dataReader.readFile(name);
 
-            string radioChoice;
-            if (radioButton3.Checked)
-            {
-                radioChoice = whereFiles + "acColourQueue.txt";
-            }
-            else if (radioButton4.Checked)
-            {
-                radioChoice = whereFiles + "boColourQueue.txt";
-            }
-            else
-            {
-                radioChoice = whereFiles + "bmColourQueue.txt";
-            }
-            //queueString = CreationUtilities.dataReader.readFile(radioChoice);
             int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
             string[] sendData = new String[21];
             string[] findName = new String[5];
@@ -121,7 +107,6 @@ namespace LabelMaker
             // Check AGM Status
             if ( dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString() == "True")
             {
-                MessageBox.Show(dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString());
                 moreData[1] = "AGM.ico";
             }
             else
@@ -129,17 +114,22 @@ namespace LabelMaker
                 moreData[1] = "AGMBlank.ico";
             }
 
+            // qty and price
+
+            moreData[2] = textBoxQty.Text;
+            moreData[3] = formatPrice(textBoxPrice.Text);
+ 
             queueString = dataReader.readQueue(sendData,sendName, moreData);
 
             //file with a sample label definition;
-            if (radioButton1.Checked)
+            if (whichLabel == "Colour")
             {
 
-                name = whereFiles + "LabelsText.txt";
+                name = whereFiles + "LabelsColour.txt";
             }
             else
             {
-                name = whereFiles + "LabelsColour.txt";
+                name = whereFiles + "LabelsText.txt";
             }
             string[] labelString = CreationUtilities.dataReader.readFile(name);
             
@@ -341,7 +331,6 @@ namespace LabelMaker
             {
                 string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[15].Value.ToString();
                 string pictureFile = filePlace + fileName;
-                label4.Text = pictureFile;
                 pictureBoxThumb4.Image = Image.FromFile(pictureFile);
             }
             catch (IOException)
@@ -359,6 +348,7 @@ namespace LabelMaker
             }
 
             updateMainPicture(filePlace, e);
+            TempMakeALabel( panelLabelPreview, "Main");
 
 
         }
@@ -495,7 +485,8 @@ namespace LabelMaker
             clearPanelLabel();
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
-                TempMakeALabel(panelLabelTab);
+                TempMakeALabel(panelLabelTabMain, "Main");
+                TempMakeALabel(panelLabelTabColour, "Colour");
             }
 
         }
@@ -512,6 +503,37 @@ namespace LabelMaker
         private void panelLabelTab_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        public string formatPrice(string priceString)
+        {
+            // takes a string that represtent a number and converts it to a price format
+
+            double priceSent;
+            string doneString = "";
+            Double.TryParse(priceString, out priceSent);
+            Math.Round(priceSent, 2);
+            //MessageBox.Show(priceSent.ToString());
+            if (priceSent > 0)
+            {
+                if (priceSent >= 1)
+                {
+                    doneString = "£ " + priceSent.ToString();
+                    int positionDecimal = doneString.IndexOf(".");
+                    //MessageBox.Show(positionDecimal.ToString() + " , " + doneString.Length);
+                    if (positionDecimal == -1) { doneString = doneString + ".00"; }
+                    if (positionDecimal == (doneString.Length - 2 )) { doneString = doneString + "0"; }
+                }
+                else
+                {
+                    doneString = priceSent.ToString();
+                    //MessageBox.Show(doneString.Length.ToString());
+                    if (doneString.Length == 3) { doneString = doneString + "0"; }
+                    doneString=doneString  + "p";
+                    doneString = doneString.Substring(2);
+                }
+            }           
+
+            return doneString;
         }
     }
 }

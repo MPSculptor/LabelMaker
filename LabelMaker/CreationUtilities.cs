@@ -175,9 +175,9 @@ namespace CreationUtilities
         {
             string[] queueData = new string[25];
 
-            queueData[0] = sentName[0];
+            queueData[0] = sentName[0]; //Full name
             queueData[1] = "2";
-            queueData[2] = "£5.50";
+            queueData[2] = moreData[3]; // price
             queueData[3] = sentData[9];
             queueData[4] = "Derek Wellington";
             queueData[5] = sentData[11];
@@ -194,7 +194,7 @@ namespace CreationUtilities
             queueData[16] = sentName[1]; 
             queueData[17] = sentName[2];
             queueData[18] = sentName[3];
-            queueData[19] = moreData[1];
+            queueData[19] = moreData[1]; // AGM picture to use
             queueData[20] = sentData[12];
             queueData[21] = sentData[13];
             queueData[22] = sentData[14];
