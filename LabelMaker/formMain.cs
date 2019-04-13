@@ -29,6 +29,8 @@ namespace LabelMaker
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseLabelsDataSet1.TableProfiles' table. You can move, or remove it, as needed.
+            this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSet1.TableProfiles);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
             this.tablePlantsTableAdapter.Fill(this.databaseLabelsDataSet.TablePlants);
 
@@ -43,9 +45,7 @@ namespace LabelMaker
             dataGridViewPlants.Columns[5].Width = 100;
             dataGridViewPlants.Columns[6].Width = 100;
 
-
-
-
+            updateMainDetails(0);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -240,10 +240,10 @@ namespace LabelMaker
 
         private void dataGridViewPlants_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            updateMainDetails(e);
+            updateMainDetails(e.RowIndex);
         }
 
-        public void updateMainDetails(DataGridViewCellEventArgs e)
+        public void updateMainDetails(int indexOfRow)
         {
             //get picture position
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
@@ -257,25 +257,25 @@ namespace LabelMaker
             string[] sendData = new String[5];
             for (int i = 0; i <= 4; i++)
             {
-                sendData[i] = dataGridViewPlants.Rows[e.RowIndex].Cells[1+i].Value.ToString();
+                sendData[i] = dataGridViewPlants.Rows[indexOfRow].Cells[1+i].Value.ToString();
             }
 
             PlantNames = getPlantName(sendData);
             labelPlantName.Text = PlantNames[0];
             //Description
-            richTextBoxDesc.Text = dataGridViewPlants.Rows[e.RowIndex].Cells[8].Value.ToString();
+            richTextBoxDesc.Text = dataGridViewPlants.Rows[indexOfRow].Cells[8].Value.ToString();
 
             //Thumbnails and Main Picture
             try // #1
             {
-                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[12].Value.ToString();
+                string fileName = dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString();
                 string pictureFile = filePlace + fileName;
                 pictureBoxThumb1.Image = Image.FromFile(pictureFile);
             }
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[12].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString()))
                 {
                     pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
                 }
@@ -288,14 +288,14 @@ namespace LabelMaker
 
             try // #2
             {
-                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[13].Value.ToString();
+                string fileName = dataGridViewPlants.Rows[indexOfRow].Cells[13].Value.ToString();
                 string pictureFile = filePlace + fileName;
                 pictureBoxThumb2.Image = Image.FromFile(pictureFile);
             }
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[13].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[13].Value.ToString()))
                 {
                     pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
                 }
@@ -308,14 +308,14 @@ namespace LabelMaker
 
             try // #3
             {
-                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[14].Value.ToString();
+                string fileName = dataGridViewPlants.Rows[indexOfRow].Cells[14].Value.ToString();
                 string pictureFile = filePlace + fileName;
                 pictureBoxThumb3.Image = Image.FromFile(pictureFile);
             }
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[14].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[14].Value.ToString()))
                 {
                     pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
                 }
@@ -329,14 +329,14 @@ namespace LabelMaker
 
             try // #4
             {
-                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[15].Value.ToString();
+                string fileName = dataGridViewPlants.Rows[indexOfRow].Cells[15].Value.ToString();
                 string pictureFile = filePlace + fileName;
                 pictureBoxThumb4.Image = Image.FromFile(pictureFile);
             }
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[15].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[15].Value.ToString()))
                 {
                     pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
                 }
@@ -347,14 +347,62 @@ namespace LabelMaker
                 pictureBoxThumb4.Image = Image.FromFile(pictureFile);
             }
 
-            updateMainPicture(filePlace, e);
+            updateMainPicture(filePlace, indexOfRow);
             TempMakeALabel( panelLabelPreview, "Main");
+
+            
+            //Price and Quantity
+            textBoxQty.Text = "1";
+            if (checkBoxQty.Checked ) { textBoxQty.Text = textBoxQtyAuto.Text; }
+            textBoxPrice.Text = "0";
+            if (checkBoxPrice.Checked) { textBoxPrice.Text = textBoxPriceAuto.Text; }
+            textBoxQty.Focus();
+
+            //Status Buttons
+
+            if ( dataGridViewPlants.Rows[indexOfRow].Cells[10].Value.ToString() == "False")
+            {
+                buttonAddtoColourQueue.Text = "no Colour";
+            }
+            else
+            {
+                buttonAddtoColourQueue.Text = "add Colour";
+            }
+            
+            if (dataGridViewPlants.Rows[indexOfRow].Cells[18].Value.ToString() == "True")
+            {
+                buttonVisibleEntry.Text = "Hidden";
+            }
+            else
+            {
+                buttonVisibleEntry.Text = "Visible";
+            }
+            
+            if (dataGridViewPlants.Rows[indexOfRow].Cells[16].Value.ToString() == "False")
+            {
+                buttonAGMStatus.Text = "no AGM";
+            }
+            else
+            {
+                buttonAGMStatus.Text = "AGM";
+            }
+            
+            if (dataGridViewPlants.Rows[indexOfRow].Cells[20].Value.ToString() == "False")
+            {
+                buttonLableStocks.Text = "no Labels";
+            }
+            else
+            {
+                buttonLableStocks.Text = "Labels";
+            }
+            //Set Colour on status buttons
+            colourStatusButtons();
 
 
         }
 
-        public void updateMainPicture(string filePlace, DataGridViewCellEventArgs e)
-        {
+        public void updateMainPicture(string filePlace, int indexOfRow)
+        { 
 
             int whichOne = 12;
             if (radioButtonImage4.Checked) { whichOne = 15; }
@@ -365,14 +413,14 @@ namespace LabelMaker
 
             try // #Main
             {
-                string fileName = dataGridViewPlants.Rows[e.RowIndex].Cells[whichOne].Value.ToString();
+                string fileName = dataGridViewPlants.Rows[indexOfRow].Cells[whichOne].Value.ToString();
                 string pictureFile = filePlace + fileName;
                 pictureBoxMain.Image = Image.FromFile(pictureFile);
             }
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[e.RowIndex].Cells[whichOne].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[whichOne].Value.ToString()))
                 {
                     pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
                 }
@@ -534,6 +582,189 @@ namespace LabelMaker
             }           
 
             return doneString;
+        }
+
+        public void colourStatusButtons()
+        {
+            if (buttonAddtoColourQueue.Text == "add Colour")
+            {
+                buttonAddtoColourQueue.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                buttonAddtoColourQueue.BackColor = Color.DarkSalmon;
+            }
+
+            if (buttonAGMStatus.Text == "AGM")
+            {
+                buttonAGMStatus.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                buttonAGMStatus.BackColor = Color.DarkSalmon;
+            }
+
+            if (buttonLableStocks.Text == "Labels")
+            {
+                buttonLableStocks.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                buttonLableStocks.BackColor = Color.DarkSalmon;
+            }
+
+            if (buttonVisibleEntry.Text == "Visible")
+            {
+                buttonVisibleEntry.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                buttonVisibleEntry.BackColor = Color.DarkSalmon;
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddtoColourQueue_Click(object sender, EventArgs e)
+        {
+            if (buttonAddtoColourQueue.Text == "add Colour")
+            {
+                buttonAddtoColourQueue.Text = "no Colour";
+            }
+            else
+            {
+                buttonAddtoColourQueue.Text = "add Colour";
+            }
+            colourStatusButtons();
+        }
+
+        
+
+        private void buttonVisibleEntry_Click(object sender, EventArgs e)
+        {
+            if (buttonVisibleEntry.Text == "Visible")
+            {
+                buttonVisibleEntry.Text = "Hidden";
+            }
+            else
+            {
+                buttonVisibleEntry.Text = "Visible";
+            }
+            colourStatusButtons();
+
+        }
+
+        private void buttonAGMStatus_Click(object sender, EventArgs e)
+        {
+            if (buttonAGMStatus.Text == "AGM")
+            {
+                buttonAGMStatus.Text = "no AGM";
+                buttonAGMStatus.BackColor = Color.DarkSalmon;
+            }
+            else
+            {
+                buttonAGMStatus.Text = "AGM";
+                buttonAGMStatus.BackColor = Color.LightGreen;
+            }
+            colourStatusButtons();
+        }
+
+        private void buttonLableStocks_Click(object sender, EventArgs e)
+        {
+            if (buttonLableStocks.Text == "Labels")
+            {
+                buttonLableStocks.Text = "no Labels";
+                buttonLableStocks.BackColor = Color.DarkSalmon;
+            }
+            else
+            {
+                buttonLableStocks.Text = "Labels";
+                buttonLableStocks.BackColor = Color.LightGreen;
+            }
+            colourStatusButtons();
+        }
+
+        private void tabPageDatabase_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void profilesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            tabControlProfiles.Visible = true;
+            addProfileButtons();            
+            
+        }
+         
+        public void addProfileButtons()
+        {
+            FlowLayoutPanel flowLayoutPanelProfiles = new FlowLayoutPanel();
+
+            flowLayoutPanelProfiles.Width = groupBoxProfiles.Width - 20;
+            flowLayoutPanelProfiles.Height = groupBoxProfiles.Height - 40;
+            flowLayoutPanelProfiles.Left = 10;
+            flowLayoutPanelProfiles.Top = 20;
+
+            groupBoxProfiles.Controls.Add(flowLayoutPanelProfiles);
+
+
+            int profileIndex = 0;
+            Button[] ProfileSample = new Button[databaseLabelsDataSet1.TableProfiles.Rows.Count + 1];
+            foreach (DataRow rowNumber in databaseLabelsDataSet1.TableProfiles)
+            {
+                int size = rowNumber.ItemArray.Count();
+         
+                String[] rowString = new string[size];
+                int i = 0;
+                foreach (object item in rowNumber.ItemArray)
+                {
+                    rowString[i] = rowNumber.ItemArray.ElementAt(i).ToString();
+                    i++;
+                }
+                
+                ProfileSample[profileIndex] = new Button();
+                ProfileSample[profileIndex].Text = rowString[1];
+                ProfileSample[profileIndex].Width = 131;
+                ProfileSample[profileIndex].BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[7]));
+                ProfileSample[profileIndex].ForeColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[6]));
+                //ProfileSample[profileIndex].BorderColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[7]));
+
+                flowLayoutPanelProfiles.Controls.Add(ProfileSample[profileIndex]);
+                profileIndex++;
+            }
+        }
+
+        private void buttonProfilesClose_Click(object sender, EventArgs e)
+        {
+            foreach (FlowLayoutPanel ctrl in groupBoxProfiles.Controls)
+            {
+                groupBoxProfiles.Controls.Remove(ctrl);
+                ctrl.Dispose();
+            }
+            tabControlProfiles.Visible = false;
+        }
+
+        private void tabPage1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

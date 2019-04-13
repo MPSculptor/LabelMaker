@@ -3,11 +3,66 @@ using System.IO;
 using System.Drawing;
 
 namespace CreationUtilities
+
+
+
+
 {
+
+
+    
+
+
+
     //Handles all of the text manipulation routines
 
     public class TextOperations
     {
+        public static string getHexColour(string sentColour)
+        {
+
+            //CONVERT AN INTEGER COLOUR INTO A HEX COLOUR
+            //sent colour as RGB single number
+            string gotHexColour = "";
+
+            //split single colour number into 3 components
+            int numberColour = (int.Parse(sentColour));
+            int red = (numberColour / 256 / 256);
+            int greenblue = numberColour - (red * 256 * 256);
+            int green = (greenblue / 256);
+            int blue = (greenblue - (green * 256));
+
+            Console.WriteLine("colours - " + red + " , " + green + " , " + blue);
+
+            //convert integer to Hex value
+            // value of 00 can convert to "0", so check and change
+            string redString = red.ToString("x");
+            if (redString.Equals("0"))
+            {
+                redString = "00";
+            }
+
+            string greenString = green.ToString("x");
+            if (greenString.Equals("0"))
+            {
+                greenString = "00";
+            }
+
+            string blueString = blue.ToString("x");
+            if (blueString.Equals("0"))
+            {
+                blueString = "00";
+            }
+
+            //add into single Hex value
+            gotHexColour = "#" + redString + greenString + blueString;
+            Console.WriteLine(gotHexColour);
+
+            return gotHexColour;
+        }
+
+
+
 
         public static string[] SplitText(string toSplit, int pieces)
         {

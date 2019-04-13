@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageManual = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonVisibleEntry = new System.Windows.Forms.Button();
+            this.buttonLableStocks = new System.Windows.Forms.Button();
+            this.buttonAGMStatus = new System.Windows.Forms.Button();
+            this.buttonAddtoColourQueue = new System.Windows.Forms.Button();
             this.panelLabelPreview = new System.Windows.Forms.Panel();
             this.groupBoxPlantData = new System.Windows.Forms.GroupBox();
             this.dataGridViewPlants = new System.Windows.Forms.DataGridView();
@@ -95,6 +101,9 @@
             this.tabPageAuto = new System.Windows.Forms.TabPage();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
             this.tabPagePreview = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panelLabelTabColour = new System.Windows.Forms.Panel();
             this.panelLabelTabMain = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPageMainQueue = new System.Windows.Forms.TabPage();
@@ -102,12 +111,35 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profilesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.panelLabelTabColour = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.tabControlProfiles = new System.Windows.Forms.TabControl();
+            this.tabPageLabelProfiles = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView1ProfileView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonProfilesClose = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.databaseLabelsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panelProfilePlantPreview = new System.Windows.Forms.Panel();
+            this.databaseLabelsDataSet1 = new LabelMaker.DatabaseLabelsDataSet1();
+            this.tableProfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borderColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fontNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boldDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.italicDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.fontColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxProfiles = new System.Windows.Forms.GroupBox();
             this.tabControlMain.SuspendLayout();
             this.tabPageManual.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBoxPlantData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
@@ -127,6 +159,15 @@
             this.tabPagePreview.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tabControlProfiles.SuspendLayout();
+            this.tabPageLabelProfiles.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -147,6 +188,7 @@
             // 
             // tabPageManual
             // 
+            this.tabPageManual.Controls.Add(this.groupBox1);
             this.tabPageManual.Controls.Add(this.panelLabelPreview);
             this.tabPageManual.Controls.Add(this.groupBoxPlantData);
             this.tabPageManual.Controls.Add(this.groupBox3);
@@ -164,12 +206,69 @@
             this.tabPageManual.UseVisualStyleBackColor = true;
             this.tabPageManual.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonVisibleEntry);
+            this.groupBox1.Controls.Add(this.buttonLableStocks);
+            this.groupBox1.Controls.Add(this.buttonAGMStatus);
+            this.groupBox1.Controls.Add(this.buttonAddtoColourQueue);
+            this.groupBox1.Location = new System.Drawing.Point(167, 272);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(154, 83);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Click these to change";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // buttonVisibleEntry
+            // 
+            this.buttonVisibleEntry.BackColor = System.Drawing.Color.DarkSalmon;
+            this.buttonVisibleEntry.Location = new System.Drawing.Point(6, 54);
+            this.buttonVisibleEntry.Name = "buttonVisibleEntry";
+            this.buttonVisibleEntry.Size = new System.Drawing.Size(70, 24);
+            this.buttonVisibleEntry.TabIndex = 3;
+            this.buttonVisibleEntry.Text = "Visible";
+            this.buttonVisibleEntry.UseVisualStyleBackColor = false;
+            this.buttonVisibleEntry.Click += new System.EventHandler(this.buttonVisibleEntry_Click);
+            // 
+            // buttonLableStocks
+            // 
+            this.buttonLableStocks.Location = new System.Drawing.Point(79, 54);
+            this.buttonLableStocks.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.buttonLableStocks.Name = "buttonLableStocks";
+            this.buttonLableStocks.Size = new System.Drawing.Size(70, 24);
+            this.buttonLableStocks.TabIndex = 2;
+            this.buttonLableStocks.Text = "Labels";
+            this.buttonLableStocks.UseVisualStyleBackColor = true;
+            this.buttonLableStocks.Click += new System.EventHandler(this.buttonLableStocks_Click);
+            // 
+            // buttonAGMStatus
+            // 
+            this.buttonAGMStatus.BackColor = System.Drawing.Color.YellowGreen;
+            this.buttonAGMStatus.Location = new System.Drawing.Point(78, 24);
+            this.buttonAGMStatus.Name = "buttonAGMStatus";
+            this.buttonAGMStatus.Size = new System.Drawing.Size(70, 24);
+            this.buttonAGMStatus.TabIndex = 1;
+            this.buttonAGMStatus.Text = "AGM";
+            this.buttonAGMStatus.UseVisualStyleBackColor = false;
+            this.buttonAGMStatus.Click += new System.EventHandler(this.buttonAGMStatus_Click);
+            // 
+            // buttonAddtoColourQueue
+            // 
+            this.buttonAddtoColourQueue.Location = new System.Drawing.Point(6, 24);
+            this.buttonAddtoColourQueue.Name = "buttonAddtoColourQueue";
+            this.buttonAddtoColourQueue.Size = new System.Drawing.Size(70, 24);
+            this.buttonAddtoColourQueue.TabIndex = 0;
+            this.buttonAddtoColourQueue.Text = "add Colour";
+            this.buttonAddtoColourQueue.UseVisualStyleBackColor = true;
+            this.buttonAddtoColourQueue.Click += new System.EventHandler(this.buttonAddtoColourQueue_Click);
+            // 
             // panelLabelPreview
             // 
             this.panelLabelPreview.BackColor = System.Drawing.Color.Transparent;
-            this.panelLabelPreview.Location = new System.Drawing.Point(167, 370);
+            this.panelLabelPreview.Location = new System.Drawing.Point(167, 361);
             this.panelLabelPreview.Name = "panelLabelPreview";
-            this.panelLabelPreview.Size = new System.Drawing.Size(154, 122);
+            this.panelLabelPreview.Size = new System.Drawing.Size(154, 131);
             this.panelLabelPreview.TabIndex = 15;
             this.panelLabelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelPreview_Paint);
             // 
@@ -774,6 +873,7 @@
             this.tabPageDatabase.TabIndex = 2;
             this.tabPageDatabase.Text = "     Database Entry     ";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
+            this.tabPageDatabase.Click += new System.EventHandler(this.tabPageDatabase_Click);
             // 
             // tabPagePreview
             // 
@@ -789,6 +889,36 @@
             this.tabPagePreview.Text = "     Label Preview";
             this.tabPagePreview.UseVisualStyleBackColor = true;
             this.tabPagePreview.Click += new System.EventHandler(this.tabPage1_Click_1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label6.Location = new System.Drawing.Point(538, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(347, 20);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "This is the label the Colour queue will print";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label5.Location = new System.Drawing.Point(7, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(333, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "This is the label the Main queue will print";
+            // 
+            // panelLabelTabColour
+            // 
+            this.panelLabelTabColour.BackColor = System.Drawing.Color.DimGray;
+            this.panelLabelTabColour.Location = new System.Drawing.Point(538, 41);
+            this.panelLabelTabColour.Name = "panelLabelTabColour";
+            this.panelLabelTabColour.Size = new System.Drawing.Size(523, 725);
+            this.panelLabelTabColour.TabIndex = 1;
             // 
             // panelLabelTabMain
             // 
@@ -836,7 +966,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.profilesToolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1508, 24);
@@ -848,8 +979,8 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuItem1.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
@@ -857,39 +988,219 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // profilesToolStripMenuItem2
+            // 
+            this.profilesToolStripMenuItem2.Name = "profilesToolStripMenuItem2";
+            this.profilesToolStripMenuItem2.Size = new System.Drawing.Size(58, 20);
+            this.profilesToolStripMenuItem2.Text = "Profiles";
+            this.profilesToolStripMenuItem2.Click += new System.EventHandler(this.profilesToolStripMenuItem2_Click);
+            // 
             // tablePlantsTableAdapter
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
             // 
-            // panelLabelTabColour
+            // tabControlProfiles
             // 
-            this.panelLabelTabColour.BackColor = System.Drawing.Color.DimGray;
-            this.panelLabelTabColour.Location = new System.Drawing.Point(538, 41);
-            this.panelLabelTabColour.Name = "panelLabelTabColour";
-            this.panelLabelTabColour.Size = new System.Drawing.Size(523, 725);
-            this.panelLabelTabColour.TabIndex = 1;
+            this.tabControlProfiles.Controls.Add(this.tabPageLabelProfiles);
+            this.tabControlProfiles.Controls.Add(this.tabPage2);
+            this.tabControlProfiles.Location = new System.Drawing.Point(12, 34);
+            this.tabControlProfiles.Name = "tabControlProfiles";
+            this.tabControlProfiles.SelectedIndex = 0;
+            this.tabControlProfiles.Size = new System.Drawing.Size(1075, 795);
+            this.tabControlProfiles.TabIndex = 0;
+            this.tabControlProfiles.Visible = false;
             // 
-            // label5
+            // tabPageLabelProfiles
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(7, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(333, 20);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "This is the label the Main queue will print";
+            this.tabPageLabelProfiles.Controls.Add(this.groupBoxProfiles);
+            this.tabPageLabelProfiles.Controls.Add(this.panelProfilePlantPreview);
+            this.tabPageLabelProfiles.Controls.Add(this.groupBox6);
+            this.tabPageLabelProfiles.Controls.Add(this.dataGridView1ProfileView);
+            this.tabPageLabelProfiles.Controls.Add(this.dataGridViewProfiles);
+            this.tabPageLabelProfiles.Controls.Add(this.groupBox2);
+            this.tabPageLabelProfiles.Controls.Add(this.buttonProfilesClose);
+            this.tabPageLabelProfiles.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLabelProfiles.Name = "tabPageLabelProfiles";
+            this.tabPageLabelProfiles.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLabelProfiles.Size = new System.Drawing.Size(1067, 769);
+            this.tabPageLabelProfiles.TabIndex = 0;
+            this.tabPageLabelProfiles.Text = "label Profiles";
+            this.tabPageLabelProfiles.UseVisualStyleBackColor = true;
+            this.tabPageLabelProfiles.Click += new System.EventHandler(this.tabPage1_Click_2);
             // 
-            // label6
+            // groupBox6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(538, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(347, 20);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "This is the label the Colour queue will print";
+            this.groupBox6.Controls.Add(this.panel2);
+            this.groupBox6.Location = new System.Drawing.Point(326, 654);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(582, 100);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "groupBox6";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Location = new System.Drawing.Point(10, 15);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(562, 75);
+            this.panel2.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Green;
+            this.label4.Location = new System.Drawing.Point(10, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(542, 55);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Sample";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // dataGridView1ProfileView
+            // 
+            this.dataGridView1ProfileView.AllowUserToOrderColumns = true;
+            this.dataGridView1ProfileView.AutoGenerateColumns = false;
+            this.dataGridView1ProfileView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1ProfileView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.nameDataGridViewTextBoxColumn,
+            this.borderColourDataGridViewTextBoxColumn,
+            this.fontNameDataGridViewTextBoxColumn,
+            this.boldDataGridViewCheckBoxColumn,
+            this.italicDataGridViewCheckBoxColumn,
+            this.fontColourDataGridViewTextBoxColumn,
+            this.backgroundColourDataGridViewTextBoxColumn});
+            this.dataGridView1ProfileView.DataSource = this.tableProfilesBindingSource;
+            this.dataGridView1ProfileView.Location = new System.Drawing.Point(17, 28);
+            this.dataGridView1ProfileView.Name = "dataGridView1ProfileView";
+            this.dataGridView1ProfileView.Size = new System.Drawing.Size(292, 701);
+            this.dataGridView1ProfileView.TabIndex = 3;
+            // 
+            // dataGridViewProfiles
+            // 
+            this.dataGridViewProfiles.AllowUserToOrderColumns = true;
+            this.dataGridViewProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProfiles.Location = new System.Drawing.Point(7, 16);
+            this.dataGridViewProfiles.Name = "dataGridViewProfiles";
+            this.dataGridViewProfiles.Size = new System.Drawing.Size(313, 738);
+            this.dataGridViewProfiles.TabIndex = 2;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(914, 48);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(147, 463);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Options";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter_1);
+            // 
+            // buttonProfilesClose
+            // 
+            this.buttonProfilesClose.Location = new System.Drawing.Point(914, 16);
+            this.buttonProfilesClose.Name = "buttonProfilesClose";
+            this.buttonProfilesClose.Size = new System.Drawing.Size(147, 29);
+            this.buttonProfilesClose.TabIndex = 0;
+            this.buttonProfilesClose.Text = "Close";
+            this.buttonProfilesClose.UseVisualStyleBackColor = true;
+            this.buttonProfilesClose.Click += new System.EventHandler(this.buttonProfilesClose_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1067, 769);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // databaseLabelsDataSetBindingSource
+            // 
+            this.databaseLabelsDataSetBindingSource.DataSource = this.databaseLabelsDataSet;
+            this.databaseLabelsDataSetBindingSource.Position = 0;
+            // 
+            // panelProfilePlantPreview
+            // 
+            this.panelProfilePlantPreview.Location = new System.Drawing.Point(915, 517);
+            this.panelProfilePlantPreview.Name = "panelProfilePlantPreview";
+            this.panelProfilePlantPreview.Size = new System.Drawing.Size(146, 237);
+            this.panelProfilePlantPreview.TabIndex = 4;
+            // 
+            // databaseLabelsDataSet1
+            // 
+            this.databaseLabelsDataSet1.DataSetName = "DatabaseLabelsDataSet1";
+            this.databaseLabelsDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableProfilesBindingSource
+            // 
+            this.tableProfilesBindingSource.DataMember = "TableProfiles";
+            this.tableProfilesBindingSource.DataSource = this.databaseLabelsDataSet1;
+            // 
+            // tableProfilesTableAdapter
+            // 
+            this.tableProfilesTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // borderColourDataGridViewTextBoxColumn
+            // 
+            this.borderColourDataGridViewTextBoxColumn.DataPropertyName = "BorderColour";
+            this.borderColourDataGridViewTextBoxColumn.HeaderText = "BorderColour";
+            this.borderColourDataGridViewTextBoxColumn.Name = "borderColourDataGridViewTextBoxColumn";
+            // 
+            // fontNameDataGridViewTextBoxColumn
+            // 
+            this.fontNameDataGridViewTextBoxColumn.DataPropertyName = "FontName";
+            this.fontNameDataGridViewTextBoxColumn.HeaderText = "FontName";
+            this.fontNameDataGridViewTextBoxColumn.Name = "fontNameDataGridViewTextBoxColumn";
+            // 
+            // boldDataGridViewCheckBoxColumn
+            // 
+            this.boldDataGridViewCheckBoxColumn.DataPropertyName = "Bold";
+            this.boldDataGridViewCheckBoxColumn.HeaderText = "Bold";
+            this.boldDataGridViewCheckBoxColumn.Name = "boldDataGridViewCheckBoxColumn";
+            // 
+            // italicDataGridViewCheckBoxColumn
+            // 
+            this.italicDataGridViewCheckBoxColumn.DataPropertyName = "Italic";
+            this.italicDataGridViewCheckBoxColumn.HeaderText = "Italic";
+            this.italicDataGridViewCheckBoxColumn.Name = "italicDataGridViewCheckBoxColumn";
+            // 
+            // fontColourDataGridViewTextBoxColumn
+            // 
+            this.fontColourDataGridViewTextBoxColumn.DataPropertyName = "FontColour";
+            this.fontColourDataGridViewTextBoxColumn.HeaderText = "FontColour";
+            this.fontColourDataGridViewTextBoxColumn.Name = "fontColourDataGridViewTextBoxColumn";
+            // 
+            // backgroundColourDataGridViewTextBoxColumn
+            // 
+            this.backgroundColourDataGridViewTextBoxColumn.DataPropertyName = "BackgroundColour";
+            this.backgroundColourDataGridViewTextBoxColumn.HeaderText = "BackgroundColour";
+            this.backgroundColourDataGridViewTextBoxColumn.Name = "backgroundColourDataGridViewTextBoxColumn";
+            // 
+            // groupBoxProfiles
+            // 
+            this.groupBoxProfiles.Location = new System.Drawing.Point(328, 16);
+            this.groupBoxProfiles.Name = "groupBoxProfiles";
+            this.groupBoxProfiles.Size = new System.Drawing.Size(570, 632);
+            this.groupBoxProfiles.TabIndex = 5;
+            this.groupBoxProfiles.TabStop = false;
+            this.groupBoxProfiles.Text = "groupBox7";
             // 
             // formMain
             // 
@@ -897,15 +1208,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1508, 841);
-            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl2);
+            this.Controls.Add(this.tabControlProfiles);
+            this.Controls.Add(this.tabControlMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formMain";
             this.Text = "LabelMaker";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControlMain.ResumeLayout(false);
             this.tabPageManual.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.groupBoxPlantData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
@@ -931,6 +1245,15 @@
             this.tabControl2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabControlProfiles.ResumeLayout(false);
+            this.tabPageLabelProfiles.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1014,6 +1337,36 @@
         private System.Windows.Forms.Panel panelLabelTabColour;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button buttonVisibleEntry;
+        private System.Windows.Forms.Button buttonLableStocks;
+        private System.Windows.Forms.Button buttonAGMStatus;
+        private System.Windows.Forms.Button buttonAddtoColourQueue;
+        private System.Windows.Forms.TabControl tabControlProfiles;
+        private System.Windows.Forms.TabPage tabPageLabelProfiles;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem2;
+        private System.Windows.Forms.Button buttonProfilesClose;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridViewProfiles;
+        private System.Windows.Forms.BindingSource databaseLabelsDataSetBindingSource;
+        private System.Windows.Forms.DataGridView dataGridView1ProfileView;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panelProfilePlantPreview;
+        private DatabaseLabelsDataSet1 databaseLabelsDataSet1;
+        private System.Windows.Forms.BindingSource tableProfilesBindingSource;
+        private DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn borderColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fontNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn boldDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn italicDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fontColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn backgroundColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBoxProfiles;
     }
 }
 

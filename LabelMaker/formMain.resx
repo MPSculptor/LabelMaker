@@ -117,20 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="labelColourCount.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelMainCount.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="tablePlantsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>310, 17</value>
-  </metadata>
-  <metadata name="tablePlantsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>310, 17</value>
-  </metadata>
-  <metadata name="databaseLabelsDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
   </metadata>
   <metadata name="databaseLabelsDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
@@ -147,4 +135,87 @@
   <metadata name="tablePlantsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>500, 17</value>
   </metadata>
+  <metadata name="label4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="tableProfilesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1125, 17</value>
+  </metadata>
+  <metadata name="databaseLabelsDataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>941, 17</value>
+  </metadata>
+  <metadata name="databaseLabelsDataSetBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>685, 17</value>
+  </metadata>
+  <metadata name="tableProfilesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1323, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAMDAAAAEACACoDgAAFgAAACgAAAAwAAAAYAAAAAEACAAAAAAAgAoAAAAAAAAAAAAAAAEAAAAA
+        AAAAAAAA////ACRt/wAAVfAAkP//AGz//wAAMpsAADy6AABG2QBISP8A8Pv/AGeAZABFd0kAYm5aAFxf
+        SwBWcVMAMlI5AFZwVgBLYFAAUmdUADVTNwALGwkAFiwQAFh5VgBee18AU2dMAE5rUABJYkkAT11AADZP
+        MwAzWzgAKUQkACRKMQAwZkcAVIhZAFN3UgBRd1YASGlGAD5eMQBJYzIAYXdFAEllOwBFcEYAT2FCAEF3
+        ZQBJ0NoAW6ePAFp2UgBNbEkARmo5AFJsTwBJakwAi6iXAIymlACLqZgAmra0AICemQBCfmcATHZMAF+H
+        XwBeekkASGNKAGWA8QBifvMAaofLAGmEkABym5UAeaGUAE1iRAAnQxgAPmM6AEh3QgBUiFAAYovgAFZx
+        7gBKYdUAXXjSAFd5vgBoi34AaIZdAEFYLwBPckkAR3xRADJmEABDd3UAcJf/AHOc/wBmjv0AXoLbAFp2
+        7ABujWQAaIFgAISbpACIpIkAR4hQAHCE/wBYdOYAR2nJAEBcogA8S8kAY3f/AFdvqQBcc0wAaoBfAGF7
+        2QBIY48AHVYMAFN+ngBVdvEAS1v7AEJXlQAtQ2cANlEZAEFWAQBScjUAWIQ1AFN5wAA2UI0ABisAADma
+        KgAnWT8ARVa/AFdv8wBJY7YASGFsADxWSQBiez8AXIl0AFyC5QBcguEALW0xADBYOgBacbkAWm3zAGJ2
+        zQBsh9QAVW3GAEdZvQBskvwAYYL0AGF+5QBihskAXaJ/AIKC/wB5jv8AZHz/AGqF7ABtlukAVXeiADA9
+        lABObbYAYIb3AFt56wBaefgAeqr/AAAeXQDr6+sA0tLSAFNcggBET6gAXm//AGJ//wBsif8AYn3vAD5N
+        ZQCrq6sAkpKSAHh4eACFhYUARUVFAMXFxQAAVHwAOmMhAEJRDgBZZ6EAWnb/AF919gBEVHQAbGxsADtO
+        MgBBUzwAKjkdACxBIgAnOQoAO04MAN7e3gC4uLgAUlJSAFhySQAyRzkAFyYMABIcAAAbKQAAOUwYAJ+f
+        nwA5OTkAHx8fAF9fXwAAAIAAAIAAAACAgACAAAAAgACAAICAAADAwMAAgICAAAAA/wAA/wAAAP//AP8A
+        AAD/AP8A//8AAAkJCQASEhIALCwsAPj4+ACkoKAAwNzAAPDKpgAAAD4AAABdAAAAfAAAAJsAAAC6AAAA
+        2QAAAPAAJCT/AGxs/wCQkP8AtLT/AAAUPgAAKHwASIX/AGyd/wCQtf8AtM3/AAAqPgAAP10AAGmbAAB+
+        ugAAk9kAAKrwACS2/wBIwv8AbM7/AJDa/wC05v8AAD4+AABdXQAAfHwAAJubAAC6ugAA2dkAAPDwACT/
+        /wBI//8AAAAAAAAAAAAAAAAAAAAAAAAAurq6uqWlpaWlpaWlwsLCwsLCwsKmpqampqa6AAAAAAAAAAAA
+        AAAAAAAAAAAAAACnp8XFxbKysru7qampqcPDw8PDw8PDw8PDxMSmugAAAAAAAAAAAAAAAAAAAAAAAAoK
+        CpydCgoKCgoKCgoKnZ2dnZ2dnZ0KnZ2dnZ3EproAAAAAAAAAAAAAAAAAAAAAnAqcCgoKCgoKCgoKnZ2d
+        nZyduZ2cuZ2dnZ2dnZ2dxKa6AAAAAAAAAAAAAAAAAAAKnAoKCgqcnQqcCpycnJ2dnZ2cnLmdnbmdnZ2d
+        nZ2dncSmCAgICAgHBwYHBwYHm5sKCgoKurq6urq6nJydurq6upydurq6urq6urq6nbmdncSmCAgICAgI
+        CAgICAYGBpsKnAoKnZ2dnAqcnZycnJ2cnZ2cnLmcnLm5ubmduZ2dncOmCAkKCgoKCgoKCgoKCgoKnAq6
+        urq6Cp2durq6upycurqcnLq6urq6urq6urqdncOmCAkKq7arvLy8vLarwMAKCgqcnAqcCgqcnZ0KnJ2c
+        nZy5nJy5nZ2duZ25nZ2dncPCCAkKvLwpKSkpwLa2HR0KCgq6up2durq6urq6urqdnLq6urq6urq6nbq6
+        up2dnanCCAkKtrYpKSnAwMDAwB0KnJycCpycnJycCpwKnJycnJ2cnJ2dnbmdnbm5nZ2dnamlCAkKvLa2
+        tsDAvMDAwMAKCpycnJycpqampaWqqqamqqWlCqaqpqamqqa5uZ0KnbulCAkKvLy9vb68v8DAwcAKCpyc
+        nJycnJycnQoKnJycnJycnZydnQqdCrm5uZ0KnbulCAkKvLy9vb6/v8DAwcAKCgoKnKWnp6elp6Wnp6eq
+        p6oKCqeqp6qqp6edCrmdnbvCCAkKs7O0tLW2tre3uLgKCpycnKenpaenp6enpaqnp6oKCqeqp6enp6e5
+        uZ25Cru6AwkKs7O0tLUptre3uLgKCgqcCpycnJycnAqcnJycnJycnJycnAqcnLmcnJ0KnbK6AwkKrKyt
+        ra6vr7CwsbEKCgoKpaadCqWlppycnJwKnAqcnJynqJyoqQqqqQoKnbIAAwkKnp6fn6ChoaKio6OrCgoK
+        CqUKCpylppycnJwKnQqcnJynqJyoqQqqqQoKCgAAAwkKnp6fn6ChoaKio6OkCgoKpaadnKWdpZycnJyc
+        nJycnJynqJyoqZ2qqZ0KnQAAAgkKj4+QkJGSkpOTlJSVlQoKCgoKCgoKnJwKnJycnAoKnJycnAoKCgoK
+        Cp0AAAAAAgkKj4+QkJGSkpOTlJSVlZaWl5iYmZmamgqbmwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKg4OE
+        hIWGhoeHiIiJiYqKi4yMjY2OjgoGBwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKg4OEhIWGhoeHiIiJiYqK
+        i4yMjY2OjgoICAAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKd3d4eHl6ent7fHx9fX5+f4CAgYGCggoGCAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAgkKa2tsbG1ubm9vcHBxcXJyc3R0dXV2dgoICAAAAAAAAAEAAAAAAAAA
+        AAAAAAAAAgkKa2tsbG1ubm9vcHBxcXJyc3R0dXV2dgoIAwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKX19g
+        YGFiYmNjZGRlZWZmZ2hoaWlqagoIAwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKX19gYGFiYmNjZGRlZWZm
+        Z2hoaWlqagoJAwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKU1NUVFVWVldXWFhZWVpaW1xcXV1eXgoJAwAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAgkKU1NUVFVWVldXWFhZWVpaW1xcXV1eXgoJAwAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAgkKR0dISElKSktLTExNTU5OT1BQUVFSUgoJAwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKOzs8
+        PD0+Pj8/QEBBQUJCQ0RERUVGRgoJAwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKOzs8PD0+Pj8/QEBBQUJC
+        Q0RERUVGRgoJAwAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKLy8wMDEyMjMzNDQ1NTY2Nzg4OTk6OgoJAgAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAgkKLy8wMDEyMjMzNDQ1NTY2Nzg4OTk6OgoJAgAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAgkKIyMkJCUmJicnKCgpKSoqKywsLS0uLgoJAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKIyMk
+        JCUmJicnKCgpKSoqKywsLS0uLgoJAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKFxcYGBkaGhsbHBwdHR4e
+        HyAgISEiIgoJAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgkKCwsNDQ4PDxAQERESEhMTFBUVFhYMDAoJAgAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAgkKCwICCQICAgkCCQkJCQIJCQkJCQMIDAoJAgAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAgkKCgIDAgICAgICAgkJCQkCAgIJCQMICgoJAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgkJCQID
+        BQUFBQUFBQUEBAQFBQUFBQMDCQkJAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgICAgICBAUFBwYGBgYGBwcH
+        BgUFBQgIAgICAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDBAUEBQQEBQQFBAUFBQUFBQMDAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICBAQGBgcEBgcFBgcHBgYFBQMCAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAIDBAQEBAQEBAUEBQUFBAUFBQMCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC
+        AwMDAwMDAwMDAwMDAwMDAwMCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAgICAgICAgICAgIC
+        AgICAgICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///AAAAHAAD//4AAAAMAAP//AAAAAQAA//4AAAAA
+        AAD//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAwAAAAAAAAAD
+        AAAAAAAAAA8AAAAAAA///wAAAAAAD///AAAAAAAP//8AAAAAAA///wAAAAAAD9//AAAAAAAP//8AAAAA
+        AA///wAAAAAAD///AAAAAAAP//8AAAAAAA///wAAAAAAD///AAAAAAAP//8AAAAAAA///wAAAAAAD///
+        AAAAAAAP//8AAAAAAA///wAAAAAAD///AAAAAAAP//8AAAAAAA///wAAAAAAD///AAAAAAAP//8AAAAA
+        AA///wAAAAAAD///AADwAAD///8AAPAAAP///wAA8AAA////AADwAAD///8AAPAAAP///wAA
+</value>
+  </data>
 </root>

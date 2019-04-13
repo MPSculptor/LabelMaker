@@ -174,7 +174,7 @@ namespace LabelMaker
                 float yPosd = 0;
                 float xPosd = 0;
                 float xSized = contentWidth * xSize / 100;
-                float ySized = contentHeight * ySize / 100 / (lines);
+                float ySized = contentHeight * ySize / 100 / (lines);//CreationUtilities.TextOperations.CreationUtilities.TextOperations.getHexColour
                 if (xPos == 0)
                 {
                     //set as centred
@@ -207,10 +207,10 @@ namespace LabelMaker
                         }
 
                         //Work out colour
-                        Color colourFont = System.Drawing.ColorTranslator.FromHtml(getHexColour(sentColour));
+                        Color colourFont = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(sentColour));
                         if (!isFontColourProfile.Value)
                         {
-                            colourFont = System.Drawing.ColorTranslator.FromHtml(getHexColour(profileTextColour));
+                            colourFont = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileTextColour));
                         }
 
                         string[] textToSendArray = new string[1];
@@ -232,7 +232,7 @@ namespace LabelMaker
 
                     case "border":
 
-                        Color borderColour = System.Drawing.ColorTranslator.FromHtml(getHexColour(profileBorderColour));
+                        Color borderColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileBorderColour));
                         float borderWidth = float.Parse(fixedValueString);
                         borderWidth = (contentWidth * borderWidth / 100);
                         paintBorder(cp, xPosd, yPosd, xSized, ySized, borderWidth, borderColour);
@@ -241,7 +241,7 @@ namespace LabelMaker
 
                     case "colourbox":
 
-                        Color colourBoxColour = System.Drawing.ColorTranslator.FromHtml(getHexColour(profileBackgroundColour));
+                        Color colourBoxColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileBackgroundColour));
                         paintColourbox(cp, xPosd, yPosd, xSized, ySized, colourBoxColour);
 
                         break;
@@ -268,48 +268,7 @@ namespace LabelMaker
             }
         }
 
-        public virtual string getHexColour(string sentColour)
-        {
-
-            //CONVERT AN INTEGER COLOUR INTO A HEX COLOUR
-            //sent colour as RGB single number
-            string gotHexColour = "";
-
-            //split single colour number into 3 components
-            int numberColour = (int.Parse(sentColour));
-            int red = (numberColour / 256 / 256);
-            int greenblue = numberColour - (red * 256 * 256);
-            int green = (greenblue / 256);
-            int blue = (greenblue - (green * 256));
-
-            Console.WriteLine("colours - " + red + " , " + green + " , " + blue);
-
-            //convert integer to Hex value
-            // value of 00 can convert to "0", so check and change
-            string redString = red.ToString("x");
-            if (redString.Equals("0"))
-            {
-                redString = "00";
-            }
-
-            string greenString = green.ToString("x");
-            if (greenString.Equals("0"))
-            {
-                greenString = "00";
-            }
-
-            string blueString = blue.ToString("x");
-            if (blueString.Equals("0"))
-            {
-                blueString = "00";
-            }
-
-            //add into single Hex value
-            gotHexColour = "#" + redString + greenString + blueString;
-            Console.WriteLine(gotHexColour);
-
-            return gotHexColour;
-        }
+        
 
         public virtual void paintText(Panel whereTo, string[] textArray, int lines, float xPosd, float yPosd, float xSized, float ySized, int justify, string fontName, float fontSize, Color colourFont, bool isFontVariable, bool areLinesReduceable, bool isFontBold, bool isFontItalic, string textToSend)
         {
