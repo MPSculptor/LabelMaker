@@ -29,8 +29,8 @@ namespace LabelMaker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseLabelsDataSet1.TableProfiles' table. You can move, or remove it, as needed.
-            this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSet1.TableProfiles);
+            // TODO: This line of code loads data into the 'databaseLabelsDataSet2.TableProfiles' table. You can move, or remove it, as needed.
+            this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSet2.TableProfiles);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
             this.tablePlantsTableAdapter.Fill(this.databaseLabelsDataSet.TablePlants);
 
@@ -712,11 +712,14 @@ namespace LabelMaker
 
 
             int profileIndex = 0;
-            Button[] ProfileSample = new Button[databaseLabelsDataSet1.TableProfiles.Rows.Count + 1];
-            foreach (DataRow rowNumber in databaseLabelsDataSet1.TableProfiles)
+            //databaseLabelsDataSet1.TableProfiles.DefaultView.Sort = "Name DESC";
+            Button[] ProfileSample = new Button[databaseLabelsDataSet2.TableProfiles.Rows.Count + 1];
+            //Iterate through dataset
+            
+            foreach (DataRow rowNumber in databaseLabelsDataSet2.TableProfiles)
             {
+                //collect one row at a a time
                 int size = rowNumber.ItemArray.Count();
-         
                 String[] rowString = new string[size];
                 int i = 0;
                 foreach (object item in rowNumber.ItemArray)
@@ -727,12 +730,23 @@ namespace LabelMaker
                 
                 ProfileSample[profileIndex] = new Button();
                 ProfileSample[profileIndex].Text = rowString[1];
+                Console.WriteLine(rowString[1]);
                 ProfileSample[profileIndex].Width = 131;
+                ProfileSample[profileIndex].Height = 30;
+                Console.WriteLine("BackColour");
                 ProfileSample[profileIndex].BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[7]));
+                Console.WriteLine("ForeColour");
                 ProfileSample[profileIndex].ForeColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[6]));
+                ProfileSample[profileIndex].FlatStyle = FlatStyle.Flat;
+                ProfileSample[profileIndex].FlatAppearance.BorderSize=3;
+                Console.WriteLine("BorderColour");
+                ProfileSample[profileIndex].FlatAppearance.BorderColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[2]));
+
                 //ProfileSample[profileIndex].BorderColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[7]));
 
                 flowLayoutPanelProfiles.Controls.Add(ProfileSample[profileIndex]);
+                
+                //Dispose();
                 profileIndex++;
             }
         }
@@ -766,5 +780,7 @@ namespace LabelMaker
         {
 
         }
+
+        
     }
 }

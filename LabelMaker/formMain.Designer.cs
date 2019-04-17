@@ -115,19 +115,12 @@
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.tabControlProfiles = new System.Windows.Forms.TabControl();
             this.tabPageLabelProfiles = new System.Windows.Forms.TabPage();
+            this.groupBoxProfiles = new System.Windows.Forms.GroupBox();
+            this.panelProfilePlantPreview = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1ProfileView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonProfilesClose = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.databaseLabelsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panelProfilePlantPreview = new System.Windows.Forms.Panel();
-            this.databaseLabelsDataSet1 = new LabelMaker.DatabaseLabelsDataSet1();
-            this.tableProfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -136,7 +129,16 @@
             this.italicDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fontColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBoxProfiles = new System.Windows.Forms.GroupBox();
+            this.tableProfilesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSet2 = new LabelMaker.DatabaseLabelsDataSet2();
+            this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonProfilesClose = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableProfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet2TableAdapters.TableProfilesTableAdapter();
+            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabControlMain.SuspendLayout();
             this.tabPageManual.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -164,10 +166,11 @@
             this.groupBox6.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -182,7 +185,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(12, 34);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1075, 798);
+            this.tabControlMain.Size = new System.Drawing.Size(1083, 809);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
@@ -200,7 +203,7 @@
             this.tabPageManual.Location = new System.Drawing.Point(4, 22);
             this.tabPageManual.Name = "tabPageManual";
             this.tabPageManual.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageManual.Size = new System.Drawing.Size(1067, 772);
+            this.tabPageManual.Size = new System.Drawing.Size(1075, 783);
             this.tabPageManual.TabIndex = 0;
             this.tabPageManual.Text = "     Manual Entry     ";
             this.tabPageManual.UseVisualStyleBackColor = true;
@@ -860,7 +863,7 @@
             this.tabPageAuto.Location = new System.Drawing.Point(4, 22);
             this.tabPageAuto.Name = "tabPageAuto";
             this.tabPageAuto.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAuto.Size = new System.Drawing.Size(1067, 772);
+            this.tabPageAuto.Size = new System.Drawing.Size(1075, 783);
             this.tabPageAuto.TabIndex = 1;
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
@@ -869,7 +872,7 @@
             // 
             this.tabPageDatabase.Location = new System.Drawing.Point(4, 22);
             this.tabPageDatabase.Name = "tabPageDatabase";
-            this.tabPageDatabase.Size = new System.Drawing.Size(1067, 772);
+            this.tabPageDatabase.Size = new System.Drawing.Size(1075, 783);
             this.tabPageDatabase.TabIndex = 2;
             this.tabPageDatabase.Text = "     Database Entry     ";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
@@ -884,7 +887,7 @@
             this.tabPagePreview.Location = new System.Drawing.Point(4, 22);
             this.tabPagePreview.Name = "tabPagePreview";
             this.tabPagePreview.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePreview.Size = new System.Drawing.Size(1067, 772);
+            this.tabPagePreview.Size = new System.Drawing.Size(1075, 783);
             this.tabPagePreview.TabIndex = 3;
             this.tabPagePreview.Text = "     Label Preview";
             this.tabPagePreview.UseVisualStyleBackColor = true;
@@ -935,10 +938,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPageMainQueue);
             this.tabControl2.Controls.Add(this.tabPageColourQueue);
-            this.tabControl2.Location = new System.Drawing.Point(1101, 34);
+            this.tabControl2.Location = new System.Drawing.Point(1109, 34);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(395, 798);
+            this.tabControl2.Size = new System.Drawing.Size(395, 809);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPageMainQueue
@@ -947,7 +950,7 @@
             this.tabPageMainQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageMainQueue.Name = "tabPageMainQueue";
             this.tabPageMainQueue.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMainQueue.Size = new System.Drawing.Size(387, 772);
+            this.tabPageMainQueue.Size = new System.Drawing.Size(387, 783);
             this.tabPageMainQueue.TabIndex = 0;
             this.tabPageMainQueue.Text = "     Main Queue     ";
             this.tabPageMainQueue.Click += new System.EventHandler(this.tabPageMainQueue_Click);
@@ -958,7 +961,7 @@
             this.tabPageColourQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageColourQueue.Name = "tabPageColourQueue";
             this.tabPageColourQueue.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageColourQueue.Size = new System.Drawing.Size(387, 772);
+            this.tabPageColourQueue.Size = new System.Drawing.Size(387, 783);
             this.tabPageColourQueue.TabIndex = 1;
             this.tabPageColourQueue.Text = "     ColourQueue     ";
             this.tabPageColourQueue.Click += new System.EventHandler(this.tabPageColourQueue_Click);
@@ -970,7 +973,7 @@
             this.profilesToolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1508, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1516, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1028,6 +1031,22 @@
             this.tabPageLabelProfiles.UseVisualStyleBackColor = true;
             this.tabPageLabelProfiles.Click += new System.EventHandler(this.tabPage1_Click_2);
             // 
+            // groupBoxProfiles
+            // 
+            this.groupBoxProfiles.Location = new System.Drawing.Point(328, 16);
+            this.groupBoxProfiles.Name = "groupBoxProfiles";
+            this.groupBoxProfiles.Size = new System.Drawing.Size(570, 632);
+            this.groupBoxProfiles.TabIndex = 5;
+            this.groupBoxProfiles.TabStop = false;
+            this.groupBoxProfiles.Text = "groupBox7";
+            // 
+            // panelProfilePlantPreview
+            // 
+            this.panelProfilePlantPreview.Location = new System.Drawing.Point(915, 517);
+            this.panelProfilePlantPreview.Name = "panelProfilePlantPreview";
+            this.panelProfilePlantPreview.Size = new System.Drawing.Size(146, 237);
+            this.panelProfilePlantPreview.TabIndex = 4;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.panel2);
@@ -1074,76 +1093,11 @@
             this.italicDataGridViewCheckBoxColumn,
             this.fontColourDataGridViewTextBoxColumn,
             this.backgroundColourDataGridViewTextBoxColumn});
-            this.dataGridView1ProfileView.DataSource = this.tableProfilesBindingSource;
+            this.dataGridView1ProfileView.DataSource = this.tableProfilesBindingSource1;
             this.dataGridView1ProfileView.Location = new System.Drawing.Point(17, 28);
             this.dataGridView1ProfileView.Name = "dataGridView1ProfileView";
             this.dataGridView1ProfileView.Size = new System.Drawing.Size(292, 701);
             this.dataGridView1ProfileView.TabIndex = 3;
-            // 
-            // dataGridViewProfiles
-            // 
-            this.dataGridViewProfiles.AllowUserToOrderColumns = true;
-            this.dataGridViewProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProfiles.Location = new System.Drawing.Point(7, 16);
-            this.dataGridViewProfiles.Name = "dataGridViewProfiles";
-            this.dataGridViewProfiles.Size = new System.Drawing.Size(313, 738);
-            this.dataGridViewProfiles.TabIndex = 2;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(914, 48);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(147, 463);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Options";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter_1);
-            // 
-            // buttonProfilesClose
-            // 
-            this.buttonProfilesClose.Location = new System.Drawing.Point(914, 16);
-            this.buttonProfilesClose.Name = "buttonProfilesClose";
-            this.buttonProfilesClose.Size = new System.Drawing.Size(147, 29);
-            this.buttonProfilesClose.TabIndex = 0;
-            this.buttonProfilesClose.Text = "Close";
-            this.buttonProfilesClose.UseVisualStyleBackColor = true;
-            this.buttonProfilesClose.Click += new System.EventHandler(this.buttonProfilesClose_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1067, 769);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // databaseLabelsDataSetBindingSource
-            // 
-            this.databaseLabelsDataSetBindingSource.DataSource = this.databaseLabelsDataSet;
-            this.databaseLabelsDataSetBindingSource.Position = 0;
-            // 
-            // panelProfilePlantPreview
-            // 
-            this.panelProfilePlantPreview.Location = new System.Drawing.Point(915, 517);
-            this.panelProfilePlantPreview.Name = "panelProfilePlantPreview";
-            this.panelProfilePlantPreview.Size = new System.Drawing.Size(146, 237);
-            this.panelProfilePlantPreview.TabIndex = 4;
-            // 
-            // databaseLabelsDataSet1
-            // 
-            this.databaseLabelsDataSet1.DataSetName = "DatabaseLabelsDataSet1";
-            this.databaseLabelsDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableProfilesBindingSource
-            // 
-            this.tableProfilesBindingSource.DataMember = "TableProfiles";
-            this.tableProfilesBindingSource.DataSource = this.databaseLabelsDataSet1;
-            // 
-            // tableProfilesTableAdapter
-            // 
-            this.tableProfilesTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -1193,21 +1147,80 @@
             this.backgroundColourDataGridViewTextBoxColumn.HeaderText = "BackgroundColour";
             this.backgroundColourDataGridViewTextBoxColumn.Name = "backgroundColourDataGridViewTextBoxColumn";
             // 
-            // groupBoxProfiles
+            // tableProfilesBindingSource1
             // 
-            this.groupBoxProfiles.Location = new System.Drawing.Point(328, 16);
-            this.groupBoxProfiles.Name = "groupBoxProfiles";
-            this.groupBoxProfiles.Size = new System.Drawing.Size(570, 632);
-            this.groupBoxProfiles.TabIndex = 5;
-            this.groupBoxProfiles.TabStop = false;
-            this.groupBoxProfiles.Text = "groupBox7";
+            this.tableProfilesBindingSource1.DataMember = "TableProfiles";
+            this.tableProfilesBindingSource1.DataSource = this.databaseLabelsDataSet2;
+            // 
+            // databaseLabelsDataSet2
+            // 
+            this.databaseLabelsDataSet2.DataSetName = "DatabaseLabelsDataSet2";
+            this.databaseLabelsDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewProfiles
+            // 
+            this.dataGridViewProfiles.AllowUserToOrderColumns = true;
+            this.dataGridViewProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProfiles.Location = new System.Drawing.Point(7, 16);
+            this.dataGridViewProfiles.Name = "dataGridViewProfiles";
+            this.dataGridViewProfiles.Size = new System.Drawing.Size(313, 738);
+            this.dataGridViewProfiles.TabIndex = 2;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(914, 48);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(147, 463);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Options";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter_1);
+            // 
+            // buttonProfilesClose
+            // 
+            this.buttonProfilesClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.buttonProfilesClose.Location = new System.Drawing.Point(914, 16);
+            this.buttonProfilesClose.Name = "buttonProfilesClose";
+            this.buttonProfilesClose.Size = new System.Drawing.Size(147, 29);
+            this.buttonProfilesClose.TabIndex = 0;
+            this.buttonProfilesClose.Text = "Close";
+            this.buttonProfilesClose.UseVisualStyleBackColor = true;
+            this.buttonProfilesClose.Click += new System.EventHandler(this.buttonProfilesClose_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1067, 769);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableProfilesBindingSource
+            // 
+            this.tableProfilesBindingSource.DataMember = "TableProfiles";
+            // 
+            // databaseLabelsDataSetBindingSource
+            // 
+            this.databaseLabelsDataSetBindingSource.DataSource = this.databaseLabelsDataSet;
+            this.databaseLabelsDataSetBindingSource.Position = 0;
+            // 
+            // tableProfilesTableAdapter
+            // 
+            this.tableProfilesTableAdapter.ClearBeforeFill = true;
+            // 
+            // fillByToolStripButton
+            // 
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(23, 23);
             // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1508, 841);
+            this.ClientSize = new System.Drawing.Size(1516, 852);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.tabControlProfiles);
@@ -1250,10 +1263,11 @@
             this.groupBox6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1355,9 +1369,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelProfilePlantPreview;
-        private DatabaseLabelsDataSet1 databaseLabelsDataSet1;
         private System.Windows.Forms.BindingSource tableProfilesBindingSource;
-        private DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter;
+        private System.Windows.Forms.GroupBox groupBoxProfiles;
+        private DatabaseLabelsDataSet2 databaseLabelsDataSet2;
+        private System.Windows.Forms.BindingSource tableProfilesBindingSource1;
+        private DatabaseLabelsDataSet2TableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn borderColourDataGridViewTextBoxColumn;
@@ -1366,7 +1382,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn italicDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fontColourDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn backgroundColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.GroupBox groupBoxProfiles;
+        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
     }
 }
 

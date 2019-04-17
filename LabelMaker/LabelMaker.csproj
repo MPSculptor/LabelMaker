@@ -63,6 +63,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="CreationUtilities.cs" />
+    <Compile Include="DatabaseLabelsDataSet.cs">
+      <DependentUpon>DatabaseLabelsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseLabelsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +75,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseLabelsDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="formLabel.cs">
       <SubType>Form</SubType>
@@ -124,6 +132,17 @@
     </None>
     <None Include="DatabaseLabelsDataSet1.xss">
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSet2.xsc">
+      <DependentUpon>DatabaseLabelsDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseLabelsDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseLabelsDataSet2.xss">
+      <DependentUpon>DatabaseLabelsDataSet2.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

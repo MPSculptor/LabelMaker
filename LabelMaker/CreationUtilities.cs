@@ -27,10 +27,10 @@ namespace CreationUtilities
 
             //split single colour number into 3 components
             int numberColour = (int.Parse(sentColour));
-            int red = (numberColour / 256 / 256);
-            int greenblue = numberColour - (red * 256 * 256);
-            int green = (greenblue / 256);
-            int blue = (greenblue - (green * 256));
+            int blue = (numberColour / 256 / 256);
+            int greenred = numberColour - (blue * 256 * 256);
+            int green = (greenred / 256);
+            int red = (greenred - (green * 256));
 
             Console.WriteLine("colours - " + red + " , " + green + " , " + blue);
 
