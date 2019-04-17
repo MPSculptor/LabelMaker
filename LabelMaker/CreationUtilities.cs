@@ -3,16 +3,71 @@ using System.IO;
 using System.Drawing;
 
 namespace CreationUtilities
+
+
+
+
 {
+
+
+    
+
+
+
     //Handles all of the text manipulation routines
 
     public class TextOperations
     {
+        public static string getHexColour(string sentColour)
+        {
+
+            //CONVERT AN INTEGER COLOUR INTO A HEX COLOUR
+            //sent colour as RGB single number
+            string gotHexColour = "";
+
+            //split single colour number into 3 components
+            int numberColour = (int.Parse(sentColour));
+            int blue = (numberColour / 256 / 256);
+            int greenred = numberColour - (blue * 256 * 256);
+            int green = (greenred / 256);
+            int red = (greenred - (green * 256));
+
+            Console.WriteLine("colours - " + red + " , " + green + " , " + blue);
+
+            //convert integer to Hex value
+            // value of 00 can convert to "0", so check and change
+            string redString = red.ToString("x");
+            if (redString.Equals("0"))
+            {
+                redString = "00";
+            }
+
+            string greenString = green.ToString("x");
+            if (greenString.Equals("0"))
+            {
+                greenString = "00";
+            }
+
+            string blueString = blue.ToString("x");
+            if (blueString.Equals("0"))
+            {
+                blueString = "00";
+            }
+
+            //add into single Hex value
+            gotHexColour = "#" + redString + greenString + blueString;
+            Console.WriteLine(gotHexColour);
+
+            return gotHexColour;
+        }
+
+
+
 
         public static string[] SplitText(string toSplit, int pieces)
         {
             string decisionText;
-            string partialText = "";
+            //string partialText = "";
             int finalCount = 0;
             int finalPieces = pieces;
             int splits;
@@ -109,7 +164,7 @@ namespace CreationUtilities
                 //trim of segment ready to go again
                 decisionText = splitString[1].Trim();
 
-                //set index fro final segment assignment
+                //set index for final segment assignment
                 finalCount = count + 1;
 
                 //reduce segements as we go
@@ -167,9 +222,42 @@ namespace CreationUtilities
     // Its purpose is to collect data for one label from a couple of temporary text files
     // replace by database reader in time
 
+
+
     public class dataReader
     {
+        public static string[] readQueue( string[] sentData, string[] sentName, string[] moreData)
+        {
+            string[] queueData = new string[25];
 
+            queueData[0] = sentName[0]; //Full name
+            queueData[1] = "2";
+            queueData[2] = moreData[3]; // price
+            queueData[3] = sentData[9];
+            queueData[4] = "Derek Wellington";
+            queueData[5] = sentData[11];
+            queueData[6] = sentData[8];
+            queueData[7] = sentData[6];
+            queueData[8] = moreData[0];
+            queueData[9] = "Arial";
+            queueData[10] = "4210688";
+            queueData[11] = "1";
+            queueData[12] = "0";
+            queueData[13] = "4227072";
+            queueData[14] = "16777183";
+            queueData[15] = sentData[19];
+            queueData[16] = sentName[1]; 
+            queueData[17] = sentName[2];
+            queueData[18] = sentName[3];
+            queueData[19] = moreData[1]; // AGM picture to use
+            queueData[20] = sentData[12];
+            queueData[21] = sentData[13];
+            queueData[22] = sentData[14];
+            queueData[23] = sentData[15];
+            queueData[24] = "#9527";
+
+            return queueData;
+        }
         public static string[] readFile(string fileName)
         {
             try
@@ -227,7 +315,7 @@ namespace CreationUtilities
 
     /// @author Martin
     /// This Routine handles the creation of a label
-    /// which is printed with Graphics 2D onto a JFrame Container
+    /// which is printed with Graphics onto a panel Container
     /// </summary>
 
     

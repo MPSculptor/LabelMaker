@@ -26,6 +26,8 @@ namespace LabelMaker {
         
         private TablePlantsDataTable tableTablePlants;
         
+        private TableProfilesDataTable tableTableProfiles;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace LabelMaker {
                 if ((ds.Tables["TablePlants"] != null)) {
                     base.Tables.Add(new TablePlantsDataTable(ds.Tables["TablePlants"]));
                 }
+                if ((ds.Tables["TableProfiles"] != null)) {
+                    base.Tables.Add(new TableProfilesDataTable(ds.Tables["TableProfiles"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace LabelMaker {
         public TablePlantsDataTable TablePlants {
             get {
                 return this.tableTablePlants;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public TableProfilesDataTable TableProfiles {
+            get {
+                return this.tableTableProfiles;
             }
         }
         
@@ -155,6 +170,9 @@ namespace LabelMaker {
                 if ((ds.Tables["TablePlants"] != null)) {
                     base.Tables.Add(new TablePlantsDataTable(ds.Tables["TablePlants"]));
                 }
+                if ((ds.Tables["TableProfiles"] != null)) {
+                    base.Tables.Add(new TableProfilesDataTable(ds.Tables["TableProfiles"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace LabelMaker {
                     this.tableTablePlants.InitVars();
                 }
             }
+            this.tableTableProfiles = ((TableProfilesDataTable)(base.Tables["TableProfiles"]));
+            if ((initTable == true)) {
+                if ((this.tableTableProfiles != null)) {
+                    this.tableTableProfiles.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace LabelMaker {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableTablePlants = new TablePlantsDataTable();
             base.Tables.Add(this.tableTablePlants);
+            this.tableTableProfiles = new TableProfilesDataTable();
+            base.Tables.Add(this.tableTableProfiles);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeTablePlants() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeTableProfiles() {
             return false;
         }
         
@@ -272,6 +304,9 @@ namespace LabelMaker {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void TablePlantsRowChangeEventHandler(object sender, TablePlantsRowChangeEvent e);
         
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void TableProfilesRowChangeEventHandler(object sender, TableProfilesRowChangeEvent e);
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
@@ -293,7 +328,7 @@ namespace LabelMaker {
             
             private global::System.Data.DataColumn columnCommon;
             
-            private global::System.Data.DataColumn columnCode;
+            private global::System.Data.DataColumn columnSKU;
             
             private global::System.Data.DataColumn columnDesc;
             
@@ -412,9 +447,9 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn CodeColumn {
+            public global::System.Data.DataColumn SKUColumn {
                 get {
-                    return this.columnCode;
+                    return this.columnSKU;
                 }
             }
             
@@ -566,7 +601,7 @@ namespace LabelMaker {
                         string Species, 
                         string Variety, 
                         string Common, 
-                        byte[] Code, 
+                        string SKU, 
                         string Desc, 
                         string PotSize, 
                         bool ColourQueue, 
@@ -589,7 +624,7 @@ namespace LabelMaker {
                         Species,
                         Variety,
                         Common,
-                        Code,
+                        SKU,
                         Desc,
                         PotSize,
                         ColourQueue,
@@ -639,7 +674,7 @@ namespace LabelMaker {
                 this.columnSpecies = base.Columns["Species"];
                 this.columnVariety = base.Columns["Variety"];
                 this.columnCommon = base.Columns["Common"];
-                this.columnCode = base.Columns["Code"];
+                this.columnSKU = base.Columns["SKU"];
                 this.columnDesc = base.Columns["Desc"];
                 this.columnPotSize = base.Columns["PotSize"];
                 this.columnColourQueue = base.Columns["ColourQueue"];
@@ -672,8 +707,8 @@ namespace LabelMaker {
                 base.Columns.Add(this.columnVariety);
                 this.columnCommon = new global::System.Data.DataColumn("Common", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCommon);
-                this.columnCode = new global::System.Data.DataColumn("Code", typeof(byte[]), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCode);
+                this.columnSKU = new global::System.Data.DataColumn("SKU", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSKU);
                 this.columnDesc = new global::System.Data.DataColumn("Desc", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDesc);
                 this.columnPotSize = new global::System.Data.DataColumn("PotSize", typeof(string), null, global::System.Data.MappingType.Element);
@@ -713,7 +748,8 @@ namespace LabelMaker {
                 this.columnSpeciesCross.MaxLength = 1;
                 this.columnSpecies.MaxLength = 50;
                 this.columnVariety.MaxLength = 50;
-                this.columnCommon.MaxLength = 50;
+                this.columnCommon.MaxLength = 100;
+                this.columnSKU.MaxLength = 20;
                 this.columnDesc.MaxLength = 500;
                 this.columnPotSize.MaxLength = 10;
                 this.columnColourQueue.AllowDBNull = false;
@@ -814,6 +850,372 @@ namespace LabelMaker {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "TablePlantsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TableProfilesDataTable : global::System.Data.TypedTableBase<TableProfilesRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnBorderColour;
+            
+            private global::System.Data.DataColumn columnFontName;
+            
+            private global::System.Data.DataColumn columnBold;
+            
+            private global::System.Data.DataColumn columnItalic;
+            
+            private global::System.Data.DataColumn columnFontColour;
+            
+            private global::System.Data.DataColumn columnBackgroundColour;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesDataTable() {
+                this.TableName = "TableProfiles";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal TableProfilesDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected TableProfilesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BorderColourColumn {
+                get {
+                    return this.columnBorderColour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FontNameColumn {
+                get {
+                    return this.columnFontName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BoldColumn {
+                get {
+                    return this.columnBold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ItalicColumn {
+                get {
+                    return this.columnItalic;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FontColourColumn {
+                get {
+                    return this.columnFontColour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BackgroundColourColumn {
+                get {
+                    return this.columnBackgroundColour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesRow this[int index] {
+                get {
+                    return ((TableProfilesRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event TableProfilesRowChangeEventHandler TableProfilesRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event TableProfilesRowChangeEventHandler TableProfilesRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event TableProfilesRowChangeEventHandler TableProfilesRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event TableProfilesRowChangeEventHandler TableProfilesRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddTableProfilesRow(TableProfilesRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesRow AddTableProfilesRow(int Id, string Name, int BorderColour, string FontName, bool Bold, bool Italic, int FontColour, string BackgroundColour) {
+                TableProfilesRow rowTableProfilesRow = ((TableProfilesRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        Name,
+                        BorderColour,
+                        FontName,
+                        Bold,
+                        Italic,
+                        FontColour,
+                        BackgroundColour};
+                rowTableProfilesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTableProfilesRow);
+                return rowTableProfilesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesRow FindById(int Id) {
+                return ((TableProfilesRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TableProfilesDataTable cln = ((TableProfilesDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TableProfilesDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnName = base.Columns["Name"];
+                this.columnBorderColour = base.Columns["BorderColour"];
+                this.columnFontName = base.Columns["FontName"];
+                this.columnBold = base.Columns["Bold"];
+                this.columnItalic = base.Columns["Italic"];
+                this.columnFontColour = base.Columns["FontColour"];
+                this.columnBackgroundColour = base.Columns["BackgroundColour"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnBorderColour = new global::System.Data.DataColumn("BorderColour", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBorderColour);
+                this.columnFontName = new global::System.Data.DataColumn("FontName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFontName);
+                this.columnBold = new global::System.Data.DataColumn("Bold", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBold);
+                this.columnItalic = new global::System.Data.DataColumn("Italic", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItalic);
+                this.columnFontColour = new global::System.Data.DataColumn("FontColour", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFontColour);
+                this.columnBackgroundColour = new global::System.Data.DataColumn("BackgroundColour", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBackgroundColour);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 20;
+                this.columnBorderColour.AllowDBNull = false;
+                this.columnFontName.AllowDBNull = false;
+                this.columnFontName.MaxLength = 30;
+                this.columnBold.AllowDBNull = false;
+                this.columnItalic.AllowDBNull = false;
+                this.columnFontColour.AllowDBNull = false;
+                this.columnBackgroundColour.AllowDBNull = false;
+                this.columnBackgroundColour.MaxLength = 10;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesRow NewTableProfilesRow() {
+                return ((TableProfilesRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TableProfilesRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TableProfilesRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TableProfilesRowChanged != null)) {
+                    this.TableProfilesRowChanged(this, new TableProfilesRowChangeEvent(((TableProfilesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TableProfilesRowChanging != null)) {
+                    this.TableProfilesRowChanging(this, new TableProfilesRowChangeEvent(((TableProfilesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TableProfilesRowDeleted != null)) {
+                    this.TableProfilesRowDeleted(this, new TableProfilesRowChangeEvent(((TableProfilesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TableProfilesRowDeleting != null)) {
+                    this.TableProfilesRowDeleting(this, new TableProfilesRowChangeEvent(((TableProfilesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveTableProfilesRow(TableProfilesRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DatabaseLabelsDataSet ds = new DatabaseLabelsDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TableProfilesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -977,17 +1379,17 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public byte[] Code {
+            public string SKU {
                 get {
                     try {
-                        return ((byte[])(this[this.tableTablePlants.CodeColumn]));
+                        return ((string)(this[this.tableTablePlants.SKUColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Code\' in table \'TablePlants\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SKU\' in table \'TablePlants\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTablePlants.CodeColumn] = value;
+                    this[this.tableTablePlants.SKUColumn] = value;
                 }
             }
             
@@ -1248,14 +1650,14 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsCodeNull() {
-                return this.IsNull(this.tableTablePlants.CodeColumn);
+            public bool IsSKUNull() {
+                return this.IsNull(this.tableTablePlants.SKUColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetCodeNull() {
-                this[this.tableTablePlants.CodeColumn] = global::System.Convert.DBNull;
+            public void SetSKUNull() {
+                this[this.tableTablePlants.SKUColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1356,6 +1758,109 @@ namespace LabelMaker {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TableProfilesRow : global::System.Data.DataRow {
+            
+            private TableProfilesDataTable tableTableProfiles;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal TableProfilesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTableProfiles = ((TableProfilesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableTableProfiles.IdColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableTableProfiles.NameColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int BorderColour {
+                get {
+                    return ((int)(this[this.tableTableProfiles.BorderColourColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.BorderColourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FontName {
+                get {
+                    return ((string)(this[this.tableTableProfiles.FontNameColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.FontNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Bold {
+                get {
+                    return ((bool)(this[this.tableTableProfiles.BoldColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.BoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Italic {
+                get {
+                    return ((bool)(this[this.tableTableProfiles.ItalicColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.ItalicColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int FontColour {
+                get {
+                    return ((int)(this[this.tableTableProfiles.FontColourColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.FontColourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string BackgroundColour {
+                get {
+                    return ((string)(this[this.tableTableProfiles.BackgroundColourColumn]));
+                }
+                set {
+                    this[this.tableTableProfiles.BackgroundColourColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1375,6 +1880,40 @@ namespace LabelMaker {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TablePlantsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class TableProfilesRowChangeEvent : global::System.EventArgs {
+            
+            private TableProfilesRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesRowChangeEvent(TableProfilesRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1521,7 +2060,7 @@ namespace LabelMaker.DatabaseLabelsDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Species", "Species");
             tableMapping.ColumnMappings.Add("Variety", "Variety");
             tableMapping.ColumnMappings.Add("Common", "Common");
-            tableMapping.ColumnMappings.Add("Code", "Code");
+            tableMapping.ColumnMappings.Add("SKU", "SKU");
             tableMapping.ColumnMappings.Add("Desc", "Desc");
             tableMapping.ColumnMappings.Add("PotSize", "PotSize");
             tableMapping.ColumnMappings.Add("ColourQueue", "ColourQueue");
@@ -1545,19 +2084,19 @@ namespace LabelMaker.DatabaseLabelsDataSetTableAdapters {
                 "nal_SpeciesCross)) AND ((@IsNull_Species = 1 AND [Species] IS NULL) OR ([Species" +
                 "] = @Original_Species)) AND ((@IsNull_Variety = 1 AND [Variety] IS NULL) OR ([Va" +
                 "riety] = @Original_Variety)) AND ((@IsNull_Common = 1 AND [Common] IS NULL) OR (" +
-                "[Common] = @Original_Common)) AND ((@IsNull_Code = 1 AND [Code] IS NULL) OR ([Co" +
-                "de] = @Original_Code)) AND ((@IsNull_Desc = 1 AND [Desc] IS NULL) OR ([Desc] = @" +
-                "Original_Desc)) AND ((@IsNull_PotSize = 1 AND [PotSize] IS NULL) OR ([PotSize] =" +
-                " @Original_PotSize)) AND ([ColourQueue] = @Original_ColourQueue) AND ((@IsNull_B" +
-                "arcode = 1 AND [Barcode] IS NULL) OR ([Barcode] = @Original_Barcode)) AND ((@IsN" +
-                "ull_Picture1 = 1 AND [Picture1] IS NULL) OR ([Picture1] = @Original_Picture1)) A" +
-                "ND ((@IsNull_Picture2 = 1 AND [Picture2] IS NULL) OR ([Picture2] = @Original_Pic" +
-                "ture2)) AND ((@IsNull_Picture3 = 1 AND [Picture3] IS NULL) OR ([Picture3] = @Ori" +
-                "ginal_Picture3)) AND ((@IsNull_Picture4 = 1 AND [Picture4] IS NULL) OR ([Picture" +
-                "4] = @Original_Picture4)) AND ([AGM] = @Original_AGM) AND ([LabelColour] = @Orig" +
-                "inal_LabelColour) AND ([Hide] = @Original_Hide) AND ((@IsNull_notes = 1 AND [not" +
-                "es] IS NULL) OR ([notes] = @Original_notes)) AND ([LabelStock] = @Original_Label" +
-                "Stock))";
+                "[Common] = @Original_Common)) AND ((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU]" +
+                " = @Original_SKU)) AND ((@IsNull_Desc = 1 AND [Desc] IS NULL) OR ([Desc] = @Orig" +
+                "inal_Desc)) AND ((@IsNull_PotSize = 1 AND [PotSize] IS NULL) OR ([PotSize] = @Or" +
+                "iginal_PotSize)) AND ([ColourQueue] = @Original_ColourQueue) AND ((@IsNull_Barco" +
+                "de = 1 AND [Barcode] IS NULL) OR ([Barcode] = @Original_Barcode)) AND ((@IsNull_" +
+                "Picture1 = 1 AND [Picture1] IS NULL) OR ([Picture1] = @Original_Picture1)) AND (" +
+                "(@IsNull_Picture2 = 1 AND [Picture2] IS NULL) OR ([Picture2] = @Original_Picture" +
+                "2)) AND ((@IsNull_Picture3 = 1 AND [Picture3] IS NULL) OR ([Picture3] = @Origina" +
+                "l_Picture3)) AND ((@IsNull_Picture4 = 1 AND [Picture4] IS NULL) OR ([Picture4] =" +
+                " @Original_Picture4)) AND ([AGM] = @Original_AGM) AND ([LabelColour] = @Original" +
+                "_LabelColour) AND ([Hide] = @Original_Hide) AND ((@IsNull_notes = 1 AND [notes] " +
+                "IS NULL) OR ([notes] = @Original_notes)) AND ([LabelStock] = @Original_LabelStoc" +
+                "k))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GenusCross", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GenusCross", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1572,8 +2111,8 @@ namespace LabelMaker.DatabaseLabelsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Variety", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Variety", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Common", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Common", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Common", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Common", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Code", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Code", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Code", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SKU", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SKU", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SKU", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SKU", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Desc", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PotSize", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PotSize", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1597,8 +2136,8 @@ namespace LabelMaker.DatabaseLabelsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LabelStock", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TablePlants] ([GenusCross], [Genus], [SpeciesCross], [Species], [Variety], [Common], [Code], [Desc], [PotSize], [ColourQueue], [Barcode], [Picture1], [Picture2], [Picture3], [Picture4], [AGM], [LabelColour], [Hide], [notes], [LabelStock]) VALUES (@GenusCross, @Genus, @SpeciesCross, @Species, @Variety, @Common, @Code, @Desc, @PotSize, @ColourQueue, @Barcode, @Picture1, @Picture2, @Picture3, @Picture4, @AGM, @LabelColour, @Hide, @notes, @LabelStock);
-SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM TablePlants WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TablePlants] ([GenusCross], [Genus], [SpeciesCross], [Species], [Variety], [Common], [SKU], [Desc], [PotSize], [ColourQueue], [Barcode], [Picture1], [Picture2], [Picture3], [Picture4], [AGM], [LabelColour], [Hide], [notes], [LabelStock]) VALUES (@GenusCross, @Genus, @SpeciesCross, @Species, @Variety, @Common, @SKU, @Desc, @PotSize, @ColourQueue, @Barcode, @Picture1, @Picture2, @Picture3, @Picture4, @AGM, @LabelColour, @Hide, @notes, @LabelStock);
+SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM TablePlants WHERE (Id = SCOPE_IDENTITY()) ORDER BY Genus, Species, Variety";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GenusCross", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GenusCross", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1606,7 +2145,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Species", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Species", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Variety", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Variety", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Common", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Common", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Code", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SKU", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SKU", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PotSize", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PotSize", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ColourQueue", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColourQueue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1624,32 +2163,32 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TablePlants] SET [GenusCross] = @GenusCross, [Genus] = @Genus, [Spe" +
                 "ciesCross] = @SpeciesCross, [Species] = @Species, [Variety] = @Variety, [Common]" +
-                " = @Common, [Code] = @Code, [Desc] = @Desc, [PotSize] = @PotSize, [ColourQueue] " +
-                "= @ColourQueue, [Barcode] = @Barcode, [Picture1] = @Picture1, [Picture2] = @Pict" +
-                "ure2, [Picture3] = @Picture3, [Picture4] = @Picture4, [AGM] = @AGM, [LabelColour" +
-                "] = @LabelColour, [Hide] = @Hide, [notes] = @notes, [LabelStock] = @LabelStock W" +
-                "HERE (([Id] = @Original_Id) AND ((@IsNull_GenusCross = 1 AND [GenusCross] IS NUL" +
-                "L) OR ([GenusCross] = @Original_GenusCross)) AND ((@IsNull_Genus = 1 AND [Genus]" +
-                " IS NULL) OR ([Genus] = @Original_Genus)) AND ((@IsNull_SpeciesCross = 1 AND [Sp" +
-                "eciesCross] IS NULL) OR ([SpeciesCross] = @Original_SpeciesCross)) AND ((@IsNull" +
-                "_Species = 1 AND [Species] IS NULL) OR ([Species] = @Original_Species)) AND ((@I" +
-                "sNull_Variety = 1 AND [Variety] IS NULL) OR ([Variety] = @Original_Variety)) AND" +
-                " ((@IsNull_Common = 1 AND [Common] IS NULL) OR ([Common] = @Original_Common)) AN" +
-                "D ((@IsNull_Code = 1 AND [Code] IS NULL) OR ([Code] = @Original_Code)) AND ((@Is" +
-                "Null_Desc = 1 AND [Desc] IS NULL) OR ([Desc] = @Original_Desc)) AND ((@IsNull_Po" +
-                "tSize = 1 AND [PotSize] IS NULL) OR ([PotSize] = @Original_PotSize)) AND ([Colou" +
-                "rQueue] = @Original_ColourQueue) AND ((@IsNull_Barcode = 1 AND [Barcode] IS NULL" +
-                ") OR ([Barcode] = @Original_Barcode)) AND ((@IsNull_Picture1 = 1 AND [Picture1] " +
-                "IS NULL) OR ([Picture1] = @Original_Picture1)) AND ((@IsNull_Picture2 = 1 AND [P" +
-                "icture2] IS NULL) OR ([Picture2] = @Original_Picture2)) AND ((@IsNull_Picture3 =" +
-                " 1 AND [Picture3] IS NULL) OR ([Picture3] = @Original_Picture3)) AND ((@IsNull_P" +
-                "icture4 = 1 AND [Picture4] IS NULL) OR ([Picture4] = @Original_Picture4)) AND ([" +
-                "AGM] = @Original_AGM) AND ([LabelColour] = @Original_LabelColour) AND ([Hide] = " +
-                "@Original_Hide) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Orig" +
-                "inal_notes)) AND ([LabelStock] = @Original_LabelStock));\r\nSELECT Id, GenusCross," +
-                " Genus, SpeciesCross, Species, Variety, Common, Code, [Desc], PotSize, ColourQue" +
-                "ue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, not" +
-                "es, LabelStock FROM TablePlants WHERE (Id = @Id)";
+                " = @Common, [SKU] = @SKU, [Desc] = @Desc, [PotSize] = @PotSize, [ColourQueue] = " +
+                "@ColourQueue, [Barcode] = @Barcode, [Picture1] = @Picture1, [Picture2] = @Pictur" +
+                "e2, [Picture3] = @Picture3, [Picture4] = @Picture4, [AGM] = @AGM, [LabelColour] " +
+                "= @LabelColour, [Hide] = @Hide, [notes] = @notes, [LabelStock] = @LabelStock WHE" +
+                "RE (([Id] = @Original_Id) AND ((@IsNull_GenusCross = 1 AND [GenusCross] IS NULL)" +
+                " OR ([GenusCross] = @Original_GenusCross)) AND ((@IsNull_Genus = 1 AND [Genus] I" +
+                "S NULL) OR ([Genus] = @Original_Genus)) AND ((@IsNull_SpeciesCross = 1 AND [Spec" +
+                "iesCross] IS NULL) OR ([SpeciesCross] = @Original_SpeciesCross)) AND ((@IsNull_S" +
+                "pecies = 1 AND [Species] IS NULL) OR ([Species] = @Original_Species)) AND ((@IsN" +
+                "ull_Variety = 1 AND [Variety] IS NULL) OR ([Variety] = @Original_Variety)) AND (" +
+                "(@IsNull_Common = 1 AND [Common] IS NULL) OR ([Common] = @Original_Common)) AND " +
+                "((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Original_SKU)) AND ((@IsNull_D" +
+                "esc = 1 AND [Desc] IS NULL) OR ([Desc] = @Original_Desc)) AND ((@IsNull_PotSize " +
+                "= 1 AND [PotSize] IS NULL) OR ([PotSize] = @Original_PotSize)) AND ([ColourQueue" +
+                "] = @Original_ColourQueue) AND ((@IsNull_Barcode = 1 AND [Barcode] IS NULL) OR (" +
+                "[Barcode] = @Original_Barcode)) AND ((@IsNull_Picture1 = 1 AND [Picture1] IS NUL" +
+                "L) OR ([Picture1] = @Original_Picture1)) AND ((@IsNull_Picture2 = 1 AND [Picture" +
+                "2] IS NULL) OR ([Picture2] = @Original_Picture2)) AND ((@IsNull_Picture3 = 1 AND" +
+                " [Picture3] IS NULL) OR ([Picture3] = @Original_Picture3)) AND ((@IsNull_Picture" +
+                "4 = 1 AND [Picture4] IS NULL) OR ([Picture4] = @Original_Picture4)) AND ([AGM] =" +
+                " @Original_AGM) AND ([LabelColour] = @Original_LabelColour) AND ([Hide] = @Origi" +
+                "nal_Hide) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Original_n" +
+                "otes)) AND ([LabelStock] = @Original_LabelStock));\r\nSELECT Id, GenusCross, Genus" +
+                ", SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Bar" +
+                "code, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, Lab" +
+                "elStock FROM TablePlants WHERE (Id = @Id) ORDER BY Genus, Species, Variety";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GenusCross", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GenusCross", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1657,7 +2196,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Species", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Species", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Variety", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Variety", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Common", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Common", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Code", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SKU", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SKU", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PotSize", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PotSize", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ColourQueue", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColourQueue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1684,8 +2223,8 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Variety", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Variety", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Common", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Common", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Common", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Common", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Code", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Code", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Code", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Code", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SKU", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SKU", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SKU", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SKU", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Desc", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Desc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PotSize", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PotSize", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1723,9 +2262,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Desc" +
-                "], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, L" +
-                "abelColour, Hide, notes, LabelStock FROM dbo.TablePlants";
+            this._commandCollection[0].CommandText = @"SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants ORDER BY Genus ASC, Species ASC, Variety ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1794,7 +2331,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     string Original_Species, 
                     string Original_Variety, 
                     string Original_Common, 
-                    byte[] Original_Code, 
+                    string Original_SKU, 
                     string Original_Desc, 
                     string Original_PotSize, 
                     bool Original_ColourQueue, 
@@ -1857,13 +2394,13 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Common));
             }
-            if ((Original_Code == null)) {
+            if ((Original_SKU == null)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((byte[])(Original_Code));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_SKU));
             }
             if ((Original_Desc == null)) {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
@@ -1966,7 +2503,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     string Species, 
                     string Variety, 
                     string Common, 
-                    byte[] Code, 
+                    string SKU, 
                     string Desc, 
                     string PotSize, 
                     bool ColourQueue, 
@@ -2016,11 +2553,11 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Common));
             }
-            if ((Code == null)) {
+            if ((SKU == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((byte[])(Code));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SKU));
             }
             if ((Desc == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
@@ -2107,7 +2644,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     string Species, 
                     string Variety, 
                     string Common, 
-                    byte[] Code, 
+                    string SKU, 
                     string Desc, 
                     string PotSize, 
                     bool ColourQueue, 
@@ -2128,7 +2665,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     string Original_Species, 
                     string Original_Variety, 
                     string Original_Common, 
-                    byte[] Original_Code, 
+                    string Original_SKU, 
                     string Original_Desc, 
                     string Original_PotSize, 
                     bool Original_ColourQueue, 
@@ -2179,11 +2716,11 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Common));
             }
-            if ((Code == null)) {
+            if ((SKU == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((byte[])(Code));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SKU));
             }
             if ((Desc == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
@@ -2292,13 +2829,13 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Common));
             }
-            if ((Original_Code == null)) {
+            if ((Original_SKU == null)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((byte[])(Original_Code));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_SKU));
             }
             if ((Original_Desc == null)) {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
@@ -2402,7 +2939,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     string Species, 
                     string Variety, 
                     string Common, 
-                    byte[] Code, 
+                    string SKU, 
                     string Desc, 
                     string PotSize, 
                     bool ColourQueue, 
@@ -2423,7 +2960,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     string Original_Species, 
                     string Original_Variety, 
                     string Original_Common, 
-                    byte[] Original_Code, 
+                    string Original_SKU, 
                     string Original_Desc, 
                     string Original_PotSize, 
                     bool Original_ColourQueue, 
@@ -2437,7 +2974,436 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     bool Original_Hide, 
                     string Original_notes, 
                     bool Original_LabelStock) {
-            return this.Update(GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, Desc, PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock, Original_Id, Original_GenusCross, Original_Genus, Original_SpeciesCross, Original_Species, Original_Variety, Original_Common, Original_Code, Original_Desc, Original_PotSize, Original_ColourQueue, Original_Barcode, Original_Picture1, Original_Picture2, Original_Picture3, Original_Picture4, Original_AGM, Original_LabelColour, Original_Hide, Original_notes, Original_LabelStock, Original_Id);
+            return this.Update(GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, Desc, PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock, Original_Id, Original_GenusCross, Original_Genus, Original_SpeciesCross, Original_Species, Original_Variety, Original_Common, Original_SKU, Original_Desc, Original_PotSize, Original_ColourQueue, Original_Barcode, Original_Picture1, Original_Picture2, Original_Picture3, Original_Picture4, Original_AGM, Original_LabelColour, Original_Hide, Original_notes, Original_LabelStock, Original_Id);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class TableProfilesTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public TableProfilesTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "TableProfiles";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("BorderColour", "BorderColour");
+            tableMapping.ColumnMappings.Add("FontName", "FontName");
+            tableMapping.ColumnMappings.Add("Bold", "Bold");
+            tableMapping.ColumnMappings.Add("Italic", "Italic");
+            tableMapping.ColumnMappings.Add("FontColour", "FontColour");
+            tableMapping.ColumnMappings.Add("BackgroundColour", "BackgroundColour");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TableProfiles] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([BorderColour] = @Original_BorderColour) AND ([FontName] = @Original_FontName) AND ([Bold] = @Original_Bold) AND ([Italic] = @Original_Italic) AND ([FontColour] = @Original_FontColour) AND ([BackgroundColour] = @Original_BackgroundColour))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BorderColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BorderColour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FontName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Bold", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Italic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Italic", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FontColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontColour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BackgroundColour", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BackgroundColour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TableProfiles] ([Id], [Name], [BorderColour], [FontName], [Bold], [Italic], [FontColour], [BackgroundColour]) VALUES (@Id, @Name, @BorderColour, @FontName, @Bold, @Italic, @FontColour, @BackgroundColour);
+SELECT Id, Name, BorderColour, FontName, Bold, Italic, FontColour, BackgroundColour FROM TableProfiles WHERE (Id = @Id) ORDER BY Name";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BorderColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BorderColour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FontName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bold", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Italic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Italic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FontColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontColour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BackgroundColour", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BackgroundColour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TableProfiles] SET [Id] = @Id, [Name] = @Name, [BorderColour] = @BorderColour, [FontName] = @FontName, [Bold] = @Bold, [Italic] = @Italic, [FontColour] = @FontColour, [BackgroundColour] = @BackgroundColour WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([BorderColour] = @Original_BorderColour) AND ([FontName] = @Original_FontName) AND ([Bold] = @Original_Bold) AND ([Italic] = @Original_Italic) AND ([FontColour] = @Original_FontColour) AND ([BackgroundColour] = @Original_BackgroundColour));
+SELECT Id, Name, BorderColour, FontName, Bold, Italic, FontColour, BackgroundColour FROM TableProfiles WHERE (Id = @Id) ORDER BY Name";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BorderColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BorderColour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FontName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bold", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Italic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Italic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FontColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontColour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BackgroundColour", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BackgroundColour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BorderColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BorderColour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FontName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Bold", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Italic", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Italic", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FontColour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FontColour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BackgroundColour", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BackgroundColour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::LabelMaker.Properties.Settings.Default.DatabaseLabelsConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        Id, Name, BorderColour, FontName, Bold, Italic, FontColour, Backgro" +
+                "undColour\r\nFROM            dbo.TableProfiles\r\nORDER BY Name ASC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DatabaseLabelsDataSet.TableProfilesDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DatabaseLabelsDataSet.TableProfilesDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DatabaseLabelsDataSet.TableProfilesDataTable dataTable = new DatabaseLabelsDataSet.TableProfilesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DatabaseLabelsDataSet.TableProfilesDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DatabaseLabelsDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "TableProfiles");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, string Original_Name, int Original_BorderColour, string Original_FontName, bool Original_Bold, bool Original_Italic, int Original_FontColour, string Original_BackgroundColour) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            if ((Original_Name == null)) {
+                throw new global::System.ArgumentNullException("Original_Name");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
+            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_BorderColour));
+            if ((Original_FontName == null)) {
+                throw new global::System.ArgumentNullException("Original_FontName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_FontName));
+            }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((bool)(Original_Bold));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((bool)(Original_Italic));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_FontColour));
+            if ((Original_BackgroundColour == null)) {
+                throw new global::System.ArgumentNullException("Original_BackgroundColour");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_BackgroundColour));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int Id, string Name, int BorderColour, string FontName, bool Bold, bool Italic, int FontColour, string BackgroundColour) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(BorderColour));
+            if ((FontName == null)) {
+                throw new global::System.ArgumentNullException("FontName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(FontName));
+            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(Bold));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(Italic));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(FontColour));
+            if ((BackgroundColour == null)) {
+                throw new global::System.ArgumentNullException("BackgroundColour");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(BackgroundColour));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    int Id, 
+                    string Name, 
+                    int BorderColour, 
+                    string FontName, 
+                    bool Bold, 
+                    bool Italic, 
+                    int FontColour, 
+                    string BackgroundColour, 
+                    int Original_Id, 
+                    string Original_Name, 
+                    int Original_BorderColour, 
+                    string Original_FontName, 
+                    bool Original_Bold, 
+                    bool Original_Italic, 
+                    int Original_FontColour, 
+                    string Original_BackgroundColour) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(BorderColour));
+            if ((FontName == null)) {
+                throw new global::System.ArgumentNullException("FontName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(FontName));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(Bold));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(Italic));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(FontColour));
+            if ((BackgroundColour == null)) {
+                throw new global::System.ArgumentNullException("BackgroundColour");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(BackgroundColour));
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Id));
+            if ((Original_Name == null)) {
+                throw new global::System.ArgumentNullException("Original_Name");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Name));
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_BorderColour));
+            if ((Original_FontName == null)) {
+                throw new global::System.ArgumentNullException("Original_FontName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_FontName));
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Original_Bold));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_Italic));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_FontColour));
+            if ((Original_BackgroundColour == null)) {
+                throw new global::System.ArgumentNullException("Original_BackgroundColour");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_BackgroundColour));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Name, int BorderColour, string FontName, bool Bold, bool Italic, int FontColour, string BackgroundColour, int Original_Id, string Original_Name, int Original_BorderColour, string Original_FontName, bool Original_Bold, bool Original_Italic, int Original_FontColour, string Original_BackgroundColour) {
+            return this.Update(Original_Id, Name, BorderColour, FontName, Bold, Italic, FontColour, BackgroundColour, Original_Id, Original_Name, Original_BorderColour, Original_FontName, Original_Bold, Original_Italic, Original_FontColour, Original_BackgroundColour);
         }
     }
     
@@ -2454,6 +3420,8 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
         private UpdateOrderOption _updateOrder;
         
         private TablePlantsTableAdapter _tablePlantsTableAdapter;
+        
+        private TableProfilesTableAdapter _tableProfilesTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -2486,6 +3454,20 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public TableProfilesTableAdapter TableProfilesTableAdapter {
+            get {
+                return this._tableProfilesTableAdapter;
+            }
+            set {
+                this._tableProfilesTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -2507,6 +3489,10 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                             && (this._tablePlantsTableAdapter.Connection != null))) {
                     return this._tablePlantsTableAdapter.Connection;
                 }
+                if (((this._tableProfilesTableAdapter != null) 
+                            && (this._tableProfilesTableAdapter.Connection != null))) {
+                    return this._tableProfilesTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -2521,6 +3507,9 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
             get {
                 int count = 0;
                 if ((this._tablePlantsTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._tableProfilesTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -2543,6 +3532,15 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._tableProfilesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TableProfiles.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tableProfilesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -2561,6 +3559,14 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._tableProfilesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TableProfiles.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tableProfilesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -2571,6 +3577,14 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(DatabaseLabelsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._tableProfilesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TableProfiles.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tableProfilesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._tablePlantsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TablePlants.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -2623,6 +3637,11 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._tableProfilesTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._tableProfilesTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -2662,6 +3681,15 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                     if (this._tablePlantsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._tablePlantsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._tablePlantsTableAdapter.Adapter);
+                    }
+                }
+                if ((this._tableProfilesTableAdapter != null)) {
+                    revertConnections.Add(this._tableProfilesTableAdapter, this._tableProfilesTableAdapter.Connection);
+                    this._tableProfilesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._tableProfilesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._tableProfilesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._tableProfilesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._tableProfilesTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2725,6 +3753,10 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, Code, [Des
                 if ((this._tablePlantsTableAdapter != null)) {
                     this._tablePlantsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tablePlantsTableAdapter]));
                     this._tablePlantsTableAdapter.Transaction = null;
+                }
+                if ((this._tableProfilesTableAdapter != null)) {
+                    this._tableProfilesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tableProfilesTableAdapter]));
+                    this._tableProfilesTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
