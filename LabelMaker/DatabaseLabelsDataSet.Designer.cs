@@ -28,6 +28,8 @@ namespace LabelMaker {
         
         private TableProfilesDataTable tableTableProfiles;
         
+        private global::System.Data.DataRelation relationTablePlants_TableProfiles;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -218,6 +220,7 @@ namespace LabelMaker {
                     this.tableTableProfiles.InitVars();
                 }
             }
+            this.relationTablePlants_TableProfiles = this.Relations["TablePlants_TableProfiles"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +235,10 @@ namespace LabelMaker {
             base.Tables.Add(this.tableTablePlants);
             this.tableTableProfiles = new TableProfilesDataTable();
             base.Tables.Add(this.tableTableProfiles);
+            this.relationTablePlants_TableProfiles = new global::System.Data.DataRelation("TablePlants_TableProfiles", new global::System.Data.DataColumn[] {
+                        this.tableTablePlants.LabelColourColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTableProfiles.NameColumn}, false);
+            this.Relations.Add(this.relationTablePlants_TableProfiles);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1047,17 +1054,20 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TableProfilesRow AddTableProfilesRow(int Id, string Name, int BorderColour, string FontName, bool Bold, bool Italic, int FontColour, string BackgroundColour) {
+            public TableProfilesRow AddTableProfilesRow(int Id, TablePlantsRow parentTablePlantsRowByTablePlants_TableProfiles, int BorderColour, string FontName, bool Bold, bool Italic, int FontColour, string BackgroundColour) {
                 TableProfilesRow rowTableProfilesRow = ((TableProfilesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
-                        Name,
+                        null,
                         BorderColour,
                         FontName,
                         Bold,
                         Italic,
                         FontColour,
                         BackgroundColour};
+                if ((parentTablePlantsRowByTablePlants_TableProfiles != null)) {
+                    columnValuesArray[1] = parentTablePlantsRowByTablePlants_TableProfiles[17];
+                }
                 rowTableProfilesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTableProfilesRow);
                 return rowTableProfilesRow;
@@ -1755,6 +1765,17 @@ namespace LabelMaker {
             public void SetnotesNull() {
                 this[this.tableTablePlants.notesColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TableProfilesRow[] GetTableProfilesRows() {
+                if ((this.Table.ChildRelations["TablePlants_TableProfiles"] == null)) {
+                    return new TableProfilesRow[0];
+                }
+                else {
+                    return ((TableProfilesRow[])(base.GetChildRows(this.Table.ChildRelations["TablePlants_TableProfiles"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1856,6 +1877,17 @@ namespace LabelMaker {
                 }
                 set {
                     this[this.tableTableProfiles.BackgroundColourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TablePlantsRow TablePlantsRow {
+                get {
+                    return ((TablePlantsRow)(this.GetParentRow(this.Table.ParentRelations["TablePlants_TableProfiles"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["TablePlants_TableProfiles"]);
                 }
             }
         }

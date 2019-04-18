@@ -267,7 +267,7 @@ SELECT Id, Name, BorderColour, FontName, Bold, Italic, FontColour, BackgroundCol
   <xs:element name="DatabaseLabelsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DatabaseLabelsDataSet" msprop:Generator_UserDSName="DatabaseLabelsDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TablePlants" msprop:Generator_TableClassName="TablePlantsDataTable" msprop:Generator_TableVarName="tableTablePlants" msprop:Generator_RowChangedName="TablePlantsRowChanged" msprop:Generator_TablePropName="TablePlants" msprop:Generator_RowDeletingName="TablePlantsRowDeleting" msprop:Generator_RowChangingName="TablePlantsRowChanging" msprop:Generator_RowEvHandlerName="TablePlantsRowChangeEventHandler" msprop:Generator_RowDeletedName="TablePlantsRowDeleted" msprop:Generator_RowClassName="TablePlantsRow" msprop:Generator_UserTableName="TablePlants" msprop:Generator_RowEvArgName="TablePlantsRowChangeEvent">
+        <xs:element name="TablePlants" msprop:Generator_TableClassName="TablePlantsDataTable" msprop:Generator_TableVarName="tableTablePlants" msprop:Generator_TablePropName="TablePlants" msprop:Generator_RowDeletingName="TablePlantsRowDeleting" msprop:Generator_RowChangingName="TablePlantsRowChanging" msprop:Generator_RowEvHandlerName="TablePlantsRowChangeEventHandler" msprop:Generator_RowDeletedName="TablePlantsRowDeleted" msprop:Generator_UserTableName="TablePlants" msprop:Generator_RowChangedName="TablePlantsRowChanged" msprop:Generator_RowEvArgName="TablePlantsRowChangeEvent" msprop:Generator_RowClassName="TablePlantsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -390,7 +390,7 @@ SELECT Id, Name, BorderColour, FontName, Bold, Italic, FontColour, BackgroundCol
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TableProfiles" msprop:Generator_TableClassName="TableProfilesDataTable" msprop:Generator_TableVarName="tableTableProfiles" msprop:Generator_TablePropName="TableProfiles" msprop:Generator_RowDeletingName="TableProfilesRowDeleting" msprop:Generator_RowChangingName="TableProfilesRowChanging" msprop:Generator_RowEvHandlerName="TableProfilesRowChangeEventHandler" msprop:Generator_RowDeletedName="TableProfilesRowDeleted" msprop:Generator_UserTableName="TableProfiles" msprop:Generator_RowChangedName="TableProfilesRowChanged" msprop:Generator_RowEvArgName="TableProfilesRowChangeEvent" msprop:Generator_RowClassName="TableProfilesRow">
+        <xs:element name="TableProfiles" msprop:Generator_TableClassName="TableProfilesDataTable" msprop:Generator_TableVarName="tableTableProfiles" msprop:Generator_RowChangedName="TableProfilesRowChanged" msprop:Generator_TablePropName="TableProfiles" msprop:Generator_RowDeletingName="TableProfilesRowDeleting" msprop:Generator_RowChangingName="TableProfilesRowChanging" msprop:Generator_RowEvHandlerName="TableProfilesRowChangeEventHandler" msprop:Generator_RowDeletedName="TableProfilesRowDeleted" msprop:Generator_RowClassName="TableProfilesRow" msprop:Generator_UserTableName="TableProfiles" msprop:Generator_RowEvArgName="TableProfilesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -433,4 +433,9 @@ SELECT Id, Name, BorderColour, FontName, Bold, Italic, FontColour, BackgroundCol
       <xs:field xpath="mstns:Id" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="TablePlants_TableProfiles" msdata:parent="TablePlants" msdata:child="TableProfiles" msdata:parentkey="LabelColour" msdata:childkey="Name" msprop:Generator_UserChildTable="TableProfiles" msprop:Generator_ChildPropName="GetTableProfilesRows" msprop:Generator_UserRelationName="TablePlants_TableProfiles" msprop:Generator_ParentPropName="TablePlantsRow" msprop:Generator_RelationVarName="relationTablePlants_TableProfiles" msprop:Generator_UserParentTable="TablePlants" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

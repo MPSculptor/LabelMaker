@@ -29,8 +29,8 @@ namespace LabelMaker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseLabelsDataSet2.TableProfiles' table. You can move, or remove it, as needed.
-            this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSet2.TableProfiles);
+            // TODO: This line of code loads data into the 'databaseLabelsDataSet1.TableProfiles' table. You can move, or remove it, as needed.
+            this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSet1.TableProfiles);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
             this.tablePlantsTableAdapter.Fill(this.databaseLabelsDataSet.TablePlants);
 
@@ -712,11 +712,10 @@ namespace LabelMaker
 
 
             int profileIndex = 0;
-            //databaseLabelsDataSet1.TableProfiles.DefaultView.Sort = "Name DESC";
-            Button[] ProfileSample = new Button[databaseLabelsDataSet2.TableProfiles.Rows.Count + 1];
+            Button[] ProfileSample = new Button[databaseLabelsDataSet1.TableProfiles.Rows.Count + 1];
             //Iterate through dataset
             
-            foreach (DataRow rowNumber in databaseLabelsDataSet2.TableProfiles)
+            foreach (DataRow rowNumber in databaseLabelsDataSet1.TableProfiles)
             {
                 //collect one row at a a time
                 int size = rowNumber.ItemArray.Count();
@@ -781,6 +780,105 @@ namespace LabelMaker
 
         }
 
+        private void bindingSource1_CurrentChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+
+
         
+        private void groupBoxImages_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void radioButtonImage1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonImage1.Checked)
+            {
+                updateMainDetails(dataGridViewPlants.CurrentCell.RowIndex);
+            }
+        }
+
+        private void radioButtonImage2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonImage2.Checked)
+            {
+                updateMainDetails(dataGridViewPlants.CurrentCell.RowIndex);
+            }
+        }
+
+        private void radioButtonImage3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonImage3.Checked)
+            {
+                updateMainDetails(dataGridViewPlants.CurrentCell.RowIndex);
+            }
+        }
+
+        private void radioButtonImage4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonImage4.Checked)
+            {
+                updateMainDetails(dataGridViewPlants.CurrentCell.RowIndex);
+            }
+        }
+
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (this.ActiveControl == textBoxQty)
+            {
+                if (keyData == Keys.Return)
+                {
+                    MessageBox.Show("Enter from Qty");
+                    //do something
+                    return true;
+                }
+                else if (keyData == Keys.Tab)
+                {
+                    textBoxPrice.Focus();
+                    //do something
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (this.ActiveControl == textBoxPrice)
+            {
+                if (keyData == Keys.Return)
+                {
+                    MessageBox.Show("Enter from Price");
+                    //do something
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private void textBoxQty_Enter(object sender, EventArgs e)
+        {
+            if (checkBoxQty.Checked)
+            {
+                textBoxQty.Text = textBoxQtyAuto.Text;
+            }
+        }
+        private void textBoxPrice_Enter(object sender, EventArgs e)
+        {
+            if (checkBoxPrice.Checked)
+                {
+                    textBoxPrice.Text = textBoxPriceAuto.Text;
+                }
+        }
     }
 }

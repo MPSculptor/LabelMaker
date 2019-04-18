@@ -112,7 +112,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profilesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.tabControlProfiles = new System.Windows.Forms.TabControl();
             this.tabPageLabelProfiles = new System.Windows.Forms.TabPage();
             this.groupBoxProfiles = new System.Windows.Forms.GroupBox();
@@ -121,7 +120,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1ProfileView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fontNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,16 +127,19 @@
             this.italicDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fontColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableProfilesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSet2 = new LabelMaker.DatabaseLabelsDataSet2();
+            this.tableProfilesbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSet1 = new LabelMaker.DatabaseLabelsDataSet1();
             this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonProfilesClose = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableProfilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet2TableAdapters.TableProfilesTableAdapter();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
+            this.databaseLabelsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableProfilesTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TableProfilesTableAdapter();
+            this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
             this.tabControlMain.SuspendLayout();
             this.tabPageManual.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -167,9 +168,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -567,6 +568,7 @@
             this.textBoxPrice.TabIndex = 2;
             this.textBoxPrice.Text = "0";
             this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPrice.Enter += new System.EventHandler(this.textBoxPrice_Enter);
             // 
             // textBoxPriceAuto
             // 
@@ -587,6 +589,7 @@
             this.textBoxQty.TabIndex = 0;
             this.textBoxQty.Text = "1";
             this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxQty.Enter += new System.EventHandler(this.textBoxQty_Enter);
             // 
             // groupBox4
             // 
@@ -774,6 +777,7 @@
             this.groupBoxImages.TabIndex = 8;
             this.groupBoxImages.TabStop = false;
             this.groupBoxImages.Text = "Available Images";
+            this.groupBoxImages.Enter += new System.EventHandler(this.groupBoxImages_Enter);
             // 
             // radioButtonImage4
             // 
@@ -784,6 +788,7 @@
             this.radioButtonImage4.TabIndex = 7;
             this.radioButtonImage4.Text = "4";
             this.radioButtonImage4.UseVisualStyleBackColor = true;
+            this.radioButtonImage4.CheckedChanged += new System.EventHandler(this.radioButtonImage4_CheckedChanged);
             // 
             // radioButtonImage2
             // 
@@ -794,6 +799,7 @@
             this.radioButtonImage2.TabIndex = 6;
             this.radioButtonImage2.Text = "2";
             this.radioButtonImage2.UseVisualStyleBackColor = true;
+            this.radioButtonImage2.CheckedChanged += new System.EventHandler(this.radioButtonImage2_CheckedChanged);
             // 
             // radioButtonImage3
             // 
@@ -804,6 +810,7 @@
             this.radioButtonImage3.TabIndex = 5;
             this.radioButtonImage3.Text = "3";
             this.radioButtonImage3.UseVisualStyleBackColor = true;
+            this.radioButtonImage3.CheckedChanged += new System.EventHandler(this.radioButtonImage3_CheckedChanged);
             // 
             // radioButtonImage1
             // 
@@ -816,6 +823,7 @@
             this.radioButtonImage1.TabStop = true;
             this.radioButtonImage1.Text = "1";
             this.radioButtonImage1.UseVisualStyleBackColor = true;
+            this.radioButtonImage1.CheckedChanged += new System.EventHandler(this.radioButtonImage1_CheckedChanged);
             // 
             // pictureBoxThumb4
             // 
@@ -998,10 +1006,6 @@
             this.profilesToolStripMenuItem2.Text = "Profiles";
             this.profilesToolStripMenuItem2.Click += new System.EventHandler(this.profilesToolStripMenuItem2_Click);
             // 
-            // tablePlantsTableAdapter
-            // 
-            this.tablePlantsTableAdapter.ClearBeforeFill = true;
-            // 
             // tabControlProfiles
             // 
             this.tabControlProfiles.Controls.Add(this.tabPageLabelProfiles);
@@ -1085,25 +1089,19 @@
             this.dataGridView1ProfileView.AutoGenerateColumns = false;
             this.dataGridView1ProfileView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1ProfileView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
             this.nameDataGridViewTextBoxColumn,
             this.borderColourDataGridViewTextBoxColumn,
             this.fontNameDataGridViewTextBoxColumn,
             this.boldDataGridViewCheckBoxColumn,
             this.italicDataGridViewCheckBoxColumn,
             this.fontColourDataGridViewTextBoxColumn,
-            this.backgroundColourDataGridViewTextBoxColumn});
+            this.backgroundColourDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn1});
             this.dataGridView1ProfileView.DataSource = this.tableProfilesBindingSource1;
             this.dataGridView1ProfileView.Location = new System.Drawing.Point(17, 28);
             this.dataGridView1ProfileView.Name = "dataGridView1ProfileView";
             this.dataGridView1ProfileView.Size = new System.Drawing.Size(292, 701);
             this.dataGridView1ProfileView.TabIndex = 3;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -1147,15 +1145,27 @@
             this.backgroundColourDataGridViewTextBoxColumn.HeaderText = "BackgroundColour";
             this.backgroundColourDataGridViewTextBoxColumn.Name = "backgroundColourDataGridViewTextBoxColumn";
             // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            // 
             // tableProfilesBindingSource1
             // 
             this.tableProfilesBindingSource1.DataMember = "TableProfiles";
-            this.tableProfilesBindingSource1.DataSource = this.databaseLabelsDataSet2;
+            this.tableProfilesBindingSource1.DataSource = this.tableProfilesbindingSource;
             // 
-            // databaseLabelsDataSet2
+            // tableProfilesbindingSource
             // 
-            this.databaseLabelsDataSet2.DataSetName = "DatabaseLabelsDataSet2";
-            this.databaseLabelsDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableProfilesbindingSource.DataSource = this.databaseLabelsDataSet1;
+            this.tableProfilesbindingSource.Position = 0;
+            this.tableProfilesbindingSource.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged_1);
+            // 
+            // databaseLabelsDataSet1
+            // 
+            this.databaseLabelsDataSet1.DataSetName = "DatabaseLabelsDataSet1";
+            this.databaseLabelsDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewProfiles
             // 
@@ -1197,23 +1207,27 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tableProfilesBindingSource
+            // fillByToolStripButton
             // 
-            this.tableProfilesBindingSource.DataMember = "TableProfiles";
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(23, 23);
+            // 
+            // tablePlantsTableAdapter
+            // 
+            this.tablePlantsTableAdapter.ClearBeforeFill = true;
             // 
             // databaseLabelsDataSetBindingSource
             // 
             this.databaseLabelsDataSetBindingSource.DataSource = this.databaseLabelsDataSet;
             this.databaseLabelsDataSetBindingSource.Position = 0;
             // 
+            // tableProfilesTableAdapter1
+            // 
+            this.tableProfilesTableAdapter1.ClearBeforeFill = true;
+            // 
             // tableProfilesTableAdapter
             // 
             this.tableProfilesTableAdapter.ClearBeforeFill = true;
-            // 
-            // fillByToolStripButton
-            // 
-            this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(23, 23);
             // 
             // formMain
             // 
@@ -1223,8 +1237,8 @@
             this.ClientSize = new System.Drawing.Size(1516, 852);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl2);
-            this.Controls.Add(this.tabControlProfiles);
             this.Controls.Add(this.tabControlMain);
+            this.Controls.Add(this.tabControlProfiles);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formMain";
@@ -1264,9 +1278,9 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1369,12 +1383,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelProfilePlantPreview;
-        private System.Windows.Forms.BindingSource tableProfilesBindingSource;
         private System.Windows.Forms.GroupBox groupBoxProfiles;
-        private DatabaseLabelsDataSet2 databaseLabelsDataSet2;
+        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+        private DatabaseLabelsDataSetTableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter1;
+        private System.Windows.Forms.BindingSource tableProfilesbindingSource;
+        private DatabaseLabelsDataSet1 databaseLabelsDataSet1;
         private System.Windows.Forms.BindingSource tableProfilesBindingSource1;
-        private DatabaseLabelsDataSet2TableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn borderColourDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fontNameDataGridViewTextBoxColumn;
@@ -1382,7 +1397,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn italicDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fontColourDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn backgroundColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
     }
 }
 
