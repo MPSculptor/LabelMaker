@@ -461,17 +461,8 @@ namespace LabelMaker
 
                 Size textSize = TextRenderer.MeasureText(textArray[i], useThisFont);
                 
-                //g1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-                //StringFormat format = StringFormat.GenericTypographic;
-                //format.FormatFlags |= StringFormatFlags.MeasureTrailingSpaces;
-                //SizeF measurePoint = new SizeF (10* (int)xSized, 10 * (int)ySized);
-                //SizeF textSize = g1.MeasureString(textArray[i], useThisFont, measurePoint, format  );
                 float newWidth = textSize.Width; 
                 float newHeight = textSize.Height;
-
-                //MessageBox.Show(newWidth.ToString());
-
-                //if (fontForm == "BOLDITALIC") { newWidth = newWidth * 1.1F; }
 
                 //Set horizontal position
                 float xxPosd = 0;

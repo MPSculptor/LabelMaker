@@ -261,11 +261,27 @@ namespace LabelMaker
             }
 
             PlantNames = getPlantName(sendData);
+            labelPlantName.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
+            double textWidth =  TextRenderer.MeasureText(PlantNames[0], labelPlantName.Font).Width;
+            double labelWidth = labelPlantName.Width;
+                        
+                double textSize = labelPlantName.Font.Size;
+                textSize = textSize * ( labelWidth / textWidth) *.9 ;
+                float textSizeF = (float)textSize;
+                if (textSizeF > 12)
+                    {
+                    textSizeF = 12;
+                    }
+                labelPlantName.Font = new Font ("Microsoft Sans Serif", textSizeF, FontStyle.Bold | FontStyle.Italic );
+
             labelPlantName.Text = PlantNames[0];
+
             //Description
             richTextBoxDesc.Text = dataGridViewPlants.Rows[indexOfRow].Cells[8].Value.ToString();
 
             //Thumbnails and Main Picture
+
+            //PictureBox curPictureBox = (PictureBox)groupBoxDataPictures.Controls["pictureBoxData" + (i - 11).ToString()];
             try // #1
             {
                 string fileName = dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString();
@@ -537,6 +553,11 @@ namespace LabelMaker
                 TempMakeALabel(panelLabelTabColour, "Colour");
             }
 
+            if (tabControlMain.SelectedTab == tabPageDatabase)
+            {
+                fillDatabaseTab();
+            }
+
         }
 
         private void clearPanelLabel()
@@ -548,7 +569,84 @@ namespace LabelMaker
             }
         }
 
-        private void panelLabelTab_Paint(object sender, PaintEventArgs e)
+        private void fillDatabaseTab()
+        {
+            int indexOfRow = 513;
+            indexOfRow = dataGridViewPlants.CurrentRow.Index;
+
+            //Index
+            textBoxData0.Text = dataGridViewPlants.Rows[indexOfRow].Cells[0].Value.ToString();
+
+            //Paint two label examples
+            TempMakeALabel(panelDatabaseMain, "Main");
+            TempMakeALabel(panelDatabaseColour, "Colour");
+
+            //Fill in Plant Name
+            for (int i = 2; i <= 6; i++)
+            {
+                if (i != 3)
+                { TextBox curText = (TextBox)groupBoxDataNameDetails.Controls["textBoxData" + i.ToString()];
+                    curText.Text = dataGridViewPlants.Rows[indexOfRow].Cells[i].Value.ToString();
+                }
+            }
+            ButtonData1.Text = dataGridViewPlants.Rows[indexOfRow].Cells[1].Value.ToString();
+            ButtonData3.Text = dataGridViewPlants.Rows[indexOfRow].Cells[3].Value.ToString();
+            //Fill in Pictures
+
+            //get picture position
+            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+                //file with sample queue entry;
+                string name = whereFiles + "defaults.txt";
+                string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+                string filePlace = defaultsString[0];
+
+            for (int i = 12; i <= 15; i++)
+            {
+                TextBox curText = (TextBox)groupBoxDataPictures.Controls["textBoxData" + i.ToString()];
+                curText.Text = dataGridViewPlants.Rows[indexOfRow].Cells[i].Value.ToString();
+                PictureBox curPictureBox = (PictureBox)groupBoxDataPictures.Controls["pictureBoxData" + (i - 11).ToString()];
+
+                //Picture images
+                try // #1
+                {
+                    string fileName = dataGridViewPlants.Rows[indexOfRow].Cells[i].Value.ToString();
+                    string pictureFile = filePlace + fileName;
+                    curPictureBox.Image = Image.FromFile(pictureFile);
+                }
+                catch (IOException)
+                {
+                    string pictureFile = "";
+                    if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[i].Value.ToString()))
+                    {
+                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    }
+                    else
+                    {
+                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    }
+                    curPictureBox.Image = Image.FromFile(pictureFile);
+                }
+            }
+
+
+
+
+            //Fill Details
+            textBoxData7.Text = dataGridViewPlants.Rows[indexOfRow].Cells[7].Value.ToString();
+            textBoxData8.Text = dataGridViewPlants.Rows[indexOfRow].Cells[8].Value.ToString();
+            textBoxData9.Text = dataGridViewPlants.Rows[indexOfRow].Cells[9].Value.ToString();
+            textBoxData11.Text = dataGridViewPlants.Rows[indexOfRow].Cells[11].Value.ToString();
+            textBoxData17.Text = dataGridViewPlants.Rows[indexOfRow].Cells[17].Value.ToString();
+            textBoxData19.Text = dataGridViewPlants.Rows[indexOfRow].Cells[19].Value.ToString();
+            //FillTogles
+            ButtonData10.Text = dataGridViewPlants.Rows[indexOfRow].Cells[10].Value.ToString();
+            ButtonData16.Text = dataGridViewPlants.Rows[indexOfRow].Cells[16].Value.ToString();
+            ButtonData18.Text = dataGridViewPlants.Rows[indexOfRow].Cells[18].Value.ToString();
+            ButtonData20.Text = dataGridViewPlants.Rows[indexOfRow].Cells[20].Value.ToString();
+
+        }
+
+    private void panelLabelTab_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -879,6 +977,135 @@ namespace LabelMaker
                 {
                     textBoxPrice.Text = textBoxPriceAuto.Text;
                 }
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Index
+            textBoxData0.Text = "";
+
+            //Paint two label examples
+            foreach (Control ctrl in panelDatabaseColour.Controls)
+            {
+                ctrl.Dispose();
+            }
+            foreach (Control ctrl in panelDatabaseMain.Controls)
+            {
+                ctrl.Dispose();
+            }
+
+            //Fill in Plant Name
+            for (int i = 1; i <= 6; i++)
+            {
+                TextBox curText = (TextBox)groupBoxDataNameDetails.Controls["textBoxData" + i.ToString()];
+                curText.Text = "";
+            }
+            //Fill in Pictures
+
+            for (int i = 12; i <= 15; i++)
+            {
+                TextBox curText = (TextBox)groupBoxDataPictures.Controls["textBoxData" + i.ToString()];
+                curText.Text = "";
+                PictureBox curPictureBox = (PictureBox)groupBoxDataPictures.Controls["pictureBoxData" + (i - 11).ToString()];
+
+                //Picture images
+                try // #1
+                {
+                    string pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    curPictureBox.Image = Image.FromFile(pictureFile);
+                }
+                catch (IOException)
+                {
+                    string pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    
+                    curPictureBox.Image = Image.FromFile(pictureFile);
+                }
+            }
+            
+            //Fill Details
+            textBoxData7.Text = "";
+            textBoxData8.Text = "";
+            textBoxData9.Text = "";
+            textBoxData11.Text = "0000000000000";
+            textBoxData17.Text = "Default";
+            //FillTogles
+            ButtonData10.Text = "True";
+            ButtonData16.Text = "False";
+            ButtonData18.Text = "True";
+            ButtonData20.Text = "False";
+        }
+
+        private void ButtonData10_Click(object sender, EventArgs e)
+        {
+            if (ButtonData10.Text == "True")
+            { ButtonData10.Text = "False"; }
+            else
+            { ButtonData10.Text = "True"; }
+        }
+
+        private void ButtonData20_Click(object sender, EventArgs e)
+        {
+            if (ButtonData20.Text == "True")
+            { ButtonData20.Text = "False"; }
+            else
+            { ButtonData20.Text = "True"; }
+        }
+
+        private void ButtonData16_Click(object sender, EventArgs e)
+        {
+            if (ButtonData16.Text == "True")
+            { ButtonData16.Text = "False"; }
+            else
+            { ButtonData16.Text = "True"; }
+        }
+
+        private void ButtonData18_Click(object sender, EventArgs e)
+        {
+            if (ButtonData18.Text == "True")
+            { ButtonData18.Text = "False"; }
+            else
+            { ButtonData18.Text = "True"; }
+        }
+
+        private void textBoxData1_Click(object sender, EventArgs e)
+        {
+            if (ButtonData1.Text == "x")
+            { ButtonData1.Text = ""; }
+            else
+            { ButtonData1.Text = "x"; }
+        }
+
+        private void textBoxData3_Click(object sender, EventArgs e)
+        {
+            if (ButtonData3.Text == "x")
+            { ButtonData3.Text = ""; }
+            else
+            { ButtonData3.Text = "x"; }
         }
     }
 }
