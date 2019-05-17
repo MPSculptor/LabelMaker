@@ -1724,7 +1724,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants ORDER BY Genus ASC, Species ASC, Variety ASC";
+            this._commandCollection[0].CommandText = @"SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

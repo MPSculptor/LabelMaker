@@ -50,6 +50,7 @@ namespace LabelMaker
             dataGridViewPlants.Columns[6].Width = 100;
 
             updateMainDetails(0);
+            indexNavigationButtons();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -573,6 +574,7 @@ namespace LabelMaker
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             //clearPanelLabel();
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
@@ -583,6 +585,11 @@ namespace LabelMaker
             if (tabControlMain.SelectedTab == tabPageDatabase)
             {
                 fillDatabaseTab();
+            }
+
+            if (tabControlMain.SelectedTab == tabPageLabelProfiles)
+            {
+                addProfileButtons();
             }
 
         }
@@ -665,12 +672,49 @@ namespace LabelMaker
             textBoxData11.Text = dataGridViewPlants.Rows[indexOfRow].Cells[11].Value.ToString();
             textBoxData17.Text = dataGridViewPlants.Rows[indexOfRow].Cells[17].Value.ToString();
             textBoxData19.Text = dataGridViewPlants.Rows[indexOfRow].Cells[19].Value.ToString();
+
+            for (int i = 0; i < databaseLabelsDataSetProfiles.TableProfiles.Rows.Count; i++)
+            {
+                comboBoxProfilePick.Items.Add(dataGridView1ProfileView.Rows[i].Cells[0].Value.ToString());
+            }
+
             //FillTogles
             ButtonData10.Text = dataGridViewPlants.Rows[indexOfRow].Cells[10].Value.ToString();
+            if (ButtonData10.Text == "True")
+            {
+                ButtonData10.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                ButtonData10.BackColor = Color.DarkSalmon;
+            }
             ButtonData16.Text = dataGridViewPlants.Rows[indexOfRow].Cells[16].Value.ToString();
+            if (ButtonData16.Text == "True")
+            {
+                ButtonData16.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                ButtonData16.BackColor = Color.DarkSalmon;
+            }
             ButtonData18.Text = dataGridViewPlants.Rows[indexOfRow].Cells[18].Value.ToString();
+            if (ButtonData18.Text == "True")
+            {
+                ButtonData18.BackColor = Color.DarkSalmon;
+            }
+            else
+            {
+                ButtonData18.BackColor = Color.LightGreen;
+            }
             ButtonData20.Text = dataGridViewPlants.Rows[indexOfRow].Cells[20].Value.ToString();
-
+            if (ButtonData20.Text == "True")
+            {
+                ButtonData20.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                ButtonData20.BackColor = Color.DarkSalmon;
+            }
         }
 
         private void panelLabelTab_Paint(object sender, PaintEventArgs e)
@@ -819,7 +863,7 @@ namespace LabelMaker
 
         private void profilesToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            tabControlProfiles.Visible = true;
+            //tabControlProfiles.Visible = true;
             addProfileButtons();
 
         }
@@ -855,7 +899,7 @@ namespace LabelMaker
                 ProfileSample[profileIndex] = new Button();
                 ProfileSample[profileIndex].Text = rowString[1];
                 Console.WriteLine(rowString[1]);
-                ProfileSample[profileIndex].Width = 131;
+                ProfileSample[profileIndex].Width = 116;
                 ProfileSample[profileIndex].Height = 30;
                 Console.WriteLine("BackColour");
                 ProfileSample[profileIndex].BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[7]));
@@ -865,8 +909,6 @@ namespace LabelMaker
                 ProfileSample[profileIndex].FlatAppearance.BorderSize = 3;
                 Console.WriteLine("BorderColour");
                 ProfileSample[profileIndex].FlatAppearance.BorderColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[2]));
-
-                //ProfileSample[profileIndex].BorderColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[7]));
 
                 flowLayoutPanelProfiles.Controls.Add(ProfileSample[profileIndex]);
 
@@ -882,7 +924,7 @@ namespace LabelMaker
                 groupBoxProfiles.Controls.Remove(ctrl);
                 ctrl.Dispose();
             }
-            tabControlProfiles.Visible = false;
+            //tabControlProfiles.Visible = false;
         }
 
         private void tabPage1_Click_2(object sender, EventArgs e)
@@ -1091,33 +1133,47 @@ namespace LabelMaker
         private void ButtonData10_Click(object sender, EventArgs e)
         {
             if (ButtonData10.Text == "True")
-            { ButtonData10.Text = "False"; }
+            { ButtonData10.Text = "False";
+                ButtonData10.BackColor = Color.DarkSalmon; }
             else
-            { ButtonData10.Text = "True"; }
+            { ButtonData10.Text = "True";
+                ButtonData10.BackColor = Color.LightGreen; }
         }
 
         private void ButtonData20_Click(object sender, EventArgs e)
         {
             if (ButtonData20.Text == "True")
-            { ButtonData20.Text = "False"; }
+            { ButtonData20.Text = "False";
+                ButtonData20.BackColor = Color.DarkSalmon;
+            }
             else
-            { ButtonData20.Text = "True"; }
+            { ButtonData20.Text = "True";
+                ButtonData20.BackColor = Color.LightGreen;
+            }
         }
 
         private void ButtonData16_Click(object sender, EventArgs e)
         {
             if (ButtonData16.Text == "True")
-            { ButtonData16.Text = "False"; }
+            { ButtonData16.Text = "False";
+                ButtonData16.BackColor = Color.DarkSalmon;
+            }
             else
-            { ButtonData16.Text = "True"; }
+            { ButtonData16.Text = "True";
+                ButtonData16.BackColor = Color.LightGreen;
+            }
         }
 
         private void ButtonData18_Click(object sender, EventArgs e)
         {
             if (ButtonData18.Text == "True")
-            { ButtonData18.Text = "False"; }
+            { ButtonData18.Text = "False";
+                ButtonData18.BackColor = Color.LightGreen;
+            }
             else
-            { ButtonData18.Text = "True"; }
+            { ButtonData18.Text = "True";
+                ButtonData18.BackColor = Color.DarkSalmon;
+            }
         }
 
         private void textBoxData1_Click(object sender, EventArgs e)
@@ -1224,7 +1280,7 @@ namespace LabelMaker
             else
             { queueData[24] = "Order No. #" + queueData[24]; }
 
-           
+
 
             return queueData;
         }
@@ -1237,7 +1293,7 @@ namespace LabelMaker
         private void button2_Click_1(object sender, EventArgs e)
         {
             string[] queue = CollectQueueEntry();
-           
+
             addRowToMainQ();
         }
 
@@ -1256,7 +1312,7 @@ namespace LabelMaker
 
             row[1] = queue[0];
             int answer = 0;
-            int.TryParse(queue[1], out answer );
+            int.TryParse(queue[1], out answer);
             row[2] = answer;
             row[3] = queue[2];
             row[4] = queue[3];
@@ -1288,6 +1344,332 @@ namespace LabelMaker
         private void tablePlantsBindingSource_CurrentChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1ProfileView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewProfiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPageLabelProfiles_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxProfilePick_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxData17.Text = comboBoxProfilePick.Text;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void indexNavigationButtons()
+        {
+            string buttonName = "";
+            string buttonNamePlus = "";
+            string lastLetter = "1";
+            //MessageBox.Show(dataGridViewPlants.RowCount.ToString());
+            for (int i = 0; i < dataGridViewPlants.RowCount; i++)
+            {
+                string name = dataGridViewPlants.Rows[i].Cells[2].Value.ToString();
+                //dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[i].Cells[1];
+                string letter = name.Substring(0, 1);
+
+                //MessageBox.Show(name + " , " + letter + " , " + lastLetter);
+                if (letter != lastLetter)
+                {
+                    buttonName = "buttonAlpha" + letter;
+                    buttonNamePlus = buttonName + "plus";
+                    Button curButton = (Button)groupBoxAlpha.Controls[buttonName];
+                    Button curButtonPlus = (Button)groupBoxAlpha.Controls[buttonNamePlus];
+                    curButton.Tag = i.ToString();
+                    curButton.Enabled = true;
+                    curButtonPlus.Tag = i.ToString();
+                    lastLetter = letter;
+                }
+
+            }
+            
+        }
+
+        private void buttonAlphaA_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse (buttonAlphaA.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaB_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaB.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaC_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaC.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaD_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaD.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaE_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaE.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaF_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaF.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaG_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaG.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaH_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaH.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaI_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaI.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaJ_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaJ.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaK_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaK.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaL_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaL.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaM_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaM.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaN_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaN.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaO_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaO.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaP_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaP.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaQ_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaQ.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaR_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaR.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaS_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaS.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaT_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaT.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaU_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaU.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaV_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaV.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaW_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaW.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaX_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaX.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaY_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaY.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaZ_Click(object sender, EventArgs e)
+        {
+            int rowSeek = int.Parse(buttonAlphaZ.Tag.ToString());
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonHiddenOnly_Click(object sender, EventArgs e)
+        {
+            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'True'  ORDER BY Genus ASC, Species ASC, Variety ASC";
+            tablePlantsTableAdapter.Fill(databaseLabelsDataSet.TablePlants);
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            indexNavigationButtons();
+            updateMainDetails(0);
+        }
+
+        private void buttonVisibleOnly_Click(object sender, EventArgs e)
+        {
+            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC";
+            tablePlantsTableAdapter.Fill(databaseLabelsDataSet.TablePlants);
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            indexNavigationButtons();
+            updateMainDetails(0);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants ORDER BY Genus ASC, Species ASC, Variety ASC";
+            tablePlantsTableAdapter.Fill(databaseLabelsDataSet.TablePlants);
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            indexNavigationButtons();
+            updateMainDetails(0);
         }
     }
 }

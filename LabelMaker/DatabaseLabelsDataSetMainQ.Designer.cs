@@ -630,7 +630,7 @@ namespace LabelMaker {
                         string Genus, 
                         string Species, 
                         string Variety, 
-                        bool AGM, 
+                        string AGM, 
                         string Picture1, 
                         string Picture2, 
                         string Picture3, 
