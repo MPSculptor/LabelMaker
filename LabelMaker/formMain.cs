@@ -997,8 +997,7 @@ namespace LabelMaker
             {
                 if (keyData == Keys.Return)
                 {
-                    MessageBox.Show("Enter from Qty");
-                    //do something
+                    addToQueues();
                     return true;
                 }
                 else if (keyData == Keys.Tab)
@@ -1016,7 +1015,7 @@ namespace LabelMaker
             {
                 if (keyData == Keys.Return)
                 {
-                    MessageBox.Show("Enter from Price");
+                    addToQueues();
                     //do something
                     return true;
                 }
@@ -1334,6 +1333,7 @@ namespace LabelMaker
             row["OrderNo"] = queue[24];
 
             databaseLabelsDataSetMainQueue.Tables[0].Rows.Add(row);
+            labelMainCount.Text = addMainQueueTotal().ToString();
         }
 
         private void addRowToColourQ()
@@ -1371,6 +1371,28 @@ namespace LabelMaker
             row["OrderNo"] = queue[24];
 
             databaseLabelsDataSetColourQueue.Tables[0].Rows.Add(row);
+            labelColourCount.Text = addColourQueueTotal().ToString();
+        }
+
+        private void addToQueues()
+        {
+            string[] queue = CollectQueueEntry();
+
+            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+            {
+                addRowToColourQ();
+            }
+            else
+            {
+                addRowToMainQ();
+                if (buttonAddtoColourQueue.Text == "add Colour")
+                {
+                    if (checkBoxColourAdd.Checked == true)
+                    {
+                        addRowToColourQ();
+                    }
+                }
+            }
         }
 
         private void tablePlantsBindingSource_CurrentChanged_1(object sender, EventArgs e)
@@ -1718,30 +1740,43 @@ namespace LabelMaker
 
         }
 
+
+
         private void button2_Click_2(object sender, EventArgs e)
         {
-            string[] queue = CollectQueueEntry();
-
-            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
-            {
-                addRowToColourQ();
-            }
-            else
-            {
-                addRowToMainQ();
-                if (buttonAddtoColourQueue.Text == "add Colour")
-                {
-                    if (checkBoxColourAdd.Checked == true)
-                    {
-                        addRowToColourQ();
-                    }
-                }
-            }
+            
         }
 
         private void dataGridViewMainQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        } 
+        private int addMainQueueTotal()
+        {
+            int count = 0;
+            int Qvalue = 0;
+
+            for (int i = 0; i < (dataGridViewMainQ.RowCount-1); i++)
+            {
+                Qvalue = int.Parse(dataGridViewMainQ.Rows[i].Cells[1].Value.ToString());
+                count = count + Qvalue;
+            }
+
+            return count;
+        }
+
+        private int addColourQueueTotal()
+        {
+            int count = 0;
+            int Qvalue = 0;
+
+            for (int i = 0; i < (dataGridViewColourQ.RowCount-1); i++)
+            {
+                Qvalue = int.Parse(dataGridViewColourQ.Rows[i].Cells[1].Value.ToString());
+                count = count + Qvalue;
+            }
+
+            return count;
         }
     }
 }

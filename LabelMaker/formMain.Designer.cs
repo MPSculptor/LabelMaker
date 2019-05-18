@@ -314,7 +314,6 @@
             this.databaseLabelsDataSetColourQueue = new LabelMaker.DatabaseLabelsDataSetColourQueue();
             this.tableColourQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             this.tabPageColourQueue.SuspendLayout();
@@ -2425,7 +2424,6 @@
             // 
             // groupBoxPlantData
             // 
-            this.groupBoxPlantData.Controls.Add(this.button2);
             this.groupBoxPlantData.Controls.Add(this.buttonVisibleOnly);
             this.groupBoxPlantData.Controls.Add(this.buttonAllEntries);
             this.groupBoxPlantData.Controls.Add(this.buttonHiddenOnly);
@@ -3090,16 +3088,6 @@
             // 
             this.tableColourQueueTableAdapter.ClearBeforeFill = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(450, 720);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3464,7 +3452,6 @@
         private DatabaseLabelsDataSetColourQueue databaseLabelsDataSetColourQueue;
         private System.Windows.Forms.BindingSource tableColourQueueBindingSource;
         private DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter tableColourQueueTableAdapter;
-        private System.Windows.Forms.Button button2;
     }
 }
 
