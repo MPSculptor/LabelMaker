@@ -30,81 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
-            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabControlQueue = new System.Windows.Forms.TabControl();
             this.tabPageMainQueue = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dataGridViewMainQ = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commonNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourFontDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourFontColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fontBoldDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.fontItalicDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colourBorderColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourBackgroundColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speciesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.varietyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aGMDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.picture1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture3DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture4DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.potSizeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableMainQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetMainQ = new LabelMaker.DatabaseLabelsDataSetMainQ();
             this.tabPageColourQueue = new System.Windows.Forms.TabPage();
-            this.dataGridViewColourQ = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableColourQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetColourQ = new LabelMaker.DatabaseLabelsDataSet3();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profilesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableProfilesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tableProfilesbindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetProfiles = new LabelMaker.DatabaseLabelsDataSet1();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
-            this.tableAdapterManager1 = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableAdapterManager();
-            this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetMainQTableAdapters.TableMainQueueTableAdapter();
-            this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet3TableAdapters.TableColourQueueTableAdapter();
-            this.databaseLabelsDataSetMainQueue = new LabelMaker.DatabaseLabelsDataSetMainQueue();
-            this.tableMainQueueTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter();
             this.tabPageLabelProfiles = new System.Windows.Forms.TabPage();
             this.groupBoxProfiles = new System.Windows.Forms.GroupBox();
             this.panelProfilePlantPreview = new System.Windows.Forms.Panel();
@@ -119,7 +52,9 @@
             this.italicDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fontColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableProfilesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tableProfilesbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSetProfiles = new LabelMaker.DatabaseLabelsDataSet1();
             this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonProfilesClose = new System.Windows.Forms.Button();
@@ -202,8 +137,6 @@
             this.buttonAGMStatus = new System.Windows.Forms.Button();
             this.buttonAddtoColourQueue = new System.Windows.Forms.Button();
             this.panelLabelPreview = new System.Windows.Forms.Panel();
-            this.groupBoxPlantData = new System.Windows.Forms.GroupBox();
-            this.dataGridViewPlants = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
@@ -219,8 +152,50 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labelPlantName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tablePlantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSet = new LabelMaker.DatabaseLabelsDataSet();
             this.richTextBoxDesc = new System.Windows.Forms.RichTextBox();
             this.groupBoxAlpha = new System.Windows.Forms.GroupBox();
+            this.buttonAlphaZplus = new System.Windows.Forms.Button();
+            this.buttonAlphaZ = new System.Windows.Forms.Button();
+            this.buttonAlphaYplus = new System.Windows.Forms.Button();
+            this.buttonAlphaY = new System.Windows.Forms.Button();
+            this.buttonAlphaXplus = new System.Windows.Forms.Button();
+            this.buttonAlphaX = new System.Windows.Forms.Button();
+            this.buttonAlphaWplus = new System.Windows.Forms.Button();
+            this.buttonAlphaW = new System.Windows.Forms.Button();
+            this.buttonAlphaVplus = new System.Windows.Forms.Button();
+            this.buttonAlphaV = new System.Windows.Forms.Button();
+            this.buttonAlphaUplus = new System.Windows.Forms.Button();
+            this.buttonAlphaU = new System.Windows.Forms.Button();
+            this.buttonAlphaTplus = new System.Windows.Forms.Button();
+            this.buttonAlphaT = new System.Windows.Forms.Button();
+            this.buttonAlphaSplus = new System.Windows.Forms.Button();
+            this.buttonAlphaS = new System.Windows.Forms.Button();
+            this.buttonAlphaRplus = new System.Windows.Forms.Button();
+            this.buttonAlphaR = new System.Windows.Forms.Button();
+            this.buttonAlphaQplus = new System.Windows.Forms.Button();
+            this.buttonAlphaQ = new System.Windows.Forms.Button();
+            this.buttonAlphaPplus = new System.Windows.Forms.Button();
+            this.buttonAlphaP = new System.Windows.Forms.Button();
+            this.buttonAlphaOplus = new System.Windows.Forms.Button();
+            this.buttonAlphaO = new System.Windows.Forms.Button();
+            this.buttonAlphaNplus = new System.Windows.Forms.Button();
+            this.buttonAlphaN = new System.Windows.Forms.Button();
+            this.buttonAlphaMplus = new System.Windows.Forms.Button();
+            this.buttonAlphaM = new System.Windows.Forms.Button();
+            this.buttonAlphaLplus = new System.Windows.Forms.Button();
+            this.buttonAlphaL = new System.Windows.Forms.Button();
+            this.buttonAlphaKplus = new System.Windows.Forms.Button();
+            this.buttonAlphaK = new System.Windows.Forms.Button();
+            this.buttonAlphaJplus = new System.Windows.Forms.Button();
+            this.buttonAlphaJ = new System.Windows.Forms.Button();
+            this.buttonAlphaIplus = new System.Windows.Forms.Button();
+            this.buttonAlphaI = new System.Windows.Forms.Button();
+            this.buttonAlphaHplus = new System.Windows.Forms.Button();
+            this.buttonAlphaH = new System.Windows.Forms.Button();
+            this.buttonAlphaGplus = new System.Windows.Forms.Button();
+            this.buttonAlphaG = new System.Windows.Forms.Button();
             this.buttonAlphaFplus = new System.Windows.Forms.Button();
             this.buttonAlphaF = new System.Windows.Forms.Button();
             this.buttonAlphaEplus = new System.Windows.Forms.Button();
@@ -252,49 +227,11 @@
             this.pictureBoxThumb3 = new System.Windows.Forms.PictureBox();
             this.pictureBoxThumb2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxThumb1 = new System.Windows.Forms.PictureBox();
-            this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.buttonAlphaLplus = new System.Windows.Forms.Button();
-            this.buttonAlphaL = new System.Windows.Forms.Button();
-            this.buttonAlphaKplus = new System.Windows.Forms.Button();
-            this.buttonAlphaK = new System.Windows.Forms.Button();
-            this.buttonAlphaJplus = new System.Windows.Forms.Button();
-            this.buttonAlphaJ = new System.Windows.Forms.Button();
-            this.buttonAlphaIplus = new System.Windows.Forms.Button();
-            this.buttonAlphaI = new System.Windows.Forms.Button();
-            this.buttonAlphaHplus = new System.Windows.Forms.Button();
-            this.buttonAlphaH = new System.Windows.Forms.Button();
-            this.buttonAlphaGplus = new System.Windows.Forms.Button();
-            this.buttonAlphaG = new System.Windows.Forms.Button();
-            this.buttonAlphaMplus = new System.Windows.Forms.Button();
-            this.buttonAlphaM = new System.Windows.Forms.Button();
-            this.buttonAlphaZplus = new System.Windows.Forms.Button();
-            this.buttonAlphaZ = new System.Windows.Forms.Button();
-            this.buttonAlphaYplus = new System.Windows.Forms.Button();
-            this.buttonAlphaY = new System.Windows.Forms.Button();
-            this.buttonAlphaXplus = new System.Windows.Forms.Button();
-            this.buttonAlphaX = new System.Windows.Forms.Button();
-            this.buttonAlphaWplus = new System.Windows.Forms.Button();
-            this.buttonAlphaW = new System.Windows.Forms.Button();
-            this.buttonAlphaVplus = new System.Windows.Forms.Button();
-            this.buttonAlphaV = new System.Windows.Forms.Button();
-            this.buttonAlphaUplus = new System.Windows.Forms.Button();
-            this.buttonAlphaU = new System.Windows.Forms.Button();
-            this.buttonAlphaTplus = new System.Windows.Forms.Button();
-            this.buttonAlphaT = new System.Windows.Forms.Button();
-            this.buttonAlphaSplus = new System.Windows.Forms.Button();
-            this.buttonAlphaS = new System.Windows.Forms.Button();
-            this.buttonAlphaRplus = new System.Windows.Forms.Button();
-            this.buttonAlphaR = new System.Windows.Forms.Button();
-            this.buttonAlphaQplus = new System.Windows.Forms.Button();
-            this.buttonAlphaQ = new System.Windows.Forms.Button();
-            this.buttonAlphaPplus = new System.Windows.Forms.Button();
-            this.buttonAlphaP = new System.Windows.Forms.Button();
-            this.buttonAlphaOplus = new System.Windows.Forms.Button();
-            this.buttonAlphaO = new System.Windows.Forms.Button();
-            this.buttonAlphaNplus = new System.Windows.Forms.Button();
-            this.buttonAlphaN = new System.Windows.Forms.Button();
-            this.tablePlantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSet = new LabelMaker.DatabaseLabelsDataSet();
+            this.groupBoxPlantData = new System.Windows.Forms.GroupBox();
+            this.buttonVisibleOnly = new System.Windows.Forms.Button();
+            this.buttonAllEntries = new System.Windows.Forms.Button();
+            this.buttonHiddenOnly = new System.Windows.Forms.Button();
+            this.dataGridViewPlants = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genusCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -316,28 +253,79 @@
             this.hideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.buttonHiddenOnly = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonVisibleOnly = new System.Windows.Forms.Button();
-            this.tabControl2.SuspendLayout();
+            this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
+            this.dataGridViewMainQ = new System.Windows.Forms.DataGridView();
+            this.tableMainQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSetMainQueue = new LabelMaker.DatabaseLabelsDataSetMainQueue();
+            this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureFileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcodeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.potSizeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commonNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourFontDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourFontColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fontBoldDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.fontItalicDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colourBorderColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourBackgroundColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speciesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varietyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aGMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture3DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture4DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewColourQ = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.databaseLabelsDataSetColourQueue = new LabelMaker.DatabaseLabelsDataSetColourQueue();
+            this.tableColourQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
+            this.button2 = new System.Windows.Forms.Button();
+            this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableMainQueueBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQ)).BeginInit();
             this.tabPageColourQueue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColourQ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableColourQueueBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetColourQ)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetProfiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQueue)).BeginInit();
             this.tabPageLabelProfiles.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetProfiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
             this.tabPagePreview.SuspendLayout();
             this.tabPageDatabase.SuspendLayout();
@@ -351,13 +339,13 @@
             this.groupBoxDataNameDetails.SuspendLayout();
             this.tabPageManual.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBoxPlantData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
             this.groupBoxAlpha.SuspendLayout();
             this.groupBoxPrint.SuspendLayout();
             this.groupBoxImages.SuspendLayout();
@@ -365,28 +353,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb1)).BeginInit();
+            this.groupBoxPlantData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).BeginInit();
             this.tabControlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableMainQueueBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQueue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColourQ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetColourQueue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableColourQueueBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl2
+            // tabControlQueue
             // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControlQueue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl2.Controls.Add(this.tabPageMainQueue);
-            this.tabControl2.Controls.Add(this.tabPageColourQueue);
-            this.tabControl2.Location = new System.Drawing.Point(1097, 34);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(419, 809);
-            this.tabControl2.TabIndex = 0;
+            this.tabControlQueue.Controls.Add(this.tabPageMainQueue);
+            this.tabControlQueue.Controls.Add(this.tabPageColourQueue);
+            this.tabControlQueue.Location = new System.Drawing.Point(1097, 34);
+            this.tabControlQueue.Name = "tabControlQueue";
+            this.tabControlQueue.SelectedIndex = 0;
+            this.tabControlQueue.Size = new System.Drawing.Size(419, 809);
+            this.tabControlQueue.TabIndex = 0;
             // 
             // tabPageMainQueue
             // 
             this.tabPageMainQueue.BackColor = System.Drawing.Color.CadetBlue;
-            this.tabPageMainQueue.Controls.Add(this.button2);
-            this.tabPageMainQueue.Controls.Add(this.richTextBox1);
             this.tabPageMainQueue.Controls.Add(this.dataGridViewMainQ);
             this.tabPageMainQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageMainQueue.Name = "tabPageMainQueue";
@@ -396,435 +388,17 @@
             this.tabPageMainQueue.Text = "     Main Queue     ";
             this.tabPageMainQueue.Click += new System.EventHandler(this.tabPageMainQueue_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(47, 624);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(73, 264);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(316, 378);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
-            // dataGridViewMainQ
-            // 
-            this.dataGridViewMainQ.AutoGenerateColumns = false;
-            this.dataGridViewMainQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMainQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn1,
-            this.qtyDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn,
-            this.orderNoDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.commonNameDataGridViewTextBoxColumn,
-            this.pictureFileDataGridViewTextBoxColumn,
-            this.colourFontDataGridViewTextBoxColumn,
-            this.colourFontColourDataGridViewTextBoxColumn,
-            this.fontBoldDataGridViewCheckBoxColumn,
-            this.fontItalicDataGridViewCheckBoxColumn,
-            this.colourBorderColourDataGridViewTextBoxColumn,
-            this.colourBackgroundColourDataGridViewTextBoxColumn,
-            this.notesDataGridViewTextBoxColumn1,
-            this.genusDataGridViewTextBoxColumn1,
-            this.speciesDataGridViewTextBoxColumn1,
-            this.varietyDataGridViewTextBoxColumn1,
-            this.aGMDataGridViewCheckBoxColumn1,
-            this.picture1DataGridViewTextBoxColumn1,
-            this.picture2DataGridViewTextBoxColumn1,
-            this.picture3DataGridViewTextBoxColumn1,
-            this.picture4DataGridViewTextBoxColumn1,
-            this.barcodeDataGridViewTextBoxColumn1,
-            this.potSizeDataGridViewTextBoxColumn1});
-            this.dataGridViewMainQ.DataSource = this.tableMainQueueBindingSource;
-            this.dataGridViewMainQ.Location = new System.Drawing.Point(4, 4);
-            this.dataGridViewMainQ.Name = "dataGridViewMainQ";
-            this.dataGridViewMainQ.RowHeadersVisible = false;
-            this.dataGridViewMainQ.Size = new System.Drawing.Size(401, 773);
-            this.dataGridViewMainQ.TabIndex = 2;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.Width = 225;
-            // 
-            // qtyDataGridViewTextBoxColumn
-            // 
-            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "qty";
-            this.qtyDataGridViewTextBoxColumn.HeaderText = "qty";
-            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
-            this.qtyDataGridViewTextBoxColumn.Width = 30;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // customerDataGridViewTextBoxColumn
-            // 
-            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
-            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
-            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
-            // 
-            // orderNoDataGridViewTextBoxColumn
-            // 
-            this.orderNoDataGridViewTextBoxColumn.DataPropertyName = "OrderNo_";
-            this.orderNoDataGridViewTextBoxColumn.HeaderText = "OrderNo_";
-            this.orderNoDataGridViewTextBoxColumn.Name = "orderNoDataGridViewTextBoxColumn";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
-            // commonNameDataGridViewTextBoxColumn
-            // 
-            this.commonNameDataGridViewTextBoxColumn.DataPropertyName = "CommonName";
-            this.commonNameDataGridViewTextBoxColumn.HeaderText = "CommonName";
-            this.commonNameDataGridViewTextBoxColumn.Name = "commonNameDataGridViewTextBoxColumn";
-            // 
-            // pictureFileDataGridViewTextBoxColumn
-            // 
-            this.pictureFileDataGridViewTextBoxColumn.DataPropertyName = "PictureFile";
-            this.pictureFileDataGridViewTextBoxColumn.HeaderText = "PictureFile";
-            this.pictureFileDataGridViewTextBoxColumn.Name = "pictureFileDataGridViewTextBoxColumn";
-            // 
-            // colourFontDataGridViewTextBoxColumn
-            // 
-            this.colourFontDataGridViewTextBoxColumn.DataPropertyName = "ColourFont";
-            this.colourFontDataGridViewTextBoxColumn.HeaderText = "ColourFont";
-            this.colourFontDataGridViewTextBoxColumn.Name = "colourFontDataGridViewTextBoxColumn";
-            // 
-            // colourFontColourDataGridViewTextBoxColumn
-            // 
-            this.colourFontColourDataGridViewTextBoxColumn.DataPropertyName = "ColourFontColour";
-            this.colourFontColourDataGridViewTextBoxColumn.HeaderText = "ColourFontColour";
-            this.colourFontColourDataGridViewTextBoxColumn.Name = "colourFontColourDataGridViewTextBoxColumn";
-            // 
-            // fontBoldDataGridViewCheckBoxColumn
-            // 
-            this.fontBoldDataGridViewCheckBoxColumn.DataPropertyName = "FontBold";
-            this.fontBoldDataGridViewCheckBoxColumn.HeaderText = "FontBold";
-            this.fontBoldDataGridViewCheckBoxColumn.Name = "fontBoldDataGridViewCheckBoxColumn";
-            // 
-            // fontItalicDataGridViewCheckBoxColumn
-            // 
-            this.fontItalicDataGridViewCheckBoxColumn.DataPropertyName = "FontItalic";
-            this.fontItalicDataGridViewCheckBoxColumn.HeaderText = "FontItalic";
-            this.fontItalicDataGridViewCheckBoxColumn.Name = "fontItalicDataGridViewCheckBoxColumn";
-            // 
-            // colourBorderColourDataGridViewTextBoxColumn
-            // 
-            this.colourBorderColourDataGridViewTextBoxColumn.DataPropertyName = "ColourBorderColour";
-            this.colourBorderColourDataGridViewTextBoxColumn.HeaderText = "ColourBorderColour";
-            this.colourBorderColourDataGridViewTextBoxColumn.Name = "colourBorderColourDataGridViewTextBoxColumn";
-            // 
-            // colourBackgroundColourDataGridViewTextBoxColumn
-            // 
-            this.colourBackgroundColourDataGridViewTextBoxColumn.DataPropertyName = "ColourBackgroundColour";
-            this.colourBackgroundColourDataGridViewTextBoxColumn.HeaderText = "ColourBackgroundColour";
-            this.colourBackgroundColourDataGridViewTextBoxColumn.Name = "colourBackgroundColourDataGridViewTextBoxColumn";
-            // 
-            // notesDataGridViewTextBoxColumn1
-            // 
-            this.notesDataGridViewTextBoxColumn1.DataPropertyName = "notes";
-            this.notesDataGridViewTextBoxColumn1.HeaderText = "notes";
-            this.notesDataGridViewTextBoxColumn1.Name = "notesDataGridViewTextBoxColumn1";
-            // 
-            // genusDataGridViewTextBoxColumn1
-            // 
-            this.genusDataGridViewTextBoxColumn1.DataPropertyName = "Genus";
-            this.genusDataGridViewTextBoxColumn1.HeaderText = "Genus";
-            this.genusDataGridViewTextBoxColumn1.Name = "genusDataGridViewTextBoxColumn1";
-            // 
-            // speciesDataGridViewTextBoxColumn1
-            // 
-            this.speciesDataGridViewTextBoxColumn1.DataPropertyName = "Species";
-            this.speciesDataGridViewTextBoxColumn1.HeaderText = "Species";
-            this.speciesDataGridViewTextBoxColumn1.Name = "speciesDataGridViewTextBoxColumn1";
-            // 
-            // varietyDataGridViewTextBoxColumn1
-            // 
-            this.varietyDataGridViewTextBoxColumn1.DataPropertyName = "Variety";
-            this.varietyDataGridViewTextBoxColumn1.HeaderText = "Variety";
-            this.varietyDataGridViewTextBoxColumn1.Name = "varietyDataGridViewTextBoxColumn1";
-            // 
-            // aGMDataGridViewCheckBoxColumn1
-            // 
-            this.aGMDataGridViewCheckBoxColumn1.DataPropertyName = "AGM";
-            this.aGMDataGridViewCheckBoxColumn1.HeaderText = "AGM";
-            this.aGMDataGridViewCheckBoxColumn1.Name = "aGMDataGridViewCheckBoxColumn1";
-            // 
-            // picture1DataGridViewTextBoxColumn1
-            // 
-            this.picture1DataGridViewTextBoxColumn1.DataPropertyName = "Picture1";
-            this.picture1DataGridViewTextBoxColumn1.HeaderText = "Picture1";
-            this.picture1DataGridViewTextBoxColumn1.Name = "picture1DataGridViewTextBoxColumn1";
-            // 
-            // picture2DataGridViewTextBoxColumn1
-            // 
-            this.picture2DataGridViewTextBoxColumn1.DataPropertyName = "Picture2";
-            this.picture2DataGridViewTextBoxColumn1.HeaderText = "Picture2";
-            this.picture2DataGridViewTextBoxColumn1.Name = "picture2DataGridViewTextBoxColumn1";
-            // 
-            // picture3DataGridViewTextBoxColumn1
-            // 
-            this.picture3DataGridViewTextBoxColumn1.DataPropertyName = "Picture3";
-            this.picture3DataGridViewTextBoxColumn1.HeaderText = "Picture3";
-            this.picture3DataGridViewTextBoxColumn1.Name = "picture3DataGridViewTextBoxColumn1";
-            // 
-            // picture4DataGridViewTextBoxColumn1
-            // 
-            this.picture4DataGridViewTextBoxColumn1.DataPropertyName = "Picture4";
-            this.picture4DataGridViewTextBoxColumn1.HeaderText = "Picture4";
-            this.picture4DataGridViewTextBoxColumn1.Name = "picture4DataGridViewTextBoxColumn1";
-            // 
-            // barcodeDataGridViewTextBoxColumn1
-            // 
-            this.barcodeDataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn1.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn1.Name = "barcodeDataGridViewTextBoxColumn1";
-            // 
-            // potSizeDataGridViewTextBoxColumn1
-            // 
-            this.potSizeDataGridViewTextBoxColumn1.DataPropertyName = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn1.HeaderText = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn1.Name = "potSizeDataGridViewTextBoxColumn1";
-            // 
-            // tableMainQueueBindingSource
-            // 
-            this.tableMainQueueBindingSource.DataMember = "TableMainQueue";
-            this.tableMainQueueBindingSource.DataSource = this.databaseLabelsDataSetMainQ;
-            // 
-            // databaseLabelsDataSetMainQ
-            // 
-            this.databaseLabelsDataSetMainQ.DataSetName = "DatabaseLabelsDataSetMainQ";
-            this.databaseLabelsDataSetMainQ.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tabPageColourQueue
             // 
-            this.tabPageColourQueue.BackColor = System.Drawing.Color.Tomato;
+            this.tabPageColourQueue.BackColor = System.Drawing.Color.IndianRed;
             this.tabPageColourQueue.Controls.Add(this.dataGridViewColourQ);
             this.tabPageColourQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageColourQueue.Name = "tabPageColourQueue";
             this.tabPageColourQueue.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageColourQueue.Size = new System.Drawing.Size(411, 783);
             this.tabPageColourQueue.TabIndex = 1;
-            this.tabPageColourQueue.Text = "     ColourQueue     ";
+            this.tabPageColourQueue.Text = "     Colour Queue     ";
             this.tabPageColourQueue.Click += new System.EventHandler(this.tabPageColourQueue_Click);
-            // 
-            // dataGridViewColourQ
-            // 
-            this.dataGridViewColourQ.AutoGenerateColumns = false;
-            this.dataGridViewColourQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewColourQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewCheckBoxColumn2,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewCheckBoxColumn3,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22});
-            this.dataGridViewColourQ.DataSource = this.tableColourQueueBindingSource;
-            this.dataGridViewColourQ.Location = new System.Drawing.Point(4, 3);
-            this.dataGridViewColourQ.Name = "dataGridViewColourQ";
-            this.dataGridViewColourQ.RowHeadersVisible = false;
-            this.dataGridViewColourQ.Size = new System.Drawing.Size(401, 774);
-            this.dataGridViewColourQ.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 225;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "qty";
-            this.dataGridViewTextBoxColumn2.HeaderText = "qty";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 30;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Price";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Customer";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Customer";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "OrderNo_";
-            this.dataGridViewTextBoxColumn5.HeaderText = "OrderNo_";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Description";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "CommonName";
-            this.dataGridViewTextBoxColumn7.HeaderText = "CommonName";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "PictureFile";
-            this.dataGridViewTextBoxColumn8.HeaderText = "PictureFile";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "ColourFont";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ColourFont";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "ColourFontColour";
-            this.dataGridViewTextBoxColumn10.HeaderText = "ColourFontColour";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "FontBold";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "FontBold";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.DataPropertyName = "FontItalic";
-            this.dataGridViewCheckBoxColumn2.HeaderText = "FontItalic";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "ColourBorderColour";
-            this.dataGridViewTextBoxColumn11.HeaderText = "ColourBorderColour";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "ColourBackgroundColour";
-            this.dataGridViewTextBoxColumn12.HeaderText = "ColourBackgroundColour";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "notes";
-            this.dataGridViewTextBoxColumn13.HeaderText = "notes";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "Genus";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Genus";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "Species";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Species";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "Variety";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Variety";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            // 
-            // dataGridViewCheckBoxColumn3
-            // 
-            this.dataGridViewCheckBoxColumn3.DataPropertyName = "AGM";
-            this.dataGridViewCheckBoxColumn3.HeaderText = "AGM";
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Picture1";
-            this.dataGridViewTextBoxColumn17.HeaderText = "Picture1";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "Picture2";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Picture2";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "Picture3";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Picture3";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "Picture4";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Picture4";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "Barcode";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Barcode";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "PotSize";
-            this.dataGridViewTextBoxColumn22.HeaderText = "PotSize";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            // 
-            // tableColourQueueBindingSource
-            // 
-            this.tableColourQueueBindingSource.DataMember = "TableColourQueue";
-            this.tableColourQueueBindingSource.DataSource = this.databaseLabelsDataSetColourQ;
-            // 
-            // databaseLabelsDataSetColourQ
-            // 
-            this.databaseLabelsDataSetColourQ.DataSetName = "DatabaseLabelsDataSet3";
-            this.databaseLabelsDataSetColourQ.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // menuStrip1
             // 
@@ -858,53 +432,10 @@
             this.profilesToolStripMenuItem2.Text = "Profiles";
             this.profilesToolStripMenuItem2.Click += new System.EventHandler(this.profilesToolStripMenuItem2_Click);
             // 
-            // tableProfilesBindingSource1
-            // 
-            this.tableProfilesBindingSource1.DataMember = "TableProfiles";
-            this.tableProfilesBindingSource1.DataSource = this.tableProfilesbindingSource;
-            // 
-            // tableProfilesbindingSource
-            // 
-            this.tableProfilesbindingSource.DataSource = this.databaseLabelsDataSetProfiles;
-            this.tableProfilesbindingSource.Position = 0;
-            this.tableProfilesbindingSource.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged_1);
-            // 
-            // databaseLabelsDataSetProfiles
-            // 
-            this.databaseLabelsDataSetProfiles.DataSetName = "DatabaseLabelsDataSet1";
-            this.databaseLabelsDataSetProfiles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // fillByToolStripButton
             // 
             this.fillByToolStripButton.Name = "fillByToolStripButton";
             this.fillByToolStripButton.Size = new System.Drawing.Size(23, 23);
-            // 
-            // tableProfilesTableAdapter
-            // 
-            this.tableProfilesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.TableProfilesTableAdapter = this.tableProfilesTableAdapter;
-            this.tableAdapterManager1.UpdateOrder = LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tableMainQueueTableAdapter
-            // 
-            this.tableMainQueueTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableColourQueueTableAdapter
-            // 
-            this.tableColourQueueTableAdapter.ClearBeforeFill = true;
-            // 
-            // databaseLabelsDataSetMainQueue
-            // 
-            this.databaseLabelsDataSetMainQueue.DataSetName = "DatabaseLabelsDataSetMainQueue";
-            this.databaseLabelsDataSetMainQueue.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableMainQueueTableAdapter1
-            // 
-            this.tableMainQueueTableAdapter1.ClearBeforeFill = true;
             // 
             // tabPageLabelProfiles
             // 
@@ -983,12 +514,11 @@
             this.boldDataGridViewCheckBoxColumn,
             this.italicDataGridViewCheckBoxColumn,
             this.fontColourDataGridViewTextBoxColumn,
-            this.backgroundColourDataGridViewTextBoxColumn,
-            this.idDataGridViewTextBoxColumn1});
+            this.backgroundColourDataGridViewTextBoxColumn});
             this.dataGridView1ProfileView.DataSource = this.tableProfilesBindingSource1;
-            this.dataGridView1ProfileView.Location = new System.Drawing.Point(18, 16);
+            this.dataGridView1ProfileView.Location = new System.Drawing.Point(27, 28);
             this.dataGridView1ProfileView.Name = "dataGridView1ProfileView";
-            this.dataGridView1ProfileView.Size = new System.Drawing.Size(835, 198);
+            this.dataGridView1ProfileView.Size = new System.Drawing.Size(835, 188);
             this.dataGridView1ProfileView.TabIndex = 3;
             // 
             // nameDataGridViewTextBoxColumn
@@ -1033,11 +563,21 @@
             this.backgroundColourDataGridViewTextBoxColumn.HeaderText = "BackgroundColour";
             this.backgroundColourDataGridViewTextBoxColumn.Name = "backgroundColourDataGridViewTextBoxColumn";
             // 
-            // idDataGridViewTextBoxColumn1
+            // tableProfilesBindingSource1
             // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.tableProfilesBindingSource1.DataMember = "TableProfiles";
+            this.tableProfilesBindingSource1.DataSource = this.tableProfilesbindingSource;
+            // 
+            // tableProfilesbindingSource
+            // 
+            this.tableProfilesbindingSource.DataSource = this.databaseLabelsDataSetProfiles;
+            this.tableProfilesbindingSource.Position = 0;
+            this.tableProfilesbindingSource.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged_1);
+            // 
+            // databaseLabelsDataSetProfiles
+            // 
+            this.databaseLabelsDataSetProfiles.DataSetName = "DatabaseLabelsDataSet1";
+            this.databaseLabelsDataSetProfiles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewProfiles
             // 
@@ -1870,59 +1410,6 @@
             this.panelLabelPreview.TabIndex = 15;
             this.panelLabelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelPreview_Paint);
             // 
-            // groupBoxPlantData
-            // 
-            this.groupBoxPlantData.Controls.Add(this.buttonVisibleOnly);
-            this.groupBoxPlantData.Controls.Add(this.button1);
-            this.groupBoxPlantData.Controls.Add(this.buttonHiddenOnly);
-            this.groupBoxPlantData.Controls.Add(this.dataGridViewPlants);
-            this.groupBoxPlantData.Location = new System.Drawing.Point(390, 13);
-            this.groupBoxPlantData.Name = "groupBoxPlantData";
-            this.groupBoxPlantData.Size = new System.Drawing.Size(679, 753);
-            this.groupBoxPlantData.TabIndex = 14;
-            this.groupBoxPlantData.TabStop = false;
-            this.groupBoxPlantData.Text = "Plant Database";
-            this.groupBoxPlantData.Enter += new System.EventHandler(this.groupBoxPlantData_Enter);
-            // 
-            // dataGridViewPlants
-            // 
-            this.dataGridViewPlants.AllowUserToAddRows = false;
-            this.dataGridViewPlants.AllowUserToDeleteRows = false;
-            this.dataGridViewPlants.AllowUserToResizeColumns = false;
-            this.dataGridViewPlants.AllowUserToResizeRows = false;
-            this.dataGridViewPlants.AutoGenerateColumns = false;
-            this.dataGridViewPlants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPlants.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.genusCrossDataGridViewTextBoxColumn,
-            this.genusDataGridViewTextBoxColumn,
-            this.speciesCrossDataGridViewTextBoxColumn,
-            this.speciesDataGridViewTextBoxColumn,
-            this.varietyDataGridViewTextBoxColumn,
-            this.commonDataGridViewTextBoxColumn,
-            this.sKUDataGridViewTextBoxColumn,
-            this.descDataGridViewTextBoxColumn,
-            this.potSizeDataGridViewTextBoxColumn,
-            this.colourQueueDataGridViewCheckBoxColumn,
-            this.barcodeDataGridViewTextBoxColumn,
-            this.picture1DataGridViewTextBoxColumn,
-            this.picture2DataGridViewTextBoxColumn,
-            this.picture3DataGridViewTextBoxColumn,
-            this.picture4DataGridViewTextBoxColumn,
-            this.aGMDataGridViewCheckBoxColumn,
-            this.labelColourDataGridViewTextBoxColumn,
-            this.hideDataGridViewCheckBoxColumn,
-            this.notesDataGridViewTextBoxColumn,
-            this.labelStockDataGridViewCheckBoxColumn});
-            this.dataGridViewPlants.DataSource = this.tablePlantsBindingSource;
-            this.dataGridViewPlants.Location = new System.Drawing.Point(6, 20);
-            this.dataGridViewPlants.Name = "dataGridViewPlants";
-            this.dataGridViewPlants.ReadOnly = true;
-            this.dataGridViewPlants.RowHeadersVisible = false;
-            this.dataGridViewPlants.Size = new System.Drawing.Size(667, 698);
-            this.dataGridViewPlants.TabIndex = 0;
-            this.dataGridViewPlants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlants_CellContentClick);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.panel1);
@@ -2088,6 +1575,17 @@
             this.label3.Text = "label3";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // tablePlantsBindingSource
+            // 
+            this.tablePlantsBindingSource.DataMember = "TablePlants";
+            this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
+            this.tablePlantsBindingSource.CurrentChanged += new System.EventHandler(this.tablePlantsBindingSource_CurrentChanged_1);
+            // 
+            // databaseLabelsDataSet
+            // 
+            this.databaseLabelsDataSet.DataSetName = "DatabaseLabelsDataSet";
+            this.databaseLabelsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // richTextBoxDesc
             // 
             this.richTextBoxDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -2159,6 +1657,426 @@
             this.groupBoxAlpha.TabIndex = 10;
             this.groupBoxAlpha.TabStop = false;
             this.groupBoxAlpha.Enter += new System.EventHandler(this.groupBoxAlpha_Enter);
+            // 
+            // buttonAlphaZplus
+            // 
+            this.buttonAlphaZplus.Enabled = false;
+            this.buttonAlphaZplus.Location = new System.Drawing.Point(28, 613);
+            this.buttonAlphaZplus.Name = "buttonAlphaZplus";
+            this.buttonAlphaZplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaZplus.TabIndex = 51;
+            this.buttonAlphaZplus.Text = "+";
+            this.buttonAlphaZplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaZ
+            // 
+            this.buttonAlphaZ.Enabled = false;
+            this.buttonAlphaZ.Location = new System.Drawing.Point(3, 613);
+            this.buttonAlphaZ.Name = "buttonAlphaZ";
+            this.buttonAlphaZ.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaZ.TabIndex = 50;
+            this.buttonAlphaZ.Text = "Z";
+            this.buttonAlphaZ.UseVisualStyleBackColor = true;
+            this.buttonAlphaZ.Click += new System.EventHandler(this.buttonAlphaZ_Click);
+            // 
+            // buttonAlphaYplus
+            // 
+            this.buttonAlphaYplus.Enabled = false;
+            this.buttonAlphaYplus.Location = new System.Drawing.Point(28, 589);
+            this.buttonAlphaYplus.Name = "buttonAlphaYplus";
+            this.buttonAlphaYplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaYplus.TabIndex = 49;
+            this.buttonAlphaYplus.Text = "+";
+            this.buttonAlphaYplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaY
+            // 
+            this.buttonAlphaY.Enabled = false;
+            this.buttonAlphaY.Location = new System.Drawing.Point(3, 589);
+            this.buttonAlphaY.Name = "buttonAlphaY";
+            this.buttonAlphaY.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaY.TabIndex = 48;
+            this.buttonAlphaY.Text = "Y";
+            this.buttonAlphaY.UseVisualStyleBackColor = true;
+            this.buttonAlphaY.Click += new System.EventHandler(this.buttonAlphaY_Click);
+            // 
+            // buttonAlphaXplus
+            // 
+            this.buttonAlphaXplus.Enabled = false;
+            this.buttonAlphaXplus.Location = new System.Drawing.Point(28, 565);
+            this.buttonAlphaXplus.Name = "buttonAlphaXplus";
+            this.buttonAlphaXplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaXplus.TabIndex = 47;
+            this.buttonAlphaXplus.Text = "+";
+            this.buttonAlphaXplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaX
+            // 
+            this.buttonAlphaX.Enabled = false;
+            this.buttonAlphaX.Location = new System.Drawing.Point(3, 565);
+            this.buttonAlphaX.Name = "buttonAlphaX";
+            this.buttonAlphaX.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaX.TabIndex = 46;
+            this.buttonAlphaX.Text = "X";
+            this.buttonAlphaX.UseVisualStyleBackColor = true;
+            this.buttonAlphaX.Click += new System.EventHandler(this.buttonAlphaX_Click);
+            // 
+            // buttonAlphaWplus
+            // 
+            this.buttonAlphaWplus.Enabled = false;
+            this.buttonAlphaWplus.Location = new System.Drawing.Point(28, 541);
+            this.buttonAlphaWplus.Name = "buttonAlphaWplus";
+            this.buttonAlphaWplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaWplus.TabIndex = 45;
+            this.buttonAlphaWplus.Text = "+";
+            this.buttonAlphaWplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaW
+            // 
+            this.buttonAlphaW.Enabled = false;
+            this.buttonAlphaW.Location = new System.Drawing.Point(3, 541);
+            this.buttonAlphaW.Name = "buttonAlphaW";
+            this.buttonAlphaW.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaW.TabIndex = 44;
+            this.buttonAlphaW.Text = "W";
+            this.buttonAlphaW.UseVisualStyleBackColor = true;
+            this.buttonAlphaW.Click += new System.EventHandler(this.buttonAlphaW_Click);
+            // 
+            // buttonAlphaVplus
+            // 
+            this.buttonAlphaVplus.Enabled = false;
+            this.buttonAlphaVplus.Location = new System.Drawing.Point(28, 517);
+            this.buttonAlphaVplus.Name = "buttonAlphaVplus";
+            this.buttonAlphaVplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaVplus.TabIndex = 43;
+            this.buttonAlphaVplus.Text = "+";
+            this.buttonAlphaVplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaV
+            // 
+            this.buttonAlphaV.Enabled = false;
+            this.buttonAlphaV.Location = new System.Drawing.Point(3, 517);
+            this.buttonAlphaV.Name = "buttonAlphaV";
+            this.buttonAlphaV.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaV.TabIndex = 42;
+            this.buttonAlphaV.Text = "V";
+            this.buttonAlphaV.UseVisualStyleBackColor = true;
+            this.buttonAlphaV.Click += new System.EventHandler(this.buttonAlphaV_Click);
+            // 
+            // buttonAlphaUplus
+            // 
+            this.buttonAlphaUplus.Enabled = false;
+            this.buttonAlphaUplus.Location = new System.Drawing.Point(28, 493);
+            this.buttonAlphaUplus.Name = "buttonAlphaUplus";
+            this.buttonAlphaUplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaUplus.TabIndex = 41;
+            this.buttonAlphaUplus.Text = "+";
+            this.buttonAlphaUplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaU
+            // 
+            this.buttonAlphaU.Enabled = false;
+            this.buttonAlphaU.Location = new System.Drawing.Point(3, 493);
+            this.buttonAlphaU.Name = "buttonAlphaU";
+            this.buttonAlphaU.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaU.TabIndex = 40;
+            this.buttonAlphaU.Text = "U";
+            this.buttonAlphaU.UseVisualStyleBackColor = true;
+            this.buttonAlphaU.Click += new System.EventHandler(this.buttonAlphaU_Click);
+            // 
+            // buttonAlphaTplus
+            // 
+            this.buttonAlphaTplus.Enabled = false;
+            this.buttonAlphaTplus.Location = new System.Drawing.Point(28, 469);
+            this.buttonAlphaTplus.Name = "buttonAlphaTplus";
+            this.buttonAlphaTplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaTplus.TabIndex = 39;
+            this.buttonAlphaTplus.Text = "+";
+            this.buttonAlphaTplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaT
+            // 
+            this.buttonAlphaT.Enabled = false;
+            this.buttonAlphaT.Location = new System.Drawing.Point(3, 469);
+            this.buttonAlphaT.Name = "buttonAlphaT";
+            this.buttonAlphaT.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaT.TabIndex = 38;
+            this.buttonAlphaT.Text = "T";
+            this.buttonAlphaT.UseVisualStyleBackColor = true;
+            this.buttonAlphaT.Click += new System.EventHandler(this.buttonAlphaT_Click);
+            // 
+            // buttonAlphaSplus
+            // 
+            this.buttonAlphaSplus.Enabled = false;
+            this.buttonAlphaSplus.Location = new System.Drawing.Point(28, 445);
+            this.buttonAlphaSplus.Name = "buttonAlphaSplus";
+            this.buttonAlphaSplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaSplus.TabIndex = 37;
+            this.buttonAlphaSplus.Text = "+";
+            this.buttonAlphaSplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaS
+            // 
+            this.buttonAlphaS.Enabled = false;
+            this.buttonAlphaS.Location = new System.Drawing.Point(3, 445);
+            this.buttonAlphaS.Name = "buttonAlphaS";
+            this.buttonAlphaS.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaS.TabIndex = 36;
+            this.buttonAlphaS.Text = "S";
+            this.buttonAlphaS.UseVisualStyleBackColor = true;
+            this.buttonAlphaS.Click += new System.EventHandler(this.buttonAlphaS_Click);
+            // 
+            // buttonAlphaRplus
+            // 
+            this.buttonAlphaRplus.Enabled = false;
+            this.buttonAlphaRplus.Location = new System.Drawing.Point(28, 421);
+            this.buttonAlphaRplus.Name = "buttonAlphaRplus";
+            this.buttonAlphaRplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaRplus.TabIndex = 35;
+            this.buttonAlphaRplus.Text = "+";
+            this.buttonAlphaRplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaR
+            // 
+            this.buttonAlphaR.Enabled = false;
+            this.buttonAlphaR.Location = new System.Drawing.Point(3, 421);
+            this.buttonAlphaR.Name = "buttonAlphaR";
+            this.buttonAlphaR.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaR.TabIndex = 34;
+            this.buttonAlphaR.Text = "R";
+            this.buttonAlphaR.UseVisualStyleBackColor = true;
+            this.buttonAlphaR.Click += new System.EventHandler(this.buttonAlphaR_Click);
+            // 
+            // buttonAlphaQplus
+            // 
+            this.buttonAlphaQplus.Enabled = false;
+            this.buttonAlphaQplus.Location = new System.Drawing.Point(28, 397);
+            this.buttonAlphaQplus.Name = "buttonAlphaQplus";
+            this.buttonAlphaQplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaQplus.TabIndex = 33;
+            this.buttonAlphaQplus.Text = "+";
+            this.buttonAlphaQplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaQ
+            // 
+            this.buttonAlphaQ.Enabled = false;
+            this.buttonAlphaQ.Location = new System.Drawing.Point(3, 397);
+            this.buttonAlphaQ.Name = "buttonAlphaQ";
+            this.buttonAlphaQ.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaQ.TabIndex = 32;
+            this.buttonAlphaQ.Text = "Q";
+            this.buttonAlphaQ.UseVisualStyleBackColor = true;
+            this.buttonAlphaQ.Click += new System.EventHandler(this.buttonAlphaQ_Click);
+            // 
+            // buttonAlphaPplus
+            // 
+            this.buttonAlphaPplus.Enabled = false;
+            this.buttonAlphaPplus.Location = new System.Drawing.Point(28, 373);
+            this.buttonAlphaPplus.Name = "buttonAlphaPplus";
+            this.buttonAlphaPplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaPplus.TabIndex = 31;
+            this.buttonAlphaPplus.Text = "+";
+            this.buttonAlphaPplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaP
+            // 
+            this.buttonAlphaP.Enabled = false;
+            this.buttonAlphaP.Location = new System.Drawing.Point(3, 373);
+            this.buttonAlphaP.Name = "buttonAlphaP";
+            this.buttonAlphaP.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaP.TabIndex = 30;
+            this.buttonAlphaP.Text = "P";
+            this.buttonAlphaP.UseVisualStyleBackColor = true;
+            this.buttonAlphaP.Click += new System.EventHandler(this.buttonAlphaP_Click);
+            // 
+            // buttonAlphaOplus
+            // 
+            this.buttonAlphaOplus.Enabled = false;
+            this.buttonAlphaOplus.Location = new System.Drawing.Point(28, 349);
+            this.buttonAlphaOplus.Name = "buttonAlphaOplus";
+            this.buttonAlphaOplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaOplus.TabIndex = 29;
+            this.buttonAlphaOplus.Text = "+";
+            this.buttonAlphaOplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaO
+            // 
+            this.buttonAlphaO.Enabled = false;
+            this.buttonAlphaO.Location = new System.Drawing.Point(3, 349);
+            this.buttonAlphaO.Name = "buttonAlphaO";
+            this.buttonAlphaO.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaO.TabIndex = 28;
+            this.buttonAlphaO.Text = "O";
+            this.buttonAlphaO.UseVisualStyleBackColor = true;
+            this.buttonAlphaO.Click += new System.EventHandler(this.buttonAlphaO_Click);
+            // 
+            // buttonAlphaNplus
+            // 
+            this.buttonAlphaNplus.Enabled = false;
+            this.buttonAlphaNplus.Location = new System.Drawing.Point(28, 325);
+            this.buttonAlphaNplus.Name = "buttonAlphaNplus";
+            this.buttonAlphaNplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaNplus.TabIndex = 27;
+            this.buttonAlphaNplus.Text = "+";
+            this.buttonAlphaNplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaN
+            // 
+            this.buttonAlphaN.Enabled = false;
+            this.buttonAlphaN.Location = new System.Drawing.Point(3, 325);
+            this.buttonAlphaN.Name = "buttonAlphaN";
+            this.buttonAlphaN.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaN.TabIndex = 26;
+            this.buttonAlphaN.Text = "N";
+            this.buttonAlphaN.UseVisualStyleBackColor = true;
+            this.buttonAlphaN.Click += new System.EventHandler(this.buttonAlphaN_Click);
+            // 
+            // buttonAlphaMplus
+            // 
+            this.buttonAlphaMplus.Enabled = false;
+            this.buttonAlphaMplus.Location = new System.Drawing.Point(28, 301);
+            this.buttonAlphaMplus.Name = "buttonAlphaMplus";
+            this.buttonAlphaMplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaMplus.TabIndex = 25;
+            this.buttonAlphaMplus.Text = "+";
+            this.buttonAlphaMplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaM
+            // 
+            this.buttonAlphaM.Enabled = false;
+            this.buttonAlphaM.Location = new System.Drawing.Point(3, 301);
+            this.buttonAlphaM.Name = "buttonAlphaM";
+            this.buttonAlphaM.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaM.TabIndex = 24;
+            this.buttonAlphaM.Text = "M";
+            this.buttonAlphaM.UseVisualStyleBackColor = true;
+            this.buttonAlphaM.Click += new System.EventHandler(this.buttonAlphaM_Click);
+            // 
+            // buttonAlphaLplus
+            // 
+            this.buttonAlphaLplus.Enabled = false;
+            this.buttonAlphaLplus.Location = new System.Drawing.Point(28, 277);
+            this.buttonAlphaLplus.Name = "buttonAlphaLplus";
+            this.buttonAlphaLplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaLplus.TabIndex = 23;
+            this.buttonAlphaLplus.Text = "+";
+            this.buttonAlphaLplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaL
+            // 
+            this.buttonAlphaL.Enabled = false;
+            this.buttonAlphaL.Location = new System.Drawing.Point(3, 277);
+            this.buttonAlphaL.Name = "buttonAlphaL";
+            this.buttonAlphaL.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaL.TabIndex = 22;
+            this.buttonAlphaL.Text = "L";
+            this.buttonAlphaL.UseVisualStyleBackColor = true;
+            this.buttonAlphaL.Click += new System.EventHandler(this.buttonAlphaL_Click);
+            // 
+            // buttonAlphaKplus
+            // 
+            this.buttonAlphaKplus.Enabled = false;
+            this.buttonAlphaKplus.Location = new System.Drawing.Point(28, 253);
+            this.buttonAlphaKplus.Name = "buttonAlphaKplus";
+            this.buttonAlphaKplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaKplus.TabIndex = 21;
+            this.buttonAlphaKplus.Text = "+";
+            this.buttonAlphaKplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaK
+            // 
+            this.buttonAlphaK.Enabled = false;
+            this.buttonAlphaK.Location = new System.Drawing.Point(3, 253);
+            this.buttonAlphaK.Name = "buttonAlphaK";
+            this.buttonAlphaK.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaK.TabIndex = 20;
+            this.buttonAlphaK.Text = "K";
+            this.buttonAlphaK.UseVisualStyleBackColor = true;
+            this.buttonAlphaK.Click += new System.EventHandler(this.buttonAlphaK_Click);
+            // 
+            // buttonAlphaJplus
+            // 
+            this.buttonAlphaJplus.Enabled = false;
+            this.buttonAlphaJplus.Location = new System.Drawing.Point(28, 229);
+            this.buttonAlphaJplus.Name = "buttonAlphaJplus";
+            this.buttonAlphaJplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaJplus.TabIndex = 19;
+            this.buttonAlphaJplus.Text = "+";
+            this.buttonAlphaJplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaJ
+            // 
+            this.buttonAlphaJ.Enabled = false;
+            this.buttonAlphaJ.Location = new System.Drawing.Point(3, 229);
+            this.buttonAlphaJ.Name = "buttonAlphaJ";
+            this.buttonAlphaJ.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaJ.TabIndex = 18;
+            this.buttonAlphaJ.Text = "J";
+            this.buttonAlphaJ.UseVisualStyleBackColor = true;
+            this.buttonAlphaJ.Click += new System.EventHandler(this.buttonAlphaJ_Click);
+            // 
+            // buttonAlphaIplus
+            // 
+            this.buttonAlphaIplus.Enabled = false;
+            this.buttonAlphaIplus.Location = new System.Drawing.Point(28, 205);
+            this.buttonAlphaIplus.Name = "buttonAlphaIplus";
+            this.buttonAlphaIplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaIplus.TabIndex = 17;
+            this.buttonAlphaIplus.Text = "+";
+            this.buttonAlphaIplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaI
+            // 
+            this.buttonAlphaI.Enabled = false;
+            this.buttonAlphaI.Location = new System.Drawing.Point(3, 205);
+            this.buttonAlphaI.Name = "buttonAlphaI";
+            this.buttonAlphaI.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaI.TabIndex = 16;
+            this.buttonAlphaI.Text = "I";
+            this.buttonAlphaI.UseVisualStyleBackColor = true;
+            this.buttonAlphaI.Click += new System.EventHandler(this.buttonAlphaI_Click);
+            // 
+            // buttonAlphaHplus
+            // 
+            this.buttonAlphaHplus.Enabled = false;
+            this.buttonAlphaHplus.Location = new System.Drawing.Point(28, 181);
+            this.buttonAlphaHplus.Name = "buttonAlphaHplus";
+            this.buttonAlphaHplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaHplus.TabIndex = 15;
+            this.buttonAlphaHplus.Text = "+";
+            this.buttonAlphaHplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaH
+            // 
+            this.buttonAlphaH.Enabled = false;
+            this.buttonAlphaH.Location = new System.Drawing.Point(3, 181);
+            this.buttonAlphaH.Name = "buttonAlphaH";
+            this.buttonAlphaH.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaH.TabIndex = 14;
+            this.buttonAlphaH.Text = "H";
+            this.buttonAlphaH.UseVisualStyleBackColor = true;
+            this.buttonAlphaH.Click += new System.EventHandler(this.buttonAlphaH_Click);
+            // 
+            // buttonAlphaGplus
+            // 
+            this.buttonAlphaGplus.Enabled = false;
+            this.buttonAlphaGplus.Location = new System.Drawing.Point(28, 157);
+            this.buttonAlphaGplus.Name = "buttonAlphaGplus";
+            this.buttonAlphaGplus.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaGplus.TabIndex = 13;
+            this.buttonAlphaGplus.Text = "+";
+            this.buttonAlphaGplus.UseVisualStyleBackColor = true;
+            // 
+            // buttonAlphaG
+            // 
+            this.buttonAlphaG.Enabled = false;
+            this.buttonAlphaG.Location = new System.Drawing.Point(3, 157);
+            this.buttonAlphaG.Name = "buttonAlphaG";
+            this.buttonAlphaG.Size = new System.Drawing.Size(22, 21);
+            this.buttonAlphaG.TabIndex = 12;
+            this.buttonAlphaG.Text = "G";
+            this.buttonAlphaG.UseVisualStyleBackColor = true;
+            this.buttonAlphaG.Click += new System.EventHandler(this.buttonAlphaG_Click);
             // 
             // buttonAlphaFplus
             // 
@@ -2505,453 +2423,90 @@
             this.pictureBoxThumb1.TabIndex = 0;
             this.pictureBoxThumb1.TabStop = false;
             // 
-            // tabControlMain
-            // 
-            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlMain.Controls.Add(this.tabPageManual);
-            this.tabControlMain.Controls.Add(this.tabPageDatabase);
-            this.tabControlMain.Controls.Add(this.tabPagePreview);
-            this.tabControlMain.Controls.Add(this.tabPageAuto);
-            this.tabControlMain.Controls.Add(this.tabPageLabelProfiles);
-            this.tabControlMain.Location = new System.Drawing.Point(12, 34);
-            this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1083, 809);
-            this.tabControlMain.TabIndex = 0;
-            this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
-            // 
-            // buttonAlphaLplus
-            // 
-            this.buttonAlphaLplus.Enabled = false;
-            this.buttonAlphaLplus.Location = new System.Drawing.Point(28, 277);
-            this.buttonAlphaLplus.Name = "buttonAlphaLplus";
-            this.buttonAlphaLplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaLplus.TabIndex = 23;
-            this.buttonAlphaLplus.Text = "+";
-            this.buttonAlphaLplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaL
-            // 
-            this.buttonAlphaL.Enabled = false;
-            this.buttonAlphaL.Location = new System.Drawing.Point(3, 277);
-            this.buttonAlphaL.Name = "buttonAlphaL";
-            this.buttonAlphaL.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaL.TabIndex = 22;
-            this.buttonAlphaL.Text = "L";
-            this.buttonAlphaL.UseVisualStyleBackColor = true;
-            this.buttonAlphaL.Click += new System.EventHandler(this.buttonAlphaL_Click);
-            // 
-            // buttonAlphaKplus
-            // 
-            this.buttonAlphaKplus.Enabled = false;
-            this.buttonAlphaKplus.Location = new System.Drawing.Point(28, 253);
-            this.buttonAlphaKplus.Name = "buttonAlphaKplus";
-            this.buttonAlphaKplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaKplus.TabIndex = 21;
-            this.buttonAlphaKplus.Text = "+";
-            this.buttonAlphaKplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaK
-            // 
-            this.buttonAlphaK.Enabled = false;
-            this.buttonAlphaK.Location = new System.Drawing.Point(3, 253);
-            this.buttonAlphaK.Name = "buttonAlphaK";
-            this.buttonAlphaK.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaK.TabIndex = 20;
-            this.buttonAlphaK.Text = "K";
-            this.buttonAlphaK.UseVisualStyleBackColor = true;
-            this.buttonAlphaK.Click += new System.EventHandler(this.buttonAlphaK_Click);
-            // 
-            // buttonAlphaJplus
-            // 
-            this.buttonAlphaJplus.Enabled = false;
-            this.buttonAlphaJplus.Location = new System.Drawing.Point(28, 229);
-            this.buttonAlphaJplus.Name = "buttonAlphaJplus";
-            this.buttonAlphaJplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaJplus.TabIndex = 19;
-            this.buttonAlphaJplus.Text = "+";
-            this.buttonAlphaJplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaJ
-            // 
-            this.buttonAlphaJ.Enabled = false;
-            this.buttonAlphaJ.Location = new System.Drawing.Point(3, 229);
-            this.buttonAlphaJ.Name = "buttonAlphaJ";
-            this.buttonAlphaJ.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaJ.TabIndex = 18;
-            this.buttonAlphaJ.Text = "J";
-            this.buttonAlphaJ.UseVisualStyleBackColor = true;
-            this.buttonAlphaJ.Click += new System.EventHandler(this.buttonAlphaJ_Click);
-            // 
-            // buttonAlphaIplus
-            // 
-            this.buttonAlphaIplus.Enabled = false;
-            this.buttonAlphaIplus.Location = new System.Drawing.Point(28, 205);
-            this.buttonAlphaIplus.Name = "buttonAlphaIplus";
-            this.buttonAlphaIplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaIplus.TabIndex = 17;
-            this.buttonAlphaIplus.Text = "+";
-            this.buttonAlphaIplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaI
-            // 
-            this.buttonAlphaI.Enabled = false;
-            this.buttonAlphaI.Location = new System.Drawing.Point(3, 205);
-            this.buttonAlphaI.Name = "buttonAlphaI";
-            this.buttonAlphaI.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaI.TabIndex = 16;
-            this.buttonAlphaI.Text = "I";
-            this.buttonAlphaI.UseVisualStyleBackColor = true;
-            this.buttonAlphaI.Click += new System.EventHandler(this.buttonAlphaI_Click);
-            // 
-            // buttonAlphaHplus
-            // 
-            this.buttonAlphaHplus.Enabled = false;
-            this.buttonAlphaHplus.Location = new System.Drawing.Point(28, 181);
-            this.buttonAlphaHplus.Name = "buttonAlphaHplus";
-            this.buttonAlphaHplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaHplus.TabIndex = 15;
-            this.buttonAlphaHplus.Text = "+";
-            this.buttonAlphaHplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaH
-            // 
-            this.buttonAlphaH.Enabled = false;
-            this.buttonAlphaH.Location = new System.Drawing.Point(3, 181);
-            this.buttonAlphaH.Name = "buttonAlphaH";
-            this.buttonAlphaH.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaH.TabIndex = 14;
-            this.buttonAlphaH.Text = "H";
-            this.buttonAlphaH.UseVisualStyleBackColor = true;
-            this.buttonAlphaH.Click += new System.EventHandler(this.buttonAlphaH_Click);
-            // 
-            // buttonAlphaGplus
-            // 
-            this.buttonAlphaGplus.Enabled = false;
-            this.buttonAlphaGplus.Location = new System.Drawing.Point(28, 157);
-            this.buttonAlphaGplus.Name = "buttonAlphaGplus";
-            this.buttonAlphaGplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaGplus.TabIndex = 13;
-            this.buttonAlphaGplus.Text = "+";
-            this.buttonAlphaGplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaG
-            // 
-            this.buttonAlphaG.Enabled = false;
-            this.buttonAlphaG.Location = new System.Drawing.Point(3, 157);
-            this.buttonAlphaG.Name = "buttonAlphaG";
-            this.buttonAlphaG.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaG.TabIndex = 12;
-            this.buttonAlphaG.Text = "G";
-            this.buttonAlphaG.UseVisualStyleBackColor = true;
-            this.buttonAlphaG.Click += new System.EventHandler(this.buttonAlphaG_Click);
-            // 
-            // buttonAlphaMplus
-            // 
-            this.buttonAlphaMplus.Enabled = false;
-            this.buttonAlphaMplus.Location = new System.Drawing.Point(28, 301);
-            this.buttonAlphaMplus.Name = "buttonAlphaMplus";
-            this.buttonAlphaMplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaMplus.TabIndex = 25;
-            this.buttonAlphaMplus.Text = "+";
-            this.buttonAlphaMplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaM
-            // 
-            this.buttonAlphaM.Enabled = false;
-            this.buttonAlphaM.Location = new System.Drawing.Point(3, 301);
-            this.buttonAlphaM.Name = "buttonAlphaM";
-            this.buttonAlphaM.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaM.TabIndex = 24;
-            this.buttonAlphaM.Text = "M";
-            this.buttonAlphaM.UseVisualStyleBackColor = true;
-            this.buttonAlphaM.Click += new System.EventHandler(this.buttonAlphaM_Click);
-            // 
-            // buttonAlphaZplus
-            // 
-            this.buttonAlphaZplus.Enabled = false;
-            this.buttonAlphaZplus.Location = new System.Drawing.Point(28, 613);
-            this.buttonAlphaZplus.Name = "buttonAlphaZplus";
-            this.buttonAlphaZplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaZplus.TabIndex = 51;
-            this.buttonAlphaZplus.Text = "+";
-            this.buttonAlphaZplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaZ
-            // 
-            this.buttonAlphaZ.Enabled = false;
-            this.buttonAlphaZ.Location = new System.Drawing.Point(3, 613);
-            this.buttonAlphaZ.Name = "buttonAlphaZ";
-            this.buttonAlphaZ.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaZ.TabIndex = 50;
-            this.buttonAlphaZ.Text = "Z";
-            this.buttonAlphaZ.UseVisualStyleBackColor = true;
-            this.buttonAlphaZ.Click += new System.EventHandler(this.buttonAlphaZ_Click);
-            // 
-            // buttonAlphaYplus
-            // 
-            this.buttonAlphaYplus.Enabled = false;
-            this.buttonAlphaYplus.Location = new System.Drawing.Point(28, 589);
-            this.buttonAlphaYplus.Name = "buttonAlphaYplus";
-            this.buttonAlphaYplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaYplus.TabIndex = 49;
-            this.buttonAlphaYplus.Text = "+";
-            this.buttonAlphaYplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaY
-            // 
-            this.buttonAlphaY.Enabled = false;
-            this.buttonAlphaY.Location = new System.Drawing.Point(3, 589);
-            this.buttonAlphaY.Name = "buttonAlphaY";
-            this.buttonAlphaY.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaY.TabIndex = 48;
-            this.buttonAlphaY.Text = "Y";
-            this.buttonAlphaY.UseVisualStyleBackColor = true;
-            this.buttonAlphaY.Click += new System.EventHandler(this.buttonAlphaY_Click);
-            // 
-            // buttonAlphaXplus
-            // 
-            this.buttonAlphaXplus.Enabled = false;
-            this.buttonAlphaXplus.Location = new System.Drawing.Point(28, 565);
-            this.buttonAlphaXplus.Name = "buttonAlphaXplus";
-            this.buttonAlphaXplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaXplus.TabIndex = 47;
-            this.buttonAlphaXplus.Text = "+";
-            this.buttonAlphaXplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaX
-            // 
-            this.buttonAlphaX.Enabled = false;
-            this.buttonAlphaX.Location = new System.Drawing.Point(3, 565);
-            this.buttonAlphaX.Name = "buttonAlphaX";
-            this.buttonAlphaX.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaX.TabIndex = 46;
-            this.buttonAlphaX.Text = "X";
-            this.buttonAlphaX.UseVisualStyleBackColor = true;
-            this.buttonAlphaX.Click += new System.EventHandler(this.buttonAlphaX_Click);
-            // 
-            // buttonAlphaWplus
-            // 
-            this.buttonAlphaWplus.Enabled = false;
-            this.buttonAlphaWplus.Location = new System.Drawing.Point(28, 541);
-            this.buttonAlphaWplus.Name = "buttonAlphaWplus";
-            this.buttonAlphaWplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaWplus.TabIndex = 45;
-            this.buttonAlphaWplus.Text = "+";
-            this.buttonAlphaWplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaW
-            // 
-            this.buttonAlphaW.Enabled = false;
-            this.buttonAlphaW.Location = new System.Drawing.Point(3, 541);
-            this.buttonAlphaW.Name = "buttonAlphaW";
-            this.buttonAlphaW.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaW.TabIndex = 44;
-            this.buttonAlphaW.Text = "W";
-            this.buttonAlphaW.UseVisualStyleBackColor = true;
-            this.buttonAlphaW.Click += new System.EventHandler(this.buttonAlphaW_Click);
-            // 
-            // buttonAlphaVplus
-            // 
-            this.buttonAlphaVplus.Enabled = false;
-            this.buttonAlphaVplus.Location = new System.Drawing.Point(28, 517);
-            this.buttonAlphaVplus.Name = "buttonAlphaVplus";
-            this.buttonAlphaVplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaVplus.TabIndex = 43;
-            this.buttonAlphaVplus.Text = "+";
-            this.buttonAlphaVplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaV
-            // 
-            this.buttonAlphaV.Enabled = false;
-            this.buttonAlphaV.Location = new System.Drawing.Point(3, 517);
-            this.buttonAlphaV.Name = "buttonAlphaV";
-            this.buttonAlphaV.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaV.TabIndex = 42;
-            this.buttonAlphaV.Text = "V";
-            this.buttonAlphaV.UseVisualStyleBackColor = true;
-            this.buttonAlphaV.Click += new System.EventHandler(this.buttonAlphaV_Click);
-            // 
-            // buttonAlphaUplus
-            // 
-            this.buttonAlphaUplus.Enabled = false;
-            this.buttonAlphaUplus.Location = new System.Drawing.Point(28, 493);
-            this.buttonAlphaUplus.Name = "buttonAlphaUplus";
-            this.buttonAlphaUplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaUplus.TabIndex = 41;
-            this.buttonAlphaUplus.Text = "+";
-            this.buttonAlphaUplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaU
-            // 
-            this.buttonAlphaU.Enabled = false;
-            this.buttonAlphaU.Location = new System.Drawing.Point(3, 493);
-            this.buttonAlphaU.Name = "buttonAlphaU";
-            this.buttonAlphaU.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaU.TabIndex = 40;
-            this.buttonAlphaU.Text = "U";
-            this.buttonAlphaU.UseVisualStyleBackColor = true;
-            this.buttonAlphaU.Click += new System.EventHandler(this.buttonAlphaU_Click);
-            // 
-            // buttonAlphaTplus
-            // 
-            this.buttonAlphaTplus.Enabled = false;
-            this.buttonAlphaTplus.Location = new System.Drawing.Point(28, 469);
-            this.buttonAlphaTplus.Name = "buttonAlphaTplus";
-            this.buttonAlphaTplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaTplus.TabIndex = 39;
-            this.buttonAlphaTplus.Text = "+";
-            this.buttonAlphaTplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaT
-            // 
-            this.buttonAlphaT.Enabled = false;
-            this.buttonAlphaT.Location = new System.Drawing.Point(3, 469);
-            this.buttonAlphaT.Name = "buttonAlphaT";
-            this.buttonAlphaT.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaT.TabIndex = 38;
-            this.buttonAlphaT.Text = "T";
-            this.buttonAlphaT.UseVisualStyleBackColor = true;
-            this.buttonAlphaT.Click += new System.EventHandler(this.buttonAlphaT_Click);
-            // 
-            // buttonAlphaSplus
-            // 
-            this.buttonAlphaSplus.Enabled = false;
-            this.buttonAlphaSplus.Location = new System.Drawing.Point(28, 445);
-            this.buttonAlphaSplus.Name = "buttonAlphaSplus";
-            this.buttonAlphaSplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaSplus.TabIndex = 37;
-            this.buttonAlphaSplus.Text = "+";
-            this.buttonAlphaSplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaS
-            // 
-            this.buttonAlphaS.Enabled = false;
-            this.buttonAlphaS.Location = new System.Drawing.Point(3, 445);
-            this.buttonAlphaS.Name = "buttonAlphaS";
-            this.buttonAlphaS.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaS.TabIndex = 36;
-            this.buttonAlphaS.Text = "S";
-            this.buttonAlphaS.UseVisualStyleBackColor = true;
-            this.buttonAlphaS.Click += new System.EventHandler(this.buttonAlphaS_Click);
-            // 
-            // buttonAlphaRplus
-            // 
-            this.buttonAlphaRplus.Enabled = false;
-            this.buttonAlphaRplus.Location = new System.Drawing.Point(28, 421);
-            this.buttonAlphaRplus.Name = "buttonAlphaRplus";
-            this.buttonAlphaRplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaRplus.TabIndex = 35;
-            this.buttonAlphaRplus.Text = "+";
-            this.buttonAlphaRplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaR
-            // 
-            this.buttonAlphaR.Enabled = false;
-            this.buttonAlphaR.Location = new System.Drawing.Point(3, 421);
-            this.buttonAlphaR.Name = "buttonAlphaR";
-            this.buttonAlphaR.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaR.TabIndex = 34;
-            this.buttonAlphaR.Text = "R";
-            this.buttonAlphaR.UseVisualStyleBackColor = true;
-            this.buttonAlphaR.Click += new System.EventHandler(this.buttonAlphaR_Click);
-            // 
-            // buttonAlphaQplus
-            // 
-            this.buttonAlphaQplus.Enabled = false;
-            this.buttonAlphaQplus.Location = new System.Drawing.Point(28, 397);
-            this.buttonAlphaQplus.Name = "buttonAlphaQplus";
-            this.buttonAlphaQplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaQplus.TabIndex = 33;
-            this.buttonAlphaQplus.Text = "+";
-            this.buttonAlphaQplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaQ
-            // 
-            this.buttonAlphaQ.Enabled = false;
-            this.buttonAlphaQ.Location = new System.Drawing.Point(3, 397);
-            this.buttonAlphaQ.Name = "buttonAlphaQ";
-            this.buttonAlphaQ.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaQ.TabIndex = 32;
-            this.buttonAlphaQ.Text = "Q";
-            this.buttonAlphaQ.UseVisualStyleBackColor = true;
-            this.buttonAlphaQ.Click += new System.EventHandler(this.buttonAlphaQ_Click);
-            // 
-            // buttonAlphaPplus
-            // 
-            this.buttonAlphaPplus.Enabled = false;
-            this.buttonAlphaPplus.Location = new System.Drawing.Point(28, 373);
-            this.buttonAlphaPplus.Name = "buttonAlphaPplus";
-            this.buttonAlphaPplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaPplus.TabIndex = 31;
-            this.buttonAlphaPplus.Text = "+";
-            this.buttonAlphaPplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaP
-            // 
-            this.buttonAlphaP.Enabled = false;
-            this.buttonAlphaP.Location = new System.Drawing.Point(3, 373);
-            this.buttonAlphaP.Name = "buttonAlphaP";
-            this.buttonAlphaP.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaP.TabIndex = 30;
-            this.buttonAlphaP.Text = "P";
-            this.buttonAlphaP.UseVisualStyleBackColor = true;
-            this.buttonAlphaP.Click += new System.EventHandler(this.buttonAlphaP_Click);
-            // 
-            // buttonAlphaOplus
-            // 
-            this.buttonAlphaOplus.Enabled = false;
-            this.buttonAlphaOplus.Location = new System.Drawing.Point(28, 349);
-            this.buttonAlphaOplus.Name = "buttonAlphaOplus";
-            this.buttonAlphaOplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaOplus.TabIndex = 29;
-            this.buttonAlphaOplus.Text = "+";
-            this.buttonAlphaOplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaO
-            // 
-            this.buttonAlphaO.Enabled = false;
-            this.buttonAlphaO.Location = new System.Drawing.Point(3, 349);
-            this.buttonAlphaO.Name = "buttonAlphaO";
-            this.buttonAlphaO.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaO.TabIndex = 28;
-            this.buttonAlphaO.Text = "O";
-            this.buttonAlphaO.UseVisualStyleBackColor = true;
-            this.buttonAlphaO.Click += new System.EventHandler(this.buttonAlphaO_Click);
-            // 
-            // buttonAlphaNplus
-            // 
-            this.buttonAlphaNplus.Enabled = false;
-            this.buttonAlphaNplus.Location = new System.Drawing.Point(28, 325);
-            this.buttonAlphaNplus.Name = "buttonAlphaNplus";
-            this.buttonAlphaNplus.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaNplus.TabIndex = 27;
-            this.buttonAlphaNplus.Text = "+";
-            this.buttonAlphaNplus.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlphaN
-            // 
-            this.buttonAlphaN.Enabled = false;
-            this.buttonAlphaN.Location = new System.Drawing.Point(3, 325);
-            this.buttonAlphaN.Name = "buttonAlphaN";
-            this.buttonAlphaN.Size = new System.Drawing.Size(22, 21);
-            this.buttonAlphaN.TabIndex = 26;
-            this.buttonAlphaN.Text = "N";
-            this.buttonAlphaN.UseVisualStyleBackColor = true;
-            this.buttonAlphaN.Click += new System.EventHandler(this.buttonAlphaN_Click);
-            // 
-            // tablePlantsBindingSource
-            // 
-            this.tablePlantsBindingSource.DataMember = "TablePlants";
-            this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
-            this.tablePlantsBindingSource.CurrentChanged += new System.EventHandler(this.tablePlantsBindingSource_CurrentChanged_1);
-            // 
-            // databaseLabelsDataSet
-            // 
-            this.databaseLabelsDataSet.DataSetName = "DatabaseLabelsDataSet";
-            this.databaseLabelsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // groupBoxPlantData
+            // 
+            this.groupBoxPlantData.Controls.Add(this.button2);
+            this.groupBoxPlantData.Controls.Add(this.buttonVisibleOnly);
+            this.groupBoxPlantData.Controls.Add(this.buttonAllEntries);
+            this.groupBoxPlantData.Controls.Add(this.buttonHiddenOnly);
+            this.groupBoxPlantData.Controls.Add(this.dataGridViewPlants);
+            this.groupBoxPlantData.Location = new System.Drawing.Point(390, 13);
+            this.groupBoxPlantData.Name = "groupBoxPlantData";
+            this.groupBoxPlantData.Size = new System.Drawing.Size(679, 753);
+            this.groupBoxPlantData.TabIndex = 14;
+            this.groupBoxPlantData.TabStop = false;
+            this.groupBoxPlantData.Text = "Plant Database";
+            this.groupBoxPlantData.Enter += new System.EventHandler(this.groupBoxPlantData_Enter);
+            // 
+            // buttonVisibleOnly
+            // 
+            this.buttonVisibleOnly.BackColor = System.Drawing.Color.YellowGreen;
+            this.buttonVisibleOnly.Location = new System.Drawing.Point(141, 724);
+            this.buttonVisibleOnly.Name = "buttonVisibleOnly";
+            this.buttonVisibleOnly.Size = new System.Drawing.Size(129, 23);
+            this.buttonVisibleOnly.TabIndex = 3;
+            this.buttonVisibleOnly.Text = "Visible Entries Only";
+            this.buttonVisibleOnly.UseVisualStyleBackColor = false;
+            this.buttonVisibleOnly.Click += new System.EventHandler(this.buttonVisibleOnly_Click);
+            // 
+            // buttonAllEntries
+            // 
+            this.buttonAllEntries.Location = new System.Drawing.Point(6, 724);
+            this.buttonAllEntries.Name = "buttonAllEntries";
+            this.buttonAllEntries.Size = new System.Drawing.Size(129, 23);
+            this.buttonAllEntries.TabIndex = 2;
+            this.buttonAllEntries.Text = "All Entries";
+            this.buttonAllEntries.UseVisualStyleBackColor = true;
+            this.buttonAllEntries.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // buttonHiddenOnly
+            // 
+            this.buttonHiddenOnly.Location = new System.Drawing.Point(276, 724);
+            this.buttonHiddenOnly.Name = "buttonHiddenOnly";
+            this.buttonHiddenOnly.Size = new System.Drawing.Size(129, 23);
+            this.buttonHiddenOnly.TabIndex = 1;
+            this.buttonHiddenOnly.Text = "Hidden Entries Only";
+            this.buttonHiddenOnly.UseVisualStyleBackColor = true;
+            this.buttonHiddenOnly.Click += new System.EventHandler(this.buttonHiddenOnly_Click);
+            // 
+            // dataGridViewPlants
+            // 
+            this.dataGridViewPlants.AllowUserToAddRows = false;
+            this.dataGridViewPlants.AllowUserToDeleteRows = false;
+            this.dataGridViewPlants.AllowUserToResizeColumns = false;
+            this.dataGridViewPlants.AllowUserToResizeRows = false;
+            this.dataGridViewPlants.AutoGenerateColumns = false;
+            this.dataGridViewPlants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPlants.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.genusCrossDataGridViewTextBoxColumn,
+            this.genusDataGridViewTextBoxColumn,
+            this.speciesCrossDataGridViewTextBoxColumn,
+            this.speciesDataGridViewTextBoxColumn,
+            this.varietyDataGridViewTextBoxColumn,
+            this.commonDataGridViewTextBoxColumn,
+            this.sKUDataGridViewTextBoxColumn,
+            this.descDataGridViewTextBoxColumn,
+            this.potSizeDataGridViewTextBoxColumn,
+            this.colourQueueDataGridViewCheckBoxColumn,
+            this.barcodeDataGridViewTextBoxColumn,
+            this.picture1DataGridViewTextBoxColumn,
+            this.picture2DataGridViewTextBoxColumn,
+            this.picture3DataGridViewTextBoxColumn,
+            this.picture4DataGridViewTextBoxColumn,
+            this.aGMDataGridViewCheckBoxColumn,
+            this.labelColourDataGridViewTextBoxColumn,
+            this.hideDataGridViewCheckBoxColumn,
+            this.notesDataGridViewTextBoxColumn,
+            this.labelStockDataGridViewCheckBoxColumn});
+            this.dataGridViewPlants.DataSource = this.tablePlantsBindingSource;
+            this.dataGridViewPlants.Location = new System.Drawing.Point(6, 20);
+            this.dataGridViewPlants.Name = "dataGridViewPlants";
+            this.dataGridViewPlants.ReadOnly = true;
+            this.dataGridViewPlants.RowHeadersVisible = false;
+            this.dataGridViewPlants.Size = new System.Drawing.Size(667, 698);
+            this.dataGridViewPlants.TabIndex = 0;
+            this.dataGridViewPlants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlants_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -3100,39 +2655,450 @@
             this.labelStockDataGridViewCheckBoxColumn.Name = "labelStockDataGridViewCheckBoxColumn";
             this.labelStockDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
+            // tabControlMain
+            // 
+            this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlMain.Controls.Add(this.tabPageManual);
+            this.tabControlMain.Controls.Add(this.tabPageDatabase);
+            this.tabControlMain.Controls.Add(this.tabPagePreview);
+            this.tabControlMain.Controls.Add(this.tabPageAuto);
+            this.tabControlMain.Controls.Add(this.tabPageLabelProfiles);
+            this.tabControlMain.Location = new System.Drawing.Point(12, 34);
+            this.tabControlMain.Name = "tabControlMain";
+            this.tabControlMain.SelectedIndex = 0;
+            this.tabControlMain.Size = new System.Drawing.Size(1083, 809);
+            this.tabControlMain.TabIndex = 0;
+            this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
+            // 
             // tablePlantsTableAdapter
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
             // 
-            // buttonHiddenOnly
+            // tableProfilesTableAdapter
             // 
-            this.buttonHiddenOnly.Location = new System.Drawing.Point(276, 724);
-            this.buttonHiddenOnly.Name = "buttonHiddenOnly";
-            this.buttonHiddenOnly.Size = new System.Drawing.Size(129, 23);
-            this.buttonHiddenOnly.TabIndex = 1;
-            this.buttonHiddenOnly.Text = "Hidden Entries Only";
-            this.buttonHiddenOnly.UseVisualStyleBackColor = true;
-            this.buttonHiddenOnly.Click += new System.EventHandler(this.buttonHiddenOnly_Click);
+            this.tableProfilesTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
+            // dataGridViewMainQ
             // 
-            this.button1.Location = new System.Drawing.Point(6, 724);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "All Entries";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.dataGridViewMainQ.AutoGenerateColumns = false;
+            this.dataGridViewMainQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMainQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn1,
+            this.qtyDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.customerDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.pictureFileDataGridViewTextBoxColumn,
+            this.barcodeDataGridViewTextBoxColumn1,
+            this.potSizeDataGridViewTextBoxColumn1,
+            this.commonNameDataGridViewTextBoxColumn,
+            this.colourFontDataGridViewTextBoxColumn,
+            this.colourFontColourDataGridViewTextBoxColumn,
+            this.fontBoldDataGridViewCheckBoxColumn,
+            this.fontItalicDataGridViewCheckBoxColumn,
+            this.colourBorderColourDataGridViewTextBoxColumn,
+            this.colourBackgroundColourDataGridViewTextBoxColumn,
+            this.notesDataGridViewTextBoxColumn1,
+            this.genusDataGridViewTextBoxColumn1,
+            this.speciesDataGridViewTextBoxColumn1,
+            this.varietyDataGridViewTextBoxColumn1,
+            this.aGMDataGridViewTextBoxColumn,
+            this.picture1DataGridViewTextBoxColumn1,
+            this.picture2DataGridViewTextBoxColumn1,
+            this.picture3DataGridViewTextBoxColumn1,
+            this.picture4DataGridViewTextBoxColumn1,
+            this.orderNoDataGridViewTextBoxColumn});
+            this.dataGridViewMainQ.DataSource = this.tableMainQueueBindingSource;
+            this.dataGridViewMainQ.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewMainQ.Name = "dataGridViewMainQ";
+            this.dataGridViewMainQ.RowHeadersVisible = false;
+            this.dataGridViewMainQ.Size = new System.Drawing.Size(397, 771);
+            this.dataGridViewMainQ.TabIndex = 4;
+            this.dataGridViewMainQ.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMainQ_CellContentClick);
             // 
-            // buttonVisibleOnly
+            // tableMainQueueBindingSource
             // 
-            this.buttonVisibleOnly.Location = new System.Drawing.Point(141, 724);
-            this.buttonVisibleOnly.Name = "buttonVisibleOnly";
-            this.buttonVisibleOnly.Size = new System.Drawing.Size(129, 23);
-            this.buttonVisibleOnly.TabIndex = 3;
-            this.buttonVisibleOnly.Text = "Visible Entries Only";
-            this.buttonVisibleOnly.UseVisualStyleBackColor = true;
-            this.buttonVisibleOnly.Click += new System.EventHandler(this.buttonVisibleOnly_Click);
+            this.tableMainQueueBindingSource.DataMember = "TableMainQueue";
+            this.tableMainQueueBindingSource.DataSource = this.databaseLabelsDataSetMainQueue;
+            // 
+            // databaseLabelsDataSetMainQueue
+            // 
+            this.databaseLabelsDataSetMainQueue.DataSetName = "DatabaseLabelsDataSetMainQueue";
+            this.databaseLabelsDataSetMainQueue.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableMainQueueTableAdapter
+            // 
+            this.tableMainQueueTableAdapter.ClearBeforeFill = true;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.Width = 30;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // customerDataGridViewTextBoxColumn
+            // 
+            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
+            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
+            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
+            // pictureFileDataGridViewTextBoxColumn
+            // 
+            this.pictureFileDataGridViewTextBoxColumn.DataPropertyName = "PictureFile";
+            this.pictureFileDataGridViewTextBoxColumn.HeaderText = "PictureFile";
+            this.pictureFileDataGridViewTextBoxColumn.Name = "pictureFileDataGridViewTextBoxColumn";
+            // 
+            // barcodeDataGridViewTextBoxColumn1
+            // 
+            this.barcodeDataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn1.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn1.Name = "barcodeDataGridViewTextBoxColumn1";
+            // 
+            // potSizeDataGridViewTextBoxColumn1
+            // 
+            this.potSizeDataGridViewTextBoxColumn1.DataPropertyName = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn1.HeaderText = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn1.Name = "potSizeDataGridViewTextBoxColumn1";
+            // 
+            // commonNameDataGridViewTextBoxColumn
+            // 
+            this.commonNameDataGridViewTextBoxColumn.DataPropertyName = "CommonName";
+            this.commonNameDataGridViewTextBoxColumn.HeaderText = "CommonName";
+            this.commonNameDataGridViewTextBoxColumn.Name = "commonNameDataGridViewTextBoxColumn";
+            // 
+            // colourFontDataGridViewTextBoxColumn
+            // 
+            this.colourFontDataGridViewTextBoxColumn.DataPropertyName = "ColourFont";
+            this.colourFontDataGridViewTextBoxColumn.HeaderText = "ColourFont";
+            this.colourFontDataGridViewTextBoxColumn.Name = "colourFontDataGridViewTextBoxColumn";
+            // 
+            // colourFontColourDataGridViewTextBoxColumn
+            // 
+            this.colourFontColourDataGridViewTextBoxColumn.DataPropertyName = "ColourFontColour";
+            this.colourFontColourDataGridViewTextBoxColumn.HeaderText = "ColourFontColour";
+            this.colourFontColourDataGridViewTextBoxColumn.Name = "colourFontColourDataGridViewTextBoxColumn";
+            // 
+            // fontBoldDataGridViewCheckBoxColumn
+            // 
+            this.fontBoldDataGridViewCheckBoxColumn.DataPropertyName = "FontBold";
+            this.fontBoldDataGridViewCheckBoxColumn.HeaderText = "FontBold";
+            this.fontBoldDataGridViewCheckBoxColumn.Name = "fontBoldDataGridViewCheckBoxColumn";
+            // 
+            // fontItalicDataGridViewCheckBoxColumn
+            // 
+            this.fontItalicDataGridViewCheckBoxColumn.DataPropertyName = "FontItalic";
+            this.fontItalicDataGridViewCheckBoxColumn.HeaderText = "FontItalic";
+            this.fontItalicDataGridViewCheckBoxColumn.Name = "fontItalicDataGridViewCheckBoxColumn";
+            // 
+            // colourBorderColourDataGridViewTextBoxColumn
+            // 
+            this.colourBorderColourDataGridViewTextBoxColumn.DataPropertyName = "ColourBorderColour";
+            this.colourBorderColourDataGridViewTextBoxColumn.HeaderText = "ColourBorderColour";
+            this.colourBorderColourDataGridViewTextBoxColumn.Name = "colourBorderColourDataGridViewTextBoxColumn";
+            // 
+            // colourBackgroundColourDataGridViewTextBoxColumn
+            // 
+            this.colourBackgroundColourDataGridViewTextBoxColumn.DataPropertyName = "ColourBackgroundColour";
+            this.colourBackgroundColourDataGridViewTextBoxColumn.HeaderText = "ColourBackgroundColour";
+            this.colourBackgroundColourDataGridViewTextBoxColumn.Name = "colourBackgroundColourDataGridViewTextBoxColumn";
+            // 
+            // notesDataGridViewTextBoxColumn1
+            // 
+            this.notesDataGridViewTextBoxColumn1.DataPropertyName = "notes";
+            this.notesDataGridViewTextBoxColumn1.HeaderText = "notes";
+            this.notesDataGridViewTextBoxColumn1.Name = "notesDataGridViewTextBoxColumn1";
+            // 
+            // genusDataGridViewTextBoxColumn1
+            // 
+            this.genusDataGridViewTextBoxColumn1.DataPropertyName = "Genus";
+            this.genusDataGridViewTextBoxColumn1.HeaderText = "Genus";
+            this.genusDataGridViewTextBoxColumn1.Name = "genusDataGridViewTextBoxColumn1";
+            // 
+            // speciesDataGridViewTextBoxColumn1
+            // 
+            this.speciesDataGridViewTextBoxColumn1.DataPropertyName = "Species";
+            this.speciesDataGridViewTextBoxColumn1.HeaderText = "Species";
+            this.speciesDataGridViewTextBoxColumn1.Name = "speciesDataGridViewTextBoxColumn1";
+            // 
+            // varietyDataGridViewTextBoxColumn1
+            // 
+            this.varietyDataGridViewTextBoxColumn1.DataPropertyName = "Variety";
+            this.varietyDataGridViewTextBoxColumn1.HeaderText = "Variety";
+            this.varietyDataGridViewTextBoxColumn1.Name = "varietyDataGridViewTextBoxColumn1";
+            // 
+            // aGMDataGridViewTextBoxColumn
+            // 
+            this.aGMDataGridViewTextBoxColumn.DataPropertyName = "AGM";
+            this.aGMDataGridViewTextBoxColumn.HeaderText = "AGM";
+            this.aGMDataGridViewTextBoxColumn.Name = "aGMDataGridViewTextBoxColumn";
+            // 
+            // picture1DataGridViewTextBoxColumn1
+            // 
+            this.picture1DataGridViewTextBoxColumn1.DataPropertyName = "Picture1";
+            this.picture1DataGridViewTextBoxColumn1.HeaderText = "Picture1";
+            this.picture1DataGridViewTextBoxColumn1.Name = "picture1DataGridViewTextBoxColumn1";
+            // 
+            // picture2DataGridViewTextBoxColumn1
+            // 
+            this.picture2DataGridViewTextBoxColumn1.DataPropertyName = "Picture2";
+            this.picture2DataGridViewTextBoxColumn1.HeaderText = "Picture2";
+            this.picture2DataGridViewTextBoxColumn1.Name = "picture2DataGridViewTextBoxColumn1";
+            // 
+            // picture3DataGridViewTextBoxColumn1
+            // 
+            this.picture3DataGridViewTextBoxColumn1.DataPropertyName = "Picture3";
+            this.picture3DataGridViewTextBoxColumn1.HeaderText = "Picture3";
+            this.picture3DataGridViewTextBoxColumn1.Name = "picture3DataGridViewTextBoxColumn1";
+            // 
+            // picture4DataGridViewTextBoxColumn1
+            // 
+            this.picture4DataGridViewTextBoxColumn1.DataPropertyName = "Picture4";
+            this.picture4DataGridViewTextBoxColumn1.HeaderText = "Picture4";
+            this.picture4DataGridViewTextBoxColumn1.Name = "picture4DataGridViewTextBoxColumn1";
+            // 
+            // orderNoDataGridViewTextBoxColumn
+            // 
+            this.orderNoDataGridViewTextBoxColumn.DataPropertyName = "OrderNo";
+            this.orderNoDataGridViewTextBoxColumn.HeaderText = "OrderNo";
+            this.orderNoDataGridViewTextBoxColumn.Name = "orderNoDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewColourQ
+            // 
+            this.dataGridViewColourQ.AutoGenerateColumns = false;
+            this.dataGridViewColourQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewColourQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewCheckBoxColumn2,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn22,
+            this.dataGridViewTextBoxColumn23});
+            this.dataGridViewColourQ.DataSource = this.tableColourQueueBindingSource;
+            this.dataGridViewColourQ.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewColourQ.Name = "dataGridViewColourQ";
+            this.dataGridViewColourQ.RowHeadersVisible = false;
+            this.dataGridViewColourQ.Size = new System.Drawing.Size(397, 771);
+            this.dataGridViewColourQ.TabIndex = 5;
+            this.dataGridViewColourQ.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "qty";
+            this.dataGridViewTextBoxColumn2.HeaderText = "qty";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Price";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Customer";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Customer";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Description";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "PictureFile";
+            this.dataGridViewTextBoxColumn6.HeaderText = "PictureFile";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Barcode";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Barcode";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "PotSize";
+            this.dataGridViewTextBoxColumn8.HeaderText = "PotSize";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "CommonName";
+            this.dataGridViewTextBoxColumn9.HeaderText = "CommonName";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "ColourFont";
+            this.dataGridViewTextBoxColumn10.HeaderText = "ColourFont";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "ColourFontColour";
+            this.dataGridViewTextBoxColumn11.HeaderText = "ColourFontColour";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "FontBold";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "FontBold";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.DataPropertyName = "FontItalic";
+            this.dataGridViewCheckBoxColumn2.HeaderText = "FontItalic";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "ColourBorderColour";
+            this.dataGridViewTextBoxColumn12.HeaderText = "ColourBorderColour";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "ColourBackgroundColour";
+            this.dataGridViewTextBoxColumn13.HeaderText = "ColourBackgroundColour";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "notes";
+            this.dataGridViewTextBoxColumn14.HeaderText = "notes";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Genus";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Genus";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Species";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Species";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Variety";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Variety";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "AGM";
+            this.dataGridViewTextBoxColumn18.HeaderText = "AGM";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Picture1";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Picture1";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Picture2";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Picture2";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "Picture3";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Picture3";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "Picture4";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Picture4";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "OrderNo";
+            this.dataGridViewTextBoxColumn23.HeaderText = "OrderNo";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            // 
+            // databaseLabelsDataSetColourQueue
+            // 
+            this.databaseLabelsDataSetColourQueue.DataSetName = "DatabaseLabelsDataSetColourQueue";
+            this.databaseLabelsDataSetColourQueue.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableColourQueueBindingSource
+            // 
+            this.tableColourQueueBindingSource.DataMember = "TableColourQueue";
+            this.tableColourQueueBindingSource.DataSource = this.databaseLabelsDataSetColourQueue;
+            // 
+            // tableColourQueueTableAdapter
+            // 
+            this.tableColourQueueTableAdapter.ClearBeforeFill = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(450, 720);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
             // formMain
             // 
@@ -3141,7 +3107,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1516, 852);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.tabControl2);
+            this.Controls.Add(this.tabControlQueue);
             this.Controls.Add(this.tabControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -3149,25 +3115,18 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LabelMaker";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl2.ResumeLayout(false);
+            this.tabControlQueue.ResumeLayout(false);
             this.tabPageMainQueue.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableMainQueueBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQ)).EndInit();
             this.tabPageColourQueue.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColourQ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableColourQueueBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetColourQ)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetProfiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQueue)).EndInit();
             this.tabPageLabelProfiles.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetProfiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).EndInit();
             this.tabPagePreview.ResumeLayout(false);
             this.tabPagePreview.PerformLayout();
@@ -3188,8 +3147,6 @@
             this.tabPageManual.ResumeLayout(false);
             this.tabPageManual.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBoxPlantData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
@@ -3197,6 +3154,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
             this.groupBoxAlpha.ResumeLayout(false);
             this.groupBoxPrint.ResumeLayout(false);
             this.groupBoxPrint.PerformLayout();
@@ -3206,16 +3165,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb1)).EndInit();
+            this.groupBoxPlantData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).EndInit();
             this.tabControlMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableMainQueueBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQueue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColourQ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetColourQueue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableColourQueueBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabControl tabControlQueue;
         private System.Windows.Forms.TabPage tabPageMainQueue;
         private System.Windows.Forms.TabPage tabPageColourQueue;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -3228,71 +3193,7 @@
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.BindingSource tableProfilesbindingSource;
         private DatabaseLabelsDataSet1 databaseLabelsDataSetProfiles;
-        private System.Windows.Forms.BindingSource tableProfilesBindingSource1;
         private DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button2;
-        private DatabaseLabelsDataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
-        private System.Windows.Forms.DataGridView dataGridViewMainQ;
-        private DatabaseLabelsDataSetMainQ databaseLabelsDataSetMainQ;
-        private System.Windows.Forms.BindingSource tableMainQueueBindingSource;
-        private DatabaseLabelsDataSetMainQTableAdapters.TableMainQueueTableAdapter tableMainQueueTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commonNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pictureFileDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn fontBoldDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn fontItalicDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourBorderColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourBackgroundColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genusDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn speciesDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn varietyDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn aGMDataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture1DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture2DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture3DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture4DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn potSizeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridView dataGridViewColourQ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private DatabaseLabelsDataSet3 databaseLabelsDataSetColourQ;
-        private System.Windows.Forms.BindingSource tableColourQueueBindingSource;
-        private DatabaseLabelsDataSet3TableAdapters.TableColourQueueTableAdapter tableColourQueueTableAdapter;
-        private DatabaseLabelsDataSetMainQueue databaseLabelsDataSetMainQueue;
-        private DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter tableMainQueueTableAdapter1;
         private System.Windows.Forms.TabPage tabPageLabelProfiles;
         private System.Windows.Forms.GroupBox groupBoxProfiles;
         private System.Windows.Forms.Panel panelProfilePlantPreview;
@@ -3300,14 +3201,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1ProfileView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn borderColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fontNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn boldDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn italicDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fontColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn backgroundColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridView dataGridViewProfiles;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonProfilesClose;
@@ -3504,7 +3397,74 @@
         private System.Windows.Forms.Button buttonAlphaN;
         private System.Windows.Forms.Button buttonHiddenOnly;
         private System.Windows.Forms.Button buttonVisibleOnly;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAllEntries;
+        private System.Windows.Forms.BindingSource tableProfilesBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn borderColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fontNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn boldDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn italicDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fontColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn backgroundColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridViewMainQ;
+        private DatabaseLabelsDataSetMainQueue databaseLabelsDataSetMainQueue;
+        private System.Windows.Forms.BindingSource tableMainQueueBindingSource;
+        private DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter tableMainQueueTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pictureFileDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn potSizeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commonNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn fontBoldDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn fontItalicDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourBorderColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourBackgroundColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genusDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn speciesDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn varietyDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aGMDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture1DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture2DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture3DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture4DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridViewColourQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private DatabaseLabelsDataSetColourQueue databaseLabelsDataSetColourQueue;
+        private System.Windows.Forms.BindingSource tableColourQueueBindingSource;
+        private DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter tableColourQueueTableAdapter;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -79,20 +79,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseLabelsDataSet2.Designer.cs">
+    <Compile Include="DatabaseLabelsDataSetColourQueue.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseLabelsDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseLabelsDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseLabelsDataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseLabelsDataSetMainQ.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseLabelsDataSetMainQ.xsd</DependentUpon>
+      <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
     </Compile>
     <Compile Include="DatabaseLabelsDataSetMainQueue.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -151,38 +141,16 @@
     <None Include="DatabaseLabelsDataSet1.xss">
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
     </None>
-    <None Include="DatabaseLabelsDataSet2.xsc">
-      <DependentUpon>DatabaseLabelsDataSet2.xsd</DependentUpon>
+    <None Include="DatabaseLabelsDataSetColourQueue.xsc">
+      <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
     </None>
-    <None Include="DatabaseLabelsDataSet2.xsd">
+    <None Include="DatabaseLabelsDataSetColourQueue.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseLabelsDataSet2.Designer.cs</LastGenOutput>
+      <LastGenOutput>DatabaseLabelsDataSetColourQueue.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DatabaseLabelsDataSet2.xss">
-      <DependentUpon>DatabaseLabelsDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DatabaseLabelsDataSet3.xsc">
-      <DependentUpon>DatabaseLabelsDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="DatabaseLabelsDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseLabelsDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DatabaseLabelsDataSet3.xss">
-      <DependentUpon>DatabaseLabelsDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="DatabaseLabelsDataSetMainQ.xsc">
-      <DependentUpon>DatabaseLabelsDataSetMainQ.xsd</DependentUpon>
-    </None>
-    <None Include="DatabaseLabelsDataSetMainQ.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseLabelsDataSetMainQ.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DatabaseLabelsDataSetMainQ.xss">
-      <DependentUpon>DatabaseLabelsDataSetMainQ.xsd</DependentUpon>
+    <None Include="DatabaseLabelsDataSetColourQueue.xss">
+      <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
     </None>
     <None Include="DatabaseLabelsDataSetMainQueue.xsc">
       <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>

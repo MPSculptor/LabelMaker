@@ -27,12 +27,10 @@ namespace LabelMaker
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
+            this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetMainQueue.TableMainQueue' table. You can move, or remove it, as needed.
-            this.tableMainQueueTableAdapter1.Fill(this.databaseLabelsDataSetMainQueue.TableMainQueue);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSet3.TableColourQueue' table. You can move, or remove it, as needed.
-            this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQ.TableColourQueue);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSetMainQ.TableMainQueue' table. You can move, or remove it, as needed.
-            this.tableMainQueueTableAdapter.Fill(this.databaseLabelsDataSetMainQ.TableMainQueue);
+            this.tableMainQueueTableAdapter.Fill(this.databaseLabelsDataSetMainQueue.TableMainQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet1.TableProfiles' table. You can move, or remove it, as needed.
             this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSetProfiles.TableProfiles);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
@@ -1292,9 +1290,8 @@ namespace LabelMaker
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            string[] queue = CollectQueueEntry();
-
-            addRowToMainQ();
+            
+           
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -1305,40 +1302,75 @@ namespace LabelMaker
         private void addRowToMainQ()
         {
             string[] queue = CollectQueueEntry();
-            richTextBox1.Lines = queue;
-            DataRow row = databaseLabelsDataSetMainQ.Tables[0].NewRow();
+            DataRow row = databaseLabelsDataSetMainQueue.Tables[0].NewRow();
 
-            row[0] = 1;
-
-            row[1] = queue[0];
+            //row["Id"] = "1";
+            row["Name"] = queue[0];
             int answer = 0;
             int.TryParse(queue[1], out answer);
-            row[2] = answer;
-            row[3] = queue[2];
-            row[4] = queue[3];
-            row[5] = queue[4];
-            row[6] = queue[5];
-            row[7] = queue[6];
-            row[8] = queue[7];
-            row[9] = queue[8];
-            row[10] = queue[9];
-            row[11] = queue[10];
-            row[12] = queue[11];
-            row[13] = queue[12];
-            row[14] = queue[13];
-            row[15] = queue[14];
-            row[16] = queue[15];
-            row[17] = queue[16];
-            row[18] = queue[17];
-            row[19] = queue[18];
-            row[20] = queue[19];
-            row[21] = queue[20];
-            row[22] = queue[21];
-            row[23] = queue[22];
-            row[24] = queue[23];
-            row[25] = queue[24];
+            row["qty"] = answer;
+            row["Price"] = queue[2];
+            row["PotSize"] = queue[3];
+            row["Customer"] = queue[4];
+            row["Barcode"] = queue[5];
+            row["Description"] = queue[6];
+            row["CommonName"] = queue[7];
+            row["PictureFile"] = queue[8];
+            row["ColourFont"] = queue[9];
+            row["ColourFontColour"] = queue[10];
+            row["FontBold"] = queue[11];
+            row["FontItalic"] = queue[12];
+            row["ColourBorderColour"] = queue[13];
+            row["ColourBackgroundColour"] = queue[14];
+            row["notes"] = queue[15];
+            row["Genus"] = queue[16];
+            row["Species"] = queue[17];
+            row["Variety"] = queue[18];
+            row["AGM"] = queue[19];
+            row["Picture1"] = queue[20];
+            row["Picture2"] = queue[21];
+            row["Picture3"] = queue[22];
+            row["Picture4"] = queue[23];
+            row["OrderNo"] = queue[24];
 
-            databaseLabelsDataSetMainQ.Tables[0].Rows.Add(row);
+            databaseLabelsDataSetMainQueue.Tables[0].Rows.Add(row);
+        }
+
+        private void addRowToColourQ()
+        {
+            string[] queue = CollectQueueEntry();
+            DataRow row = databaseLabelsDataSetColourQueue.Tables[0].NewRow();
+
+            //row["Id"] = "1";
+            row["Name"] = queue[0];
+            int answer = 0;
+            int.TryParse(queue[1], out answer);
+            row["qty"] = answer;
+            row["Price"] = queue[2];
+            row["PotSize"] = queue[3];
+            row["Customer"] = queue[4];
+            row["Barcode"] = queue[5];
+            row["Description"] = queue[6];
+            row["CommonName"] = queue[7];
+            row["PictureFile"] = queue[8];
+            row["ColourFont"] = queue[9];
+            row["ColourFontColour"] = queue[10];
+            row["FontBold"] = queue[11];
+            row["FontItalic"] = queue[12];
+            row["ColourBorderColour"] = queue[13];
+            row["ColourBackgroundColour"] = queue[14];
+            row["notes"] = queue[15];
+            row["Genus"] = queue[16];
+            row["Species"] = queue[17];
+            row["Variety"] = queue[18];
+            row["AGM"] = queue[19];
+            row["Picture1"] = queue[20];
+            row["Picture2"] = queue[21];
+            row["Picture3"] = queue[22];
+            row["Picture4"] = queue[23];
+            row["OrderNo"] = queue[24];
+
+            databaseLabelsDataSetColourQueue.Tables[0].Rows.Add(row);
         }
 
         private void tablePlantsBindingSource_CurrentChanged_1(object sender, EventArgs e)
@@ -1648,6 +1680,9 @@ namespace LabelMaker
             dataGridViewPlants.Refresh();
             indexNavigationButtons();
             updateMainDetails(0);
+            buttonHiddenOnly.BackColor = Color.YellowGreen;
+            buttonVisibleOnly.BackColor = Color.Transparent;
+            buttonAllEntries.BackColor = Color.Transparent;
         }
 
         private void buttonVisibleOnly_Click(object sender, EventArgs e)
@@ -1659,6 +1694,9 @@ namespace LabelMaker
             dataGridViewPlants.Refresh();
             indexNavigationButtons();
             updateMainDetails(0);
+            buttonHiddenOnly.BackColor = Color.Transparent;
+            buttonVisibleOnly.BackColor = Color.YellowGreen;
+            buttonAllEntries.BackColor = Color.Transparent;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -1670,6 +1708,40 @@ namespace LabelMaker
             dataGridViewPlants.Refresh();
             indexNavigationButtons();
             updateMainDetails(0);
+            buttonHiddenOnly.BackColor = Color.Transparent;
+            buttonVisibleOnly.BackColor = Color.Transparent;
+            buttonAllEntries.BackColor = Color.YellowGreen;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            string[] queue = CollectQueueEntry();
+
+            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+            {
+                addRowToColourQ();
+            }
+            else
+            {
+                addRowToMainQ();
+                if (buttonAddtoColourQueue.Text == "add Colour")
+                {
+                    if (checkBoxColourAdd.Checked == true)
+                    {
+                        addRowToColourQ();
+                    }
+                }
+            }
+        }
+
+        private void dataGridViewMainQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
