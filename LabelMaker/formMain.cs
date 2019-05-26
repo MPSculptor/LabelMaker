@@ -211,7 +211,7 @@ namespace LabelMaker
             int finalWidthInt = (int)finalWidth;
             int finalHeightInt = (int)finalHeight;
 
-            whereToNow whereToTwo = new whereToNow(queueData, labelData, defaultsString, finalWidthInt, finalHeightInt);
+            whereToNow whereToTwo = new whereToNow(queueData, labelData, defaultsString, finalWidthInt, finalHeightInt, "screen");
             whereToTwo.BackColor = Color.White;
 
             whereToTwo.Width = finalWidthInt;
@@ -570,6 +570,7 @@ namespace LabelMaker
 
         }
 
+#region *** tabControl Events ***
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -589,10 +590,23 @@ namespace LabelMaker
             {
                 addProfileButtons();
             }
+            if (tabControlMain.SelectedTab == tabPageQueueUtilities)
+            {
+                fillQueueUtilitiesTab();
+            }
 
         }
 
-        private void clearPanelLabel()
+        private void tabControlQueue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlMain.SelectedTab == tabPageQueueUtilities)
+            {
+                fillQueueUtilitiesTab();
+            }
+        }
+#endregion
+
+private void clearPanelLabel()
         {
             //Clear the panel
             foreach (Control ctrl in panelLabelPreview.Controls)
@@ -713,6 +727,56 @@ namespace LabelMaker
             {
                 ButtonData20.BackColor = Color.DarkSalmon;
             }
+        }
+
+        private void fillQueueUtilitiesTab()
+        {
+            
+            if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageMainQueue")
+            {
+                int indexOfRow = dataGridViewMainQ.CurrentRow.Index;
+                //Fill in Plant Name
+                for (int i = 1; i <= 25; i++)
+                {
+                    if (i != 13 && i !=12)
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        curText.Text = dataGridViewMainQ.Rows[indexOfRow].Cells[i-1].Value.ToString();
+                    }
+                }
+                swapTextBoxes(4, 8);
+                swapTextBoxes(8, 5);
+                swapTextBoxes(7, 8);
+                swapTextBoxes(6, 8);
+                swapTextBoxes(9, 8);
+            }
+            else
+            {
+                int indexOfRow = dataGridViewColourQ.CurrentRow.Index;
+                //Fill in Plant Name
+                for (int i = 1; i <= 25; i++)
+                {
+                    if (i != 13 && i != 12)
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        curText.Text = dataGridViewColourQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
+                    }
+                }
+                swapTextBoxes(4, 8);
+                swapTextBoxes(8, 5);
+                swapTextBoxes(7, 8);
+                swapTextBoxes(6, 8);
+                swapTextBoxes(9, 8);
+            }    
+        }
+
+        private void swapTextBoxes(int One, int Two)
+        {
+            TextBox curTextOne = (TextBox)panelQueueUtilities.Controls["textBoxQ" + One.ToString()];
+            TextBox curTextTwo = (TextBox)panelQueueUtilities.Controls["textBoxQ" + Two.ToString()];
+            String Swap = curTextOne.Text ;
+            curTextOne.Text = curTextTwo.Text;
+            curTextTwo.Text = Swap;
         }
 
         private void panelLabelTab_Paint(object sender, PaintEventArgs e)
@@ -1249,7 +1313,7 @@ namespace LabelMaker
             queueData[1] = textBoxQty.Text; // Qty
             if (String.IsNullOrEmpty(queueData[1])) { queueData[1] = "0"; }
             queueData[2] = formatPrice(textBoxPrice.Text); // price
-            if (String.IsNullOrEmpty(queueData[2])) { queueData[2] = "0"; }
+            //if (String.IsNullOrEmpty(queueData[2])) { queueData[2] = "0"; }
             queueData[3] = sendData[9];  //Potsize
             queueData[4] = textBoxCustomerName.Text; // Customer Name
             queueData[5] = sendData[11]; // Barcode
@@ -1289,8 +1353,8 @@ namespace LabelMaker
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            
-           
+
+
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -1456,12 +1520,12 @@ namespace LabelMaker
                 }
 
             }
-            
+
         }
 
         private void buttonAlphaA_Click(object sender, EventArgs e)
         {
-            int rowSeek = int.Parse (buttonAlphaA.Tag.ToString());
+            int rowSeek = int.Parse(buttonAlphaA.Tag.ToString());
             dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
             dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
             dataGridViewPlants.Refresh();
@@ -1744,19 +1808,19 @@ namespace LabelMaker
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridViewMainQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        } 
+        }
         private int addMainQueueTotal()
         {
             int count = 0;
             int Qvalue = 0;
 
-            for (int i = 0; i < (dataGridViewMainQ.RowCount-1); i++)
+            for (int i = 0; i < (dataGridViewMainQ.RowCount - 1); i++)
             {
                 Qvalue = int.Parse(dataGridViewMainQ.Rows[i].Cells[1].Value.ToString());
                 count = count + Qvalue;
@@ -1770,13 +1834,187 @@ namespace LabelMaker
             int count = 0;
             int Qvalue = 0;
 
-            for (int i = 0; i < (dataGridViewColourQ.RowCount-1); i++)
+            for (int i = 0; i < (dataGridViewColourQ.RowCount - 1); i++)
             {
                 Qvalue = int.Parse(dataGridViewColourQ.Rows[i].Cells[1].Value.ToString());
                 count = count + Qvalue;
             }
 
             return count;
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            printDialogMain.ShowDialog();
+            
+            // Determine the Queue and no. entries
+            int howMany = 0;
+            string whichQueue = "";
+            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+            {
+                whichQueue = "Colour";
+                howMany = dataGridViewColourQ.RowCount - 1;
+            }
+            else
+            {
+                whichQueue = "Main";
+                howMany = dataGridViewMainQ.RowCount - 1;
+            }
+
+            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+            //file with default settings
+            string name = whereFiles + "defaults.txt";
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+
+            //file with a sample label definition;
+            if (whichQueue == "Colour")
+            {
+                name = whereFiles + "LabelsColour.txt";
+            }
+            else
+            {
+                name = whereFiles + "LabelsText.txt";
+            }
+            string[] labelData = CreationUtilities.dataReader.readFile(name);
+
+                        
+            for (int i = 0; i < howMany; i++)
+            {
+                string[] queueData = collectQueueRow(i, whichQueue);
+
+                whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, 1090, 500, "print");
+                MessageBox.Show(queueData[0]);
+                printWhere.Dispose();            
+            }
+        }
+
+        
+
+        #region  QUEUE UTILITIES
+
+        private string[] collectQueueRow(int desiredRow, string whichQueue)
+        {
+            string[] queueEntry = new string[25];
+
+            //Take into account rearranged data grid
+            if (whichQueue == "Main")
+            {
+                queueEntry[0] = dataGridViewMainQ.Rows[desiredRow].Cells[0].Value.ToString();
+                queueEntry[1] = dataGridViewMainQ.Rows[desiredRow].Cells[1].Value.ToString();
+                queueEntry[2] = dataGridViewMainQ.Rows[desiredRow].Cells[2].Value.ToString();
+                queueEntry[3] = dataGridViewMainQ.Rows[desiredRow].Cells[7].Value.ToString();
+                queueEntry[4] = dataGridViewMainQ.Rows[desiredRow].Cells[3].Value.ToString();
+                queueEntry[5] = dataGridViewMainQ.Rows[desiredRow].Cells[6].Value.ToString();
+                queueEntry[6] = dataGridViewMainQ.Rows[desiredRow].Cells[4].Value.ToString();
+                queueEntry[7] = dataGridViewMainQ.Rows[desiredRow].Cells[8].Value.ToString();
+                queueEntry[8] = dataGridViewMainQ.Rows[desiredRow].Cells[5].Value.ToString();
+            }
+            else
+            {
+                queueEntry[0] = dataGridViewColourQ.Rows[desiredRow].Cells[0].Value.ToString();
+                queueEntry[1] = dataGridViewColourQ.Rows[desiredRow].Cells[1].Value.ToString();
+                queueEntry[2] = dataGridViewColourQ.Rows[desiredRow].Cells[2].Value.ToString();
+                queueEntry[3] = dataGridViewColourQ.Rows[desiredRow].Cells[7].Value.ToString();
+                queueEntry[4] = dataGridViewColourQ.Rows[desiredRow].Cells[3].Value.ToString();
+                queueEntry[5] = dataGridViewColourQ.Rows[desiredRow].Cells[6].Value.ToString();
+                queueEntry[6] = dataGridViewColourQ.Rows[desiredRow].Cells[4].Value.ToString();
+                queueEntry[7] = dataGridViewColourQ.Rows[desiredRow].Cells[8].Value.ToString();
+                queueEntry[8] = dataGridViewColourQ.Rows[desiredRow].Cells[5].Value.ToString();
+            }
+
+            for (int i = 9; i < 25; i++)
+            {
+                if (whichQueue == "Main")
+                {
+                    queueEntry[i] = dataGridViewMainQ.Rows[desiredRow].Cells[i].Value.ToString();
+                }
+                else
+                {
+                    queueEntry[i] = dataGridViewColourQ.Rows[desiredRow].Cells[i].Value.ToString();
+                }
+            }
+            return queueEntry;
+        }
+
+        #endregion
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxQ0_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label38_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label39_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageMainQueue")
+            {
+                int indexOfRow = dataGridViewMainQ.CurrentRow.Index;
+                if (indexOfRow < dataGridViewMainQ.RowCount-2)
+                {
+                    dataGridViewMainQ.CurrentCell = dataGridViewMainQ.Rows[indexOfRow + 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
+            else
+            {
+                int indexOfRow = dataGridViewColourQ.CurrentRow.Index;
+                if (indexOfRow < dataGridViewColourQ.RowCount - 2)
+                {
+                    dataGridViewColourQ.CurrentCell = dataGridViewColourQ.Rows[indexOfRow + 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
+        }
+
+        private void buttonMoveDownQ_Click(object sender, EventArgs e)
+        {
+            if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageMainQueue")
+            {
+                int indexOfRow = dataGridViewMainQ.CurrentRow.Index;
+                if (indexOfRow > 0)
+                {
+                    dataGridViewMainQ.CurrentCell = dataGridViewMainQ.Rows[indexOfRow - 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
+            else
+            {
+                int indexOfRow = dataGridViewColourQ.CurrentRow.Index;
+                if (indexOfRow > 0)
+                {
+                    dataGridViewColourQ.CurrentCell = dataGridViewColourQ.Rows[indexOfRow - 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
         }
     }
 }

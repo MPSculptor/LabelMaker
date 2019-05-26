@@ -807,7 +807,7 @@ namespace LabelMaker {
                 this.columnPicture2.MaxLength = 200;
                 this.columnPicture3.MaxLength = 200;
                 this.columnPicture4.MaxLength = 200;
-                this.columnOrderNo.MaxLength = 10;
+                this.columnOrderNo.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
