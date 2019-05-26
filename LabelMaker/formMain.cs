@@ -738,17 +738,16 @@ private void clearPanelLabel()
                 //Fill in Plant Name
                 for (int i = 1; i <= 25; i++)
                 {
-                    if (i != 13 && i !=12)
-                    {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
                         curText.Text = dataGridViewMainQ.Rows[indexOfRow].Cells[i-1].Value.ToString();
-                    }
                 }
                 swapTextBoxes(4, 8);
                 swapTextBoxes(8, 5);
                 swapTextBoxes(7, 8);
                 swapTextBoxes(6, 8);
                 swapTextBoxes(9, 8);
+
+                paintQueueUtilities();
             }
             else
             {
@@ -756,18 +755,23 @@ private void clearPanelLabel()
                 //Fill in Plant Name
                 for (int i = 1; i <= 25; i++)
                 {
-                    if (i != 13 && i != 12)
-                    {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
                         curText.Text = dataGridViewColourQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
-                    }
                 }
                 swapTextBoxes(4, 8);
                 swapTextBoxes(8, 5);
                 swapTextBoxes(7, 8);
                 swapTextBoxes(6, 8);
                 swapTextBoxes(9, 8);
+
+                paintQueueUtilities();
             }    
+        }
+        private void paintQueueUtilities()
+        {
+            labelFontColour.BackColor= System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ11.Text));
+            labelBorderColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ14.Text));
+            labelBackgroundColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ15.Text));
         }
 
         private void swapTextBoxes(int One, int Two)
