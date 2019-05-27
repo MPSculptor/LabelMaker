@@ -312,6 +312,18 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageQueueUtilities = new System.Windows.Forms.TabPage();
             this.panelQueueUtilities = new System.Windows.Forms.Panel();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.pictureBoxQAGM = new System.Windows.Forms.PictureBox();
+            this.panelQColour = new System.Windows.Forms.Panel();
+            this.panelQMain = new System.Windows.Forms.Panel();
+            this.pictureBoxQ1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxQ2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxQ3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxQ4 = new System.Windows.Forms.PictureBox();
+            this.labelBorderColour = new System.Windows.Forms.Label();
+            this.labelFontColour = new System.Windows.Forms.Label();
+            this.labelBackgroundColour = new System.Windows.Forms.Label();
             this.textBoxQ12 = new System.Windows.Forms.TextBox();
             this.textBoxQ13 = new System.Windows.Forms.TextBox();
             this.buttonMoveUpQ = new System.Windows.Forms.Button();
@@ -372,9 +384,13 @@
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
             this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter();
             this.printDialogMain = new System.Windows.Forms.PrintDialog();
-            this.labelBackgroundColour = new System.Windows.Forms.Label();
-            this.labelFontColour = new System.Windows.Forms.Label();
-            this.labelBorderColour = new System.Windows.Forms.Label();
+            this.buttonQBold = new System.Windows.Forms.Button();
+            this.buttonQItalic = new System.Windows.Forms.Button();
+            this.label67 = new System.Windows.Forms.Label();
+            this.buttonQFontColour = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.buttonQBorderColour = new System.Windows.Forms.Button();
+            this.buttonQackgroundColour = new System.Windows.Forms.Button();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -424,6 +440,11 @@
             this.tabControlMain.SuspendLayout();
             this.tabPageQueueUtilities.SuspendLayout();
             this.panelQueueUtilities.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -3152,6 +3173,21 @@
             // panelQueueUtilities
             // 
             this.panelQueueUtilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQueueUtilities.Controls.Add(this.buttonQackgroundColour);
+            this.panelQueueUtilities.Controls.Add(this.buttonQBorderColour);
+            this.panelQueueUtilities.Controls.Add(this.buttonQFontColour);
+            this.panelQueueUtilities.Controls.Add(this.label67);
+            this.panelQueueUtilities.Controls.Add(this.buttonQItalic);
+            this.panelQueueUtilities.Controls.Add(this.buttonQBold);
+            this.panelQueueUtilities.Controls.Add(this.label66);
+            this.panelQueueUtilities.Controls.Add(this.label65);
+            this.panelQueueUtilities.Controls.Add(this.pictureBoxQAGM);
+            this.panelQueueUtilities.Controls.Add(this.panelQColour);
+            this.panelQueueUtilities.Controls.Add(this.panelQMain);
+            this.panelQueueUtilities.Controls.Add(this.pictureBoxQ1);
+            this.panelQueueUtilities.Controls.Add(this.pictureBoxQ2);
+            this.panelQueueUtilities.Controls.Add(this.pictureBoxQ3);
+            this.panelQueueUtilities.Controls.Add(this.pictureBoxQ4);
             this.panelQueueUtilities.Controls.Add(this.labelBorderColour);
             this.panelQueueUtilities.Controls.Add(this.labelFontColour);
             this.panelQueueUtilities.Controls.Add(this.labelBackgroundColour);
@@ -3213,6 +3249,120 @@
             this.panelQueueUtilities.Name = "panelQueueUtilities";
             this.panelQueueUtilities.Size = new System.Drawing.Size(1068, 771);
             this.panelQueueUtilities.TabIndex = 0;
+            this.panelQueueUtilities.Paint += new System.Windows.Forms.PaintEventHandler(this.panelQueueUtilities_Paint);
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label66.Location = new System.Drawing.Point(745, 15);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(148, 13);
+            this.label66.TabIndex = 64;
+            this.label66.Text = "Label as Main Queue will print";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label65.Location = new System.Drawing.Point(745, 257);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(155, 13);
+            this.label65.TabIndex = 63;
+            this.label65.Text = "Label as Colour Queue will print";
+            // 
+            // pictureBoxQAGM
+            // 
+            this.pictureBoxQAGM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxQAGM.Location = new System.Drawing.Point(633, 530);
+            this.pictureBoxQAGM.Name = "pictureBoxQAGM";
+            this.pictureBoxQAGM.Size = new System.Drawing.Size(100, 100);
+            this.pictureBoxQAGM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxQAGM.TabIndex = 62;
+            this.pictureBoxQAGM.TabStop = false;
+            // 
+            // panelQColour
+            // 
+            this.panelQColour.BackColor = System.Drawing.Color.DarkGray;
+            this.panelQColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQColour.Location = new System.Drawing.Point(748, 273);
+            this.panelQColour.Name = "panelQColour";
+            this.panelQColour.Size = new System.Drawing.Size(303, 351);
+            this.panelQColour.TabIndex = 61;
+            // 
+            // panelQMain
+            // 
+            this.panelQMain.BackColor = System.Drawing.Color.DarkGray;
+            this.panelQMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQMain.Location = new System.Drawing.Point(748, 31);
+            this.panelQMain.Name = "panelQMain";
+            this.panelQMain.Size = new System.Drawing.Size(303, 221);
+            this.panelQMain.TabIndex = 60;
+            // 
+            // pictureBoxQ1
+            // 
+            this.pictureBoxQ1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxQ1.Location = new System.Drawing.Point(633, 634);
+            this.pictureBoxQ1.Name = "pictureBoxQ1";
+            this.pictureBoxQ1.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxQ1.TabIndex = 59;
+            this.pictureBoxQ1.TabStop = false;
+            // 
+            // pictureBoxQ2
+            // 
+            this.pictureBoxQ2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxQ2.Location = new System.Drawing.Point(739, 634);
+            this.pictureBoxQ2.Name = "pictureBoxQ2";
+            this.pictureBoxQ2.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxQ2.TabIndex = 58;
+            this.pictureBoxQ2.TabStop = false;
+            this.pictureBoxQ2.Click += new System.EventHandler(this.pictureBox3_Click_1);
+            // 
+            // pictureBoxQ3
+            // 
+            this.pictureBoxQ3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxQ3.Location = new System.Drawing.Point(845, 634);
+            this.pictureBoxQ3.Name = "pictureBoxQ3";
+            this.pictureBoxQ3.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxQ3.TabIndex = 57;
+            this.pictureBoxQ3.TabStop = false;
+            // 
+            // pictureBoxQ4
+            // 
+            this.pictureBoxQ4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxQ4.Location = new System.Drawing.Point(951, 634);
+            this.pictureBoxQ4.Name = "pictureBoxQ4";
+            this.pictureBoxQ4.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxQ4.TabIndex = 56;
+            this.pictureBoxQ4.TabStop = false;
+            // 
+            // labelBorderColour
+            // 
+            this.labelBorderColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBorderColour.Location = new System.Drawing.Point(547, 452);
+            this.labelBorderColour.Name = "labelBorderColour";
+            this.labelBorderColour.Size = new System.Drawing.Size(80, 20);
+            this.labelBorderColour.TabIndex = 55;
+            // 
+            // labelFontColour
+            // 
+            this.labelFontColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelFontColour.Location = new System.Drawing.Point(547, 374);
+            this.labelFontColour.Name = "labelFontColour";
+            this.labelFontColour.Size = new System.Drawing.Size(80, 20);
+            this.labelFontColour.TabIndex = 54;
+            // 
+            // labelBackgroundColour
+            // 
+            this.labelBackgroundColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBackgroundColour.Location = new System.Drawing.Point(547, 478);
+            this.labelBackgroundColour.Name = "labelBackgroundColour";
+            this.labelBackgroundColour.Size = new System.Drawing.Size(80, 20);
+            this.labelBackgroundColour.TabIndex = 53;
             // 
             // textBoxQ12
             // 
@@ -3580,9 +3730,10 @@
             // 
             // textBoxQ15
             // 
+            this.textBoxQ15.Enabled = false;
             this.textBoxQ15.Location = new System.Drawing.Point(243, 478);
             this.textBoxQ15.Name = "textBoxQ15";
-            this.textBoxQ15.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ15.Size = new System.Drawing.Size(171, 20);
             this.textBoxQ15.TabIndex = 15;
             // 
             // textBoxQ16
@@ -3596,9 +3747,10 @@
             // 
             // textBoxQ14
             // 
+            this.textBoxQ14.Enabled = false;
             this.textBoxQ14.Location = new System.Drawing.Point(243, 452);
             this.textBoxQ14.Name = "textBoxQ14";
-            this.textBoxQ14.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ14.Size = new System.Drawing.Size(172, 20);
             this.textBoxQ14.TabIndex = 13;
             // 
             // textBoxQ2
@@ -3610,9 +3762,10 @@
             // 
             // textBoxQ11
             // 
+            this.textBoxQ11.Enabled = false;
             this.textBoxQ11.Location = new System.Drawing.Point(243, 374);
             this.textBoxQ11.Name = "textBoxQ11";
-            this.textBoxQ11.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ11.Size = new System.Drawing.Size(172, 20);
             this.textBoxQ11.TabIndex = 10;
             // 
             // textBoxQ9
@@ -3717,29 +3870,63 @@
             // 
             this.printDialogMain.UseEXDialog = true;
             // 
-            // labelBackgroundColour
+            // buttonQBold
             // 
-            this.labelBackgroundColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBackgroundColour.Location = new System.Drawing.Point(547, 478);
-            this.labelBackgroundColour.Name = "labelBackgroundColour";
-            this.labelBackgroundColour.Size = new System.Drawing.Size(80, 20);
-            this.labelBackgroundColour.TabIndex = 53;
+            this.buttonQBold.Location = new System.Drawing.Point(340, 397);
+            this.buttonQBold.Name = "buttonQBold";
+            this.buttonQBold.Size = new System.Drawing.Size(75, 23);
+            this.buttonQBold.TabIndex = 65;
+            this.buttonQBold.Text = "Change";
+            this.buttonQBold.UseVisualStyleBackColor = true;
+            this.buttonQBold.Click += new System.EventHandler(this.buttonQBold_Click);
             // 
-            // labelFontColour
+            // buttonQItalic
             // 
-            this.labelFontColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelFontColour.Location = new System.Drawing.Point(547, 374);
-            this.labelFontColour.Name = "labelFontColour";
-            this.labelFontColour.Size = new System.Drawing.Size(80, 20);
-            this.labelFontColour.TabIndex = 54;
+            this.buttonQItalic.Location = new System.Drawing.Point(339, 423);
+            this.buttonQItalic.Name = "buttonQItalic";
+            this.buttonQItalic.Size = new System.Drawing.Size(75, 23);
+            this.buttonQItalic.TabIndex = 66;
+            this.buttonQItalic.Text = "Change";
+            this.buttonQItalic.UseVisualStyleBackColor = true;
+            this.buttonQItalic.Click += new System.EventHandler(this.button2_Click_3);
             // 
-            // labelBorderColour
+            // label67
             // 
-            this.labelBorderColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBorderColour.Location = new System.Drawing.Point(547, 452);
-            this.labelBorderColour.Name = "labelBorderColour";
-            this.labelBorderColour.Size = new System.Drawing.Size(80, 20);
-            this.labelBorderColour.TabIndex = 55;
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(422, 412);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(0, 13);
+            this.label67.TabIndex = 67;
+            // 
+            // buttonQFontColour
+            // 
+            this.buttonQFontColour.Location = new System.Drawing.Point(421, 374);
+            this.buttonQFontColour.Name = "buttonQFontColour";
+            this.buttonQFontColour.Size = new System.Drawing.Size(120, 23);
+            this.buttonQFontColour.TabIndex = 68;
+            this.buttonQFontColour.Text = "Colour Picker";
+            this.buttonQFontColour.UseVisualStyleBackColor = true;
+            this.buttonQFontColour.Click += new System.EventHandler(this.buttonQFontColour_Click);
+            // 
+            // buttonQBorderColour
+            // 
+            this.buttonQBorderColour.Location = new System.Drawing.Point(422, 452);
+            this.buttonQBorderColour.Name = "buttonQBorderColour";
+            this.buttonQBorderColour.Size = new System.Drawing.Size(119, 23);
+            this.buttonQBorderColour.TabIndex = 69;
+            this.buttonQBorderColour.Text = "Colour Picker";
+            this.buttonQBorderColour.UseVisualStyleBackColor = true;
+            this.buttonQBorderColour.Click += new System.EventHandler(this.buttonQBorderColour_Click);
+            // 
+            // buttonQackgroundColour
+            // 
+            this.buttonQackgroundColour.Location = new System.Drawing.Point(421, 476);
+            this.buttonQackgroundColour.Name = "buttonQackgroundColour";
+            this.buttonQackgroundColour.Size = new System.Drawing.Size(120, 23);
+            this.buttonQackgroundColour.TabIndex = 70;
+            this.buttonQackgroundColour.Text = "ColourPicker";
+            this.buttonQackgroundColour.UseVisualStyleBackColor = true;
+            this.buttonQackgroundColour.Click += new System.EventHandler(this.buttonQackgroundColour_Click);
             // 
             // formMain
             // 
@@ -3818,6 +4005,11 @@
             this.tabPageQueueUtilities.ResumeLayout(false);
             this.panelQueueUtilities.ResumeLayout(false);
             this.panelQueueUtilities.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4169,6 +4361,22 @@
         private System.Windows.Forms.Label labelBorderColour;
         private System.Windows.Forms.Label labelFontColour;
         private System.Windows.Forms.Label labelBackgroundColour;
+        private System.Windows.Forms.PictureBox pictureBoxQ1;
+        private System.Windows.Forms.PictureBox pictureBoxQ2;
+        private System.Windows.Forms.PictureBox pictureBoxQ3;
+        private System.Windows.Forms.PictureBox pictureBoxQ4;
+        private System.Windows.Forms.Panel panelQColour;
+        private System.Windows.Forms.Panel panelQMain;
+        private System.Windows.Forms.PictureBox pictureBoxQAGM;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Button buttonQItalic;
+        private System.Windows.Forms.Button buttonQBold;
+        private System.Windows.Forms.Button buttonQFontColour;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button buttonQackgroundColour;
+        private System.Windows.Forms.Button buttonQBorderColour;
     }
 }
 

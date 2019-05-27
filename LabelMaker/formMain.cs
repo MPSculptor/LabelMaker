@@ -62,7 +62,7 @@ namespace LabelMaker
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TempMakeALabel(panelLabelPreview, "Main");
+            TempMakeALabel(panelLabelPreview, "Main","database");
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -70,82 +70,93 @@ namespace LabelMaker
 
         }
 
-        public void TempMakeALabel(Panel whichPanel, string whichLabel)
+        public void TempMakeALabel(Panel whichPanel, string whichLabel, string DatabaseOrQueue)
         {
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
 
             //file with default settings
             string name = whereFiles + "defaults.txt";
             string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            //string[] queueString = CreationUtilities.dataReader.readFile(name);
+            string[] queueString = new string[25];
 
-
-            //file with sample queue entry;
-            //name = whereFiles + "ColourQueue.txt";
-            string[] queueString = CreationUtilities.dataReader.readFile(name);
-
-            int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
-            string[] sendData = new String[21];
-            string[] findName = new String[5];
-            string[] moreData = new String[12];
-
-
-            // get general plant data
-            for (int i = 0; i <= 20; i++)
+            if (DatabaseOrQueue=="database")
             {
-                sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString();
-            }
+                    //file with sample queue entry;
+                //name = whereFiles + "ColourQueue.txt";
+            
 
-            // get various concatenated Name strings 
-            for (int i = 0; i <= 4; i++)
-            {
-                findName[i] = dataGridViewPlants.Rows[currentRow].Cells[1 + i].Value.ToString();
-            }
-            string[] sendName = getPlantName(findName);
+                int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
+                string[] sendData = new String[21];
+                string[] findName = new String[5];
+                string[] moreData = new String[12];
 
-            //get main pcture
-            if (radioButtonImage1.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[12].Value.ToString(); }
-            if (radioButtonImage2.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[13].Value.ToString(); }
-            if (radioButtonImage3.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[14].Value.ToString(); }
-            if (radioButtonImage4.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[15].Value.ToString(); }
 
-            // Check AGM Status
-            if (dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString() == "True")
-            {
-                moreData[1] = "AGM.ico";
+                // get general plant data
+                for (int i = 0; i <= 20; i++)
+                {
+                    sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString();
+                }
+
+                // get various concatenated Name strings 
+                for (int i = 0; i <= 4; i++)
+                {
+                    findName[i] = dataGridViewPlants.Rows[currentRow].Cells[1 + i].Value.ToString();
+                }
+                string[] sendName = getPlantName(findName);
+
+                //get main pcture
+                if (radioButtonImage1.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[12].Value.ToString(); }
+                if (radioButtonImage2.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[13].Value.ToString(); }
+                if (radioButtonImage3.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[14].Value.ToString(); }
+                if (radioButtonImage4.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[15].Value.ToString(); }
+
+                // Check AGM Status
+                if (dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString() == "True")
+                {
+                    moreData[1] = "AGM.ico";
+                }
+                else
+                {
+                    moreData[1] = "AGMBlank.ico";
+                }
+
+                // qty and price
+
+                moreData[2] = textBoxQty.Text;
+                moreData[3] = formatPrice(textBoxPrice.Text);
+
+                // customer and Order NUmber
+                moreData[4] = textBoxCustomerName.Text;
+                moreData[5] = textBoxOrderNumber.Text;
+
+                // profile
+                string profileName = dataGridViewPlants.Rows[currentRow].Cells[17].Value.ToString();
+
+                DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
+                string expression;
+                expression = "Name = '" + profileName + "'";
+                DataRow[] foundRows;
+
+                // Use the Select method to find all rows matching the filter.
+                foundRows = table.Select(expression);
+                moreData[6] = foundRows[0][3].ToString(); // Font Name
+                moreData[7] = foundRows[0][6].ToString(); // Font Colour
+                moreData[8] = foundRows[0][4].ToString(); // Bold
+                moreData[9] = foundRows[0][5].ToString(); // Italic
+                moreData[10] = foundRows[0][2].ToString(); // Border Colour
+                moreData[11] = foundRows[0][7].ToString(); // Back Colour
+
+                queueString = dataReader.readQueue(sendData, sendName, moreData);
             }
             else
             {
-                moreData[1] = "AGMBlank.ico";
+                for(int i = 0; i <= 24; i++)
+                {
+                    TextBox curTextBox = (TextBox)panelQueueUtilities.Controls["textBoxQ" + (i + 1).ToString()];
+                    queueString[i] = curTextBox.Text.ToString();
+                }
             }
-
-            // qty and price
-
-            moreData[2] = textBoxQty.Text;
-            moreData[3] = formatPrice(textBoxPrice.Text);
-
-            // customer and Order NUmber
-            moreData[4] = textBoxCustomerName.Text;
-            moreData[5] = textBoxOrderNumber.Text;
-
-            // profile
-            string profileName = dataGridViewPlants.Rows[currentRow].Cells[17].Value.ToString();
-
-            DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
-            string expression;
-            expression = "Name = '" + profileName + "'";
-            DataRow[] foundRows;
-
-            // Use the Select method to find all rows matching the filter.
-            foundRows = table.Select(expression);
-            moreData[6] = foundRows[0][3].ToString(); // Font Name
-            moreData[7] = foundRows[0][6].ToString(); // Font Colour
-            moreData[8] = foundRows[0][4].ToString(); // Bold
-            moreData[9] = foundRows[0][5].ToString(); // Italic
-            moreData[10] = foundRows[0][2].ToString(); // Border Colour
-            moreData[11] = foundRows[0][7].ToString(); // Back Colour
-
-            queueString = dataReader.readQueue(sendData, sendName, moreData);
-
 
             //file with a sample label definition;
             if (whichLabel == "Colour")
@@ -390,7 +401,7 @@ namespace LabelMaker
             }
 
             updateMainPicture(filePlace, indexOfRow);
-            TempMakeALabel(panelLabelPreview, "Main");
+            TempMakeALabel(panelLabelPreview, "Main", "database");
 
 
             //Price and Quantity
@@ -577,8 +588,8 @@ namespace LabelMaker
             //clearPanelLabel();
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
-                TempMakeALabel(panelLabelTabMain, "Main");
-                TempMakeALabel(panelLabelTabColour, "Colour");
+                TempMakeALabel(panelLabelTabMain, "Main", "database");
+                TempMakeALabel(panelLabelTabColour, "Colour", "database");
             }
 
             if (tabControlMain.SelectedTab == tabPageDatabase)
@@ -606,7 +617,7 @@ namespace LabelMaker
         }
 #endregion
 
-private void clearPanelLabel()
+        private void clearPanelLabel()
         {
             //Clear the panel
             foreach (Control ctrl in panelLabelPreview.Controls)
@@ -624,8 +635,8 @@ private void clearPanelLabel()
             textBoxData0.Text = dataGridViewPlants.Rows[indexOfRow].Cells[0].Value.ToString();
 
             //Paint two label examples
-            TempMakeALabel(panelDatabaseMain, "Main");
-            TempMakeALabel(panelDatabaseColour, "Colour");
+            TempMakeALabel(panelDatabaseMain, "Main", "database");
+            TempMakeALabel(panelDatabaseColour, "Colour", "database");
 
             //Fill in Plant Name
             for (int i = 2; i <= 6; i++)
@@ -731,47 +742,132 @@ private void clearPanelLabel()
 
         private void fillQueueUtilitiesTab()
         {
-            
+
             if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageMainQueue")
             {
-                int indexOfRow = dataGridViewMainQ.CurrentRow.Index;
-                //Fill in Plant Name
-                for (int i = 1; i <= 25; i++)
+                if (dataGridViewMainQ.RowCount > 1)
                 {
+                    int indexOfRow = dataGridViewMainQ.CurrentRow.Index;
+                    //Fill in Plant Name
+                    for (int i = 1; i <= 25; i++)
+                    {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
-                        curText.Text = dataGridViewMainQ.Rows[indexOfRow].Cells[i-1].Value.ToString();
+                        curText.Text = dataGridViewMainQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
+                    }
+                    swapTextBoxes(4, 8);
+                    swapTextBoxes(8, 5);
+                    swapTextBoxes(7, 8);
+                    swapTextBoxes(6, 8);
+                    swapTextBoxes(9, 8);
                 }
-                swapTextBoxes(4, 8);
-                swapTextBoxes(8, 5);
-                swapTextBoxes(7, 8);
-                swapTextBoxes(6, 8);
-                swapTextBoxes(9, 8);
-
-                paintQueueUtilities();
+                else
+                {
+                    makeNoQueueEntry();
+                }
             }
             else
             {
-                int indexOfRow = dataGridViewColourQ.CurrentRow.Index;
-                //Fill in Plant Name
-                for (int i = 1; i <= 25; i++)
+                if (dataGridViewColourQ.RowCount > 1)
                 {
+                    int indexOfRow = dataGridViewColourQ.CurrentRow.Index;
+                    //Fill in Plant Name
+                    for (int i = 1; i <= 25; i++)
+                    {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
                         curText.Text = dataGridViewColourQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
+                    }
+                    swapTextBoxes(4, 8);
+                    swapTextBoxes(8, 5);
+                    swapTextBoxes(7, 8);
+                    swapTextBoxes(6, 8);
+                    swapTextBoxes(9, 8);
                 }
-                swapTextBoxes(4, 8);
-                swapTextBoxes(8, 5);
-                swapTextBoxes(7, 8);
-                swapTextBoxes(6, 8);
-                swapTextBoxes(9, 8);
-
-                paintQueueUtilities();
-            }    
+                else
+                {
+                    makeNoQueueEntry();
+                }
+            }
+            paintQueueUtilities();
         }
+        private void makeNoQueueEntry()
+        {
+            for (int i = 0; i <= 25; i++)
+            {
+                TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                curText.Text = "";
+            }
+            textBoxQ1.Text = "No Queue Entry";
+            textBoxQ7.Text = "Once you have entries in the print queues you can view and amend them here.";
+            textBoxQ11.Text = "10226779";
+            textBoxQ14.Text = "10226779";
+            textBoxQ15.Text = "10226779";
+        }
+
+
         private void paintQueueUtilities()
         {
             labelFontColour.BackColor= System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ11.Text));
             labelBorderColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ14.Text));
             labelBackgroundColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ15.Text));
+
+            //Fill in Pictures
+
+            //get picture position
+            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+            //file with sample queue entry;
+            string name = whereFiles + "defaults.txt";
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string filePlace = defaultsString[0];
+
+            for (int i = 1; i <= 4; i++)
+            {
+                TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + (i+20).ToString()];
+                PictureBox curPictureBox = (PictureBox)panelQueueUtilities.Controls["pictureBoxQ" + (i).ToString()];
+                
+                //Picture images
+                try // #1
+                {
+                    string fileName = curText.Text.ToString();
+                    string pictureFile = filePlace + fileName;
+                    curPictureBox.Image = Image.FromFile(pictureFile);
+                }
+                catch (IOException)
+                {
+                    string pictureFile = "";
+                    if (String.IsNullOrEmpty(curText.Text.ToString()))
+                    {
+                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    }
+                    else
+                    {
+                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    }
+                    curPictureBox.Image = Image.FromFile(pictureFile);
+                }
+            }
+            //AGM Picture
+            string fileNameAGM = textBoxQ20.Text.ToString();
+            string pictureFileAGM = filePlace + fileNameAGM;
+            try // #1
+            {
+                pictureBoxQAGM.Image = Image.FromFile(pictureFileAGM);
+            }
+            catch (IOException)
+            {
+                pictureFileAGM = "";
+                if (String.IsNullOrEmpty(fileNameAGM))
+                {
+                    pictureFileAGM = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                }
+                else
+                {
+                    pictureFileAGM = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                }
+                pictureBoxQAGM.Image = Image.FromFile(pictureFileAGM);
+            }
+            //Label Previews
+            TempMakeALabel(panelQMain, "Main", "queue");
+            TempMakeALabel(panelQColour, "Colour", "queue");
         }
 
         private void swapTextBoxes(int One, int Two)
@@ -1497,7 +1593,7 @@ private void clearPanelLabel()
         {
 
         }
-
+    #region *** Navigation Buttons***
         private void indexNavigationButtons()
         {
             string buttonName = "";
@@ -1760,6 +1856,9 @@ private void clearPanelLabel()
             dataGridViewPlants.Refresh();
             updateMainDetails(rowSeek);
         }
+        #endregion
+
+    #region ***Database Filter Buttons***
 
         private void buttonHiddenOnly_Click(object sender, EventArgs e)
         {
@@ -1802,6 +1901,7 @@ private void clearPanelLabel()
             buttonVisibleOnly.BackColor = Color.Transparent;
             buttonAllEntries.BackColor = Color.YellowGreen;
         }
+#endregion
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -2020,5 +2120,81 @@ private void clearPanelLabel()
                 }
             }
         }
+
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelQueueUtilities_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click_3(object sender, EventArgs e)
+        {
+            if (textBoxQ13.Text == "True")
+            {
+                textBoxQ13.Text = "False";
+            }
+            else
+            {
+                textBoxQ13.Text = "True";
+            }
+            paintQueueUtilities();
+        }
+
+        private void buttonQBold_Click(object sender, EventArgs e)
+        {
+            if (textBoxQ12.Text == "True")
+            {
+                textBoxQ12.Text = "False";
+            }
+            else
+            {
+                textBoxQ12.Text = "True";
+            }
+            paintQueueUtilities();
+        }
+
+        private void buttonQFontColour_Click(object sender, EventArgs e)
+        {
+            colourChangeQueue(11, labelFontColour);
+        }
+
+        private void buttonQBorderColour_Click(object sender, EventArgs e)
+        {
+            colourChangeQueue(14, labelBorderColour);
+        }
+
+        private void buttonQackgroundColour_Click(object sender, EventArgs e)
+        {
+            colourChangeQueue(15, labelBackgroundColour);
+        }
+
+        private void colourChangeQueue(int whichNo, Label whichLabel)
+        {
+            int storeColour = 0;
+            Color oldColour = whichLabel.BackColor;
+            TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + whichNo.ToString()];
+
+            Color newColour = pickMeAColour(oldColour);
+            storeColour = (newColour.B * 256 * 256) + (newColour.G * 256) + newColour.R;
+            curText.Text = storeColour.ToString();
+            paintQueueUtilities();
+        }
+
+        private Color pickMeAColour(Color oldColour)
+        {
+            colorDialog1.Color = oldColour;
+            Color chosenColour = oldColour;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                chosenColour = colorDialog1.Color;
+            }
+            return chosenColour;
+        }
+
+        
     }
 }
