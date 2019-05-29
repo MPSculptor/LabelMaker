@@ -176,7 +176,7 @@ namespace LabelMaker
                 int noLines = int.Parse(labelData[start + 12]);
                 string justify = (labelData[start + 13]);
                 bool? isFontColourProfile = bool.Parse(labelData[start + 14]);
-                string fontName = (labelData[start + 15]);
+
                 float fontSize = float.Parse(labelData[start + 16]);
                 bool? isFontBold = bool.Parse(labelData[start + 17]);
                 bool? isFontItalic = bool.Parse(labelData[start + 18]);
@@ -185,6 +185,19 @@ namespace LabelMaker
                 string profileTextColour = (queueData[10]);
                 string profileBorderColour = (queueData[13]);
                 string profileBackgroundColour = (queueData[14]);
+
+                string fontName = "Arial"; // Backstop value
+                if (isFontColourProfile.Value)
+                {
+                    //MessageBox.Show(labelData[start + 7] + " , " + labelData[start + 15]);
+                    fontName = (labelData[start + 15]); // As label data
+                    profileTextColour = ("0");
+                }
+                else
+                {
+                    fontName = queueData[9].Trim(); // As profile
+                }
+                
 
                 //set justification as an integer
                 int justifyInt = 0;
@@ -343,6 +356,7 @@ namespace LabelMaker
                     break;
             }
             Font fontSet = new Font(fFont, ffontSize, ffontStyle);
+
 
             //GO FOR PRINTING
             float yOriginalSized = ySized;
