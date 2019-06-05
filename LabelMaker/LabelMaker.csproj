@@ -84,6 +84,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseLabelsDataSetDefaults.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseLabelsDataSetDefaults.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSetMainQueue.cs">
+      <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseLabelsDataSetMainQueue.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,6 +160,17 @@
     <None Include="DatabaseLabelsDataSetColourQueue.xss">
       <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
     </None>
+    <None Include="DatabaseLabelsDataSetDefaults.xsc">
+      <DependentUpon>DatabaseLabelsDataSetDefaults.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSetDefaults.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseLabelsDataSetDefaults.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseLabelsDataSetDefaults.xss">
+      <DependentUpon>DatabaseLabelsDataSetDefaults.xsd</DependentUpon>
+    </None>
     <None Include="DatabaseLabelsDataSetMainQueue.xsc">
       <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
     </None>
@@ -178,11 +197,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseLabels.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DatabaseLabels_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DatabaseLabels.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

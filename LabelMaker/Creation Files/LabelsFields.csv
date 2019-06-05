@@ -1,0 +1,58 @@
+1, Address,sender,text,80,15,0,5,0,1,0,0,Sender:,1,left,0,Arial,10,0,0,0,0
+2, Address,DP,text,80,15,0,20,0,1,0,0,Dawn Preston,1,center,0,Arial,10,1,0,0,0
+3, Address,DP,text,80,15,0,35,0,1,0,0,Dorset Perennials,1,center,0,Arial,10,1,0,0,0
+4, Address,DP,text,80,15,0,50,0,1,0,0,Berkeley Perennials,1,center,0,Arial,10,0,0,0,0
+5, Address,DP,text,80,15,0,65,0,1,0,0,"Holnest, Sherborne",1,center,0,Arial,10,0,0,0,0
+6, Address,DP,text,80,15,0,80,0,1,0,0,Dorset. DT9 5PR,1,center,0,Arial,10,0,0,0,0
+7, Heavy,sender,text,60,40,10,10,0,1,0,0,CAUTION,1,center,0,Arial,10,0,0,0,1
+8, Heavy,sender,text,80,17,0,56,0,1,0,0,Heavy Box,1,center,0,Arial,10,0,0,0,1
+9, Heavy,sender,text,80,17,0,73,0,1,0,0,Lift with Care,1,center,0,Arial,10,0,0,0,1
+10, Heavy,caution,image,20,30,75,15,0,1,0,0,/caution.jpg,1,left,0,Arial,10,0,0,0,9
+11, Perish,sender,text,80,15,0,5,0,1,0,0,HANDLEWITH CARE,1,center,0,Arial,10,0,0,0,1
+12, Perish,DP,text,80,15,0,20,0,1,0,0,LIVE PLANTS,1,center,0,Arial,10,0,0,0,2
+13, Perish,DP,text,80,15,0,35,0,1,0,0,Unpack Immediately on arrival,1,center,0,Arial,10,0,0,0,3
+14, Perish,DP,text,80,15,0,51,0,1,0,0,Perishable Goods,1,center,0,Arial,10,0,0,0,4
+15, Perish,DP,text,80,14,0,66,0,1,0,0,Do not return to hub,1,center,0,Arial,10,0,0,0,2
+16, Perish,DP,text,80,15,0,80,0,1,0,0,leave somewhere appropriate,1,center,0,Arial,10,0,0,0,4
+17, Perish,line,border,80,0.1,0,50,0,0,0,0,0.1,,,0,Arial,10,0,0,0,4
+18,Bedcard,,border,42,85,7.14,0,1,0,0,0,0.75,1,left,0,Arial,10,0,0,0,1
+19,Bedcard,main image,image,38.57,80,8.8,0,1,0,0,0,,1,left,0,Arial,10,0,0,0,2
+20,Bedcard,,border,45,50,51,29.5,1,0,0,0,0.75,1,left,0,Arial,10,0,0,0,3
+21,Bedcard,,colourbox,56,12.12,35.71,14.77,1,0,0,0,,1,left,0,Arial,10,0,0,0,4
+22,Bedcard,,border,56,12.12,35.71,14.77,1,0,0,0,0.5,1,left,0,Arial,10,0,0,0,5
+23,Bedcard,plant for life,image,24,0,68,80,0,1,0,0,/Plant for life BW.jpg,1,left,0,Arial,10,0,0,0,6
+24,Bedcard,plant name,text,52,10,37.71,15.5,1,0,0,0,,1,center,0,Arial,10,0,0,0,7
+25,Bedcard,,text,32,4.5,62,31,1,1,0,9,,1,right,0,Arial,10,0,0,0,8
+26,Bedcard,description,text,42,40.3,52.5,35.7,1,0,1,7,,6,center,1,Arial,10,0,0,0,9
+27,Bedcard simple,,image,74,71,0,12.5,1,0,0,0,,,,0,Arial,10,0,0,0,2
+28,Bedcard simple,,border,78,74,0,11,1,0,0,0,1,,,0,Arial,10,0,0,0,1
+29,Bedcard simple,,colourbox,70,13,0,5,1,0,0,0,,,,0,Arial,10,0,0,0,3
+30,Bedcard simple,,border,70,13,0,5,1,0,0,0,1,,,0,Arial,10,0,0,0,4
+31,Bedcard simple,name,text,63,11,0,6,1,1,0,0,,2,center,0,Arial,24,0,1,0,6
+32,Bedcard simple,common name,text,63,6,0,18,1,0,0,9,,1,center,1,Arial,10,0,0,16777215,7
+33,Box,code,text,90,10,0,5,1,0,0,19,,1,left,0,Arial,10,0,0,0,0
+34,Box,Name,text,90,30,0,15,1,0,0,18,,1,center,0,Arial,10,0,0,0,0
+35,Box,desc,text,90,20,0,45,1,0,1,7,,2,center,0,Arial,10,0,0,0,0
+36,Box,No.,text,35,30,5,65,1,0,0,9,,1,left,0,Arial,10,0,0,0,0
+37,Box,size,text,55,10,35,65,1,0,0,20,,1,right,0,Arial,10,0,0,0,0
+38,Box,price,text,55,20,35,75,1,0,0,2,,1,right,0,Arial,10,0,0,0,0
+39,Colour 5 by 2,,image,74,71,0,12.5,1,0,0,0,,,,0,Arial,10,0,0,0,2
+40,Colour 5 by 2,,border,78,74,0,11,1,0,0,0,1,,,0,Arial,10,0,0,0,1
+41,Colour 5 by 2,,colourbox,70,13,0,5,1,0,0,0,,,,0,Arial,10,0,0,0,3
+42,Colour 5 by 2,,border,70,13,0,5,1,0,0,0,1,,,0,Arial,10,0,0,0,4
+43,Colour 5 by 2,Plant for life,image,35,0,51,65,0,1,0,0,/Plant for life.bmp,,,0,Arial,10,0,0,0,5
+44,Colour 5 by 2,name,text,63,11,0,6,1,1,0,0,,2,center,0,Arial,10,0,0,0,6
+45,Colour 5 by 2,common name,text,63,6,0,18,1,0,0,9,,1,center,1,Arial,10,0,0,16777215,7
+46,NFS,"ma,e",text,80,15,0,5,1,1,0,0,Perishable Goods,1,center,0,Arial,10,0,0,0,1
+47,NFS,DP,text,80,25,0,40,0,1,0,0,Display Plant,1,center,0,Arial,10,0,0,0,2
+48,NFS,DP,text,80,25,0,70,0,1,0,0,NOT FOR SALE,1,center,0,Arial,10,0,0,0,3
+49,Price only Sticker,price,text,80,80,0,0,1,0,0,2,,1,left,1,Arial,10,1,1,0,1
+50,Sticker 1 by 1,price,text,25,20.83,3.37,4.17,1,0,1,2,,1,left,1,Arial,10,1,1,0,9
+51,Sticker 1 by 1,our name,text,45,8,2.25,78.5,1,1,1,32,,1,left,1,Arial,10,1,1,0,4
+52,Sticker 1 by 1,address,text,45,10,6.75,86.5,1,1,1,4,,1,left,1,Arial,10,1,1,0,15
+53,Sticker 1 by 1,description,text,95,38,0,37,1,0,1,7,,4,right,1,Arial,10,0,0,0,10
+54,Sticker 1 by 1,plant name,text,67,25,30,5,1,0,1,0,,2,right,1,Arial,10,1,1,0,7
+55,Sticker 1 by 1,common name,text,67,6.5,30,30,1,0,1,9,,1,right,1,Arial,10,0,0,0,8
+56,Sticker 1 by 1,AGM,image,10,20,3.5,25,0,0,1,21,,1,left,1,Arial,10,0,0,0,2
+57,Sticker 1 by 1,email,text,45,16,52,79,0,1,1,0,www.dorsetperennials.co.uk,1,right,1,Arial,10,1,1,0,20
+58,Sticker 1 by 1,customer,text,75,75,0,0,1,0,0,4,,1,left,1,Arial,10,1,1,0,4

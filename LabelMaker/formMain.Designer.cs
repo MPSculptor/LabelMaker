@@ -183,8 +183,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageManual = new System.Windows.Forms.TabPage();
+            this.label68 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
+            this.labelLabelName = new System.Windows.Forms.Label();
             this.textBoxOrderNumber = new System.Windows.Forms.TextBox();
             this.textBoxCustomerName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -312,6 +314,13 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageQueueUtilities = new System.Windows.Forms.TabPage();
             this.panelQueueUtilities = new System.Windows.Forms.Panel();
+            this.buttonUpdateQLine = new System.Windows.Forms.Button();
+            this.buttonQackgroundColour = new System.Windows.Forms.Button();
+            this.buttonQBorderColour = new System.Windows.Forms.Button();
+            this.buttonQFontColour = new System.Windows.Forms.Button();
+            this.label67 = new System.Windows.Forms.Label();
+            this.buttonQItalic = new System.Windows.Forms.Button();
+            this.buttonQBold = new System.Windows.Forms.Button();
             this.label66 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.pictureBoxQAGM = new System.Windows.Forms.PictureBox();
@@ -384,13 +393,14 @@
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
             this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter();
             this.printDialogMain = new System.Windows.Forms.PrintDialog();
-            this.buttonQBold = new System.Windows.Forms.Button();
-            this.buttonQItalic = new System.Windows.Forms.Button();
-            this.label67 = new System.Windows.Forms.Label();
-            this.buttonQFontColour = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.buttonQBorderColour = new System.Windows.Forms.Button();
-            this.buttonQackgroundColour = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSetDefaults = new LabelMaker.DatabaseLabelsDataSetDefaults();
+            this.defaultsTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter();
+            this.defaultsTableAdapter2 = new LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter();
+            this.buttonDeleteQLines = new System.Windows.Forms.Button();
+            this.buttonDeleteBothQueues = new System.Windows.Forms.Button();
+            this.buttonDeleteThisQueue = new System.Windows.Forms.Button();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -445,6 +455,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -456,7 +468,7 @@
             this.tabControlQueue.Location = new System.Drawing.Point(1097, 34);
             this.tabControlQueue.Name = "tabControlQueue";
             this.tabControlQueue.SelectedIndex = 0;
-            this.tabControlQueue.Size = new System.Drawing.Size(419, 809);
+            this.tabControlQueue.Size = new System.Drawing.Size(419, 750);
             this.tabControlQueue.TabIndex = 0;
             this.tabControlQueue.SelectedIndexChanged += new System.EventHandler(this.tabControlQueue_SelectedIndexChanged);
             // 
@@ -467,14 +479,14 @@
             this.tabPageMainQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageMainQueue.Name = "tabPageMainQueue";
             this.tabPageMainQueue.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMainQueue.Size = new System.Drawing.Size(411, 783);
+            this.tabPageMainQueue.Size = new System.Drawing.Size(411, 724);
             this.tabPageMainQueue.TabIndex = 0;
             this.tabPageMainQueue.Text = "     Main Queue     ";
-            this.tabPageMainQueue.Click += new System.EventHandler(this.tabPageMainQueue_Click);
             // 
             // dataGridViewMainQ
             // 
             this.dataGridViewMainQ.AutoGenerateColumns = false;
+            this.dataGridViewMainQ.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewMainQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMainQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn1,
@@ -506,9 +518,8 @@
             this.dataGridViewMainQ.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewMainQ.Name = "dataGridViewMainQ";
             this.dataGridViewMainQ.RowHeadersVisible = false;
-            this.dataGridViewMainQ.Size = new System.Drawing.Size(397, 771);
+            this.dataGridViewMainQ.Size = new System.Drawing.Size(397, 713);
             this.dataGridViewMainQ.TabIndex = 4;
-            this.dataGridViewMainQ.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMainQ_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn1
             // 
@@ -680,14 +691,14 @@
             this.tabPageColourQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageColourQueue.Name = "tabPageColourQueue";
             this.tabPageColourQueue.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageColourQueue.Size = new System.Drawing.Size(411, 783);
+            this.tabPageColourQueue.Size = new System.Drawing.Size(411, 724);
             this.tabPageColourQueue.TabIndex = 1;
             this.tabPageColourQueue.Text = "     Colour Queue     ";
-            this.tabPageColourQueue.Click += new System.EventHandler(this.tabPageColourQueue_Click);
             // 
             // dataGridViewColourQ
             // 
             this.dataGridViewColourQ.AutoGenerateColumns = false;
+            this.dataGridViewColourQ.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewColourQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewColourQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -719,9 +730,8 @@
             this.dataGridViewColourQ.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewColourQ.Name = "dataGridViewColourQ";
             this.dataGridViewColourQ.RowHeadersVisible = false;
-            this.dataGridViewColourQ.Size = new System.Drawing.Size(397, 771);
+            this.dataGridViewColourQ.Size = new System.Drawing.Size(397, 713);
             this.dataGridViewColourQ.TabIndex = 5;
-            this.dataGridViewColourQ.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -939,7 +949,6 @@
             this.tabPageLabelProfiles.TabIndex = 5;
             this.tabPageLabelProfiles.Text = "   Label Profiles   ";
             this.tabPageLabelProfiles.UseVisualStyleBackColor = true;
-            this.tabPageLabelProfiles.Click += new System.EventHandler(this.tabPageLabelProfiles_Click);
             // 
             // groupBoxProfiles
             // 
@@ -1210,7 +1219,6 @@
             this.label31.Size = new System.Drawing.Size(94, 13);
             this.label31.TabIndex = 21;
             this.label31.Text = "Main Queue Label";
-            this.label31.Click += new System.EventHandler(this.label31_Click);
             // 
             // groupBoxDataPictures
             // 
@@ -1252,7 +1260,6 @@
             this.pictureBoxData3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxData3.TabIndex = 28;
             this.pictureBoxData3.TabStop = false;
-            this.pictureBoxData3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBoxData2
             // 
@@ -1328,7 +1335,6 @@
             this.textBoxData12.Name = "textBoxData12";
             this.textBoxData12.Size = new System.Drawing.Size(350, 20);
             this.textBoxData12.TabIndex = 19;
-            this.textBoxData12.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // label27
             // 
@@ -1415,7 +1421,6 @@
             this.label24.Size = new System.Drawing.Size(82, 13);
             this.label24.TabIndex = 21;
             this.label24.Text = "16. AGM Status";
-            this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
             // label23
             // 
@@ -1776,8 +1781,10 @@
             // 
             // tabPageManual
             // 
+            this.tabPageManual.Controls.Add(this.label68);
             this.tabPageManual.Controls.Add(this.label36);
             this.tabPageManual.Controls.Add(this.label35);
+            this.tabPageManual.Controls.Add(this.labelLabelName);
             this.tabPageManual.Controls.Add(this.textBoxOrderNumber);
             this.tabPageManual.Controls.Add(this.textBoxCustomerName);
             this.tabPageManual.Controls.Add(this.groupBox1);
@@ -1796,7 +1803,16 @@
             this.tabPageManual.TabIndex = 0;
             this.tabPageManual.Text = "     Manual Entry     ";
             this.tabPageManual.UseVisualStyleBackColor = true;
-            this.tabPageManual.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label68.Location = new System.Drawing.Point(13, 64);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(178, 13);
+            this.label68.TabIndex = 11;
+            this.label68.Text = "Current Label Style - click to change";
             // 
             // label36
             // 
@@ -1815,6 +1831,14 @@
             this.label35.Size = new System.Drawing.Size(51, 13);
             this.label35.TabIndex = 19;
             this.label35.Text = "Customer";
+            // 
+            // labelLabelName
+            // 
+            this.labelLabelName.Location = new System.Drawing.Point(16, 77);
+            this.labelLabelName.Name = "labelLabelName";
+            this.labelLabelName.Size = new System.Drawing.Size(216, 30);
+            this.labelLabelName.TabIndex = 12;
+            this.labelLabelName.Text = "Current Label";
             // 
             // textBoxOrderNumber
             // 
@@ -1914,7 +1938,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(134, 185);
             this.panel1.TabIndex = 14;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBoxMain
             // 
@@ -2025,7 +2048,6 @@
             this.textBoxQty.TabIndex = 0;
             this.textBoxQty.Text = "1";
             this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxQty.TextChanged += new System.EventHandler(this.textBoxQty_TextChanged);
             this.textBoxQty.Enter += new System.EventHandler(this.textBoxQty_Enter);
             // 
             // groupBox4
@@ -2039,7 +2061,6 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "current Text";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // labelPlantName
             // 
@@ -3173,6 +3194,7 @@
             // panelQueueUtilities
             // 
             this.panelQueueUtilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQueueUtilities.Controls.Add(this.buttonUpdateQLine);
             this.panelQueueUtilities.Controls.Add(this.buttonQackgroundColour);
             this.panelQueueUtilities.Controls.Add(this.buttonQBorderColour);
             this.panelQueueUtilities.Controls.Add(this.buttonQFontColour);
@@ -3250,6 +3272,74 @@
             this.panelQueueUtilities.Size = new System.Drawing.Size(1068, 771);
             this.panelQueueUtilities.TabIndex = 0;
             this.panelQueueUtilities.Paint += new System.Windows.Forms.PaintEventHandler(this.panelQueueUtilities_Paint);
+            // 
+            // buttonUpdateQLine
+            // 
+            this.buttonUpdateQLine.Location = new System.Drawing.Point(16, 106);
+            this.buttonUpdateQLine.Name = "buttonUpdateQLine";
+            this.buttonUpdateQLine.Size = new System.Drawing.Size(116, 23);
+            this.buttonUpdateQLine.TabIndex = 71;
+            this.buttonUpdateQLine.Text = "Update Line";
+            this.buttonUpdateQLine.UseVisualStyleBackColor = true;
+            this.buttonUpdateQLine.Click += new System.EventHandler(this.buttonUpdateQLine_Click);
+            // 
+            // buttonQackgroundColour
+            // 
+            this.buttonQackgroundColour.Location = new System.Drawing.Point(421, 476);
+            this.buttonQackgroundColour.Name = "buttonQackgroundColour";
+            this.buttonQackgroundColour.Size = new System.Drawing.Size(120, 23);
+            this.buttonQackgroundColour.TabIndex = 70;
+            this.buttonQackgroundColour.Text = "ColourPicker";
+            this.buttonQackgroundColour.UseVisualStyleBackColor = true;
+            this.buttonQackgroundColour.Click += new System.EventHandler(this.buttonQackgroundColour_Click);
+            // 
+            // buttonQBorderColour
+            // 
+            this.buttonQBorderColour.Location = new System.Drawing.Point(422, 452);
+            this.buttonQBorderColour.Name = "buttonQBorderColour";
+            this.buttonQBorderColour.Size = new System.Drawing.Size(119, 23);
+            this.buttonQBorderColour.TabIndex = 69;
+            this.buttonQBorderColour.Text = "Colour Picker";
+            this.buttonQBorderColour.UseVisualStyleBackColor = true;
+            this.buttonQBorderColour.Click += new System.EventHandler(this.buttonQBorderColour_Click);
+            // 
+            // buttonQFontColour
+            // 
+            this.buttonQFontColour.Location = new System.Drawing.Point(421, 374);
+            this.buttonQFontColour.Name = "buttonQFontColour";
+            this.buttonQFontColour.Size = new System.Drawing.Size(120, 23);
+            this.buttonQFontColour.TabIndex = 68;
+            this.buttonQFontColour.Text = "Colour Picker";
+            this.buttonQFontColour.UseVisualStyleBackColor = true;
+            this.buttonQFontColour.Click += new System.EventHandler(this.buttonQFontColour_Click);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(422, 412);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(0, 13);
+            this.label67.TabIndex = 67;
+            // 
+            // buttonQItalic
+            // 
+            this.buttonQItalic.Location = new System.Drawing.Point(339, 423);
+            this.buttonQItalic.Name = "buttonQItalic";
+            this.buttonQItalic.Size = new System.Drawing.Size(75, 23);
+            this.buttonQItalic.TabIndex = 66;
+            this.buttonQItalic.Text = "Change";
+            this.buttonQItalic.UseVisualStyleBackColor = true;
+            this.buttonQItalic.Click += new System.EventHandler(this.button2_Click_3);
+            // 
+            // buttonQBold
+            // 
+            this.buttonQBold.Location = new System.Drawing.Point(340, 397);
+            this.buttonQBold.Name = "buttonQBold";
+            this.buttonQBold.Size = new System.Drawing.Size(75, 23);
+            this.buttonQBold.TabIndex = 65;
+            this.buttonQBold.Text = "Change";
+            this.buttonQBold.UseVisualStyleBackColor = true;
+            this.buttonQBold.Click += new System.EventHandler(this.buttonQBold_Click);
             // 
             // label66
             // 
@@ -3406,7 +3496,6 @@
             this.textBoxQ24.Name = "textBoxQ24";
             this.textBoxQ24.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ24.TabIndex = 50;
-            this.textBoxQ24.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
             // textBoxQ25
             // 
@@ -3624,7 +3713,6 @@
             this.label44.TabIndex = 28;
             this.label44.Text = "6. Barcode";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label44.Click += new System.EventHandler(this.label44_Click);
             // 
             // label43
             // 
@@ -3665,7 +3753,6 @@
             this.label39.TabIndex = 24;
             this.label39.Text = "1. Plant Name";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label39.Click += new System.EventHandler(this.label39_Click);
             // 
             // label38
             // 
@@ -3676,7 +3763,6 @@
             this.label38.TabIndex = 23;
             this.label38.Text = "0. Id";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label38.Click += new System.EventHandler(this.label38_Click);
             // 
             // textBoxQ23
             // 
@@ -3684,7 +3770,6 @@
             this.textBoxQ23.Name = "textBoxQ23";
             this.textBoxQ23.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ23.TabIndex = 22;
-            this.textBoxQ23.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBoxQ21
             // 
@@ -3825,7 +3910,6 @@
             this.textBoxQ0.Name = "textBoxQ0";
             this.textBoxQ0.Size = new System.Drawing.Size(70, 20);
             this.textBoxQ0.TabIndex = 2;
-            this.textBoxQ0.TextChanged += new System.EventHandler(this.textBoxQ0_TextChanged);
             // 
             // textBoxQ1
             // 
@@ -3870,63 +3954,53 @@
             // 
             this.printDialogMain.UseEXDialog = true;
             // 
-            // buttonQBold
+            // bindingSource1
             // 
-            this.buttonQBold.Location = new System.Drawing.Point(340, 397);
-            this.buttonQBold.Name = "buttonQBold";
-            this.buttonQBold.Size = new System.Drawing.Size(75, 23);
-            this.buttonQBold.TabIndex = 65;
-            this.buttonQBold.Text = "Change";
-            this.buttonQBold.UseVisualStyleBackColor = true;
-            this.buttonQBold.Click += new System.EventHandler(this.buttonQBold_Click);
+            this.bindingSource1.DataSource = this.databaseLabelsDataSetDefaults;
+            this.bindingSource1.Position = 0;
             // 
-            // buttonQItalic
+            // databaseLabelsDataSetDefaults
             // 
-            this.buttonQItalic.Location = new System.Drawing.Point(339, 423);
-            this.buttonQItalic.Name = "buttonQItalic";
-            this.buttonQItalic.Size = new System.Drawing.Size(75, 23);
-            this.buttonQItalic.TabIndex = 66;
-            this.buttonQItalic.Text = "Change";
-            this.buttonQItalic.UseVisualStyleBackColor = true;
-            this.buttonQItalic.Click += new System.EventHandler(this.button2_Click_3);
+            this.databaseLabelsDataSetDefaults.DataSetName = "DatabaseLabelsDataSetDefaults";
+            this.databaseLabelsDataSetDefaults.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // label67
+            // defaultsTableAdapter1
             // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(422, 412);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(0, 13);
-            this.label67.TabIndex = 67;
+            this.defaultsTableAdapter1.ClearBeforeFill = true;
             // 
-            // buttonQFontColour
+            // defaultsTableAdapter2
             // 
-            this.buttonQFontColour.Location = new System.Drawing.Point(421, 374);
-            this.buttonQFontColour.Name = "buttonQFontColour";
-            this.buttonQFontColour.Size = new System.Drawing.Size(120, 23);
-            this.buttonQFontColour.TabIndex = 68;
-            this.buttonQFontColour.Text = "Colour Picker";
-            this.buttonQFontColour.UseVisualStyleBackColor = true;
-            this.buttonQFontColour.Click += new System.EventHandler(this.buttonQFontColour_Click);
+            this.defaultsTableAdapter2.ClearBeforeFill = true;
             // 
-            // buttonQBorderColour
+            // buttonDeleteQLines
             // 
-            this.buttonQBorderColour.Location = new System.Drawing.Point(422, 452);
-            this.buttonQBorderColour.Name = "buttonQBorderColour";
-            this.buttonQBorderColour.Size = new System.Drawing.Size(119, 23);
-            this.buttonQBorderColour.TabIndex = 69;
-            this.buttonQBorderColour.Text = "Colour Picker";
-            this.buttonQBorderColour.UseVisualStyleBackColor = true;
-            this.buttonQBorderColour.Click += new System.EventHandler(this.buttonQBorderColour_Click);
+            this.buttonDeleteQLines.Location = new System.Drawing.Point(1417, 791);
+            this.buttonDeleteQLines.Name = "buttonDeleteQLines";
+            this.buttonDeleteQLines.Size = new System.Drawing.Size(95, 48);
+            this.buttonDeleteQLines.TabIndex = 10;
+            this.buttonDeleteQLines.Text = "Delete All Selected Lines";
+            this.buttonDeleteQLines.UseVisualStyleBackColor = true;
+            this.buttonDeleteQLines.Click += new System.EventHandler(this.buttonDeleteQLines_Click);
             // 
-            // buttonQackgroundColour
+            // buttonDeleteBothQueues
             // 
-            this.buttonQackgroundColour.Location = new System.Drawing.Point(421, 476);
-            this.buttonQackgroundColour.Name = "buttonQackgroundColour";
-            this.buttonQackgroundColour.Size = new System.Drawing.Size(120, 23);
-            this.buttonQackgroundColour.TabIndex = 70;
-            this.buttonQackgroundColour.Text = "ColourPicker";
-            this.buttonQackgroundColour.UseVisualStyleBackColor = true;
-            this.buttonQackgroundColour.Click += new System.EventHandler(this.buttonQackgroundColour_Click);
+            this.buttonDeleteBothQueues.Location = new System.Drawing.Point(1202, 790);
+            this.buttonDeleteBothQueues.Name = "buttonDeleteBothQueues";
+            this.buttonDeleteBothQueues.Size = new System.Drawing.Size(95, 48);
+            this.buttonDeleteBothQueues.TabIndex = 11;
+            this.buttonDeleteBothQueues.Text = "Delete Both Queues";
+            this.buttonDeleteBothQueues.UseVisualStyleBackColor = true;
+            this.buttonDeleteBothQueues.Click += new System.EventHandler(this.buttonDeleteBothQueues_Click);
+            // 
+            // buttonDeleteThisQueue
+            // 
+            this.buttonDeleteThisQueue.Location = new System.Drawing.Point(1101, 790);
+            this.buttonDeleteThisQueue.Name = "buttonDeleteThisQueue";
+            this.buttonDeleteThisQueue.Size = new System.Drawing.Size(95, 48);
+            this.buttonDeleteThisQueue.TabIndex = 12;
+            this.buttonDeleteThisQueue.Text = "Delete This Queue";
+            this.buttonDeleteThisQueue.UseVisualStyleBackColor = true;
+            this.buttonDeleteThisQueue.Click += new System.EventHandler(this.buttonDeleteThisQueue_Click);
             // 
             // formMain
             // 
@@ -3934,6 +4008,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1516, 852);
+            this.Controls.Add(this.buttonDeleteThisQueue);
+            this.Controls.Add(this.buttonDeleteBothQueues);
+            this.Controls.Add(this.buttonDeleteQLines);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
             this.Controls.Add(this.tabControlMain);
@@ -4010,6 +4087,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4377,6 +4456,16 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button buttonQackgroundColour;
         private System.Windows.Forms.Button buttonQBorderColour;
+        private System.Windows.Forms.Button buttonUpdateQLine;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label labelLabelName;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private DatabaseLabelsDataSetDefaults databaseLabelsDataSetDefaults;
+        private DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter defaultsTableAdapter1;
+        private DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter defaultsTableAdapter2;
+        private System.Windows.Forms.Button buttonDeleteQLines;
+        private System.Windows.Forms.Button buttonDeleteBothQueues;
+        private System.Windows.Forms.Button buttonDeleteThisQueue;
     }
 }
 

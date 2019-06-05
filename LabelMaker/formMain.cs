@@ -235,44 +235,7 @@ namespace LabelMaker
         }
 
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tablePlantsBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tabPageMainQueue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPageColourQueue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewPlants_Click(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
 
         private void dataGridViewPlants_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -614,6 +577,18 @@ namespace LabelMaker
             {
                 fillQueueUtilitiesTab();
             }
+            string[] defaults = getDefaultSettings();
+            if (tabControlQueue.SelectedTab== tabPageMainQueue)
+            {
+                //labelLabelName.Text = defaults[2];
+                MessageBox.Show(defaults[2]);
+            }
+            else
+            {
+                labelLabelName.Text = defaults[3];
+            }
+
+
         }
 #endregion
 
@@ -705,7 +680,7 @@ namespace LabelMaker
             ButtonData10.Text = dataGridViewPlants.Rows[indexOfRow].Cells[10].Value.ToString();
             if (ButtonData10.Text == "True")
             {
-                ButtonData10.BackColor = Color.LightGreen;
+                ButtonData10.BackColor = Color.YellowGreen;
             }
             else
             {
@@ -714,7 +689,7 @@ namespace LabelMaker
             ButtonData16.Text = dataGridViewPlants.Rows[indexOfRow].Cells[16].Value.ToString();
             if (ButtonData16.Text == "True")
             {
-                ButtonData16.BackColor = Color.LightGreen;
+                ButtonData16.BackColor = Color.YellowGreen;
             }
             else
             {
@@ -727,12 +702,12 @@ namespace LabelMaker
             }
             else
             {
-                ButtonData18.BackColor = Color.LightGreen;
+                ButtonData18.BackColor = Color.YellowGreen;
             }
             ButtonData20.Text = dataGridViewPlants.Rows[indexOfRow].Cells[20].Value.ToString();
             if (ButtonData20.Text == "True")
             {
-                ButtonData20.BackColor = Color.LightGreen;
+                ButtonData20.BackColor = Color.YellowGreen;
             }
             else
             {
@@ -919,7 +894,7 @@ namespace LabelMaker
         {
             if (buttonAddtoColourQueue.Text == "add Colour")
             {
-                buttonAddtoColourQueue.BackColor = Color.LightGreen;
+                buttonAddtoColourQueue.BackColor = Color.YellowGreen;
             }
             else
             {
@@ -928,7 +903,7 @@ namespace LabelMaker
 
             if (buttonAGMStatus.Text == "AGM")
             {
-                buttonAGMStatus.BackColor = Color.LightGreen;
+                buttonAGMStatus.BackColor = Color.YellowGreen;
             }
             else
             {
@@ -937,7 +912,7 @@ namespace LabelMaker
 
             if (buttonLableStocks.Text == "Labels")
             {
-                buttonLableStocks.BackColor = Color.LightGreen;
+                buttonLableStocks.BackColor = Color.YellowGreen;
             }
             else
             {
@@ -946,7 +921,7 @@ namespace LabelMaker
 
             if (buttonVisibleEntry.Text == "Visible")
             {
-                buttonVisibleEntry.BackColor = Color.LightGreen;
+                buttonVisibleEntry.BackColor = Color.YellowGreen;
             }
             else
             {
@@ -998,7 +973,7 @@ namespace LabelMaker
             else
             {
                 buttonAGMStatus.Text = "AGM";
-                buttonAGMStatus.BackColor = Color.LightGreen;
+                buttonAGMStatus.BackColor = Color.YellowGreen;
             }
             colourStatusButtons();
         }
@@ -1013,7 +988,7 @@ namespace LabelMaker
             else
             {
                 buttonLableStocks.Text = "Labels";
-                buttonLableStocks.BackColor = Color.LightGreen;
+                buttonLableStocks.BackColor = Color.YellowGreen;
             }
             colourStatusButtons();
         }
@@ -1208,33 +1183,7 @@ namespace LabelMaker
                 textBoxPrice.Text = textBoxPriceAuto.Text;
             }
         }
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label31_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+private void button1_Click(object sender, EventArgs e)
         {   // Make a Clean Database entry sheet
 
             //Index
@@ -1298,7 +1247,7 @@ namespace LabelMaker
                 ButtonData10.BackColor = Color.DarkSalmon; }
             else
             { ButtonData10.Text = "True";
-                ButtonData10.BackColor = Color.LightGreen; }
+                ButtonData10.BackColor = Color.YellowGreen; }
         }
 
         private void ButtonData20_Click(object sender, EventArgs e)
@@ -1309,7 +1258,7 @@ namespace LabelMaker
             }
             else
             { ButtonData20.Text = "True";
-                ButtonData20.BackColor = Color.LightGreen;
+                ButtonData20.BackColor = Color.YellowGreen;
             }
         }
 
@@ -1321,7 +1270,7 @@ namespace LabelMaker
             }
             else
             { ButtonData16.Text = "True";
-                ButtonData16.BackColor = Color.LightGreen;
+                ButtonData16.BackColor = Color.YellowGreen;
             }
         }
 
@@ -1329,7 +1278,7 @@ namespace LabelMaker
         {
             if (ButtonData18.Text == "True")
             { ButtonData18.Text = "False";
-                ButtonData18.BackColor = Color.LightGreen;
+                ButtonData18.BackColor = Color.YellowGreen;
             }
             else
             { ButtonData18.Text = "True";
@@ -1446,22 +1395,7 @@ namespace LabelMaker
             return queueData;
         }
 
-        private void textBoxQty_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void addRowToMainQ()
         {
             string[] queue = CollectQueueEntry();
@@ -1496,7 +1430,16 @@ namespace LabelMaker
             row["Picture4"] = queue[23];
             row["OrderNo"] = queue[24];
 
-            databaseLabelsDataSetMainQueue.Tables[0].Rows.Add(row);
+            databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Add(row);
+            dataGridViewMainQ.EndEdit();
+            try
+            {
+                tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to add to Main Queue");
+            }
             labelMainCount.Text = addMainQueueTotal().ToString();
         }
 
@@ -1535,7 +1478,120 @@ namespace LabelMaker
             row["OrderNo"] = queue[24];
 
             databaseLabelsDataSetColourQueue.Tables[0].Rows.Add(row);
+            dataGridViewColourQ.EndEdit();
+            try
+            {
+                tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to add to Colour Queue");
+            }
             labelColourCount.Text = addColourQueueTotal().ToString();
+        }
+
+        private void deleteQueue( string which )
+        {
+            int whichOnes = 0;
+            if (which == "Both") { whichOnes = whichOnes + 32; }
+            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue") { whichOnes = whichOnes + 16; }
+
+            if (whichOnes == 0 || whichOnes == 32)
+            {
+                int numRows = databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Count - 1;
+
+                for (int i = 0; i <= numRows; i++)
+                {
+                    //databaseLabelsDataSetMainQueue.TableMainQueue.Rows.RemoveAt(0);
+                    dataGridViewMainQ.Rows.RemoveAt(0);
+                }
+                dataGridViewMainQ.EndEdit();
+                try
+                {
+                    tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                    //MessageBox.Show("Succeeding in deleting from Main Queue");
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to delete from Main Queue");
+                }
+                labelMainCount.Text = addMainQueueTotal().ToString();
+            }
+
+            if (whichOnes != 0)
+            {
+                int numRows = databaseLabelsDataSetColourQueue.TableColourQueue.Rows.Count - 1;
+
+                for (int i = 0; i <= numRows; i++)
+                {
+                    //databaseLabelsDataSetColourQueue.TableColourQueue.Rows.RemoveAt(0);
+                    dataGridViewColourQ.Rows.RemoveAt(0);
+                }
+                dataGridViewColourQ.EndEdit();
+                try
+                {
+                    tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                    //MessageBox.Show("Succeeding in deleting from Colour Queue");
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to delete from Colour Queue");
+                }
+                labelColourCount.Text = addColourQueueTotal().ToString();
+            }
+        }
+
+        private void deleteColourQueueLine()
+        {
+                foreach (DataGridViewCell oneCell in dataGridViewColourQ.SelectedCells)
+                {
+                    if (oneCell.Selected)
+                        dataGridViewColourQ.Rows.RemoveAt(oneCell.RowIndex);
+                }
+            try
+            {
+                tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to delete from Colour Queue");
+            }
+            labelColourCount.Text = addColourQueueTotal().ToString();
+        }
+
+        private void deleteMainQueueLine()
+        {
+            foreach (DataGridViewCell oneCell in dataGridViewMainQ.SelectedCells)
+            {
+                if (oneCell.Selected)
+                    dataGridViewMainQ.Rows.RemoveAt(oneCell.RowIndex);
+            }
+            try
+            {
+                tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to delete from Main Queue");
+            }
+            labelMainCount.Text = addMainQueueTotal().ToString();
+        }
+
+        private void buttonDeleteQLines_Click(object sender, EventArgs e)
+        {
+            deleteQueueLine();
+        }
+
+        private void deleteQueueLine()
+        {
+            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+            {
+                deleteColourQueueLine();
+            }
+            else
+            {
+                deleteMainQueueLine();
+            }
         }
 
         private void addToQueues()
@@ -1903,22 +1959,21 @@ namespace LabelMaker
         }
 #endregion
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public string[] getDefaultSettings()
         {
+            string[] defaults = new string[4];
 
+            
+            //.Tables[0].Rows[0].ToString());
+            //DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
+            for (int i = 0; i<= 3; i++)
+            {
+                //defaults[i] = dRow.ItemArray[i+1].ToString();
+                //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
+            }
+            return defaults;
         }
 
-
-
-        private void button2_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewMainQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         private int addMainQueueTotal()
         {
             int count = 0;
@@ -2047,35 +2102,7 @@ namespace LabelMaker
 
         #endregion
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxQ0_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label38_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label39_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label44_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button1_Click_3(object sender, EventArgs e)
         {
@@ -2195,6 +2222,24 @@ namespace LabelMaker
             return chosenColour;
         }
 
-        
+        private void buttonUpdateQLine_Click(object sender, EventArgs e)
+        {
+            dataGridViewMainQ.Update();
+        }
+
+        private void dataGridViewMainQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonDeleteThisQueue_Click(object sender, EventArgs e)
+        {
+            deleteQueue("Single");
+        }
+
+        private void buttonDeleteBothQueues_Click(object sender, EventArgs e)
+        {
+            deleteQueue("Both");
+        }
     }
 }
