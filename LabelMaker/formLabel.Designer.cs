@@ -35,8 +35,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(922, 526);
+            this.ClientSize = new System.Drawing.Size(1550, 815);
             this.Name = "formLabel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formLabel";
             this.Load += new System.EventHandler(this.formLabel_Load);
             this.ResumeLayout(false);

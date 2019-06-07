@@ -234,17 +234,17 @@ namespace CreationUtilities
             queueData[1] = "2";
             queueData[2] = moreData[3]; // price
             queueData[3] = sentData[9];
-            queueData[4] = "Derek Wellington";
+            queueData[4] = moreData[4]; // Customer Name
             queueData[5] = sentData[11];
             queueData[6] = sentData[8];
             queueData[7] = sentData[6];
             queueData[8] = moreData[0];
-            queueData[9] = "Arial";
-            queueData[10] = "4210688";
-            queueData[11] = "1";
-            queueData[12] = "0";
-            queueData[13] = "4227072";
-            queueData[14] = "16777183";
+            queueData[9] = moreData[6]; // Font Name
+            queueData[10] = moreData[7]; // Font Colour
+            queueData[11] = moreData[8]; // Bold
+            queueData[12] = moreData[9]; // Italic
+            queueData[13] = moreData[10]; // Border Colour
+            queueData[14] = moreData[11]; // Back colour
             queueData[15] = sentData[19];
             queueData[16] = sentName[1]; 
             queueData[17] = sentName[2];
@@ -254,7 +254,7 @@ namespace CreationUtilities
             queueData[21] = sentData[13];
             queueData[22] = sentData[14];
             queueData[23] = sentData[15];
-            queueData[24] = "#9527";
+            queueData[24] = "Order No. #" + moreData[5]; //Order Number
 
             return queueData;
         }

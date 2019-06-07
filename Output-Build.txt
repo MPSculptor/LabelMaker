@@ -1,1 +1,2 @@
-﻿========== Build: 0 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========
+﻿1>------ Clean started: Project: LabelMaker, Configuration: Debug Any CPU ------
+========== Clean: 1 succeeded, 0 failed, 0 skipped ==========

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,17 +55,68 @@ namespace LabelMaker
             }
             this.Text = queueData[0] + " as " + labelData[2] + " ( " + orientation + " - " + heightString + " , " + widthString + " )";
 
-            whereToNow whereTo = new whereToNow(queueData, labelData, defaultsString, finalWidth, finalHeight, "screen");
+            whereToNow whereTo = new whereToNow(queueData, labelData, defaultsString, finalWidth, finalHeight);
+            //setSize((labelWidth * scaler) + 18, (labelHeight * scaler) + 40);
             whereTo.BackColor = Color.White;
 
             whereTo.Width = finalWidth;
             whereTo.Height = finalHeight;
 
             whereTo.Location = new Point(10, 10);
+
+            //this.Controls.Add(whereTo);
+            PrintImage(queueData, labelData, defaultsString, finalWidth, finalHeight);
+
+
+            //Visible = true;
             return;
         }
 
+        #region ***PRINTING***
 
+
+        private void DrawImage( string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight, object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            MessageBox.Show("Got to DrawImage");
+            //Panel printPanel = new Panel(); 
+
+            //printPanel.Height = sentHeight;
+            //printPanel.Width = sentWidth;
+            //printPanel.BackColor = Color.White;
+
+            
+
+            //his.Controls.Add(printPanel);
+            Bitmap bmp = new Bitmap(sentWidth, sentHeight, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            whereToNow whereTo = new whereToNow(queueData, labelData, defaultsString, sentWidth, sentHeight);
+            whereTo.Location = new Point(0,0 );
+            whereTo.Height = sentHeight;
+            whereTo.Width = sentWidth;
+            whereTo.BackColor = Color.White;
+            whereTo.BorderStyle = BorderStyle.FixedSingle;
+            this.Controls.Add(whereTo);
+            Visible = true;
+
+            RectangleF bounds = e.PageSettings.PrintableArea;
+            //float factor = ((float)bmp.Height / (float)bmp.Width);
+            whereTo.DrawToBitmap(bmp, new Rectangle(0, 0, whereTo.Width, whereTo.Height));
+            e.Graphics.DrawImage(bmp, bounds.Left, bounds.Top, bounds.Width, bounds.Width);
+            
+        }
+
+        public void PrintImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight)
+        {
+            
+            PrintDocument pd = new PrintDocument();
+            
+            pd.PrintPage += (sender, args) => DrawImage(queueData, labelData, defaultsString,sentWidth,sentHeight, sender, args);
+            printDialog1.Document = pd;
+            printDialog1.ShowDialog();
+            pd.Print();
+        }
+
+        
+        #endregion
 
         private void formLabel_Load(object sender, EventArgs e)
         {
@@ -77,68 +128,22 @@ namespace LabelMaker
 
     public class whereToNow : Panel
     {
-        public whereToNow(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight, string printORscreen)
+        public whereToNow(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight)
         {
             int contentWidth = sentWidth;
             int contentHeight = sentHeight;
             Panel cp = this;
 
-            if (printORscreen == "print")
-            {
-                PrintDocument pd = new PrintDocument();
-
-                PrintDialog pDialog = new PrintDialog();
-                pDialog.Document = pd;
-                if (DialogResult.OK == pDialog.ShowDialog())
-                {
-                    pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
-                    int resolutionX = pDialog.PrinterSettings.DefaultPageSettings.PrinterResolution.X;
-                    sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width*(resolutionX/100));
-                    sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height * (resolutionX / 100));
-                    string paperSize = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.ToString();
-                    string resolution = pDialog.PrinterSettings.DefaultPageSettings.ToString();
-                    MessageBox.Show(sentWidth.ToString() + " , " + sentHeight.ToString()+" ," +paperSize+" , "+resolution );
-
-                    pd.PrintPage += (sender, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, sender, args);
-                    pd.Print();
-                }
-                pDialog.Dispose();
-            } 
-
-            this.Paint += (sender2, e2) => whereToNow_Paint(sender2, e2, queueData, labelData, defaultsString, contentWidth, contentHeight, cp, printORscreen);
+            this.Paint += (sender2, e2) => whereToNow_Paint(sender2, e2, queueData, labelData, defaultsString, contentWidth, contentHeight, cp);
          
         }
 
-        private void whereToNow_Paint(object sender, PaintEventArgs e, string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight, Panel cp, string printORscreen)
+        private void whereToNow_Paint(object sender, PaintEventArgs e, string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight, Panel cp)
         {
-            if (printORscreen == "screen")
-            {
-                Graphics formGraphics;
-                formGraphics = CreateGraphics();
-                CreateLabel(queueData, labelData, defaultsString, contentWidth, contentHeight, formGraphics);
-                formGraphics.Dispose();
-            }
+            CreateLabel(queueData, labelData, defaultsString, contentWidth, contentHeight, this);
         }
 
-        #region ***PRINTING***
-
-
-        private void DrawImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight, object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            //MessageBox.Show("Got to DrawImage");
-            CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, e.Graphics);
-            }
-
-        public void PrintImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight)
-        {
-
-            
-        }
-
-
-        #endregion
-
-        public void CreateLabel(string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight, Graphics formGraphics)
+        public void CreateLabel(string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight, Panel cp)
         {
 
             //DISCOVER LABEL PARAMETERS
@@ -190,7 +195,7 @@ namespace LabelMaker
                 int noLines = int.Parse(labelData[start + 12]);
                 string justify = (labelData[start + 13]);
                 bool? isFontColourProfile = bool.Parse(labelData[start + 14]);
-
+                string fontName = (labelData[start + 15]);
                 float fontSize = float.Parse(labelData[start + 16]);
                 bool? isFontBold = bool.Parse(labelData[start + 17]);
                 bool? isFontItalic = bool.Parse(labelData[start + 18]);
@@ -199,19 +204,6 @@ namespace LabelMaker
                 string profileTextColour = (queueData[10]);
                 string profileBorderColour = (queueData[13]);
                 string profileBackgroundColour = (queueData[14]);
-
-                string fontName = "Arial"; // Backstop value
-                if (isFontColourProfile.Value)
-                {
-                    //MessageBox.Show(labelData[start + 7] + " , " + labelData[start + 15]);
-                    fontName = (labelData[start + 15]); // As label data
-                    profileTextColour = ("0");
-                }
-                else
-                {
-                    fontName = queueData[9].Trim(); // As profile
-                }
-                
 
                 //set justification as an integer
                 int justifyInt = 0;
@@ -233,7 +225,7 @@ namespace LabelMaker
                 float yPosd = 0;
                 float xPosd = 0;
                 float xSized = contentWidth * xSize / 100;
-                float ySized = contentHeight * ySize / 100 / (lines);
+                float ySized = contentHeight * ySize / 100 / (lines);//CreationUtilities.TextOperations.CreationUtilities.TextOperations.getHexColour
                 if (xPos == 0)
                 {
                     //set as centred
@@ -279,12 +271,12 @@ namespace LabelMaker
                             //handle multi-line text
                             string[] labelReturned = new string[noLines];
                             labelReturned = CreationUtilities.TextOperations.SplitText(textToSend, noLines);
-                            paintText(formGraphics, labelReturned, labelReturned.Length, xPosd, yPosd, xSized, ySized, justifyInt, fontName, fontSize, colourFont, isFontVariable.Value, areLinesReduceable.Value, isFontBold.Value, isFontItalic.Value, textToSend);
+                            paintText(cp, labelReturned, labelReturned.Length, xPosd, yPosd, xSized, ySized, justifyInt, fontName, fontSize, colourFont, isFontVariable.Value, areLinesReduceable.Value, isFontBold.Value, isFontItalic.Value, textToSend);
                         }
                         else
                         {
                             //send single line text
-                            paintText(formGraphics, textToSendArray, 1, xPosd, yPosd, xSized, ySized, justifyInt, fontName, fontSize, colourFont, isFontVariable.Value, areLinesReduceable.Value, isFontBold.Value, isFontItalic.Value, textToSend);
+                            paintText(cp, textToSendArray, 1, xPosd, yPosd, xSized, ySized, justifyInt, fontName, fontSize, colourFont, isFontVariable.Value, areLinesReduceable.Value, isFontBold.Value, isFontItalic.Value, textToSend);
                         }
 
                         break;
@@ -294,14 +286,14 @@ namespace LabelMaker
                         Color borderColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileBorderColour));
                         float borderWidth = float.Parse(fixedValueString);
                         borderWidth = (contentWidth * borderWidth / 100);
-                        paintBorder(formGraphics, xPosd, yPosd, xSized, ySized, borderWidth, borderColour);
+                        paintBorder(cp, xPosd, yPosd, xSized, ySized, borderWidth, borderColour);
 
                         break;
 
                     case "colourbox":
 
                         Color colourBoxColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileBackgroundColour));
-                        paintColourbox(formGraphics, xPosd, yPosd, xSized, ySized, colourBoxColour);
+                        paintColourbox(cp, xPosd, yPosd, xSized, ySized, colourBoxColour);
 
                         break;
 
@@ -316,7 +308,9 @@ namespace LabelMaker
                         {
                             pictureString = (defaultsString[1] + fixedValueString);
                         }
-                        PaintImage(formGraphics, xPosd, yPosd, xSized, ySized, pictureString);
+
+                        //Console.WriteLine(pictureString);
+                        PaintImage(cp, xPosd, yPosd, xSized, ySized, pictureString);
 
                         break;
                     default:
@@ -327,7 +321,7 @@ namespace LabelMaker
 
         
 
-        public virtual void paintText(Graphics formGraphics, string[] textArray, int lines, float xPosd, float yPosd, float xSized, float ySized, int justify, string fontName, float fontSize, Color colourFont, bool isFontVariable, bool areLinesReduceable, bool isFontBold, bool isFontItalic, string textToSend)
+        public virtual void paintText(Panel whereTo, string[] textArray, int lines, float xPosd, float yPosd, float xSized, float ySized, int justify, string fontName, float fontSize, Color colourFont, bool isFontVariable, bool areLinesReduceable, bool isFontBold, bool isFontItalic, string textToSend)
         {
             float fontNewSize = 10;
 
@@ -346,6 +340,10 @@ namespace LabelMaker
             {
                 fontNewSize = fontSize;
             }
+
+            //create graphics object
+            Graphics g1;
+            g1 = whereTo.CreateGraphics();
 
             Pen p = new Pen(colourFont);
             Brush b = new SolidBrush(colourFont);
@@ -371,10 +369,10 @@ namespace LabelMaker
             }
             Font fontSet = new Font(fFont, ffontSize, ffontStyle);
 
-
             //GO FOR PRINTING
             float yOriginalSized = ySized;
             ySized = ySized / lines;
+            //g1.DrawString("",fontSet,b, 0, 0);
 
             double[] factorsToUse = new double[textArray.Length];
 
@@ -393,13 +391,16 @@ namespace LabelMaker
                 {
                     string[] LabelReturnedText = new string[f];
                     LabelReturnedText = CreationUtilities.TextOperations.SplitText(textToSend, f);
-                    
+                    //Console.WriteLine("REDUCING F = " + f);
+
                     for (int i = 0; i < f; i++)
                     {
+                        //Console.WriteLine(LabelReturnedText[i]);
+
                         Font fontToSend = fontSet;
 
                         double? factorToUseD;
-                        factorToUseD = sizeGraphicText(formGraphics, LabelReturnedText[i], fontSet, xSized, (yOriginalSized / f));
+                        factorToUseD = sizeGraphicText(whereTo, LabelReturnedText[i], fontSet, xSized, (yOriginalSized / f));
 
                         factorsToUse[i] = factorToUseD.Value;
                     }
@@ -442,10 +443,12 @@ namespace LabelMaker
 
                 for (int i = 0; i < (labelReturned.Length); i++)
                 {
+                    //Console.WriteLine("Chosen - " + labelReturned[i]);
+
                     Font fontToSend = fontSet;
 
                     double? factorToUseD;
-                    factorToUseD = sizeGraphicText(formGraphics, labelReturned[i], fontSet, xSized, (yOriginalSized / (labelReturned.Length)));
+                    factorToUseD = sizeGraphicText(whereTo, labelReturned[i], fontSet, xSized, (yOriginalSized / (labelReturned.Length)));
 
                     factorsToUse[i] = factorToUseD.Value;
                 }
@@ -462,12 +465,14 @@ namespace LabelMaker
             }
             else
             {
+
+                //Console.WriteLine("### NOT REDUCING ROUTINE ###");
                 for (int i = 0; i < (textArray.Length); i++)
                 {
                     Font fontToSend = fontSet;
 
                     double? factorToUseD;
-                    factorToUseD = sizeGraphicText(formGraphics, textArray[i], fontSet, xSized, ySized);
+                    factorToUseD = sizeGraphicText(whereTo, textArray[i], fontSet, xSized, ySized);
 
                     factorsToUse[i] = factorToUseD.Value;
                 }
@@ -501,6 +506,8 @@ namespace LabelMaker
                 Font useThisFont = new Font(fontName, useThisFontSize, ffontStyle);
 
                 //find size and find positions
+
+                
                 Size proposedSize = new Size(int.MaxValue, int.MaxValue);
 
                 Size textSize = TextRenderer.MeasureText(textArray[i], useThisFont);
@@ -524,24 +531,43 @@ namespace LabelMaker
                         break;
                 }
                 
+
                 //Centre Height
                 float yySized = ySized;
                 float yyPosd = (yPosd +  (i * yySized));
                 yyPosd = (yyPosd + ((yySized - newHeight) / 2));
 
                 //Draw the Text on the Object
+
+                
+                //Size proposedSize = new Size(int.MaxValue, int.MaxValue);
+
+
+                //StringFormat drawFormat = new StringFormat();
+                //drawFormat.FormatFlags = StringFormatFlags.MeasureTrailingSpaces;
+                //g1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+                //g1.DrawString(textArray[i], useThisFont, b, xxPosd, yyPosd, drawFormat);
+
                 Point P = new Point((int)xxPosd, (int)yyPosd);
-                TextRenderer.DrawText(formGraphics, textArray[i], useThisFont, P,colourFont);//, xxPosd, yyPosd);
-            
+                TextRenderer.DrawText(g1, textArray[i], useThisFont, P,colourFont);//, xxPosd, yyPosd);
+                //string texttext = textArray[i];
+                //string messagetext = texttext + " w (" + newWidth + ") , " + xxPosd + " to " + (xxPosd+newWidth);
+                //MessageBox.Show(messagetext);
+
                 useThisFont.Dispose();
             }
             p.Dispose();
             b.Dispose();
-            }
+            g1.Dispose();
+        }
 
-        public virtual double? sizeGraphicText(Graphics formGraphics, String textSent, Font fontSent, float xSized, float ySized)
+        public virtual double? sizeGraphicText(Panel whereTo, String textSent, Font fontSent, float xSized, float ySized)
         {
             //PRODUCES A SCALE FACTOR TO MULTIPLY THE DEFAULT FONT.
+
+            //double sensitivity = 1;
+            Graphics formGraphics;
+            formGraphics = whereTo.CreateGraphics();
 
             formGraphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             StringFormat format = StringFormat.GenericTypographic;
@@ -556,8 +582,12 @@ namespace LabelMaker
 
             // Measure string.
             SizeF stringSize = new SizeF();
-                        
+            //stringSize = formGraphics.MeasureString(measureString, firstFont, layoutSize,format);
+            
+            
+
             stringSize = TextRenderer.MeasureText(measureString , firstFont);
+
 
             //Get sizes
             float width = stringSize.Width;
@@ -577,35 +607,54 @@ namespace LabelMaker
             {
                 factorToUse = yFactor;
             }
-            
+            //Console.WriteLine("Text Sizing.  ** factorToUse = " + factorToUse);
+            formGraphics.Dispose();
+
             if (width == 0) { factorToUse = 0.01; }
             if (height == 0 ) { factorToUse = 0.01; }
 
             return factorToUse;
+            
+
         }
 
-        public virtual void paintBorder(Graphics formGraphics, float xPosd, float yPosd, float xSized, float ySized, float borderWidth, Color definedColour)
+        public virtual void paintBorder(Panel whereTo, float xPosd, float yPosd, float xSized, float ySized, float borderWidth, Color definedColour)
         {
+
+            Graphics g = whereTo.CreateGraphics();
             Pen p = new Pen(definedColour);
             p.Width = borderWidth;
             Rectangle r = new Rectangle((int)xPosd, (int)yPosd, (int)xSized, (int)ySized);
-            formGraphics.DrawRectangle(p, r);
+            g.DrawRectangle(p, r);
             p.Dispose();
+            g.Dispose();
+
         }
 
-        public virtual void paintColourbox(Graphics formGraphics, float xPosd, float yPosd, float xSized, float ySized, Color definedColour)
+        public virtual void paintColourbox(Panel whereTo, float xPosd, float yPosd, float xSized, float ySized, Color definedColour)
         {
+
             SolidBrush myBrush = new SolidBrush(definedColour);
+            Graphics formGraphics;
+            formGraphics = whereTo.CreateGraphics();
             formGraphics.FillRectangle(myBrush, new Rectangle((int)xPosd, (int)yPosd, (int)xSized, (int)ySized));
             myBrush.Dispose();
+            formGraphics.Dispose();
+            
         }
 
-        public virtual void PaintImage(Graphics formGraphics, float xPosd, float yPosd, float xSized, float ySized, string imageFile)
+        public virtual void PaintImage(Panel whereTo, float xPosd, float yPosd, float xSized, float ySized, string imageFile)
         {
             try
             {
                 Image imageToDraw = Image.FromFile(imageFile);
+                
+                Graphics formGraphics;
+                formGraphics = whereTo.CreateGraphics();
+
                 formGraphics.DrawImage(imageToDraw, xPosd, yPosd, xSized, ySized );
+
+                formGraphics.Dispose();
                 imageToDraw.Dispose();
             }
             catch (IOException)
