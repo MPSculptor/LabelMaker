@@ -401,6 +401,8 @@
             this.buttonDeleteQLines = new System.Windows.Forms.Button();
             this.buttonDeleteBothQueues = new System.Windows.Forms.Button();
             this.buttonDeleteThisQueue = new System.Windows.Forms.Button();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -1170,6 +1172,7 @@
             // tabPageDatabase
             // 
             this.tabPageDatabase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageDatabase.Controls.Add(this.label69);
             this.tabPageDatabase.Controls.Add(this.buttonCleanForm);
             this.tabPageDatabase.Controls.Add(this.label32);
             this.tabPageDatabase.Controls.Add(this.label31);
@@ -1186,7 +1189,7 @@
             this.tabPageDatabase.Name = "tabPageDatabase";
             this.tabPageDatabase.Size = new System.Drawing.Size(1075, 783);
             this.tabPageDatabase.TabIndex = 2;
-            this.tabPageDatabase.Text = "     Database Entry     ";
+            this.tabPageDatabase.Text = "     Database Entry";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
             this.tabPageDatabase.Click += new System.EventHandler(this.tabPageDatabase_Click);
             // 
@@ -3194,6 +3197,7 @@
             // panelQueueUtilities
             // 
             this.panelQueueUtilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQueueUtilities.Controls.Add(this.label70);
             this.panelQueueUtilities.Controls.Add(this.buttonUpdateQLine);
             this.panelQueueUtilities.Controls.Add(this.buttonQackgroundColour);
             this.panelQueueUtilities.Controls.Add(this.buttonQBorderColour);
@@ -3345,7 +3349,7 @@
             // 
             this.label66.AutoSize = true;
             this.label66.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label66.Location = new System.Drawing.Point(745, 15);
+            this.label66.Location = new System.Drawing.Point(745, 67);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(148, 13);
             this.label66.TabIndex = 64;
@@ -3355,7 +3359,7 @@
             // 
             this.label65.AutoSize = true;
             this.label65.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label65.Location = new System.Drawing.Point(745, 257);
+            this.label65.Location = new System.Drawing.Point(745, 309);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(155, 13);
             this.label65.TabIndex = 63;
@@ -3375,16 +3379,16 @@
             // 
             this.panelQColour.BackColor = System.Drawing.Color.DarkGray;
             this.panelQColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQColour.Location = new System.Drawing.Point(748, 273);
+            this.panelQColour.Location = new System.Drawing.Point(748, 325);
             this.panelQColour.Name = "panelQColour";
-            this.panelQColour.Size = new System.Drawing.Size(303, 351);
+            this.panelQColour.Size = new System.Drawing.Size(303, 299);
             this.panelQColour.TabIndex = 61;
             // 
             // panelQMain
             // 
             this.panelQMain.BackColor = System.Drawing.Color.DarkGray;
             this.panelQMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQMain.Location = new System.Drawing.Point(748, 31);
+            this.panelQMain.Location = new System.Drawing.Point(748, 83);
             this.panelQMain.Name = "panelQMain";
             this.panelQMain.Size = new System.Drawing.Size(303, 221);
             this.panelQMain.TabIndex = 60;
@@ -4002,6 +4006,29 @@
             this.buttonDeleteThisQueue.UseVisualStyleBackColor = true;
             this.buttonDeleteThisQueue.Click += new System.EventHandler(this.buttonDeleteThisQueue_Click);
             // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Myriad Web Pro", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label69.Location = new System.Drawing.Point(603, 691);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(452, 73);
+            this.label69.TabIndex = 24;
+            this.label69.Text = "Database Entry";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Myriad Web Pro", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label70.Location = new System.Drawing.Point(756, 7);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(295, 49);
+            this.label70.TabIndex = 72;
+            this.label70.Text = "Queue Utilities";
+            this.label70.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4466,6 +4493,8 @@
         private System.Windows.Forms.Button buttonDeleteQLines;
         private System.Windows.Forms.Button buttonDeleteBothQueues;
         private System.Windows.Forms.Button buttonDeleteThisQueue;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
     }
 }
 

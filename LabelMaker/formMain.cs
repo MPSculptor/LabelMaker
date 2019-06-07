@@ -724,6 +724,8 @@ namespace LabelMaker
                 {
                     int indexOfRow = dataGridViewMainQ.CurrentRow.Index;
                     //Fill in Plant Name
+                    textBoxQ0.Text = indexOfRow.ToString();
+
                     for (int i = 1; i <= 25; i++)
                     {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
@@ -809,7 +811,9 @@ namespace LabelMaker
                 catch (IOException)
                 {
                     string pictureFile = "";
-                    if (String.IsNullOrEmpty(curText.Text.ToString()))
+                    string testString = curText.Text.ToString();
+                    testString = testString.Trim();
+                    if (String.IsNullOrEmpty(testString))
                     {
                         pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
                     }
@@ -1438,7 +1442,7 @@ private void button1_Click(object sender, EventArgs e)
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show("Failed to add to Main Queue");
+                MessageBox.Show("Failed to add to Main Queue - " + ex);
             }
             labelMainCount.Text = addMainQueueTotal().ToString();
         }
@@ -1485,7 +1489,7 @@ private void button1_Click(object sender, EventArgs e)
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show("Failed to add to Colour Queue");
+                MessageBox.Show("Failed to add to Colour Queue - " + ex);
             }
             labelColourCount.Text = addColourQueueTotal().ToString();
         }
@@ -1513,7 +1517,7 @@ private void button1_Click(object sender, EventArgs e)
                 }
                 catch (System.Exception ex)
                 {
-                    MessageBox.Show("Failed to delete from Main Queue");
+                    MessageBox.Show("Failed to delete from Main Queue - " + ex);
                 }
                 labelMainCount.Text = addMainQueueTotal().ToString();
             }
@@ -1535,7 +1539,7 @@ private void button1_Click(object sender, EventArgs e)
                 }
                 catch (System.Exception ex)
                 {
-                    MessageBox.Show("Failed to delete from Colour Queue");
+                    MessageBox.Show("Failed to delete from Colour Queue - " + ex);
                 }
                 labelColourCount.Text = addColourQueueTotal().ToString();
             }
@@ -1554,7 +1558,7 @@ private void button1_Click(object sender, EventArgs e)
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show("Failed to delete from Colour Queue");
+                MessageBox.Show("Failed to delete from Colour Queue - " + ex);
             }
             labelColourCount.Text = addColourQueueTotal().ToString();
         }
@@ -1572,7 +1576,7 @@ private void button1_Click(object sender, EventArgs e)
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show("Failed to delete from Main Queue");
+                MessageBox.Show("Failed to delete from Main Queue - " + ex);
             }
             labelMainCount.Text = addMainQueueTotal().ToString();
         }
@@ -2009,20 +2013,21 @@ private void button1_Click(object sender, EventArgs e)
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+
+
             printDialogMain.ShowDialog();
-            
             // Determine the Queue and no. entries
-            int howMany = 0;
+            int howManyLines = 0;
             string whichQueue = "";
             if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
             {
                 whichQueue = "Colour";
-                howMany = dataGridViewColourQ.RowCount - 1;
+                howManyLines = dataGridViewColourQ.RowCount - 1;
             }
             else
             {
                 whichQueue = "Main";
-                howMany = dataGridViewMainQ.RowCount - 1;
+                howManyLines = dataGridViewMainQ.RowCount - 1;
             }
 
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
@@ -2042,12 +2047,12 @@ private void button1_Click(object sender, EventArgs e)
             string[] labelData = CreationUtilities.dataReader.readFile(name);
 
                         
-            for (int i = 0; i < howMany; i++)
+            for (int i = 0; i < howManyLines; i++)
             {
                 string[] queueData = collectQueueRow(i, whichQueue);
 
-                whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, 1090, 500, "print");
-                MessageBox.Show(queueData[0]);
+                whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, 0, 0, "print");
+                //MessageBox.Show(queueData[0]);
                 printWhere.Dispose();            
             }
         }
@@ -2224,7 +2229,55 @@ private void button1_Click(object sender, EventArgs e)
 
         private void buttonUpdateQLine_Click(object sender, EventArgs e)
         {
-            dataGridViewMainQ.Update();
+            int indexOfRow = int.Parse(textBoxQ0.Text);
+            for (int i = 1; i <= 25; i++)
+            {
+                TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                if (tabControlQueue.SelectedTab == tabPageMainQueue)
+                {
+                    dataGridViewMainQ.CurrentCell = dataGridViewMainQ[i - 1, indexOfRow];
+                    //dataGridViewMainQ.Rows[indexOfRow].Cells[i - 1].beginedit;
+                    dataGridViewMainQ.Rows[indexOfRow].Cells[i - 1].Value = curText.Text;
+                    dataGridViewMainQ.UpdateCellValue(i - 1, indexOfRow);
+                    
+
+                }
+                else
+                {
+                    dataGridViewColourQ.Rows[indexOfRow].Cells[i - 1].Value = curText.Text;
+                    
+                }
+
+                if (tabControlQueue.SelectedTab == tabPageMainQueue)
+                {
+                    
+                    dataGridViewMainQ.EndEdit();
+                    dataGridViewMainQ.Update();
+                    try
+                    {
+                        tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to add to Main Queue - " + ex);
+                    }
+                    labelMainCount.Text = addMainQueueTotal().ToString();
+                }
+                else
+                {
+                    dataGridViewColourQ.EndEdit();
+                    try
+                    {
+                        tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to add to Colour Queue - " + ex);
+                    }
+                    labelColourCount.Text = addColourQueueTotal().ToString();
+                }
+            }
+            paintQueueUtilities();
         }
 
         private void dataGridViewMainQ_CellContentClick(object sender, DataGridViewCellEventArgs e)

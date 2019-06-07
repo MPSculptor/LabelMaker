@@ -87,8 +87,22 @@ namespace LabelMaker
             {
                 PrintDocument pd = new PrintDocument();
 
-                pd.PrintPage += (sender, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, sender, args);
-                pd.Print();
+                PrintDialog pDialog = new PrintDialog();
+                pDialog.Document = pd;
+                if (DialogResult.OK == pDialog.ShowDialog())
+                {
+                    pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
+                    int resolutionX = pDialog.PrinterSettings.DefaultPageSettings.PrinterResolution.X;
+                    sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width*(resolutionX/100));
+                    sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height * (resolutionX / 100));
+                    string paperSize = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.ToString();
+                    string resolution = pDialog.PrinterSettings.DefaultPageSettings.ToString();
+                    MessageBox.Show(sentWidth.ToString() + " , " + sentHeight.ToString()+" ," +paperSize+" , "+resolution );
+
+                    pd.PrintPage += (sender, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, sender, args);
+                    pd.Print();
+                }
+                pDialog.Dispose();
             } 
 
             this.Paint += (sender2, e2) => whereToNow_Paint(sender2, e2, queueData, labelData, defaultsString, contentWidth, contentHeight, cp, printORscreen);
@@ -111,7 +125,7 @@ namespace LabelMaker
 
         private void DrawImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight, object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            MessageBox.Show("Got to DrawImage");
+            //MessageBox.Show("Got to DrawImage");
             CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, e.Graphics);
             }
 
