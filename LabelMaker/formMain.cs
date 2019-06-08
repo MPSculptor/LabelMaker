@@ -48,6 +48,7 @@ namespace LabelMaker
             dataGridViewPlants.Columns[6].Width = 100;
 
             updateMainDetails(0);
+            getLabelName();
             indexNavigationButtons();
         }
 
@@ -577,16 +578,7 @@ namespace LabelMaker
             {
                 fillQueueUtilitiesTab();
             }
-            string[] defaults = getDefaultSettings();
-            if (tabControlQueue.SelectedTab== tabPageMainQueue)
-            {
-                //labelLabelName.Text = defaults[2];
-                MessageBox.Show(defaults[2]);
-            }
-            else
-            {
-                labelLabelName.Text = defaults[3];
-            }
+            getLabelName();
 
 
         }
@@ -1961,18 +1953,42 @@ private void button1_Click(object sender, EventArgs e)
             buttonVisibleOnly.BackColor = Color.Transparent;
             buttonAllEntries.BackColor = Color.YellowGreen;
         }
-#endregion
+        #endregion
+
+        private void fillLabelCombo()
+        {
+            DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
+            for (int i = 0; i <= 3; i++)
+            {
+                LabelsLabelNamesTableAdapter.fill(databaseLabelsDataSetLabels.LabelsLabelNames)
+                defaults[i] = dRow.ItemArray[i + 1].ToString();
+                //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
+            }
+        }
+        private void getLabelName()
+        {
+            string[] defaults = getDefaultSettings();
+            if (tabControlQueue.SelectedTab == tabPageMainQueue)
+            {
+                comboBoxLabelName.Text = defaults[2];
+                //labelLabelName.Text = defaults[2];
+            }
+            else
+            {
+                comboBoxLabelName.Text = defaults[3];
+                //labelLabelName.Text = defaults[3];
+            }
+        }
 
         public string[] getDefaultSettings()
         {
             string[] defaults = new string[4];
 
-            
-            //.Tables[0].Rows[0].ToString());
-            //DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
+            defaultsTableAdapter1.Fill(databaseLabelsDataSetDefaults.Defaults);
+            DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
             for (int i = 0; i<= 3; i++)
             {
-                //defaults[i] = dRow.ItemArray[i+1].ToString();
+                defaults[i] = dRow.ItemArray[i+1].ToString();
                 //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
             }
             return defaults;
@@ -2015,7 +2031,7 @@ private void button1_Click(object sender, EventArgs e)
         {
 
 
-            printDialogMain.ShowDialog();
+            
             // Determine the Queue and no. entries
             int howManyLines = 0;
             string whichQueue = "";
@@ -2293,6 +2309,16 @@ private void button1_Click(object sender, EventArgs e)
         private void buttonDeleteBothQueues_Click(object sender, EventArgs e)
         {
             deleteQueue("Both");
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelLabelTabColour_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

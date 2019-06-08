@@ -82,7 +82,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -177,7 +177,16 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
               <Mapping SourceColumn="notes" DataSetColumn="notes" />
               <Mapping SourceColumn="LabelStock" DataSetColumn="LabelStock" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="DatabaseLabelsConnectionString (Settings)" DbObjectName="dbo.TablePlants" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT AGM, Barcode, ColourQueue, Common, [Desc], Genus, GenusCross, Hide, Id, LabelColour, LabelStock, Picture1, Picture2, Picture3, Picture4, PotSize, SKU, Species, SpeciesCross, Variety, notes FROM TablePlants</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
