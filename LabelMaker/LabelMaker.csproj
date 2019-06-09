@@ -89,6 +89,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSetDefaults.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseLabelsDataSetLabelNames.cs">
+      <DependentUpon>DatabaseLabelsDataSetLabelNames.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSetLabelNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseLabelsDataSetLabelNames.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseLabelsDataSetMainQueue.cs">
       <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
     </Compile>
@@ -170,6 +178,17 @@
     </None>
     <None Include="DatabaseLabelsDataSetDefaults.xss">
       <DependentUpon>DatabaseLabelsDataSetDefaults.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSetLabelNames.xsc">
+      <DependentUpon>DatabaseLabelsDataSetLabelNames.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSetLabelNames.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseLabelsDataSetLabelNames.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseLabelsDataSetLabelNames.xss">
+      <DependentUpon>DatabaseLabelsDataSetLabelNames.xsd</DependentUpon>
     </None>
     <None Include="DatabaseLabelsDataSetMainQueue.xsc">
       <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>

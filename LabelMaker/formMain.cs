@@ -36,6 +36,7 @@ namespace LabelMaker
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
             this.tablePlantsTableAdapter.Fill(this.databaseLabelsDataSet.TablePlants);
 
+
             this.BackColor = Color.DarkGray;
 
             //dataGridViewPlants.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -63,7 +64,7 @@ namespace LabelMaker
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TempMakeALabel(panelLabelPreview, "Main","database");
+            TempMakeALabel(panelLabelPreview, "Main", "database");
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -81,11 +82,11 @@ namespace LabelMaker
             //string[] queueString = CreationUtilities.dataReader.readFile(name);
             string[] queueString = new string[25];
 
-            if (DatabaseOrQueue=="database")
+            if (DatabaseOrQueue == "database")
             {
-                    //file with sample queue entry;
+                //file with sample queue entry;
                 //name = whereFiles + "ColourQueue.txt";
-            
+
 
                 int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
                 string[] sendData = new String[21];
@@ -152,7 +153,7 @@ namespace LabelMaker
             }
             else
             {
-                for(int i = 0; i <= 24; i++)
+                for (int i = 0; i <= 24; i++)
                 {
                     TextBox curTextBox = (TextBox)panelQueueUtilities.Controls["textBoxQ" + (i + 1).ToString()];
                     queueString[i] = curTextBox.Text.ToString();
@@ -246,6 +247,10 @@ namespace LabelMaker
 
         public void updateMainDetails(int indexOfRow)
         {
+
+            //get all labels
+            fillLabelCombo();
+
             //get picture position
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
             //file with sample queue entry;
@@ -545,7 +550,7 @@ namespace LabelMaker
 
         }
 
-#region *** tabControl Events ***
+        #region *** tabControl Events ***
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -582,7 +587,7 @@ namespace LabelMaker
 
 
         }
-#endregion
+        #endregion
 
         private void clearPanelLabel()
         {
@@ -775,7 +780,7 @@ namespace LabelMaker
 
         private void paintQueueUtilities()
         {
-            labelFontColour.BackColor= System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ11.Text));
+            labelFontColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ11.Text));
             labelBorderColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ14.Text));
             labelBackgroundColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxQ15.Text));
 
@@ -790,9 +795,9 @@ namespace LabelMaker
 
             for (int i = 1; i <= 4; i++)
             {
-                TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + (i+20).ToString()];
+                TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + (i + 20).ToString()];
                 PictureBox curPictureBox = (PictureBox)panelQueueUtilities.Controls["pictureBoxQ" + (i).ToString()];
-                
+
                 //Picture images
                 try // #1
                 {
@@ -845,7 +850,7 @@ namespace LabelMaker
         {
             TextBox curTextOne = (TextBox)panelQueueUtilities.Controls["textBoxQ" + One.ToString()];
             TextBox curTextTwo = (TextBox)panelQueueUtilities.Controls["textBoxQ" + Two.ToString()];
-            String Swap = curTextOne.Text ;
+            String Swap = curTextOne.Text;
             curTextOne.Text = curTextTwo.Text;
             curTextTwo.Text = Swap;
         }
@@ -1179,7 +1184,7 @@ namespace LabelMaker
                 textBoxPrice.Text = textBoxPriceAuto.Text;
             }
         }
-private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {   // Make a Clean Database entry sheet
 
             //Index
@@ -1391,7 +1396,7 @@ private void button1_Click(object sender, EventArgs e)
             return queueData;
         }
 
-        
+
         private void addRowToMainQ()
         {
             string[] queue = CollectQueueEntry();
@@ -1486,7 +1491,7 @@ private void button1_Click(object sender, EventArgs e)
             labelColourCount.Text = addColourQueueTotal().ToString();
         }
 
-        private void deleteQueue( string which )
+        private void deleteQueue(string which)
         {
             int whichOnes = 0;
             if (which == "Both") { whichOnes = whichOnes + 32; }
@@ -1539,11 +1544,11 @@ private void button1_Click(object sender, EventArgs e)
 
         private void deleteColourQueueLine()
         {
-                foreach (DataGridViewCell oneCell in dataGridViewColourQ.SelectedCells)
-                {
-                    if (oneCell.Selected)
-                        dataGridViewColourQ.Rows.RemoveAt(oneCell.RowIndex);
-                }
+            foreach (DataGridViewCell oneCell in dataGridViewColourQ.SelectedCells)
+            {
+                if (oneCell.Selected)
+                    dataGridViewColourQ.Rows.RemoveAt(oneCell.RowIndex);
+            }
             try
             {
                 tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
@@ -1645,7 +1650,7 @@ private void button1_Click(object sender, EventArgs e)
         {
 
         }
-    #region *** Navigation Buttons***
+        #region *** Navigation Buttons***
         private void indexNavigationButtons()
         {
             string buttonName = "";
@@ -1910,7 +1915,7 @@ private void button1_Click(object sender, EventArgs e)
         }
         #endregion
 
-    #region ***Database Filter Buttons***
+        #region ***Database Filter Buttons***
 
         private void buttonHiddenOnly_Click(object sender, EventArgs e)
         {
@@ -1955,16 +1960,7 @@ private void button1_Click(object sender, EventArgs e)
         }
         #endregion
 
-        private void fillLabelCombo()
-        {
-            DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
-            for (int i = 0; i <= 3; i++)
-            {
-                //LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabels.LabelsLabelNames)
-                //defaults[i] = dRow.ItemArray[i + 1].ToString();
-                //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
-            }
-        }
+        
         private void getLabelName()
         {
             string[] defaults = getDefaultSettings();
@@ -1986,9 +1982,9 @@ private void button1_Click(object sender, EventArgs e)
 
             defaultsTableAdapter1.Fill(databaseLabelsDataSetDefaults.Defaults);
             DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
-            for (int i = 0; i<= 3; i++)
+            for (int i = 0; i <= 3; i++)
             {
-                defaults[i] = dRow.ItemArray[i+1].ToString();
+                defaults[i] = dRow.ItemArray[i + 1].ToString();
                 //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
             }
             return defaults;
@@ -2031,7 +2027,7 @@ private void button1_Click(object sender, EventArgs e)
         {
 
 
-            
+
             // Determine the Queue and no. entries
             int howManyLines = 0;
             string whichQueue = "";
@@ -2062,18 +2058,18 @@ private void button1_Click(object sender, EventArgs e)
             }
             string[] labelData = CreationUtilities.dataReader.readFile(name);
 
-                        
+
             for (int i = 0; i < howManyLines; i++)
             {
                 string[] queueData = collectQueueRow(i, whichQueue);
 
                 whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, 0, 0, "print");
                 //MessageBox.Show(queueData[0]);
-                printWhere.Dispose();            
+                printWhere.Dispose();
             }
         }
 
-        
+
 
         #region  QUEUE UTILITIES
 
@@ -2123,14 +2119,14 @@ private void button1_Click(object sender, EventArgs e)
 
         #endregion
 
-        
+
 
         private void button1_Click_3(object sender, EventArgs e)
         {
             if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageMainQueue")
             {
                 int indexOfRow = dataGridViewMainQ.CurrentRow.Index;
-                if (indexOfRow < dataGridViewMainQ.RowCount-2)
+                if (indexOfRow < dataGridViewMainQ.RowCount - 2)
                 {
                     dataGridViewMainQ.CurrentCell = dataGridViewMainQ.Rows[indexOfRow + 1].Cells[0];
                     fillQueueUtilitiesTab();
@@ -2255,18 +2251,18 @@ private void button1_Click(object sender, EventArgs e)
                     //dataGridViewMainQ.Rows[indexOfRow].Cells[i - 1].beginedit;
                     dataGridViewMainQ.Rows[indexOfRow].Cells[i - 1].Value = curText.Text;
                     dataGridViewMainQ.UpdateCellValue(i - 1, indexOfRow);
-                    
+
 
                 }
                 else
                 {
                     dataGridViewColourQ.Rows[indexOfRow].Cells[i - 1].Value = curText.Text;
-                    
+
                 }
 
                 if (tabControlQueue.SelectedTab == tabPageMainQueue)
                 {
-                    
+
                     dataGridViewMainQ.EndEdit();
                     dataGridViewMainQ.Update();
                     try
@@ -2331,5 +2327,89 @@ private void button1_Click(object sender, EventArgs e)
 
 
         }
+
+        private void comboBoxLabelName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxLabelName.SelectedItem != null)
+            {
+                comboBoxLabelName.Text = comboBoxLabelName.SelectedItem.ToString();
+                comboBoxLabelName.Refresh();
+                textBoxQty.Focus();
+            }
+            String[] labelHeaderData = returnLabelHeaderData(comboBoxLabelName.Text.ToString());
+            
+        }
+#region Label Stuff
+
+        //routines to get Label Name and find the information
+
+        public String[] returnLabelHeaderData(string labelName)
+        {
+            String[] labelHeaderData = new String[18];
+            LabelsLabelNamesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, Child, Batch, QuickPrint FROM dbo.LabelsLabelNames WHERE Name = '"+labelName+"'";
+            LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
+            DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[0];
+            //Batch or Not
+            string batch = dRow.ItemArray[3].ToString().Trim();
+            labelHeaderData[0] = batch;
+
+            //Selector for next table
+            String childName = dRow.ItemArray[2].ToString();
+            childName = childName.Trim();
+
+            LabelsLabelCategoriesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT * FROM dbo.LabelsLabelCategories"; // WHERE Name = '" + childName +"'";
+            LabelsLabelCategoriesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelCategories);
+            DataRow eRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelCategories"].Rows[0];
+            //Header Data
+            for (int i = 1; i <= 15; i++)
+            { 
+                labelHeaderData[i] = eRow.ItemArray[i].ToString().Trim();
+            }
+            String printerName = eRow.ItemArray[12].ToString();
+            printerName = printerName.Trim();
+
+            //PrintersTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, OffsetDown, OffsetRight FROM dbo.Printers WHERE Name = '"+ printerName +"'";
+            PrintersTableAdapter.Fill(databaseLabelsDataSetLabelNames.Printers);
+            DataRow fRow = databaseLabelsDataSetLabelNames.Tables["Printers"].Rows[0];
+
+            labelHeaderData[16] = fRow.ItemArray[2].ToString().Trim();
+            labelHeaderData[17] = fRow.ItemArray[3].ToString().Trim();
+
+            String messageString = "";
+            for (int i = 0; i <= 17; i++)
+            {
+                messageString = messageString + labelHeaderData[i] + "|";
+            }
+           
+            MessageBox.Show(messageString);
+            return labelHeaderData;
+
+        }
+
+
+        public String[] returnLabelData(string labName)
+        {
+            String[] labelData = new String[16];
+
+            return labelData;
+
+        }
+
+        private void fillLabelCombo()
+        {
+            string getName = "";
+            comboBoxLabelName.Items.Clear();
+            LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
+
+            //DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
+            for (int i = 0; i <= (databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows.Count - 1); i++)
+            {
+                DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[i];
+                getName = dRow.ItemArray[1].ToString();
+                comboBoxLabelName.Items.Add(getName);
+                //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
+            }
+        }
+ #endregion
     }
 }

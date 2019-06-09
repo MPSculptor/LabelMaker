@@ -4,15 +4,7 @@ using System.Drawing;
 
 namespace CreationUtilities
 
-
-
-
 {
-
-
-    
-
-
 
     //Handles all of the text manipulation routines
 
