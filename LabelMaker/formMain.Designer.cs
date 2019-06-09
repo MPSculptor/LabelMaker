@@ -403,8 +403,6 @@
             this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.bindingSourceLabels = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetLabels = new LabelMaker.DatabaseLabelsDataSet2();
             this.comboBoxLabelName = new System.Windows.Forms.ComboBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
@@ -462,8 +460,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabels)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -4052,16 +4048,6 @@
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
             // 
-            // bindingSourceLabels
-            // 
-            this.bindingSourceLabels.DataSource = this.databaseLabelsDataSetLabels;
-            this.bindingSourceLabels.Position = 0;
-            // 
-            // databaseLabelsDataSetLabels
-            // 
-            this.databaseLabelsDataSetLabels.DataSetName = "DatabaseLabelsDataSetLabels";
-            this.databaseLabelsDataSetLabels.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // comboBoxLabelName
             // 
             this.comboBoxLabelName.FormattingEnabled = true;
@@ -4157,8 +4143,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4538,8 +4522,6 @@
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.BindingSource bindingSourceLabels;
-        private DatabaseLabelsDataSet2 databaseLabelsDataSetLabels;
         private System.Windows.Forms.ComboBox comboBoxLabelName;
     }
 }

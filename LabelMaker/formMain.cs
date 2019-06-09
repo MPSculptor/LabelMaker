@@ -1960,8 +1960,8 @@ private void button1_Click(object sender, EventArgs e)
             DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
             for (int i = 0; i <= 3; i++)
             {
-                LabelsLabelNamesTableAdapter.fill(databaseLabelsDataSetLabels.LabelsLabelNames)
-                defaults[i] = dRow.ItemArray[i + 1].ToString();
+                //LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabels.LabelsLabelNames)
+                //defaults[i] = dRow.ItemArray[i + 1].ToString();
                 //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
             }
         }
@@ -2318,6 +2318,17 @@ private void button1_Click(object sender, EventArgs e)
 
         private void panelLabelTabColour_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void bindingSourceLabels_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingSource2_CurrentChanged(object sender, EventArgs e)
+        {
+
 
         }
     }
