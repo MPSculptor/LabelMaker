@@ -2,6 +2,9 @@
 {
     partial class DatabaseLabelsDataSetLabelNames
     {
+        partial class LabelsLabelCategoriesDataTable
+        {
+        }
     }
 }
 

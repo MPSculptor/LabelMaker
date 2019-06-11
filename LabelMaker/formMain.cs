@@ -161,16 +161,27 @@ namespace LabelMaker
             }
 
             //file with a sample label definition;
-            if (whichLabel == "Colour")
-            {
 
-                name = whereFiles + "LabelsColour.txt";
+            String labelChoice = "";
+            if (whichLabel == "Choice")
+            {
+                labelChoice = comboBoxLabelName.Text.ToString();
             }
             else
             {
-                name = whereFiles + "LabelsText.txt";
+                if (whichLabel == "Colour")
+                {
+                    labelChoice = "Colour 5 by 2";
+                    //name = whereFiles + "LabelsColour.txt";
+                }
+                else
+                {
+                    labelChoice = "Sticker 1 by 1";
+                    //name = whereFiles + "LabelsText.txt";
+                }
+                //string[] labelString = CreationUtilities.dataReader.readFile(name);
             }
-            string[] labelString = CreationUtilities.dataReader.readFile(name);
+            String[] labelString = returnLabelData(labelChoice);
 
 
 
@@ -2337,7 +2348,7 @@ namespace LabelMaker
                 textBoxQty.Focus();
             }
             String[] labelHeaderData = returnLabelHeaderData(comboBoxLabelName.Text.ToString());
-            
+            String[] labelData = returnLabelData(comboBoxLabelName.Text.ToString());
         }
 #region Label Stuff
 
@@ -2346,7 +2357,7 @@ namespace LabelMaker
         public String[] returnLabelHeaderData(string labelName)
         {
             String[] labelHeaderData = new String[18];
-            LabelsLabelNamesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, Child, Batch, QuickPrint FROM dbo.LabelsLabelNames WHERE Name = '"+labelName+"'";
+            LabelsLabelNamesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, Child, Batch, QuickPrint FROM dbo.LabelsLabelNames WHERE Name = '" +labelName+"'";
             LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
             DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[0];
             //Batch or Not
@@ -2354,11 +2365,10 @@ namespace LabelMaker
             labelHeaderData[0] = batch;
 
             //Selector for next table
-            String childName = dRow.ItemArray[2].ToString();
-            childName = childName.Trim();
-
-            LabelsLabelCategoriesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT * FROM dbo.LabelsLabelCategories"; // WHERE Name = '" + childName +"'";
-            LabelsLabelCategoriesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelCategories);
+            String childName = dRow.ItemArray[2].ToString().Trim();
+            
+            //LabelsLabelCategoriesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT * FROM dbo.LabelsLabelCategories WHERE Name = '" + childName +"'";
+            LabelsLabelCategoriesTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelCategories,childName);
             DataRow eRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelCategories"].Rows[0];
             //Header Data
             for (int i = 1; i <= 15; i++)
@@ -2369,7 +2379,7 @@ namespace LabelMaker
             printerName = printerName.Trim();
 
             //PrintersTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, OffsetDown, OffsetRight FROM dbo.Printers WHERE Name = '"+ printerName +"'";
-            PrintersTableAdapter.Fill(databaseLabelsDataSetLabelNames.Printers);
+            PrintersTableAdapter.FillBy(databaseLabelsDataSetLabelNames.Printers,printerName);
             DataRow fRow = databaseLabelsDataSetLabelNames.Tables["Printers"].Rows[0];
 
             labelHeaderData[16] = fRow.ItemArray[2].ToString().Trim();
@@ -2380,18 +2390,38 @@ namespace LabelMaker
             {
                 messageString = messageString + labelHeaderData[i] + "|";
             }
-           
-            MessageBox.Show(messageString);
-            return labelHeaderData;
 
+            MessageBox.Show(messageString);
+            
+            return labelHeaderData;
+            
+            
         }
 
 
-        public String[] returnLabelData(string labName)
+        public String[] returnLabelData(string labelName)
         {
-            String[] labelData = new String[16];
+            int howMany = 20;
+            LabelsLabelFieldsTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelFields,labelName);
+            int count = databaseLabelsDataSetLabelNames.Tables["LabelsLabelFields"].Rows.Count;
+            count = (count * howMany) + 2;
+            String[] outputString = new string[count];
 
-            return labelData;
+            int counter = 2; // leave space for dimensions
+            outputString[0] = "90";
+            outputString[1] = "50";
+            for (int i = 0; i <= (databaseLabelsDataSetLabelNames.Tables["LabelsLabelFields"].Rows.Count - 1); i++)
+            {
+                DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelFields"].Rows[i];
+                for (int j=1; j <= howMany; j++)
+                {
+                    outputString[counter] = dRow.ItemArray[j].ToString().Trim();
+                    if (String.IsNullOrEmpty(outputString[counter])) { outputString[counter] = " "; }
+                    counter++;
+                }
+            }
+
+            return outputString;
 
         }
 
