@@ -79,7 +79,6 @@ namespace LabelMaker
             //file with default settings
             string name = whereFiles + "defaults.txt";
             string[] defaultsString = CreationUtilities.dataReader.readFile(name);
-            //string[] queueString = CreationUtilities.dataReader.readFile(name);
             string[] queueString = new string[25];
 
             if (DatabaseOrQueue == "database")
@@ -162,32 +161,34 @@ namespace LabelMaker
 
             //file with a sample label definition;
 
+
             String labelChoice = "";
             if (whichLabel == "Choice")
             {
+                //Take label from the one selected on the main screen
                 labelChoice = comboBoxLabelName.Text.ToString();
+            }
+            else if (whichLabel == "Colour")
+            {
+                //the colour queue default
+                labelChoice = "Colour 5 by 2";
+                //name = whereFiles + "LabelsColour.txt";
+            }
+            else if (whichLabel == "Main")
+            {
+                //the main queue default
+                labelChoice = "Sticker 1 by 1";
+                //name = whereFiles + "LabelsText.txt";
             }
             else
             {
-                if (whichLabel == "Colour")
-                {
-                    labelChoice = "Colour 5 by 2";
-                    //name = whereFiles + "LabelsColour.txt";
-                }
-                else
-                {
-                    labelChoice = "Sticker 1 by 1";
-                    //name = whereFiles + "LabelsText.txt";
-                }
-                //string[] labelString = CreationUtilities.dataReader.readFile(name);
+                //the labels sent as an arguement
+                labelChoice = whichLabel;
             }
+            String[] headerString = returnLabelHeaderData(labelChoice);
             String[] labelString = returnLabelData(labelChoice);
-
-
-
-            //Form formLabel = new formLabel(queueString, labelString, defaultsString);
-            //formLabel.Visible = false;
-            //formLabel.ShowDialog();
+            labelString[0] = headerString[6];
+            labelString[1] = headerString[7];
 
             LabelPreview(queueString, labelString, defaultsString, whichPanel);
 
@@ -570,6 +571,7 @@ namespace LabelMaker
             {
                 TempMakeALabel(panelLabelTabMain, "Main", "database");
                 TempMakeALabel(panelLabelTabColour, "Colour", "database");
+                TempMakeALabel(panelLabelTabChoice, "Choice", "database");
             }
 
             if (tabControlMain.SelectedTab == tabPageDatabase)
@@ -584,6 +586,10 @@ namespace LabelMaker
             if (tabControlMain.SelectedTab == tabPageQueueUtilities)
             {
                 fillQueueUtilitiesTab();
+            }
+            if (tabControlMain.SelectedTab == tabPageQuickPrint)
+            {
+                fillQuickPrint();
             }
 
         }
@@ -2349,6 +2355,9 @@ namespace LabelMaker
             }
             String[] labelHeaderData = returnLabelHeaderData(comboBoxLabelName.Text.ToString());
             String[] labelData = returnLabelData(comboBoxLabelName.Text.ToString());
+            labelData[0] = labelHeaderData[6];
+            labelData[1] = labelHeaderData[7];
+            TempMakeALabel(panelLabelPreview, "Choice", "database");
         }
 #region Label Stuff
 
@@ -2391,7 +2400,7 @@ namespace LabelMaker
                 messageString = messageString + labelHeaderData[i] + "|";
             }
 
-            MessageBox.Show(messageString);
+            //MessageBox.Show(messageString);
             
             return labelHeaderData;
             
@@ -2440,6 +2449,61 @@ namespace LabelMaker
                 //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
             }
         }
- #endregion
+        #endregion 
+
+        private void fillQuickPrint()
+        {
+            LabelsLabelNamesTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelNames,true);
+
+            for (int i = 1; i <= 9; i++)
+            {
+                GroupBox curGroupQP = (GroupBox)tabPageQuickPrint.Controls["groupBoxQP" + i.ToString()];
+                TextBox curTextBoxQP = (TextBox)curGroupQP.Controls["textBoxQP" + i.ToString()];
+                Button curButtonQP = (Button)curGroupQP.Controls["buttonQP" + i.ToString()];
+                Panel curPanelQP = (Panel)curGroupQP.Controls["panelQP" + i.ToString()];
+
+                curGroupQP.Text = "Quick Print " + i.ToString();
+                curGroupQP.ForeColor = Color.LightSlateGray;
+                curTextBoxQP.Text = "1";
+                curTextBoxQP.Enabled = false;
+                curButtonQP.Enabled = false;
+                curPanelQP.Controls.Clear();
+
+                //curButtonQP.Dispose();
+                //curGroupQP.Dispose();
+                //curTextBoxQP.Dispose();
+                //curPanelQP.Dispose();
+
+            }
+            int rowCount = databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Count;
+            if (rowCount > 9) { rowCount = 9; }
+            for (int j = 0; j <=(rowCount-1); j++)
+            {
+                int i = j + 1;
+                GroupBox curGroupQP = (GroupBox)tabPageQuickPrint.Controls["groupBoxQP" + i.ToString()];
+                TextBox curTextBoxQP = (TextBox)curGroupQP.Controls["textBoxQP" + i.ToString()];
+                Button curButtonQP = (Button)curGroupQP.Controls["buttonQP" + i.ToString()];
+                Panel curPanelQP = (Panel)curGroupQP.Controls["panelQP" + i.ToString()];
+
+                DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[j];
+                curGroupQP.Text = dRow.ItemArray[1].ToString();
+                curGroupQP.ForeColor = Color.Black;
+                curTextBoxQP.Enabled = true;
+                curButtonQP.Enabled = true;
+
+                TempMakeALabel(curPanelQP,curGroupQP.Text, "database");
+
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

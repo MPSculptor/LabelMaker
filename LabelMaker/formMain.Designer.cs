@@ -117,7 +117,7 @@
             this.tabPageAuto = new System.Windows.Forms.TabPage();
             this.tabPagePreview = new System.Windows.Forms.TabPage();
             this.label71 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelLabelTabChoice = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panelLabelTabColour = new System.Windows.Forms.Panel();
@@ -403,6 +403,42 @@
             this.buttonDeleteBothQueues = new System.Windows.Forms.Button();
             this.buttonDeleteThisQueue = new System.Windows.Forms.Button();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
+            this.groupBoxQP1 = new System.Windows.Forms.GroupBox();
+            this.panelQP1 = new System.Windows.Forms.Panel();
+            this.textBoxQP1 = new System.Windows.Forms.TextBox();
+            this.buttonQP1 = new System.Windows.Forms.Button();
+            this.groupBoxQP3 = new System.Windows.Forms.GroupBox();
+            this.buttonQP3 = new System.Windows.Forms.Button();
+            this.textBoxQP3 = new System.Windows.Forms.TextBox();
+            this.panelQP3 = new System.Windows.Forms.Panel();
+            this.groupBoxQP2 = new System.Windows.Forms.GroupBox();
+            this.buttonQP2 = new System.Windows.Forms.Button();
+            this.textBoxQP2 = new System.Windows.Forms.TextBox();
+            this.panelQP2 = new System.Windows.Forms.Panel();
+            this.groupBoxQP4 = new System.Windows.Forms.GroupBox();
+            this.buttonQP4 = new System.Windows.Forms.Button();
+            this.textBoxQP4 = new System.Windows.Forms.TextBox();
+            this.panelQP4 = new System.Windows.Forms.Panel();
+            this.groupBoxQP7 = new System.Windows.Forms.GroupBox();
+            this.buttonQP7 = new System.Windows.Forms.Button();
+            this.textBoxQP7 = new System.Windows.Forms.TextBox();
+            this.panelQP7 = new System.Windows.Forms.Panel();
+            this.groupBoxQP8 = new System.Windows.Forms.GroupBox();
+            this.buttonQP8 = new System.Windows.Forms.Button();
+            this.textBoxQP8 = new System.Windows.Forms.TextBox();
+            this.panelQP8 = new System.Windows.Forms.Panel();
+            this.groupBoxQP5 = new System.Windows.Forms.GroupBox();
+            this.buttonQP5 = new System.Windows.Forms.Button();
+            this.textBoxQP5 = new System.Windows.Forms.TextBox();
+            this.panelQP5 = new System.Windows.Forms.Panel();
+            this.groupBoxQP9 = new System.Windows.Forms.GroupBox();
+            this.buttonQP9 = new System.Windows.Forms.Button();
+            this.textBoxQP9 = new System.Windows.Forms.TextBox();
+            this.panelQP9 = new System.Windows.Forms.Panel();
+            this.groupBoxQP6 = new System.Windows.Forms.GroupBox();
+            this.buttonQP6 = new System.Windows.Forms.Button();
+            this.textBoxQP6 = new System.Windows.Forms.TextBox();
+            this.panelQP6 = new System.Windows.Forms.Panel();
             this.bindingSourceLabels = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetLabelNames = new LabelMaker.DatabaseLabelsDataSetLabelNames();
             this.LabelsLabelNamesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelNamesTableAdapter();
@@ -463,8 +499,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).BeginInit();
+            this.tabPageQuickPrint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
+            this.groupBoxQP1.SuspendLayout();
+            this.groupBoxQP3.SuspendLayout();
+            this.groupBoxQP2.SuspendLayout();
+            this.groupBoxQP4.SuspendLayout();
+            this.groupBoxQP7.SuspendLayout();
+            this.groupBoxQP8.SuspendLayout();
+            this.groupBoxQP5.SuspendLayout();
+            this.groupBoxQP9.SuspendLayout();
+            this.groupBoxQP6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).BeginInit();
             this.SuspendLayout();
@@ -1127,7 +1173,7 @@
             // 
             this.tabPagePreview.BackColor = System.Drawing.Color.White;
             this.tabPagePreview.Controls.Add(this.label71);
-            this.tabPagePreview.Controls.Add(this.panel3);
+            this.tabPagePreview.Controls.Add(this.panelLabelTabChoice);
             this.tabPagePreview.Controls.Add(this.label6);
             this.tabPagePreview.Controls.Add(this.label5);
             this.tabPagePreview.Controls.Add(this.panelLabelTabColour);
@@ -1151,14 +1197,14 @@
             this.label71.TabIndex = 5;
             this.label71.Text = "This is the label you have set to print";
             // 
-            // panel3
+            // panelLabelTabChoice
             // 
-            this.panel3.BackColor = System.Drawing.Color.DimGray;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Location = new System.Drawing.Point(6, 41);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(517, 731);
-            this.panel3.TabIndex = 4;
+            this.panelLabelTabChoice.BackColor = System.Drawing.Color.DimGray;
+            this.panelLabelTabChoice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelLabelTabChoice.Location = new System.Drawing.Point(6, 41);
+            this.panelLabelTabChoice.Name = "panelLabelTabChoice";
+            this.panelLabelTabChoice.Size = new System.Drawing.Size(517, 731);
+            this.panelLabelTabChoice.TabIndex = 4;
             // 
             // label6
             // 
@@ -3987,6 +4033,15 @@
             // 
             // tabPageQuickPrint
             // 
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP9);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP8);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP6);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP5);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP7);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP4);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP2);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP3);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP1);
             this.tabPageQuickPrint.Location = new System.Drawing.Point(4, 22);
             this.tabPageQuickPrint.Name = "tabPageQuickPrint";
             this.tabPageQuickPrint.Size = new System.Drawing.Size(1075, 783);
@@ -4053,6 +4108,368 @@
             // tablePlantsTableAdapter
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupBoxQP1
+            // 
+            this.groupBoxQP1.Controls.Add(this.buttonQP1);
+            this.groupBoxQP1.Controls.Add(this.textBoxQP1);
+            this.groupBoxQP1.Controls.Add(this.panelQP1);
+            this.groupBoxQP1.Location = new System.Drawing.Point(13, 15);
+            this.groupBoxQP1.Name = "groupBoxQP1";
+            this.groupBoxQP1.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP1.TabIndex = 4;
+            this.groupBoxQP1.TabStop = false;
+            this.groupBoxQP1.Text = "Quick Print";
+            // 
+            // panelQP1
+            // 
+            this.panelQP1.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP1.Location = new System.Drawing.Point(6, 42);
+            this.panelQP1.Name = "panelQP1";
+            this.panelQP1.Size = new System.Drawing.Size(318, 190);
+            this.panelQP1.TabIndex = 1;
+            // 
+            // textBoxQP1
+            // 
+            this.textBoxQP1.Enabled = false;
+            this.textBoxQP1.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP1.Name = "textBoxQP1";
+            this.textBoxQP1.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP1.TabIndex = 3;
+            this.textBoxQP1.Text = "1";
+            // 
+            // buttonQP1
+            // 
+            this.buttonQP1.Enabled = false;
+            this.buttonQP1.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP1.Name = "buttonQP1";
+            this.buttonQP1.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP1.TabIndex = 4;
+            this.buttonQP1.Text = "Print";
+            this.buttonQP1.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxQP3
+            // 
+            this.groupBoxQP3.Controls.Add(this.buttonQP3);
+            this.groupBoxQP3.Controls.Add(this.textBoxQP3);
+            this.groupBoxQP3.Controls.Add(this.panelQP3);
+            this.groupBoxQP3.Location = new System.Drawing.Point(728, 15);
+            this.groupBoxQP3.Name = "groupBoxQP3";
+            this.groupBoxQP3.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP3.TabIndex = 5;
+            this.groupBoxQP3.TabStop = false;
+            this.groupBoxQP3.Text = "Quick Print";
+            // 
+            // buttonQP3
+            // 
+            this.buttonQP3.Enabled = false;
+            this.buttonQP3.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP3.Name = "buttonQP3";
+            this.buttonQP3.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP3.TabIndex = 4;
+            this.buttonQP3.Text = "Print";
+            this.buttonQP3.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP3
+            // 
+            this.textBoxQP3.Enabled = false;
+            this.textBoxQP3.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP3.Name = "textBoxQP3";
+            this.textBoxQP3.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP3.TabIndex = 3;
+            this.textBoxQP3.Text = "1";
+            // 
+            // panelQP3
+            // 
+            this.panelQP3.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP3.Location = new System.Drawing.Point(6, 42);
+            this.panelQP3.Name = "panelQP3";
+            this.panelQP3.Size = new System.Drawing.Size(318, 190);
+            this.panelQP3.TabIndex = 1;
+            // 
+            // groupBoxQP2
+            // 
+            this.groupBoxQP2.Controls.Add(this.buttonQP2);
+            this.groupBoxQP2.Controls.Add(this.textBoxQP2);
+            this.groupBoxQP2.Controls.Add(this.panelQP2);
+            this.groupBoxQP2.Location = new System.Drawing.Point(373, 15);
+            this.groupBoxQP2.Name = "groupBoxQP2";
+            this.groupBoxQP2.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP2.TabIndex = 5;
+            this.groupBoxQP2.TabStop = false;
+            this.groupBoxQP2.Text = "Quick Print";
+            // 
+            // buttonQP2
+            // 
+            this.buttonQP2.Enabled = false;
+            this.buttonQP2.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP2.Name = "buttonQP2";
+            this.buttonQP2.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP2.TabIndex = 4;
+            this.buttonQP2.Text = "Print";
+            this.buttonQP2.UseVisualStyleBackColor = true;
+            this.buttonQP2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // textBoxQP2
+            // 
+            this.textBoxQP2.Enabled = false;
+            this.textBoxQP2.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP2.Name = "textBoxQP2";
+            this.textBoxQP2.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP2.TabIndex = 3;
+            this.textBoxQP2.Text = "1";
+            // 
+            // panelQP2
+            // 
+            this.panelQP2.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP2.Location = new System.Drawing.Point(6, 42);
+            this.panelQP2.Name = "panelQP2";
+            this.panelQP2.Size = new System.Drawing.Size(318, 190);
+            this.panelQP2.TabIndex = 1;
+            // 
+            // groupBoxQP4
+            // 
+            this.groupBoxQP4.Controls.Add(this.buttonQP4);
+            this.groupBoxQP4.Controls.Add(this.textBoxQP4);
+            this.groupBoxQP4.Controls.Add(this.panelQP4);
+            this.groupBoxQP4.Location = new System.Drawing.Point(13, 270);
+            this.groupBoxQP4.Name = "groupBoxQP4";
+            this.groupBoxQP4.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP4.TabIndex = 6;
+            this.groupBoxQP4.TabStop = false;
+            this.groupBoxQP4.Text = "Quick Print";
+            // 
+            // buttonQP4
+            // 
+            this.buttonQP4.Enabled = false;
+            this.buttonQP4.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP4.Name = "buttonQP4";
+            this.buttonQP4.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP4.TabIndex = 4;
+            this.buttonQP4.Text = "Print";
+            this.buttonQP4.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP4
+            // 
+            this.textBoxQP4.Enabled = false;
+            this.textBoxQP4.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP4.Name = "textBoxQP4";
+            this.textBoxQP4.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP4.TabIndex = 3;
+            this.textBoxQP4.Text = "1";
+            // 
+            // panelQP4
+            // 
+            this.panelQP4.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP4.Location = new System.Drawing.Point(6, 42);
+            this.panelQP4.Name = "panelQP4";
+            this.panelQP4.Size = new System.Drawing.Size(318, 190);
+            this.panelQP4.TabIndex = 1;
+            this.panelQP4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // groupBoxQP7
+            // 
+            this.groupBoxQP7.Controls.Add(this.buttonQP7);
+            this.groupBoxQP7.Controls.Add(this.textBoxQP7);
+            this.groupBoxQP7.Controls.Add(this.panelQP7);
+            this.groupBoxQP7.Location = new System.Drawing.Point(13, 530);
+            this.groupBoxQP7.Name = "groupBoxQP7";
+            this.groupBoxQP7.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP7.TabIndex = 5;
+            this.groupBoxQP7.TabStop = false;
+            this.groupBoxQP7.Text = "Quick Print";
+            // 
+            // buttonQP7
+            // 
+            this.buttonQP7.Enabled = false;
+            this.buttonQP7.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP7.Name = "buttonQP7";
+            this.buttonQP7.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP7.TabIndex = 4;
+            this.buttonQP7.Text = "Print";
+            this.buttonQP7.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP7
+            // 
+            this.textBoxQP7.Enabled = false;
+            this.textBoxQP7.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP7.Name = "textBoxQP7";
+            this.textBoxQP7.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP7.TabIndex = 3;
+            this.textBoxQP7.Text = "1";
+            // 
+            // panelQP7
+            // 
+            this.panelQP7.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP7.Location = new System.Drawing.Point(6, 42);
+            this.panelQP7.Name = "panelQP7";
+            this.panelQP7.Size = new System.Drawing.Size(318, 190);
+            this.panelQP7.TabIndex = 1;
+            // 
+            // groupBoxQP8
+            // 
+            this.groupBoxQP8.Controls.Add(this.buttonQP8);
+            this.groupBoxQP8.Controls.Add(this.textBoxQP8);
+            this.groupBoxQP8.Controls.Add(this.panelQP8);
+            this.groupBoxQP8.Location = new System.Drawing.Point(373, 530);
+            this.groupBoxQP8.Name = "groupBoxQP8";
+            this.groupBoxQP8.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP8.TabIndex = 7;
+            this.groupBoxQP8.TabStop = false;
+            this.groupBoxQP8.Text = "Quick Print";
+            // 
+            // buttonQP8
+            // 
+            this.buttonQP8.Enabled = false;
+            this.buttonQP8.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP8.Name = "buttonQP8";
+            this.buttonQP8.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP8.TabIndex = 4;
+            this.buttonQP8.Text = "Print";
+            this.buttonQP8.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP8
+            // 
+            this.textBoxQP8.Enabled = false;
+            this.textBoxQP8.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP8.Name = "textBoxQP8";
+            this.textBoxQP8.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP8.TabIndex = 3;
+            this.textBoxQP8.Text = "1";
+            // 
+            // panelQP8
+            // 
+            this.panelQP8.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP8.Location = new System.Drawing.Point(6, 42);
+            this.panelQP8.Name = "panelQP8";
+            this.panelQP8.Size = new System.Drawing.Size(318, 190);
+            this.panelQP8.TabIndex = 1;
+            // 
+            // groupBoxQP5
+            // 
+            this.groupBoxQP5.Controls.Add(this.buttonQP5);
+            this.groupBoxQP5.Controls.Add(this.textBoxQP5);
+            this.groupBoxQP5.Controls.Add(this.panelQP5);
+            this.groupBoxQP5.Location = new System.Drawing.Point(373, 270);
+            this.groupBoxQP5.Name = "groupBoxQP5";
+            this.groupBoxQP5.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP5.TabIndex = 8;
+            this.groupBoxQP5.TabStop = false;
+            this.groupBoxQP5.Text = "Quick Print";
+            // 
+            // buttonQP5
+            // 
+            this.buttonQP5.Enabled = false;
+            this.buttonQP5.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP5.Name = "buttonQP5";
+            this.buttonQP5.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP5.TabIndex = 4;
+            this.buttonQP5.Text = "Print";
+            this.buttonQP5.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP5
+            // 
+            this.textBoxQP5.Enabled = false;
+            this.textBoxQP5.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP5.Name = "textBoxQP5";
+            this.textBoxQP5.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP5.TabIndex = 3;
+            this.textBoxQP5.Text = "1";
+            // 
+            // panelQP5
+            // 
+            this.panelQP5.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP5.Location = new System.Drawing.Point(6, 42);
+            this.panelQP5.Name = "panelQP5";
+            this.panelQP5.Size = new System.Drawing.Size(318, 190);
+            this.panelQP5.TabIndex = 1;
+            // 
+            // groupBoxQP9
+            // 
+            this.groupBoxQP9.Controls.Add(this.buttonQP9);
+            this.groupBoxQP9.Controls.Add(this.textBoxQP9);
+            this.groupBoxQP9.Controls.Add(this.panelQP9);
+            this.groupBoxQP9.Location = new System.Drawing.Point(728, 530);
+            this.groupBoxQP9.Name = "groupBoxQP9";
+            this.groupBoxQP9.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP9.TabIndex = 7;
+            this.groupBoxQP9.TabStop = false;
+            this.groupBoxQP9.Text = "Quick Print";
+            // 
+            // buttonQP9
+            // 
+            this.buttonQP9.Enabled = false;
+            this.buttonQP9.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP9.Name = "buttonQP9";
+            this.buttonQP9.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP9.TabIndex = 4;
+            this.buttonQP9.Text = "Print";
+            this.buttonQP9.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP9
+            // 
+            this.textBoxQP9.Enabled = false;
+            this.textBoxQP9.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP9.Name = "textBoxQP9";
+            this.textBoxQP9.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP9.TabIndex = 3;
+            this.textBoxQP9.Text = "1";
+            // 
+            // panelQP9
+            // 
+            this.panelQP9.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP9.Location = new System.Drawing.Point(6, 42);
+            this.panelQP9.Name = "panelQP9";
+            this.panelQP9.Size = new System.Drawing.Size(318, 190);
+            this.panelQP9.TabIndex = 1;
+            // 
+            // groupBoxQP6
+            // 
+            this.groupBoxQP6.Controls.Add(this.buttonQP6);
+            this.groupBoxQP6.Controls.Add(this.textBoxQP6);
+            this.groupBoxQP6.Controls.Add(this.panelQP6);
+            this.groupBoxQP6.Location = new System.Drawing.Point(728, 270);
+            this.groupBoxQP6.Name = "groupBoxQP6";
+            this.groupBoxQP6.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP6.TabIndex = 8;
+            this.groupBoxQP6.TabStop = false;
+            this.groupBoxQP6.Text = "Quick Print";
+            // 
+            // buttonQP6
+            // 
+            this.buttonQP6.Enabled = false;
+            this.buttonQP6.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP6.Name = "buttonQP6";
+            this.buttonQP6.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP6.TabIndex = 4;
+            this.buttonQP6.Text = "Print";
+            this.buttonQP6.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP6
+            // 
+            this.textBoxQP6.Enabled = false;
+            this.textBoxQP6.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP6.Name = "textBoxQP6";
+            this.textBoxQP6.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP6.TabIndex = 3;
+            this.textBoxQP6.Text = "1";
+            // 
+            // panelQP6
+            // 
+            this.panelQP6.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP6.Location = new System.Drawing.Point(6, 42);
+            this.panelQP6.Name = "panelQP6";
+            this.panelQP6.Size = new System.Drawing.Size(318, 190);
+            this.panelQP6.TabIndex = 1;
             // 
             // bindingSourceLabels
             // 
@@ -4165,8 +4582,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).EndInit();
+            this.tabPageQuickPrint.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
+            this.groupBoxQP1.ResumeLayout(false);
+            this.groupBoxQP1.PerformLayout();
+            this.groupBoxQP3.ResumeLayout(false);
+            this.groupBoxQP3.PerformLayout();
+            this.groupBoxQP2.ResumeLayout(false);
+            this.groupBoxQP2.PerformLayout();
+            this.groupBoxQP4.ResumeLayout(false);
+            this.groupBoxQP4.PerformLayout();
+            this.groupBoxQP7.ResumeLayout(false);
+            this.groupBoxQP7.PerformLayout();
+            this.groupBoxQP8.ResumeLayout(false);
+            this.groupBoxQP8.PerformLayout();
+            this.groupBoxQP5.ResumeLayout(false);
+            this.groupBoxQP5.PerformLayout();
+            this.groupBoxQP9.ResumeLayout(false);
+            this.groupBoxQP9.PerformLayout();
+            this.groupBoxQP6.ResumeLayout(false);
+            this.groupBoxQP6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
             this.ResumeLayout(false);
@@ -4552,10 +4988,46 @@
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelLabelTabChoice;
         private System.Windows.Forms.ComboBox comboBoxLabelName;
         private System.Windows.Forms.BindingSource bindingSourceLabels;
         private DatabaseLabelsDataSetLabelNames databaseLabelsDataSetLabelNames;
+        private System.Windows.Forms.GroupBox groupBoxQP1;
+        private System.Windows.Forms.Button buttonQP1;
+        private System.Windows.Forms.TextBox textBoxQP1;
+        private System.Windows.Forms.Panel panelQP1;
+        private System.Windows.Forms.GroupBox groupBoxQP9;
+        private System.Windows.Forms.Button buttonQP9;
+        private System.Windows.Forms.TextBox textBoxQP9;
+        private System.Windows.Forms.Panel panelQP9;
+        private System.Windows.Forms.GroupBox groupBoxQP8;
+        private System.Windows.Forms.Button buttonQP8;
+        private System.Windows.Forms.TextBox textBoxQP8;
+        private System.Windows.Forms.Panel panelQP8;
+        private System.Windows.Forms.GroupBox groupBoxQP6;
+        private System.Windows.Forms.Button buttonQP6;
+        private System.Windows.Forms.TextBox textBoxQP6;
+        private System.Windows.Forms.Panel panelQP6;
+        private System.Windows.Forms.GroupBox groupBoxQP5;
+        private System.Windows.Forms.Button buttonQP5;
+        private System.Windows.Forms.TextBox textBoxQP5;
+        private System.Windows.Forms.Panel panelQP5;
+        private System.Windows.Forms.GroupBox groupBoxQP7;
+        private System.Windows.Forms.Button buttonQP7;
+        private System.Windows.Forms.TextBox textBoxQP7;
+        private System.Windows.Forms.Panel panelQP7;
+        private System.Windows.Forms.GroupBox groupBoxQP4;
+        private System.Windows.Forms.Button buttonQP4;
+        private System.Windows.Forms.TextBox textBoxQP4;
+        private System.Windows.Forms.Panel panelQP4;
+        private System.Windows.Forms.GroupBox groupBoxQP2;
+        private System.Windows.Forms.Button buttonQP2;
+        private System.Windows.Forms.TextBox textBoxQP2;
+        private System.Windows.Forms.Panel panelQP2;
+        private System.Windows.Forms.GroupBox groupBoxQP3;
+        private System.Windows.Forms.Button buttonQP3;
+        private System.Windows.Forms.TextBox textBoxQP3;
+        private System.Windows.Forms.Panel panelQP3;
     }
 }
 

@@ -3559,12 +3559,18 @@ SELECT Id, Name, Child, Batch, QuickPrint FROM LabelsLabelNames WHERE (Id = @Id)
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name, Child, Batch, QuickPrint FROM dbo.LabelsLabelNames ORDER BY Name" +
                 " ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT Id, Name, Child, Batch, QuickPrint FROM dbo.LabelsLabelNames WHERE QuickPr" +
+                "int = @Name ORDER BY Name ASC";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "QuickPrint", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3586,6 +3592,32 @@ SELECT Id, Name, Child, Batch, QuickPrint FROM LabelsLabelNames WHERE (Id = @Id)
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DatabaseLabelsDataSetLabelNames.LabelsLabelNamesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DatabaseLabelsDataSetLabelNames.LabelsLabelNamesDataTable dataTable = new DatabaseLabelsDataSetLabelNames.LabelsLabelNamesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(DatabaseLabelsDataSetLabelNames.LabelsLabelNamesDataTable dataTable, bool Name) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((bool)(Name));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DatabaseLabelsDataSetLabelNames.LabelsLabelNamesDataTable GetDataBy(bool Name) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((bool)(Name));
             DatabaseLabelsDataSetLabelNames.LabelsLabelNamesDataTable dataTable = new DatabaseLabelsDataSetLabelNames.LabelsLabelNamesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -4102,7 +4134,7 @@ SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, Fon
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT Name, Type, XSize, YSize, XStart, YStart, ProfileDefaults, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour FROM dbo.LabelsLabelFields WHERE Name = @Name";
+            this._commandCollection[1].CommandText = @"SELECT Name, Type, XSize, YSize, XStart, YStart, ProfileDefaults, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour FROM dbo.LabelsLabelFields WHERE Name = @Name ORDER BY Ordering";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
