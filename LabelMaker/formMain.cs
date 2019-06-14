@@ -53,25 +53,13 @@ namespace LabelMaker
             indexNavigationButtons();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             TempMakeALabel(panelLabelPreview, "Main", "database");
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         public void TempMakeALabel(Panel whichPanel, string whichLabel, string DatabaseOrQueue)
         {
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
@@ -493,15 +481,9 @@ namespace LabelMaker
 
 
             return Name;
-
-
         }
 
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void checkBoxQty_CheckedChanged(object sender, EventArgs e)
         {
             switch (checkBoxQty.Checked)
@@ -532,53 +514,20 @@ namespace LabelMaker
             }
         }
 
-        private void groupBoxAlpha_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelLabelPreview_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void groupBoxPlantData_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
+        
         #region *** tabControl Events ***
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //clearPanelLabel();
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
                 TempMakeALabel(panelLabelTabMain, "Main", "database");
                 TempMakeALabel(panelLabelTabColour, "Colour", "database");
                 TempMakeALabel(panelLabelTabChoice, "Choice", "database");
             }
-
             if (tabControlMain.SelectedTab == tabPageDatabase)
             {
                 fillDatabaseTab();
             }
-
             if (tabControlMain.SelectedTab == tabPageLabelProfiles)
             {
                 addProfileButtons();
@@ -591,7 +540,6 @@ namespace LabelMaker
             {
                 fillQuickPrint();
             }
-
         }
 
         private void tabControlQueue_SelectedIndexChanged(object sender, EventArgs e)
@@ -947,11 +895,7 @@ namespace LabelMaker
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void buttonAddtoColourQueue_Click(object sender, EventArgs e)
         {
             if (buttonAddtoColourQueue.Text == "add Colour")
@@ -1011,16 +955,11 @@ namespace LabelMaker
             colourStatusButtons();
         }
 
-        private void tabPageDatabase_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void profilesToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //tabControlProfiles.Visible = true;
             addProfileButtons();
-
         }
 
         public void addProfileButtons()
@@ -1082,39 +1021,7 @@ namespace LabelMaker
             //tabControlProfiles.Visible = false;
         }
 
-        private void tabPage1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bindingSource1_CurrentChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-        private void groupBoxImages_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void radioButtonImage1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonImage1.Checked)
@@ -1633,40 +1540,13 @@ namespace LabelMaker
             }
         }
 
-        private void tablePlantsBindingSource_CurrentChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1ProfileView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridViewProfiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void tabPageLabelProfiles_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void comboBoxProfilePick_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxData17.Text = comboBoxProfilePick.Text;
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
         #region *** Navigation Buttons***
         private void indexNavigationButtons()
         {
@@ -2035,15 +1915,9 @@ namespace LabelMaker
             return count;
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-
-
 
             // Determine the Queue and no. entries
             int howManyLines = 0;
@@ -2182,16 +2056,6 @@ namespace LabelMaker
             }
         }
 
-        private void pictureBox3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelQueueUtilities_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button2_Click_3(object sender, EventArgs e)
         {
             if (textBoxQ13.Text == "True")
@@ -2324,26 +2188,7 @@ namespace LabelMaker
             deleteQueue("Both");
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelLabelTabColour_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void bindingSourceLabels_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bindingSource2_CurrentChanged(object sender, EventArgs e)
-        {
-
-
-        }
+        
 
         private void comboBoxLabelName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2366,9 +2211,15 @@ namespace LabelMaker
         public String[] returnLabelHeaderData(string labelName)
         {
             String[] labelHeaderData = new String[18];
-            LabelsLabelNamesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, Child, Batch, QuickPrint FROM dbo.LabelsLabelNames WHERE Name = '" +labelName+"'";
-            LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
-            DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[0];
+            //LabelsLabelNamesTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, Child, Batch, QuickPrint FROM dbo.LabelsLabelNames WHERE Name = '" +labelName+"'";
+            //LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
+            //DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[0];
+            DataTable headerDataSet = new DataTable ("headerDataSet");
+            headerDataSet = LabelsLabelNamesTableAdapter.GetDataByName(labelName);
+            DataRow dRow = headerDataSet.Rows[0];
+
+
+
             //Batch or Not
             string batch = dRow.ItemArray[3].ToString().Trim();
             labelHeaderData[0] = batch;
@@ -2453,8 +2304,10 @@ namespace LabelMaker
 
         private void fillQuickPrint()
         {
-            LabelsLabelNamesTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelNames,true);
+            DataTable quickNames = new DataTable("quickNames");
+            quickNames = LabelsLabelNamesTableAdapter.GetDataByQuickPrint( true);
 
+            //start with a clean slate
             for (int i = 1; i <= 9; i++)
             {
                 GroupBox curGroupQP = (GroupBox)tabPageQuickPrint.Controls["groupBoxQP" + i.ToString()];
@@ -2468,16 +2321,23 @@ namespace LabelMaker
                 curTextBoxQP.Enabled = false;
                 curButtonQP.Enabled = false;
                 curPanelQP.Controls.Clear();
-
-                //curButtonQP.Dispose();
-                //curGroupQP.Dispose();
-                //curTextBoxQP.Dispose();
-                //curPanelQP.Dispose();
-
             }
-            int rowCount = databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Count;
-            if (rowCount > 9) { rowCount = 9; }
-            for (int j = 0; j <=(rowCount-1); j++)
+
+            //only allow 9 buttons, ignore the rest
+            int noRows = quickNames.Rows.Count;
+            if (noRows > 9) { noRows = 9; }
+            String[] allTheNames = new string[noRows];
+
+            // collect all the names as tempMakeALabel resets dataTable
+            for (int k = 0; k <= (noRows-1); k++)
+            {
+                DataRow dRow = quickNames.Rows[k];
+                allTheNames[k] = dRow.ItemArray[1].ToString();
+            }
+
+            quickNames.Dispose();
+
+            for (int j = 0; j <=(noRows-1); j++)
             {
                 int i = j + 1;
                 GroupBox curGroupQP = (GroupBox)tabPageQuickPrint.Controls["groupBoxQP" + i.ToString()];
@@ -2485,25 +2345,16 @@ namespace LabelMaker
                 Button curButtonQP = (Button)curGroupQP.Controls["buttonQP" + i.ToString()];
                 Panel curPanelQP = (Panel)curGroupQP.Controls["panelQP" + i.ToString()];
 
-                DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[j];
-                curGroupQP.Text = dRow.ItemArray[1].ToString();
+                curGroupQP.Text = allTheNames[j];
                 curGroupQP.ForeColor = Color.Black;
                 curTextBoxQP.Enabled = true;
                 curButtonQP.Enabled = true;
 
-                TempMakeALabel(curPanelQP,curGroupQP.Text, "database");
+                TempMakeALabel(curPanelQP, curGroupQP.Text, "database");
 
             }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
     }
 }

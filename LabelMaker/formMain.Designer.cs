@@ -1123,7 +1123,6 @@
             // 
             this.tableProfilesbindingSource.DataSource = this.databaseLabelsDataSetProfiles;
             this.tableProfilesbindingSource.Position = 0;
-            this.tableProfilesbindingSource.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged_1);
             // 
             // databaseLabelsDataSetProfiles
             // 
@@ -1138,7 +1137,6 @@
             this.dataGridViewProfiles.Name = "dataGridViewProfiles";
             this.dataGridViewProfiles.Size = new System.Drawing.Size(857, 208);
             this.dataGridViewProfiles.TabIndex = 2;
-            this.dataGridViewProfiles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProfiles_CellContentClick);
             // 
             // groupBox2
             // 
@@ -1184,7 +1182,6 @@
             this.tabPagePreview.Size = new System.Drawing.Size(1075, 783);
             this.tabPagePreview.TabIndex = 3;
             this.tabPagePreview.Text = "     Label Preview   ";
-            this.tabPagePreview.Click += new System.EventHandler(this.tabPage1_Click_1);
             // 
             // label71
             // 
@@ -1216,7 +1213,6 @@
             this.label6.Size = new System.Drawing.Size(307, 20);
             this.label6.TabIndex = 3;
             this.label6.Text = "This is the default Colour queue label";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -1236,7 +1232,6 @@
             this.panelLabelTabColour.Name = "panelLabelTabColour";
             this.panelLabelTabColour.Size = new System.Drawing.Size(523, 340);
             this.panelLabelTabColour.TabIndex = 1;
-            this.panelLabelTabColour.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelTabColour_Paint);
             // 
             // panelLabelTabMain
             // 
@@ -1269,7 +1264,6 @@
             this.tabPageDatabase.TabIndex = 2;
             this.tabPageDatabase.Text = "     Database Entry";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
-            this.tabPageDatabase.Click += new System.EventHandler(this.tabPageDatabase_Click);
             // 
             // label69
             // 
@@ -1959,7 +1953,6 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Click these to change";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // buttonVisibleEntry
             // 
@@ -2011,7 +2004,6 @@
             this.panelLabelPreview.Name = "panelLabelPreview";
             this.panelLabelPreview.Size = new System.Drawing.Size(154, 131);
             this.panelLabelPreview.TabIndex = 15;
-            this.panelLabelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLabelPreview_Paint);
             // 
             // groupBox3
             // 
@@ -2058,7 +2050,6 @@
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Quantity and Price";
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // label8
             // 
@@ -2173,13 +2164,11 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // tablePlantsBindingSource
             // 
             this.tablePlantsBindingSource.DataMember = "TablePlants";
             this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
-            this.tablePlantsBindingSource.CurrentChanged += new System.EventHandler(this.tablePlantsBindingSource_CurrentChanged_1);
             // 
             // databaseLabelsDataSet
             // 
@@ -2256,7 +2245,6 @@
             this.groupBoxAlpha.Size = new System.Drawing.Size(56, 642);
             this.groupBoxAlpha.TabIndex = 10;
             this.groupBoxAlpha.TabStop = false;
-            this.groupBoxAlpha.Enter += new System.EventHandler(this.groupBoxAlpha_Enter);
             // 
             // buttonAlphaZplus
             // 
@@ -2729,7 +2717,6 @@
             this.buttonAlphaDplus.TabIndex = 7;
             this.buttonAlphaDplus.Text = "+";
             this.buttonAlphaDplus.UseVisualStyleBackColor = true;
-            this.buttonAlphaDplus.Click += new System.EventHandler(this.button6_Click);
             // 
             // buttonAlphaD
             // 
@@ -2935,7 +2922,6 @@
             this.groupBoxImages.TabIndex = 8;
             this.groupBoxImages.TabStop = false;
             this.groupBoxImages.Text = "Available Images";
-            this.groupBoxImages.Enter += new System.EventHandler(this.groupBoxImages_Enter);
             // 
             // radioButtonImage4
             // 
@@ -3036,7 +3022,6 @@
             this.groupBoxPlantData.TabIndex = 14;
             this.groupBoxPlantData.TabStop = false;
             this.groupBoxPlantData.Text = "Plant Database";
-            this.groupBoxPlantData.Enter += new System.EventHandler(this.groupBoxPlantData_Enter);
             // 
             // buttonVisibleOnly
             // 
@@ -3365,7 +3350,6 @@
             this.panelQueueUtilities.Name = "panelQueueUtilities";
             this.panelQueueUtilities.Size = new System.Drawing.Size(1068, 771);
             this.panelQueueUtilities.TabIndex = 0;
-            this.panelQueueUtilities.Paint += new System.Windows.Forms.PaintEventHandler(this.panelQueueUtilities_Paint);
             // 
             // label70
             // 
@@ -3514,7 +3498,6 @@
             this.pictureBoxQ2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxQ2.TabIndex = 58;
             this.pictureBoxQ2.TabStop = false;
-            this.pictureBoxQ2.Click += new System.EventHandler(this.pictureBox3_Click_1);
             // 
             // pictureBoxQ3
             // 
@@ -4210,7 +4193,6 @@
             this.buttonQP2.TabIndex = 4;
             this.buttonQP2.Text = "Print";
             this.buttonQP2.UseVisualStyleBackColor = true;
-            this.buttonQP2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // textBoxQP2
             // 
@@ -4269,7 +4251,6 @@
             this.panelQP4.Name = "panelQP4";
             this.panelQP4.Size = new System.Drawing.Size(318, 190);
             this.panelQP4.TabIndex = 1;
-            this.panelQP4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // groupBoxQP7
             // 
