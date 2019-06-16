@@ -392,6 +392,42 @@
             this.textBoxQ1 = new System.Windows.Forms.TextBox();
             this.textBoxQ4 = new System.Windows.Forms.TextBox();
             this.tabPageQuickPrint = new System.Windows.Forms.TabPage();
+            this.groupBoxQP9 = new System.Windows.Forms.GroupBox();
+            this.buttonQP9 = new System.Windows.Forms.Button();
+            this.textBoxQP9 = new System.Windows.Forms.TextBox();
+            this.panelQP9 = new System.Windows.Forms.Panel();
+            this.groupBoxQP8 = new System.Windows.Forms.GroupBox();
+            this.buttonQP8 = new System.Windows.Forms.Button();
+            this.textBoxQP8 = new System.Windows.Forms.TextBox();
+            this.panelQP8 = new System.Windows.Forms.Panel();
+            this.groupBoxQP6 = new System.Windows.Forms.GroupBox();
+            this.buttonQP6 = new System.Windows.Forms.Button();
+            this.textBoxQP6 = new System.Windows.Forms.TextBox();
+            this.panelQP6 = new System.Windows.Forms.Panel();
+            this.groupBoxQP5 = new System.Windows.Forms.GroupBox();
+            this.buttonQP5 = new System.Windows.Forms.Button();
+            this.textBoxQP5 = new System.Windows.Forms.TextBox();
+            this.panelQP5 = new System.Windows.Forms.Panel();
+            this.groupBoxQP7 = new System.Windows.Forms.GroupBox();
+            this.buttonQP7 = new System.Windows.Forms.Button();
+            this.textBoxQP7 = new System.Windows.Forms.TextBox();
+            this.panelQP7 = new System.Windows.Forms.Panel();
+            this.groupBoxQP4 = new System.Windows.Forms.GroupBox();
+            this.buttonQP4 = new System.Windows.Forms.Button();
+            this.textBoxQP4 = new System.Windows.Forms.TextBox();
+            this.panelQP4 = new System.Windows.Forms.Panel();
+            this.groupBoxQP2 = new System.Windows.Forms.GroupBox();
+            this.buttonQP2 = new System.Windows.Forms.Button();
+            this.textBoxQP2 = new System.Windows.Forms.TextBox();
+            this.panelQP2 = new System.Windows.Forms.Panel();
+            this.groupBoxQP3 = new System.Windows.Forms.GroupBox();
+            this.buttonQP3 = new System.Windows.Forms.Button();
+            this.textBoxQP3 = new System.Windows.Forms.TextBox();
+            this.panelQP3 = new System.Windows.Forms.Panel();
+            this.groupBoxQP1 = new System.Windows.Forms.GroupBox();
+            this.buttonQP1 = new System.Windows.Forms.Button();
+            this.textBoxQP1 = new System.Windows.Forms.TextBox();
+            this.panelQP1 = new System.Windows.Forms.Panel();
             this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
             this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter();
@@ -403,42 +439,6 @@
             this.buttonDeleteBothQueues = new System.Windows.Forms.Button();
             this.buttonDeleteThisQueue = new System.Windows.Forms.Button();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.groupBoxQP1 = new System.Windows.Forms.GroupBox();
-            this.panelQP1 = new System.Windows.Forms.Panel();
-            this.textBoxQP1 = new System.Windows.Forms.TextBox();
-            this.buttonQP1 = new System.Windows.Forms.Button();
-            this.groupBoxQP3 = new System.Windows.Forms.GroupBox();
-            this.buttonQP3 = new System.Windows.Forms.Button();
-            this.textBoxQP3 = new System.Windows.Forms.TextBox();
-            this.panelQP3 = new System.Windows.Forms.Panel();
-            this.groupBoxQP2 = new System.Windows.Forms.GroupBox();
-            this.buttonQP2 = new System.Windows.Forms.Button();
-            this.textBoxQP2 = new System.Windows.Forms.TextBox();
-            this.panelQP2 = new System.Windows.Forms.Panel();
-            this.groupBoxQP4 = new System.Windows.Forms.GroupBox();
-            this.buttonQP4 = new System.Windows.Forms.Button();
-            this.textBoxQP4 = new System.Windows.Forms.TextBox();
-            this.panelQP4 = new System.Windows.Forms.Panel();
-            this.groupBoxQP7 = new System.Windows.Forms.GroupBox();
-            this.buttonQP7 = new System.Windows.Forms.Button();
-            this.textBoxQP7 = new System.Windows.Forms.TextBox();
-            this.panelQP7 = new System.Windows.Forms.Panel();
-            this.groupBoxQP8 = new System.Windows.Forms.GroupBox();
-            this.buttonQP8 = new System.Windows.Forms.Button();
-            this.textBoxQP8 = new System.Windows.Forms.TextBox();
-            this.panelQP8 = new System.Windows.Forms.Panel();
-            this.groupBoxQP5 = new System.Windows.Forms.GroupBox();
-            this.buttonQP5 = new System.Windows.Forms.Button();
-            this.textBoxQP5 = new System.Windows.Forms.TextBox();
-            this.panelQP5 = new System.Windows.Forms.Panel();
-            this.groupBoxQP9 = new System.Windows.Forms.GroupBox();
-            this.buttonQP9 = new System.Windows.Forms.Button();
-            this.textBoxQP9 = new System.Windows.Forms.TextBox();
-            this.panelQP9 = new System.Windows.Forms.Panel();
-            this.groupBoxQP6 = new System.Windows.Forms.GroupBox();
-            this.buttonQP6 = new System.Windows.Forms.Button();
-            this.textBoxQP6 = new System.Windows.Forms.TextBox();
-            this.panelQP6 = new System.Windows.Forms.Panel();
             this.bindingSourceLabels = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetLabelNames = new LabelMaker.DatabaseLabelsDataSetLabelNames();
             this.LabelsLabelNamesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelNamesTableAdapter();
@@ -500,17 +500,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).BeginInit();
             this.tabPageQuickPrint.SuspendLayout();
+            this.groupBoxQP9.SuspendLayout();
+            this.groupBoxQP8.SuspendLayout();
+            this.groupBoxQP6.SuspendLayout();
+            this.groupBoxQP5.SuspendLayout();
+            this.groupBoxQP7.SuspendLayout();
+            this.groupBoxQP4.SuspendLayout();
+            this.groupBoxQP2.SuspendLayout();
+            this.groupBoxQP3.SuspendLayout();
+            this.groupBoxQP1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
-            this.groupBoxQP1.SuspendLayout();
-            this.groupBoxQP3.SuspendLayout();
-            this.groupBoxQP2.SuspendLayout();
-            this.groupBoxQP4.SuspendLayout();
-            this.groupBoxQP7.SuspendLayout();
-            this.groupBoxQP8.SuspendLayout();
-            this.groupBoxQP5.SuspendLayout();
-            this.groupBoxQP9.SuspendLayout();
-            this.groupBoxQP6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).BeginInit();
             this.SuspendLayout();
@@ -1867,6 +1867,7 @@
             // 
             // tabPageManual
             // 
+            this.tabPageManual.BackColor = System.Drawing.Color.White;
             this.tabPageManual.Controls.Add(this.comboBoxLabelName);
             this.tabPageManual.Controls.Add(this.label68);
             this.tabPageManual.Controls.Add(this.label36);
@@ -1888,7 +1889,7 @@
             this.tabPageManual.Size = new System.Drawing.Size(1075, 783);
             this.tabPageManual.TabIndex = 0;
             this.tabPageManual.Text = "     Manual Entry     ";
-            this.tabPageManual.UseVisualStyleBackColor = true;
+            this.tabPageManual.Click += new System.EventHandler(this.tabPageManual_Click);
             // 
             // comboBoxLabelName
             // 
@@ -2136,6 +2137,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.labelPlantName);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.richTextBoxDesc);
@@ -2145,6 +2147,7 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "current Text";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // labelPlantName
             // 
@@ -2248,478 +2251,547 @@
             // 
             // buttonAlphaZplus
             // 
+            this.buttonAlphaZplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaZplus.Enabled = false;
             this.buttonAlphaZplus.Location = new System.Drawing.Point(28, 613);
             this.buttonAlphaZplus.Name = "buttonAlphaZplus";
             this.buttonAlphaZplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaZplus.TabIndex = 51;
             this.buttonAlphaZplus.Text = "+";
-            this.buttonAlphaZplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaZplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaZplus.Click += new System.EventHandler(this.buttonAlphaZplus_Click);
             // 
             // buttonAlphaZ
             // 
+            this.buttonAlphaZ.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaZ.Enabled = false;
             this.buttonAlphaZ.Location = new System.Drawing.Point(3, 613);
             this.buttonAlphaZ.Name = "buttonAlphaZ";
             this.buttonAlphaZ.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaZ.TabIndex = 50;
             this.buttonAlphaZ.Text = "Z";
-            this.buttonAlphaZ.UseVisualStyleBackColor = true;
+            this.buttonAlphaZ.UseVisualStyleBackColor = false;
             this.buttonAlphaZ.Click += new System.EventHandler(this.buttonAlphaZ_Click);
             // 
             // buttonAlphaYplus
             // 
+            this.buttonAlphaYplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaYplus.Enabled = false;
             this.buttonAlphaYplus.Location = new System.Drawing.Point(28, 589);
             this.buttonAlphaYplus.Name = "buttonAlphaYplus";
             this.buttonAlphaYplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaYplus.TabIndex = 49;
             this.buttonAlphaYplus.Text = "+";
-            this.buttonAlphaYplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaYplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaYplus.Click += new System.EventHandler(this.buttonAlphaYplus_Click);
             // 
             // buttonAlphaY
             // 
+            this.buttonAlphaY.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaY.Enabled = false;
             this.buttonAlphaY.Location = new System.Drawing.Point(3, 589);
             this.buttonAlphaY.Name = "buttonAlphaY";
             this.buttonAlphaY.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaY.TabIndex = 48;
             this.buttonAlphaY.Text = "Y";
-            this.buttonAlphaY.UseVisualStyleBackColor = true;
+            this.buttonAlphaY.UseVisualStyleBackColor = false;
             this.buttonAlphaY.Click += new System.EventHandler(this.buttonAlphaY_Click);
             // 
             // buttonAlphaXplus
             // 
+            this.buttonAlphaXplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaXplus.Enabled = false;
             this.buttonAlphaXplus.Location = new System.Drawing.Point(28, 565);
             this.buttonAlphaXplus.Name = "buttonAlphaXplus";
             this.buttonAlphaXplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaXplus.TabIndex = 47;
             this.buttonAlphaXplus.Text = "+";
-            this.buttonAlphaXplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaXplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaXplus.Click += new System.EventHandler(this.buttonAlphaXplus_Click);
             // 
             // buttonAlphaX
             // 
+            this.buttonAlphaX.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaX.Enabled = false;
             this.buttonAlphaX.Location = new System.Drawing.Point(3, 565);
             this.buttonAlphaX.Name = "buttonAlphaX";
             this.buttonAlphaX.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaX.TabIndex = 46;
             this.buttonAlphaX.Text = "X";
-            this.buttonAlphaX.UseVisualStyleBackColor = true;
+            this.buttonAlphaX.UseVisualStyleBackColor = false;
             this.buttonAlphaX.Click += new System.EventHandler(this.buttonAlphaX_Click);
             // 
             // buttonAlphaWplus
             // 
+            this.buttonAlphaWplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaWplus.Enabled = false;
             this.buttonAlphaWplus.Location = new System.Drawing.Point(28, 541);
             this.buttonAlphaWplus.Name = "buttonAlphaWplus";
             this.buttonAlphaWplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaWplus.TabIndex = 45;
             this.buttonAlphaWplus.Text = "+";
-            this.buttonAlphaWplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaWplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaWplus.Click += new System.EventHandler(this.buttonAlphaWplus_Click);
             // 
             // buttonAlphaW
             // 
+            this.buttonAlphaW.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaW.Enabled = false;
             this.buttonAlphaW.Location = new System.Drawing.Point(3, 541);
             this.buttonAlphaW.Name = "buttonAlphaW";
             this.buttonAlphaW.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaW.TabIndex = 44;
             this.buttonAlphaW.Text = "W";
-            this.buttonAlphaW.UseVisualStyleBackColor = true;
+            this.buttonAlphaW.UseVisualStyleBackColor = false;
             this.buttonAlphaW.Click += new System.EventHandler(this.buttonAlphaW_Click);
             // 
             // buttonAlphaVplus
             // 
+            this.buttonAlphaVplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaVplus.Enabled = false;
             this.buttonAlphaVplus.Location = new System.Drawing.Point(28, 517);
             this.buttonAlphaVplus.Name = "buttonAlphaVplus";
             this.buttonAlphaVplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaVplus.TabIndex = 43;
             this.buttonAlphaVplus.Text = "+";
-            this.buttonAlphaVplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaVplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaVplus.Click += new System.EventHandler(this.buttonAlphaVplus_Click);
             // 
             // buttonAlphaV
             // 
+            this.buttonAlphaV.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaV.Enabled = false;
             this.buttonAlphaV.Location = new System.Drawing.Point(3, 517);
             this.buttonAlphaV.Name = "buttonAlphaV";
             this.buttonAlphaV.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaV.TabIndex = 42;
             this.buttonAlphaV.Text = "V";
-            this.buttonAlphaV.UseVisualStyleBackColor = true;
+            this.buttonAlphaV.UseVisualStyleBackColor = false;
             this.buttonAlphaV.Click += new System.EventHandler(this.buttonAlphaV_Click);
             // 
             // buttonAlphaUplus
             // 
+            this.buttonAlphaUplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaUplus.Enabled = false;
             this.buttonAlphaUplus.Location = new System.Drawing.Point(28, 493);
             this.buttonAlphaUplus.Name = "buttonAlphaUplus";
             this.buttonAlphaUplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaUplus.TabIndex = 41;
             this.buttonAlphaUplus.Text = "+";
-            this.buttonAlphaUplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaUplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaUplus.Click += new System.EventHandler(this.buttonAlphaUplus_Click);
             // 
             // buttonAlphaU
             // 
+            this.buttonAlphaU.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaU.Enabled = false;
             this.buttonAlphaU.Location = new System.Drawing.Point(3, 493);
             this.buttonAlphaU.Name = "buttonAlphaU";
             this.buttonAlphaU.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaU.TabIndex = 40;
             this.buttonAlphaU.Text = "U";
-            this.buttonAlphaU.UseVisualStyleBackColor = true;
+            this.buttonAlphaU.UseVisualStyleBackColor = false;
             this.buttonAlphaU.Click += new System.EventHandler(this.buttonAlphaU_Click);
             // 
             // buttonAlphaTplus
             // 
+            this.buttonAlphaTplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaTplus.Enabled = false;
             this.buttonAlphaTplus.Location = new System.Drawing.Point(28, 469);
             this.buttonAlphaTplus.Name = "buttonAlphaTplus";
             this.buttonAlphaTplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaTplus.TabIndex = 39;
             this.buttonAlphaTplus.Text = "+";
-            this.buttonAlphaTplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaTplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaTplus.Click += new System.EventHandler(this.buttonAlphaTplus_Click);
             // 
             // buttonAlphaT
             // 
+            this.buttonAlphaT.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaT.Enabled = false;
             this.buttonAlphaT.Location = new System.Drawing.Point(3, 469);
             this.buttonAlphaT.Name = "buttonAlphaT";
             this.buttonAlphaT.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaT.TabIndex = 38;
             this.buttonAlphaT.Text = "T";
-            this.buttonAlphaT.UseVisualStyleBackColor = true;
+            this.buttonAlphaT.UseVisualStyleBackColor = false;
             this.buttonAlphaT.Click += new System.EventHandler(this.buttonAlphaT_Click);
             // 
             // buttonAlphaSplus
             // 
+            this.buttonAlphaSplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaSplus.Enabled = false;
             this.buttonAlphaSplus.Location = new System.Drawing.Point(28, 445);
             this.buttonAlphaSplus.Name = "buttonAlphaSplus";
             this.buttonAlphaSplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaSplus.TabIndex = 37;
             this.buttonAlphaSplus.Text = "+";
-            this.buttonAlphaSplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaSplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaSplus.Click += new System.EventHandler(this.buttonAlphaSplus_Click);
             // 
             // buttonAlphaS
             // 
+            this.buttonAlphaS.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaS.Enabled = false;
             this.buttonAlphaS.Location = new System.Drawing.Point(3, 445);
             this.buttonAlphaS.Name = "buttonAlphaS";
             this.buttonAlphaS.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaS.TabIndex = 36;
             this.buttonAlphaS.Text = "S";
-            this.buttonAlphaS.UseVisualStyleBackColor = true;
+            this.buttonAlphaS.UseVisualStyleBackColor = false;
             this.buttonAlphaS.Click += new System.EventHandler(this.buttonAlphaS_Click);
             // 
             // buttonAlphaRplus
             // 
+            this.buttonAlphaRplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaRplus.Enabled = false;
             this.buttonAlphaRplus.Location = new System.Drawing.Point(28, 421);
             this.buttonAlphaRplus.Name = "buttonAlphaRplus";
             this.buttonAlphaRplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaRplus.TabIndex = 35;
             this.buttonAlphaRplus.Text = "+";
-            this.buttonAlphaRplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaRplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaRplus.Click += new System.EventHandler(this.buttonAlphaRplus_Click);
             // 
             // buttonAlphaR
             // 
+            this.buttonAlphaR.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaR.Enabled = false;
             this.buttonAlphaR.Location = new System.Drawing.Point(3, 421);
             this.buttonAlphaR.Name = "buttonAlphaR";
             this.buttonAlphaR.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaR.TabIndex = 34;
             this.buttonAlphaR.Text = "R";
-            this.buttonAlphaR.UseVisualStyleBackColor = true;
+            this.buttonAlphaR.UseVisualStyleBackColor = false;
             this.buttonAlphaR.Click += new System.EventHandler(this.buttonAlphaR_Click);
             // 
             // buttonAlphaQplus
             // 
+            this.buttonAlphaQplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaQplus.Enabled = false;
             this.buttonAlphaQplus.Location = new System.Drawing.Point(28, 397);
             this.buttonAlphaQplus.Name = "buttonAlphaQplus";
             this.buttonAlphaQplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaQplus.TabIndex = 33;
             this.buttonAlphaQplus.Text = "+";
-            this.buttonAlphaQplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaQplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaQplus.Click += new System.EventHandler(this.buttonAlphaQplus_Click);
             // 
             // buttonAlphaQ
             // 
+            this.buttonAlphaQ.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaQ.Enabled = false;
             this.buttonAlphaQ.Location = new System.Drawing.Point(3, 397);
             this.buttonAlphaQ.Name = "buttonAlphaQ";
             this.buttonAlphaQ.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaQ.TabIndex = 32;
             this.buttonAlphaQ.Text = "Q";
-            this.buttonAlphaQ.UseVisualStyleBackColor = true;
+            this.buttonAlphaQ.UseVisualStyleBackColor = false;
             this.buttonAlphaQ.Click += new System.EventHandler(this.buttonAlphaQ_Click);
             // 
             // buttonAlphaPplus
             // 
+            this.buttonAlphaPplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaPplus.Enabled = false;
             this.buttonAlphaPplus.Location = new System.Drawing.Point(28, 373);
             this.buttonAlphaPplus.Name = "buttonAlphaPplus";
             this.buttonAlphaPplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaPplus.TabIndex = 31;
             this.buttonAlphaPplus.Text = "+";
-            this.buttonAlphaPplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaPplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaPplus.Click += new System.EventHandler(this.buttonAlphaPplus_Click);
             // 
             // buttonAlphaP
             // 
+            this.buttonAlphaP.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaP.Enabled = false;
             this.buttonAlphaP.Location = new System.Drawing.Point(3, 373);
             this.buttonAlphaP.Name = "buttonAlphaP";
             this.buttonAlphaP.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaP.TabIndex = 30;
             this.buttonAlphaP.Text = "P";
-            this.buttonAlphaP.UseVisualStyleBackColor = true;
+            this.buttonAlphaP.UseVisualStyleBackColor = false;
             this.buttonAlphaP.Click += new System.EventHandler(this.buttonAlphaP_Click);
             // 
             // buttonAlphaOplus
             // 
+            this.buttonAlphaOplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaOplus.Enabled = false;
             this.buttonAlphaOplus.Location = new System.Drawing.Point(28, 349);
             this.buttonAlphaOplus.Name = "buttonAlphaOplus";
             this.buttonAlphaOplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaOplus.TabIndex = 29;
             this.buttonAlphaOplus.Text = "+";
-            this.buttonAlphaOplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaOplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaOplus.Click += new System.EventHandler(this.buttonAlphaOplus_Click);
             // 
             // buttonAlphaO
             // 
+            this.buttonAlphaO.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaO.Enabled = false;
             this.buttonAlphaO.Location = new System.Drawing.Point(3, 349);
             this.buttonAlphaO.Name = "buttonAlphaO";
             this.buttonAlphaO.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaO.TabIndex = 28;
             this.buttonAlphaO.Text = "O";
-            this.buttonAlphaO.UseVisualStyleBackColor = true;
+            this.buttonAlphaO.UseVisualStyleBackColor = false;
             this.buttonAlphaO.Click += new System.EventHandler(this.buttonAlphaO_Click);
             // 
             // buttonAlphaNplus
             // 
+            this.buttonAlphaNplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaNplus.Enabled = false;
             this.buttonAlphaNplus.Location = new System.Drawing.Point(28, 325);
             this.buttonAlphaNplus.Name = "buttonAlphaNplus";
             this.buttonAlphaNplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaNplus.TabIndex = 27;
             this.buttonAlphaNplus.Text = "+";
-            this.buttonAlphaNplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaNplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaNplus.Click += new System.EventHandler(this.buttonAlphaNplus_Click);
             // 
             // buttonAlphaN
             // 
+            this.buttonAlphaN.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaN.Enabled = false;
             this.buttonAlphaN.Location = new System.Drawing.Point(3, 325);
             this.buttonAlphaN.Name = "buttonAlphaN";
             this.buttonAlphaN.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaN.TabIndex = 26;
             this.buttonAlphaN.Text = "N";
-            this.buttonAlphaN.UseVisualStyleBackColor = true;
+            this.buttonAlphaN.UseVisualStyleBackColor = false;
             this.buttonAlphaN.Click += new System.EventHandler(this.buttonAlphaN_Click);
             // 
             // buttonAlphaMplus
             // 
+            this.buttonAlphaMplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaMplus.Enabled = false;
             this.buttonAlphaMplus.Location = new System.Drawing.Point(28, 301);
             this.buttonAlphaMplus.Name = "buttonAlphaMplus";
             this.buttonAlphaMplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaMplus.TabIndex = 25;
             this.buttonAlphaMplus.Text = "+";
-            this.buttonAlphaMplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaMplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaMplus.Click += new System.EventHandler(this.buttonAlphaMplus_Click);
             // 
             // buttonAlphaM
             // 
+            this.buttonAlphaM.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaM.Enabled = false;
             this.buttonAlphaM.Location = new System.Drawing.Point(3, 301);
             this.buttonAlphaM.Name = "buttonAlphaM";
             this.buttonAlphaM.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaM.TabIndex = 24;
             this.buttonAlphaM.Text = "M";
-            this.buttonAlphaM.UseVisualStyleBackColor = true;
+            this.buttonAlphaM.UseVisualStyleBackColor = false;
             this.buttonAlphaM.Click += new System.EventHandler(this.buttonAlphaM_Click);
             // 
             // buttonAlphaLplus
             // 
+            this.buttonAlphaLplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaLplus.Enabled = false;
             this.buttonAlphaLplus.Location = new System.Drawing.Point(28, 277);
             this.buttonAlphaLplus.Name = "buttonAlphaLplus";
             this.buttonAlphaLplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaLplus.TabIndex = 23;
             this.buttonAlphaLplus.Text = "+";
-            this.buttonAlphaLplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaLplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaLplus.Click += new System.EventHandler(this.buttonAlphaLplus_Click);
             // 
             // buttonAlphaL
             // 
+            this.buttonAlphaL.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaL.Enabled = false;
             this.buttonAlphaL.Location = new System.Drawing.Point(3, 277);
             this.buttonAlphaL.Name = "buttonAlphaL";
             this.buttonAlphaL.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaL.TabIndex = 22;
             this.buttonAlphaL.Text = "L";
-            this.buttonAlphaL.UseVisualStyleBackColor = true;
+            this.buttonAlphaL.UseVisualStyleBackColor = false;
             this.buttonAlphaL.Click += new System.EventHandler(this.buttonAlphaL_Click);
             // 
             // buttonAlphaKplus
             // 
+            this.buttonAlphaKplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaKplus.Enabled = false;
             this.buttonAlphaKplus.Location = new System.Drawing.Point(28, 253);
             this.buttonAlphaKplus.Name = "buttonAlphaKplus";
             this.buttonAlphaKplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaKplus.TabIndex = 21;
             this.buttonAlphaKplus.Text = "+";
-            this.buttonAlphaKplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaKplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaKplus.Click += new System.EventHandler(this.buttonAlphaKplus_Click);
             // 
             // buttonAlphaK
             // 
+            this.buttonAlphaK.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaK.Enabled = false;
             this.buttonAlphaK.Location = new System.Drawing.Point(3, 253);
             this.buttonAlphaK.Name = "buttonAlphaK";
             this.buttonAlphaK.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaK.TabIndex = 20;
             this.buttonAlphaK.Text = "K";
-            this.buttonAlphaK.UseVisualStyleBackColor = true;
+            this.buttonAlphaK.UseVisualStyleBackColor = false;
             this.buttonAlphaK.Click += new System.EventHandler(this.buttonAlphaK_Click);
             // 
             // buttonAlphaJplus
             // 
+            this.buttonAlphaJplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaJplus.Enabled = false;
             this.buttonAlphaJplus.Location = new System.Drawing.Point(28, 229);
             this.buttonAlphaJplus.Name = "buttonAlphaJplus";
             this.buttonAlphaJplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaJplus.TabIndex = 19;
             this.buttonAlphaJplus.Text = "+";
-            this.buttonAlphaJplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaJplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaJplus.Click += new System.EventHandler(this.buttonAlphaJplus_Click);
             // 
             // buttonAlphaJ
             // 
+            this.buttonAlphaJ.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaJ.Enabled = false;
             this.buttonAlphaJ.Location = new System.Drawing.Point(3, 229);
             this.buttonAlphaJ.Name = "buttonAlphaJ";
             this.buttonAlphaJ.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaJ.TabIndex = 18;
             this.buttonAlphaJ.Text = "J";
-            this.buttonAlphaJ.UseVisualStyleBackColor = true;
+            this.buttonAlphaJ.UseVisualStyleBackColor = false;
             this.buttonAlphaJ.Click += new System.EventHandler(this.buttonAlphaJ_Click);
             // 
             // buttonAlphaIplus
             // 
+            this.buttonAlphaIplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaIplus.Enabled = false;
             this.buttonAlphaIplus.Location = new System.Drawing.Point(28, 205);
             this.buttonAlphaIplus.Name = "buttonAlphaIplus";
             this.buttonAlphaIplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaIplus.TabIndex = 17;
             this.buttonAlphaIplus.Text = "+";
-            this.buttonAlphaIplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaIplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaIplus.Click += new System.EventHandler(this.buttonAlphaIplus_Click);
             // 
             // buttonAlphaI
             // 
+            this.buttonAlphaI.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaI.Enabled = false;
             this.buttonAlphaI.Location = new System.Drawing.Point(3, 205);
             this.buttonAlphaI.Name = "buttonAlphaI";
             this.buttonAlphaI.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaI.TabIndex = 16;
             this.buttonAlphaI.Text = "I";
-            this.buttonAlphaI.UseVisualStyleBackColor = true;
+            this.buttonAlphaI.UseVisualStyleBackColor = false;
             this.buttonAlphaI.Click += new System.EventHandler(this.buttonAlphaI_Click);
             // 
             // buttonAlphaHplus
             // 
+            this.buttonAlphaHplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaHplus.Enabled = false;
             this.buttonAlphaHplus.Location = new System.Drawing.Point(28, 181);
             this.buttonAlphaHplus.Name = "buttonAlphaHplus";
             this.buttonAlphaHplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaHplus.TabIndex = 15;
             this.buttonAlphaHplus.Text = "+";
-            this.buttonAlphaHplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaHplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaHplus.Click += new System.EventHandler(this.buttonAlphaHplus_Click);
             // 
             // buttonAlphaH
             // 
+            this.buttonAlphaH.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaH.Enabled = false;
             this.buttonAlphaH.Location = new System.Drawing.Point(3, 181);
             this.buttonAlphaH.Name = "buttonAlphaH";
             this.buttonAlphaH.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaH.TabIndex = 14;
             this.buttonAlphaH.Text = "H";
-            this.buttonAlphaH.UseVisualStyleBackColor = true;
+            this.buttonAlphaH.UseVisualStyleBackColor = false;
             this.buttonAlphaH.Click += new System.EventHandler(this.buttonAlphaH_Click);
             // 
             // buttonAlphaGplus
             // 
+            this.buttonAlphaGplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaGplus.Enabled = false;
             this.buttonAlphaGplus.Location = new System.Drawing.Point(28, 157);
             this.buttonAlphaGplus.Name = "buttonAlphaGplus";
             this.buttonAlphaGplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaGplus.TabIndex = 13;
             this.buttonAlphaGplus.Text = "+";
-            this.buttonAlphaGplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaGplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaGplus.Click += new System.EventHandler(this.buttonAlphaGplus_Click);
             // 
             // buttonAlphaG
             // 
+            this.buttonAlphaG.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaG.Enabled = false;
             this.buttonAlphaG.Location = new System.Drawing.Point(3, 157);
             this.buttonAlphaG.Name = "buttonAlphaG";
             this.buttonAlphaG.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaG.TabIndex = 12;
             this.buttonAlphaG.Text = "G";
-            this.buttonAlphaG.UseVisualStyleBackColor = true;
+            this.buttonAlphaG.UseVisualStyleBackColor = false;
             this.buttonAlphaG.Click += new System.EventHandler(this.buttonAlphaG_Click);
             // 
             // buttonAlphaFplus
             // 
+            this.buttonAlphaFplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaFplus.Enabled = false;
             this.buttonAlphaFplus.Location = new System.Drawing.Point(28, 133);
             this.buttonAlphaFplus.Name = "buttonAlphaFplus";
             this.buttonAlphaFplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaFplus.TabIndex = 11;
             this.buttonAlphaFplus.Text = "+";
-            this.buttonAlphaFplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaFplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaFplus.Click += new System.EventHandler(this.buttonAlphaFplus_Click);
             // 
             // buttonAlphaF
             // 
+            this.buttonAlphaF.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaF.Enabled = false;
             this.buttonAlphaF.Location = new System.Drawing.Point(3, 133);
             this.buttonAlphaF.Name = "buttonAlphaF";
             this.buttonAlphaF.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaF.TabIndex = 10;
             this.buttonAlphaF.Text = "F";
-            this.buttonAlphaF.UseVisualStyleBackColor = true;
+            this.buttonAlphaF.UseVisualStyleBackColor = false;
             this.buttonAlphaF.Click += new System.EventHandler(this.buttonAlphaF_Click);
             // 
             // buttonAlphaEplus
             // 
+            this.buttonAlphaEplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaEplus.Enabled = false;
             this.buttonAlphaEplus.Location = new System.Drawing.Point(28, 109);
             this.buttonAlphaEplus.Name = "buttonAlphaEplus";
             this.buttonAlphaEplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaEplus.TabIndex = 9;
             this.buttonAlphaEplus.Text = "+";
-            this.buttonAlphaEplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaEplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaEplus.Click += new System.EventHandler(this.buttonAlphaEplus_Click);
             // 
             // buttonAlphaE
             // 
+            this.buttonAlphaE.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaE.Enabled = false;
             this.buttonAlphaE.Location = new System.Drawing.Point(3, 109);
             this.buttonAlphaE.Name = "buttonAlphaE";
             this.buttonAlphaE.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaE.TabIndex = 8;
             this.buttonAlphaE.Text = "E";
-            this.buttonAlphaE.UseVisualStyleBackColor = true;
+            this.buttonAlphaE.UseVisualStyleBackColor = false;
             this.buttonAlphaE.Click += new System.EventHandler(this.buttonAlphaE_Click);
             // 
             // buttonAlphaDplus
             // 
+            this.buttonAlphaDplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaDplus.Enabled = false;
             this.buttonAlphaDplus.Location = new System.Drawing.Point(28, 85);
             this.buttonAlphaDplus.Name = "buttonAlphaDplus";
             this.buttonAlphaDplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaDplus.TabIndex = 7;
             this.buttonAlphaDplus.Text = "+";
-            this.buttonAlphaDplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaDplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaDplus.Click += new System.EventHandler(this.buttonAlphaDplus_Click);
             // 
             // buttonAlphaD
             // 
+            this.buttonAlphaD.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaD.Enabled = false;
             this.buttonAlphaD.Location = new System.Drawing.Point(3, 85);
             this.buttonAlphaD.Name = "buttonAlphaD";
@@ -2727,21 +2799,24 @@
             this.buttonAlphaD.TabIndex = 6;
             this.buttonAlphaD.Tag = "4";
             this.buttonAlphaD.Text = "D";
-            this.buttonAlphaD.UseVisualStyleBackColor = true;
+            this.buttonAlphaD.UseVisualStyleBackColor = false;
             this.buttonAlphaD.Click += new System.EventHandler(this.buttonAlphaD_Click);
             // 
             // buttonAlphaCplus
             // 
+            this.buttonAlphaCplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaCplus.Enabled = false;
             this.buttonAlphaCplus.Location = new System.Drawing.Point(28, 61);
             this.buttonAlphaCplus.Name = "buttonAlphaCplus";
             this.buttonAlphaCplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaCplus.TabIndex = 5;
             this.buttonAlphaCplus.Text = "+";
-            this.buttonAlphaCplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaCplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaCplus.Click += new System.EventHandler(this.buttonAlphaCplus_Click);
             // 
             // buttonAlphaC
             // 
+            this.buttonAlphaC.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaC.Enabled = false;
             this.buttonAlphaC.Location = new System.Drawing.Point(3, 61);
             this.buttonAlphaC.Name = "buttonAlphaC";
@@ -2749,21 +2824,24 @@
             this.buttonAlphaC.TabIndex = 4;
             this.buttonAlphaC.Tag = "3";
             this.buttonAlphaC.Text = "C";
-            this.buttonAlphaC.UseVisualStyleBackColor = true;
+            this.buttonAlphaC.UseVisualStyleBackColor = false;
             this.buttonAlphaC.Click += new System.EventHandler(this.buttonAlphaC_Click);
             // 
             // buttonAlphaBplus
             // 
+            this.buttonAlphaBplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaBplus.Enabled = false;
             this.buttonAlphaBplus.Location = new System.Drawing.Point(28, 37);
             this.buttonAlphaBplus.Name = "buttonAlphaBplus";
             this.buttonAlphaBplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaBplus.TabIndex = 3;
             this.buttonAlphaBplus.Text = "+";
-            this.buttonAlphaBplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaBplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaBplus.Click += new System.EventHandler(this.buttonAlphaBplus_Click);
             // 
             // buttonAlphaB
             // 
+            this.buttonAlphaB.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaB.Enabled = false;
             this.buttonAlphaB.Location = new System.Drawing.Point(3, 37);
             this.buttonAlphaB.Name = "buttonAlphaB";
@@ -2771,21 +2849,24 @@
             this.buttonAlphaB.TabIndex = 2;
             this.buttonAlphaB.Tag = "2";
             this.buttonAlphaB.Text = "B";
-            this.buttonAlphaB.UseVisualStyleBackColor = true;
+            this.buttonAlphaB.UseVisualStyleBackColor = false;
             this.buttonAlphaB.Click += new System.EventHandler(this.buttonAlphaB_Click);
             // 
             // buttonAlphaAplus
             // 
+            this.buttonAlphaAplus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaAplus.Enabled = false;
             this.buttonAlphaAplus.Location = new System.Drawing.Point(28, 13);
             this.buttonAlphaAplus.Name = "buttonAlphaAplus";
             this.buttonAlphaAplus.Size = new System.Drawing.Size(22, 21);
             this.buttonAlphaAplus.TabIndex = 1;
             this.buttonAlphaAplus.Text = "+";
-            this.buttonAlphaAplus.UseVisualStyleBackColor = true;
+            this.buttonAlphaAplus.UseVisualStyleBackColor = false;
+            this.buttonAlphaAplus.Click += new System.EventHandler(this.buttonAlphaAplus_Click);
             // 
             // buttonAlphaA
             // 
+            this.buttonAlphaA.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAlphaA.Enabled = false;
             this.buttonAlphaA.Location = new System.Drawing.Point(3, 13);
             this.buttonAlphaA.Name = "buttonAlphaA";
@@ -2793,7 +2874,7 @@
             this.buttonAlphaA.TabIndex = 0;
             this.buttonAlphaA.Tag = "1";
             this.buttonAlphaA.Text = "A";
-            this.buttonAlphaA.UseVisualStyleBackColor = true;
+            this.buttonAlphaA.UseVisualStyleBackColor = false;
             this.buttonAlphaA.Click += new System.EventHandler(this.buttonAlphaA_Click);
             // 
             // groupBoxPrint
@@ -4032,6 +4113,366 @@
             this.tabPageQuickPrint.Text = "   Quick Print   ";
             this.tabPageQuickPrint.UseVisualStyleBackColor = true;
             // 
+            // groupBoxQP9
+            // 
+            this.groupBoxQP9.Controls.Add(this.buttonQP9);
+            this.groupBoxQP9.Controls.Add(this.textBoxQP9);
+            this.groupBoxQP9.Controls.Add(this.panelQP9);
+            this.groupBoxQP9.Location = new System.Drawing.Point(728, 530);
+            this.groupBoxQP9.Name = "groupBoxQP9";
+            this.groupBoxQP9.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP9.TabIndex = 7;
+            this.groupBoxQP9.TabStop = false;
+            this.groupBoxQP9.Text = "Quick Print";
+            // 
+            // buttonQP9
+            // 
+            this.buttonQP9.Enabled = false;
+            this.buttonQP9.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP9.Name = "buttonQP9";
+            this.buttonQP9.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP9.TabIndex = 4;
+            this.buttonQP9.Text = "Print";
+            this.buttonQP9.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP9
+            // 
+            this.textBoxQP9.Enabled = false;
+            this.textBoxQP9.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP9.Name = "textBoxQP9";
+            this.textBoxQP9.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP9.TabIndex = 3;
+            this.textBoxQP9.Text = "1";
+            // 
+            // panelQP9
+            // 
+            this.panelQP9.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP9.Location = new System.Drawing.Point(6, 42);
+            this.panelQP9.Name = "panelQP9";
+            this.panelQP9.Size = new System.Drawing.Size(318, 190);
+            this.panelQP9.TabIndex = 1;
+            // 
+            // groupBoxQP8
+            // 
+            this.groupBoxQP8.Controls.Add(this.buttonQP8);
+            this.groupBoxQP8.Controls.Add(this.textBoxQP8);
+            this.groupBoxQP8.Controls.Add(this.panelQP8);
+            this.groupBoxQP8.Location = new System.Drawing.Point(373, 530);
+            this.groupBoxQP8.Name = "groupBoxQP8";
+            this.groupBoxQP8.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP8.TabIndex = 7;
+            this.groupBoxQP8.TabStop = false;
+            this.groupBoxQP8.Text = "Quick Print";
+            // 
+            // buttonQP8
+            // 
+            this.buttonQP8.Enabled = false;
+            this.buttonQP8.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP8.Name = "buttonQP8";
+            this.buttonQP8.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP8.TabIndex = 4;
+            this.buttonQP8.Text = "Print";
+            this.buttonQP8.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP8
+            // 
+            this.textBoxQP8.Enabled = false;
+            this.textBoxQP8.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP8.Name = "textBoxQP8";
+            this.textBoxQP8.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP8.TabIndex = 3;
+            this.textBoxQP8.Text = "1";
+            // 
+            // panelQP8
+            // 
+            this.panelQP8.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP8.Location = new System.Drawing.Point(6, 42);
+            this.panelQP8.Name = "panelQP8";
+            this.panelQP8.Size = new System.Drawing.Size(318, 190);
+            this.panelQP8.TabIndex = 1;
+            // 
+            // groupBoxQP6
+            // 
+            this.groupBoxQP6.Controls.Add(this.buttonQP6);
+            this.groupBoxQP6.Controls.Add(this.textBoxQP6);
+            this.groupBoxQP6.Controls.Add(this.panelQP6);
+            this.groupBoxQP6.Location = new System.Drawing.Point(728, 270);
+            this.groupBoxQP6.Name = "groupBoxQP6";
+            this.groupBoxQP6.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP6.TabIndex = 8;
+            this.groupBoxQP6.TabStop = false;
+            this.groupBoxQP6.Text = "Quick Print";
+            // 
+            // buttonQP6
+            // 
+            this.buttonQP6.Enabled = false;
+            this.buttonQP6.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP6.Name = "buttonQP6";
+            this.buttonQP6.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP6.TabIndex = 4;
+            this.buttonQP6.Text = "Print";
+            this.buttonQP6.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP6
+            // 
+            this.textBoxQP6.Enabled = false;
+            this.textBoxQP6.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP6.Name = "textBoxQP6";
+            this.textBoxQP6.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP6.TabIndex = 3;
+            this.textBoxQP6.Text = "1";
+            // 
+            // panelQP6
+            // 
+            this.panelQP6.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP6.Location = new System.Drawing.Point(6, 42);
+            this.panelQP6.Name = "panelQP6";
+            this.panelQP6.Size = new System.Drawing.Size(318, 190);
+            this.panelQP6.TabIndex = 1;
+            // 
+            // groupBoxQP5
+            // 
+            this.groupBoxQP5.Controls.Add(this.buttonQP5);
+            this.groupBoxQP5.Controls.Add(this.textBoxQP5);
+            this.groupBoxQP5.Controls.Add(this.panelQP5);
+            this.groupBoxQP5.Location = new System.Drawing.Point(373, 270);
+            this.groupBoxQP5.Name = "groupBoxQP5";
+            this.groupBoxQP5.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP5.TabIndex = 8;
+            this.groupBoxQP5.TabStop = false;
+            this.groupBoxQP5.Text = "Quick Print";
+            // 
+            // buttonQP5
+            // 
+            this.buttonQP5.Enabled = false;
+            this.buttonQP5.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP5.Name = "buttonQP5";
+            this.buttonQP5.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP5.TabIndex = 4;
+            this.buttonQP5.Text = "Print";
+            this.buttonQP5.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP5
+            // 
+            this.textBoxQP5.Enabled = false;
+            this.textBoxQP5.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP5.Name = "textBoxQP5";
+            this.textBoxQP5.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP5.TabIndex = 3;
+            this.textBoxQP5.Text = "1";
+            // 
+            // panelQP5
+            // 
+            this.panelQP5.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP5.Location = new System.Drawing.Point(6, 42);
+            this.panelQP5.Name = "panelQP5";
+            this.panelQP5.Size = new System.Drawing.Size(318, 190);
+            this.panelQP5.TabIndex = 1;
+            // 
+            // groupBoxQP7
+            // 
+            this.groupBoxQP7.Controls.Add(this.buttonQP7);
+            this.groupBoxQP7.Controls.Add(this.textBoxQP7);
+            this.groupBoxQP7.Controls.Add(this.panelQP7);
+            this.groupBoxQP7.Location = new System.Drawing.Point(13, 530);
+            this.groupBoxQP7.Name = "groupBoxQP7";
+            this.groupBoxQP7.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP7.TabIndex = 5;
+            this.groupBoxQP7.TabStop = false;
+            this.groupBoxQP7.Text = "Quick Print";
+            // 
+            // buttonQP7
+            // 
+            this.buttonQP7.Enabled = false;
+            this.buttonQP7.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP7.Name = "buttonQP7";
+            this.buttonQP7.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP7.TabIndex = 4;
+            this.buttonQP7.Text = "Print";
+            this.buttonQP7.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP7
+            // 
+            this.textBoxQP7.Enabled = false;
+            this.textBoxQP7.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP7.Name = "textBoxQP7";
+            this.textBoxQP7.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP7.TabIndex = 3;
+            this.textBoxQP7.Text = "1";
+            // 
+            // panelQP7
+            // 
+            this.panelQP7.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP7.Location = new System.Drawing.Point(6, 42);
+            this.panelQP7.Name = "panelQP7";
+            this.panelQP7.Size = new System.Drawing.Size(318, 190);
+            this.panelQP7.TabIndex = 1;
+            // 
+            // groupBoxQP4
+            // 
+            this.groupBoxQP4.Controls.Add(this.buttonQP4);
+            this.groupBoxQP4.Controls.Add(this.textBoxQP4);
+            this.groupBoxQP4.Controls.Add(this.panelQP4);
+            this.groupBoxQP4.Location = new System.Drawing.Point(13, 270);
+            this.groupBoxQP4.Name = "groupBoxQP4";
+            this.groupBoxQP4.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP4.TabIndex = 6;
+            this.groupBoxQP4.TabStop = false;
+            this.groupBoxQP4.Text = "Quick Print";
+            // 
+            // buttonQP4
+            // 
+            this.buttonQP4.Enabled = false;
+            this.buttonQP4.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP4.Name = "buttonQP4";
+            this.buttonQP4.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP4.TabIndex = 4;
+            this.buttonQP4.Text = "Print";
+            this.buttonQP4.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP4
+            // 
+            this.textBoxQP4.Enabled = false;
+            this.textBoxQP4.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP4.Name = "textBoxQP4";
+            this.textBoxQP4.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP4.TabIndex = 3;
+            this.textBoxQP4.Text = "1";
+            // 
+            // panelQP4
+            // 
+            this.panelQP4.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP4.Location = new System.Drawing.Point(6, 42);
+            this.panelQP4.Name = "panelQP4";
+            this.panelQP4.Size = new System.Drawing.Size(318, 190);
+            this.panelQP4.TabIndex = 1;
+            // 
+            // groupBoxQP2
+            // 
+            this.groupBoxQP2.Controls.Add(this.buttonQP2);
+            this.groupBoxQP2.Controls.Add(this.textBoxQP2);
+            this.groupBoxQP2.Controls.Add(this.panelQP2);
+            this.groupBoxQP2.Location = new System.Drawing.Point(373, 15);
+            this.groupBoxQP2.Name = "groupBoxQP2";
+            this.groupBoxQP2.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP2.TabIndex = 5;
+            this.groupBoxQP2.TabStop = false;
+            this.groupBoxQP2.Text = "Quick Print";
+            // 
+            // buttonQP2
+            // 
+            this.buttonQP2.Enabled = false;
+            this.buttonQP2.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP2.Name = "buttonQP2";
+            this.buttonQP2.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP2.TabIndex = 4;
+            this.buttonQP2.Text = "Print";
+            this.buttonQP2.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP2
+            // 
+            this.textBoxQP2.Enabled = false;
+            this.textBoxQP2.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP2.Name = "textBoxQP2";
+            this.textBoxQP2.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP2.TabIndex = 3;
+            this.textBoxQP2.Text = "1";
+            // 
+            // panelQP2
+            // 
+            this.panelQP2.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP2.Location = new System.Drawing.Point(6, 42);
+            this.panelQP2.Name = "panelQP2";
+            this.panelQP2.Size = new System.Drawing.Size(318, 190);
+            this.panelQP2.TabIndex = 1;
+            // 
+            // groupBoxQP3
+            // 
+            this.groupBoxQP3.Controls.Add(this.buttonQP3);
+            this.groupBoxQP3.Controls.Add(this.textBoxQP3);
+            this.groupBoxQP3.Controls.Add(this.panelQP3);
+            this.groupBoxQP3.Location = new System.Drawing.Point(728, 15);
+            this.groupBoxQP3.Name = "groupBoxQP3";
+            this.groupBoxQP3.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP3.TabIndex = 5;
+            this.groupBoxQP3.TabStop = false;
+            this.groupBoxQP3.Text = "Quick Print";
+            // 
+            // buttonQP3
+            // 
+            this.buttonQP3.Enabled = false;
+            this.buttonQP3.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP3.Name = "buttonQP3";
+            this.buttonQP3.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP3.TabIndex = 4;
+            this.buttonQP3.Text = "Print";
+            this.buttonQP3.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP3
+            // 
+            this.textBoxQP3.Enabled = false;
+            this.textBoxQP3.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP3.Name = "textBoxQP3";
+            this.textBoxQP3.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP3.TabIndex = 3;
+            this.textBoxQP3.Text = "1";
+            // 
+            // panelQP3
+            // 
+            this.panelQP3.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP3.Location = new System.Drawing.Point(6, 42);
+            this.panelQP3.Name = "panelQP3";
+            this.panelQP3.Size = new System.Drawing.Size(318, 190);
+            this.panelQP3.TabIndex = 1;
+            // 
+            // groupBoxQP1
+            // 
+            this.groupBoxQP1.Controls.Add(this.buttonQP1);
+            this.groupBoxQP1.Controls.Add(this.textBoxQP1);
+            this.groupBoxQP1.Controls.Add(this.panelQP1);
+            this.groupBoxQP1.Location = new System.Drawing.Point(13, 15);
+            this.groupBoxQP1.Name = "groupBoxQP1";
+            this.groupBoxQP1.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP1.TabIndex = 4;
+            this.groupBoxQP1.TabStop = false;
+            this.groupBoxQP1.Text = "Quick Print";
+            // 
+            // buttonQP1
+            // 
+            this.buttonQP1.Enabled = false;
+            this.buttonQP1.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP1.Name = "buttonQP1";
+            this.buttonQP1.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP1.TabIndex = 4;
+            this.buttonQP1.Text = "Print";
+            this.buttonQP1.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQP1
+            // 
+            this.textBoxQP1.Enabled = false;
+            this.textBoxQP1.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP1.Name = "textBoxQP1";
+            this.textBoxQP1.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP1.TabIndex = 3;
+            this.textBoxQP1.Text = "1";
+            // 
+            // panelQP1
+            // 
+            this.panelQP1.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP1.Location = new System.Drawing.Point(6, 42);
+            this.panelQP1.Name = "panelQP1";
+            this.panelQP1.Size = new System.Drawing.Size(318, 190);
+            this.panelQP1.TabIndex = 1;
+            // 
             // tableProfilesTableAdapter
             // 
             this.tableProfilesTableAdapter.ClearBeforeFill = true;
@@ -4091,366 +4532,6 @@
             // tablePlantsTableAdapter
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
-            // 
-            // groupBoxQP1
-            // 
-            this.groupBoxQP1.Controls.Add(this.buttonQP1);
-            this.groupBoxQP1.Controls.Add(this.textBoxQP1);
-            this.groupBoxQP1.Controls.Add(this.panelQP1);
-            this.groupBoxQP1.Location = new System.Drawing.Point(13, 15);
-            this.groupBoxQP1.Name = "groupBoxQP1";
-            this.groupBoxQP1.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP1.TabIndex = 4;
-            this.groupBoxQP1.TabStop = false;
-            this.groupBoxQP1.Text = "Quick Print";
-            // 
-            // panelQP1
-            // 
-            this.panelQP1.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP1.Location = new System.Drawing.Point(6, 42);
-            this.panelQP1.Name = "panelQP1";
-            this.panelQP1.Size = new System.Drawing.Size(318, 190);
-            this.panelQP1.TabIndex = 1;
-            // 
-            // textBoxQP1
-            // 
-            this.textBoxQP1.Enabled = false;
-            this.textBoxQP1.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP1.Name = "textBoxQP1";
-            this.textBoxQP1.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP1.TabIndex = 3;
-            this.textBoxQP1.Text = "1";
-            // 
-            // buttonQP1
-            // 
-            this.buttonQP1.Enabled = false;
-            this.buttonQP1.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP1.Name = "buttonQP1";
-            this.buttonQP1.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP1.TabIndex = 4;
-            this.buttonQP1.Text = "Print";
-            this.buttonQP1.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxQP3
-            // 
-            this.groupBoxQP3.Controls.Add(this.buttonQP3);
-            this.groupBoxQP3.Controls.Add(this.textBoxQP3);
-            this.groupBoxQP3.Controls.Add(this.panelQP3);
-            this.groupBoxQP3.Location = new System.Drawing.Point(728, 15);
-            this.groupBoxQP3.Name = "groupBoxQP3";
-            this.groupBoxQP3.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP3.TabIndex = 5;
-            this.groupBoxQP3.TabStop = false;
-            this.groupBoxQP3.Text = "Quick Print";
-            // 
-            // buttonQP3
-            // 
-            this.buttonQP3.Enabled = false;
-            this.buttonQP3.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP3.Name = "buttonQP3";
-            this.buttonQP3.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP3.TabIndex = 4;
-            this.buttonQP3.Text = "Print";
-            this.buttonQP3.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP3
-            // 
-            this.textBoxQP3.Enabled = false;
-            this.textBoxQP3.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP3.Name = "textBoxQP3";
-            this.textBoxQP3.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP3.TabIndex = 3;
-            this.textBoxQP3.Text = "1";
-            // 
-            // panelQP3
-            // 
-            this.panelQP3.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP3.Location = new System.Drawing.Point(6, 42);
-            this.panelQP3.Name = "panelQP3";
-            this.panelQP3.Size = new System.Drawing.Size(318, 190);
-            this.panelQP3.TabIndex = 1;
-            // 
-            // groupBoxQP2
-            // 
-            this.groupBoxQP2.Controls.Add(this.buttonQP2);
-            this.groupBoxQP2.Controls.Add(this.textBoxQP2);
-            this.groupBoxQP2.Controls.Add(this.panelQP2);
-            this.groupBoxQP2.Location = new System.Drawing.Point(373, 15);
-            this.groupBoxQP2.Name = "groupBoxQP2";
-            this.groupBoxQP2.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP2.TabIndex = 5;
-            this.groupBoxQP2.TabStop = false;
-            this.groupBoxQP2.Text = "Quick Print";
-            // 
-            // buttonQP2
-            // 
-            this.buttonQP2.Enabled = false;
-            this.buttonQP2.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP2.Name = "buttonQP2";
-            this.buttonQP2.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP2.TabIndex = 4;
-            this.buttonQP2.Text = "Print";
-            this.buttonQP2.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP2
-            // 
-            this.textBoxQP2.Enabled = false;
-            this.textBoxQP2.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP2.Name = "textBoxQP2";
-            this.textBoxQP2.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP2.TabIndex = 3;
-            this.textBoxQP2.Text = "1";
-            // 
-            // panelQP2
-            // 
-            this.panelQP2.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP2.Location = new System.Drawing.Point(6, 42);
-            this.panelQP2.Name = "panelQP2";
-            this.panelQP2.Size = new System.Drawing.Size(318, 190);
-            this.panelQP2.TabIndex = 1;
-            // 
-            // groupBoxQP4
-            // 
-            this.groupBoxQP4.Controls.Add(this.buttonQP4);
-            this.groupBoxQP4.Controls.Add(this.textBoxQP4);
-            this.groupBoxQP4.Controls.Add(this.panelQP4);
-            this.groupBoxQP4.Location = new System.Drawing.Point(13, 270);
-            this.groupBoxQP4.Name = "groupBoxQP4";
-            this.groupBoxQP4.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP4.TabIndex = 6;
-            this.groupBoxQP4.TabStop = false;
-            this.groupBoxQP4.Text = "Quick Print";
-            // 
-            // buttonQP4
-            // 
-            this.buttonQP4.Enabled = false;
-            this.buttonQP4.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP4.Name = "buttonQP4";
-            this.buttonQP4.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP4.TabIndex = 4;
-            this.buttonQP4.Text = "Print";
-            this.buttonQP4.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP4
-            // 
-            this.textBoxQP4.Enabled = false;
-            this.textBoxQP4.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP4.Name = "textBoxQP4";
-            this.textBoxQP4.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP4.TabIndex = 3;
-            this.textBoxQP4.Text = "1";
-            // 
-            // panelQP4
-            // 
-            this.panelQP4.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP4.Location = new System.Drawing.Point(6, 42);
-            this.panelQP4.Name = "panelQP4";
-            this.panelQP4.Size = new System.Drawing.Size(318, 190);
-            this.panelQP4.TabIndex = 1;
-            // 
-            // groupBoxQP7
-            // 
-            this.groupBoxQP7.Controls.Add(this.buttonQP7);
-            this.groupBoxQP7.Controls.Add(this.textBoxQP7);
-            this.groupBoxQP7.Controls.Add(this.panelQP7);
-            this.groupBoxQP7.Location = new System.Drawing.Point(13, 530);
-            this.groupBoxQP7.Name = "groupBoxQP7";
-            this.groupBoxQP7.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP7.TabIndex = 5;
-            this.groupBoxQP7.TabStop = false;
-            this.groupBoxQP7.Text = "Quick Print";
-            // 
-            // buttonQP7
-            // 
-            this.buttonQP7.Enabled = false;
-            this.buttonQP7.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP7.Name = "buttonQP7";
-            this.buttonQP7.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP7.TabIndex = 4;
-            this.buttonQP7.Text = "Print";
-            this.buttonQP7.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP7
-            // 
-            this.textBoxQP7.Enabled = false;
-            this.textBoxQP7.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP7.Name = "textBoxQP7";
-            this.textBoxQP7.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP7.TabIndex = 3;
-            this.textBoxQP7.Text = "1";
-            // 
-            // panelQP7
-            // 
-            this.panelQP7.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP7.Location = new System.Drawing.Point(6, 42);
-            this.panelQP7.Name = "panelQP7";
-            this.panelQP7.Size = new System.Drawing.Size(318, 190);
-            this.panelQP7.TabIndex = 1;
-            // 
-            // groupBoxQP8
-            // 
-            this.groupBoxQP8.Controls.Add(this.buttonQP8);
-            this.groupBoxQP8.Controls.Add(this.textBoxQP8);
-            this.groupBoxQP8.Controls.Add(this.panelQP8);
-            this.groupBoxQP8.Location = new System.Drawing.Point(373, 530);
-            this.groupBoxQP8.Name = "groupBoxQP8";
-            this.groupBoxQP8.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP8.TabIndex = 7;
-            this.groupBoxQP8.TabStop = false;
-            this.groupBoxQP8.Text = "Quick Print";
-            // 
-            // buttonQP8
-            // 
-            this.buttonQP8.Enabled = false;
-            this.buttonQP8.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP8.Name = "buttonQP8";
-            this.buttonQP8.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP8.TabIndex = 4;
-            this.buttonQP8.Text = "Print";
-            this.buttonQP8.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP8
-            // 
-            this.textBoxQP8.Enabled = false;
-            this.textBoxQP8.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP8.Name = "textBoxQP8";
-            this.textBoxQP8.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP8.TabIndex = 3;
-            this.textBoxQP8.Text = "1";
-            // 
-            // panelQP8
-            // 
-            this.panelQP8.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP8.Location = new System.Drawing.Point(6, 42);
-            this.panelQP8.Name = "panelQP8";
-            this.panelQP8.Size = new System.Drawing.Size(318, 190);
-            this.panelQP8.TabIndex = 1;
-            // 
-            // groupBoxQP5
-            // 
-            this.groupBoxQP5.Controls.Add(this.buttonQP5);
-            this.groupBoxQP5.Controls.Add(this.textBoxQP5);
-            this.groupBoxQP5.Controls.Add(this.panelQP5);
-            this.groupBoxQP5.Location = new System.Drawing.Point(373, 270);
-            this.groupBoxQP5.Name = "groupBoxQP5";
-            this.groupBoxQP5.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP5.TabIndex = 8;
-            this.groupBoxQP5.TabStop = false;
-            this.groupBoxQP5.Text = "Quick Print";
-            // 
-            // buttonQP5
-            // 
-            this.buttonQP5.Enabled = false;
-            this.buttonQP5.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP5.Name = "buttonQP5";
-            this.buttonQP5.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP5.TabIndex = 4;
-            this.buttonQP5.Text = "Print";
-            this.buttonQP5.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP5
-            // 
-            this.textBoxQP5.Enabled = false;
-            this.textBoxQP5.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP5.Name = "textBoxQP5";
-            this.textBoxQP5.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP5.TabIndex = 3;
-            this.textBoxQP5.Text = "1";
-            // 
-            // panelQP5
-            // 
-            this.panelQP5.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP5.Location = new System.Drawing.Point(6, 42);
-            this.panelQP5.Name = "panelQP5";
-            this.panelQP5.Size = new System.Drawing.Size(318, 190);
-            this.panelQP5.TabIndex = 1;
-            // 
-            // groupBoxQP9
-            // 
-            this.groupBoxQP9.Controls.Add(this.buttonQP9);
-            this.groupBoxQP9.Controls.Add(this.textBoxQP9);
-            this.groupBoxQP9.Controls.Add(this.panelQP9);
-            this.groupBoxQP9.Location = new System.Drawing.Point(728, 530);
-            this.groupBoxQP9.Name = "groupBoxQP9";
-            this.groupBoxQP9.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP9.TabIndex = 7;
-            this.groupBoxQP9.TabStop = false;
-            this.groupBoxQP9.Text = "Quick Print";
-            // 
-            // buttonQP9
-            // 
-            this.buttonQP9.Enabled = false;
-            this.buttonQP9.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP9.Name = "buttonQP9";
-            this.buttonQP9.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP9.TabIndex = 4;
-            this.buttonQP9.Text = "Print";
-            this.buttonQP9.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP9
-            // 
-            this.textBoxQP9.Enabled = false;
-            this.textBoxQP9.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP9.Name = "textBoxQP9";
-            this.textBoxQP9.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP9.TabIndex = 3;
-            this.textBoxQP9.Text = "1";
-            // 
-            // panelQP9
-            // 
-            this.panelQP9.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP9.Location = new System.Drawing.Point(6, 42);
-            this.panelQP9.Name = "panelQP9";
-            this.panelQP9.Size = new System.Drawing.Size(318, 190);
-            this.panelQP9.TabIndex = 1;
-            // 
-            // groupBoxQP6
-            // 
-            this.groupBoxQP6.Controls.Add(this.buttonQP6);
-            this.groupBoxQP6.Controls.Add(this.textBoxQP6);
-            this.groupBoxQP6.Controls.Add(this.panelQP6);
-            this.groupBoxQP6.Location = new System.Drawing.Point(728, 270);
-            this.groupBoxQP6.Name = "groupBoxQP6";
-            this.groupBoxQP6.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP6.TabIndex = 8;
-            this.groupBoxQP6.TabStop = false;
-            this.groupBoxQP6.Text = "Quick Print";
-            // 
-            // buttonQP6
-            // 
-            this.buttonQP6.Enabled = false;
-            this.buttonQP6.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP6.Name = "buttonQP6";
-            this.buttonQP6.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP6.TabIndex = 4;
-            this.buttonQP6.Text = "Print";
-            this.buttonQP6.UseVisualStyleBackColor = true;
-            // 
-            // textBoxQP6
-            // 
-            this.textBoxQP6.Enabled = false;
-            this.textBoxQP6.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP6.Name = "textBoxQP6";
-            this.textBoxQP6.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP6.TabIndex = 3;
-            this.textBoxQP6.Text = "1";
-            // 
-            // panelQP6
-            // 
-            this.panelQP6.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP6.Location = new System.Drawing.Point(6, 42);
-            this.panelQP6.Name = "panelQP6";
-            this.panelQP6.Size = new System.Drawing.Size(318, 190);
-            this.panelQP6.TabIndex = 1;
             // 
             // bindingSourceLabels
             // 
@@ -4564,26 +4645,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).EndInit();
             this.tabPageQuickPrint.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
-            this.groupBoxQP1.ResumeLayout(false);
-            this.groupBoxQP1.PerformLayout();
-            this.groupBoxQP3.ResumeLayout(false);
-            this.groupBoxQP3.PerformLayout();
-            this.groupBoxQP2.ResumeLayout(false);
-            this.groupBoxQP2.PerformLayout();
-            this.groupBoxQP4.ResumeLayout(false);
-            this.groupBoxQP4.PerformLayout();
-            this.groupBoxQP7.ResumeLayout(false);
-            this.groupBoxQP7.PerformLayout();
-            this.groupBoxQP8.ResumeLayout(false);
-            this.groupBoxQP8.PerformLayout();
-            this.groupBoxQP5.ResumeLayout(false);
-            this.groupBoxQP5.PerformLayout();
             this.groupBoxQP9.ResumeLayout(false);
             this.groupBoxQP9.PerformLayout();
+            this.groupBoxQP8.ResumeLayout(false);
+            this.groupBoxQP8.PerformLayout();
             this.groupBoxQP6.ResumeLayout(false);
             this.groupBoxQP6.PerformLayout();
+            this.groupBoxQP5.ResumeLayout(false);
+            this.groupBoxQP5.PerformLayout();
+            this.groupBoxQP7.ResumeLayout(false);
+            this.groupBoxQP7.PerformLayout();
+            this.groupBoxQP4.ResumeLayout(false);
+            this.groupBoxQP4.PerformLayout();
+            this.groupBoxQP2.ResumeLayout(false);
+            this.groupBoxQP2.PerformLayout();
+            this.groupBoxQP3.ResumeLayout(false);
+            this.groupBoxQP3.PerformLayout();
+            this.groupBoxQP1.ResumeLayout(false);
+            this.groupBoxQP1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
             this.ResumeLayout(false);

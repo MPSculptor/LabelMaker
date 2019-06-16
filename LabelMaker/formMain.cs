@@ -548,7 +548,13 @@ namespace LabelMaker
             {
                 fillQueueUtilitiesTab();
             }
+            
             getLabelName();
+
+            if (tabControlMain.SelectedTab == tabPagePreview)
+            {
+                TempMakeALabel(panelLabelTabChoice, "Choice", "database");
+            }
 
 
         }
@@ -1559,7 +1565,7 @@ namespace LabelMaker
                 string name = dataGridViewPlants.Rows[i].Cells[2].Value.ToString();
                 //dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[i].Cells[1];
                 string letter = name.Substring(0, 1);
-
+                int end = dataGridViewPlants.RowCount - 1;
                 //MessageBox.Show(name + " , " + letter + " , " + lastLetter);
                 if (letter != lastLetter)
                 {
@@ -1570,12 +1576,54 @@ namespace LabelMaker
                     curButton.Tag = i.ToString();
                     curButton.Enabled = true;
                     curButtonPlus.Tag = i.ToString();
+                    curButtonPlus.Enabled = true;
+                    curButton.BackColor = Color.LightGray;
+                    curButtonPlus.BackColor = Color.LightGray;
                     lastLetter = letter;
+                }
+            }
+            //fill empty tags
+
+            for (int i = 90; i >= 66; i--)
+            {
+                char character = (char)i;
+                string letter = character.ToString();
+                character = (char)(i - 1);
+                string letterLess = character.ToString();
+                buttonName = "buttonAlpha" + letter;
+                Button curButtonPlus = (Button)groupBoxAlpha.Controls[buttonName];
+                buttonName = "buttonAlpha" + letterLess;
+                Button curButtonPlusLess = (Button)groupBoxAlpha.Controls[buttonName];
+                if (curButtonPlusLess.Enabled == false)
+                {
+                    //MessageBox.Show(letter + letterLess + curButtonPlus.Tag.ToString());
+                    curButtonPlusLess.Tag = curButtonPlus.Tag.ToString();
                 }
 
             }
+            //assign the plus buttons the next letter up tag
+            for (int i = 65; i<= 89; i++)
+            {
+                char character = (char)i;
+                string letter = character.ToString();
+                character = (char)(i + 1);
+                string letter2 = character.ToString();
+                
+                buttonName = "buttonAlpha" + letter2 ;
+                buttonNamePlus = "buttonAlpha" + letter + "plus";
+                Button curButton = (Button)groupBoxAlpha.Controls[buttonName];
+                Button curButtonPlus = (Button)groupBoxAlpha.Controls[buttonNamePlus];
+
+                curButtonPlus.Tag = curButton.Tag.ToString();
+
+            }
+            buttonAlphaZplus.Tag = (dataGridViewPlants.RowCount-1).ToString();
+
+
+
 
         }
+        
 
         private void buttonAlphaA_Click(object sender, EventArgs e)
         {
@@ -2355,6 +2403,225 @@ namespace LabelMaker
             }
         }
 
+        private void calculateTheJump(int rowBottom, int rowTop)
+        {
+            int whereAreWe = dataGridViewPlants.CurrentCell.RowIndex;
+            int regularJump = 28;
+            int rowSeek = rowBottom;
+
+            //jump either half way to next letter or 1 screen
+            if (whereAreWe < rowBottom || whereAreWe > rowTop)
+            {
+                rowSeek = rowBottom;
+            }
+            else
+            {
+                int jump = (rowTop - whereAreWe) / 2;
+                if (jump > regularJump) { jump = regularJump; }
+                rowSeek = whereAreWe + jump;
+            }
+            makeTheJump(rowSeek);
+        }
+
+        private void makeTheJump(int rowSeek)
+        {
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[rowSeek].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            updateMainDetails(rowSeek);
+        }
+
+        private void buttonAlphaAplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaA.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaAplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
         
+        private void buttonAlphaBplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaB.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaBplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaCplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaC.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaCplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaDplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaD.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaDplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaEplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaE.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaEplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaFplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaF.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaFplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaGplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaG.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaGplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaIplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaI.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaIplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaHplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaH.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaHplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaJplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaJ.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaJplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaKplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaK.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaKplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaLplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaL.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaLplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaMplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaM.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaMplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaNplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaN.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaNplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaOplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaO.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaOplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaPplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaP.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaPplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaQplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaQ.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaQplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaRplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaR.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaRplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaSplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaS.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaSplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaTplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaT.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaTplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaUplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaU.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaUplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaVplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaV.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaVplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaWplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaW.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaWplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaXplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaX.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaXplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaYplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaY.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaYplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void buttonAlphaZplus_Click(object sender, EventArgs e)
+        {
+            int rowBottom = int.Parse(buttonAlphaZ.Tag.ToString());
+            int rowTop = int.Parse(buttonAlphaZplus.Tag.ToString());
+            calculateTheJump(rowBottom, rowTop);
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPageManual_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
