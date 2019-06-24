@@ -4084,6 +4084,7 @@
             // 
             // textBoxQ0
             // 
+            this.textBoxQ0.Enabled = false;
             this.textBoxQ0.Location = new System.Drawing.Point(285, 27);
             this.textBoxQ0.Name = "textBoxQ0";
             this.textBoxQ0.Size = new System.Drawing.Size(70, 20);

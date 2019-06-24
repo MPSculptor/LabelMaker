@@ -1737,52 +1737,99 @@ namespace LabelMaker
             }
         }
 
-        private void buttonUpdateQLine_Click(object sender, EventArgs e)
+        private bool validateQueue()
         {
-            int indexOfRow = int.Parse(textBoxQ0.Text); //gets row to update
+            bool valid = true;
 
-            if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageMainQueue")
-            { 
-                for (int i = 1; i <= 25; i++) //move through textboxes and update appropriate column
+            //Check Quantity
+            var isNumeric = int.TryParse(textBoxQ2.Text.ToString(), out int n);
+            if (isNumeric)
+            {
+                if (n<1 || n > 250)
                 {
-                    TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
-                    string changeText = curText.Text.ToString();
-                    databaseLabelsDataSetMainQueue.TableMainQueue.Rows[indexOfRow].SetField(i, changeText);
+                    MessageBox.Show("Quantity should be between 1 and 250", "Update failed");
+                    valid = false;
                 }
-
-                try
-                {
-                    tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
-                }
-                catch (System.Exception ex)
-                {
-                    MessageBox.Show("Failed to update to Main Queue - " + ex);
-                }
-
-                labelMainCount.Text = addMainQueueTotal().ToString(); //updates a quantity count on screen
             }
             else
             {
-                for (int i = 1; i <= 25; i++) //move through textboxes and update appropriate column
-                {
-                    TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
-                    string changeText = curText.Text.ToString();
-                    databaseLabelsDataSetColourQueue.TableColourQueue.Rows[indexOfRow].SetField(i, changeText);
-                }
-
-                try
-                {
-                    tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
-                }
-                catch (System.Exception ex)
-                {
-                    MessageBox.Show("Failed to update to Colour Queue - " + ex);
-                }
-
-                labelColourCount.Text = addColourQueueTotal().ToString(); //updates a quantity count on screen
+                MessageBox.Show("Quantity isn't a valid Number (should be an Integer between 0 and 250)","Update Failed");
+                valid = false;
             }
 
+            //Check Price
+            String PriceBox = textBoxQ3.Text.ToString();
+            if (PriceBox.Trim() != "")
+            {
+                var isPriceNumeric = double.TryParse(textBoxQ3.Text.ToString(), out double price);
+                //convert to currency if a number, leave a string if not
+                if (isPriceNumeric)
+                {
+                    textBoxQ3.Text = formatPrice(textBoxQ3.Text.ToString());
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Price is not a number (" + textBoxQ3.Text.ToString() + "). Press 'Yes' if you are happy with this, 'No' if not.", "Is the Price right ?", MessageBoxButtons.YesNo);
+                    if (result == System.Windows.Forms.DialogResult.No)
+                    {
+                        valid = false;
+                    }
+                }
+            }
+
+            return valid;
+        }
+
+        private void buttonUpdateQLine_Click(object sender, EventArgs e)
+        {
+            if (validateQueue())
+            {
+                int indexOfRow = int.Parse(textBoxQ0.Text); //gets row to update
+
+                if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageMainQueue")
+                {
+                    for (int i = 1; i <= 25; i++) //move through textboxes and update appropriate column
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        string changeText = curText.Text.ToString();
+                        databaseLabelsDataSetMainQueue.TableMainQueue.Rows[indexOfRow].SetField(i, changeText);
+                    }
+
+                    try
+                    {
+                        tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to update to Main Queue - " + ex);
+                    }
+
+                    labelMainCount.Text = addMainQueueTotal().ToString(); //updates a quantity count on screen
+                }
+                else
+                {
+                    for (int i = 1; i <= 25; i++) //move through textboxes and update appropriate column
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        string changeText = curText.Text.ToString();
+                        databaseLabelsDataSetColourQueue.TableColourQueue.Rows[indexOfRow].SetField(i, changeText);
+                    }
+
+                    try
+                    {
+                        tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to update to Colour Queue - " + ex);
+                    }
+
+                    labelColourCount.Text = addColourQueueTotal().ToString(); //updates a quantity count on screen
+                }
+
                 paintQueueUtilities(); // updates some visuals representing the textbox data
+
+            }
         }
 
         private void button1_Click_3(object sender, EventArgs e)
@@ -1889,6 +1936,8 @@ namespace LabelMaker
                     }
                     dataGridViewMainQ.CurrentCell = dataGridViewMainQ[0, rowToMove - 1];
                     dataGridViewMainQ.Rows[rowToMove - 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewMainQ.CurrentRow.Index.ToString();
                 }
             }
             else
@@ -1948,6 +1997,8 @@ namespace LabelMaker
                     }
                     dataGridViewColourQ.CurrentCell = dataGridViewColourQ[0, rowToMove - 1];
                     dataGridViewColourQ.Rows[rowToMove - 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewColourQ.CurrentRow.Index.ToString();
                 }
             }
         }
@@ -2011,6 +2062,8 @@ namespace LabelMaker
                     }
                     dataGridViewMainQ.CurrentCell = dataGridViewMainQ[0, rowToMove + 1];
                     dataGridViewMainQ.Rows[rowToMove + 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewMainQ.CurrentRow.Index.ToString();
                 }
             }
             else
@@ -2070,8 +2123,11 @@ namespace LabelMaker
                     }
                     dataGridViewColourQ.CurrentCell = dataGridViewColourQ[0, rowToMove + 1];
                     dataGridViewColourQ.Rows[rowToMove + 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewColourQ.CurrentRow.Index.ToString();
                 }
             }
+            
         }
 
 
