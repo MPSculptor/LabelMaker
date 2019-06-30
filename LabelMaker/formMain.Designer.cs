@@ -317,6 +317,11 @@
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageQueueUtilities = new System.Windows.Forms.TabPage();
             this.panelQueueUtilities = new System.Windows.Forms.Panel();
+            this.buttonMoveLineUp = new System.Windows.Forms.Button();
+            this.buttonMoveLineDown = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBoxQtyToSame = new System.Windows.Forms.TextBox();
+            this.buttonQtyToSame = new System.Windows.Forms.Button();
             this.label70 = new System.Windows.Forms.Label();
             this.buttonUpdateQLine = new System.Windows.Forms.Button();
             this.buttonQackgroundColour = new System.Windows.Forms.Button();
@@ -445,11 +450,11 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.buttonQtyToSame = new System.Windows.Forms.Button();
-            this.textBoxQtyToSame = new System.Windows.Forms.TextBox();
-            this.buttonMoveLineDown = new System.Windows.Forms.Button();
-            this.buttonMoveLineUp = new System.Windows.Forms.Button();
+            this.buttonUpdateDatabase = new System.Windows.Forms.Button();
+            this.buttonAddDatabase = new System.Windows.Forms.Button();
+            this.buttonDeleteDatabase = new System.Windows.Forms.Button();
+            this.label72 = new System.Windows.Forms.Label();
+            this.textBoxGridIndex = new System.Windows.Forms.TextBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -499,6 +504,7 @@
             this.tabControlMain.SuspendLayout();
             this.tabPageQueueUtilities.SuspendLayout();
             this.panelQueueUtilities.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).BeginInit();
@@ -518,7 +524,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).BeginInit();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -1252,6 +1257,11 @@
             // tabPageDatabase
             // 
             this.tabPageDatabase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageDatabase.Controls.Add(this.textBoxGridIndex);
+            this.tabPageDatabase.Controls.Add(this.label72);
+            this.tabPageDatabase.Controls.Add(this.buttonDeleteDatabase);
+            this.tabPageDatabase.Controls.Add(this.buttonAddDatabase);
+            this.tabPageDatabase.Controls.Add(this.buttonUpdateDatabase);
             this.tabPageDatabase.Controls.Add(this.label69);
             this.tabPageDatabase.Controls.Add(this.buttonCleanForm);
             this.tabPageDatabase.Controls.Add(this.label32);
@@ -1703,10 +1713,10 @@
             // 
             // textBoxData0
             // 
-            this.textBoxData0.Location = new System.Drawing.Point(61, 45);
+            this.textBoxData0.Location = new System.Drawing.Point(120, 45);
             this.textBoxData0.Name = "textBoxData0";
             this.textBoxData0.ReadOnly = true;
-            this.textBoxData0.Size = new System.Drawing.Size(100, 20);
+            this.textBoxData0.Size = new System.Drawing.Size(60, 20);
             this.textBoxData0.TabIndex = 14;
             // 
             // groupBoxDataNameDetails
@@ -1859,9 +1869,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(14, 48);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(47, 13);
+            this.label14.Size = new System.Drawing.Size(97, 13);
             this.label14.TabIndex = 5;
-            this.label14.Text = " 0. index";
+            this.label14.Text = " 0. Database Index";
             // 
             // label9
             // 
@@ -2153,6 +2163,7 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "current Text";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // labelPlantName
             // 
@@ -3440,6 +3451,56 @@
             this.panelQueueUtilities.Size = new System.Drawing.Size(1068, 771);
             this.panelQueueUtilities.TabIndex = 0;
             // 
+            // buttonMoveLineUp
+            // 
+            this.buttonMoveLineUp.Location = new System.Drawing.Point(23, 206);
+            this.buttonMoveLineUp.Name = "buttonMoveLineUp";
+            this.buttonMoveLineUp.Size = new System.Drawing.Size(116, 39);
+            this.buttonMoveLineUp.TabIndex = 74;
+            this.buttonMoveLineUp.Text = "Move this line UP the Queue";
+            this.buttonMoveLineUp.UseVisualStyleBackColor = true;
+            this.buttonMoveLineUp.Click += new System.EventHandler(this.buttonMoveLineUp_Click);
+            // 
+            // buttonMoveLineDown
+            // 
+            this.buttonMoveLineDown.Location = new System.Drawing.Point(23, 160);
+            this.buttonMoveLineDown.Name = "buttonMoveLineDown";
+            this.buttonMoveLineDown.Size = new System.Drawing.Size(116, 39);
+            this.buttonMoveLineDown.TabIndex = 2;
+            this.buttonMoveLineDown.Text = "Move this line DOWN the Queue";
+            this.buttonMoveLineDown.UseVisualStyleBackColor = true;
+            this.buttonMoveLineDown.Click += new System.EventHandler(this.buttonMoveLineDown_Click);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBoxQtyToSame);
+            this.groupBox7.Controls.Add(this.buttonQtyToSame);
+            this.groupBox7.Location = new System.Drawing.Point(16, 511);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(129, 239);
+            this.groupBox7.TabIndex = 73;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "General Functions";
+            // 
+            // textBoxQtyToSame
+            // 
+            this.textBoxQtyToSame.Location = new System.Drawing.Point(7, 18);
+            this.textBoxQtyToSame.Name = "textBoxQtyToSame";
+            this.textBoxQtyToSame.Size = new System.Drawing.Size(116, 20);
+            this.textBoxQtyToSame.TabIndex = 1;
+            this.textBoxQtyToSame.Text = "1";
+            this.textBoxQtyToSame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonQtyToSame
+            // 
+            this.buttonQtyToSame.Location = new System.Drawing.Point(7, 44);
+            this.buttonQtyToSame.Name = "buttonQtyToSame";
+            this.buttonQtyToSame.Size = new System.Drawing.Size(116, 39);
+            this.buttonQtyToSame.TabIndex = 0;
+            this.buttonQtyToSame.Text = "Set all Quantities to value above\r\n";
+            this.buttonQtyToSame.UseVisualStyleBackColor = true;
+            this.buttonQtyToSame.Click += new System.EventHandler(this.buttonQtyToSame_Click);
+            // 
             // label70
             // 
             this.label70.AutoSize = true;
@@ -4568,55 +4629,51 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBox7
+            // buttonUpdateDatabase
             // 
-            this.groupBox7.Controls.Add(this.textBoxQtyToSame);
-            this.groupBox7.Controls.Add(this.buttonQtyToSame);
-            this.groupBox7.Location = new System.Drawing.Point(16, 511);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(129, 239);
-            this.groupBox7.TabIndex = 73;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "General Functions";
+            this.buttonUpdateDatabase.Location = new System.Drawing.Point(125, 682);
+            this.buttonUpdateDatabase.Name = "buttonUpdateDatabase";
+            this.buttonUpdateDatabase.Size = new System.Drawing.Size(95, 51);
+            this.buttonUpdateDatabase.TabIndex = 25;
+            this.buttonUpdateDatabase.Text = "Update this Entry";
+            this.buttonUpdateDatabase.UseVisualStyleBackColor = true;
+            this.buttonUpdateDatabase.Click += new System.EventHandler(this.buttonUpdateDatabase_Click);
             // 
-            // buttonQtyToSame
+            // buttonAddDatabase
             // 
-            this.buttonQtyToSame.Location = new System.Drawing.Point(7, 44);
-            this.buttonQtyToSame.Name = "buttonQtyToSame";
-            this.buttonQtyToSame.Size = new System.Drawing.Size(116, 39);
-            this.buttonQtyToSame.TabIndex = 0;
-            this.buttonQtyToSame.Text = "Set all Quantities to value above\r\n";
-            this.buttonQtyToSame.UseVisualStyleBackColor = true;
-            this.buttonQtyToSame.Click += new System.EventHandler(this.buttonQtyToSame_Click);
+            this.buttonAddDatabase.Location = new System.Drawing.Point(333, 682);
+            this.buttonAddDatabase.Name = "buttonAddDatabase";
+            this.buttonAddDatabase.Size = new System.Drawing.Size(96, 51);
+            this.buttonAddDatabase.TabIndex = 26;
+            this.buttonAddDatabase.Text = "Add this Entry to the Database";
+            this.buttonAddDatabase.UseVisualStyleBackColor = true;
+            this.buttonAddDatabase.Click += new System.EventHandler(this.buttonAddDatabase_Click);
             // 
-            // textBoxQtyToSame
+            // buttonDeleteDatabase
             // 
-            this.textBoxQtyToSame.Location = new System.Drawing.Point(7, 18);
-            this.textBoxQtyToSame.Name = "textBoxQtyToSame";
-            this.textBoxQtyToSame.Size = new System.Drawing.Size(116, 20);
-            this.textBoxQtyToSame.TabIndex = 1;
-            this.textBoxQtyToSame.Text = "1";
-            this.textBoxQtyToSame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.buttonDeleteDatabase.Location = new System.Drawing.Point(226, 682);
+            this.buttonDeleteDatabase.Name = "buttonDeleteDatabase";
+            this.buttonDeleteDatabase.Size = new System.Drawing.Size(101, 51);
+            this.buttonDeleteDatabase.TabIndex = 27;
+            this.buttonDeleteDatabase.Text = "Delete this Entry from the Database";
+            this.buttonDeleteDatabase.UseVisualStyleBackColor = true;
             // 
-            // buttonMoveLineDown
+            // label72
             // 
-            this.buttonMoveLineDown.Location = new System.Drawing.Point(23, 160);
-            this.buttonMoveLineDown.Name = "buttonMoveLineDown";
-            this.buttonMoveLineDown.Size = new System.Drawing.Size(116, 39);
-            this.buttonMoveLineDown.TabIndex = 2;
-            this.buttonMoveLineDown.Text = "Move this line DOWN the Queue";
-            this.buttonMoveLineDown.UseVisualStyleBackColor = true;
-            this.buttonMoveLineDown.Click += new System.EventHandler(this.buttonMoveLineDown_Click);
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(204, 48);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(55, 13);
+            this.label72.TabIndex = 28;
+            this.label72.Text = "Grid Index";
             // 
-            // buttonMoveLineUp
+            // textBoxGridIndex
             // 
-            this.buttonMoveLineUp.Location = new System.Drawing.Point(23, 206);
-            this.buttonMoveLineUp.Name = "buttonMoveLineUp";
-            this.buttonMoveLineUp.Size = new System.Drawing.Size(116, 39);
-            this.buttonMoveLineUp.TabIndex = 74;
-            this.buttonMoveLineUp.Text = "Move this line UP the Queue";
-            this.buttonMoveLineUp.UseVisualStyleBackColor = true;
-            this.buttonMoveLineUp.Click += new System.EventHandler(this.buttonMoveLineUp_Click);
+            this.textBoxGridIndex.Location = new System.Drawing.Point(267, 45);
+            this.textBoxGridIndex.Name = "textBoxGridIndex";
+            this.textBoxGridIndex.ReadOnly = true;
+            this.textBoxGridIndex.Size = new System.Drawing.Size(60, 20);
+            this.textBoxGridIndex.TabIndex = 29;
             // 
             // formMain
             // 
@@ -4698,6 +4755,8 @@
             this.tabPageQueueUtilities.ResumeLayout(false);
             this.panelQueueUtilities.ResumeLayout(false);
             this.panelQueueUtilities.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).EndInit();
@@ -4726,8 +4785,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5156,6 +5213,11 @@
         private System.Windows.Forms.Button buttonQtyToSame;
         private System.Windows.Forms.Button buttonMoveLineDown;
         private System.Windows.Forms.Button buttonMoveLineUp;
+        private System.Windows.Forms.Button buttonDeleteDatabase;
+        private System.Windows.Forms.Button buttonAddDatabase;
+        private System.Windows.Forms.Button buttonUpdateDatabase;
+        private System.Windows.Forms.TextBox textBoxGridIndex;
+        private System.Windows.Forms.Label label72;
     }
 }
 

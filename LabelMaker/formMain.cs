@@ -36,7 +36,7 @@ namespace LabelMaker
             this.BackColor = Color.DarkGray;
 
             //dataGridViewPlants.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewPlants.Columns[0].Width = 0;
+            dataGridViewPlants.Columns[0].Width = 50;
             dataGridViewPlants.Columns[1].Width = 10;
             dataGridViewPlants.Columns[2].Width = 100;
             dataGridViewPlants.Columns[3].Width = 10;
@@ -57,8 +57,8 @@ namespace LabelMaker
 
         private void profilesToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            //tabControlProfiles.Visible = true;
-            addProfileButtons();
+            tabControlMain.SelectedTab = tabPageLabelProfiles;
+            //addProfileButtons();
         }
 
         
@@ -853,17 +853,23 @@ namespace LabelMaker
         #endregion
         #endregion
 
-            #region ***Database Filter Buttons***
+        #region ***Database Filter Buttons***
 
-        private void buttonHiddenOnly_Click(object sender, EventArgs e)
+
+        private void doSelection(string selectionText)
         {
-            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'True'  ORDER BY Genus ASC, Species ASC, Variety ASC";
+            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = selectionText;
             tablePlantsTableAdapter.Fill(databaseLabelsDataSet.TablePlants);
             dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
             dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
             dataGridViewPlants.Refresh();
             indexNavigationButtons();
             updateMainDetails(0);
+        }
+
+        private void buttonHiddenOnly_Click(object sender, EventArgs e)
+        {
+            doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'True'  ORDER BY Genus ASC, Species ASC, Variety ASC");
             buttonHiddenOnly.BackColor = Color.YellowGreen;
             buttonVisibleOnly.BackColor = Color.Transparent;
             buttonAllEntries.BackColor = Color.Transparent;
@@ -871,13 +877,7 @@ namespace LabelMaker
 
         private void buttonVisibleOnly_Click(object sender, EventArgs e)
         {
-            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC";
-            tablePlantsTableAdapter.Fill(databaseLabelsDataSet.TablePlants);
-            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
-            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
-            dataGridViewPlants.Refresh();
-            indexNavigationButtons();
-            updateMainDetails(0);
+            doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC");
             buttonHiddenOnly.BackColor = Color.Transparent;
             buttonVisibleOnly.BackColor = Color.YellowGreen;
             buttonAllEntries.BackColor = Color.Transparent;
@@ -885,13 +885,7 @@ namespace LabelMaker
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants ORDER BY Genus ASC, Species ASC, Variety ASC";
-            tablePlantsTableAdapter.Fill(databaseLabelsDataSet.TablePlants);
-            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
-            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
-            dataGridViewPlants.Refresh();
-            indexNavigationButtons();
-            updateMainDetails(0);
+            doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants ORDER BY Genus ASC, Species ASC, Variety ASC");
             buttonHiddenOnly.BackColor = Color.Transparent;
             buttonVisibleOnly.BackColor = Color.Transparent;
             buttonAllEntries.BackColor = Color.YellowGreen;
@@ -1155,6 +1149,7 @@ namespace LabelMaker
 
             //Index
             textBoxData0.Text = dataGridViewPlants.Rows[indexOfRow].Cells[0].Value.ToString();
+            textBoxGridIndex.Text = indexOfRow.ToString();
 
             //Paint two label examples
             TempMakeALabel(panelDatabaseMain, "Main", "database");
@@ -2881,8 +2876,8 @@ namespace LabelMaker
                 Name[0] = Name[0] + "x";
                 Name[1] = Name[1] + "x";
             }
-            Name[0] = Name[0] + sentData[1];
-            Name[1] = Name[1] + sentData[1];
+            Name[0] = Name[0] + sentData[1].Trim();
+            Name[1] = Name[1] + sentData[1].Trim();
 
             if (sentData[2] == "x")
             {
@@ -2890,10 +2885,10 @@ namespace LabelMaker
                 Name[2] = Name[2] + " x";
             }
 
-            Name[0] = Name[0] + " " + sentData[3];
-            Name[0] = Name[0] + " " + sentData[4];
-            Name[2] = Name[2] + " " + sentData[3];
-            Name[3] = Name[3] + " " + sentData[4];
+            Name[0] = Name[0] + " " + sentData[3].Trim();
+            Name[0] = Name[0] + " " + sentData[4].Trim();
+            Name[2] = Name[2] + " " + sentData[3].Trim();
+            Name[3] = Name[3] + " " + sentData[4].Trim();
 
 
             return Name;
@@ -2972,10 +2967,266 @@ namespace LabelMaker
 
 
 
+
+
+
         #endregion
 
-        
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
 
-    
+        }
+
+        private bool validateDatabase()
+        {
+            bool valid = true;
+
+            // GroupBoxDataNameDetails
+            textBoxData2.Text = textBoxData2.Text.Trim();
+            if (textBoxData2.Text.ToString().Length > 50)
+            {
+                MessageBox.Show("The Genus needs to be less than 50 characters long");
+                valid = false;
+            }
+            textBoxData4.Text = textBoxData4.Text.Trim();
+            if (textBoxData4.Text.ToString().Length > 50)
+            {
+                MessageBox.Show("The Species needs to be less than 50 characters long");
+                valid = false;
+            }
+            textBoxData5.Text = textBoxData5.Text.Trim();
+            if (textBoxData5.Text.ToString().Length > 50)
+            {
+                MessageBox.Show("The Variety needs to be less than 50 characters long");
+                valid = false;
+            }
+            if (textBoxData6.Text.ToString().Length > 100)
+            {
+                MessageBox.Show("The Common Name needs to be less than 100 characters long");
+                valid = false;
+            }
+
+            // GroupBoxDataDetails
+            if (textBoxData7.Text.ToString().Length > 20)
+            {
+                MessageBox.Show("The SKU needs to be less than 20 characters long");
+                valid = false;
+            }
+            if (textBoxData8.Text.ToString().Length > 500)
+            {
+                MessageBox.Show("The Description needs to be less than 500 characters long");
+                valid = false;
+            }
+            if (textBoxData9.Text.ToString().Length > 10)
+            {
+                MessageBox.Show("The Pot Size needs to be less than 10 characters long");
+                valid = false;
+            }
+            if (textBoxData11.Text.ToString().Length > 13)
+            {
+                MessageBox.Show("The Barcode needs to be less than 13 characters long");
+                valid = false;
+            }
+            if (textBoxData17.Text.ToString().Length > 50)
+            {
+                MessageBox.Show("The Label Colour needs to be less than 50" +
+                    " characters long");
+                valid = false;
+            }
+            if (textBoxData19.Text.ToString().Length > 255)
+            {
+                MessageBox.Show("The notes need to be less than 255 characters long");
+                valid = false;
+            }
+
+            //GroupBoxDataPictures
+            if (textBoxData12.Text.ToString().Length > 255)
+            {
+                MessageBox.Show("The path for Picture1 needs to be less than 255 characters long");
+                valid = false;
+            }
+            if (textBoxData13.Text.ToString().Length > 255)
+            {
+                MessageBox.Show("The path for Picture2 needs to be less than 255 characters long");
+                valid = false;
+            }
+            if (textBoxData14.Text.ToString().Length > 255)
+            {
+                MessageBox.Show("The path for Picture3 needs to be less than 255 characters long");
+                valid = false;
+            }
+            if (textBoxData15.Text.ToString().Length > 255)
+            {
+                MessageBox.Show("The path for Picture4 needs to be less than 255 characters long");
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        private string[,] getPanelNames()
+        {
+            //Finds the names of the controls and the panels they are on for the database tab
+
+            string[,] namesString = new string[2, 21];
+            for (int i = 0; i <= 20; i++)
+            {
+                namesString[0, i] = "textBoxData";
+                namesString[1, i] = "groupBoxDataNameDetails";
+            }
+            for (int i = 7; i <= 19; i++)
+            {
+                namesString[1, i] = "groupBoxDataDetails";
+            }
+            for (int i = 12; i <= 15; i++)
+            {
+                namesString[1, i] = "groupBoxDataPictures";
+            }
+            namesString[0, 1] = "ButtonData";
+            namesString[0, 3] = "ButtonData";
+            namesString[0, 8] = "RichTextData";
+            namesString[0, 10] = "ButtonData";
+            namesString[1, 10] = "groupBoxDataToggles";
+            namesString[0, 16] = "ButtonData";
+            namesString[1, 16] = "groupBoxDataToggles";
+            namesString[0, 18] = "ButtonData";
+            namesString[1, 18] = "groupBoxDataToggles";
+            namesString[0, 19] = "RichTextData";
+            namesString[0, 20] = "ButtonData";
+            namesString[1, 20] = "groupBoxDataToggles";
+
+            return namesString;
+
+        }
+
+        private void buttonUpdateDatabase_Click(object sender, EventArgs e)
+        {
+            if (validateDatabase())
+            {
+                //int indexOfRow = int.Parse(textBoxData0.Text); //gets row to update (as database index)
+                int indexOfRow = int.Parse(textBoxGridIndex.Text); //gets row to update (as grid index)
+                string[,] nameString = getPanelNames();
+
+                    for (int i = 1; i <= 20; i++) //move through textboxes and update appropriate column
+                    {
+                    string changeText = "";
+                    GroupBox curGroup = (GroupBox)tabPageDatabase.Controls[nameString[1, i].ToString()];
+                    if (nameString[0, i].ToString() == "textBoxData")
+                    {
+                        TextBox curText = (TextBox)curGroup.Controls["textBoxData" + i.ToString()];
+                        changeText = curText.Text.ToString();
+                    }
+                    else if (nameString[0, i].ToString() == "ButtonData")
+                    {
+                        Button curButton = (Button)curGroup.Controls["ButtonData" + i.ToString()];
+                        changeText = curButton.Text.ToString();
+                    }
+                    else
+                    {
+                        RichTextBox curRichText = (RichTextBox)curGroup.Controls["textBoxData" + i.ToString()];
+                        changeText = curRichText.Text.ToString();
+                    }
+                        databaseLabelsDataSet.TablePlants.Rows[indexOfRow].SetField(i, changeText);
+                    }
+
+                    try
+                    {
+                        tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
+                        //MessageBox.Show("Updated Database Entry");
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to update to Database - " + ex);
+                    }
+
+                updateMainDetails(indexOfRow);
+                tabControlMain.SelectedTab = tabPageManual;
+                }
+            
+            }
+
+        private void buttonAddDatabase_Click(object sender, EventArgs e)
+        {
+            if (validateDatabase())
+            {
+                //int indexOfRow = int.Parse(textBoxData0.Text); //gets row to update (as database index)
+                //int indexOfRow = int.Parse(textBoxGridIndex.Text); //gets row to update (as grid index)
+                string[,] nameString = getPanelNames();
+                DataRow dRow = databaseLabelsDataSet.TablePlants.NewRow();
+                
+                for (int i = 1; i <= 20; i++) //move through textboxes and update appropriate column
+                {
+                    string changeText = "";
+                    GroupBox curGroup = (GroupBox)tabPageDatabase.Controls[nameString[1, i].ToString()];
+                    if (nameString[0, i].ToString() == "textBoxData")
+                    {
+                        TextBox curText = (TextBox)curGroup.Controls["textBoxData" + i.ToString()];
+                        changeText = curText.Text.ToString();
+                    }
+                    else if (nameString[0, i].ToString() == "ButtonData")
+                    {
+                        Button curButton = (Button)curGroup.Controls["ButtonData" + i.ToString()];
+                        changeText = curButton.Text.ToString();
+                    }
+                    else
+                    {
+                        RichTextBox curRichText = (RichTextBox)curGroup.Controls["textBoxData" + i.ToString()];
+                        changeText = curRichText.Text.ToString();
+                    }
+                    dRow[i] = changeText;
+                }
+                databaseLabelsDataSet.TablePlants.Rows.Add(dRow);
+                
+                try
+                {
+                    tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
+                    //MessageBox.Show("Updated Database Entry");
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to update to Database - " + ex);
+                }
+
+                //refilter the grid so entry ends up sorted
+                doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC");
+                buttonHiddenOnly.BackColor = Color.Transparent;
+                buttonVisibleOnly.BackColor = Color.YellowGreen;
+                buttonAllEntries.BackColor = Color.Transparent;
+
+                //load in name details
+                string[] nameTofind = new string[3];
+                nameTofind[0] = textBoxData2.Text.ToString();
+                nameTofind[1] = textBoxData4.Text.ToString();
+                nameTofind[2] = textBoxData5.Text.ToString();
+
+                //find the start point where new entry might be
+                string firstLetter = textBoxData2.Text.ToString();
+                firstLetter = firstLetter.Substring(0, 1);
+                Button curAlphaButton = (Button)groupBoxAlpha.Controls["ButtonAlpha" + firstLetter];
+                int rowSeek = int.Parse(curAlphaButton.Tag.ToString());
+                for (int i=rowSeek; i < dataGridViewPlants.RowCount; i++)
+                {
+                    //check Genus
+                        if (dataGridViewPlants.Rows[i].Cells[2].Value.ToString() == nameTofind[0])
+                    {
+                        //check species
+                        if (dataGridViewPlants.Rows[i].Cells[4].Value.ToString() == nameTofind[1])
+                        {
+                            //check Variety
+                            if (dataGridViewPlants.Rows[i].Cells[5].Value.ToString() == nameTofind[2])
+                            {
+                                //Bingo, set this as the right row, otherwise default to first of the letter (ie if added a hidden line)
+                                rowSeek = i;
+                            }
+                        }
+                    }
+                }
+                
+                //go there and refresh the display
+                makeTheJump(rowSeek);
+
+                tabControlMain.SelectedTab = tabPageManual;
+            }
+        }
     }
 }
