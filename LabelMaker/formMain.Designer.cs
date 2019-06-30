@@ -123,6 +123,11 @@
             this.panelLabelTabColour = new System.Windows.Forms.Panel();
             this.panelLabelTabMain = new System.Windows.Forms.Panel();
             this.tabPageDatabase = new System.Windows.Forms.TabPage();
+            this.textBoxGridIndex = new System.Windows.Forms.TextBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.buttonDeleteDatabase = new System.Windows.Forms.Button();
+            this.buttonAddDatabase = new System.Windows.Forms.Button();
+            this.buttonUpdateDatabase = new System.Windows.Forms.Button();
             this.label69 = new System.Windows.Forms.Label();
             this.buttonCleanForm = new System.Windows.Forms.Button();
             this.label32 = new System.Windows.Forms.Label();
@@ -450,11 +455,9 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.buttonUpdateDatabase = new System.Windows.Forms.Button();
-            this.buttonAddDatabase = new System.Windows.Forms.Button();
-            this.buttonDeleteDatabase = new System.Windows.Forms.Button();
-            this.label72 = new System.Windows.Forms.Label();
-            this.textBoxGridIndex = new System.Windows.Forms.TextBox();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.validateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.progressBarDatabase = new System.Windows.Forms.ProgressBar();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -969,7 +972,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.profilesToolStripMenuItem2});
+            this.profilesToolStripMenuItem2,
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1516, 24);
@@ -1281,6 +1285,53 @@
             this.tabPageDatabase.TabIndex = 2;
             this.tabPageDatabase.Text = "     Database Entry";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
+            // 
+            // textBoxGridIndex
+            // 
+            this.textBoxGridIndex.Location = new System.Drawing.Point(267, 45);
+            this.textBoxGridIndex.Name = "textBoxGridIndex";
+            this.textBoxGridIndex.ReadOnly = true;
+            this.textBoxGridIndex.Size = new System.Drawing.Size(60, 20);
+            this.textBoxGridIndex.TabIndex = 29;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(204, 48);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(55, 13);
+            this.label72.TabIndex = 28;
+            this.label72.Text = "Grid Index";
+            // 
+            // buttonDeleteDatabase
+            // 
+            this.buttonDeleteDatabase.Location = new System.Drawing.Point(226, 682);
+            this.buttonDeleteDatabase.Name = "buttonDeleteDatabase";
+            this.buttonDeleteDatabase.Size = new System.Drawing.Size(101, 51);
+            this.buttonDeleteDatabase.TabIndex = 27;
+            this.buttonDeleteDatabase.Text = "Delete this Entry from the Database";
+            this.buttonDeleteDatabase.UseVisualStyleBackColor = true;
+            this.buttonDeleteDatabase.Click += new System.EventHandler(this.buttonDeleteDatabase_Click);
+            // 
+            // buttonAddDatabase
+            // 
+            this.buttonAddDatabase.Location = new System.Drawing.Point(333, 682);
+            this.buttonAddDatabase.Name = "buttonAddDatabase";
+            this.buttonAddDatabase.Size = new System.Drawing.Size(96, 51);
+            this.buttonAddDatabase.TabIndex = 26;
+            this.buttonAddDatabase.Text = "Add this Entry to the Database";
+            this.buttonAddDatabase.UseVisualStyleBackColor = true;
+            this.buttonAddDatabase.Click += new System.EventHandler(this.buttonAddDatabase_Click);
+            // 
+            // buttonUpdateDatabase
+            // 
+            this.buttonUpdateDatabase.Location = new System.Drawing.Point(125, 682);
+            this.buttonUpdateDatabase.Name = "buttonUpdateDatabase";
+            this.buttonUpdateDatabase.Size = new System.Drawing.Size(95, 51);
+            this.buttonUpdateDatabase.TabIndex = 25;
+            this.buttonUpdateDatabase.Text = "Update this Entry";
+            this.buttonUpdateDatabase.UseVisualStyleBackColor = true;
+            this.buttonUpdateDatabase.Click += new System.EventHandler(this.buttonUpdateDatabase_Click);
             // 
             // label69
             // 
@@ -2163,7 +2214,6 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "current Text";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // labelPlantName
             // 
@@ -3109,6 +3159,7 @@
             // 
             // groupBoxPlantData
             // 
+            this.groupBoxPlantData.Controls.Add(this.progressBarDatabase);
             this.groupBoxPlantData.Controls.Add(this.buttonVisibleOnly);
             this.groupBoxPlantData.Controls.Add(this.buttonAllEntries);
             this.groupBoxPlantData.Controls.Add(this.buttonHiddenOnly);
@@ -4629,51 +4680,29 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // buttonUpdateDatabase
+            // toolsToolStripMenuItem
             // 
-            this.buttonUpdateDatabase.Location = new System.Drawing.Point(125, 682);
-            this.buttonUpdateDatabase.Name = "buttonUpdateDatabase";
-            this.buttonUpdateDatabase.Size = new System.Drawing.Size(95, 51);
-            this.buttonUpdateDatabase.TabIndex = 25;
-            this.buttonUpdateDatabase.Text = "Update this Entry";
-            this.buttonUpdateDatabase.UseVisualStyleBackColor = true;
-            this.buttonUpdateDatabase.Click += new System.EventHandler(this.buttonUpdateDatabase_Click);
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.validateDatabaseToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
             // 
-            // buttonAddDatabase
+            // validateDatabaseToolStripMenuItem
             // 
-            this.buttonAddDatabase.Location = new System.Drawing.Point(333, 682);
-            this.buttonAddDatabase.Name = "buttonAddDatabase";
-            this.buttonAddDatabase.Size = new System.Drawing.Size(96, 51);
-            this.buttonAddDatabase.TabIndex = 26;
-            this.buttonAddDatabase.Text = "Add this Entry to the Database";
-            this.buttonAddDatabase.UseVisualStyleBackColor = true;
-            this.buttonAddDatabase.Click += new System.EventHandler(this.buttonAddDatabase_Click);
+            this.validateDatabaseToolStripMenuItem.Name = "validateDatabaseToolStripMenuItem";
+            this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.validateDatabaseToolStripMenuItem.Text = "Trim Whitespaces";
+            this.validateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.validateDatabaseToolStripMenuItem_Click);
             // 
-            // buttonDeleteDatabase
+            // progressBarDatabase
             // 
-            this.buttonDeleteDatabase.Location = new System.Drawing.Point(226, 682);
-            this.buttonDeleteDatabase.Name = "buttonDeleteDatabase";
-            this.buttonDeleteDatabase.Size = new System.Drawing.Size(101, 51);
-            this.buttonDeleteDatabase.TabIndex = 27;
-            this.buttonDeleteDatabase.Text = "Delete this Entry from the Database";
-            this.buttonDeleteDatabase.UseVisualStyleBackColor = true;
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(204, 48);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(55, 13);
-            this.label72.TabIndex = 28;
-            this.label72.Text = "Grid Index";
-            // 
-            // textBoxGridIndex
-            // 
-            this.textBoxGridIndex.Location = new System.Drawing.Point(267, 45);
-            this.textBoxGridIndex.Name = "textBoxGridIndex";
-            this.textBoxGridIndex.ReadOnly = true;
-            this.textBoxGridIndex.Size = new System.Drawing.Size(60, 20);
-            this.textBoxGridIndex.TabIndex = 29;
+            this.progressBarDatabase.Location = new System.Drawing.Point(35, 348);
+            this.progressBarDatabase.Name = "progressBarDatabase";
+            this.progressBarDatabase.Size = new System.Drawing.Size(613, 53);
+            this.progressBarDatabase.Step = 1;
+            this.progressBarDatabase.TabIndex = 4;
+            this.progressBarDatabase.Visible = false;
             // 
             // formMain
             // 
@@ -5218,6 +5247,9 @@
         private System.Windows.Forms.Button buttonUpdateDatabase;
         private System.Windows.Forms.TextBox textBoxGridIndex;
         private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem validateDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ProgressBar progressBarDatabase;
     }
 }
 
