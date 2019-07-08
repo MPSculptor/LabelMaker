@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="CreationUtilities.cs" />
     <Compile Include="DatabaseLabelsDataSet.cs">
       <DependentUpon>DatabaseLabelsDataSet.xsd</DependentUpon>
@@ -78,6 +77,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSetColourQueue.cs">
+      <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
     </Compile>
     <Compile Include="DatabaseLabelsDataSetColourQueue.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -105,6 +107,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FormQueueList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQueueList.Designer.cs">
+      <DependentUpon>FormQueueList.cs</DependentUpon>
+    </Compile>
     <Compile Include="formLabel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +128,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelper.cs" />
+    <EmbeddedResource Include="FormQueueList.resx">
+      <DependentUpon>FormQueueList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formLabel.resx">
       <DependentUpon>formLabel.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,11 +227,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseLabels.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DatabaseLabels_log.ldf">
       <DependentUpon>DatabaseLabels.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

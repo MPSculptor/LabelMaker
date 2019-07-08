@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using CreationUtilities;
@@ -19,10 +15,10 @@ namespace LabelMaker
             InitializeComponent();
         }
 
-
-        
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
+            this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
             this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetMainQueue.TableMainQueue' table. You can move, or remove it, as needed.
@@ -47,13 +43,11 @@ namespace LabelMaker
             updateMainDetails(0);
             getLabelName();
             indexNavigationButtons();
+            initialiseLabelStockGrid();
+            initialiseMissingPictureGrid();
+            // Queue Quantities
+            assignQueueTotals();
         }
-
-
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //TempMakeALabel(panelLabelPreview, "Main", "database");
-        //}
 
         #region Menu Strip Events
 
@@ -63,9 +57,45 @@ namespace LabelMaker
             //addProfileButtons();
         }
 
+        private void validateDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to trim whitespaces from all Plant names", "Clean Plant Names of White Spaces", MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                //remove whitespaces from names
+                string changeText = "";
+                progressBarDatabase.Visible = true;
+                progressBarDatabase.Maximum = dataGridViewPlants.RowCount;
+                for (int i = 0; i < dataGridViewPlants.RowCount; i++)
+                {
+                    progressBarDatabase.Value = i;
+                    progressBarDatabase.Refresh();
+                    changeText = dataGridViewPlants.Rows[i].Cells[2].Value.ToString().Trim();
+                    databaseLabelsDataSet.TablePlants.Rows[i].SetField(2, changeText);
+
+                    changeText = dataGridViewPlants.Rows[i].Cells[4].Value.ToString().Trim();
+                    databaseLabelsDataSet.TablePlants.Rows[i].SetField(4, changeText);
+
+                    changeText = dataGridViewPlants.Rows[i].Cells[5].Value.ToString().Trim();
+                    databaseLabelsDataSet.TablePlants.Rows[i].SetField(5, changeText);
+                }
+
+                try
+                {
+                    tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
+                    //MessageBox.Show("Updated Database Entry");
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to update to Database - " + ex);
+                }
+                progressBarDatabase.Visible = false;
+            }
+        }
+
         #endregion
 
-
+        #region Printing Routines
         private void buttonPrint_Click(object sender, EventArgs e)
         {
 
@@ -109,6 +139,7 @@ namespace LabelMaker
                 printWhere.Dispose();
             }
         }
+        #endregion
 
         #region *** Main Tab Routines ***- routines connected with controls on the Main screen 
 
@@ -138,6 +169,7 @@ namespace LabelMaker
             if (tabControlMain.SelectedTab == tabPageLabelProfiles)
             {
                 addProfileButtons();
+                addProfilePicture();
             }
             if (tabControlMain.SelectedTab == tabPageQueueUtilities)
             {
@@ -411,7 +443,7 @@ namespace LabelMaker
         }
         #endregion
 
-            #region *** Navigation Buttons***
+        #region *** Navigation Buttons***
         #region Navigation Jump routines
         private void calculateTheJump(int rowBottom, int rowTop)
         {
@@ -1108,6 +1140,13 @@ namespace LabelMaker
             }
         }
 
+
+        private void assignQueueTotals()
+        {
+            labelMainCount.Text = addMainQueueTotal().ToString();
+            labelColourCount.Text = addColourQueueTotal().ToString();
+        }
+
         private int addColourQueueTotal()
         {
             int count = 0;
@@ -1443,6 +1482,35 @@ namespace LabelMaker
 
         }
 
+        private void buttonDeleteDatabase_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show("Do you really want to DELETE this Entry permanently", "Delete Database Entry", MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                int rowToRemove = dataGridViewPlants.CurrentCell.RowIndex;
+                dataGridViewPlants.Rows.RemoveAt(rowToRemove);
+
+                try
+                {
+                    tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                    if (rowToRemove > 0)
+                    {
+                        updateMainDetails(rowToRemove - 1);
+                    }
+                    else
+                    {
+                        updateMainDetails(rowToRemove);
+                    }
+                    tabControlMain.SelectedTab = tabPageManual;
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to delete from Database - " + ex);
+                }
+            }
+        }
+
         private void buttonUpdateDatabase_Click(object sender, EventArgs e)
         {
             if (validateDatabase())
@@ -1657,7 +1725,7 @@ namespace LabelMaker
 
 
         private void comboBoxProfilePick_SelectedIndexChanged(object sender, EventArgs e)
-            // picks a profile name from a preselected list
+        // picks a profile name from a preselected list
         {
             textBoxData17.Text = comboBoxProfilePick.Text;
         }
@@ -1793,6 +1861,11 @@ namespace LabelMaker
                 //Dispose();
                 profileIndex++;
             }
+        }
+
+        private void addProfilePicture()
+        {
+            TempMakeALabel(panelProfilePlantPreview, "Colour", "database");
         }
 
         #endregion
@@ -1946,7 +2019,7 @@ namespace LabelMaker
         private void buttonQtyToSame_Click(object sender, EventArgs e)
         {
             if ((int.Parse(textBoxQtyToSame.Text.ToString()) <= 250))
-                {
+            {
                 if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
                 {
                     for (int i = 0; i < databaseLabelsDataSetColourQueue.TableColourQueue.Rows.Count; i++)
@@ -1994,7 +2067,7 @@ namespace LabelMaker
             var isNumeric = int.TryParse(textBoxQ2.Text.ToString(), out int n);
             if (isNumeric)
             {
-                if (n<1 || n > 250)
+                if (n < 1 || n > 250)
                 {
                     MessageBox.Show("Quantity should be between 1 and 250", "Update failed");
                     valid = false;
@@ -2002,7 +2075,7 @@ namespace LabelMaker
             }
             else
             {
-                MessageBox.Show("Quantity isn't a valid Number (should be an Integer between 0 and 250)","Update Failed");
+                MessageBox.Show("Quantity isn't a valid Number (should be an Integer between 0 and 250)", "Update Failed");
                 valid = false;
             }
 
@@ -2376,7 +2449,7 @@ namespace LabelMaker
                     textBoxQ0.Text = dataGridViewColourQ.CurrentRow.Index.ToString();
                 }
             }
-            
+
         }
 
 
@@ -2455,8 +2528,120 @@ namespace LabelMaker
                 TempMakeALabel(panelLabelTabChoice, "Choice", "database");
             }
 
+            if (tabControlQueue.SelectedTab == tabPageLabelStocks)
+            {
+
+                fillLabelStocksGrid();
+
+            }
+            if (tabControlQueue.SelectedTab == tabPageMissingPictures)
+            {
+                fillMissingPicturesGrid();
+            }
+
+
 
         }
+
+
+        #endregion
+
+        #region Label Stocks Tab
+
+        private void fillLabelStocksGrid()
+        {
+            //clear the grid first
+            dataGridViewQueueList.SelectAll();
+            foreach (DataGridViewCell oneCell in dataGridViewQueueList.SelectedCells)
+            {
+                if (oneCell.Selected)
+                    dataGridViewQueueList.Rows.RemoveAt(oneCell.RowIndex);
+            }
+            //then fill it up
+
+            for (int i = 0; i <= (dataGridViewColourQ.RowCount - 2); i++)
+            {
+                if (dataGridViewColourQ.Rows[i].Cells[25].Value.ToString() == "True")
+                {
+                    string[] toAdd = new string[] {
+                        dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
+                        "True",
+                        "True",
+                        dataGridViewColourQ.Rows[i].Cells[26].Value.ToString()};
+                    dataGridViewQueueList.Rows.Add(toAdd);
+                }
+            }
+            //count numbers
+            labelLabelStocks.Text = dataGridViewQueueList.RowCount.ToString();
+
+            dataGridViewQueueList.Sort(dataGridViewQueueList.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+
+            countLabelStocks();
+        }
+        private void countLabelStocks()
+        {
+            int stockCount = 0;
+            int queueCount = 0;
+
+            for (int i = 0; i <= dataGridViewQueueList.RowCount - 1; i++)
+            {
+                if (dataGridViewQueueList.Rows[i].Cells[1].Value.ToString() == "True") { stockCount++; }
+                if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True") { queueCount++; }
+            }
+            labelLabelStockRemove.Text = stockCount.ToString();
+            labelLabelQueueRemove.Text = queueCount.ToString();
+        }
+
+        private void initialiseLabelStockGrid()
+        {
+            dataGridViewQueueList.Columns.Add("Name", "Name");
+            dataGridViewQueueList.Columns.Add("Label", "Remove from Stock");
+            dataGridViewQueueList.Columns.Add("Remove", "Remove from Queue");
+            dataGridViewQueueList.Columns.Add("Id", "Id");
+
+            dataGridViewQueueList.Columns[0].Width = 245;
+            dataGridViewQueueList.Columns[1].Width = 50;
+            dataGridViewQueueList.Columns[2].Width = 50;
+            dataGridViewQueueList.Columns[3].Width = 40;
+
+        }
+
+        private void initialiseMissingPictureGrid()
+        {
+            dataGridViewMissingPictures.Columns.Add("Name", "Name");
+            dataGridViewMissingPictures.Columns.Add("Remove", "Remove from Queue");
+            dataGridViewMissingPictures.Columns.Add("Id", "Id");
+
+            dataGridViewMissingPictures.Columns[0].Width = 245;
+            dataGridViewMissingPictures.Columns[1].Width = 50;
+            dataGridViewMissingPictures.Columns[2].Width = 40;
+
+        }
+
+        private void fillMissingPicturesGrid()
+        {
+         //clear the grid first
+            dataGridViewMissingPictures.SelectAll();
+            foreach (DataGridViewCell oneCell in dataGridViewMissingPictures.SelectedCells)
+            {
+                if (oneCell.Selected)
+                    dataGridViewMissingPictures.Rows.RemoveAt(oneCell.RowIndex);
+            }
+            //then fill it up
+
+            for (int i = 0; i <= (dataGridViewColourQ.RowCount - 2); i++)
+            {
+                if (String.IsNullOrEmpty(dataGridViewColourQ.Rows[i].Cells[8].Value.ToString().Trim()))
+                {
+                    string[] toAdd = new string[] {
+                        dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
+                        "True",
+                        dataGridViewColourQ.Rows[i].Cells[26].Value.ToString()};
+            dataGridViewMissingPictures.Rows.Add(toAdd);
+                }
+            }
+        }
+
         #endregion
 
         #region  QUEUE UTILITIES - like collecting info from database and adding entires
@@ -2606,6 +2791,8 @@ namespace LabelMaker
             row["Picture3"] = queue[22];
             row["Picture4"] = queue[23];
             row["OrderNo"] = queue[24];
+            row["LabelStocks"] = queue[25];
+            row["PlantId"] = queue[26];
 
             databaseLabelsDataSetColourQueue.Tables[0].Rows.Add(row);
             dataGridViewColourQ.EndEdit();
@@ -2622,7 +2809,7 @@ namespace LabelMaker
 
         public string[] CollectQueueEntry()
         {
-            string[] queueData = new string[25];
+            string[] queueData = new string[27];
 
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
 
@@ -2704,7 +2891,9 @@ namespace LabelMaker
             if (string.IsNullOrEmpty(queueData[24]))
             { queueData[24] = ""; }
             else
-            { queueData[24] = "Order No. #" + queueData[24]; }
+            { queueData[24] = "Order No. #" + queueData[24];}
+            queueData[25] = sendData[20];
+            queueData[26] = sendData[0];
 
             return queueData;
         }
@@ -2833,22 +3022,31 @@ namespace LabelMaker
         {
             if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
             {
-                deleteColourQueueLine();
+                DialogResult result = MessageBox.Show("Do you want to Delete all selected lines from the Colour Queue", "Colour Queue Line Delete", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes) { deleteColourQueueLine(); }
             }
             else
             {
-                deleteMainQueueLine();
+                DialogResult result = MessageBox.Show("Do you want to Delete all selected lines from the Main Queue", "Main Queue Line Delete", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                { deleteMainQueueLine(); }
             }
         }
 
         private void buttonDeleteThisQueue_Click(object sender, EventArgs e)
         {
-            deleteQueue("Single");
+            string which = "Main Queue";
+            if (tabControlQueue.SelectedTab==tabPageColourQueue) { which = "Colour Queue"; }
+            DialogResult result = MessageBox.Show("Do you want to Delete all entries from the " + which, "Delete "+ which, MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            { deleteQueue("Single"); }
         }
 
         private void buttonDeleteBothQueues_Click(object sender, EventArgs e)
         {
-            deleteQueue("Both");
+            DialogResult result = MessageBox.Show("Do you want to Delete all entries from both Queues", "Delete Both Queues", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            { deleteQueue("Both"); }
         }
         #endregion
 
@@ -3227,71 +3425,28 @@ namespace LabelMaker
 
 
 
+
+
         #endregion
 
-        private void validateDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void listQueueEntriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to trim whitespaces from all Plant names","Clean Plant Names of White Spaces" ,MessageBoxButtons.YesNo);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                //remove whitespaces from names
-                string changeText = "";
-                progressBarDatabase.Visible = true;
-                progressBarDatabase.Maximum = dataGridViewPlants.RowCount;
-                for (int i = 0; i < dataGridViewPlants.RowCount; i++)
-                {
-                    progressBarDatabase.Value = i;
-                    progressBarDatabase.Refresh();
-                    changeText = dataGridViewPlants.Rows[i].Cells[2].Value.ToString().Trim();
-                    databaseLabelsDataSet.TablePlants.Rows[i].SetField(2, changeText);
-
-                    changeText = dataGridViewPlants.Rows[i].Cells[4].Value.ToString().Trim();
-                    databaseLabelsDataSet.TablePlants.Rows[i].SetField(4, changeText);
-
-                    changeText = dataGridViewPlants.Rows[i].Cells[5].Value.ToString().Trim();
-                    databaseLabelsDataSet.TablePlants.Rows[i].SetField(5, changeText);
-                }
-
-                try
-                {
-                    tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
-                    //MessageBox.Show("Updated Database Entry");
-                }
-                catch (System.Exception ex)
-                {
-                    MessageBox.Show("Failed to update to Database - " + ex);
-                }
-                progressBarDatabase.Visible = false;
-            }
+           
         }
 
-        private void buttonDeleteDatabase_Click(object sender, EventArgs e)
+        private void dataGridViewQueueList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            DialogResult result = MessageBox.Show("Do you really want to DELETE this Entry permanently", "Delete Database Entry", MessageBoxButtons.YesNo);
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            int rowIndex = e.RowIndex;
+            int colIndex = e.ColumnIndex;
+            if (dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value.ToString() == "True")
             {
-                int rowToRemove = dataGridViewPlants.CurrentCell.RowIndex;
-                dataGridViewPlants.Rows.RemoveAt(rowToRemove);
-
-                try
-                {
-                    tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
-                    if (rowToRemove > 0)
-                    {
-                        updateMainDetails(rowToRemove - 1);
-                    }
-                    else
-                    {
-                        updateMainDetails(rowToRemove);
-                    }
-                    tabControlMain.SelectedTab = tabPageManual;
-                }
-                catch (System.Exception ex)
-                {
-                    MessageBox.Show("Failed to delete from Database - " + ex);
-                }
+                dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value = "False";
             }
+            else if (dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value.ToString() == "False")
+            {
+                dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value = "True";
+            }
+            countLabelStocks();
         }
     }
 }
