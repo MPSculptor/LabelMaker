@@ -2592,6 +2592,14 @@ namespace LabelMaker
         private void countMissingPictures()
         {
             labelMissingPictures.Text=dataGridViewMissingPictures.RowCount.ToString();
+
+            int removeCount = 0;
+
+            for (int i = 0; i <= dataGridViewMissingPictures.RowCount - 1; i++)
+            {
+                if (dataGridViewMissingPictures.Rows[i].Cells[1].Value.ToString() == "True") { removeCount++; }
+            }
+            labelRemoveMissing.Text = removeCount.ToString();
         }
 
 
@@ -3564,6 +3572,21 @@ namespace LabelMaker
         private void checkForMissingPicturesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControlQueue.SelectedTab = tabPageMissingPictures;
+        }
+
+        private void dataGridViewMissingPictures_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            int colIndex = e.ColumnIndex;
+            if (dataGridViewMissingPictures.Rows[rowIndex].Cells[colIndex].Value.ToString() == "True")
+            {
+                dataGridViewMissingPictures.Rows[rowIndex].Cells[colIndex].Value = "False";
+            }
+            else if (dataGridViewMissingPictures.Rows[rowIndex].Cells[colIndex].Value.ToString() == "False")
+            {
+                dataGridViewMissingPictures.Rows[rowIndex].Cells[colIndex].Value = "True";
+            }
+            countMissingPictures();
         }
     }
 }

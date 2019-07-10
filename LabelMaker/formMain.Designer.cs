@@ -487,6 +487,8 @@
             this.orderNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelStocksDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.plantIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelRemoveMissing = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -928,7 +930,7 @@
             // validateDatabaseToolStripMenuItem
             // 
             this.validateDatabaseToolStripMenuItem.Name = "validateDatabaseToolStripMenuItem";
-            this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.validateDatabaseToolStripMenuItem.Text = "Trim Whitespaces";
             this.validateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.validateDatabaseToolStripMenuItem_Click);
             // 
@@ -944,7 +946,7 @@
             // checkForLabelStocksToolStripMenuItem
             // 
             this.checkForLabelStocksToolStripMenuItem.Name = "checkForLabelStocksToolStripMenuItem";
-            this.checkForLabelStocksToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.checkForLabelStocksToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.checkForLabelStocksToolStripMenuItem.Text = "Check for Label Stocks";
             this.checkForLabelStocksToolStripMenuItem.Click += new System.EventHandler(this.checkForLabelStocksToolStripMenuItem_Click);
             // 
@@ -4785,6 +4787,8 @@
             // 
             // tabPageMissingPictures
             // 
+            this.tabPageMissingPictures.Controls.Add(this.labelRemoveMissing);
+            this.tabPageMissingPictures.Controls.Add(this.label81);
             this.tabPageMissingPictures.Controls.Add(this.richTextBox2);
             this.tabPageMissingPictures.Controls.Add(this.buttonMissingRemove);
             this.tabPageMissingPictures.Controls.Add(this.labelMissingPictures);
@@ -4806,6 +4810,7 @@
             this.dataGridViewMissingPictures.Name = "dataGridViewMissingPictures";
             this.dataGridViewMissingPictures.Size = new System.Drawing.Size(399, 569);
             this.dataGridViewMissingPictures.TabIndex = 0;
+            this.dataGridViewMissingPictures.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMissingPictures_CellContentClick);
             // 
             // label77
             // 
@@ -4821,7 +4826,7 @@
             // 
             this.labelMissingPictures.AutoSize = true;
             this.labelMissingPictures.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMissingPictures.Location = new System.Drawing.Point(202, 585);
+            this.labelMissingPictures.Location = new System.Drawing.Point(215, 585);
             this.labelMissingPictures.Name = "labelMissingPictures";
             this.labelMissingPictures.Size = new System.Drawing.Size(16, 16);
             this.labelMissingPictures.TabIndex = 2;
@@ -4849,7 +4854,7 @@
             // 
             // buttonMissingRemove
             // 
-            this.buttonMissingRemove.Location = new System.Drawing.Point(240, 585);
+            this.buttonMissingRemove.Location = new System.Drawing.Point(25, 635);
             this.buttonMissingRemove.Name = "buttonMissingRemove";
             this.buttonMissingRemove.Size = new System.Drawing.Size(163, 76);
             this.buttonMissingRemove.TabIndex = 3;
@@ -4861,13 +4866,13 @@
             // 
             this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox2.Location = new System.Drawing.Point(25, 617);
+            this.richTextBox2.Location = new System.Drawing.Point(255, 587);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(209, 104);
+            this.richTextBox2.Size = new System.Drawing.Size(148, 124);
             this.richTextBox2.TabIndex = 10;
-            this.richTextBox2.Text = "Alter the True or False Values in the grid above by clicking in the cell\n\nWhen yo" +
-    "u are done, click the button and it will remove all lines that are set to True f" +
-    "rom the Colour Queue.";
+            this.richTextBox2.Text = "Alter the True or False Values in the grid above by clicking in the appropriate c" +
+    "ell\n\nWhen you are done, click the button and it will remove all lines that are s" +
+    "et to True from the Colour Queue.";
             // 
             // checkForMissingPicturesToolStripMenuItem
             // 
@@ -5040,6 +5045,26 @@
             this.plantIdDataGridViewTextBoxColumn.DataPropertyName = "PlantId";
             this.plantIdDataGridViewTextBoxColumn.HeaderText = "PlantId";
             this.plantIdDataGridViewTextBoxColumn.Name = "plantIdDataGridViewTextBoxColumn";
+            // 
+            // labelRemoveMissing
+            // 
+            this.labelRemoveMissing.AutoSize = true;
+            this.labelRemoveMissing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRemoveMissing.Location = new System.Drawing.Point(215, 611);
+            this.labelRemoveMissing.Name = "labelRemoveMissing";
+            this.labelRemoveMissing.Size = new System.Drawing.Size(16, 16);
+            this.labelRemoveMissing.TabIndex = 12;
+            this.labelRemoveMissing.Text = "0";
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(22, 611);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(190, 16);
+            this.label81.TabIndex = 11;
+            this.label81.Text = "Entries to Remove from Queue";
             // 
             // formMain
             // 
@@ -5625,6 +5650,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn labelStocksDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn plantIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label labelRemoveMissing;
+        private System.Windows.Forms.Label label81;
     }
 }
 
