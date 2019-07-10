@@ -1515,7 +1515,6 @@ namespace LabelMaker
         {
             if (validateDatabase())
             {
-                //int indexOfRow = int.Parse(textBoxData0.Text); //gets row to update (as database index)
                 int indexOfRow = int.Parse(textBoxGridIndex.Text); //gets row to update (as grid index)
                 string[,] nameString = getPanelNames();
 
@@ -2592,6 +2591,12 @@ namespace LabelMaker
             labelLabelQueueRemove.Text = queueCount.ToString();
         }
 
+        private void countMissingPictures()
+        {
+            labelMissingPictures.Text=dataGridViewMissingPictures.RowCount.ToString();
+        }
+
+
         private void initialiseLabelStockGrid()
         {
             dataGridViewQueueList.Columns.Add("Name", "Name");
@@ -2637,9 +2642,12 @@ namespace LabelMaker
                         dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
                         "True",
                         dataGridViewColourQ.Rows[i].Cells[26].Value.ToString()};
-            dataGridViewMissingPictures.Rows.Add(toAdd);
+                        dataGridViewMissingPictures.Rows.Add(toAdd);
                 }
             }
+            dataGridViewMissingPictures.Sort(dataGridViewMissingPictures.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+
+            countMissingPictures();
         }
 
         #endregion
@@ -3447,6 +3455,117 @@ namespace LabelMaker
                 dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value = "True";
             }
             countLabelStocks();
+        }
+
+        private void buttonRemoveLabelStocks_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewQueueList.RowCount > 0)
+                
+            {
+                int countLabels = 0;
+                int countFlags = 0;
+                //go through the list
+                for (int i = 0; i <= dataGridViewQueueList.RowCount - 1; i++)
+                {
+                    //check if need to remove this one
+                    if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
+                    {
+                        string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
+                        //go through colour queue
+                        for (int j = 0; j <= dataGridViewColourQ.RowCount - 2; j++)
+                        {
+                            if (idFind == dataGridViewColourQ.Rows[j].Cells[26].Value.ToString())
+                            {
+                                dataGridViewColourQ.Rows.RemoveAt(j);
+                                
+                                try
+                                {
+                                    tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                                    countLabels ++;
+                                }
+                                catch (System.Exception ex)
+                                {
+                                    MessageBox.Show("Failed to delete from Colour Queue - " + ex);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    //check if need to remove flag
+                    if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
+                    {
+                        string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
+                        for (int j = 0; j <= (dataGridViewPlants.RowCount-1); j++)
+                        {
+                            if (idFind == dataGridViewPlants.Rows[j].Cells[0].Value.ToString())
+                            {
+                                databaseLabelsDataSet.TablePlants.Rows[j].SetField(20, "False");
+                                try
+                                {
+                                    tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
+                                    countFlags++;
+                                    //MessageBox.Show("Updated Database Entry");
+                                }
+                                catch (System.Exception ex)
+                                {
+                                    MessageBox.Show("Failed to update to Database - " + ex);
+                                }
+                                break;
+                            }
+                        }
+                }
+                    
+                }
+                string entry = " Entry";
+                string flag = " flag";
+                if (countLabels > 1) { entry = " Entries"; }
+                if (countFlags > 1) { flag = " flags"; }
+                labelColourCount.Text = addColourQueueTotal().ToString();
+                fillLabelStocksGrid();
+                MessageBox.Show(countLabels + entry+" removed from colour queue, "+countFlags+ flag+"reset to 'False'.");
+            }
+        }
+
+        private void buttonMissingRemove_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMissingPictures.RowCount > 0)
+
+            {
+                int count = 0;
+                //go through the list
+                for (int i = 0; i <= dataGridViewMissingPictures.RowCount - 1; i++)
+                {
+                    //check if need to remove this one
+                    if (dataGridViewMissingPictures.Rows[i].Cells[1].Value.ToString() == "True")
+                    {
+                        string idFind = dataGridViewMissingPictures.Rows[i].Cells[2].Value.ToString();
+                        //go through colour queue
+                        for (int j = 0; j <= dataGridViewColourQ.RowCount - 2; j++)
+                        {
+                            if (idFind == dataGridViewColourQ.Rows[j].Cells[26].Value.ToString())
+                            {
+                                dataGridViewColourQ.Rows.RemoveAt(j);
+
+                                try
+                                {
+                                    tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                                    count++;
+                                }
+                                catch (System.Exception ex)
+                                {
+                                    MessageBox.Show("Failed to delete from Colour Queue - " + ex);
+                                }
+                                break;
+                            }
+                        }
+                    }  
+                }
+                string entry = " Entry";
+                if (count > 1) { entry = " Entries"; }
+                labelColourCount.Text = addColourQueueTotal().ToString();
+                fillMissingPicturesGrid();
+                MessageBox.Show(count + entry + " removed from colour queue");
+            }
         }
     }
 }

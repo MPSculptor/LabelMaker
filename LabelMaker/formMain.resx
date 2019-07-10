@@ -144,6 +144,11 @@
   <metadata name="databaseLabelsDataSetColourQueue.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 179</value>
   </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Alter the True or False Values in the grid above by clicking in the cell
+
+When you are done, click the button and it will remove all lines that are set to True from the Colour Queue and remove the Labels flag from the appropriate Database Entry as well if this is also set True. </value>
+  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>810, 17</value>
   </metadata>

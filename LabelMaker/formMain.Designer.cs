@@ -481,6 +481,12 @@
             this.label80 = new System.Windows.Forms.Label();
             this.tabPageMissingPictures = new System.Windows.Forms.TabPage();
             this.dataGridViewMissingPictures = new System.Windows.Forms.DataGridView();
+            this.label77 = new System.Windows.Forms.Label();
+            this.labelMissingPictures = new System.Windows.Forms.Label();
+            this.buttonRemoveLabelStocks = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.buttonMissingRemove = new System.Windows.Forms.Button();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -849,6 +855,8 @@
             // 
             // tabPageLabelStocks
             // 
+            this.tabPageLabelStocks.Controls.Add(this.richTextBox1);
+            this.tabPageLabelStocks.Controls.Add(this.buttonRemoveLabelStocks);
             this.tabPageLabelStocks.Controls.Add(this.labelLabelQueueRemove);
             this.tabPageLabelStocks.Controls.Add(this.label80);
             this.tabPageLabelStocks.Controls.Add(this.labelLabelStockRemove);
@@ -871,7 +879,7 @@
             this.dataGridViewQueueList.Location = new System.Drawing.Point(19, 14);
             this.dataGridViewQueueList.Name = "dataGridViewQueueList";
             this.dataGridViewQueueList.RowHeadersVisible = false;
-            this.dataGridViewQueueList.Size = new System.Drawing.Size(384, 537);
+            this.dataGridViewQueueList.Size = new System.Drawing.Size(384, 545);
             this.dataGridViewQueueList.TabIndex = 1;
             this.dataGridViewQueueList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewQueueList_CellContentClick);
             // 
@@ -4887,7 +4895,7 @@
             // 
             this.label76.AutoSize = true;
             this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(16, 561);
+            this.label76.Location = new System.Drawing.Point(16, 645);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(154, 16);
             this.label76.TabIndex = 2;
@@ -4897,7 +4905,7 @@
             // 
             this.labelLabelStocks.AutoSize = true;
             this.labelLabelStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelStocks.Location = new System.Drawing.Point(206, 561);
+            this.labelLabelStocks.Location = new System.Drawing.Point(206, 645);
             this.labelLabelStocks.Name = "labelLabelStocks";
             this.labelLabelStocks.Size = new System.Drawing.Size(16, 16);
             this.labelLabelStocks.TabIndex = 3;
@@ -4907,7 +4915,7 @@
             // 
             this.labelLabelStockRemove.AutoSize = true;
             this.labelLabelStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 585);
+            this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 669);
             this.labelLabelStockRemove.Name = "labelLabelStockRemove";
             this.labelLabelStockRemove.Size = new System.Drawing.Size(16, 16);
             this.labelLabelStockRemove.TabIndex = 5;
@@ -4917,7 +4925,7 @@
             // 
             this.label78.AutoSize = true;
             this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(16, 585);
+            this.label78.Location = new System.Drawing.Point(16, 669);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(184, 16);
             this.label78.TabIndex = 4;
@@ -4927,7 +4935,7 @@
             // 
             this.labelLabelQueueRemove.AutoSize = true;
             this.labelLabelQueueRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 609);
+            this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 693);
             this.labelLabelQueueRemove.Name = "labelLabelQueueRemove";
             this.labelLabelQueueRemove.Size = new System.Drawing.Size(16, 16);
             this.labelLabelQueueRemove.TabIndex = 7;
@@ -4937,7 +4945,7 @@
             // 
             this.label80.AutoSize = true;
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.Location = new System.Drawing.Point(16, 609);
+            this.label80.Location = new System.Drawing.Point(16, 693);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(190, 16);
             this.label80.TabIndex = 6;
@@ -4945,6 +4953,10 @@
             // 
             // tabPageMissingPictures
             // 
+            this.tabPageMissingPictures.Controls.Add(this.richTextBox2);
+            this.tabPageMissingPictures.Controls.Add(this.buttonMissingRemove);
+            this.tabPageMissingPictures.Controls.Add(this.labelMissingPictures);
+            this.tabPageMissingPictures.Controls.Add(this.label77);
             this.tabPageMissingPictures.Controls.Add(this.dataGridViewMissingPictures);
             this.tabPageMissingPictures.Location = new System.Drawing.Point(4, 22);
             this.tabPageMissingPictures.Name = "tabPageMissingPictures";
@@ -4960,8 +4972,70 @@
             this.dataGridViewMissingPictures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMissingPictures.Location = new System.Drawing.Point(4, 6);
             this.dataGridViewMissingPictures.Name = "dataGridViewMissingPictures";
-            this.dataGridViewMissingPictures.Size = new System.Drawing.Size(399, 394);
+            this.dataGridViewMissingPictures.Size = new System.Drawing.Size(399, 569);
             this.dataGridViewMissingPictures.TabIndex = 0;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(22, 585);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(174, 16);
+            this.label77.TabIndex = 1;
+            this.label77.Text = "Entries with Missing Pictures";
+            // 
+            // labelMissingPictures
+            // 
+            this.labelMissingPictures.AutoSize = true;
+            this.labelMissingPictures.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMissingPictures.Location = new System.Drawing.Point(202, 585);
+            this.labelMissingPictures.Name = "labelMissingPictures";
+            this.labelMissingPictures.Size = new System.Drawing.Size(16, 16);
+            this.labelMissingPictures.TabIndex = 2;
+            this.labelMissingPictures.Text = "0";
+            // 
+            // buttonRemoveLabelStocks
+            // 
+            this.buttonRemoveLabelStocks.Location = new System.Drawing.Point(242, 646);
+            this.buttonRemoveLabelStocks.Name = "buttonRemoveLabelStocks";
+            this.buttonRemoveLabelStocks.Size = new System.Drawing.Size(161, 63);
+            this.buttonRemoveLabelStocks.TabIndex = 8;
+            this.buttonRemoveLabelStocks.Text = "Remove Entries from the Colour Queue";
+            this.buttonRemoveLabelStocks.UseVisualStyleBackColor = true;
+            this.buttonRemoveLabelStocks.Click += new System.EventHandler(this.buttonRemoveLabelStocks_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.richTextBox1.Location = new System.Drawing.Point(19, 565);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(384, 75);
+            this.richTextBox1.TabIndex = 9;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // buttonMissingRemove
+            // 
+            this.buttonMissingRemove.Location = new System.Drawing.Point(240, 585);
+            this.buttonMissingRemove.Name = "buttonMissingRemove";
+            this.buttonMissingRemove.Size = new System.Drawing.Size(163, 76);
+            this.buttonMissingRemove.TabIndex = 3;
+            this.buttonMissingRemove.Text = "Remove Entries from the Colour Queue";
+            this.buttonMissingRemove.UseVisualStyleBackColor = true;
+            this.buttonMissingRemove.Click += new System.EventHandler(this.buttonMissingRemove_Click);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.richTextBox2.Location = new System.Drawing.Point(25, 617);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(209, 104);
+            this.richTextBox2.TabIndex = 10;
+            this.richTextBox2.Text = "Alter the True or False Values in the grid above by clicking in the cell\n\nWhen yo" +
+    "u are done, click the button and it will remove all lines that are set to True f" +
+    "rom the Colour Queue.";
             // 
             // formMain
             // 
@@ -5080,6 +5154,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
             this.tabPageMissingPictures.ResumeLayout(false);
+            this.tabPageMissingPictures.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMissingPictures)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -5540,6 +5615,12 @@
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.TabPage tabPageMissingPictures;
         private System.Windows.Forms.DataGridView dataGridViewMissingPictures;
+        private System.Windows.Forms.Label labelMissingPictures;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button buttonRemoveLabelStocks;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button buttonMissingRemove;
     }
 }
 
