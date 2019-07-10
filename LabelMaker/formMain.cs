@@ -1952,7 +1952,6 @@ namespace LabelMaker
                     textBoxQ0.Text = indexOfRow.ToString();
                     //Fill in Plant Name
 
-
                     for (int i = 1; i <= 25; i++)
                     {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
@@ -1976,7 +1975,6 @@ namespace LabelMaker
                     int indexOfRow = dataGridViewColourQ.CurrentRow.Index;
                     textBoxQ0.Text = indexOfRow.ToString();
                     //Fill in Plant Name
-
 
                     for (int i = 1; i <= 25; i++)
                     {
@@ -2636,7 +2634,7 @@ namespace LabelMaker
 
             for (int i = 0; i <= (dataGridViewColourQ.RowCount - 2); i++)
             {
-                if (String.IsNullOrEmpty(dataGridViewColourQ.Rows[i].Cells[8].Value.ToString().Trim()))
+                if (String.IsNullOrEmpty(dataGridViewColourQ.Rows[i].Cells[5].Value.ToString().Trim()))
                 {
                     string[] toAdd = new string[] {
                         dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
@@ -3425,16 +3423,6 @@ namespace LabelMaker
 
 
 
-
-
-
-
-
-
-
-
-
-
         #endregion
 
         private void listQueueEntriesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3522,7 +3510,7 @@ namespace LabelMaker
                 if (countFlags > 1) { flag = " flags"; }
                 labelColourCount.Text = addColourQueueTotal().ToString();
                 fillLabelStocksGrid();
-                MessageBox.Show(countLabels + entry+" removed from colour queue, "+countFlags+ flag+"reset to 'False'.");
+                MessageBox.Show(countLabels + entry+" removed from colour queue, "+countFlags+ flag+" reset to 'False'.");
             }
         }
 
@@ -3566,6 +3554,16 @@ namespace LabelMaker
                 fillMissingPicturesGrid();
                 MessageBox.Show(count + entry + " removed from colour queue");
             }
+        }
+
+        private void checkForLabelStocksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlQueue.SelectedTab = tabPageLabelStocks;
+        }
+
+        private void checkForMissingPicturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlQueue.SelectedTab = tabPageMissingPictures;
         }
     }
 }
