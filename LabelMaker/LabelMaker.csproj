@@ -48,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -77,6 +78,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSetAuto.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseLabelsDataSetAuto.xsd</DependentUpon>
     </Compile>
     <Compile Include="DatabaseLabelsDataSetColourQueue.cs">
       <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
@@ -167,6 +173,17 @@
     </None>
     <None Include="DatabaseLabelsDataSet1.xss">
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSetAuto.xsc">
+      <DependentUpon>DatabaseLabelsDataSetAuto.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSetAuto.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseLabelsDataSetAuto.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseLabelsDataSetAuto.xss">
+      <DependentUpon>DatabaseLabelsDataSetAuto.xsd</DependentUpon>
     </None>
     <None Include="DatabaseLabelsDataSetColourQueue.xsc">
       <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>

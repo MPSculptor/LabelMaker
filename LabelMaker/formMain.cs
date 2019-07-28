@@ -5,18 +5,25 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using CreationUtilities;
+using Microsoft.VisualBasic.FileIO;
 
 namespace LabelMaker
 {
     public partial class formMain : Form
     {
         public formMain()
+
+
         {
+            //  ******* IMPORTANT *********
+            // Before completion search    //needs amending    to find temporary bits that need fixing or correcting
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseLabelsDataSetAuto.TableAuto' table. You can move, or remove it, as needed.
+            this.tableAutoTableAdapter.Fill(this.databaseLabelsDataSetAuto.TableAuto);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
             this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
@@ -113,10 +120,11 @@ namespace LabelMaker
                 howManyLines = dataGridViewMainQ.RowCount - 1;
             }
 
+            //needs amending
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
             //file with default settings
             string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
 
             //file with a sample label definition;
             if (whichQueue == "Colour")
@@ -127,7 +135,8 @@ namespace LabelMaker
             {
                 name = whereFiles + "LabelsText.txt";
             }
-            string[] labelData = CreationUtilities.dataReader.readFile(name);
+            //needs amending
+            string[] labelData = CreationUtilities.dataReader.readFile(name, '|');
 
 
             for (int i = 0; i < howManyLines; i++)
@@ -178,6 +187,14 @@ namespace LabelMaker
             if (tabControlMain.SelectedTab == tabPageQuickPrint)
             {
                 fillQuickPrint();
+            }
+            if (tabControlMain.SelectedTab == tabPageAuto)
+            {
+                string where = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+                string file = "order_export_short.csv";
+                labelAutoFile.Text = where + file;
+
+                
             }
         }
 
@@ -935,10 +952,11 @@ namespace LabelMaker
             fillLabelCombo();
 
             //get picture position
+            //needs amending
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
             //file with sample queue entry;
             string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
             string filePlace = defaultsString[0];
 
             //Plant name as one string
@@ -1210,10 +1228,11 @@ namespace LabelMaker
             //Fill in Pictures
 
             //get picture position
+            //needs amending
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
             //file with sample queue entry;
             string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
             string filePlace = defaultsString[0];
 
             for (int i = 12; i <= 15; i++)
@@ -1882,10 +1901,11 @@ namespace LabelMaker
             //Fill in Pictures
 
             //get picture position
+            //needs amending
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
             //file with sample queue entry;
             string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
             string filePlace = defaultsString[0];
 
             for (int i = 1; i <= 4; i++)
@@ -2828,8 +2848,9 @@ namespace LabelMaker
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
 
             //file with default settings
+            //needs amending
             string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
 
             int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
             string[] sendData = new string[21];
@@ -3130,8 +3151,9 @@ namespace LabelMaker
             string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
 
             //file with default settings
+            //needs amending
             string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name);
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
             string[] queueString = new string[25];
 
             if (DatabaseOrQueue == "database")
@@ -3224,12 +3246,14 @@ namespace LabelMaker
             else if (whichLabel == "Colour")
             {
                 //the colour queue default
+                //needs amending
                 labelChoice = "Colour 5 by 2";
                 //name = whereFiles + "LabelsColour.txt";
             }
             else if (whichLabel == "Main")
             {
                 //the main queue default
+                //needs amending
                 labelChoice = "Sticker 1 by 1";
                 //name = whereFiles + "LabelsText.txt";
             }
@@ -3587,6 +3611,126 @@ namespace LabelMaker
                 dataGridViewMissingPictures.Rows[rowIndex].Cells[colIndex].Value = "True";
             }
             countMissingPictures();
+        }
+
+        private void buttonUploadAuto_Click(object sender, EventArgs e)
+        {
+            csvReaderAutoBody(labelAutoFile.Text.ToString());
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            string[] header = CreationUtilities.dataReader.csvReaderHeader(labelAutoFile.Text.ToString());
+            for (int i = 0; i <= header.Length - 1; i++)
+            {
+                //listBoxAuto.Items.Add(header[i]);
+            }
+        
+        }
+
+        private string[] findAutoHeaderRow()
+        {
+            string[] returnString = new string[7];
+            try
+            {
+                string[] header = CreationUtilities.dataReader.csvReaderHeader(labelAutoFile.Text.ToString());
+                string[] headerData = new string[7];
+                    for (int i = 0; i <= header.Length - 1; i++)
+                    { 
+                
+                            if (header[i] == "Order Number")
+                            {
+                                headerData[0] = i.ToString();
+                            }
+                            if (header[i] == "Product Name")
+                            {
+                                headerData[2] = i.ToString();
+                            }
+                            if (header[i] == "Product Quantity")
+                            {
+                            headerData[3] = i.ToString();
+                            }
+                            if (header[i] == "Product SKU")
+                            {
+                                headerData[4] = i.ToString();
+                            }
+                            if (header[i] == "Billing First Name")
+                            {
+                                headerData[5] = i.ToString();
+                            }
+                            if (header[i] == "Billing First Name")
+                            {
+                                headerData[6] = i.ToString();
+                            }
+                    }
+                returnString = headerData;
+                    
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to Read File. Try altering the file address and refreshing the grid");
+                }
+            return returnString;
+            }
+
+        public void csvReaderAutoBody(string path)
+        {
+            string[] headerData = findAutoHeaderRow();
+            using (TextFieldParser csvParser = new TextFieldParser(path))
+            {
+                csvParser.CommentTokens = new string[] { "#" };
+                csvParser.SetDelimiters(new string[] { "," });
+                csvParser.HasFieldsEnclosedInQuotes = true;
+
+                // Skip the row with the column names
+                csvParser.ReadLine();
+
+                String[] currentRow;
+                
+                //Loop through all of the fields in the file. 
+                //If any lines are corrupt, report an error and continue parsing. 
+                while (!csvParser.EndOfData)
+                {
+                    try
+                    {
+                        currentRow = csvParser.ReadFields();
+
+                        DataRow row = databaseLabelsDataSetAuto.Tables[0].NewRow();
+
+                        row["ON"] = headerData[0];
+                        row["Customer"] = headerData[5] +" "+ headerData[6];
+                        row["Name"] = headerData[2];
+                        row["Qty"] = headerData[3];
+                        row["SKU"] = headerData[4];
+                        row["First"] = headerData[5];
+                        row["Last"] = headerData[6];
+
+                        databaseLabelsDataSetAuto.TableAuto.Rows.Add(row);
+                        dataGridViewAuto.EndEdit();
+                        try
+                        {
+                            tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to add to Auto Queue - " + ex);
+                        }
+                        
+                    }
+                    catch (MalformedLineException e)
+                    {
+                        MessageBox.Show("Line " + e.Message + " is invalid.  Skipping");
+                    }
+
+                }
+
+
+            }
+        }
+
+        private void textBoxQty_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

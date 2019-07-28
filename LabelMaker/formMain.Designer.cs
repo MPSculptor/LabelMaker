@@ -62,10 +62,53 @@
             this.databaseLabelsDataSetMainQueue = new LabelMaker.DatabaseLabelsDataSetMainQueue();
             this.tabPageColourQueue = new System.Windows.Forms.TabPage();
             this.dataGridViewColourQ = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureFileDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barcodeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.potSizeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commonNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourFontDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourFontColourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fontBoldDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.fontItalicDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colourBorderColourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourBackgroundColourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speciesDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varietyDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aGMDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture1DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture2DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture3DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture4DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelStocksDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.plantIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableColourQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetColourQueue = new LabelMaker.DatabaseLabelsDataSetColourQueue();
             this.tabPageLabelStocks = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.buttonRemoveLabelStocks = new System.Windows.Forms.Button();
+            this.labelLabelQueueRemove = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.labelLabelStockRemove = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.labelLabelStocks = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
             this.dataGridViewQueueList = new System.Windows.Forms.DataGridView();
+            this.tabPageMissingPictures = new System.Windows.Forms.TabPage();
+            this.labelRemoveMissing = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.buttonMissingRemove = new System.Windows.Forms.Button();
+            this.labelMissingPictures = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.dataGridViewMissingPictures = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +117,7 @@
             this.validateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForLabelStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForMissingPicturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPageLabelProfiles = new System.Windows.Forms.TabPage();
             this.label74 = new System.Windows.Forms.Label();
@@ -103,6 +147,9 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.buttonUploadAuto = new System.Windows.Forms.Button();
+            this.labelAutoFile = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
             this.tabPagePreview = new System.Windows.Forms.TabPage();
             this.label73 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
@@ -445,50 +492,22 @@
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
-            this.label76 = new System.Windows.Forms.Label();
-            this.labelLabelStocks = new System.Windows.Forms.Label();
-            this.labelLabelStockRemove = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.labelLabelQueueRemove = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.tabPageMissingPictures = new System.Windows.Forms.TabPage();
-            this.dataGridViewMissingPictures = new System.Windows.Forms.DataGridView();
-            this.label77 = new System.Windows.Forms.Label();
-            this.labelMissingPictures = new System.Windows.Forms.Label();
-            this.buttonRemoveLabelStocks = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.buttonMissingRemove = new System.Windows.Forms.Button();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.checkForMissingPicturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureFileDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.barcodeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.potSizeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commonNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourFontDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourFontColourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fontBoldDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.fontItalicDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colourBorderColourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourBackgroundColourDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notesDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speciesDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.varietyDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aGMDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture1DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture2DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture3DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture4DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelStocksDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.plantIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelRemoveMissing = new System.Windows.Forms.Label();
-            this.label81 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridViewAuto = new System.Windows.Forms.DataGridView();
+            this.databaseLabelsDataSetAuto = new LabelMaker.DatabaseLabelsDataSetAuto();
+            this.tableAutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lockCustDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lockLineDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.printedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.oNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sKUDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -500,6 +519,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetColourQueue)).BeginInit();
             this.tabPageLabelStocks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueueList)).BeginInit();
+            this.tabPageMissingPictures.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMissingPictures)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabPageLabelProfiles.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -510,6 +531,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetProfiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.tabPageAuto.SuspendLayout();
             this.tabPagePreview.SuspendLayout();
             this.tabPageDatabase.SuspendLayout();
             this.groupBoxDataPictures.SuspendLayout();
@@ -561,8 +583,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).BeginInit();
-            this.tabPageMissingPictures.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMissingPictures)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetAuto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableAutoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -845,6 +868,171 @@
             this.dataGridViewColourQ.TabIndex = 5;
             this.dataGridViewColourQ.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewColourQ_CellContentClick);
             // 
+            // nameDataGridViewTextBoxColumn2
+            // 
+            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            this.nameDataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // qtyDataGridViewTextBoxColumn1
+            // 
+            this.qtyDataGridViewTextBoxColumn1.DataPropertyName = "qty";
+            this.qtyDataGridViewTextBoxColumn1.HeaderText = "qty";
+            this.qtyDataGridViewTextBoxColumn1.Name = "qtyDataGridViewTextBoxColumn1";
+            this.qtyDataGridViewTextBoxColumn1.Width = 30;
+            // 
+            // priceDataGridViewTextBoxColumn1
+            // 
+            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
+            this.priceDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // customerDataGridViewTextBoxColumn1
+            // 
+            this.customerDataGridViewTextBoxColumn1.DataPropertyName = "Customer";
+            this.customerDataGridViewTextBoxColumn1.HeaderText = "Customer";
+            this.customerDataGridViewTextBoxColumn1.Name = "customerDataGridViewTextBoxColumn1";
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            // 
+            // pictureFileDataGridViewTextBoxColumn1
+            // 
+            this.pictureFileDataGridViewTextBoxColumn1.DataPropertyName = "PictureFile";
+            this.pictureFileDataGridViewTextBoxColumn1.HeaderText = "PictureFile";
+            this.pictureFileDataGridViewTextBoxColumn1.Name = "pictureFileDataGridViewTextBoxColumn1";
+            // 
+            // barcodeDataGridViewTextBoxColumn2
+            // 
+            this.barcodeDataGridViewTextBoxColumn2.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn2.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn2.Name = "barcodeDataGridViewTextBoxColumn2";
+            // 
+            // potSizeDataGridViewTextBoxColumn2
+            // 
+            this.potSizeDataGridViewTextBoxColumn2.DataPropertyName = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn2.HeaderText = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn2.Name = "potSizeDataGridViewTextBoxColumn2";
+            // 
+            // commonNameDataGridViewTextBoxColumn1
+            // 
+            this.commonNameDataGridViewTextBoxColumn1.DataPropertyName = "CommonName";
+            this.commonNameDataGridViewTextBoxColumn1.HeaderText = "CommonName";
+            this.commonNameDataGridViewTextBoxColumn1.Name = "commonNameDataGridViewTextBoxColumn1";
+            // 
+            // colourFontDataGridViewTextBoxColumn1
+            // 
+            this.colourFontDataGridViewTextBoxColumn1.DataPropertyName = "ColourFont";
+            this.colourFontDataGridViewTextBoxColumn1.HeaderText = "ColourFont";
+            this.colourFontDataGridViewTextBoxColumn1.Name = "colourFontDataGridViewTextBoxColumn1";
+            // 
+            // colourFontColourDataGridViewTextBoxColumn1
+            // 
+            this.colourFontColourDataGridViewTextBoxColumn1.DataPropertyName = "ColourFontColour";
+            this.colourFontColourDataGridViewTextBoxColumn1.HeaderText = "ColourFontColour";
+            this.colourFontColourDataGridViewTextBoxColumn1.Name = "colourFontColourDataGridViewTextBoxColumn1";
+            // 
+            // fontBoldDataGridViewCheckBoxColumn1
+            // 
+            this.fontBoldDataGridViewCheckBoxColumn1.DataPropertyName = "FontBold";
+            this.fontBoldDataGridViewCheckBoxColumn1.HeaderText = "FontBold";
+            this.fontBoldDataGridViewCheckBoxColumn1.Name = "fontBoldDataGridViewCheckBoxColumn1";
+            // 
+            // fontItalicDataGridViewCheckBoxColumn1
+            // 
+            this.fontItalicDataGridViewCheckBoxColumn1.DataPropertyName = "FontItalic";
+            this.fontItalicDataGridViewCheckBoxColumn1.HeaderText = "FontItalic";
+            this.fontItalicDataGridViewCheckBoxColumn1.Name = "fontItalicDataGridViewCheckBoxColumn1";
+            // 
+            // colourBorderColourDataGridViewTextBoxColumn1
+            // 
+            this.colourBorderColourDataGridViewTextBoxColumn1.DataPropertyName = "ColourBorderColour";
+            this.colourBorderColourDataGridViewTextBoxColumn1.HeaderText = "ColourBorderColour";
+            this.colourBorderColourDataGridViewTextBoxColumn1.Name = "colourBorderColourDataGridViewTextBoxColumn1";
+            // 
+            // colourBackgroundColourDataGridViewTextBoxColumn1
+            // 
+            this.colourBackgroundColourDataGridViewTextBoxColumn1.DataPropertyName = "ColourBackgroundColour";
+            this.colourBackgroundColourDataGridViewTextBoxColumn1.HeaderText = "ColourBackgroundColour";
+            this.colourBackgroundColourDataGridViewTextBoxColumn1.Name = "colourBackgroundColourDataGridViewTextBoxColumn1";
+            // 
+            // notesDataGridViewTextBoxColumn2
+            // 
+            this.notesDataGridViewTextBoxColumn2.DataPropertyName = "notes";
+            this.notesDataGridViewTextBoxColumn2.HeaderText = "notes";
+            this.notesDataGridViewTextBoxColumn2.Name = "notesDataGridViewTextBoxColumn2";
+            // 
+            // genusDataGridViewTextBoxColumn2
+            // 
+            this.genusDataGridViewTextBoxColumn2.DataPropertyName = "Genus";
+            this.genusDataGridViewTextBoxColumn2.HeaderText = "Genus";
+            this.genusDataGridViewTextBoxColumn2.Name = "genusDataGridViewTextBoxColumn2";
+            // 
+            // speciesDataGridViewTextBoxColumn2
+            // 
+            this.speciesDataGridViewTextBoxColumn2.DataPropertyName = "Species";
+            this.speciesDataGridViewTextBoxColumn2.HeaderText = "Species";
+            this.speciesDataGridViewTextBoxColumn2.Name = "speciesDataGridViewTextBoxColumn2";
+            // 
+            // varietyDataGridViewTextBoxColumn2
+            // 
+            this.varietyDataGridViewTextBoxColumn2.DataPropertyName = "Variety";
+            this.varietyDataGridViewTextBoxColumn2.HeaderText = "Variety";
+            this.varietyDataGridViewTextBoxColumn2.Name = "varietyDataGridViewTextBoxColumn2";
+            // 
+            // aGMDataGridViewTextBoxColumn1
+            // 
+            this.aGMDataGridViewTextBoxColumn1.DataPropertyName = "AGM";
+            this.aGMDataGridViewTextBoxColumn1.HeaderText = "AGM";
+            this.aGMDataGridViewTextBoxColumn1.Name = "aGMDataGridViewTextBoxColumn1";
+            // 
+            // picture1DataGridViewTextBoxColumn2
+            // 
+            this.picture1DataGridViewTextBoxColumn2.DataPropertyName = "Picture1";
+            this.picture1DataGridViewTextBoxColumn2.HeaderText = "Picture1";
+            this.picture1DataGridViewTextBoxColumn2.Name = "picture1DataGridViewTextBoxColumn2";
+            // 
+            // picture2DataGridViewTextBoxColumn2
+            // 
+            this.picture2DataGridViewTextBoxColumn2.DataPropertyName = "Picture2";
+            this.picture2DataGridViewTextBoxColumn2.HeaderText = "Picture2";
+            this.picture2DataGridViewTextBoxColumn2.Name = "picture2DataGridViewTextBoxColumn2";
+            // 
+            // picture3DataGridViewTextBoxColumn2
+            // 
+            this.picture3DataGridViewTextBoxColumn2.DataPropertyName = "Picture3";
+            this.picture3DataGridViewTextBoxColumn2.HeaderText = "Picture3";
+            this.picture3DataGridViewTextBoxColumn2.Name = "picture3DataGridViewTextBoxColumn2";
+            // 
+            // picture4DataGridViewTextBoxColumn2
+            // 
+            this.picture4DataGridViewTextBoxColumn2.DataPropertyName = "Picture4";
+            this.picture4DataGridViewTextBoxColumn2.HeaderText = "Picture4";
+            this.picture4DataGridViewTextBoxColumn2.Name = "picture4DataGridViewTextBoxColumn2";
+            // 
+            // orderNoDataGridViewTextBoxColumn1
+            // 
+            this.orderNoDataGridViewTextBoxColumn1.DataPropertyName = "OrderNo";
+            this.orderNoDataGridViewTextBoxColumn1.HeaderText = "OrderNo";
+            this.orderNoDataGridViewTextBoxColumn1.Name = "orderNoDataGridViewTextBoxColumn1";
+            // 
+            // labelStocksDataGridViewCheckBoxColumn
+            // 
+            this.labelStocksDataGridViewCheckBoxColumn.DataPropertyName = "LabelStocks";
+            this.labelStocksDataGridViewCheckBoxColumn.HeaderText = "LabelStocks";
+            this.labelStocksDataGridViewCheckBoxColumn.Name = "labelStocksDataGridViewCheckBoxColumn";
+            // 
+            // plantIdDataGridViewTextBoxColumn
+            // 
+            this.plantIdDataGridViewTextBoxColumn.DataPropertyName = "PlantId";
+            this.plantIdDataGridViewTextBoxColumn.HeaderText = "PlantId";
+            this.plantIdDataGridViewTextBoxColumn.Name = "plantIdDataGridViewTextBoxColumn";
+            // 
             // tableColourQueueBindingSource
             // 
             this.tableColourQueueBindingSource.DataMember = "TableColourQueue";
@@ -873,6 +1061,86 @@
             this.tabPageLabelStocks.Text = "   Label Stocks   ";
             this.tabPageLabelStocks.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.richTextBox1.Location = new System.Drawing.Point(19, 565);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(384, 75);
+            this.richTextBox1.TabIndex = 9;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // buttonRemoveLabelStocks
+            // 
+            this.buttonRemoveLabelStocks.Location = new System.Drawing.Point(242, 646);
+            this.buttonRemoveLabelStocks.Name = "buttonRemoveLabelStocks";
+            this.buttonRemoveLabelStocks.Size = new System.Drawing.Size(161, 63);
+            this.buttonRemoveLabelStocks.TabIndex = 8;
+            this.buttonRemoveLabelStocks.Text = "Remove Entries from the Colour Queue";
+            this.buttonRemoveLabelStocks.UseVisualStyleBackColor = true;
+            this.buttonRemoveLabelStocks.Click += new System.EventHandler(this.buttonRemoveLabelStocks_Click);
+            // 
+            // labelLabelQueueRemove
+            // 
+            this.labelLabelQueueRemove.AutoSize = true;
+            this.labelLabelQueueRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 693);
+            this.labelLabelQueueRemove.Name = "labelLabelQueueRemove";
+            this.labelLabelQueueRemove.Size = new System.Drawing.Size(16, 16);
+            this.labelLabelQueueRemove.TabIndex = 7;
+            this.labelLabelQueueRemove.Text = "0";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Location = new System.Drawing.Point(16, 693);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(190, 16);
+            this.label80.TabIndex = 6;
+            this.label80.Text = "Labels to Remove from Queue";
+            // 
+            // labelLabelStockRemove
+            // 
+            this.labelLabelStockRemove.AutoSize = true;
+            this.labelLabelStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 669);
+            this.labelLabelStockRemove.Name = "labelLabelStockRemove";
+            this.labelLabelStockRemove.Size = new System.Drawing.Size(16, 16);
+            this.labelLabelStockRemove.TabIndex = 5;
+            this.labelLabelStockRemove.Text = "0";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(16, 669);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(184, 16);
+            this.label78.TabIndex = 4;
+            this.label78.Text = "Labels to Remove from Stock";
+            // 
+            // labelLabelStocks
+            // 
+            this.labelLabelStocks.AutoSize = true;
+            this.labelLabelStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLabelStocks.Location = new System.Drawing.Point(206, 645);
+            this.labelLabelStocks.Name = "labelLabelStocks";
+            this.labelLabelStocks.Size = new System.Drawing.Size(16, 16);
+            this.labelLabelStocks.TabIndex = 3;
+            this.labelLabelStocks.Text = "0";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(16, 645);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(154, 16);
+            this.label76.TabIndex = 2;
+            this.label76.Text = "Potential Labels in Stock";
+            // 
             // dataGridViewQueueList
             // 
             this.dataGridViewQueueList.AllowUserToAddRows = false;
@@ -884,6 +1152,95 @@
             this.dataGridViewQueueList.Size = new System.Drawing.Size(384, 545);
             this.dataGridViewQueueList.TabIndex = 1;
             this.dataGridViewQueueList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewQueueList_CellContentClick);
+            // 
+            // tabPageMissingPictures
+            // 
+            this.tabPageMissingPictures.Controls.Add(this.labelRemoveMissing);
+            this.tabPageMissingPictures.Controls.Add(this.label81);
+            this.tabPageMissingPictures.Controls.Add(this.richTextBox2);
+            this.tabPageMissingPictures.Controls.Add(this.buttonMissingRemove);
+            this.tabPageMissingPictures.Controls.Add(this.labelMissingPictures);
+            this.tabPageMissingPictures.Controls.Add(this.label77);
+            this.tabPageMissingPictures.Controls.Add(this.dataGridViewMissingPictures);
+            this.tabPageMissingPictures.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMissingPictures.Name = "tabPageMissingPictures";
+            this.tabPageMissingPictures.Size = new System.Drawing.Size(411, 724);
+            this.tabPageMissingPictures.TabIndex = 3;
+            this.tabPageMissingPictures.Text = "  Missing Pictures   ";
+            this.tabPageMissingPictures.UseVisualStyleBackColor = true;
+            // 
+            // labelRemoveMissing
+            // 
+            this.labelRemoveMissing.AutoSize = true;
+            this.labelRemoveMissing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRemoveMissing.Location = new System.Drawing.Point(215, 611);
+            this.labelRemoveMissing.Name = "labelRemoveMissing";
+            this.labelRemoveMissing.Size = new System.Drawing.Size(16, 16);
+            this.labelRemoveMissing.TabIndex = 12;
+            this.labelRemoveMissing.Text = "0";
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(22, 611);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(190, 16);
+            this.label81.TabIndex = 11;
+            this.label81.Text = "Entries to Remove from Queue";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.richTextBox2.Location = new System.Drawing.Point(255, 587);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(148, 124);
+            this.richTextBox2.TabIndex = 10;
+            this.richTextBox2.Text = "Alter the True or False Values in the grid above by clicking in the appropriate c" +
+    "ell\n\nWhen you are done, click the button and it will remove all lines that are s" +
+    "et to True from the Colour Queue.";
+            // 
+            // buttonMissingRemove
+            // 
+            this.buttonMissingRemove.Location = new System.Drawing.Point(25, 635);
+            this.buttonMissingRemove.Name = "buttonMissingRemove";
+            this.buttonMissingRemove.Size = new System.Drawing.Size(163, 76);
+            this.buttonMissingRemove.TabIndex = 3;
+            this.buttonMissingRemove.Text = "Remove Entries from the Colour Queue";
+            this.buttonMissingRemove.UseVisualStyleBackColor = true;
+            this.buttonMissingRemove.Click += new System.EventHandler(this.buttonMissingRemove_Click);
+            // 
+            // labelMissingPictures
+            // 
+            this.labelMissingPictures.AutoSize = true;
+            this.labelMissingPictures.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMissingPictures.Location = new System.Drawing.Point(215, 585);
+            this.labelMissingPictures.Name = "labelMissingPictures";
+            this.labelMissingPictures.Size = new System.Drawing.Size(16, 16);
+            this.labelMissingPictures.TabIndex = 2;
+            this.labelMissingPictures.Text = "0";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(22, 585);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(174, 16);
+            this.label77.TabIndex = 1;
+            this.label77.Text = "Entries with Missing Pictures";
+            // 
+            // dataGridViewMissingPictures
+            // 
+            this.dataGridViewMissingPictures.AllowUserToAddRows = false;
+            this.dataGridViewMissingPictures.AllowUserToDeleteRows = false;
+            this.dataGridViewMissingPictures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMissingPictures.Location = new System.Drawing.Point(4, 6);
+            this.dataGridViewMissingPictures.Name = "dataGridViewMissingPictures";
+            this.dataGridViewMissingPictures.Size = new System.Drawing.Size(399, 569);
+            this.dataGridViewMissingPictures.TabIndex = 0;
+            this.dataGridViewMissingPictures.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMissingPictures_CellContentClick);
             // 
             // menuStrip1
             // 
@@ -930,7 +1287,7 @@
             // validateDatabaseToolStripMenuItem
             // 
             this.validateDatabaseToolStripMenuItem.Name = "validateDatabaseToolStripMenuItem";
-            this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.validateDatabaseToolStripMenuItem.Text = "Trim Whitespaces";
             this.validateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.validateDatabaseToolStripMenuItem_Click);
             // 
@@ -949,6 +1306,13 @@
             this.checkForLabelStocksToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.checkForLabelStocksToolStripMenuItem.Text = "Check for Label Stocks";
             this.checkForLabelStocksToolStripMenuItem.Click += new System.EventHandler(this.checkForLabelStocksToolStripMenuItem_Click);
+            // 
+            // checkForMissingPicturesToolStripMenuItem
+            // 
+            this.checkForMissingPicturesToolStripMenuItem.Name = "checkForMissingPicturesToolStripMenuItem";
+            this.checkForMissingPicturesToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.checkForMissingPicturesToolStripMenuItem.Text = "Check for Missing Pictures";
+            this.checkForMissingPicturesToolStripMenuItem.Click += new System.EventHandler(this.checkForMissingPicturesToolStripMenuItem_Click);
             // 
             // fillByToolStripButton
             // 
@@ -1200,6 +1564,11 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.dataGridViewAuto);
+            this.tabPageAuto.Controls.Add(this.button1);
+            this.tabPageAuto.Controls.Add(this.buttonUploadAuto);
+            this.tabPageAuto.Controls.Add(this.labelAutoFile);
+            this.tabPageAuto.Controls.Add(this.label79);
             this.tabPageAuto.Location = new System.Drawing.Point(4, 22);
             this.tabPageAuto.Name = "tabPageAuto";
             this.tabPageAuto.Padding = new System.Windows.Forms.Padding(3);
@@ -1207,6 +1576,34 @@
             this.tabPageAuto.TabIndex = 1;
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
+            // 
+            // buttonUploadAuto
+            // 
+            this.buttonUploadAuto.Location = new System.Drawing.Point(10, 24);
+            this.buttonUploadAuto.Name = "buttonUploadAuto";
+            this.buttonUploadAuto.Size = new System.Drawing.Size(116, 30);
+            this.buttonUploadAuto.TabIndex = 2;
+            this.buttonUploadAuto.Text = "Upload File";
+            this.buttonUploadAuto.UseVisualStyleBackColor = true;
+            this.buttonUploadAuto.Click += new System.EventHandler(this.buttonUploadAuto_Click);
+            // 
+            // labelAutoFile
+            // 
+            this.labelAutoFile.AutoSize = true;
+            this.labelAutoFile.Location = new System.Drawing.Point(85, 7);
+            this.labelAutoFile.Name = "labelAutoFile";
+            this.labelAutoFile.Size = new System.Drawing.Size(41, 13);
+            this.labelAutoFile.TabIndex = 1;
+            this.labelAutoFile.Text = "label82";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(7, 7);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(72, 13);
+            this.label79.TabIndex = 0;
+            this.label79.Text = "File to Upload";
             // 
             // tabPagePreview
             // 
@@ -2236,6 +2633,7 @@
             this.textBoxQty.TabIndex = 0;
             this.textBoxQty.Text = "1";
             this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxQty.TextChanged += new System.EventHandler(this.textBoxQty_TextChanged);
             this.textBoxQty.Enter += new System.EventHandler(this.textBoxQty_Enter);
             // 
             // groupBox4
@@ -4725,346 +5123,124 @@
             // 
             this.tableColourQueueTableAdapter.ClearBeforeFill = true;
             // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(16, 645);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(154, 16);
-            this.label76.TabIndex = 2;
-            this.label76.Text = "Potential Labels in Stock";
-            // 
-            // labelLabelStocks
-            // 
-            this.labelLabelStocks.AutoSize = true;
-            this.labelLabelStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelStocks.Location = new System.Drawing.Point(206, 645);
-            this.labelLabelStocks.Name = "labelLabelStocks";
-            this.labelLabelStocks.Size = new System.Drawing.Size(16, 16);
-            this.labelLabelStocks.TabIndex = 3;
-            this.labelLabelStocks.Text = "0";
-            // 
-            // labelLabelStockRemove
-            // 
-            this.labelLabelStockRemove.AutoSize = true;
-            this.labelLabelStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 669);
-            this.labelLabelStockRemove.Name = "labelLabelStockRemove";
-            this.labelLabelStockRemove.Size = new System.Drawing.Size(16, 16);
-            this.labelLabelStockRemove.TabIndex = 5;
-            this.labelLabelStockRemove.Text = "0";
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(16, 669);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(184, 16);
-            this.label78.TabIndex = 4;
-            this.label78.Text = "Labels to Remove from Stock";
-            // 
-            // labelLabelQueueRemove
-            // 
-            this.labelLabelQueueRemove.AutoSize = true;
-            this.labelLabelQueueRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 693);
-            this.labelLabelQueueRemove.Name = "labelLabelQueueRemove";
-            this.labelLabelQueueRemove.Size = new System.Drawing.Size(16, 16);
-            this.labelLabelQueueRemove.TabIndex = 7;
-            this.labelLabelQueueRemove.Text = "0";
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.Location = new System.Drawing.Point(16, 693);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(190, 16);
-            this.label80.TabIndex = 6;
-            this.label80.Text = "Labels to Remove from Queue";
-            // 
-            // tabPageMissingPictures
-            // 
-            this.tabPageMissingPictures.Controls.Add(this.labelRemoveMissing);
-            this.tabPageMissingPictures.Controls.Add(this.label81);
-            this.tabPageMissingPictures.Controls.Add(this.richTextBox2);
-            this.tabPageMissingPictures.Controls.Add(this.buttonMissingRemove);
-            this.tabPageMissingPictures.Controls.Add(this.labelMissingPictures);
-            this.tabPageMissingPictures.Controls.Add(this.label77);
-            this.tabPageMissingPictures.Controls.Add(this.dataGridViewMissingPictures);
-            this.tabPageMissingPictures.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMissingPictures.Name = "tabPageMissingPictures";
-            this.tabPageMissingPictures.Size = new System.Drawing.Size(411, 724);
-            this.tabPageMissingPictures.TabIndex = 3;
-            this.tabPageMissingPictures.Text = "  Missing Pictures   ";
-            this.tabPageMissingPictures.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewMissingPictures
-            // 
-            this.dataGridViewMissingPictures.AllowUserToAddRows = false;
-            this.dataGridViewMissingPictures.AllowUserToDeleteRows = false;
-            this.dataGridViewMissingPictures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMissingPictures.Location = new System.Drawing.Point(4, 6);
-            this.dataGridViewMissingPictures.Name = "dataGridViewMissingPictures";
-            this.dataGridViewMissingPictures.Size = new System.Drawing.Size(399, 569);
-            this.dataGridViewMissingPictures.TabIndex = 0;
-            this.dataGridViewMissingPictures.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMissingPictures_CellContentClick);
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(22, 585);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(174, 16);
-            this.label77.TabIndex = 1;
-            this.label77.Text = "Entries with Missing Pictures";
-            // 
-            // labelMissingPictures
-            // 
-            this.labelMissingPictures.AutoSize = true;
-            this.labelMissingPictures.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMissingPictures.Location = new System.Drawing.Point(215, 585);
-            this.labelMissingPictures.Name = "labelMissingPictures";
-            this.labelMissingPictures.Size = new System.Drawing.Size(16, 16);
-            this.labelMissingPictures.TabIndex = 2;
-            this.labelMissingPictures.Text = "0";
-            // 
-            // buttonRemoveLabelStocks
+            // button1
             // 
-            this.buttonRemoveLabelStocks.Location = new System.Drawing.Point(242, 646);
-            this.buttonRemoveLabelStocks.Name = "buttonRemoveLabelStocks";
-            this.buttonRemoveLabelStocks.Size = new System.Drawing.Size(161, 63);
-            this.buttonRemoveLabelStocks.TabIndex = 8;
-            this.buttonRemoveLabelStocks.Text = "Remove Entries from the Colour Queue";
-            this.buttonRemoveLabelStocks.UseVisualStyleBackColor = true;
-            this.buttonRemoveLabelStocks.Click += new System.EventHandler(this.buttonRemoveLabelStocks_Click);
+            this.button1.Location = new System.Drawing.Point(162, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 30);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Try Headers";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
-            // richTextBox1
+            // dataGridViewAuto
             // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox1.Location = new System.Drawing.Point(19, 565);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(384, 75);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.dataGridViewAuto.AutoGenerateColumns = false;
+            this.dataGridViewAuto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAuto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.lockCustDataGridViewCheckBoxColumn,
+            this.lockLineDataGridViewCheckBoxColumn,
+            this.printedDataGridViewCheckBoxColumn,
+            this.oNDataGridViewTextBoxColumn,
+            this.customerDataGridViewTextBoxColumn2,
+            this.nameDataGridViewTextBoxColumn3,
+            this.qtyDataGridViewTextBoxColumn2,
+            this.sKUDataGridViewTextBoxColumn1,
+            this.firstDataGridViewTextBoxColumn,
+            this.lastDataGridViewTextBoxColumn});
+            this.dataGridViewAuto.DataSource = this.tableAutoBindingSource;
+            this.dataGridViewAuto.Location = new System.Drawing.Point(10, 61);
+            this.dataGridViewAuto.Name = "dataGridViewAuto";
+            this.dataGridViewAuto.Size = new System.Drawing.Size(955, 597);
+            this.dataGridViewAuto.TabIndex = 5;
             // 
-            // buttonMissingRemove
+            // databaseLabelsDataSetAuto
             // 
-            this.buttonMissingRemove.Location = new System.Drawing.Point(25, 635);
-            this.buttonMissingRemove.Name = "buttonMissingRemove";
-            this.buttonMissingRemove.Size = new System.Drawing.Size(163, 76);
-            this.buttonMissingRemove.TabIndex = 3;
-            this.buttonMissingRemove.Text = "Remove Entries from the Colour Queue";
-            this.buttonMissingRemove.UseVisualStyleBackColor = true;
-            this.buttonMissingRemove.Click += new System.EventHandler(this.buttonMissingRemove_Click);
+            this.databaseLabelsDataSetAuto.DataSetName = "DatabaseLabelsDataSetAuto";
+            this.databaseLabelsDataSetAuto.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // richTextBox2
+            // tableAutoBindingSource
             // 
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox2.Location = new System.Drawing.Point(255, 587);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(148, 124);
-            this.richTextBox2.TabIndex = 10;
-            this.richTextBox2.Text = "Alter the True or False Values in the grid above by clicking in the appropriate c" +
-    "ell\n\nWhen you are done, click the button and it will remove all lines that are s" +
-    "et to True from the Colour Queue.";
+            this.tableAutoBindingSource.DataMember = "TableAuto";
+            this.tableAutoBindingSource.DataSource = this.databaseLabelsDataSetAuto;
             // 
-            // checkForMissingPicturesToolStripMenuItem
+            // tableAutoTableAdapter
             // 
-            this.checkForMissingPicturesToolStripMenuItem.Name = "checkForMissingPicturesToolStripMenuItem";
-            this.checkForMissingPicturesToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.checkForMissingPicturesToolStripMenuItem.Text = "Check for Missing Pictures";
-            this.checkForMissingPicturesToolStripMenuItem.Click += new System.EventHandler(this.checkForMissingPicturesToolStripMenuItem_Click);
+            this.tableAutoTableAdapter.ClearBeforeFill = true;
             // 
-            // nameDataGridViewTextBoxColumn2
+            // idDataGridViewTextBoxColumn1
             // 
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
-            this.nameDataGridViewTextBoxColumn2.Width = 200;
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.Width = 40;
             // 
-            // qtyDataGridViewTextBoxColumn1
+            // lockCustDataGridViewCheckBoxColumn
             // 
-            this.qtyDataGridViewTextBoxColumn1.DataPropertyName = "qty";
-            this.qtyDataGridViewTextBoxColumn1.HeaderText = "qty";
-            this.qtyDataGridViewTextBoxColumn1.Name = "qtyDataGridViewTextBoxColumn1";
-            this.qtyDataGridViewTextBoxColumn1.Width = 30;
+            this.lockCustDataGridViewCheckBoxColumn.DataPropertyName = "LockCust";
+            this.lockCustDataGridViewCheckBoxColumn.HeaderText = "LockCust";
+            this.lockCustDataGridViewCheckBoxColumn.Name = "lockCustDataGridViewCheckBoxColumn";
+            this.lockCustDataGridViewCheckBoxColumn.Width = 40;
             // 
-            // priceDataGridViewTextBoxColumn1
+            // lockLineDataGridViewCheckBoxColumn
             // 
-            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
-            this.priceDataGridViewTextBoxColumn1.Width = 60;
+            this.lockLineDataGridViewCheckBoxColumn.DataPropertyName = "LockLine";
+            this.lockLineDataGridViewCheckBoxColumn.HeaderText = "LockLine";
+            this.lockLineDataGridViewCheckBoxColumn.Name = "lockLineDataGridViewCheckBoxColumn";
+            this.lockLineDataGridViewCheckBoxColumn.Width = 40;
             // 
-            // customerDataGridViewTextBoxColumn1
+            // printedDataGridViewCheckBoxColumn
             // 
-            this.customerDataGridViewTextBoxColumn1.DataPropertyName = "Customer";
-            this.customerDataGridViewTextBoxColumn1.HeaderText = "Customer";
-            this.customerDataGridViewTextBoxColumn1.Name = "customerDataGridViewTextBoxColumn1";
+            this.printedDataGridViewCheckBoxColumn.DataPropertyName = "Printed";
+            this.printedDataGridViewCheckBoxColumn.HeaderText = "Printed";
+            this.printedDataGridViewCheckBoxColumn.Name = "printedDataGridViewCheckBoxColumn";
+            this.printedDataGridViewCheckBoxColumn.Width = 40;
             // 
-            // descriptionDataGridViewTextBoxColumn1
+            // oNDataGridViewTextBoxColumn
             // 
-            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            this.oNDataGridViewTextBoxColumn.DataPropertyName = "ON";
+            this.oNDataGridViewTextBoxColumn.HeaderText = "ON";
+            this.oNDataGridViewTextBoxColumn.Name = "oNDataGridViewTextBoxColumn";
             // 
-            // pictureFileDataGridViewTextBoxColumn1
+            // customerDataGridViewTextBoxColumn2
             // 
-            this.pictureFileDataGridViewTextBoxColumn1.DataPropertyName = "PictureFile";
-            this.pictureFileDataGridViewTextBoxColumn1.HeaderText = "PictureFile";
-            this.pictureFileDataGridViewTextBoxColumn1.Name = "pictureFileDataGridViewTextBoxColumn1";
+            this.customerDataGridViewTextBoxColumn2.DataPropertyName = "Customer";
+            this.customerDataGridViewTextBoxColumn2.HeaderText = "Customer";
+            this.customerDataGridViewTextBoxColumn2.Name = "customerDataGridViewTextBoxColumn2";
+            this.customerDataGridViewTextBoxColumn2.Width = 200;
             // 
-            // barcodeDataGridViewTextBoxColumn2
+            // nameDataGridViewTextBoxColumn3
             // 
-            this.barcodeDataGridViewTextBoxColumn2.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn2.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn2.Name = "barcodeDataGridViewTextBoxColumn2";
+            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn3.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            this.nameDataGridViewTextBoxColumn3.Width = 300;
             // 
-            // potSizeDataGridViewTextBoxColumn2
+            // qtyDataGridViewTextBoxColumn2
             // 
-            this.potSizeDataGridViewTextBoxColumn2.DataPropertyName = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn2.HeaderText = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn2.Name = "potSizeDataGridViewTextBoxColumn2";
+            this.qtyDataGridViewTextBoxColumn2.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn2.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn2.Name = "qtyDataGridViewTextBoxColumn2";
+            this.qtyDataGridViewTextBoxColumn2.Width = 50;
             // 
-            // commonNameDataGridViewTextBoxColumn1
+            // sKUDataGridViewTextBoxColumn1
             // 
-            this.commonNameDataGridViewTextBoxColumn1.DataPropertyName = "CommonName";
-            this.commonNameDataGridViewTextBoxColumn1.HeaderText = "CommonName";
-            this.commonNameDataGridViewTextBoxColumn1.Name = "commonNameDataGridViewTextBoxColumn1";
+            this.sKUDataGridViewTextBoxColumn1.DataPropertyName = "SKU";
+            this.sKUDataGridViewTextBoxColumn1.HeaderText = "SKU";
+            this.sKUDataGridViewTextBoxColumn1.Name = "sKUDataGridViewTextBoxColumn1";
             // 
-            // colourFontDataGridViewTextBoxColumn1
+            // firstDataGridViewTextBoxColumn
             // 
-            this.colourFontDataGridViewTextBoxColumn1.DataPropertyName = "ColourFont";
-            this.colourFontDataGridViewTextBoxColumn1.HeaderText = "ColourFont";
-            this.colourFontDataGridViewTextBoxColumn1.Name = "colourFontDataGridViewTextBoxColumn1";
+            this.firstDataGridViewTextBoxColumn.DataPropertyName = "First";
+            this.firstDataGridViewTextBoxColumn.HeaderText = "First";
+            this.firstDataGridViewTextBoxColumn.Name = "firstDataGridViewTextBoxColumn";
             // 
-            // colourFontColourDataGridViewTextBoxColumn1
+            // lastDataGridViewTextBoxColumn
             // 
-            this.colourFontColourDataGridViewTextBoxColumn1.DataPropertyName = "ColourFontColour";
-            this.colourFontColourDataGridViewTextBoxColumn1.HeaderText = "ColourFontColour";
-            this.colourFontColourDataGridViewTextBoxColumn1.Name = "colourFontColourDataGridViewTextBoxColumn1";
-            // 
-            // fontBoldDataGridViewCheckBoxColumn1
-            // 
-            this.fontBoldDataGridViewCheckBoxColumn1.DataPropertyName = "FontBold";
-            this.fontBoldDataGridViewCheckBoxColumn1.HeaderText = "FontBold";
-            this.fontBoldDataGridViewCheckBoxColumn1.Name = "fontBoldDataGridViewCheckBoxColumn1";
-            // 
-            // fontItalicDataGridViewCheckBoxColumn1
-            // 
-            this.fontItalicDataGridViewCheckBoxColumn1.DataPropertyName = "FontItalic";
-            this.fontItalicDataGridViewCheckBoxColumn1.HeaderText = "FontItalic";
-            this.fontItalicDataGridViewCheckBoxColumn1.Name = "fontItalicDataGridViewCheckBoxColumn1";
-            // 
-            // colourBorderColourDataGridViewTextBoxColumn1
-            // 
-            this.colourBorderColourDataGridViewTextBoxColumn1.DataPropertyName = "ColourBorderColour";
-            this.colourBorderColourDataGridViewTextBoxColumn1.HeaderText = "ColourBorderColour";
-            this.colourBorderColourDataGridViewTextBoxColumn1.Name = "colourBorderColourDataGridViewTextBoxColumn1";
-            // 
-            // colourBackgroundColourDataGridViewTextBoxColumn1
-            // 
-            this.colourBackgroundColourDataGridViewTextBoxColumn1.DataPropertyName = "ColourBackgroundColour";
-            this.colourBackgroundColourDataGridViewTextBoxColumn1.HeaderText = "ColourBackgroundColour";
-            this.colourBackgroundColourDataGridViewTextBoxColumn1.Name = "colourBackgroundColourDataGridViewTextBoxColumn1";
-            // 
-            // notesDataGridViewTextBoxColumn2
-            // 
-            this.notesDataGridViewTextBoxColumn2.DataPropertyName = "notes";
-            this.notesDataGridViewTextBoxColumn2.HeaderText = "notes";
-            this.notesDataGridViewTextBoxColumn2.Name = "notesDataGridViewTextBoxColumn2";
-            // 
-            // genusDataGridViewTextBoxColumn2
-            // 
-            this.genusDataGridViewTextBoxColumn2.DataPropertyName = "Genus";
-            this.genusDataGridViewTextBoxColumn2.HeaderText = "Genus";
-            this.genusDataGridViewTextBoxColumn2.Name = "genusDataGridViewTextBoxColumn2";
-            // 
-            // speciesDataGridViewTextBoxColumn2
-            // 
-            this.speciesDataGridViewTextBoxColumn2.DataPropertyName = "Species";
-            this.speciesDataGridViewTextBoxColumn2.HeaderText = "Species";
-            this.speciesDataGridViewTextBoxColumn2.Name = "speciesDataGridViewTextBoxColumn2";
-            // 
-            // varietyDataGridViewTextBoxColumn2
-            // 
-            this.varietyDataGridViewTextBoxColumn2.DataPropertyName = "Variety";
-            this.varietyDataGridViewTextBoxColumn2.HeaderText = "Variety";
-            this.varietyDataGridViewTextBoxColumn2.Name = "varietyDataGridViewTextBoxColumn2";
-            // 
-            // aGMDataGridViewTextBoxColumn1
-            // 
-            this.aGMDataGridViewTextBoxColumn1.DataPropertyName = "AGM";
-            this.aGMDataGridViewTextBoxColumn1.HeaderText = "AGM";
-            this.aGMDataGridViewTextBoxColumn1.Name = "aGMDataGridViewTextBoxColumn1";
-            // 
-            // picture1DataGridViewTextBoxColumn2
-            // 
-            this.picture1DataGridViewTextBoxColumn2.DataPropertyName = "Picture1";
-            this.picture1DataGridViewTextBoxColumn2.HeaderText = "Picture1";
-            this.picture1DataGridViewTextBoxColumn2.Name = "picture1DataGridViewTextBoxColumn2";
-            // 
-            // picture2DataGridViewTextBoxColumn2
-            // 
-            this.picture2DataGridViewTextBoxColumn2.DataPropertyName = "Picture2";
-            this.picture2DataGridViewTextBoxColumn2.HeaderText = "Picture2";
-            this.picture2DataGridViewTextBoxColumn2.Name = "picture2DataGridViewTextBoxColumn2";
-            // 
-            // picture3DataGridViewTextBoxColumn2
-            // 
-            this.picture3DataGridViewTextBoxColumn2.DataPropertyName = "Picture3";
-            this.picture3DataGridViewTextBoxColumn2.HeaderText = "Picture3";
-            this.picture3DataGridViewTextBoxColumn2.Name = "picture3DataGridViewTextBoxColumn2";
-            // 
-            // picture4DataGridViewTextBoxColumn2
-            // 
-            this.picture4DataGridViewTextBoxColumn2.DataPropertyName = "Picture4";
-            this.picture4DataGridViewTextBoxColumn2.HeaderText = "Picture4";
-            this.picture4DataGridViewTextBoxColumn2.Name = "picture4DataGridViewTextBoxColumn2";
-            // 
-            // orderNoDataGridViewTextBoxColumn1
-            // 
-            this.orderNoDataGridViewTextBoxColumn1.DataPropertyName = "OrderNo";
-            this.orderNoDataGridViewTextBoxColumn1.HeaderText = "OrderNo";
-            this.orderNoDataGridViewTextBoxColumn1.Name = "orderNoDataGridViewTextBoxColumn1";
-            // 
-            // labelStocksDataGridViewCheckBoxColumn
-            // 
-            this.labelStocksDataGridViewCheckBoxColumn.DataPropertyName = "LabelStocks";
-            this.labelStocksDataGridViewCheckBoxColumn.HeaderText = "LabelStocks";
-            this.labelStocksDataGridViewCheckBoxColumn.Name = "labelStocksDataGridViewCheckBoxColumn";
-            // 
-            // plantIdDataGridViewTextBoxColumn
-            // 
-            this.plantIdDataGridViewTextBoxColumn.DataPropertyName = "PlantId";
-            this.plantIdDataGridViewTextBoxColumn.HeaderText = "PlantId";
-            this.plantIdDataGridViewTextBoxColumn.Name = "plantIdDataGridViewTextBoxColumn";
-            // 
-            // labelRemoveMissing
-            // 
-            this.labelRemoveMissing.AutoSize = true;
-            this.labelRemoveMissing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRemoveMissing.Location = new System.Drawing.Point(215, 611);
-            this.labelRemoveMissing.Name = "labelRemoveMissing";
-            this.labelRemoveMissing.Size = new System.Drawing.Size(16, 16);
-            this.labelRemoveMissing.TabIndex = 12;
-            this.labelRemoveMissing.Text = "0";
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label81.Location = new System.Drawing.Point(22, 611);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(190, 16);
-            this.label81.TabIndex = 11;
-            this.label81.Text = "Entries to Remove from Queue";
+            this.lastDataGridViewTextBoxColumn.DataPropertyName = "Last";
+            this.lastDataGridViewTextBoxColumn.HeaderText = "Last";
+            this.lastDataGridViewTextBoxColumn.Name = "lastDataGridViewTextBoxColumn";
             // 
             // formMain
             // 
@@ -5096,6 +5272,9 @@
             this.tabPageLabelStocks.ResumeLayout(false);
             this.tabPageLabelStocks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueueList)).EndInit();
+            this.tabPageMissingPictures.ResumeLayout(false);
+            this.tabPageMissingPictures.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMissingPictures)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabPageLabelProfiles.ResumeLayout(false);
@@ -5109,6 +5288,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPageAuto.ResumeLayout(false);
+            this.tabPageAuto.PerformLayout();
             this.tabPagePreview.ResumeLayout(false);
             this.tabPagePreview.PerformLayout();
             this.tabPageDatabase.ResumeLayout(false);
@@ -5182,9 +5363,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
-            this.tabPageMissingPictures.ResumeLayout(false);
-            this.tabPageMissingPictures.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMissingPictures)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetAuto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableAutoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5652,6 +5833,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn plantIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label labelRemoveMissing;
         private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Button buttonUploadAuto;
+        private System.Windows.Forms.Label labelAutoFile;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridViewAuto;
+        private DatabaseLabelsDataSetAuto databaseLabelsDataSetAuto;
+        private System.Windows.Forms.BindingSource tableAutoBindingSource;
+        private DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter tableAutoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn lockCustDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn lockLineDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn printedDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn oNDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sKUDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastDataGridViewTextBoxColumn;
     }
 }
 
