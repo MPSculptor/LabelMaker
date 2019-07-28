@@ -3658,7 +3658,7 @@ namespace LabelMaker
                             {
                                 headerData[5] = i.ToString();
                             }
-                            if (header[i] == "Billing First Name")
+                            if (header[i] == "Billing Last Name")
                             {
                                 headerData[6] = i.ToString();
                             }
@@ -3697,13 +3697,13 @@ namespace LabelMaker
 
                         DataRow row = databaseLabelsDataSetAuto.Tables[0].NewRow();
 
-                        row["ON"] = headerData[0];
-                        row["Customer"] = headerData[5] +" "+ headerData[6];
-                        row["Name"] = headerData[2];
-                        row["Qty"] = headerData[3];
-                        row["SKU"] = headerData[4];
-                        row["First"] = headerData[5];
-                        row["Last"] = headerData[6];
+                        row["ON"] = currentRow[int.Parse(headerData[0])];
+                        row["Customer"] = currentRow[int.Parse(headerData[5])] +" "+ currentRow[int.Parse(headerData[6])];
+                        row["Name"] = currentRow[int.Parse(headerData[2])];
+                        row["Qty"] = currentRow[int.Parse(headerData[3])];
+                        row["SKU"] = currentRow[int.Parse(headerData[4])];
+                        row["First"] = currentRow[int.Parse(headerData[5])];
+                        row["Last"] = currentRow[int.Parse(headerData[6])];
 
                         databaseLabelsDataSetAuto.TableAuto.Rows.Add(row);
                         dataGridViewAuto.EndEdit();

@@ -244,11 +244,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseLabels.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DatabaseLabels_log.ldf">
       <DependentUpon>DatabaseLabels.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
