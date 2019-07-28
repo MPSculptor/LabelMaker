@@ -24,6 +24,8 @@ namespace LabelMaker
         {
             // TODO: This line of code loads data into the 'databaseLabelsDataSetAuto.TableAuto' table. You can move, or remove it, as needed.
             this.tableAutoTableAdapter.Fill(this.databaseLabelsDataSetAuto.TableAuto);
+            // TODO: This line of code loads data into the 'databaseLabelsDataSetAuto.TableAuto' table. You can move, or remove it, as needed.
+            this.tableAutoTableAdapter.Fill(this.databaseLabelsDataSetAuto.TableAuto);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
             this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.

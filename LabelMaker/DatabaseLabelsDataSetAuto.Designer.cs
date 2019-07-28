@@ -459,10 +459,10 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TableAutoRow AddTableAutoRow(int Id, bool LockCust, bool LockLine, bool Printed, int ON, string Customer, string Name, int Qty, string SKU, string First, string Last) {
+            public TableAutoRow AddTableAutoRow(bool LockCust, bool LockLine, bool Printed, int ON, string Customer, string Name, int Qty, string SKU, string First, string Last) {
                 TableAutoRow rowTableAutoRow = ((TableAutoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id,
+                        null,
                         LockCust,
                         LockLine,
                         Printed,
@@ -542,7 +542,11 @@ namespace LabelMaker {
                 base.Columns.Add(this.columnLast);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnCustomer.MaxLength = 100;
                 this.columnName.MaxLength = 100;
@@ -1154,7 +1158,7 @@ namespace LabelMaker.DatabaseLabelsDataSetAutoTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TableAuto] WHERE (([Id] = @Original_Id) AND ((@IsNull_LockCust = 1 AND [LockCust] IS NULL) OR ([LockCust] = @Original_LockCust)) AND ((@IsNull_LockLine = 1 AND [LockLine] IS NULL) OR ([LockLine] = @Original_LockLine)) AND ((@IsNull_Printed = 1 AND [Printed] IS NULL) OR ([Printed] = @Original_Printed)) AND ((@IsNull_ON = 1 AND [ON] IS NULL) OR ([ON] = @Original_ON)) AND ((@IsNull_Customer = 1 AND [Customer] IS NULL) OR ([Customer] = @Original_Customer)) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Original_SKU)) AND ((@IsNull_First = 1 AND [First] IS NULL) OR ([First] = @Original_First)) AND ((@IsNull_Last = 1 AND [Last] IS NULL) OR ([Last] = @Original_Last)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [TableAuto] WHERE (([Id] = @Original_Id) AND ((@IsNull_LockCust = 1 AND [LockCust] IS NULL) OR ([LockCust] = @Original_LockCust)) AND ((@IsNull_LockLine = 1 AND [LockLine] IS NULL) OR ([LockLine] = @Original_LockLine)) AND ((@IsNull_Printed = 1 AND [Printed] IS NULL) OR ([Printed] = @Original_Printed)) AND ((@IsNull_ON = 1 AND [ON] IS NULL) OR ([ON] = @Original_ON)) AND ((@IsNull_Customer = 1 AND [Customer] IS NULL) OR ([Customer] = @Original_Customer)) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Original_SKU)) AND ((@IsNull_First = 1 AND [First] IS NULL) OR ([First] = @Original_First)) AND ((@IsNull_Last = 1 AND [Last] IS NULL) OR ([Last] = @Original_Last)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LockCust", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LockCust", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1179,10 +1183,9 @@ namespace LabelMaker.DatabaseLabelsDataSetAutoTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Last", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TableAuto] ([Id], [LockCust], [LockLine], [Printed], [ON], [Customer], [Name], [Qty], [SKU], [First], [Last]) VALUES (@Id, @LockCust, @LockLine, @Printed, @ON, @Customer, @Name, @Qty, @SKU, @First, @Last);
-SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [TableAuto] ([LockCust], [LockLine], [Printed], [ON], [Customer], [Name], [Qty], [SKU], [First], [Last]) VALUES (@LockCust, @LockLine, @Printed, @ON, @Customer, @Name, @Qty, @SKU, @First, @Last);
+SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto WHERE (Id = SCOPE_IDENTITY()) ORDER BY Customer, Name";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LockCust", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LockCust", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LockLine", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LockLine", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Printed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Printed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1195,10 +1198,9 @@ SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, L
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Last", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TableAuto] SET [Id] = @Id, [LockCust] = @LockCust, [LockLine] = @LockLine, [Printed] = @Printed, [ON] = @ON, [Customer] = @Customer, [Name] = @Name, [Qty] = @Qty, [SKU] = @SKU, [First] = @First, [Last] = @Last WHERE (([Id] = @Original_Id) AND ((@IsNull_LockCust = 1 AND [LockCust] IS NULL) OR ([LockCust] = @Original_LockCust)) AND ((@IsNull_LockLine = 1 AND [LockLine] IS NULL) OR ([LockLine] = @Original_LockLine)) AND ((@IsNull_Printed = 1 AND [Printed] IS NULL) OR ([Printed] = @Original_Printed)) AND ((@IsNull_ON = 1 AND [ON] IS NULL) OR ([ON] = @Original_ON)) AND ((@IsNull_Customer = 1 AND [Customer] IS NULL) OR ([Customer] = @Original_Customer)) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Original_SKU)) AND ((@IsNull_First = 1 AND [First] IS NULL) OR ([First] = @Original_First)) AND ((@IsNull_Last = 1 AND [Last] IS NULL) OR ([Last] = @Original_Last)));
-SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [TableAuto] SET [LockCust] = @LockCust, [LockLine] = @LockLine, [Printed] = @Printed, [ON] = @ON, [Customer] = @Customer, [Name] = @Name, [Qty] = @Qty, [SKU] = @SKU, [First] = @First, [Last] = @Last WHERE (([Id] = @Original_Id) AND ((@IsNull_LockCust = 1 AND [LockCust] IS NULL) OR ([LockCust] = @Original_LockCust)) AND ((@IsNull_LockLine = 1 AND [LockLine] IS NULL) OR ([LockLine] = @Original_LockLine)) AND ((@IsNull_Printed = 1 AND [Printed] IS NULL) OR ([Printed] = @Original_Printed)) AND ((@IsNull_ON = 1 AND [ON] IS NULL) OR ([ON] = @Original_ON)) AND ((@IsNull_Customer = 1 AND [Customer] IS NULL) OR ([Customer] = @Original_Customer)) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Qty = 1 AND [Qty] IS NULL) OR ([Qty] = @Original_Qty)) AND ((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Original_SKU)) AND ((@IsNull_First = 1 AND [First] IS NULL) OR ([First] = @Original_First)) AND ((@IsNull_Last = 1 AND [Last] IS NULL) OR ([Last] = @Original_Last)));
+SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto WHERE (Id = @Id) ORDER BY Customer, Name";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LockCust", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LockCust", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LockLine", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LockLine", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Printed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Printed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1230,6 +1232,7 @@ SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, L
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_First", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "First", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Last", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Last", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Last", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1245,8 +1248,8 @@ SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, L
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, La" +
-                "st FROM dbo.TableAuto";
+            this._commandCollection[0].CommandText = "SELECT        Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, Fi" +
+                "rst, Last\r\nFROM            TableAuto\r\nORDER BY Customer, Name";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1409,67 +1412,66 @@ SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, L
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, global::System.Nullable<bool> LockCust, global::System.Nullable<bool> LockLine, global::System.Nullable<bool> Printed, global::System.Nullable<int> ON, string Customer, string Name, global::System.Nullable<int> Qty, string SKU, string First, string Last) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Insert(global::System.Nullable<bool> LockCust, global::System.Nullable<bool> LockLine, global::System.Nullable<bool> Printed, global::System.Nullable<int> ON, string Customer, string Name, global::System.Nullable<int> Qty, string SKU, string First, string Last) {
             if ((LockCust.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((bool)(LockCust.Value));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((bool)(LockCust.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((LockLine.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((bool)(LockLine.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((LockLine.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(LockLine.Value));
+            if ((Printed.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(Printed.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Printed.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(Printed.Value));
+            if ((ON.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(ON.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((ON.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ON.Value));
-            }
-            else {
+            if ((Customer == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Customer == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Customer));
+            }
+            if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Customer));
-            }
-            if ((Name == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Name));
             }
             if ((Qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Qty.Value));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Qty.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((SKU == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(SKU));
+            }
+            if ((First == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(SKU));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(First));
             }
-            if ((First == null)) {
+            if ((Last == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(First));
-            }
-            if ((Last == null)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Last));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Last));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1492,7 +1494,6 @@ SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, L
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int Id, 
                     global::System.Nullable<bool> LockCust, 
                     global::System.Nullable<bool> LockLine, 
                     global::System.Nullable<bool> Printed, 
@@ -1513,149 +1514,150 @@ SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, L
                     global::System.Nullable<int> Original_Qty, 
                     string Original_SKU, 
                     string Original_First, 
-                    string Original_Last) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+                    string Original_Last, 
+                    int Id) {
             if ((LockCust.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((bool)(LockCust.Value));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((bool)(LockCust.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((LockLine.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((bool)(LockLine.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((LockLine.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(LockLine.Value));
+            if ((Printed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(Printed.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Printed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(Printed.Value));
+            if ((ON.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(ON.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((ON.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ON.Value));
-            }
-            else {
+            if ((Customer == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Customer == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Customer));
+            }
+            if ((Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Customer));
-            }
-            if ((Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Name));
             }
             if ((Qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Qty.Value));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Qty.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((SKU == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(SKU));
+            }
+            if ((First == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(SKU));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(First));
             }
-            if ((First == null)) {
+            if ((Last == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(First));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Last));
             }
-            if ((Last == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Last));
-            }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Id));
             if ((Original_LockCust.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_LockCust.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((bool)(Original_LockCust.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_LockLine.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((bool)(Original_LockLine.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((bool)(Original_LockLine.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_Printed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((bool)(Original_Printed.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((bool)(Original_Printed.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_ON.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_ON.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_ON.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             if ((Original_Customer == null)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Customer));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_Customer));
             }
             if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Name));
             }
             if ((Original_Qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Original_Qty.Value));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_Qty.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             if ((Original_SKU == null)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_SKU));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_SKU));
             }
             if ((Original_First == null)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_First));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_First));
             }
             if ((Original_Last == null)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_Last));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_Last));
             }
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1698,7 +1700,7 @@ SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, L
                     string Original_SKU, 
                     string Original_First, 
                     string Original_Last) {
-            return this.Update(Original_Id, LockCust, LockLine, Printed, ON, Customer, Name, Qty, SKU, First, Last, Original_Id, Original_LockCust, Original_LockLine, Original_Printed, Original_ON, Original_Customer, Original_Name, Original_Qty, Original_SKU, Original_First, Original_Last);
+            return this.Update(LockCust, LockLine, Printed, ON, Customer, Name, Qty, SKU, First, Last, Original_Id, Original_LockCust, Original_LockLine, Original_Printed, Original_ON, Original_Customer, Original_Name, Original_Qty, Original_SKU, Original_First, Original_Last, Original_Id);
         }
     }
     

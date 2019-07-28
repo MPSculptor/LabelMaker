@@ -147,6 +147,8 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.dataGridViewAuto = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonUploadAuto = new System.Windows.Forms.Button();
             this.labelAutoFile = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
@@ -492,8 +494,6 @@
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridViewAuto = new System.Windows.Forms.DataGridView();
             this.databaseLabelsDataSetAuto = new LabelMaker.DatabaseLabelsDataSetAuto();
             this.tableAutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
@@ -532,6 +532,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPageAuto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).BeginInit();
             this.tabPagePreview.SuspendLayout();
             this.tabPageDatabase.SuspendLayout();
             this.groupBoxDataPictures.SuspendLayout();
@@ -583,7 +584,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetAuto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableAutoBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -1576,6 +1576,38 @@
             this.tabPageAuto.TabIndex = 1;
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewAuto
+            // 
+            this.dataGridViewAuto.AutoGenerateColumns = false;
+            this.dataGridViewAuto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAuto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.lockCustDataGridViewCheckBoxColumn,
+            this.lockLineDataGridViewCheckBoxColumn,
+            this.printedDataGridViewCheckBoxColumn,
+            this.oNDataGridViewTextBoxColumn,
+            this.customerDataGridViewTextBoxColumn2,
+            this.nameDataGridViewTextBoxColumn3,
+            this.qtyDataGridViewTextBoxColumn2,
+            this.sKUDataGridViewTextBoxColumn1,
+            this.firstDataGridViewTextBoxColumn,
+            this.lastDataGridViewTextBoxColumn});
+            this.dataGridViewAuto.DataSource = this.tableAutoBindingSource;
+            this.dataGridViewAuto.Location = new System.Drawing.Point(10, 61);
+            this.dataGridViewAuto.Name = "dataGridViewAuto";
+            this.dataGridViewAuto.Size = new System.Drawing.Size(955, 597);
+            this.dataGridViewAuto.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(162, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 30);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Try Headers";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // buttonUploadAuto
             // 
@@ -5123,38 +5155,6 @@
             // 
             this.tableColourQueueTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(162, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 30);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Try Headers";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            // 
-            // dataGridViewAuto
-            // 
-            this.dataGridViewAuto.AutoGenerateColumns = false;
-            this.dataGridViewAuto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAuto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
-            this.lockCustDataGridViewCheckBoxColumn,
-            this.lockLineDataGridViewCheckBoxColumn,
-            this.printedDataGridViewCheckBoxColumn,
-            this.oNDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn2,
-            this.nameDataGridViewTextBoxColumn3,
-            this.qtyDataGridViewTextBoxColumn2,
-            this.sKUDataGridViewTextBoxColumn1,
-            this.firstDataGridViewTextBoxColumn,
-            this.lastDataGridViewTextBoxColumn});
-            this.dataGridViewAuto.DataSource = this.tableAutoBindingSource;
-            this.dataGridViewAuto.Location = new System.Drawing.Point(10, 61);
-            this.dataGridViewAuto.Name = "dataGridViewAuto";
-            this.dataGridViewAuto.Size = new System.Drawing.Size(955, 597);
-            this.dataGridViewAuto.TabIndex = 5;
-            // 
             // databaseLabelsDataSetAuto
             // 
             this.databaseLabelsDataSetAuto.DataSetName = "DatabaseLabelsDataSetAuto";
@@ -5174,34 +5174,36 @@
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.Width = 40;
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn1.Width = 30;
             // 
             // lockCustDataGridViewCheckBoxColumn
             // 
             this.lockCustDataGridViewCheckBoxColumn.DataPropertyName = "LockCust";
             this.lockCustDataGridViewCheckBoxColumn.HeaderText = "LockCust";
             this.lockCustDataGridViewCheckBoxColumn.Name = "lockCustDataGridViewCheckBoxColumn";
-            this.lockCustDataGridViewCheckBoxColumn.Width = 40;
+            this.lockCustDataGridViewCheckBoxColumn.Width = 50;
             // 
             // lockLineDataGridViewCheckBoxColumn
             // 
             this.lockLineDataGridViewCheckBoxColumn.DataPropertyName = "LockLine";
             this.lockLineDataGridViewCheckBoxColumn.HeaderText = "LockLine";
             this.lockLineDataGridViewCheckBoxColumn.Name = "lockLineDataGridViewCheckBoxColumn";
-            this.lockLineDataGridViewCheckBoxColumn.Width = 40;
+            this.lockLineDataGridViewCheckBoxColumn.Width = 50;
             // 
             // printedDataGridViewCheckBoxColumn
             // 
             this.printedDataGridViewCheckBoxColumn.DataPropertyName = "Printed";
             this.printedDataGridViewCheckBoxColumn.HeaderText = "Printed";
             this.printedDataGridViewCheckBoxColumn.Name = "printedDataGridViewCheckBoxColumn";
-            this.printedDataGridViewCheckBoxColumn.Width = 40;
+            this.printedDataGridViewCheckBoxColumn.Width = 50;
             // 
             // oNDataGridViewTextBoxColumn
             // 
             this.oNDataGridViewTextBoxColumn.DataPropertyName = "ON";
             this.oNDataGridViewTextBoxColumn.HeaderText = "ON";
             this.oNDataGridViewTextBoxColumn.Name = "oNDataGridViewTextBoxColumn";
+            this.oNDataGridViewTextBoxColumn.Width = 75;
             // 
             // customerDataGridViewTextBoxColumn2
             // 
@@ -5290,6 +5292,7 @@
             this.groupBox2.PerformLayout();
             this.tabPageAuto.ResumeLayout(false);
             this.tabPageAuto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).EndInit();
             this.tabPagePreview.ResumeLayout(false);
             this.tabPagePreview.PerformLayout();
             this.tabPageDatabase.ResumeLayout(false);
@@ -5363,7 +5366,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetAuto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableAutoBindingSource)).EndInit();
             this.ResumeLayout(false);
