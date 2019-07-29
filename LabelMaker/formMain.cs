@@ -195,8 +195,8 @@ namespace LabelMaker
                 string where = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
                 string file = "order_export_short.csv";
                 labelAutoFile.Text = where + file;
-
-                
+                fillAutoListBox();
+                checkSKUs();                
             }
         }
 
@@ -3675,8 +3675,100 @@ namespace LabelMaker
             return returnString;
             }
 
-        public void csvReaderAutoBody(string path)
+        public void clearAutoGrid()
         {
+            int numRows = databaseLabelsDataSetAuto.TableAuto.Rows.Count - 1;
+
+            for (int i = 0; i <= numRows; i++)
+            {
+                dataGridViewAuto.Rows.RemoveAt(0);
+            }
+            dataGridViewAuto.EndEdit();
+            try
+            {
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to delete from Auto Queue - " + ex);
+            }
+
+            
+        }
+
+        private void fillAutoListBox()
+        {
+            string customerOld = "";
+            
+
+            listBoxAuto.Items.Clear();
+
+            int numRows = databaseLabelsDataSetAuto.TableAuto.Rows.Count - 1;
+
+            for (int i = 0; i <= numRows; i++)
+            {
+                string customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                string locked = "  ";
+                if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "True") { locked = "* "; }
+                if (customer != customerOld)
+                {
+                    listBoxAuto.Items.Add(locked + customer);
+                    customerOld = customer;
+                }
+            }
+
+            sortAutoListBox();
+            
+        }
+        private void sortAutoListBox()
+        {
+            for (int i = 0; i <= listBoxAuto.Items.Count - 2; i++)
+            {
+                for (int j = i + 1; j <= listBoxAuto.Items.Count - 1; j++)
+                {
+                    string one = listBoxAuto.Items[i].ToString();
+                    one = one.SubstringSpecial(2, one.Length - 1);
+                    string two = listBoxAuto.Items[j].ToString();
+                    two = two.SubstringSpecial(2, two.Length - 1);
+                    int result = String.Compare(one, two);
+                    if (result >= 0)
+                    {
+                        string swap = listBoxAuto.Items[i].ToString();
+                        listBoxAuto.Items[i] = listBoxAuto.Items[j].ToString();
+                        listBoxAuto.Items[j] = swap;
+                    }
+
+                }
+            }
+
+            //remove any duplicates
+            for (int i = listBoxAuto.Items.Count - 1;i>=1; i--)
+            {
+                for (int j = i -1; j >= 0; j--)
+                {
+                    string one = listBoxAuto.Items[i].ToString();
+                    one = one.SubstringSpecial(2, one.Length - 1);
+                    string two = listBoxAuto.Items[j].ToString();
+                    two = two.SubstringSpecial(2, two.Length - 1);
+                    
+                    if (one == two)
+                    {
+                        listBoxAuto.Items.RemoveAt(j);
+                    }
+
+                }
+            }
+        }
+
+        public void csvReaderAutoBody(string path)
+        
+        {
+            //clear the grid first
+            clearAutoGrid();
+            
+            //fetch the autolabel data and fill the grid
+
+            
             string[] headerData = findAutoHeaderRow();
             using (TextFieldParser csvParser = new TextFieldParser(path))
             {
@@ -3688,7 +3780,7 @@ namespace LabelMaker
                 csvParser.ReadLine();
 
                 String[] currentRow;
-                
+                                
                 //Loop through all of the fields in the file. 
                 //If any lines are corrupt, report an error and continue parsing. 
                 while (!csvParser.EndOfData)
@@ -3699,8 +3791,13 @@ namespace LabelMaker
 
                         DataRow row = databaseLabelsDataSetAuto.Tables[0].NewRow();
 
+                        row["LockCust"] = "True";
+                        row["LockLine"] = "False";
+                        row["Printed"] = "False";
                         row["ON"] = currentRow[int.Parse(headerData[0])];
-                        row["Customer"] = currentRow[int.Parse(headerData[5])] +" "+ currentRow[int.Parse(headerData[6])];
+                        string customer = currentRow[int.Parse(headerData[5])] + " " + currentRow[int.Parse(headerData[6])];
+                        row["Customer"] = customer;
+                        
                         row["Name"] = currentRow[int.Parse(headerData[2])];
                         row["Qty"] = currentRow[int.Parse(headerData[3])];
                         row["SKU"] = currentRow[int.Parse(headerData[4])];
@@ -3725,14 +3822,224 @@ namespace LabelMaker
                     }
 
                 }
+                sortAuto("Name");
+                fillAutoListBox();
 
 
             }
         }
 
-        private void textBoxQty_TextChanged(object sender, EventArgs e)
+        public void sortAuto(string which)
         {
+            // default is by customer
+            string selectionText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto ORDER BY Customer, Name";
 
+            if (which == "ON")
+            {
+                selectionText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto ORDER BY [ON], Name";
+            }
+            else if (which == "Plant")
+            {
+                selectionText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto ORDER BY Name";
+            }
+
+            tableAutoTableAdapter.Adapter.SelectCommand.CommandText = selectionText;
+            tableAutoTableAdapter.Fill(databaseLabelsDataSetAuto.TableAuto);
+            dataGridViewAuto.CurrentCell = dataGridViewAuto.Rows[0].Cells[1];
+            dataGridViewAuto.FirstDisplayedCell = dataGridViewAuto.CurrentCell;
+            dataGridViewAuto.Refresh();
+        }
+
+        private void buttonAutoCustomer_Click(object sender, EventArgs e)
+        {
+            sortAuto("Customer");
+        }
+
+        private void buttonSortAutoON_Click(object sender, EventArgs e)
+        {
+            sortAuto("ON");
+        }
+
+        private void buttonSortAutoPlant_Click(object sender, EventArgs e)
+        {
+            sortAuto("Plant");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Delete Printed Lines
+            for (int i  = dataGridViewAuto.RowCount - 2 ; i>=0; i--)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[3].Value.ToString() == "True")
+                {
+                    dataGridViewAuto.Rows.RemoveAt(i); 
+                }
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            fillAutoListBox();
+        }
+
+        private void listBoxAuto_Click(object sender, EventArgs e)
+        {
+            if (listBoxAuto.SelectedItem == null)
+            {
+                return;
+            }
+
+            Boolean locked = false;
+
+                string selected = listBoxAuto.SelectedItem.ToString().TrimEnd();
+                Boolean change = true;
+                if (string.IsNullOrEmpty(selected)) { change = false; }
+                if (change)
+                {
+                    if (selected.SubstringSpecial(0, 2) == "* ")
+                    {
+                        locked = true;
+                    }
+
+                    string name = selected.Substring(2);
+                    swapAutoByName(locked, name, listBoxAuto.SelectedIndex);
+                              
+                }
+            
+        }
+
+        private void swapAutoByName(Boolean locked, string name, int index)
+        {
+            //MessageBox.Show(name + " - " + locked.ToString());
+            Boolean changeTo = true;
+            dataGridViewAuto.ClearSelection();
+
+            if (locked) { changeTo = false; }
+            string changeText = "  ";
+            if (changeTo) { changeText = "* "; }
+            listBoxAuto.Items[index] = changeText + name;
+
+            for (int i = 0; i <= dataGridViewAuto.Rows.Count - 2; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString().TrimEnd() == name)
+                {
+                    dataGridViewAuto.Rows[i].Cells[1].Value = changeTo;
+                    tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+                }
+            }
+
+        }
+
+        private void dataGridViewAuto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5|e.ColumnIndex==1|e.ColumnIndex==4) //LockCustomer, Order NUmber or Name change whole order
+            {
+                //clicked on the name
+                string name = dataGridViewAuto.Rows[e.RowIndex].Cells[5].Value.ToString().TrimEnd();
+                Boolean locked = false;
+              
+                int index = 0;
+                for (int i = 0; i <= listBoxAuto.Items.Count - 1; i++)
+                {
+                    //MessageBox.Show(listBoxAuto.Items[i].ToString().Substring(2) + " , " + name);
+                    if (listBoxAuto.Items[i].ToString().Substring(2).TrimEnd() == name)
+                        
+                    {
+                        index = i;
+                        //MessageBox.Show("in loop, index = " + index.ToString());
+                        
+                        string lockedString = listBoxAuto.Items[i].ToString().SubstringSpecial(0, 2);
+                        if (lockedString == "* ") { locked = true; }
+                        break;
+                    }
+                }
+                swapAutoByName(locked, name, index);
+            }
+            else if(e.ColumnIndex==2|e.ColumnIndex==6|e.ColumnIndex==7|e.ColumnIndex==8) //Line Lock, Plant Name, qty or SKU
+            {
+                string changeValue = dataGridViewAuto.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Boolean changeTo = true;
+                if (changeValue == "True") { changeTo = false; }
+                dataGridViewAuto.Rows[e.RowIndex].Cells[2].Value = changeTo;
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+
+            }
+            else if (e.ColumnIndex == 3) //Printed
+            {
+                string changeValue = dataGridViewAuto.Rows[e.RowIndex].Cells[3].Value.ToString();
+                Boolean changeTo = true;
+                if (changeValue == "True") { changeTo = false; }
+                dataGridViewAuto.Rows[e.RowIndex].Cells[3].Value = changeTo;
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+
+            }
+        }
+
+        private void buttonCreateQueue_Click(object sender, EventArgs e)
+        {
+            DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
+
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "False" &&
+                    dataGridViewAuto.Rows[i].Cells[2].Value.ToString() == "False" &&
+                    dataGridViewAuto.Rows[i].Cells[3].Value.ToString() == "False")
+                    
+                {
+                    MessageBox.Show("looking for " + i.ToString());
+                    string sku = dataGridViewAuto.Rows[i].Cells[8].Value.ToString();
+
+                    string expression;
+                    expression = "SKU = '" + sku + "'";
+                    DataRow[] foundRows;
+                    // Use the Select method to find all rows matching the filter.
+                    foundRows = table.Select(expression);
+                    MessageBox.Show("Found a match " + foundRows[0][4].ToString());
+                }
+            }
+        }
+
+        private void checkSKUs()
+        { 
+            DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
+            Boolean firstError = true;
+            listBoxAutoErrors.Items.Clear();
+            listBoxAutoErrors.Items.Add("All SKUs have a corresponding match in the Database");
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                {
+                    //MessageBox.Show("looking for " + i.ToString());
+                    string sku = dataGridViewAuto.Rows[i].Cells[8].Value.ToString().Trim();
+
+                    string expression;
+                    expression = "SKU = '" + sku + "'";
+                    try
+                    {
+                        DataRow[] foundRows;
+                        // Use the Select method to find all rows matching the filter.
+                        foundRows = table.Select(expression);
+                        //MessageBox.Show("Found a match for" + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
+                        string found = foundRows[0][2] + " " + foundRows[0][4] + " " + foundRows[0][5];
+                        //MessageBox.Show("Found a match for " + found);
+
+                    }
+                    catch
+                    {
+                        if (firstError)
+                        {
+                            listBoxAutoErrors.Items.Clear();
+                            listBoxAutoErrors.Items.Add("The following Lines lack a match in the Database :-");
+                            listBoxAutoErrors.Items.Add(" ");
+                        }
+                        //MessageBox.Show("failed to match SKU = " + sku + " for " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
+                        listBoxAutoErrors.Items.Add(sku + " - " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
+                        firstError = false;
+                    }
+                }
+                table.Dispose();
+            }
+}
+
+        private void buttonCheckSKUs_Click(object sender, EventArgs e)
+        {
+            checkSKUs();
         }
     }
 }
