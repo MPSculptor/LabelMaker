@@ -196,7 +196,7 @@ namespace LabelMaker
                 string file = "order_export_short.csv";
                 labelAutoFile.Text = where + file;
                 fillAutoListBox();
-                checkSKUs();                
+                checkSKUs();
             }
         }
 
@@ -2613,7 +2613,7 @@ namespace LabelMaker
 
         private void countMissingPictures()
         {
-            labelMissingPictures.Text=dataGridViewMissingPictures.RowCount.ToString();
+            labelMissingPictures.Text = dataGridViewMissingPictures.RowCount.ToString();
 
             int removeCount = 0;
 
@@ -2653,7 +2653,7 @@ namespace LabelMaker
 
         private void fillMissingPicturesGrid()
         {
-         //clear the grid first
+            //clear the grid first
             dataGridViewMissingPictures.SelectAll();
             foreach (DataGridViewCell oneCell in dataGridViewMissingPictures.SelectedCells)
             {
@@ -2670,7 +2670,7 @@ namespace LabelMaker
                         dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
                         "True",
                         dataGridViewColourQ.Rows[i].Cells[26].Value.ToString()};
-                        dataGridViewMissingPictures.Rows.Add(toAdd);
+                    dataGridViewMissingPictures.Rows.Add(toAdd);
                 }
             }
             dataGridViewMissingPictures.Sort(dataGridViewMissingPictures.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
@@ -2729,27 +2729,31 @@ namespace LabelMaker
         private void addToQueues()
         {
             string[] queue = CollectQueueEntry();
+            doTheAdding(queue);
+        }
 
+        private void doTheAdding(string[] queue)
+        {
             if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
             {
-                addRowToColourQ();
+                addRowToColourQ(queue);
             }
             else
             {
-                addRowToMainQ();
+                addRowToMainQ(queue);
                 if (buttonAddtoColourQueue.Text == "add Colour")
                 {
                     if (checkBoxColourAdd.Checked == true)
                     {
-                        addRowToColourQ();
+                        addRowToColourQ(queue);
                     }
                 }
             }
         }
 
-        private void addRowToMainQ()
+        private void addRowToMainQ(string[] queue)
         {
-            string[] queue = CollectQueueEntry();
+            //string[] queue = CollectQueueEntry();
             DataRow row = databaseLabelsDataSetMainQueue.Tables[0].NewRow();
 
             //row["Id"] = "1";
@@ -2794,9 +2798,9 @@ namespace LabelMaker
             labelMainCount.Text = addMainQueueTotal().ToString();
         }
 
-        private void addRowToColourQ()
+        private void addRowToColourQ(string[] queue)
         {
-            string[] queue = CollectQueueEntry();
+            //string[] queue = CollectQueueEntry();
             DataRow row = databaseLabelsDataSetColourQueue.Tables[0].NewRow();
 
             //row["Id"] = "1";
@@ -2928,7 +2932,7 @@ namespace LabelMaker
             if (string.IsNullOrEmpty(queueData[24]))
             { queueData[24] = ""; }
             else
-            { queueData[24] = "Order No. #" + queueData[24];}
+            { queueData[24] = "Order No. #" + queueData[24]; }
             queueData[25] = sendData[20];
             queueData[26] = sendData[0];
 
@@ -3073,8 +3077,8 @@ namespace LabelMaker
         private void buttonDeleteThisQueue_Click(object sender, EventArgs e)
         {
             string which = "Main Queue";
-            if (tabControlQueue.SelectedTab==tabPageColourQueue) { which = "Colour Queue"; }
-            DialogResult result = MessageBox.Show("Do you want to Delete all entries from the " + which, "Delete "+ which, MessageBoxButtons.YesNo);
+            if (tabControlQueue.SelectedTab == tabPageColourQueue) { which = "Colour Queue"; }
+            DialogResult result = MessageBox.Show("Do you want to Delete all entries from the " + which, "Delete " + which, MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             { deleteQueue("Single"); }
         }
@@ -3095,7 +3099,7 @@ namespace LabelMaker
         private void fillQuickPrint()
         {
             DataTable quickNames = new DataTable("quickNames");
-            quickNames = LabelsLabelNamesTableAdapter.GetDataByQuickPrint( true);
+            quickNames = LabelsLabelNamesTableAdapter.GetDataByQuickPrint(true);
 
             //start with a clean slate
             for (int i = 1; i <= 9; i++)
@@ -3119,7 +3123,7 @@ namespace LabelMaker
             String[] allTheNames = new string[noRows];
 
             // collect all the names as tempMakeALabel resets dataTable
-            for (int k = 0; k <= (noRows-1); k++)
+            for (int k = 0; k <= (noRows - 1); k++)
             {
                 DataRow dRow = quickNames.Rows[k];
                 allTheNames[k] = dRow.ItemArray[1].ToString();
@@ -3127,7 +3131,7 @@ namespace LabelMaker
 
             quickNames.Dispose();
 
-            for (int j = 0; j <=(noRows-1); j++)
+            for (int j = 0; j <= (noRows - 1); j++)
             {
                 int i = j + 1;
                 GroupBox curGroupQP = (GroupBox)tabPageQuickPrint.Controls["groupBoxQP" + i.ToString()];
@@ -3461,7 +3465,7 @@ namespace LabelMaker
 
         private void listQueueEntriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void dataGridViewQueueList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -3482,7 +3486,7 @@ namespace LabelMaker
         private void buttonRemoveLabelStocks_Click(object sender, EventArgs e)
         {
             if (dataGridViewQueueList.RowCount > 0)
-                
+
             {
                 int countLabels = 0;
                 int countFlags = 0;
@@ -3499,11 +3503,11 @@ namespace LabelMaker
                             if (idFind == dataGridViewColourQ.Rows[j].Cells[26].Value.ToString())
                             {
                                 dataGridViewColourQ.Rows.RemoveAt(j);
-                                
+
                                 try
                                 {
                                     tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
-                                    countLabels ++;
+                                    countLabels++;
                                 }
                                 catch (System.Exception ex)
                                 {
@@ -3517,7 +3521,7 @@ namespace LabelMaker
                     if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
                     {
                         string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
-                        for (int j = 0; j <= (dataGridViewPlants.RowCount-1); j++)
+                        for (int j = 0; j <= (dataGridViewPlants.RowCount - 1); j++)
                         {
                             if (idFind == dataGridViewPlants.Rows[j].Cells[0].Value.ToString())
                             {
@@ -3535,8 +3539,8 @@ namespace LabelMaker
                                 break;
                             }
                         }
-                }
-                    
+                    }
+
                 }
                 string entry = " Entry";
                 string flag = " flag";
@@ -3544,7 +3548,7 @@ namespace LabelMaker
                 if (countFlags > 1) { flag = " flags"; }
                 labelColourCount.Text = addColourQueueTotal().ToString();
                 fillLabelStocksGrid();
-                MessageBox.Show(countLabels + entry+" removed from colour queue, "+countFlags+ flag+" reset to 'False'.");
+                MessageBox.Show(countLabels + entry + " removed from colour queue, " + countFlags + flag + " reset to 'False'.");
             }
         }
 
@@ -3580,7 +3584,7 @@ namespace LabelMaker
                                 break;
                             }
                         }
-                    }  
+                    }
                 }
                 string entry = " Entry";
                 if (count > 1) { entry = " Entries"; }
@@ -3618,6 +3622,8 @@ namespace LabelMaker
         private void buttonUploadAuto_Click(object sender, EventArgs e)
         {
             csvReaderAutoBody(labelAutoFile.Text.ToString());
+            fillAutoListBox();
+            checkSKUs();
         }
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -3627,7 +3633,7 @@ namespace LabelMaker
             {
                 //listBoxAuto.Items.Add(header[i]);
             }
-        
+
         }
 
         private string[] findAutoHeaderRow()
@@ -3637,43 +3643,43 @@ namespace LabelMaker
             {
                 string[] header = CreationUtilities.dataReader.csvReaderHeader(labelAutoFile.Text.ToString());
                 string[] headerData = new string[7];
-                    for (int i = 0; i <= header.Length - 1; i++)
-                    { 
-                
-                            if (header[i] == "Order Number")
-                            {
-                                headerData[0] = i.ToString();
-                            }
-                            if (header[i] == "Product Name")
-                            {
-                                headerData[2] = i.ToString();
-                            }
-                            if (header[i] == "Product Quantity")
-                            {
-                            headerData[3] = i.ToString();
-                            }
-                            if (header[i] == "Product SKU")
-                            {
-                                headerData[4] = i.ToString();
-                            }
-                            if (header[i] == "Billing First Name")
-                            {
-                                headerData[5] = i.ToString();
-                            }
-                            if (header[i] == "Billing Last Name")
-                            {
-                                headerData[6] = i.ToString();
-                            }
-                    }
-                returnString = headerData;
-                    
-                }
-                catch
+                for (int i = 0; i <= header.Length - 1; i++)
                 {
-                    MessageBox.Show("Failed to Read File. Try altering the file address and refreshing the grid");
+
+                    if (header[i] == "Order Number")
+                    {
+                        headerData[0] = i.ToString();
+                    }
+                    if (header[i] == "Product Name")
+                    {
+                        headerData[2] = i.ToString();
+                    }
+                    if (header[i] == "Product Quantity")
+                    {
+                        headerData[3] = i.ToString();
+                    }
+                    if (header[i] == "Product SKU")
+                    {
+                        headerData[4] = i.ToString();
+                    }
+                    if (header[i] == "Billing First Name")
+                    {
+                        headerData[5] = i.ToString();
+                    }
+                    if (header[i] == "Billing Last Name")
+                    {
+                        headerData[6] = i.ToString();
+                    }
                 }
-            return returnString;
+                returnString = headerData;
+
             }
+            catch
+            {
+                MessageBox.Show("Failed to Read File. Try altering the file address and refreshing the grid");
+            }
+            return returnString;
+        }
 
         public void clearAutoGrid()
         {
@@ -3693,13 +3699,13 @@ namespace LabelMaker
                 MessageBox.Show("Failed to delete from Auto Queue - " + ex);
             }
 
-            
+
         }
 
         private void fillAutoListBox()
         {
             string customerOld = "";
-            
+
 
             listBoxAuto.Items.Clear();
 
@@ -3718,7 +3724,7 @@ namespace LabelMaker
             }
 
             sortAutoListBox();
-            
+
         }
         private void sortAutoListBox()
         {
@@ -3742,15 +3748,15 @@ namespace LabelMaker
             }
 
             //remove any duplicates
-            for (int i = listBoxAuto.Items.Count - 1;i>=1; i--)
+            for (int i = listBoxAuto.Items.Count - 1; i >= 1; i--)
             {
-                for (int j = i -1; j >= 0; j--)
+                for (int j = i - 1; j >= 0; j--)
                 {
                     string one = listBoxAuto.Items[i].ToString();
                     one = one.SubstringSpecial(2, one.Length - 1);
                     string two = listBoxAuto.Items[j].ToString();
                     two = two.SubstringSpecial(2, two.Length - 1);
-                    
+
                     if (one == two)
                     {
                         listBoxAuto.Items.RemoveAt(j);
@@ -3761,14 +3767,14 @@ namespace LabelMaker
         }
 
         public void csvReaderAutoBody(string path)
-        
+
         {
             //clear the grid first
             clearAutoGrid();
-            
+
             //fetch the autolabel data and fill the grid
 
-            
+
             string[] headerData = findAutoHeaderRow();
             using (TextFieldParser csvParser = new TextFieldParser(path))
             {
@@ -3780,7 +3786,7 @@ namespace LabelMaker
                 csvParser.ReadLine();
 
                 String[] currentRow;
-                                
+
                 //Loop through all of the fields in the file. 
                 //If any lines are corrupt, report an error and continue parsing. 
                 while (!csvParser.EndOfData)
@@ -3797,7 +3803,7 @@ namespace LabelMaker
                         row["ON"] = currentRow[int.Parse(headerData[0])];
                         string customer = currentRow[int.Parse(headerData[5])] + " " + currentRow[int.Parse(headerData[6])];
                         row["Customer"] = customer;
-                        
+
                         row["Name"] = currentRow[int.Parse(headerData[2])];
                         row["Qty"] = currentRow[int.Parse(headerData[3])];
                         row["SKU"] = currentRow[int.Parse(headerData[4])];
@@ -3814,7 +3820,7 @@ namespace LabelMaker
                         {
                             MessageBox.Show("Failed to add to Auto Queue - " + ex);
                         }
-                        
+
                     }
                     catch (MalformedLineException e)
                     {
@@ -3868,11 +3874,11 @@ namespace LabelMaker
         private void button2_Click(object sender, EventArgs e)
         {
             //Delete Printed Lines
-            for (int i  = dataGridViewAuto.RowCount - 2 ; i>=0; i--)
+            for (int i = dataGridViewAuto.RowCount - 2; i >= 0; i--)
             {
                 if (dataGridViewAuto.Rows[i].Cells[3].Value.ToString() == "True")
                 {
-                    dataGridViewAuto.Rows.RemoveAt(i); 
+                    dataGridViewAuto.Rows.RemoveAt(i);
                 }
                 tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
             }
@@ -3888,21 +3894,21 @@ namespace LabelMaker
 
             Boolean locked = false;
 
-                string selected = listBoxAuto.SelectedItem.ToString().TrimEnd();
-                Boolean change = true;
-                if (string.IsNullOrEmpty(selected)) { change = false; }
-                if (change)
+            string selected = listBoxAuto.SelectedItem.ToString().TrimEnd();
+            Boolean change = true;
+            if (string.IsNullOrEmpty(selected)) { change = false; }
+            if (change)
+            {
+                if (selected.SubstringSpecial(0, 2) == "* ")
                 {
-                    if (selected.SubstringSpecial(0, 2) == "* ")
-                    {
-                        locked = true;
-                    }
-
-                    string name = selected.Substring(2);
-                    swapAutoByName(locked, name, listBoxAuto.SelectedIndex);
-                              
+                    locked = true;
                 }
-            
+
+                string name = selected.Substring(2);
+                swapAutoByName(locked, name, listBoxAuto.SelectedIndex);
+
+            }
+
         }
 
         private void swapAutoByName(Boolean locked, string name, int index)
@@ -3929,22 +3935,22 @@ namespace LabelMaker
 
         private void dataGridViewAuto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5|e.ColumnIndex==1|e.ColumnIndex==4) //LockCustomer, Order NUmber or Name change whole order
+            if (e.ColumnIndex == 5 | e.ColumnIndex == 1 | e.ColumnIndex == 4) //LockCustomer, Order NUmber or Name change whole order
             {
                 //clicked on the name
                 string name = dataGridViewAuto.Rows[e.RowIndex].Cells[5].Value.ToString().TrimEnd();
                 Boolean locked = false;
-              
+
                 int index = 0;
                 for (int i = 0; i <= listBoxAuto.Items.Count - 1; i++)
                 {
                     //MessageBox.Show(listBoxAuto.Items[i].ToString().Substring(2) + " , " + name);
                     if (listBoxAuto.Items[i].ToString().Substring(2).TrimEnd() == name)
-                        
+
                     {
                         index = i;
                         //MessageBox.Show("in loop, index = " + index.ToString());
-                        
+
                         string lockedString = listBoxAuto.Items[i].ToString().SubstringSpecial(0, 2);
                         if (lockedString == "* ") { locked = true; }
                         break;
@@ -3952,7 +3958,7 @@ namespace LabelMaker
                 }
                 swapAutoByName(locked, name, index);
             }
-            else if(e.ColumnIndex==2|e.ColumnIndex==6|e.ColumnIndex==7|e.ColumnIndex==8) //Line Lock, Plant Name, qty or SKU
+            else if (e.ColumnIndex == 2 | e.ColumnIndex == 6 | e.ColumnIndex == 7 | e.ColumnIndex == 8) //Line Lock, Plant Name, qty or SKU
             {
                 string changeValue = dataGridViewAuto.Rows[e.RowIndex].Cells[2].Value.ToString();
                 Boolean changeTo = true;
@@ -3974,7 +3980,67 @@ namespace LabelMaker
 
         private void buttonCreateQueue_Click(object sender, EventArgs e)
         {
+            createAutoQueueEntry();
+            findAutoCustomer();
+        }
+
+        private void findAutoCustomer()
+        {
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "False" &&
+                    dataGridViewAuto.Rows[i].Cells[2].Value.ToString() == "False" &&
+                    dataGridViewAuto.Rows[i].Cells[3].Value.ToString() == "False")
+                {
+                    string customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                    //MessageBox.Show("findAutoCustomer = " + customer);
+                    string[][] collectedOrder = collectAutoCustomer(customer);
+                }
+            }
+        }
+
+        private string[][] collectAutoCustomer(string customer)
+        {
+            int size = 0;
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() == customer) { size++; }
+            }
+            //MessageBox.Show(size.ToString());
+            
+            string[][] collectedOrder = new string[size][];
+            int counter = 0;
+
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() == customer)
+                {
+                    string[] collect = new string[9];
+                    for (int j = 0; j <= 8; j++)
+                    {
+                        collect[j] = dataGridViewAuto.Rows[i].Cells[j].Value.ToString();
+                    }
+                    dataGridViewAuto.Rows[i].Cells[3].Value = true;
+                    try
+                    {
+                        tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        //MessageBox.Show("Failed to delete from Auto Queue - " + ex);
+                    }
+                    collectedOrder[counter] = collect;
+                    counter++;
+                }
+            }
+            return collectedOrder;
+        }
+
+        private void createAutoQueueEntry()
+        { 
             DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
+            Boolean firstError = true;
+            pictureBoxArrow.Visible = false;
 
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
             {
@@ -3983,23 +4049,51 @@ namespace LabelMaker
                     dataGridViewAuto.Rows[i].Cells[3].Value.ToString() == "False")
                     
                 {
-                    MessageBox.Show("looking for " + i.ToString());
                     string sku = dataGridViewAuto.Rows[i].Cells[8].Value.ToString();
+                    try
+                    {//MessageBox.Show("looking for " + i.ToString());
+                        
+                        string expression;
+                        expression = "SKU = '" + sku + "'";
+                        DataRow[] foundRows;
+                        // Use the Select method to find all rows matching the filter.
+                        foundRows = table.Select(expression);
+                        //MessageBox.Show("Found a match " + foundRows[0][4].ToString());
+                        string[] sendAutoRow = new string[21];
+                        for (int j = 0; j <= 20; j++)
+                        {
+                            sendAutoRow[j] = foundRows[0][j].ToString();
+                        }
+                        string sendQty = dataGridViewAuto.Rows[i].Cells[7].Value.ToString();
+                        string sendCustomer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                        string sendOrderNumber = dataGridViewAuto.Rows[i].Cells[4].Value.ToString();
 
-                    string expression;
-                    expression = "SKU = '" + sku + "'";
-                    DataRow[] foundRows;
-                    // Use the Select method to find all rows matching the filter.
-                    foundRows = table.Select(expression);
-                    MessageBox.Show("Found a match " + foundRows[0][4].ToString());
+                        string[] queue = CollectAutoQueueEntry(sendAutoRow, sendQty, sendCustomer, sendOrderNumber);
+                        doTheAdding(queue);
+                    }
+                    catch
+                    {
+                        if (firstError)
+                        {
+                            listBoxAutoErrors.Items.Clear();
+                            listBoxAutoErrors.Items.Add("The following Lines wern't matched in the Database :-");
+                            listBoxAutoErrors.Items.Add(" ");
+                        }
+                        //MessageBox.Show("failed to match SKU = " + sku + " for " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
+                        listBoxAutoErrors.Items.Add(sku + " - " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
+                        firstError = false;
+                        pictureBoxArrow.Visible = true;
+                    }
                 }
             }
+            table.Dispose();
         }
 
         private void checkSKUs()
         { 
             DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
             Boolean firstError = true;
+            pictureBoxArrow.Visible = false;
             listBoxAutoErrors.Items.Clear();
             listBoxAutoErrors.Items.Add("All SKUs have a corresponding match in the Database");
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
@@ -4031,6 +4125,7 @@ namespace LabelMaker
                         //MessageBox.Show("failed to match SKU = " + sku + " for " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
                         listBoxAutoErrors.Items.Add(sku + " - " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
                         firstError = false;
+                        pictureBoxArrow.Visible = true;
                     }
                 }
                 table.Dispose();
@@ -4040,6 +4135,97 @@ namespace LabelMaker
         private void buttonCheckSKUs_Click(object sender, EventArgs e)
         {
             checkSKUs();
+        }
+
+        public string[] CollectAutoQueueEntry(string[] sentAutoRow, string sentQty, string sentCustomer, string sentOrderNumber)
+        {
+            string[] queueData = new string[27];
+
+            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+
+            //file with default settings
+            //needs amending
+            string name = whereFiles + "defaults.txt";
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+
+            string[] sendData = new string[21];
+            string[] findName = new string[5];
+            string[] moreData = new string[2];
+
+            // get general plant data
+            for (int i = 0; i <= 20; i++)
+            {
+                sendData[i] = sentAutoRow[i];
+            }
+
+            // get various concatenated Name strings 
+            for (int i = 0; i <= 4; i++)
+            {
+                findName[i] = sentAutoRow[1 + i];
+            }
+            string[] sendName = getPlantName(findName);
+
+            //get main pcture
+            if (radioButtonImage1.Checked) { moreData[0] = sentAutoRow[12]; }
+            if (radioButtonImage2.Checked) { moreData[0] = sentAutoRow[13]; }
+            if (radioButtonImage3.Checked) { moreData[0] = sentAutoRow[14]; }
+            if (radioButtonImage4.Checked) { moreData[0] = sentAutoRow[15]; }
+
+            // Check AGM Status
+            if (sentAutoRow[16] == "True")
+            {
+                moreData[1] = "AGM.ico";
+            }
+            else
+            {
+                moreData[1] = "AGMBlank.ico";
+            }
+
+            // profile
+            string profileName = sentAutoRow[17];
+
+            DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
+            string expression;
+            expression = "Name = '" + profileName + "'";
+            DataRow[] foundRows;
+            // Use the Select method to find all rows matching the filter.
+            foundRows = table.Select(expression);
+
+            queueData[0] = sendName[0]; //Full name
+            queueData[1] = sentQty; // Qty
+            if (String.IsNullOrEmpty(queueData[1])) { queueData[1] = "0"; }
+            queueData[2] = ""; // price - set to 0
+            //if (String.IsNullOrEmpty(queueData[2])) { queueData[2] = "0"; }
+            queueData[3] = sendData[9];  //Potsize
+            queueData[4] = sentCustomer; // Customer Name
+            queueData[5] = sendData[11]; // Barcode
+            queueData[6] = sendData[8]; //Description
+            queueData[7] = sendData[6]; //Common Name
+            queueData[8] = moreData[0]; // Main Picture
+            queueData[9] = foundRows[0][3].ToString(); // Font Name
+            queueData[10] = foundRows[0][6].ToString(); // Font Colour
+            queueData[11] = foundRows[0][4].ToString(); // Bold
+            queueData[12] = foundRows[0][5].ToString(); // Italic
+            queueData[13] = foundRows[0][2].ToString(); // Border Colour
+            queueData[14] = foundRows[0][7].ToString(); // Back Colour
+            queueData[15] = sendData[19]; // notes
+            queueData[16] = sendName[1]; // Genus
+            queueData[17] = sendName[2]; // species
+            queueData[18] = sendName[3];  // Variety
+            queueData[19] = moreData[1]; // AGM picture to use
+            queueData[20] = sendData[12]; // Picture1
+            queueData[21] = sendData[13]; // Picture2
+            queueData[22] = sendData[14]; // Picture3
+            queueData[23] = sendData[15]; // Picture4
+            queueData[24] = sentOrderNumber; //Order Number
+            if (string.IsNullOrEmpty(queueData[24]))
+            { queueData[24] = ""; }
+            else
+            { queueData[24] = "Order No. #" + queueData[24]; }
+            queueData[25] = sendData[20];
+            queueData[26] = sendData[0];
+
+            return queueData;
         }
     }
 }

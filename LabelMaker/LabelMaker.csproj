@@ -151,6 +151,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DatabaseLabelsDataSet.xsc">
       <DependentUpon>DatabaseLabelsDataSet.xsd</DependentUpon>
@@ -250,6 +251,8 @@
       <DependentUpon>DatabaseLabels.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="PictureFiles\redarrow.jpg" />
+    <None Include="PictureFiles\arrow.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
