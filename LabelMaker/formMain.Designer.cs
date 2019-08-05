@@ -147,10 +147,14 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.label82 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.radioButtonAutoModified = new System.Windows.Forms.RadioButton();
+            this.radioButtonAutoStated = new System.Windows.Forms.RadioButton();
+            this.buttonCreateQueue = new System.Windows.Forms.Button();
             this.pictureBoxArrow = new System.Windows.Forms.PictureBox();
             this.listBoxAutoErrors = new System.Windows.Forms.ListBox();
             this.buttonCheckSKUs = new System.Windows.Forms.Button();
-            this.buttonCreateQueue = new System.Windows.Forms.Button();
             this.listBoxAuto = new System.Windows.Forms.ListBox();
             this.buttonDeletePrinted = new System.Windows.Forms.Button();
             this.buttonSortAutoPlant = new System.Windows.Forms.Button();
@@ -540,6 +544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPageAuto.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableAutoBindingSource)).BeginInit();
@@ -1573,10 +1578,11 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.label82);
+            this.tabPageAuto.Controls.Add(this.panel3);
             this.tabPageAuto.Controls.Add(this.pictureBoxArrow);
             this.tabPageAuto.Controls.Add(this.listBoxAutoErrors);
             this.tabPageAuto.Controls.Add(this.buttonCheckSKUs);
-            this.tabPageAuto.Controls.Add(this.buttonCreateQueue);
             this.tabPageAuto.Controls.Add(this.listBoxAuto);
             this.tabPageAuto.Controls.Add(this.buttonDeletePrinted);
             this.tabPageAuto.Controls.Add(this.buttonSortAutoPlant);
@@ -1594,11 +1600,65 @@
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
             // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label82.Location = new System.Drawing.Point(925, 9);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(86, 20);
+            this.label82.TabIndex = 16;
+            this.label82.Text = "Customers";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.radioButtonAutoModified);
+            this.panel3.Controls.Add(this.radioButtonAutoStated);
+            this.panel3.Controls.Add(this.buttonCreateQueue);
+            this.panel3.Location = new System.Drawing.Point(635, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(284, 48);
+            this.panel3.TabIndex = 15;
+            // 
+            // radioButtonAutoModified
+            // 
+            this.radioButtonAutoModified.AutoSize = true;
+            this.radioButtonAutoModified.Location = new System.Drawing.Point(12, 27);
+            this.radioButtonAutoModified.Name = "radioButtonAutoModified";
+            this.radioButtonAutoModified.Size = new System.Drawing.Size(134, 17);
+            this.radioButtonAutoModified.TabIndex = 13;
+            this.radioButtonAutoModified.Text = "Use modified quantities";
+            this.radioButtonAutoModified.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAutoStated
+            // 
+            this.radioButtonAutoStated.AutoSize = true;
+            this.radioButtonAutoStated.Checked = true;
+            this.radioButtonAutoStated.Location = new System.Drawing.Point(12, 4);
+            this.radioButtonAutoStated.Name = "radioButtonAutoStated";
+            this.radioButtonAutoStated.Size = new System.Drawing.Size(124, 17);
+            this.radioButtonAutoStated.TabIndex = 12;
+            this.radioButtonAutoStated.TabStop = true;
+            this.radioButtonAutoStated.Text = "Use stated quantities";
+            this.radioButtonAutoStated.UseVisualStyleBackColor = true;
+            // 
+            // buttonCreateQueue
+            // 
+            this.buttonCreateQueue.Location = new System.Drawing.Point(170, 4);
+            this.buttonCreateQueue.Name = "buttonCreateQueue";
+            this.buttonCreateQueue.Size = new System.Drawing.Size(111, 41);
+            this.buttonCreateQueue.TabIndex = 11;
+            this.buttonCreateQueue.Text = "Make A Queue";
+            this.buttonCreateQueue.UseVisualStyleBackColor = true;
+            this.buttonCreateQueue.Click += new System.EventHandler(this.buttonCreateQueue_Click);
+            // 
             // pictureBoxArrow
             // 
             this.pictureBoxArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxArrow.Image = global::LabelMaker.Properties.Resources.redarrow;
-            this.pictureBoxArrow.Location = new System.Drawing.Point(607, 712);
+            this.pictureBoxArrow.Location = new System.Drawing.Point(421, 711);
             this.pictureBoxArrow.MaximumSize = new System.Drawing.Size(60, 60);
             this.pictureBoxArrow.MinimumSize = new System.Drawing.Size(60, 60);
             this.pictureBoxArrow.Name = "pictureBoxArrow";
@@ -1611,12 +1671,12 @@
             this.listBoxAutoErrors.FormattingEnabled = true;
             this.listBoxAutoErrors.Location = new System.Drawing.Point(10, 682);
             this.listBoxAutoErrors.Name = "listBoxAutoErrors";
-            this.listBoxAutoErrors.Size = new System.Drawing.Size(591, 95);
+            this.listBoxAutoErrors.Size = new System.Drawing.Size(405, 95);
             this.listBoxAutoErrors.TabIndex = 13;
             // 
             // buttonCheckSKUs
             // 
-            this.buttonCheckSKUs.Location = new System.Drawing.Point(607, 682);
+            this.buttonCheckSKUs.Location = new System.Drawing.Point(421, 682);
             this.buttonCheckSKUs.Name = "buttonCheckSKUs";
             this.buttonCheckSKUs.Size = new System.Drawing.Size(113, 23);
             this.buttonCheckSKUs.TabIndex = 12;
@@ -1624,28 +1684,18 @@
             this.buttonCheckSKUs.UseVisualStyleBackColor = true;
             this.buttonCheckSKUs.Click += new System.EventHandler(this.buttonCheckSKUs_Click);
             // 
-            // buttonCreateQueue
-            // 
-            this.buttonCreateQueue.Location = new System.Drawing.Point(364, 28);
-            this.buttonCreateQueue.Name = "buttonCreateQueue";
-            this.buttonCreateQueue.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreateQueue.TabIndex = 11;
-            this.buttonCreateQueue.Text = "Try Queue";
-            this.buttonCreateQueue.UseVisualStyleBackColor = true;
-            this.buttonCreateQueue.Click += new System.EventHandler(this.buttonCreateQueue_Click);
-            // 
             // listBoxAuto
             // 
             this.listBoxAuto.FormattingEnabled = true;
-            this.listBoxAuto.Location = new System.Drawing.Point(926, 61);
+            this.listBoxAuto.Location = new System.Drawing.Point(926, 35);
             this.listBoxAuto.Name = "listBoxAuto";
-            this.listBoxAuto.Size = new System.Drawing.Size(143, 706);
+            this.listBoxAuto.Size = new System.Drawing.Size(143, 732);
             this.listBoxAuto.TabIndex = 10;
             this.listBoxAuto.Click += new System.EventHandler(this.listBoxAuto_Click);
             // 
             // buttonDeletePrinted
             // 
-            this.buttonDeletePrinted.Location = new System.Drawing.Point(593, 6);
+            this.buttonDeletePrinted.Location = new System.Drawing.Point(577, 681);
             this.buttonDeletePrinted.Name = "buttonDeletePrinted";
             this.buttonDeletePrinted.Size = new System.Drawing.Size(119, 23);
             this.buttonDeletePrinted.TabIndex = 9;
@@ -1655,31 +1705,31 @@
             // 
             // buttonSortAutoPlant
             // 
-            this.buttonSortAutoPlant.Location = new System.Drawing.Point(976, 7);
+            this.buttonSortAutoPlant.Location = new System.Drawing.Point(784, 740);
             this.buttonSortAutoPlant.Name = "buttonSortAutoPlant";
-            this.buttonSortAutoPlant.Size = new System.Drawing.Size(93, 23);
+            this.buttonSortAutoPlant.Size = new System.Drawing.Size(135, 23);
             this.buttonSortAutoPlant.TabIndex = 8;
-            this.buttonSortAutoPlant.Text = "Sort Plant Name";
+            this.buttonSortAutoPlant.Text = "Sort by Plant Name";
             this.buttonSortAutoPlant.UseVisualStyleBackColor = true;
             this.buttonSortAutoPlant.Click += new System.EventHandler(this.buttonSortAutoPlant_Click);
             // 
             // buttonSortAutoON
             // 
-            this.buttonSortAutoON.Location = new System.Drawing.Point(878, 7);
+            this.buttonSortAutoON.Location = new System.Drawing.Point(784, 711);
             this.buttonSortAutoON.Name = "buttonSortAutoON";
-            this.buttonSortAutoON.Size = new System.Drawing.Size(92, 23);
+            this.buttonSortAutoON.Size = new System.Drawing.Size(135, 23);
             this.buttonSortAutoON.TabIndex = 7;
-            this.buttonSortAutoON.Text = "Sort Order No.";
+            this.buttonSortAutoON.Text = "Sort by Order No.";
             this.buttonSortAutoON.UseVisualStyleBackColor = true;
             this.buttonSortAutoON.Click += new System.EventHandler(this.buttonSortAutoON_Click);
             // 
             // buttonAutoCustomer
             // 
-            this.buttonAutoCustomer.Location = new System.Drawing.Point(782, 6);
+            this.buttonAutoCustomer.Location = new System.Drawing.Point(784, 682);
             this.buttonAutoCustomer.Name = "buttonAutoCustomer";
-            this.buttonAutoCustomer.Size = new System.Drawing.Size(90, 23);
+            this.buttonAutoCustomer.Size = new System.Drawing.Size(135, 23);
             this.buttonAutoCustomer.TabIndex = 6;
-            this.buttonAutoCustomer.Text = "Sort Customer";
+            this.buttonAutoCustomer.Text = "Sort by Customer";
             this.buttonAutoCustomer.UseVisualStyleBackColor = true;
             this.buttonAutoCustomer.Click += new System.EventHandler(this.buttonAutoCustomer_Click);
             // 
@@ -5388,6 +5438,8 @@
             this.groupBox2.PerformLayout();
             this.tabPageAuto.ResumeLayout(false);
             this.tabPageAuto.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableAutoBindingSource)).EndInit();
@@ -5959,6 +6011,10 @@
         private System.Windows.Forms.Button buttonCheckSKUs;
         private System.Windows.Forms.ListBox listBoxAutoErrors;
         private System.Windows.Forms.PictureBox pictureBoxArrow;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.RadioButton radioButtonAutoModified;
+        private System.Windows.Forms.RadioButton radioButtonAutoStated;
+        private System.Windows.Forms.Label label82;
     }
 }
 

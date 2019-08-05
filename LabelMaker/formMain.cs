@@ -3980,7 +3980,7 @@ namespace LabelMaker
 
         private void buttonCreateQueue_Click(object sender, EventArgs e)
         {
-            createAutoQueueEntry();
+            //createAutoQueueEntry();
             findAutoCustomer();
         }
 
@@ -3995,6 +3995,7 @@ namespace LabelMaker
                     string customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
                     //MessageBox.Show("findAutoCustomer = " + customer);
                     string[][] collectedOrder = collectAutoCustomer(customer);
+                    createAutoQueueEntry(collectedOrder);
                 }
             }
         }
@@ -4010,6 +4011,7 @@ namespace LabelMaker
             
             string[][] collectedOrder = new string[size][];
             int counter = 0;
+            DataTable tryTable = databaseLabelsDataSet.Tables["TablePlants"];
 
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
             {
@@ -4020,36 +4022,63 @@ namespace LabelMaker
                     {
                         collect[j] = dataGridViewAuto.Rows[i].Cells[j].Value.ToString();
                     }
-                    dataGridViewAuto.Rows[i].Cells[3].Value = true;
+                    if (dataGridViewAuto.Rows[i].Cells[2].Value.ToString() == "False") { dataGridViewAuto.Rows[i].Cells[3].Value = true; }
                     try
                     {
                         tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
                     }
-                    catch (System.Exception ex)
+                    catch 
                     {
                         //MessageBox.Show("Failed to delete from Auto Queue - " + ex);
                     }
+
+                    //reset printed flag if entry is unfindable
+                        string expression;
+                        expression = "SKU = '" + collect[8].TrimEnd() + "'";
+                        DataRow[] foundRows;
+                        // Use the Select method to find all rows matching the filter.
+                        foundRows = tryTable.Select(expression);
+                        try
+                        {
+                            //trial assignment to trigger the error
+                            string Genus = foundRows[0][3].ToString();
+                        }
+                        catch
+                        {
+                            dataGridViewAuto.Rows[i].Cells[3].Value = false; 
+                            try
+                            {
+                                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+                            }
+                            catch 
+                            {
+                                //MessageBox.Show("Haven't found - " + collect[6]);
+                            }
+                        }
+                    
                     collectedOrder[counter] = collect;
                     counter++;
                 }
             }
+
+            tryTable.Dispose();
             return collectedOrder;
         }
 
-        private void createAutoQueueEntry()
+        private void createAutoQueueEntry(string[][] sentOrder)
         { 
             DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
             Boolean firstError = true;
             pictureBoxArrow.Visible = false;
 
-            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            for (int i = 0; i <= sentOrder.Length -1; i++)
             {
-                if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "False" &&
-                    dataGridViewAuto.Rows[i].Cells[2].Value.ToString() == "False" &&
-                    dataGridViewAuto.Rows[i].Cells[3].Value.ToString() == "False")
+                if (sentOrder[i][1] == "False" &&
+                    sentOrder[i][2] == "False" &&
+                    sentOrder[i][3] == "False")
                     
                 {
-                    string sku = dataGridViewAuto.Rows[i].Cells[8].Value.ToString();
+                    string sku = sentOrder[i][8];
                     try
                     {//MessageBox.Show("looking for " + i.ToString());
                         
@@ -4064,9 +4093,9 @@ namespace LabelMaker
                         {
                             sendAutoRow[j] = foundRows[0][j].ToString();
                         }
-                        string sendQty = dataGridViewAuto.Rows[i].Cells[7].Value.ToString();
-                        string sendCustomer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
-                        string sendOrderNumber = dataGridViewAuto.Rows[i].Cells[4].Value.ToString();
+                        string sendQty = sentOrder[i][7];
+                        string sendCustomer = sentOrder[i][5];
+                        string sendOrderNumber = sentOrder[i][4];
 
                         string[] queue = CollectAutoQueueEntry(sendAutoRow, sendQty, sendCustomer, sendOrderNumber);
                         doTheAdding(queue);
@@ -4076,11 +4105,10 @@ namespace LabelMaker
                         if (firstError)
                         {
                             listBoxAutoErrors.Items.Clear();
-                            listBoxAutoErrors.Items.Add("The following Lines wern't matched in the Database :-");
+                            listBoxAutoErrors.Items.Add("The following Lines weren't matched in the Database :-");
                             listBoxAutoErrors.Items.Add(" ");
                         }
-                        //MessageBox.Show("failed to match SKU = " + sku + " for " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
-                        listBoxAutoErrors.Items.Add(sku + " - " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
+                        listBoxAutoErrors.Items.Add(sku + " - " + sentOrder[i][6]);
                         firstError = false;
                         pictureBoxArrow.Visible = true;
                     }
@@ -4089,6 +4117,7 @@ namespace LabelMaker
             table.Dispose();
         }
 
+        
         private void checkSKUs()
         { 
             DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
@@ -4227,5 +4256,7 @@ namespace LabelMaker
 
             return queueData;
         }
+
+         
     }
 }
