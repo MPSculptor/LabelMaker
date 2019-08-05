@@ -520,6 +520,7 @@
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
+            this.checkBoxColorQSingle = new System.Windows.Forms.CheckBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -1578,6 +1579,7 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.checkBoxColorQSingle);
             this.tabPageAuto.Controls.Add(this.label82);
             this.tabPageAuto.Controls.Add(this.panel3);
             this.tabPageAuto.Controls.Add(this.pictureBoxArrow);
@@ -5390,6 +5392,18 @@
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
             // 
+            // checkBoxColorQSingle
+            // 
+            this.checkBoxColorQSingle.AutoSize = true;
+            this.checkBoxColorQSingle.Checked = true;
+            this.checkBoxColorQSingle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxColorQSingle.Location = new System.Drawing.Point(421, 37);
+            this.checkBoxColorQSingle.Name = "checkBoxColorQSingle";
+            this.checkBoxColorQSingle.Size = new System.Drawing.Size(184, 17);
+            this.checkBoxColorQSingle.TabIndex = 17;
+            this.checkBoxColorQSingle.Text = "Use 1 as qty for all Colour Queue ";
+            this.checkBoxColorQSingle.UseVisualStyleBackColor = true;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6015,6 +6029,7 @@
         private System.Windows.Forms.RadioButton radioButtonAutoModified;
         private System.Windows.Forms.RadioButton radioButtonAutoStated;
         private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.CheckBox checkBoxColorQSingle;
     }
 }
 

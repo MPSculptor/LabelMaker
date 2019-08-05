@@ -210,7 +210,7 @@ namespace LabelMaker
             {
                 if (keyData == Keys.Return)
                 {
-                    addToQueues();
+                    addToQueues("database");
                     return true;
                 }
                 else if (keyData == Keys.Tab)
@@ -228,7 +228,7 @@ namespace LabelMaker
             {
                 if (keyData == Keys.Return)
                 {
-                    addToQueues();
+                    addToQueues("database");
                     //do something
                     return true;
                 }
@@ -2726,17 +2726,17 @@ namespace LabelMaker
             return queueEntry;
         }
 
-        private void addToQueues()
+        private void addToQueues(string which)
         {
             string[] queue = CollectQueueEntry();
-            doTheAdding(queue);
+            doTheAdding(queue,which);
         }
 
-        private void doTheAdding(string[] queue)
+        private void doTheAdding(string[] queue, string which)
         {
             if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
             {
-                addRowToColourQ(queue);
+                addRowToColourQ(queue, which);
             }
             else
             {
@@ -2745,7 +2745,7 @@ namespace LabelMaker
                 {
                     if (checkBoxColourAdd.Checked == true)
                     {
-                        addRowToColourQ(queue);
+                        addRowToColourQ(queue, which);
                     }
                 }
             }
@@ -2798,7 +2798,7 @@ namespace LabelMaker
             labelMainCount.Text = addMainQueueTotal().ToString();
         }
 
-        private void addRowToColourQ(string[] queue)
+        private void addRowToColourQ(string[] queue, string which)
         {
             //string[] queue = CollectQueueEntry();
             DataRow row = databaseLabelsDataSetColourQueue.Tables[0].NewRow();
@@ -2807,6 +2807,11 @@ namespace LabelMaker
             row["Name"] = queue[0];
             int answer = 0;
             int.TryParse(queue[1], out answer);
+            //use single quantities for autolabel
+            if (which == "autolabel")
+            {
+                if (checkBoxColorQSingle.Checked) { answer = 1; }
+            }
             row["qty"] = answer;
             row["Price"] = queue[2];
             row["PotSize"] = queue[3];
@@ -3463,10 +3468,8 @@ namespace LabelMaker
 
         #endregion
 
-        private void listQueueEntriesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
+        #region queue modification routines ( for pre printed labels)
 
         private void dataGridViewQueueList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -3618,6 +3621,10 @@ namespace LabelMaker
             }
             countMissingPictures();
         }
+
+        #endregion
+
+        #region *** AutoLabel ***
 
         private void buttonUploadAuto_Click(object sender, EventArgs e)
         {
@@ -3849,6 +3856,8 @@ namespace LabelMaker
                 selectionText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto ORDER BY Name";
             }
 
+            dataGridViewAuto.ClearSelection();
+
             tableAutoTableAdapter.Adapter.SelectCommand.CommandText = selectionText;
             tableAutoTableAdapter.Fill(databaseLabelsDataSetAuto.TableAuto);
             dataGridViewAuto.CurrentCell = dataGridViewAuto.Rows[0].Cells[1];
@@ -3986,6 +3995,7 @@ namespace LabelMaker
 
         private void findAutoCustomer()
         {
+            // findAutoCustomer the next printable customer
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
             {
                 if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "False" &&
@@ -4002,13 +4012,17 @@ namespace LabelMaker
 
         private string[][] collectAutoCustomer(string customer)
         {
+            // collect the whole order to an array so it can print as one and also so it can be analysed
+
+            //work out how many lines are for that customer
             int size = 0;
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
             {
                 if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() == customer) { size++; }
             }
             //MessageBox.Show(size.ToString());
-            
+
+            //make an array to fill with this order
             string[][] collectedOrder = new string[size][];
             int counter = 0;
             DataTable tryTable = databaseLabelsDataSet.Tables["TablePlants"];
@@ -4022,6 +4036,7 @@ namespace LabelMaker
                     {
                         collect[j] = dataGridViewAuto.Rows[i].Cells[j].Value.ToString();
                     }
+                    //set as printed unless it is locked
                     if (dataGridViewAuto.Rows[i].Cells[2].Value.ToString() == "False") { dataGridViewAuto.Rows[i].Cells[3].Value = true; }
                     try
                     {
@@ -4062,11 +4077,22 @@ namespace LabelMaker
             }
 
             tryTable.Dispose();
+
+            if (radioButtonAutoModified.Checked)
+            {
+                // alter quantities if required
+                string[] newQuantities = new string[counter];
+                
+
+
+            }
             return collectedOrder;
         }
 
         private void createAutoQueueEntry(string[][] sentOrder)
-        { 
+        {
+            
+
             DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
             Boolean firstError = true;
             pictureBoxArrow.Visible = false;
@@ -4098,7 +4124,7 @@ namespace LabelMaker
                         string sendOrderNumber = sentOrder[i][4];
 
                         string[] queue = CollectAutoQueueEntry(sendAutoRow, sendQty, sendCustomer, sendOrderNumber);
-                        doTheAdding(queue);
+                        doTheAdding(queue, "autolabel");
                     }
                     catch
                     {
@@ -4257,6 +4283,6 @@ namespace LabelMaker
             return queueData;
         }
 
-         
+        #endregion
     }
 }
