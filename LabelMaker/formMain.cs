@@ -3989,12 +3989,12 @@ namespace LabelMaker
 
         private void buttonCreateQueue_Click(object sender, EventArgs e)
         {
-            //createAutoQueueEntry();
             findAutoCustomer();
         }
 
         private void findAutoCustomer()
         {
+           
             // findAutoCustomer the next printable customer
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
             {
@@ -4003,7 +4003,7 @@ namespace LabelMaker
                     dataGridViewAuto.Rows[i].Cells[3].Value.ToString() == "False")
                 {
                     string customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
-                    //MessageBox.Show("findAutoCustomer = " + customer);
+                    //MessageBox.Show("findAutoCustomer i = " + i);
                     string[][] collectedOrder = collectAutoCustomer(customer);
                     createAutoQueueEntry(collectedOrder);
                 }
@@ -4012,6 +4012,7 @@ namespace LabelMaker
 
         private string[][] collectAutoCustomer(string customer)
         {
+            MessageBox.Show("collectAutoCustomer");
             // collect the whole order to an array so it can print as one and also so it can be analysed
 
             //work out how many lines are for that customer
@@ -4082,11 +4083,117 @@ namespace LabelMaker
             {
                 // alter quantities if required
                 string[] newQuantities = new string[counter];
-                
-
-
+                newQuantities  = alterTheQuantities(collectedOrder, newQuantities);
+                //replace old quantities for new altered ones
+                for (int i = 0; i < counter; i++)
+                {
+                    collectedOrder[i][7] = newQuantities[i];
+                }
             }
             return collectedOrder;
+        }
+
+        private string[] alterTheQuantities(string[][] collectedOrder, string[] newQuantities)
+        {
+            // Routine to automatically change quantities to an intellligent printable form. ie single labels for most, individual for duplicatde genuses etc.
+
+            double numberOfLines = newQuantities.Length;
+            double totalPotCount = 0;
+            string[] genera = new string[Convert.ToInt32( numberOfLines)];
+            string[] generaDuplicates = new string[Convert.ToInt32(numberOfLines)];
+
+            for (int i = 0; i < numberOfLines; i++)
+            {
+                genera[i] = findGenus(collectedOrder[i][6]);
+                newQuantities[i] = collectedOrder[i][7]; //transfer old to new as default position
+                int result = 0;
+                int.TryParse(collectedOrder[i][7], out result);
+                totalPotCount = totalPotCount + result;
+            }
+            if (genera.Length > 1)
+            {
+                for (int i = 0; i <= genera.Length - 1; i++)
+                {
+                    for (int j = i + 1; j <= genera.Length - 1; j++)
+                    {
+                        if (genera[i] == genera[j] )
+                        { 
+                            genera[j] = ""; //clear out duplicates, leaving first instance
+                            generaDuplicates[j] = "*"; //record all instances of duplicated genera for later
+                            generaDuplicates[i] = "*"; //record all instances of duplicated genera for later
+                        }
+                    }
+                }
+            }
+            // Count the different Genera
+            double genusCount = 0;
+            for (int i = 0; i <= genera.Length - 1; i++)
+            {
+                if (genera[i] != "") { genusCount++; }
+            }
+
+            //  a) First test for single line orders
+            if (numberOfLines == 1)
+            {
+                // send singles straight through
+                if (totalPotCount == 1) { return newQuantities; }
+                // 2-3 can be set to singles
+                if (totalPotCount >1 && totalPotCount < 4)
+                {
+                    newQuantities[0] = "1";
+                    return newQuantities;
+                }
+                // 4-6 can be set to two labels for two boxes
+                if (totalPotCount > 3 && totalPotCount < 7)
+                {
+                    newQuantities[0] = "2";
+                    return newQuantities;
+                }
+                // greater than 6 can complicated (Digitalis and Primula and Violets)  set to int no. / 4 
+                if (totalPotCount > 6 )
+                {
+                    double divide = Math.Truncate(double.Parse(newQuantities[0]) / 4);
+                    newQuantities[0]  = Convert.ToInt32(divide).ToString();
+                    return newQuantities;
+                }
+
+            }
+            
+            // The rest must be multi-line
+
+            // b) test for multi-line orders that are all single and send straight through
+            if (numberOfLines/totalPotCount == 1)
+            {
+                return newQuantities;
+            }
+            
+            // c) if all the genera are different set quantities to 1
+            if (numberOfLines / genusCount == 1)
+            {
+
+                //MessageBox.Show("c");
+                for (int i = 0; i < newQuantities.Length; i++) { newQuantities[i] = "1"; }
+                return newQuantities;
+            }
+
+            // d) the rest must have the same gunus twice - the default option.
+            //MessageBox.Show("d");
+            for (int i = 0; i < newQuantities.Length; i++)
+            {
+                //only change unduplicated genus lines
+                if (generaDuplicates[i] != "*") { newQuantities[i] = "1"; }   
+            }
+            return newQuantities;
+            
+        }
+
+        private string findGenus(string sentName)
+        {
+            string genus = "";
+            int findSpace = sentName.IndexOf(" ");
+            genus = sentName.SubstringSpecial(0, findSpace);
+            //MessageBox.Show("'" + genus + "'");
+            return genus;
         }
 
         private void createAutoQueueEntry(string[][] sentOrder)
