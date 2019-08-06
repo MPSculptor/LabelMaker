@@ -3989,6 +3989,8 @@ namespace LabelMaker
 
         private void buttonCreateQueue_Click(object sender, EventArgs e)
         {
+            listBoxAutoErrors.Items.Clear();
+            pictureBoxArrow.Visible = false;
             findAutoCustomer();
         }
 
@@ -4012,7 +4014,7 @@ namespace LabelMaker
 
         private string[][] collectAutoCustomer(string customer)
         {
-            MessageBox.Show("collectAutoCustomer");
+            //MessageBox.Show("collectAutoCustomer");
             // collect the whole order to an array so it can print as one and also so it can be analysed
 
             //work out how many lines are for that customer
@@ -4079,10 +4081,11 @@ namespace LabelMaker
 
             tryTable.Dispose();
 
+            // Runs if you want to produce automatic altered values
             if (radioButtonAutoModified.Checked)
             {
                 // alter quantities if required
-                string[] newQuantities = new string[counter];
+                string[] newQuantities = new string[counter];// new string to take new quantities
                 newQuantities  = alterTheQuantities(collectedOrder, newQuantities);
                 //replace old quantities for new altered ones
                 for (int i = 0; i < counter; i++)
@@ -4095,7 +4098,7 @@ namespace LabelMaker
 
         private string[] alterTheQuantities(string[][] collectedOrder, string[] newQuantities)
         {
-            // Routine to automatically change quantities to an intellligent printable form. ie single labels for most, individual for duplicatde genuses etc.
+            // Routine to automatically change quantities to an intellligent printable form. ie single labels for most, individual for duplicated genera etc.
 
             double numberOfLines = newQuantities.Length;
             double totalPotCount = 0;
@@ -4118,7 +4121,7 @@ namespace LabelMaker
                     {
                         if (genera[i] == genera[j] )
                         { 
-                            genera[j] = ""; //clear out duplicates, leaving first instance
+                            genera[j] = ""; //clear out duplicates, leaving first instance intact
                             generaDuplicates[j] = "*"; //record all instances of duplicated genera for later
                             generaDuplicates[i] = "*"; //record all instances of duplicated genera for later
                         }
@@ -4149,7 +4152,7 @@ namespace LabelMaker
                     newQuantities[0] = "2";
                     return newQuantities;
                 }
-                // greater than 6 can complicated (Digitalis and Primula and Violets)  set to int no. / 4 
+                // greater than 6 can be complicated (Digitalis and Primula and Violets are 9cm)  set to int no./ 4 
                 if (totalPotCount > 6 )
                 {
                     double divide = Math.Truncate(double.Parse(newQuantities[0]) / 4);
@@ -4159,7 +4162,7 @@ namespace LabelMaker
 
             }
             
-            // The rest must be multi-line
+            // The rest must all be multi-line
 
             // b) test for multi-line orders that are all single and send straight through
             if (numberOfLines/totalPotCount == 1)
@@ -4170,7 +4173,6 @@ namespace LabelMaker
             // c) if all the genera are different set quantities to 1
             if (numberOfLines / genusCount == 1)
             {
-
                 //MessageBox.Show("c");
                 for (int i = 0; i < newQuantities.Length; i++) { newQuantities[i] = "1"; }
                 return newQuantities;
@@ -4202,7 +4204,7 @@ namespace LabelMaker
 
             DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
             Boolean firstError = true;
-            pictureBoxArrow.Visible = false;
+            //pictureBoxArrow.Visible = false;
 
             for (int i = 0; i <= sentOrder.Length -1; i++)
             {
@@ -4235,13 +4237,13 @@ namespace LabelMaker
                     }
                     catch
                     {
-                        if (firstError)
+                        if (firstError && pictureBoxArrow.Visible == false )
                         {
-                            listBoxAutoErrors.Items.Clear();
+                            //listBoxAutoErrors.Items.Clear();
                             listBoxAutoErrors.Items.Add("The following Lines weren't matched in the Database :-");
                             listBoxAutoErrors.Items.Add(" ");
                         }
-                        listBoxAutoErrors.Items.Add(sku + " - " + sentOrder[i][6]);
+                        listBoxAutoErrors.Items.Add(sku.Trim() + " - " + sentOrder[i][6].Trim() + " : "+  sentOrder[i][5].Trim());
                         firstError = false;
                         pictureBoxArrow.Visible = true;
                     }
@@ -4391,5 +4393,39 @@ namespace LabelMaker
         }
 
         #endregion
+
+        private void buttonUnlockAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                dataGridViewAuto.Rows[i].Cells[1].Value = false;
+            }
+            try
+            {
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            catch
+            {
+                //MessageBox.Show("Haven't found - " + collect[6]);
+            }
+        }
+
+        private void labelAutoFile_Click(object sender, EventArgs e)
+        {
+            //needs amending
+            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
+            //file with sample queue entry;
+            string name = whereFiles + "defaults.txt";
+            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            string filePlace = defaultsString[1];
+
+            openFileDialog1.InitialDirectory = filePlace;
+            openFileDialog1.Filter = "CSV (Comma Delimited) (*.csv)|*.csv";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            DialogResult result  = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK) { labelAutoFile.Text = openFileDialog1.FileName; }
+        }
     }
 }

@@ -521,6 +521,8 @@
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.checkBoxColorQSingle = new System.Windows.Forms.CheckBox();
+            this.buttonUnlockAll = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -1579,6 +1581,7 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.buttonUnlockAll);
             this.tabPageAuto.Controls.Add(this.checkBoxColorQSingle);
             this.tabPageAuto.Controls.Add(this.label82);
             this.tabPageAuto.Controls.Add(this.panel3);
@@ -1627,22 +1630,22 @@
             // radioButtonAutoModified
             // 
             this.radioButtonAutoModified.AutoSize = true;
+            this.radioButtonAutoModified.Checked = true;
             this.radioButtonAutoModified.Location = new System.Drawing.Point(12, 27);
             this.radioButtonAutoModified.Name = "radioButtonAutoModified";
             this.radioButtonAutoModified.Size = new System.Drawing.Size(134, 17);
             this.radioButtonAutoModified.TabIndex = 13;
+            this.radioButtonAutoModified.TabStop = true;
             this.radioButtonAutoModified.Text = "Use modified quantities";
             this.radioButtonAutoModified.UseVisualStyleBackColor = true;
             // 
             // radioButtonAutoStated
             // 
             this.radioButtonAutoStated.AutoSize = true;
-            this.radioButtonAutoStated.Checked = true;
             this.radioButtonAutoStated.Location = new System.Drawing.Point(12, 4);
             this.radioButtonAutoStated.Name = "radioButtonAutoStated";
             this.radioButtonAutoStated.Size = new System.Drawing.Size(124, 17);
             this.radioButtonAutoStated.TabIndex = 12;
-            this.radioButtonAutoStated.TabStop = true;
             this.radioButtonAutoStated.Text = "Use stated quantities";
             this.radioButtonAutoStated.UseVisualStyleBackColor = true;
             // 
@@ -1861,6 +1864,7 @@
             this.labelAutoFile.Size = new System.Drawing.Size(41, 13);
             this.labelAutoFile.TabIndex = 1;
             this.labelAutoFile.Text = "label82";
+            this.labelAutoFile.Click += new System.EventHandler(this.labelAutoFile_Click);
             // 
             // label79
             // 
@@ -5395,14 +5399,29 @@
             // checkBoxColorQSingle
             // 
             this.checkBoxColorQSingle.AutoSize = true;
+            this.checkBoxColorQSingle.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxColorQSingle.Checked = true;
             this.checkBoxColorQSingle.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxColorQSingle.Location = new System.Drawing.Point(421, 37);
+            this.checkBoxColorQSingle.Location = new System.Drawing.Point(414, 38);
             this.checkBoxColorQSingle.Name = "checkBoxColorQSingle";
-            this.checkBoxColorQSingle.Size = new System.Drawing.Size(184, 17);
+            this.checkBoxColorQSingle.Size = new System.Drawing.Size(215, 17);
             this.checkBoxColorQSingle.TabIndex = 17;
-            this.checkBoxColorQSingle.Text = "Use 1 as qty for all Colour Queue ";
+            this.checkBoxColorQSingle.Text = "Use 1 as qty for all Colour Queue entries";
             this.checkBoxColorQSingle.UseVisualStyleBackColor = true;
+            // 
+            // buttonUnlockAll
+            // 
+            this.buttonUnlockAll.Location = new System.Drawing.Point(577, 710);
+            this.buttonUnlockAll.Name = "buttonUnlockAll";
+            this.buttonUnlockAll.Size = new System.Drawing.Size(119, 23);
+            this.buttonUnlockAll.TabIndex = 18;
+            this.buttonUnlockAll.Text = "Unlock All Entries";
+            this.buttonUnlockAll.UseVisualStyleBackColor = true;
+            this.buttonUnlockAll.Click += new System.EventHandler(this.buttonUnlockAll_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "order_export_short.csv";
             // 
             // formMain
             // 
@@ -6030,6 +6049,8 @@
         private System.Windows.Forms.RadioButton radioButtonAutoStated;
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.CheckBox checkBoxColorQSingle;
+        private System.Windows.Forms.Button buttonUnlockAll;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
