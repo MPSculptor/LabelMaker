@@ -147,6 +147,8 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.buttonUnlockAll = new System.Windows.Forms.Button();
+            this.checkBoxColorQSingle = new System.Windows.Forms.CheckBox();
             this.label82 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.radioButtonAutoModified = new System.Windows.Forms.RadioButton();
@@ -520,8 +522,6 @@
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.checkBoxColorQSingle = new System.Windows.Forms.CheckBox();
-            this.buttonUnlockAll = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
@@ -1605,6 +1605,29 @@
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
             // 
+            // buttonUnlockAll
+            // 
+            this.buttonUnlockAll.Location = new System.Drawing.Point(577, 710);
+            this.buttonUnlockAll.Name = "buttonUnlockAll";
+            this.buttonUnlockAll.Size = new System.Drawing.Size(119, 23);
+            this.buttonUnlockAll.TabIndex = 18;
+            this.buttonUnlockAll.Text = "Unlock All Entries";
+            this.buttonUnlockAll.UseVisualStyleBackColor = true;
+            this.buttonUnlockAll.Click += new System.EventHandler(this.buttonUnlockAll_Click);
+            // 
+            // checkBoxColorQSingle
+            // 
+            this.checkBoxColorQSingle.AutoSize = true;
+            this.checkBoxColorQSingle.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxColorQSingle.Checked = true;
+            this.checkBoxColorQSingle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxColorQSingle.Location = new System.Drawing.Point(414, 38);
+            this.checkBoxColorQSingle.Name = "checkBoxColorQSingle";
+            this.checkBoxColorQSingle.Size = new System.Drawing.Size(215, 17);
+            this.checkBoxColorQSingle.TabIndex = 17;
+            this.checkBoxColorQSingle.Text = "Use 1 as qty for all Colour Queue entries";
+            this.checkBoxColorQSingle.UseVisualStyleBackColor = true;
+            // 
             // label82
             // 
             this.label82.AutoSize = true;
@@ -1859,7 +1882,7 @@
             // labelAutoFile
             // 
             this.labelAutoFile.AutoSize = true;
-            this.labelAutoFile.Location = new System.Drawing.Point(85, 7);
+            this.labelAutoFile.Location = new System.Drawing.Point(167, 7);
             this.labelAutoFile.Name = "labelAutoFile";
             this.labelAutoFile.Size = new System.Drawing.Size(41, 13);
             this.labelAutoFile.TabIndex = 1;
@@ -1871,9 +1894,9 @@
             this.label79.AutoSize = true;
             this.label79.Location = new System.Drawing.Point(7, 7);
             this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(72, 13);
+            this.label79.Size = new System.Drawing.Size(154, 13);
             this.label79.TabIndex = 0;
-            this.label79.Text = "File to Upload";
+            this.label79.Text = "File to Upload (click to change)";
             // 
             // tabPagePreview
             // 
@@ -5395,29 +5418,6 @@
             // tablePlantsTableAdapter
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
-            // 
-            // checkBoxColorQSingle
-            // 
-            this.checkBoxColorQSingle.AutoSize = true;
-            this.checkBoxColorQSingle.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxColorQSingle.Checked = true;
-            this.checkBoxColorQSingle.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxColorQSingle.Location = new System.Drawing.Point(414, 38);
-            this.checkBoxColorQSingle.Name = "checkBoxColorQSingle";
-            this.checkBoxColorQSingle.Size = new System.Drawing.Size(215, 17);
-            this.checkBoxColorQSingle.TabIndex = 17;
-            this.checkBoxColorQSingle.Text = "Use 1 as qty for all Colour Queue entries";
-            this.checkBoxColorQSingle.UseVisualStyleBackColor = true;
-            // 
-            // buttonUnlockAll
-            // 
-            this.buttonUnlockAll.Location = new System.Drawing.Point(577, 710);
-            this.buttonUnlockAll.Name = "buttonUnlockAll";
-            this.buttonUnlockAll.Size = new System.Drawing.Size(119, 23);
-            this.buttonUnlockAll.TabIndex = 18;
-            this.buttonUnlockAll.Text = "Unlock All Entries";
-            this.buttonUnlockAll.UseVisualStyleBackColor = true;
-            this.buttonUnlockAll.Click += new System.EventHandler(this.buttonUnlockAll_Click);
             // 
             // openFileDialog1
             // 

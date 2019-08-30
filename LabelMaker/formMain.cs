@@ -105,6 +105,7 @@ namespace LabelMaker
         #endregion
 
         #region Printing Routines
+
         private void buttonPrint_Click(object sender, EventArgs e)
         {
 
@@ -140,13 +141,11 @@ namespace LabelMaker
             //needs amending
             string[] labelData = CreationUtilities.dataReader.readFile(name, '|');
 
-
             for (int i = 0; i < howManyLines; i++)
             {
                 string[] queueData = collectQueueRow(i, whichQueue);
 
                 whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, 0, 0, "print");
-                //MessageBox.Show(queueData[0]);
                 printWhere.Dispose();
             }
         }
@@ -2871,7 +2870,7 @@ namespace LabelMaker
             // get general plant data
             for (int i = 0; i <= 20; i++)
             {
-                sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString();
+                sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString().Trim();
             }
 
             // get various concatenated Name strings 
@@ -4408,6 +4407,7 @@ namespace LabelMaker
             {
                 //MessageBox.Show("Haven't found - " + collect[6]);
             }
+            fillAutoListBox();
         }
 
         private void labelAutoFile_Click(object sender, EventArgs e)

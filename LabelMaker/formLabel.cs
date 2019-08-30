@@ -93,13 +93,13 @@ namespace LabelMaker
                 {
                     pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
                     int resolutionX = pDialog.PrinterSettings.DefaultPageSettings.PrinterResolution.X;
-                    sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width*(resolutionX/100));
-                    sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height * (resolutionX / 100));
+                    contentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);// *(resolutionX/100));
+                    contentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);// * (resolutionX / 100));
                     string paperSize = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.ToString();
                     string resolution = pDialog.PrinterSettings.DefaultPageSettings.ToString();
-                    MessageBox.Show(sentWidth.ToString() + " , " + sentHeight.ToString()+" ," +paperSize+" , "+resolution );
-
-                    pd.PrintPage += (sender, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, sender, args);
+                    //MessageBox.Show(contentWidth.ToString() + " , " + contentHeight.ToString()+" ," +paperSize+" , "+resolution );
+                    
+                    pd.PrintPage += (sender, args) => DrawImage(queueData, labelData, defaultsString, contentWidth, contentHeight, sender, args);
                     pd.Print();
                 }
                 pDialog.Dispose();
@@ -127,14 +127,9 @@ namespace LabelMaker
         {
             //MessageBox.Show("Got to DrawImage");
             CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, e.Graphics);
-            }
-
-        public void PrintImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight)
-        {
-
-            
         }
 
+        //public void PrintImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight) {}
 
         #endregion
 
@@ -166,6 +161,7 @@ namespace LabelMaker
                 }
             }
 
+            //MessageBox.Show("Create Label - content = " + contentWidth.ToString() + "," + contentHeight.ToString());
             //MAIN ROUTINE FOR ADDING LABEL FIELDS ONE BY ONE
 
             //iterate through fields
@@ -264,13 +260,15 @@ namespace LabelMaker
                             //if text comes from queue entry, load this instead
                             textToSend = queueData[listboxNo];
                         }
-
+                        textToSend = textToSend.Trim();
                         //Work out colour
                         Color colourFont = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(sentColour));
                         if (!isFontColourProfile.Value)
                         {
                             colourFont = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileTextColour));
                         }
+
+                        //MessageBox.Show("Sending Text - content = " + xSized.ToString() + "," + ySized.ToString());
 
                         string[] textToSendArray = new string[1];
                         textToSendArray[0] = textToSend;
@@ -294,6 +292,7 @@ namespace LabelMaker
                         Color borderColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileBorderColour));
                         float borderWidth = float.Parse(fixedValueString);
                         borderWidth = (contentWidth * borderWidth / 100);
+                        //MessageBox.Show("Sending Border - content = " + xSized.ToString() + "," + ySized.ToString());
                         paintBorder(formGraphics, xPosd, yPosd, xSized, ySized, borderWidth, borderColour);
 
                         break;
@@ -508,6 +507,9 @@ namespace LabelMaker
                 float newWidth = textSize.Width; 
                 float newHeight = textSize.Height;
 
+                //MessageBox.Show("Final Text Size -  " + newWidth.ToString() + "," + newHeight.ToString());
+
+
                 //Set horizontal position
                 float xxPosd = 0;
                 
@@ -531,8 +533,9 @@ namespace LabelMaker
 
                 //Draw the Text on the Object
                 Point P = new Point((int)xxPosd, (int)yyPosd);
-                TextRenderer.DrawText(formGraphics, textArray[i], useThisFont, P,colourFont);//, xxPosd, yyPosd);
-            
+                //TextRenderer.DrawText(formGraphics, textArray[i], useThisFont, P,colourFont);//, xxPosd, yyPosd);
+                formGraphics.DrawString( textArray[i], useThisFont,b, P);//, xxPosd, yyPosd);
+
                 useThisFont.Dispose();
             }
             p.Dispose();
@@ -588,6 +591,7 @@ namespace LabelMaker
         {
             Pen p = new Pen(definedColour);
             p.Width = borderWidth;
+            //MessageBox.Show("Border painting at - " + xSized.ToString() + "," + ySized.ToString());
             Rectangle r = new Rectangle((int)xPosd, (int)yPosd, (int)xSized, (int)ySized);
             formGraphics.DrawRectangle(p, r);
             p.Dispose();
