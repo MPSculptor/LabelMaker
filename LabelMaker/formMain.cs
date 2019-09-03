@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.IO;
 using CreationUtilities;
 using Microsoft.VisualBasic.FileIO;
+using System.Drawing.Printing;
 
 namespace LabelMaker
 {
@@ -141,14 +142,99 @@ namespace LabelMaker
             //needs amending
             string[] labelData = CreationUtilities.dataReader.readFile(name, '|');
 
-            for (int i = 0; i < howManyLines; i++)
-            {
-                string[] queueData = collectQueueRow(i, whichQueue);
+            printAsText(labelData, whichQueue, howManyLines, defaultsString);
 
-                whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, 0, 0, "print");
-                printWhere.Dispose();
+
+        }
+
+        private void DrawImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight,int marginX,int marginY, object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+            //MessageBox.Show("DrawImage");
+            //CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, e.Graphics);
+            whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, sentWidth, sentHeight,marginX,marginY, "print", e.Graphics);
+            printWhere.Dispose();
+        }
+
+        private void printAsText(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString)
+        {
+            //Print one label at a time using multiple copies for speed
+
+            PrintDialog pDialog = new PrintDialog();
+                
+            if (DialogResult.OK == pDialog.ShowDialog())
+            {
+                int count = 0;
+                for (int i = 0; i < howManyLines; i++)
+                {
+                    string[] queueData = collectQueueRow(count, whichQueue);
+
+                    PrintDocument pd = new PrintDocument();
+                    //pDialog.Document = pd;
+                    pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
+
+                        int sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
+                        int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
+                    int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX ;
+                    int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
+
+
+                    pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight,marginX,marginY, sender1, args);
+                    pd.Print();
+                    pd.Dispose();
+                    count++;
+
+                    //delete line
+                    if (checkBoxQueueDelete.Checked)
+                    {
+                        if (whichQueue == "Main")
+                        {
+                            dataGridViewMainQ.Rows.RemoveAt(0);
+                            dataGridViewMainQ.EndEdit();
+                            try
+                            {
+                                tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                                //MessageBox.Show("Succeeding in deleting from Main Queue");
+                            }
+                            catch (System.Exception ex)
+                            {
+                                MessageBox.Show("Failed to delete from Main Queue - " + ex);
+                            }
+                            dataGridViewMainQ.Refresh();
+                            labelMainCount.Text = addMainQueueTotal().ToString();
+                            count--;
+                        }
+                        else
+                        {
+                            dataGridViewColourQ.Rows.RemoveAt(0);
+                            dataGridViewColourQ.EndEdit();
+                            try
+                            {
+                                tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                                //MessageBox.Show("Succeeding in deleting from Colour Queue");
+                            }
+                            catch (System.Exception ex)
+                            {
+                                MessageBox.Show("Failed to delete from Colour Queue - " + ex);
+                            }
+                            dataGridViewColourQ.Refresh();
+                            labelColourCount.Text = addColourQueueTotal().ToString();
+                            count--;
+                        }
+                    }
+                }
+                
+                pDialog.Dispose();
+                
             }
         }
+
+        private void printAsColour()
+        {
+            //Print multiple labels on one sheet. 
+        }
+
+
         #endregion
 
         #region *** Main Tab Routines ***- routines connected with controls on the Main screen 
@@ -970,6 +1056,7 @@ namespace LabelMaker
 
             PlantNames = getPlantName(sendData);
             labelPlantName.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold | FontStyle.Italic);
+            //Ok as screen measure
             double textWidth = TextRenderer.MeasureText(PlantNames[0], labelPlantName.Font).Width;
             double labelWidth = labelPlantName.Width;
 
@@ -1806,7 +1893,9 @@ namespace LabelMaker
             int finalWidthInt = (int)finalWidth;
             int finalHeightInt = (int)finalHeight;
 
-            whereToNow whereToTwo = new whereToNow(queueData, labelData, defaultsString, finalWidthInt, finalHeightInt, "screen");
+            Graphics formGraphics = panel1.CreateGraphics();
+
+            whereToNow whereToTwo = new whereToNow(queueData, labelData, defaultsString, finalWidthInt, finalHeightInt,0,0, "screen", formGraphics );
             whereToTwo.BackColor = Color.White;
 
             whereToTwo.Width = finalWidthInt;
@@ -1816,6 +1905,7 @@ namespace LabelMaker
             whereToTwo.BorderStyle = BorderStyle.FixedSingle;
 
             whichPanel.Controls.Add(whereToTwo);
+            formGraphics.Dispose();
         }
 
 
