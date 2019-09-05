@@ -265,6 +265,7 @@ namespace LabelMaker
             Pen p = new Pen(colourFont);
             Brush b = new SolidBrush(colourFont);
 
+            if (fontName == "") { fontName = "Arial"; }
             float ffontSize = fontSize;
             FontFamily fFont = new FontFamily(fontName);
             FontStyle ffontStyle = new FontStyle();

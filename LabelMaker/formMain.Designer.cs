@@ -344,7 +344,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelColourCount = new System.Windows.Forms.Label();
             this.labelMainCount = new System.Windows.Forms.Label();
-            this.labelPaperTray = new System.Windows.Forms.Label();
             this.labelPrinter = new System.Windows.Forms.Label();
             this.checkBoxQueueDelete = new System.Windows.Forms.CheckBox();
             this.checkBoxColourAdd = new System.Windows.Forms.CheckBox();
@@ -523,6 +522,8 @@
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.labelPrinterChoice = new System.Windows.Forms.Label();
+            this.listBoxPrinter = new System.Windows.Forms.ListBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -1283,7 +1284,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // profilesToolStripMenuItem2
@@ -1298,13 +1299,13 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.validateDatabaseToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // validateDatabaseToolStripMenuItem
             // 
             this.validateDatabaseToolStripMenuItem.Name = "validateDatabaseToolStripMenuItem";
-            this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.validateDatabaseToolStripMenuItem.Text = "Trim Whitespaces";
             this.validateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.validateDatabaseToolStripMenuItem_Click);
             // 
@@ -1551,6 +1552,7 @@
             this.buttonEditProfile.TabIndex = 3;
             this.buttonEditProfile.Text = "Edit this Value";
             this.buttonEditProfile.UseVisualStyleBackColor = true;
+            this.buttonEditProfile.Click += new System.EventHandler(this.buttonEditProfile_Click);
             // 
             // buttonDeleteProfile
             // 
@@ -3671,11 +3673,12 @@
             // 
             // groupBoxPrint
             // 
+            this.groupBoxPrint.Controls.Add(this.listBoxPrinter);
+            this.groupBoxPrint.Controls.Add(this.labelPrinterChoice);
             this.groupBoxPrint.Controls.Add(this.label2);
             this.groupBoxPrint.Controls.Add(this.label1);
             this.groupBoxPrint.Controls.Add(this.labelColourCount);
             this.groupBoxPrint.Controls.Add(this.labelMainCount);
-            this.groupBoxPrint.Controls.Add(this.labelPaperTray);
             this.groupBoxPrint.Controls.Add(this.labelPrinter);
             this.groupBoxPrint.Controls.Add(this.checkBoxQueueDelete);
             this.groupBoxPrint.Controls.Add(this.checkBoxColourAdd);
@@ -3690,7 +3693,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(210, 65);
+            this.label2.Location = new System.Drawing.Point(247, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 8;
@@ -3699,7 +3702,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(140, 65);
+            this.label1.Location = new System.Drawing.Point(177, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 7;
@@ -3708,7 +3711,7 @@
             // labelColourCount
             // 
             this.labelColourCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelColourCount.Location = new System.Drawing.Point(210, 80);
+            this.labelColourCount.Location = new System.Drawing.Point(247, 81);
             this.labelColourCount.MinimumSize = new System.Drawing.Size(60, 30);
             this.labelColourCount.Name = "labelColourCount";
             this.labelColourCount.Size = new System.Drawing.Size(60, 30);
@@ -3719,22 +3722,13 @@
             // labelMainCount
             // 
             this.labelMainCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMainCount.Location = new System.Drawing.Point(140, 80);
+            this.labelMainCount.Location = new System.Drawing.Point(177, 81);
             this.labelMainCount.MinimumSize = new System.Drawing.Size(60, 30);
             this.labelMainCount.Name = "labelMainCount";
             this.labelMainCount.Size = new System.Drawing.Size(60, 30);
             this.labelMainCount.TabIndex = 5;
             this.labelMainCount.Text = "0";
             this.labelMainCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelPaperTray
-            // 
-            this.labelPaperTray.AutoSize = true;
-            this.labelPaperTray.Location = new System.Drawing.Point(10, 96);
-            this.labelPaperTray.Name = "labelPaperTray";
-            this.labelPaperTray.Size = new System.Drawing.Size(65, 13);
-            this.labelPaperTray.TabIndex = 4;
-            this.labelPaperTray.Text = "Paper Tray :";
             // 
             // labelPrinter
             // 
@@ -5423,6 +5417,25 @@
             // 
             this.openFileDialog1.FileName = "order_export_short.csv";
             // 
+            // labelPrinterChoice
+            // 
+            this.labelPrinterChoice.AutoSize = true;
+            this.labelPrinterChoice.Location = new System.Drawing.Point(59, 79);
+            this.labelPrinterChoice.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelPrinterChoice.MinimumSize = new System.Drawing.Size(110, 0);
+            this.labelPrinterChoice.Name = "labelPrinterChoice";
+            this.labelPrinterChoice.Size = new System.Drawing.Size(110, 13);
+            this.labelPrinterChoice.TabIndex = 9;
+            this.labelPrinterChoice.Text = "printer";
+            // 
+            // listBoxPrinter
+            // 
+            this.listBoxPrinter.FormattingEnabled = true;
+            this.listBoxPrinter.Location = new System.Drawing.Point(11, 93);
+            this.listBoxPrinter.Name = "listBoxPrinter";
+            this.listBoxPrinter.Size = new System.Drawing.Size(160, 17);
+            this.listBoxPrinter.TabIndex = 10;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5702,7 +5715,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelColourCount;
         private System.Windows.Forms.Label labelMainCount;
-        private System.Windows.Forms.Label labelPaperTray;
         private System.Windows.Forms.Label labelPrinter;
         private System.Windows.Forms.CheckBox checkBoxQueueDelete;
         private System.Windows.Forms.CheckBox checkBoxColourAdd;
@@ -6051,6 +6063,8 @@
         private System.Windows.Forms.CheckBox checkBoxColorQSingle;
         private System.Windows.Forms.Button buttonUnlockAll;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label labelPrinterChoice;
+        private System.Windows.Forms.ListBox listBoxPrinter;
     }
 }
 

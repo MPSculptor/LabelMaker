@@ -124,24 +124,12 @@ namespace LabelMaker
                 howManyLines = dataGridViewMainQ.RowCount - 1;
             }
 
-            //needs amending
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-            //file with default settings
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            
+            string[] defaultsString = getDefaultSettings(); 
 
-            //file with a sample label definition;
-            if (whichQueue == "Colour")
-            {
-                name = whereFiles + "LabelsColour.txt";
-            }
-            else
-            {
-                name = whereFiles + "LabelsText.txt";
-            }
-            //needs amending
-            string[] labelData = CreationUtilities.dataReader.readFile(name, '|');
-
+            string name = comboBoxLabelName.Text.ToString();
+            string[] labelData = returnLabelData(name);
+            
             printAsText(labelData, whichQueue, howManyLines, defaultsString);
 
 
@@ -161,6 +149,7 @@ namespace LabelMaker
             //Print one label at a time using multiple copies for speed
 
             PrintDialog pDialog = new PrintDialog();
+            pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
                 
             if (DialogResult.OK == pDialog.ShowDialog())
             {
@@ -180,9 +169,10 @@ namespace LabelMaker
 
 
                     pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight,marginX,marginY, sender1, args);
+                    pd.PrinterSettings.Copies = short.Parse(queueData[1]);
                     pd.Print();
                     pd.Dispose();
-                    count++;
+                    count++; //increment so move through queue if not deleting
 
                     //delete line
                     if (checkBoxQueueDelete.Checked)
@@ -219,7 +209,7 @@ namespace LabelMaker
                             }
                             dataGridViewColourQ.Refresh();
                             labelColourCount.Text = addColourQueueTotal().ToString();
-                            count--;
+                            count--;//cancel increment if we are deleting so we always take the first item
                         }
                     }
                 }
@@ -1039,11 +1029,7 @@ namespace LabelMaker
             fillLabelCombo();
 
             //get picture position
-            //needs amending
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-            //file with sample queue entry;
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            string[] defaultsString = getDefaultSettings();
             string filePlace = defaultsString[0];
 
             //Plant name as one string
@@ -1263,6 +1249,27 @@ namespace LabelMaker
                 Qvalue = int.Parse(dataGridViewColourQ.Rows[i].Cells[1].Value.ToString());
                 count = count + Qvalue;
             }
+            int labelsPerSheet = 1;
+
+            //check if count is a multiple of labels per sheet
+            //if ((count / labelsPerSheet) != (int)(count / labelsPerSheet)) { labelColourCount.BackColor = Color.DarkRed; }
+            //else { labelColourCount.BackColor = Color.White; }
+
+            string[] defaultsString = getDefaultSettings();
+            string name = defaultsString[3];
+            
+            if (tabControlQueue.SelectedTab == tabPageColourQueue)
+            {
+                comboBoxLabelName.Text.ToString().Trim();
+            }
+            string[] headerData = returnLabelHeaderData(name);
+            int perSheet = int.Parse(headerData[3]) * int.Parse(headerData[4]);
+            float division = count / perSheet;
+
+            if (division == (int)division) { labelColourCount.BackColor = Color.White; }
+            else { labelColourCount.BackColor = Color.DarkRed; }
+
+
 
             return count;
         }
@@ -1316,11 +1323,7 @@ namespace LabelMaker
             //Fill in Pictures
 
             //get picture position
-            //needs amending
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-            //file with sample queue entry;
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            string[] defaultsString = getDefaultSettings(); 
             string filePlace = defaultsString[0];
 
             for (int i = 12; i <= 15; i++)
@@ -1992,11 +1995,9 @@ namespace LabelMaker
             //Fill in Pictures
 
             //get picture position
-            //needs amending
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-            //file with sample queue entry;
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            
+            
+            string[] defaultsString = getDefaultSettings(); 
             string filePlace = defaultsString[0];
 
             for (int i = 1; i <= 4; i++)
@@ -2316,8 +2317,8 @@ namespace LabelMaker
                 if (rowToMove >= minRow)
                 {
                     DataRow rowData = databaseLabelsDataSetMainQueue.TableMainQueue.NewRow();
-                    string[] allTheData = new string[25];
-                    for (int i = 0; i <= 24; i++)
+                    string[] allTheData = new string[26];
+                    for (int i = 0; i <= 25; i++)
                     {
                         allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -2349,6 +2350,7 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
+                    rowData["LabelStocks"] = allTheData[25];
 
 
                     dataGridViewMainQ.Rows.RemoveAt(rowToMove);
@@ -2377,8 +2379,8 @@ namespace LabelMaker
                 if (rowToMove >= minRow)
                 {
                     DataRow rowData = databaseLabelsDataSetColourQueue.TableColourQueue.NewRow();
-                    string[] allTheData = new string[25];
-                    for (int i = 0; i <= 24; i++)
+                    string[] allTheData = new string[26];
+                    for (int i = 0; i <= 25; i++)
                     {
                         allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -2410,6 +2412,7 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
+                    rowData["LabelStocks"] = allTheData[25];
 
 
                     dataGridViewColourQ.Rows.RemoveAt(rowToMove);
@@ -2442,8 +2445,8 @@ namespace LabelMaker
                 if (rowToMove < maxRow)
                 {
                     DataRow rowData = databaseLabelsDataSetMainQueue.TableMainQueue.NewRow();
-                    string[] allTheData = new string[25];
-                    for (int i = 0; i <= 24; i++)
+                    string[] allTheData = new string[26];
+                    for (int i = 0; i <= 25; i++)
                     {
                         allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -2475,6 +2478,7 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
+                    rowData["LabelStocks"] = allTheData[25];
 
 
                     dataGridViewMainQ.Rows.RemoveAt(rowToMove);
@@ -2503,8 +2507,8 @@ namespace LabelMaker
                 if (rowToMove < maxRow)
                 {
                     DataRow rowData = databaseLabelsDataSetColourQueue.TableColourQueue.NewRow();
-                    string[] allTheData = new string[25];
-                    for (int i = 0; i <= 24; i++)
+                    string[] allTheData = new string[26];
+                    for (int i = 0; i <= 25; i++)
                     {
                         allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -2536,6 +2540,7 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
+                    rowData["LabelStocks"] = allTheData[25];
 
 
                     dataGridViewColourQ.Rows.RemoveAt(rowToMove);
@@ -2945,12 +2950,7 @@ namespace LabelMaker
         {
             string[] queueData = new string[27];
 
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-
-            //file with default settings
-            //needs amending
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            string[] defaultsString = getDefaultSettings(); 
 
             int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
             string[] sendData = new string[21];
@@ -3248,20 +3248,12 @@ namespace LabelMaker
 
         public void TempMakeALabel(Panel whichPanel, string whichLabel, string DatabaseOrQueue)
         {
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-
-            //file with default settings
-            //needs amending
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            string[] defaultsString = getDefaultSettings(); 
             string[] queueString = new string[25];
 
             if (DatabaseOrQueue == "database")
             {
-                //file with sample queue entry;
-                //name = whereFiles + "ColourQueue.txt";
-
-
+                
                 int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
                 string[] sendData = new String[21];
                 string[] findName = new String[5];
@@ -3336,7 +3328,6 @@ namespace LabelMaker
 
             //file with a sample label definition;
 
-
             String labelChoice = "";
             if (whichLabel == "Choice")
             {
@@ -3346,16 +3337,12 @@ namespace LabelMaker
             else if (whichLabel == "Colour")
             {
                 //the colour queue default
-                //needs amending
-                labelChoice = "Colour 5 by 2";
-                //name = whereFiles + "LabelsColour.txt";
+                labelChoice = defaultsString[3];
             }
             else if (whichLabel == "Main")
             {
                 //the main queue default
-                //needs amending
-                labelChoice = "Sticker 1 by 1";
-                //name = whereFiles + "LabelsText.txt";
+                labelChoice = defaultsString[2];
             }
             else
             {
@@ -3492,7 +3479,7 @@ namespace LabelMaker
             DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
             for (int i = 0; i <= 3; i++)
             {
-                defaults[i] = dRow.ItemArray[i + 1].ToString();
+                defaults[i] = dRow.ItemArray[i + 1].ToString().Trim();
             }
             return defaults;
         }
@@ -3508,6 +3495,14 @@ namespace LabelMaker
             {
                 comboBoxLabelName.Text = defaults[3];
             }
+            LabelsLabelCategoriesTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelCategories, comboBoxLabelName.Text.ToString());
+            DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelCategories"].Rows[0];
+            listBoxPrinter.Items.Clear();
+            for (int i = 1; i <= 15; i++)
+            {
+                listBoxPrinter.Items.Add( dRow.ItemArray[i].ToString());
+            }
+            labelPrinterChoice.Text = listBoxPrinter.Items[11].ToString();
         }
 
         private Color pickMeAColour(Color oldColour)
@@ -4394,12 +4389,8 @@ namespace LabelMaker
         {
             string[] queueData = new string[27];
 
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-
-            //file with default settings
-            //needs amending
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            
+            string[] defaultsString = getDefaultSettings();
 
             string[] sendData = new string[21];
             string[] findName = new string[5];
@@ -4502,11 +4493,8 @@ namespace LabelMaker
 
         private void labelAutoFile_Click(object sender, EventArgs e)
         {
-            //needs amending
-            string whereFiles = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-            //file with sample queue entry;
-            string name = whereFiles + "defaults.txt";
-            string[] defaultsString = CreationUtilities.dataReader.readFile(name, '|');
+            
+            string[] defaultsString = getDefaultSettings() ;
             string filePlace = defaultsString[1];
 
             openFileDialog1.InitialDirectory = filePlace;
@@ -4516,6 +4504,11 @@ namespace LabelMaker
 
             DialogResult result  = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) { labelAutoFile.Text = openFileDialog1.FileName; }
+        }
+
+        private void buttonEditProfile_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
