@@ -340,6 +340,8 @@
             this.buttonAlphaAplus = new System.Windows.Forms.Button();
             this.buttonAlphaA = new System.Windows.Forms.Button();
             this.groupBoxPrint = new System.Windows.Forms.GroupBox();
+            this.listBoxPrinter = new System.Windows.Forms.ListBox();
+            this.labelPrinterChoice = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelColourCount = new System.Windows.Forms.Label();
@@ -522,8 +524,6 @@
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.labelPrinterChoice = new System.Windows.Forms.Label();
-            this.listBoxPrinter = new System.Windows.Forms.ListBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -1552,7 +1552,6 @@
             this.buttonEditProfile.TabIndex = 3;
             this.buttonEditProfile.Text = "Edit this Value";
             this.buttonEditProfile.UseVisualStyleBackColor = true;
-            this.buttonEditProfile.Click += new System.EventHandler(this.buttonEditProfile_Click);
             // 
             // buttonDeleteProfile
             // 
@@ -3690,6 +3689,25 @@
             this.groupBoxPrint.TabStop = false;
             this.groupBoxPrint.Text = "Print";
             // 
+            // listBoxPrinter
+            // 
+            this.listBoxPrinter.FormattingEnabled = true;
+            this.listBoxPrinter.Location = new System.Drawing.Point(11, 93);
+            this.listBoxPrinter.Name = "listBoxPrinter";
+            this.listBoxPrinter.Size = new System.Drawing.Size(160, 17);
+            this.listBoxPrinter.TabIndex = 10;
+            // 
+            // labelPrinterChoice
+            // 
+            this.labelPrinterChoice.AutoSize = true;
+            this.labelPrinterChoice.Location = new System.Drawing.Point(59, 79);
+            this.labelPrinterChoice.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelPrinterChoice.MinimumSize = new System.Drawing.Size(110, 0);
+            this.labelPrinterChoice.Name = "labelPrinterChoice";
+            this.labelPrinterChoice.Size = new System.Drawing.Size(110, 13);
+            this.labelPrinterChoice.TabIndex = 9;
+            this.labelPrinterChoice.Text = "printer";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -5416,25 +5434,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "order_export_short.csv";
-            // 
-            // labelPrinterChoice
-            // 
-            this.labelPrinterChoice.AutoSize = true;
-            this.labelPrinterChoice.Location = new System.Drawing.Point(59, 79);
-            this.labelPrinterChoice.MaximumSize = new System.Drawing.Size(110, 0);
-            this.labelPrinterChoice.MinimumSize = new System.Drawing.Size(110, 0);
-            this.labelPrinterChoice.Name = "labelPrinterChoice";
-            this.labelPrinterChoice.Size = new System.Drawing.Size(110, 13);
-            this.labelPrinterChoice.TabIndex = 9;
-            this.labelPrinterChoice.Text = "printer";
-            // 
-            // listBoxPrinter
-            // 
-            this.listBoxPrinter.FormattingEnabled = true;
-            this.listBoxPrinter.Location = new System.Drawing.Point(11, 93);
-            this.listBoxPrinter.Name = "listBoxPrinter";
-            this.listBoxPrinter.Size = new System.Drawing.Size(160, 17);
-            this.listBoxPrinter.TabIndex = 10;
             // 
             // formMain
             // 

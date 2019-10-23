@@ -28,19 +28,19 @@ namespace LabelMaker
 
     public class whereToNow : Panel
     {
-        public whereToNow(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight,int marginX,int marginY, string printORscreen, Graphics printGraphics)
+        public whereToNow(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight,int marginX, int placementX, int marginY, int placementY, string printORscreen, Graphics printGraphics)
         {
             if (printORscreen == "print")
             {
                 //MessageBox.Show("whereToNow - print");
-                CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, marginY, printGraphics);
+                CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, printGraphics);
             }
             this.Paint += (sender2, e2) => whereToNow_Paint(sender2, e2, queueData, labelData, defaultsString, sentWidth, sentHeight);
         }
 
         private void whereToNow_Paint(object sender, PaintEventArgs e, string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight)
         {
-            CreateLabel(queueData, labelData, defaultsString, contentWidth, contentHeight,0,0, e.Graphics);
+            CreateLabel(queueData, labelData, defaultsString, contentWidth, contentHeight,0,0,0,0, e.Graphics);
         }
 
         #region ***PRINTING***
@@ -49,7 +49,7 @@ namespace LabelMaker
 
         #endregion
 
-        public void CreateLabel(string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight,int marginX,int marginY, Graphics formGraphics)
+        public void CreateLabel(string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight,int marginX, int placementX,int marginY, int placementY, Graphics formGraphics)
         {
 
             //DISCOVER LABEL PARAMETERS
@@ -162,8 +162,8 @@ namespace LabelMaker
                     yPosd = contentHeight * yPos / 100;
                 }
                 //Adjust for printer margins
-                xPosd = xPosd - marginX;
-                yPosd = yPosd - marginY;
+                xPosd = xPosd - marginX + placementX;
+                yPosd = yPosd - marginY + placementY;
 
                 switch (type)
                 {
