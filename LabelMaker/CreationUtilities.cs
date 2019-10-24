@@ -225,7 +225,7 @@ namespace CreationUtilities
             string[] queueData = new string[25];
 
             queueData[0] = sentName[0]; //Full name
-            queueData[1] = "2";
+            queueData[1] = moreData[2]; //qty
             queueData[2] = moreData[3]; // price
             queueData[3] = sentData[9];
             queueData[4] = moreData[4]; // Customer Name

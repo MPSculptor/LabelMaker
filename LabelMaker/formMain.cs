@@ -639,9 +639,31 @@ namespace LabelMaker
                 buttonAddtoColourQueue.Text = "add Colour";
             }
             colourStatusButtons();
+            changeFlag(10);
         }
 
 
+        private void changeFlag(int cellIndex)
+        {
+            int currentRow = dataGridViewPlants.CurrentRow.Index;
+            if (dataGridViewPlants.Rows[currentRow].Cells[cellIndex].Value.ToString() == "True") 
+            {
+                dataGridViewPlants.Rows[currentRow].Cells[cellIndex].Value = false;
+            }
+            else
+            {
+                dataGridViewPlants.Rows[currentRow].Cells[cellIndex].Value = true;
+            }
+                try
+                {
+                    tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
+                    //MessageBox.Show("Updated Database Entry");
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to update to Database - " + ex);
+                }
+        }
 
         private void buttonVisibleEntry_Click(object sender, EventArgs e)
         {
@@ -654,7 +676,7 @@ namespace LabelMaker
                 buttonVisibleEntry.Text = "Visible";
             }
             colourStatusButtons();
-
+            changeFlag(18);
         }
 
         private void buttonAGMStatus_Click(object sender, EventArgs e)
@@ -670,6 +692,7 @@ namespace LabelMaker
                 buttonAGMStatus.BackColor = Color.YellowGreen;
             }
             colourStatusButtons();
+            changeFlag(16);
         }
 
         private void buttonLableStocks_Click(object sender, EventArgs e)
@@ -685,6 +708,7 @@ namespace LabelMaker
                 buttonLableStocks.BackColor = Color.YellowGreen;
             }
             colourStatusButtons();
+            changeFlag(20);
         }
 
         #endregion
@@ -4743,6 +4767,262 @@ namespace LabelMaker
             if (result == DialogResult.OK) { labelAutoFile.Text = openFileDialog1.FileName; }
         }
 
+        private void resetLabelFlagsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do You want to reset all the Label Stocks flags to 'False'", "Change Flags", MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                for (int i = 0; i <= dataGridViewPlants.RowCount - 1; i++)
+                {
+                    dataGridViewPlants.Rows[i].Cells[20].Value = false;
+                }
+                try
+                {
+                    tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
+                    //MessageBox.Show("Updated Database Entry");
+                }
+                catch 
+                {
+                    MessageBox.Show("Failed to update to Database - ");
+
+                }
+            }
+        }
+
+       
+
+        private void quickPrint(int qty, string labelName)
+        {
+            //Print one label without reference to the queue for speed
+
+            #region **temp make a label copy**
+
+            string[] defaultsString = getDefaultSettings();
+            string[] queueString = new string[25];
+
+            
+                int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
+                string[] sendData = new String[21];
+                string[] findName = new String[5];
+                string[] moreData = new String[12];
+
+
+                // get general plant data
+                for (int i = 0; i <= 20; i++)
+                {
+                    sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString();
+                }
+
+                // get various concatenated Name strings 
+                for (int i = 0; i <= 4; i++)
+                {
+                    findName[i] = dataGridViewPlants.Rows[currentRow].Cells[1 + i].Value.ToString();
+                }
+                string[] sendName = getPlantName(findName);
+
+                //get main pcture
+                if (radioButtonImage1.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[12].Value.ToString(); }
+                if (radioButtonImage2.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[13].Value.ToString(); }
+                if (radioButtonImage3.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[14].Value.ToString(); }
+                if (radioButtonImage4.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[15].Value.ToString(); }
+
+                // Check AGM Status
+                if (dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString() == "True")
+                {
+                    moreData[1] = "AGM.ico";
+                }
+                else
+                {
+                    moreData[1] = "AGMBlank.ico";
+                }
+
+                // qty and price
+
+                moreData[2] = qty.ToString();
+                moreData[3] = "";
+
+                // customer and Order NUmber
+                moreData[4] = "";
+                moreData[5] = "";
+
+                // profile
+                string profileName = dataGridViewPlants.Rows[currentRow].Cells[17].Value.ToString();
+
+                DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
+                string expression;
+                expression = "Name = '" + profileName + "'";
+                DataRow[] foundRows;
+
+                // Use the Select method to find all rows matching the filter.
+                foundRows = table.Select(expression);
+                moreData[6] = foundRows[0][3].ToString(); // Font Name
+                moreData[7] = foundRows[0][6].ToString(); // Font Colour
+                moreData[8] = foundRows[0][4].ToString(); // Bold
+                moreData[9] = foundRows[0][5].ToString(); // Italic
+                moreData[10] = foundRows[0][2].ToString(); // Border Colour
+                moreData[11] = foundRows[0][7].ToString(); // Back Colour
+
+                queueString = dataReader.readQueue(sendData, sendName, moreData);
+            
+
+            //file with a sample label definition;
+
+            string labelChoice = labelName;
+            
+            String[] headerString = returnLabelHeaderData(labelChoice);
+            String[] labelString = returnLabelData(labelChoice);
+            labelString[0] = headerString[6];
+            labelString[1] = headerString[7];
+
+            #endregion **end**
+
+            PrintDialog pDialog = new PrintDialog();
+            pDialog.PrinterSettings.PrinterName = headerString[12];
+
+            if (DialogResult.OK == pDialog.ShowDialog())
+            {
+                
+                
+                    //string[] queueData = collectQueueRow(count, whichQueue);
+
+                    PrintDocument pd = new PrintDocument();
+                    pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
+                    if (listBoxPrinter.Items[4].ToString() == "Landscape")
+                    {
+                        pd.DefaultPageSettings.Landscape = true;
+                    }
+                    else
+                    {
+                        pd.DefaultPageSettings.Landscape = false;
+                    }
+
+                    int sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
+                    int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
+                    int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
+                    int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
+                    int placementX = 0;
+                    int placementY = 0;
+
+
+                    pd.PrintPage += (sender1, args) => DrawImage(queueString, labelString, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, sender1, args);
+                    pd.PrinterSettings.Copies = short.Parse(queueString[1]);
+                    pd.Print();
+                    pd.Dispose();
+               
+                pDialog.Dispose();
+
+            }
+        }
+
+        private void buttonQP1_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP1.Text.ToString()), groupBoxQP1.Text.ToString());
+        }
+
+        private void buttonQP2_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP2.Text.ToString()), groupBoxQP2.Text.ToString());
+        }
+
+        private void buttonQP3_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP3.Text.ToString()), groupBoxQP3.Text.ToString());
+        }
+
+        private void buttonQP4_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP4.Text.ToString()), groupBoxQP4.Text.ToString());
+        }
+
+        private void buttonQP5_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP5.Text.ToString()), groupBoxQP5.Text.ToString());
+        }
+
+        private void buttonQP6_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP6.Text.ToString()), groupBoxQP6.Text.ToString());
+        }
+
+        private void buttonQP7_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP7.Text.ToString()), groupBoxQP7.Text.ToString());
+        }
+
+        private void buttonQP8_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP8.Text.ToString()), groupBoxQP8.Text.ToString());
+        }
+
+        private void buttonQP9_Click(object sender, EventArgs e)
+        {
+            quickPrint(int.Parse(textBoxQP9.Text.ToString()), groupBoxQP9.Text.ToString());
+        }
+
         
+
+        private string getPicture( string initialFile)
+        {
+            string returnString = "";
+            string smallPath = "";
+            int place = 0;
+
+            if (string.IsNullOrEmpty(initialFile)) { } //ignore if no initial value 
+            else //trim off any extra folders
+            {
+                if (initialFile.Contains("\\"))
+                    {
+                    place = initialFile.IndexOf("\\");
+                    smallPath = initialFile.Substring(0, place + 1);
+                    }
+            }
+
+            string[] defaultString = getDefaultSettings();
+            OpenFileDialog fileDialog = new OpenFileDialog();
+
+            fileDialog.InitialDirectory = defaultString[0] + smallPath;
+
+            DialogResult result = fileDialog.ShowDialog();
+
+            if ( result == DialogResult.OK)
+                {
+                string wholeName = fileDialog.FileName;
+                string returnFile = "";
+
+                if (wholeName.Contains(defaultString[0]))
+                {
+                    returnFile = wholeName.Substring(defaultString[0].Length);
+                }
+
+                returnString = returnFile;
+            }
+
+            return returnString;
+        }
+
+        private void pictureBoxData1_Click(object sender, EventArgs e)
+        {
+            string pictureFile = getPicture( textBoxData12.Text);
+            textBoxData12.Text = pictureFile;
+        }
+
+        private void pictureBoxData2_Click(object sender, EventArgs e)
+        {
+            string pictureFile = getPicture( textBoxData13.Text);
+            textBoxData13.Text = pictureFile;
+        }
+
+        private void pictureBoxData3_Click(object sender, EventArgs e)
+        {
+            string pictureFile = getPicture( textBoxData14.Text);
+            textBoxData14.Text = pictureFile;
+        }
+
+        private void pictureBoxData4_Click(object sender, EventArgs e)
+        {
+            string pictureFile = getPicture( textBoxData15.Text);
+            textBoxData15.Text = pictureFile;
+        }
     }
 }
+    

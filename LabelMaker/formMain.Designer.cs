@@ -115,6 +115,7 @@
             this.profilesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetLabelFlagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForLabelStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForMissingPicturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1297,7 +1298,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.validateDatabaseToolStripMenuItem});
+            this.validateDatabaseToolStripMenuItem,
+            this.resetLabelFlagsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -1308,6 +1310,13 @@
             this.validateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.validateDatabaseToolStripMenuItem.Text = "Trim Whitespaces";
             this.validateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.validateDatabaseToolStripMenuItem_Click);
+            // 
+            // resetLabelFlagsToolStripMenuItem
+            // 
+            this.resetLabelFlagsToolStripMenuItem.Name = "resetLabelFlagsToolStripMenuItem";
+            this.resetLabelFlagsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.resetLabelFlagsToolStripMenuItem.Text = "Reset Label Flags";
+            this.resetLabelFlagsToolStripMenuItem.Click += new System.EventHandler(this.resetLabelFlagsToolStripMenuItem_Click);
             // 
             // queueToolStripMenuItem
             // 
@@ -2131,6 +2140,7 @@
             this.pictureBoxData4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxData4.TabIndex = 29;
             this.pictureBoxData4.TabStop = false;
+            this.pictureBoxData4.Click += new System.EventHandler(this.pictureBoxData4_Click);
             // 
             // pictureBoxData3
             // 
@@ -2141,6 +2151,7 @@
             this.pictureBoxData3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxData3.TabIndex = 28;
             this.pictureBoxData3.TabStop = false;
+            this.pictureBoxData3.Click += new System.EventHandler(this.pictureBoxData3_Click);
             // 
             // pictureBoxData2
             // 
@@ -2151,6 +2162,7 @@
             this.pictureBoxData2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxData2.TabIndex = 27;
             this.pictureBoxData2.TabStop = false;
+            this.pictureBoxData2.Click += new System.EventHandler(this.pictureBoxData2_Click);
             // 
             // pictureBoxData1
             // 
@@ -2161,6 +2173,7 @@
             this.pictureBoxData1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxData1.TabIndex = 26;
             this.pictureBoxData1.TabStop = false;
+            this.pictureBoxData1.Click += new System.EventHandler(this.pictureBoxData1_Click);
             // 
             // textBoxData13
             // 
@@ -5002,6 +5015,7 @@
             this.buttonQP9.TabIndex = 4;
             this.buttonQP9.Text = "Print";
             this.buttonQP9.UseVisualStyleBackColor = true;
+            this.buttonQP9.Click += new System.EventHandler(this.buttonQP9_Click);
             // 
             // textBoxQP9
             // 
@@ -5042,6 +5056,7 @@
             this.buttonQP8.TabIndex = 4;
             this.buttonQP8.Text = "Print";
             this.buttonQP8.UseVisualStyleBackColor = true;
+            this.buttonQP8.Click += new System.EventHandler(this.buttonQP8_Click);
             // 
             // textBoxQP8
             // 
@@ -5082,6 +5097,7 @@
             this.buttonQP6.TabIndex = 4;
             this.buttonQP6.Text = "Print";
             this.buttonQP6.UseVisualStyleBackColor = true;
+            this.buttonQP6.Click += new System.EventHandler(this.buttonQP6_Click);
             // 
             // textBoxQP6
             // 
@@ -5122,6 +5138,7 @@
             this.buttonQP5.TabIndex = 4;
             this.buttonQP5.Text = "Print";
             this.buttonQP5.UseVisualStyleBackColor = true;
+            this.buttonQP5.Click += new System.EventHandler(this.buttonQP5_Click);
             // 
             // textBoxQP5
             // 
@@ -5162,6 +5179,7 @@
             this.buttonQP7.TabIndex = 4;
             this.buttonQP7.Text = "Print";
             this.buttonQP7.UseVisualStyleBackColor = true;
+            this.buttonQP7.Click += new System.EventHandler(this.buttonQP7_Click);
             // 
             // textBoxQP7
             // 
@@ -5202,6 +5220,7 @@
             this.buttonQP4.TabIndex = 4;
             this.buttonQP4.Text = "Print";
             this.buttonQP4.UseVisualStyleBackColor = true;
+            this.buttonQP4.Click += new System.EventHandler(this.buttonQP4_Click);
             // 
             // textBoxQP4
             // 
@@ -5242,6 +5261,7 @@
             this.buttonQP2.TabIndex = 4;
             this.buttonQP2.Text = "Print";
             this.buttonQP2.UseVisualStyleBackColor = true;
+            this.buttonQP2.Click += new System.EventHandler(this.buttonQP2_Click);
             // 
             // textBoxQP2
             // 
@@ -5282,6 +5302,7 @@
             this.buttonQP3.TabIndex = 4;
             this.buttonQP3.Text = "Print";
             this.buttonQP3.UseVisualStyleBackColor = true;
+            this.buttonQP3.Click += new System.EventHandler(this.buttonQP3_Click);
             // 
             // textBoxQP3
             // 
@@ -5322,6 +5343,7 @@
             this.buttonQP1.TabIndex = 4;
             this.buttonQP1.Text = "Print";
             this.buttonQP1.UseVisualStyleBackColor = true;
+            this.buttonQP1.Click += new System.EventHandler(this.buttonQP1_Click);
             // 
             // textBoxQP1
             // 
@@ -6064,6 +6086,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label labelPrinterChoice;
         private System.Windows.Forms.ListBox listBoxPrinter;
+        private System.Windows.Forms.ToolStripMenuItem resetLabelFlagsToolStripMenuItem;
     }
 }
 
