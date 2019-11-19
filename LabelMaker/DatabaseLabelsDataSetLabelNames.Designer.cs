@@ -1327,6 +1327,8 @@ namespace LabelMaker {
             
             private global::System.Data.DataColumn columnRotate;
             
+            private global::System.Data.DataColumn columnPaperSource;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public LabelsLabelCategoriesDataTable() {
@@ -1490,6 +1492,14 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PaperSourceColumn {
+                get {
+                    return this.columnPaperSource;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1525,7 +1535,23 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public LabelsLabelCategoriesRow AddLabelsLabelCategoriesRow(string Name, string Type, byte LabelsAcross, byte LabelsDown, string Orientation, double Width, double Height, double MarginTop, double MarginBottom, double MarginLeft, double MarginRight, string DefaultPrinter, short PaperSize, bool Flip, short Rotate) {
+            public LabelsLabelCategoriesRow AddLabelsLabelCategoriesRow(
+                        string Name, 
+                        string Type, 
+                        byte LabelsAcross, 
+                        byte LabelsDown, 
+                        string Orientation, 
+                        double Width, 
+                        double Height, 
+                        double MarginTop, 
+                        double MarginBottom, 
+                        double MarginLeft, 
+                        double MarginRight, 
+                        string DefaultPrinter, 
+                        short PaperSize, 
+                        bool Flip, 
+                        short Rotate, 
+                        string PaperSource) {
                 LabelsLabelCategoriesRow rowLabelsLabelCategoriesRow = ((LabelsLabelCategoriesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1543,7 +1569,8 @@ namespace LabelMaker {
                         DefaultPrinter,
                         PaperSize,
                         Flip,
-                        Rotate};
+                        Rotate,
+                        PaperSource};
                 rowLabelsLabelCategoriesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLabelsLabelCategoriesRow);
                 return rowLabelsLabelCategoriesRow;
@@ -1589,6 +1616,7 @@ namespace LabelMaker {
                 this.columnPaperSize = base.Columns["PaperSize"];
                 this.columnFlip = base.Columns["Flip"];
                 this.columnRotate = base.Columns["Rotate"];
+                this.columnPaperSource = base.Columns["PaperSource"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1626,6 +1654,8 @@ namespace LabelMaker {
                 base.Columns.Add(this.columnFlip);
                 this.columnRotate = new global::System.Data.DataColumn("Rotate", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRotate);
+                this.columnPaperSource = new global::System.Data.DataColumn("PaperSource", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaperSource);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1638,6 +1668,7 @@ namespace LabelMaker {
                 this.columnType.MaxLength = 10;
                 this.columnOrientation.MaxLength = 10;
                 this.columnDefaultPrinter.MaxLength = 30;
+                this.columnPaperSource.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2953,6 +2984,22 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string PaperSource {
+                get {
+                    try {
+                        return ((string)(this[this.tableLabelsLabelCategories.PaperSourceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PaperSource\' in table \'LabelsLabelCategories\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLabelsLabelCategories.PaperSourceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableLabelsLabelCategories.NameColumn);
             }
@@ -3129,6 +3176,18 @@ namespace LabelMaker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetRotateNull() {
                 this[this.tableLabelsLabelCategories.RotateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPaperSourceNull() {
+                return this.IsNull(this.tableLabelsLabelCategories.PaperSourceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPaperSourceNull() {
+                this[this.tableLabelsLabelCategories.PaperSourceColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5056,10 +5115,30 @@ SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, Fon
             tableMapping.ColumnMappings.Add("PaperSize", "PaperSize");
             tableMapping.ColumnMappings.Add("Flip", "Flip");
             tableMapping.ColumnMappings.Add("Rotate", "Rotate");
+            tableMapping.ColumnMappings.Add("PaperSource", "PaperSource");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[LabelsLabelCategories] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_LabelsAcross = 1 AND [LabelsAcross] IS NULL) OR ([LabelsAcross] = @Original_LabelsAcross)) AND ((@IsNull_LabelsDown = 1 AND [LabelsDown] IS NULL) OR ([LabelsDown] = @Original_LabelsDown)) AND ((@IsNull_Orientation = 1 AND [Orientation] IS NULL) OR ([Orientation] = @Original_Orientation)) AND ((@IsNull_Width = 1 AND [Width] IS NULL) OR ([Width] = @Original_Width)) AND ((@IsNull_Height = 1 AND [Height] IS NULL) OR ([Height] = @Original_Height)) AND ((@IsNull_MarginTop = 1 AND [MarginTop] IS NULL) OR ([MarginTop] = @Original_MarginTop)) AND ((@IsNull_MarginBottom = 1 AND [MarginBottom] IS NULL) OR ([MarginBottom] = @Original_MarginBottom)) AND ((@IsNull_MarginLeft = 1 AND [MarginLeft] IS NULL) OR ([MarginLeft] = @Original_MarginLeft)) AND ((@IsNull_MarginRight = 1 AND [MarginRight] IS NULL) OR ([MarginRight] = @Original_MarginRight)) AND ((@IsNull_DefaultPrinter = 1 AND [DefaultPrinter] IS NULL) OR ([DefaultPrinter] = @Original_DefaultPrinter)) AND ((@IsNull_PaperSize = 1 AND [PaperSize] IS NULL) OR ([PaperSize] = @Original_PaperSize)) AND ((@IsNull_Flip = 1 AND [Flip] IS NULL) OR ([Flip] = @Original_Flip)) AND ((@IsNull_Rotate = 1 AND [Rotate] IS NULL) OR ([Rotate] = @Original_Rotate)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[LabelsLabelCategories] WHERE (([Id] = @Original_Id) AND ((@IsN" +
+                "ull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Typ" +
+                "e = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_LabelsAcro" +
+                "ss = 1 AND [LabelsAcross] IS NULL) OR ([LabelsAcross] = @Original_LabelsAcross))" +
+                " AND ((@IsNull_LabelsDown = 1 AND [LabelsDown] IS NULL) OR ([LabelsDown] = @Orig" +
+                "inal_LabelsDown)) AND ((@IsNull_Orientation = 1 AND [Orientation] IS NULL) OR ([" +
+                "Orientation] = @Original_Orientation)) AND ((@IsNull_Width = 1 AND [Width] IS NU" +
+                "LL) OR ([Width] = @Original_Width)) AND ((@IsNull_Height = 1 AND [Height] IS NUL" +
+                "L) OR ([Height] = @Original_Height)) AND ((@IsNull_MarginTop = 1 AND [MarginTop]" +
+                " IS NULL) OR ([MarginTop] = @Original_MarginTop)) AND ((@IsNull_MarginBottom = 1" +
+                " AND [MarginBottom] IS NULL) OR ([MarginBottom] = @Original_MarginBottom)) AND (" +
+                "(@IsNull_MarginLeft = 1 AND [MarginLeft] IS NULL) OR ([MarginLeft] = @Original_M" +
+                "arginLeft)) AND ((@IsNull_MarginRight = 1 AND [MarginRight] IS NULL) OR ([Margin" +
+                "Right] = @Original_MarginRight)) AND ((@IsNull_DefaultPrinter = 1 AND [DefaultPr" +
+                "inter] IS NULL) OR ([DefaultPrinter] = @Original_DefaultPrinter)) AND ((@IsNull_" +
+                "PaperSize = 1 AND [PaperSize] IS NULL) OR ([PaperSize] = @Original_PaperSize)) A" +
+                "ND ((@IsNull_Flip = 1 AND [Flip] IS NULL) OR ([Flip] = @Original_Flip)) AND ((@I" +
+                "sNull_Rotate = 1 AND [Rotate] IS NULL) OR ([Rotate] = @Original_Rotate)) AND ((@" +
+                "IsNull_PaperSource = 1 AND [PaperSource] IS NULL) OR ([PaperSource] = @Original_" +
+                "PaperSource)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -5092,10 +5171,12 @@ SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, Fon
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Flip", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Flip", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rotate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rotate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rotate", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rotate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PaperSource", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSource", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaperSource", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSource", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[LabelsLabelCategories] ([Name], [Type], [LabelsAcross], [LabelsDown], [Orientation], [Width], [Height], [MarginTop], [MarginBottom], [MarginLeft], [MarginRight], [DefaultPrinter], [PaperSize], [Flip], [Rotate]) VALUES (@Name, @Type, @LabelsAcross, @LabelsDown, @Orientation, @Width, @Height, @MarginTop, @MarginBottom, @MarginLeft, @MarginRight, @DefaultPrinter, @PaperSize, @Flip, @Rotate);
-SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, MarginTop, MarginBottom, MarginLeft, MarginRight, DefaultPrinter, PaperSize, Flip, Rotate FROM LabelsLabelCategories WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[LabelsLabelCategories] ([Name], [Type], [LabelsAcross], [LabelsDown], [Orientation], [Width], [Height], [MarginTop], [MarginBottom], [MarginLeft], [MarginRight], [DefaultPrinter], [PaperSize], [Flip], [Rotate], [PaperSource]) VALUES (@Name, @Type, @LabelsAcross, @LabelsDown, @Orientation, @Width, @Height, @MarginTop, @MarginBottom, @MarginLeft, @MarginRight, @DefaultPrinter, @PaperSize, @Flip, @Rotate, @PaperSource);
+SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, MarginTop, MarginBottom, MarginLeft, MarginRight, DefaultPrinter, PaperSize, Flip, Rotate, PaperSource FROM LabelsLabelCategories WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5112,6 +5193,7 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaperSize", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSize", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Flip", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Flip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rotate", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rotate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaperSource", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSource", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[LabelsLabelCategories] SET [Name] = @Name, [Type] = @Type, [LabelsA" +
@@ -5119,27 +5201,29 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
                 ", [Width] = @Width, [Height] = @Height, [MarginTop] = @MarginTop, [MarginBottom]" +
                 " = @MarginBottom, [MarginLeft] = @MarginLeft, [MarginRight] = @MarginRight, [Def" +
                 "aultPrinter] = @DefaultPrinter, [PaperSize] = @PaperSize, [Flip] = @Flip, [Rotat" +
-                "e] = @Rotate WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS N" +
-                "ULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR" +
-                " ([Type] = @Original_Type)) AND ((@IsNull_LabelsAcross = 1 AND [LabelsAcross] IS" +
-                " NULL) OR ([LabelsAcross] = @Original_LabelsAcross)) AND ((@IsNull_LabelsDown = " +
-                "1 AND [LabelsDown] IS NULL) OR ([LabelsDown] = @Original_LabelsDown)) AND ((@IsN" +
-                "ull_Orientation = 1 AND [Orientation] IS NULL) OR ([Orientation] = @Original_Ori" +
-                "entation)) AND ((@IsNull_Width = 1 AND [Width] IS NULL) OR ([Width] = @Original_" +
-                "Width)) AND ((@IsNull_Height = 1 AND [Height] IS NULL) OR ([Height] = @Original_" +
-                "Height)) AND ((@IsNull_MarginTop = 1 AND [MarginTop] IS NULL) OR ([MarginTop] = " +
-                "@Original_MarginTop)) AND ((@IsNull_MarginBottom = 1 AND [MarginBottom] IS NULL)" +
-                " OR ([MarginBottom] = @Original_MarginBottom)) AND ((@IsNull_MarginLeft = 1 AND " +
-                "[MarginLeft] IS NULL) OR ([MarginLeft] = @Original_MarginLeft)) AND ((@IsNull_Ma" +
-                "rginRight = 1 AND [MarginRight] IS NULL) OR ([MarginRight] = @Original_MarginRig" +
-                "ht)) AND ((@IsNull_DefaultPrinter = 1 AND [DefaultPrinter] IS NULL) OR ([Default" +
-                "Printer] = @Original_DefaultPrinter)) AND ((@IsNull_PaperSize = 1 AND [PaperSize" +
-                "] IS NULL) OR ([PaperSize] = @Original_PaperSize)) AND ((@IsNull_Flip = 1 AND [F" +
-                "lip] IS NULL) OR ([Flip] = @Original_Flip)) AND ((@IsNull_Rotate = 1 AND [Rotate" +
-                "] IS NULL) OR ([Rotate] = @Original_Rotate)));\r\nSELECT Id, Name, Type, LabelsAcr" +
-                "oss, LabelsDown, Orientation, Width, Height, MarginTop, MarginBottom, MarginLeft" +
-                ", MarginRight, DefaultPrinter, PaperSize, Flip, Rotate FROM LabelsLabelCategorie" +
-                "s WHERE (Id = @Id)";
+                "e] = @Rotate, [PaperSource] = @PaperSource WHERE (([Id] = @Original_Id) AND ((@I" +
+                "sNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_T" +
+                "ype = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_LabelsAc" +
+                "ross = 1 AND [LabelsAcross] IS NULL) OR ([LabelsAcross] = @Original_LabelsAcross" +
+                ")) AND ((@IsNull_LabelsDown = 1 AND [LabelsDown] IS NULL) OR ([LabelsDown] = @Or" +
+                "iginal_LabelsDown)) AND ((@IsNull_Orientation = 1 AND [Orientation] IS NULL) OR " +
+                "([Orientation] = @Original_Orientation)) AND ((@IsNull_Width = 1 AND [Width] IS " +
+                "NULL) OR ([Width] = @Original_Width)) AND ((@IsNull_Height = 1 AND [Height] IS N" +
+                "ULL) OR ([Height] = @Original_Height)) AND ((@IsNull_MarginTop = 1 AND [MarginTo" +
+                "p] IS NULL) OR ([MarginTop] = @Original_MarginTop)) AND ((@IsNull_MarginBottom =" +
+                " 1 AND [MarginBottom] IS NULL) OR ([MarginBottom] = @Original_MarginBottom)) AND" +
+                " ((@IsNull_MarginLeft = 1 AND [MarginLeft] IS NULL) OR ([MarginLeft] = @Original" +
+                "_MarginLeft)) AND ((@IsNull_MarginRight = 1 AND [MarginRight] IS NULL) OR ([Marg" +
+                "inRight] = @Original_MarginRight)) AND ((@IsNull_DefaultPrinter = 1 AND [Default" +
+                "Printer] IS NULL) OR ([DefaultPrinter] = @Original_DefaultPrinter)) AND ((@IsNul" +
+                "l_PaperSize = 1 AND [PaperSize] IS NULL) OR ([PaperSize] = @Original_PaperSize))" +
+                " AND ((@IsNull_Flip = 1 AND [Flip] IS NULL) OR ([Flip] = @Original_Flip)) AND ((" +
+                "@IsNull_Rotate = 1 AND [Rotate] IS NULL) OR ([Rotate] = @Original_Rotate)) AND (" +
+                "(@IsNull_PaperSource = 1 AND [PaperSource] IS NULL) OR ([PaperSource] = @Origina" +
+                "l_PaperSource)));\r\nSELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation," +
+                " Width, Height, MarginTop, MarginBottom, MarginLeft, MarginRight, DefaultPrinter" +
+                ", PaperSize, Flip, Rotate, PaperSource FROM LabelsLabelCategories WHERE (Id = @I" +
+                "d)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5156,6 +5240,7 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaperSize", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSize", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Flip", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Flip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rotate", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rotate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaperSource", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSource", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5187,6 +5272,8 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Flip", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Flip", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rotate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rotate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rotate", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rotate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PaperSource", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSource", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaperSource", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaperSource", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -5205,13 +5292,13 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Marg" +
                 "inTop, MarginBottom, MarginLeft, MarginRight, DefaultPrinter, PaperSize, Flip, R" +
-                "otate FROM dbo.LabelsLabelCategories";
+                "otate, PaperSource FROM dbo.LabelsLabelCategories";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Marg" +
-                "inTop, MarginBottom, MarginLeft, MarginRight, DefaultPrinter, PaperSize, Flip, R" +
-                "otate FROM dbo.LabelsLabelCategories WHERE        (Name = @Name)";
+            this._commandCollection[1].CommandText = "SELECT DefaultPrinter, Flip, Height, Id, LabelsAcross, LabelsDown, MarginBottom, " +
+                "MarginLeft, MarginRight, MarginTop, Name, Orientation, PaperSize, PaperSource, R" +
+                "otate, Type, Width FROM LabelsLabelCategories WHERE (Name = @Name)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -5325,7 +5412,8 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
                     string Original_DefaultPrinter, 
                     global::System.Nullable<short> Original_PaperSize, 
                     global::System.Nullable<bool> Original_Flip, 
-                    global::System.Nullable<short> Original_Rotate) {
+                    global::System.Nullable<short> Original_Rotate, 
+                    string Original_PaperSource) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -5447,6 +5535,14 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
                 this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
+            if ((Original_PaperSource == null)) {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((string)(Original_PaperSource));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5467,7 +5563,23 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string Type, global::System.Nullable<byte> LabelsAcross, global::System.Nullable<byte> LabelsDown, string Orientation, global::System.Nullable<double> Width, global::System.Nullable<double> Height, global::System.Nullable<double> MarginTop, global::System.Nullable<double> MarginBottom, global::System.Nullable<double> MarginLeft, global::System.Nullable<double> MarginRight, string DefaultPrinter, global::System.Nullable<short> PaperSize, global::System.Nullable<bool> Flip, global::System.Nullable<short> Rotate) {
+        public virtual int Insert(
+                    string Name, 
+                    string Type, 
+                    global::System.Nullable<byte> LabelsAcross, 
+                    global::System.Nullable<byte> LabelsDown, 
+                    string Orientation, 
+                    global::System.Nullable<double> Width, 
+                    global::System.Nullable<double> Height, 
+                    global::System.Nullable<double> MarginTop, 
+                    global::System.Nullable<double> MarginBottom, 
+                    global::System.Nullable<double> MarginLeft, 
+                    global::System.Nullable<double> MarginRight, 
+                    string DefaultPrinter, 
+                    global::System.Nullable<short> PaperSize, 
+                    global::System.Nullable<bool> Flip, 
+                    global::System.Nullable<short> Rotate, 
+                    string PaperSource) {
             if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -5558,6 +5670,12 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
+            if ((PaperSource == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(PaperSource));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5594,6 +5712,7 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
                     global::System.Nullable<short> PaperSize, 
                     global::System.Nullable<bool> Flip, 
                     global::System.Nullable<short> Rotate, 
+                    string PaperSource, 
                     int Original_Id, 
                     string Original_Name, 
                     string Original_Type, 
@@ -5610,6 +5729,7 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
                     global::System.Nullable<short> Original_PaperSize, 
                     global::System.Nullable<bool> Original_Flip, 
                     global::System.Nullable<short> Original_Rotate, 
+                    string Original_PaperSource, 
                     int Id) {
             if ((Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -5701,128 +5821,142 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_Id));
-            if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            if ((PaperSource == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(PaperSource));
+            }
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_Id));
+            if ((Original_Name == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Name));
             }
             if ((Original_Type == null)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Type));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_Type));
             }
             if ((Original_LabelsAcross.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((byte)(Original_LabelsAcross.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((byte)(Original_LabelsAcross.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             if ((Original_LabelsDown.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((byte)(Original_LabelsDown.Value));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((byte)(Original_LabelsDown.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             if ((Original_Orientation == null)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Orientation));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Orientation));
             }
             if ((Original_Width.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((double)(Original_Width.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((double)(Original_Width.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             if ((Original_Height.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((double)(Original_Height.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((double)(Original_Height.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Original_MarginTop.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((double)(Original_MarginTop.Value));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((double)(Original_MarginTop.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             if ((Original_MarginBottom.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((double)(Original_MarginBottom.Value));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((double)(Original_MarginBottom.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             if ((Original_MarginLeft.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((double)(Original_MarginLeft.Value));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((double)(Original_MarginLeft.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             if ((Original_MarginRight.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((double)(Original_MarginRight.Value));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((double)(Original_MarginRight.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             if ((Original_DefaultPrinter == null)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_DefaultPrinter));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_DefaultPrinter));
             }
             if ((Original_PaperSize.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((short)(Original_PaperSize.Value));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((short)(Original_PaperSize.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             if ((Original_Flip.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((bool)(Original_Flip.Value));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((bool)(Original_Flip.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
             if ((Original_Rotate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((short)(Original_Rotate.Value));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((short)(Original_Rotate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[46].Value = ((int)(Id));
+            if ((Original_PaperSource == null)) {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_PaperSource));
+            }
+            this.Adapter.UpdateCommand.Parameters[49].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5859,6 +5993,7 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
                     global::System.Nullable<short> PaperSize, 
                     global::System.Nullable<bool> Flip, 
                     global::System.Nullable<short> Rotate, 
+                    string PaperSource, 
                     int Original_Id, 
                     string Original_Name, 
                     string Original_Type, 
@@ -5874,8 +6009,9 @@ SELECT Id, Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, Mar
                     string Original_DefaultPrinter, 
                     global::System.Nullable<short> Original_PaperSize, 
                     global::System.Nullable<bool> Original_Flip, 
-                    global::System.Nullable<short> Original_Rotate) {
-            return this.Update(Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, MarginTop, MarginBottom, MarginLeft, MarginRight, DefaultPrinter, PaperSize, Flip, Rotate, Original_Id, Original_Name, Original_Type, Original_LabelsAcross, Original_LabelsDown, Original_Orientation, Original_Width, Original_Height, Original_MarginTop, Original_MarginBottom, Original_MarginLeft, Original_MarginRight, Original_DefaultPrinter, Original_PaperSize, Original_Flip, Original_Rotate, Original_Id);
+                    global::System.Nullable<short> Original_Rotate, 
+                    string Original_PaperSource) {
+            return this.Update(Name, Type, LabelsAcross, LabelsDown, Orientation, Width, Height, MarginTop, MarginBottom, MarginLeft, MarginRight, DefaultPrinter, PaperSize, Flip, Rotate, PaperSource, Original_Id, Original_Name, Original_Type, Original_LabelsAcross, Original_LabelsDown, Original_Orientation, Original_Width, Original_Height, Original_MarginTop, Original_MarginBottom, Original_MarginLeft, Original_MarginRight, Original_DefaultPrinter, Original_PaperSize, Original_Flip, Original_Rotate, Original_PaperSource, Original_Id);
         }
     }
     

@@ -199,6 +199,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.groupBoxDataPictures = new System.Windows.Forms.GroupBox();
+            this.label83 = new System.Windows.Forms.Label();
             this.pictureBoxData4 = new System.Windows.Forms.PictureBox();
             this.pictureBoxData3 = new System.Windows.Forms.PictureBox();
             this.pictureBoxData2 = new System.Windows.Forms.PictureBox();
@@ -361,6 +362,18 @@
             this.pictureBoxThumb2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxThumb1 = new System.Windows.Forms.PictureBox();
             this.groupBoxPlantData = new System.Windows.Forms.GroupBox();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.progressBarDatabase = new System.Windows.Forms.ProgressBar();
             this.buttonVisibleOnly = new System.Windows.Forms.Button();
             this.buttonAllEntries = new System.Windows.Forms.Button();
@@ -388,6 +401,43 @@
             this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControlMain = new System.Windows.Forms.TabControl();
+            this.tabPageQuickPrint = new System.Windows.Forms.TabPage();
+            this.groupBoxQP9 = new System.Windows.Forms.GroupBox();
+            this.buttonQP9 = new System.Windows.Forms.Button();
+            this.textBoxQP9 = new System.Windows.Forms.TextBox();
+            this.panelQP9 = new System.Windows.Forms.Panel();
+            this.groupBoxQP8 = new System.Windows.Forms.GroupBox();
+            this.buttonQP8 = new System.Windows.Forms.Button();
+            this.textBoxQP8 = new System.Windows.Forms.TextBox();
+            this.panelQP8 = new System.Windows.Forms.Panel();
+            this.groupBoxQP6 = new System.Windows.Forms.GroupBox();
+            this.buttonQP6 = new System.Windows.Forms.Button();
+            this.textBoxQP6 = new System.Windows.Forms.TextBox();
+            this.panelQP6 = new System.Windows.Forms.Panel();
+            this.groupBoxQP5 = new System.Windows.Forms.GroupBox();
+            this.buttonQP5 = new System.Windows.Forms.Button();
+            this.textBoxQP5 = new System.Windows.Forms.TextBox();
+            this.panelQP5 = new System.Windows.Forms.Panel();
+            this.groupBoxQP7 = new System.Windows.Forms.GroupBox();
+            this.buttonQP7 = new System.Windows.Forms.Button();
+            this.textBoxQP7 = new System.Windows.Forms.TextBox();
+            this.panelQP7 = new System.Windows.Forms.Panel();
+            this.groupBoxQP4 = new System.Windows.Forms.GroupBox();
+            this.buttonQP4 = new System.Windows.Forms.Button();
+            this.textBoxQP4 = new System.Windows.Forms.TextBox();
+            this.panelQP4 = new System.Windows.Forms.Panel();
+            this.groupBoxQP2 = new System.Windows.Forms.GroupBox();
+            this.buttonQP2 = new System.Windows.Forms.Button();
+            this.textBoxQP2 = new System.Windows.Forms.TextBox();
+            this.panelQP2 = new System.Windows.Forms.Panel();
+            this.groupBoxQP3 = new System.Windows.Forms.GroupBox();
+            this.buttonQP3 = new System.Windows.Forms.Button();
+            this.textBoxQP3 = new System.Windows.Forms.TextBox();
+            this.panelQP3 = new System.Windows.Forms.Panel();
+            this.groupBoxQP1 = new System.Windows.Forms.GroupBox();
+            this.buttonQP1 = new System.Windows.Forms.Button();
+            this.textBoxQP1 = new System.Windows.Forms.TextBox();
+            this.panelQP1 = new System.Windows.Forms.Panel();
             this.tabPageQueueUtilities = new System.Windows.Forms.TabPage();
             this.panelQueueUtilities = new System.Windows.Forms.Panel();
             this.buttonMoveLineUp = new System.Windows.Forms.Button();
@@ -469,43 +519,6 @@
             this.textBoxQ0 = new System.Windows.Forms.TextBox();
             this.textBoxQ1 = new System.Windows.Forms.TextBox();
             this.textBoxQ4 = new System.Windows.Forms.TextBox();
-            this.tabPageQuickPrint = new System.Windows.Forms.TabPage();
-            this.groupBoxQP9 = new System.Windows.Forms.GroupBox();
-            this.buttonQP9 = new System.Windows.Forms.Button();
-            this.textBoxQP9 = new System.Windows.Forms.TextBox();
-            this.panelQP9 = new System.Windows.Forms.Panel();
-            this.groupBoxQP8 = new System.Windows.Forms.GroupBox();
-            this.buttonQP8 = new System.Windows.Forms.Button();
-            this.textBoxQP8 = new System.Windows.Forms.TextBox();
-            this.panelQP8 = new System.Windows.Forms.Panel();
-            this.groupBoxQP6 = new System.Windows.Forms.GroupBox();
-            this.buttonQP6 = new System.Windows.Forms.Button();
-            this.textBoxQP6 = new System.Windows.Forms.TextBox();
-            this.panelQP6 = new System.Windows.Forms.Panel();
-            this.groupBoxQP5 = new System.Windows.Forms.GroupBox();
-            this.buttonQP5 = new System.Windows.Forms.Button();
-            this.textBoxQP5 = new System.Windows.Forms.TextBox();
-            this.panelQP5 = new System.Windows.Forms.Panel();
-            this.groupBoxQP7 = new System.Windows.Forms.GroupBox();
-            this.buttonQP7 = new System.Windows.Forms.Button();
-            this.textBoxQP7 = new System.Windows.Forms.TextBox();
-            this.panelQP7 = new System.Windows.Forms.Panel();
-            this.groupBoxQP4 = new System.Windows.Forms.GroupBox();
-            this.buttonQP4 = new System.Windows.Forms.Button();
-            this.textBoxQP4 = new System.Windows.Forms.TextBox();
-            this.panelQP4 = new System.Windows.Forms.Panel();
-            this.groupBoxQP2 = new System.Windows.Forms.GroupBox();
-            this.buttonQP2 = new System.Windows.Forms.Button();
-            this.textBoxQP2 = new System.Windows.Forms.TextBox();
-            this.panelQP2 = new System.Windows.Forms.Panel();
-            this.groupBoxQP3 = new System.Windows.Forms.GroupBox();
-            this.buttonQP3 = new System.Windows.Forms.Button();
-            this.textBoxQP3 = new System.Windows.Forms.TextBox();
-            this.panelQP3 = new System.Windows.Forms.Panel();
-            this.groupBoxQP1 = new System.Windows.Forms.GroupBox();
-            this.buttonQP1 = new System.Windows.Forms.Button();
-            this.textBoxQP1 = new System.Windows.Forms.TextBox();
-            this.panelQP1 = new System.Windows.Forms.Panel();
             this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
             this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -515,16 +528,21 @@
             this.buttonDeleteQLines = new System.Windows.Forms.Button();
             this.buttonDeleteBothQueues = new System.Windows.Forms.Button();
             this.buttonDeleteThisQueue = new System.Windows.Forms.Button();
+            this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
+            this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
+            this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label84 = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.labelColourCountQ = new System.Windows.Forms.Label();
+            this.labelMainCountQ = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.bindingSourceLabels = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetLabelNames = new LabelMaker.DatabaseLabelsDataSetLabelNames();
             this.LabelsLabelNamesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelNamesTableAdapter();
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
-            this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
-            this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -581,16 +599,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb1)).BeginInit();
             this.groupBoxPlantData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).BeginInit();
             this.tabControlMain.SuspendLayout();
-            this.tabPageQueueUtilities.SuspendLayout();
-            this.panelQueueUtilities.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).BeginInit();
             this.tabPageQuickPrint.SuspendLayout();
             this.groupBoxQP9.SuspendLayout();
             this.groupBoxQP8.SuspendLayout();
@@ -601,8 +613,17 @@
             this.groupBoxQP2.SuspendLayout();
             this.groupBoxQP3.SuspendLayout();
             this.groupBoxQP1.SuspendLayout();
+            this.tabPageQueueUtilities.SuspendLayout();
+            this.panelQueueUtilities.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).BeginInit();
             this.SuspendLayout();
@@ -615,10 +636,10 @@
             this.tabControlQueue.Controls.Add(this.tabPageColourQueue);
             this.tabControlQueue.Controls.Add(this.tabPageLabelStocks);
             this.tabControlQueue.Controls.Add(this.tabPageMissingPictures);
-            this.tabControlQueue.Location = new System.Drawing.Point(1097, 34);
+            this.tabControlQueue.Location = new System.Drawing.Point(1115, 34);
             this.tabControlQueue.Name = "tabControlQueue";
             this.tabControlQueue.SelectedIndex = 0;
-            this.tabControlQueue.Size = new System.Drawing.Size(419, 750);
+            this.tabControlQueue.Size = new System.Drawing.Size(419, 759);
             this.tabControlQueue.TabIndex = 0;
             this.tabControlQueue.SelectedIndexChanged += new System.EventHandler(this.tabControlQueue_SelectedIndexChanged);
             // 
@@ -629,7 +650,7 @@
             this.tabPageMainQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageMainQueue.Name = "tabPageMainQueue";
             this.tabPageMainQueue.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMainQueue.Size = new System.Drawing.Size(411, 724);
+            this.tabPageMainQueue.Size = new System.Drawing.Size(411, 733);
             this.tabPageMainQueue.TabIndex = 0;
             this.tabPageMainQueue.Text = "     Main Queue     ";
             // 
@@ -842,7 +863,7 @@
             this.tabPageColourQueue.Location = new System.Drawing.Point(4, 22);
             this.tabPageColourQueue.Name = "tabPageColourQueue";
             this.tabPageColourQueue.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageColourQueue.Size = new System.Drawing.Size(411, 724);
+            this.tabPageColourQueue.Size = new System.Drawing.Size(411, 733);
             this.tabPageColourQueue.TabIndex = 1;
             this.tabPageColourQueue.Text = "     Colour Queue     ";
             // 
@@ -1075,7 +1096,7 @@
             this.tabPageLabelStocks.Controls.Add(this.dataGridViewQueueList);
             this.tabPageLabelStocks.Location = new System.Drawing.Point(4, 22);
             this.tabPageLabelStocks.Name = "tabPageLabelStocks";
-            this.tabPageLabelStocks.Size = new System.Drawing.Size(411, 724);
+            this.tabPageLabelStocks.Size = new System.Drawing.Size(411, 733);
             this.tabPageLabelStocks.TabIndex = 2;
             this.tabPageLabelStocks.Text = "   Label Stocks   ";
             this.tabPageLabelStocks.UseVisualStyleBackColor = true;
@@ -1183,7 +1204,7 @@
             this.tabPageMissingPictures.Controls.Add(this.dataGridViewMissingPictures);
             this.tabPageMissingPictures.Location = new System.Drawing.Point(4, 22);
             this.tabPageMissingPictures.Name = "tabPageMissingPictures";
-            this.tabPageMissingPictures.Size = new System.Drawing.Size(411, 724);
+            this.tabPageMissingPictures.Size = new System.Drawing.Size(411, 733);
             this.tabPageMissingPictures.TabIndex = 3;
             this.tabPageMissingPictures.Text = "  Missing Pictures   ";
             this.tabPageMissingPictures.UseVisualStyleBackColor = true;
@@ -1270,7 +1291,7 @@
             this.queueToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1516, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1534, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1358,7 +1379,7 @@
             this.tabPageLabelProfiles.Location = new System.Drawing.Point(4, 22);
             this.tabPageLabelProfiles.Name = "tabPageLabelProfiles";
             this.tabPageLabelProfiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLabelProfiles.Size = new System.Drawing.Size(1075, 783);
+            this.tabPageLabelProfiles.Size = new System.Drawing.Size(1093, 792);
             this.tabPageLabelProfiles.TabIndex = 5;
             this.tabPageLabelProfiles.Text = "   Label Profiles   ";
             this.tabPageLabelProfiles.UseVisualStyleBackColor = true;
@@ -1439,6 +1460,7 @@
             this.dataGridView1ProfileView.Name = "dataGridView1ProfileView";
             this.dataGridView1ProfileView.Size = new System.Drawing.Size(740, 188);
             this.dataGridView1ProfileView.TabIndex = 3;
+            this.dataGridView1ProfileView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1ProfileView_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -1610,7 +1632,7 @@
             this.tabPageAuto.Location = new System.Drawing.Point(4, 22);
             this.tabPageAuto.Name = "tabPageAuto";
             this.tabPageAuto.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAuto.Size = new System.Drawing.Size(1075, 783);
+            this.tabPageAuto.Size = new System.Drawing.Size(1093, 792);
             this.tabPageAuto.TabIndex = 1;
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
@@ -1921,7 +1943,7 @@
             this.tabPagePreview.Location = new System.Drawing.Point(4, 22);
             this.tabPagePreview.Name = "tabPagePreview";
             this.tabPagePreview.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePreview.Size = new System.Drawing.Size(1075, 783);
+            this.tabPagePreview.Size = new System.Drawing.Size(1093, 792);
             this.tabPagePreview.TabIndex = 3;
             this.tabPagePreview.Text = "     Label Preview   ";
             // 
@@ -2017,7 +2039,7 @@
             this.tabPageDatabase.Controls.Add(this.label9);
             this.tabPageDatabase.Location = new System.Drawing.Point(4, 22);
             this.tabPageDatabase.Name = "tabPageDatabase";
-            this.tabPageDatabase.Size = new System.Drawing.Size(1075, 783);
+            this.tabPageDatabase.Size = new System.Drawing.Size(1093, 792);
             this.tabPageDatabase.TabIndex = 2;
             this.tabPageDatabase.Text = "     Database Entry";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
@@ -2112,6 +2134,7 @@
             // 
             // groupBoxDataPictures
             // 
+            this.groupBoxDataPictures.Controls.Add(this.label83);
             this.groupBoxDataPictures.Controls.Add(this.pictureBoxData4);
             this.groupBoxDataPictures.Controls.Add(this.pictureBoxData3);
             this.groupBoxDataPictures.Controls.Add(this.pictureBoxData2);
@@ -2130,6 +2153,17 @@
             this.groupBoxDataPictures.TabIndex = 18;
             this.groupBoxDataPictures.TabStop = false;
             this.groupBoxDataPictures.Text = "Pictures";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label83.Location = new System.Drawing.Point(51, 292);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(356, 18);
+            this.label83.TabIndex = 30;
+            this.label83.Text = "Click on any picture or space above to pick a new file";
             // 
             // pictureBoxData4
             // 
@@ -2694,7 +2728,7 @@
             this.tabPageManual.Location = new System.Drawing.Point(4, 22);
             this.tabPageManual.Name = "tabPageManual";
             this.tabPageManual.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageManual.Size = new System.Drawing.Size(1075, 783);
+            this.tabPageManual.Size = new System.Drawing.Size(1093, 792);
             this.tabPageManual.TabIndex = 0;
             this.tabPageManual.Text = "     Manual Entry     ";
             // 
@@ -3910,6 +3944,7 @@
             // 
             // groupBoxPlantData
             // 
+            this.groupBoxPlantData.Controls.Add(this.bindingNavigator1);
             this.groupBoxPlantData.Controls.Add(this.progressBarDatabase);
             this.groupBoxPlantData.Controls.Add(this.buttonVisibleOnly);
             this.groupBoxPlantData.Controls.Add(this.buttonAllEntries);
@@ -3921,6 +3956,129 @@
             this.groupBoxPlantData.TabIndex = 14;
             this.groupBoxPlantData.TabStop = false;
             this.groupBoxPlantData.Text = "Plant Database";
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = null;
+            this.bindingNavigator1.BindingSource = this.tablePlantsBindingSource;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = null;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.toolStripComboBox1,
+            this.toolStripButton1});
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 16);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.Size = new System.Drawing.Size(673, 25);
+            this.bindingNavigator1.TabIndex = 5;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            this.bindingNavigatorMoveFirstItem.Click += new System.EventHandler(this.bindingNavigatorMoveFirstItem_Click);
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            this.bindingNavigatorMovePreviousItem.Click += new System.EventHandler(this.bindingNavigatorMovePreviousItem_Click);
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.BackColor = System.Drawing.Color.White;
+            this.bindingNavigatorPositionItem.Enabled = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            this.bindingNavigatorMoveNextItem.Click += new System.EventHandler(this.bindingNavigatorMoveNextItem_Click);
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            this.bindingNavigatorMoveLastItem.Click += new System.EventHandler(this.bindingNavigatorMoveLastItem_Click);
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(300, 25);
+            this.toolStripComboBox1.Text = "Enter search text here";
+            this.toolStripComboBox1.ToolTipText = "Type a search term in the box and then click the magnifying glass. If it won\'t ju" +
+    "mp to an entry, then refilter the database for Hidden Entries";
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.AutoSize = false;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::LabelMaker.Properties.Resources.search;
+            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // progressBarDatabase
             // 
@@ -3993,11 +4151,11 @@
             this.notesDataGridViewTextBoxColumn,
             this.labelStockDataGridViewCheckBoxColumn});
             this.dataGridViewPlants.DataSource = this.tablePlantsBindingSource;
-            this.dataGridViewPlants.Location = new System.Drawing.Point(6, 20);
+            this.dataGridViewPlants.Location = new System.Drawing.Point(6, 40);
             this.dataGridViewPlants.Name = "dataGridViewPlants";
             this.dataGridViewPlants.ReadOnly = true;
             this.dataGridViewPlants.RowHeadersVisible = false;
-            this.dataGridViewPlants.Size = new System.Drawing.Size(667, 698);
+            this.dataGridViewPlants.Size = new System.Drawing.Size(667, 678);
             this.dataGridViewPlants.TabIndex = 0;
             this.dataGridViewPlants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlants_CellContentClick);
             // 
@@ -4155,24 +4313,411 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMain.Controls.Add(this.tabPageManual);
             this.tabControlMain.Controls.Add(this.tabPageDatabase);
+            this.tabControlMain.Controls.Add(this.tabPageLabelProfiles);
             this.tabControlMain.Controls.Add(this.tabPagePreview);
             this.tabControlMain.Controls.Add(this.tabPageAuto);
-            this.tabControlMain.Controls.Add(this.tabPageLabelProfiles);
-            this.tabControlMain.Controls.Add(this.tabPageQueueUtilities);
             this.tabControlMain.Controls.Add(this.tabPageQuickPrint);
+            this.tabControlMain.Controls.Add(this.tabPageQueueUtilities);
             this.tabControlMain.Location = new System.Drawing.Point(12, 34);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1083, 809);
+            this.tabControlMain.Size = new System.Drawing.Size(1101, 818);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
+            // 
+            // tabPageQuickPrint
+            // 
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP9);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP8);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP6);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP5);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP7);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP4);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP2);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP3);
+            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP1);
+            this.tabPageQuickPrint.Location = new System.Drawing.Point(4, 22);
+            this.tabPageQuickPrint.Name = "tabPageQuickPrint";
+            this.tabPageQuickPrint.Size = new System.Drawing.Size(1093, 792);
+            this.tabPageQuickPrint.TabIndex = 7;
+            this.tabPageQuickPrint.Text = "   Quick Print   ";
+            this.tabPageQuickPrint.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxQP9
+            // 
+            this.groupBoxQP9.Controls.Add(this.buttonQP9);
+            this.groupBoxQP9.Controls.Add(this.textBoxQP9);
+            this.groupBoxQP9.Controls.Add(this.panelQP9);
+            this.groupBoxQP9.Location = new System.Drawing.Point(728, 530);
+            this.groupBoxQP9.Name = "groupBoxQP9";
+            this.groupBoxQP9.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP9.TabIndex = 7;
+            this.groupBoxQP9.TabStop = false;
+            this.groupBoxQP9.Text = "Quick Print";
+            // 
+            // buttonQP9
+            // 
+            this.buttonQP9.Enabled = false;
+            this.buttonQP9.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP9.Name = "buttonQP9";
+            this.buttonQP9.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP9.TabIndex = 4;
+            this.buttonQP9.Text = "Print";
+            this.buttonQP9.UseVisualStyleBackColor = true;
+            this.buttonQP9.Click += new System.EventHandler(this.buttonQP9_Click);
+            // 
+            // textBoxQP9
+            // 
+            this.textBoxQP9.Enabled = false;
+            this.textBoxQP9.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP9.Name = "textBoxQP9";
+            this.textBoxQP9.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP9.TabIndex = 3;
+            this.textBoxQP9.Text = "1";
+            // 
+            // panelQP9
+            // 
+            this.panelQP9.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP9.Location = new System.Drawing.Point(6, 42);
+            this.panelQP9.Name = "panelQP9";
+            this.panelQP9.Size = new System.Drawing.Size(318, 190);
+            this.panelQP9.TabIndex = 1;
+            // 
+            // groupBoxQP8
+            // 
+            this.groupBoxQP8.Controls.Add(this.buttonQP8);
+            this.groupBoxQP8.Controls.Add(this.textBoxQP8);
+            this.groupBoxQP8.Controls.Add(this.panelQP8);
+            this.groupBoxQP8.Location = new System.Drawing.Point(373, 530);
+            this.groupBoxQP8.Name = "groupBoxQP8";
+            this.groupBoxQP8.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP8.TabIndex = 7;
+            this.groupBoxQP8.TabStop = false;
+            this.groupBoxQP8.Text = "Quick Print";
+            // 
+            // buttonQP8
+            // 
+            this.buttonQP8.Enabled = false;
+            this.buttonQP8.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP8.Name = "buttonQP8";
+            this.buttonQP8.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP8.TabIndex = 4;
+            this.buttonQP8.Text = "Print";
+            this.buttonQP8.UseVisualStyleBackColor = true;
+            this.buttonQP8.Click += new System.EventHandler(this.buttonQP8_Click);
+            // 
+            // textBoxQP8
+            // 
+            this.textBoxQP8.Enabled = false;
+            this.textBoxQP8.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP8.Name = "textBoxQP8";
+            this.textBoxQP8.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP8.TabIndex = 3;
+            this.textBoxQP8.Text = "1";
+            // 
+            // panelQP8
+            // 
+            this.panelQP8.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP8.Location = new System.Drawing.Point(6, 42);
+            this.panelQP8.Name = "panelQP8";
+            this.panelQP8.Size = new System.Drawing.Size(318, 190);
+            this.panelQP8.TabIndex = 1;
+            // 
+            // groupBoxQP6
+            // 
+            this.groupBoxQP6.Controls.Add(this.buttonQP6);
+            this.groupBoxQP6.Controls.Add(this.textBoxQP6);
+            this.groupBoxQP6.Controls.Add(this.panelQP6);
+            this.groupBoxQP6.Location = new System.Drawing.Point(728, 270);
+            this.groupBoxQP6.Name = "groupBoxQP6";
+            this.groupBoxQP6.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP6.TabIndex = 8;
+            this.groupBoxQP6.TabStop = false;
+            this.groupBoxQP6.Text = "Quick Print";
+            // 
+            // buttonQP6
+            // 
+            this.buttonQP6.Enabled = false;
+            this.buttonQP6.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP6.Name = "buttonQP6";
+            this.buttonQP6.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP6.TabIndex = 4;
+            this.buttonQP6.Text = "Print";
+            this.buttonQP6.UseVisualStyleBackColor = true;
+            this.buttonQP6.Click += new System.EventHandler(this.buttonQP6_Click);
+            // 
+            // textBoxQP6
+            // 
+            this.textBoxQP6.Enabled = false;
+            this.textBoxQP6.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP6.Name = "textBoxQP6";
+            this.textBoxQP6.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP6.TabIndex = 3;
+            this.textBoxQP6.Text = "1";
+            // 
+            // panelQP6
+            // 
+            this.panelQP6.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP6.Location = new System.Drawing.Point(6, 42);
+            this.panelQP6.Name = "panelQP6";
+            this.panelQP6.Size = new System.Drawing.Size(318, 190);
+            this.panelQP6.TabIndex = 1;
+            // 
+            // groupBoxQP5
+            // 
+            this.groupBoxQP5.Controls.Add(this.buttonQP5);
+            this.groupBoxQP5.Controls.Add(this.textBoxQP5);
+            this.groupBoxQP5.Controls.Add(this.panelQP5);
+            this.groupBoxQP5.Location = new System.Drawing.Point(373, 270);
+            this.groupBoxQP5.Name = "groupBoxQP5";
+            this.groupBoxQP5.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP5.TabIndex = 8;
+            this.groupBoxQP5.TabStop = false;
+            this.groupBoxQP5.Text = "Quick Print";
+            // 
+            // buttonQP5
+            // 
+            this.buttonQP5.Enabled = false;
+            this.buttonQP5.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP5.Name = "buttonQP5";
+            this.buttonQP5.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP5.TabIndex = 4;
+            this.buttonQP5.Text = "Print";
+            this.buttonQP5.UseVisualStyleBackColor = true;
+            this.buttonQP5.Click += new System.EventHandler(this.buttonQP5_Click);
+            // 
+            // textBoxQP5
+            // 
+            this.textBoxQP5.Enabled = false;
+            this.textBoxQP5.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP5.Name = "textBoxQP5";
+            this.textBoxQP5.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP5.TabIndex = 3;
+            this.textBoxQP5.Text = "1";
+            // 
+            // panelQP5
+            // 
+            this.panelQP5.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP5.Location = new System.Drawing.Point(6, 42);
+            this.panelQP5.Name = "panelQP5";
+            this.panelQP5.Size = new System.Drawing.Size(318, 190);
+            this.panelQP5.TabIndex = 1;
+            // 
+            // groupBoxQP7
+            // 
+            this.groupBoxQP7.Controls.Add(this.buttonQP7);
+            this.groupBoxQP7.Controls.Add(this.textBoxQP7);
+            this.groupBoxQP7.Controls.Add(this.panelQP7);
+            this.groupBoxQP7.Location = new System.Drawing.Point(13, 530);
+            this.groupBoxQP7.Name = "groupBoxQP7";
+            this.groupBoxQP7.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP7.TabIndex = 5;
+            this.groupBoxQP7.TabStop = false;
+            this.groupBoxQP7.Text = "Quick Print";
+            // 
+            // buttonQP7
+            // 
+            this.buttonQP7.Enabled = false;
+            this.buttonQP7.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP7.Name = "buttonQP7";
+            this.buttonQP7.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP7.TabIndex = 4;
+            this.buttonQP7.Text = "Print";
+            this.buttonQP7.UseVisualStyleBackColor = true;
+            this.buttonQP7.Click += new System.EventHandler(this.buttonQP7_Click);
+            // 
+            // textBoxQP7
+            // 
+            this.textBoxQP7.Enabled = false;
+            this.textBoxQP7.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP7.Name = "textBoxQP7";
+            this.textBoxQP7.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP7.TabIndex = 3;
+            this.textBoxQP7.Text = "1";
+            // 
+            // panelQP7
+            // 
+            this.panelQP7.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP7.Location = new System.Drawing.Point(6, 42);
+            this.panelQP7.Name = "panelQP7";
+            this.panelQP7.Size = new System.Drawing.Size(318, 190);
+            this.panelQP7.TabIndex = 1;
+            // 
+            // groupBoxQP4
+            // 
+            this.groupBoxQP4.Controls.Add(this.buttonQP4);
+            this.groupBoxQP4.Controls.Add(this.textBoxQP4);
+            this.groupBoxQP4.Controls.Add(this.panelQP4);
+            this.groupBoxQP4.Location = new System.Drawing.Point(13, 270);
+            this.groupBoxQP4.Name = "groupBoxQP4";
+            this.groupBoxQP4.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP4.TabIndex = 6;
+            this.groupBoxQP4.TabStop = false;
+            this.groupBoxQP4.Text = "Quick Print";
+            // 
+            // buttonQP4
+            // 
+            this.buttonQP4.Enabled = false;
+            this.buttonQP4.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP4.Name = "buttonQP4";
+            this.buttonQP4.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP4.TabIndex = 4;
+            this.buttonQP4.Text = "Print";
+            this.buttonQP4.UseVisualStyleBackColor = true;
+            this.buttonQP4.Click += new System.EventHandler(this.buttonQP4_Click);
+            // 
+            // textBoxQP4
+            // 
+            this.textBoxQP4.Enabled = false;
+            this.textBoxQP4.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP4.Name = "textBoxQP4";
+            this.textBoxQP4.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP4.TabIndex = 3;
+            this.textBoxQP4.Text = "1";
+            // 
+            // panelQP4
+            // 
+            this.panelQP4.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP4.Location = new System.Drawing.Point(6, 42);
+            this.panelQP4.Name = "panelQP4";
+            this.panelQP4.Size = new System.Drawing.Size(318, 190);
+            this.panelQP4.TabIndex = 1;
+            // 
+            // groupBoxQP2
+            // 
+            this.groupBoxQP2.Controls.Add(this.buttonQP2);
+            this.groupBoxQP2.Controls.Add(this.textBoxQP2);
+            this.groupBoxQP2.Controls.Add(this.panelQP2);
+            this.groupBoxQP2.Location = new System.Drawing.Point(373, 15);
+            this.groupBoxQP2.Name = "groupBoxQP2";
+            this.groupBoxQP2.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP2.TabIndex = 5;
+            this.groupBoxQP2.TabStop = false;
+            this.groupBoxQP2.Text = "Quick Print";
+            // 
+            // buttonQP2
+            // 
+            this.buttonQP2.Enabled = false;
+            this.buttonQP2.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP2.Name = "buttonQP2";
+            this.buttonQP2.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP2.TabIndex = 4;
+            this.buttonQP2.Text = "Print";
+            this.buttonQP2.UseVisualStyleBackColor = true;
+            this.buttonQP2.Click += new System.EventHandler(this.buttonQP2_Click);
+            // 
+            // textBoxQP2
+            // 
+            this.textBoxQP2.Enabled = false;
+            this.textBoxQP2.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP2.Name = "textBoxQP2";
+            this.textBoxQP2.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP2.TabIndex = 3;
+            this.textBoxQP2.Text = "1";
+            // 
+            // panelQP2
+            // 
+            this.panelQP2.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP2.Location = new System.Drawing.Point(6, 42);
+            this.panelQP2.Name = "panelQP2";
+            this.panelQP2.Size = new System.Drawing.Size(318, 190);
+            this.panelQP2.TabIndex = 1;
+            // 
+            // groupBoxQP3
+            // 
+            this.groupBoxQP3.Controls.Add(this.buttonQP3);
+            this.groupBoxQP3.Controls.Add(this.textBoxQP3);
+            this.groupBoxQP3.Controls.Add(this.panelQP3);
+            this.groupBoxQP3.Location = new System.Drawing.Point(728, 15);
+            this.groupBoxQP3.Name = "groupBoxQP3";
+            this.groupBoxQP3.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP3.TabIndex = 5;
+            this.groupBoxQP3.TabStop = false;
+            this.groupBoxQP3.Text = "Quick Print";
+            // 
+            // buttonQP3
+            // 
+            this.buttonQP3.Enabled = false;
+            this.buttonQP3.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP3.Name = "buttonQP3";
+            this.buttonQP3.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP3.TabIndex = 4;
+            this.buttonQP3.Text = "Print";
+            this.buttonQP3.UseVisualStyleBackColor = true;
+            this.buttonQP3.Click += new System.EventHandler(this.buttonQP3_Click);
+            // 
+            // textBoxQP3
+            // 
+            this.textBoxQP3.Enabled = false;
+            this.textBoxQP3.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP3.Name = "textBoxQP3";
+            this.textBoxQP3.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP3.TabIndex = 3;
+            this.textBoxQP3.Text = "1";
+            // 
+            // panelQP3
+            // 
+            this.panelQP3.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP3.Location = new System.Drawing.Point(6, 42);
+            this.panelQP3.Name = "panelQP3";
+            this.panelQP3.Size = new System.Drawing.Size(318, 190);
+            this.panelQP3.TabIndex = 1;
+            // 
+            // groupBoxQP1
+            // 
+            this.groupBoxQP1.Controls.Add(this.buttonQP1);
+            this.groupBoxQP1.Controls.Add(this.textBoxQP1);
+            this.groupBoxQP1.Controls.Add(this.panelQP1);
+            this.groupBoxQP1.Location = new System.Drawing.Point(13, 15);
+            this.groupBoxQP1.Name = "groupBoxQP1";
+            this.groupBoxQP1.Size = new System.Drawing.Size(330, 240);
+            this.groupBoxQP1.TabIndex = 4;
+            this.groupBoxQP1.TabStop = false;
+            this.groupBoxQP1.Text = "Quick Print";
+            // 
+            // buttonQP1
+            // 
+            this.buttonQP1.Enabled = false;
+            this.buttonQP1.Location = new System.Drawing.Point(183, 13);
+            this.buttonQP1.Name = "buttonQP1";
+            this.buttonQP1.Size = new System.Drawing.Size(141, 23);
+            this.buttonQP1.TabIndex = 4;
+            this.buttonQP1.Text = "Print";
+            this.buttonQP1.UseVisualStyleBackColor = true;
+            this.buttonQP1.Click += new System.EventHandler(this.buttonQP1_Click);
+            // 
+            // textBoxQP1
+            // 
+            this.textBoxQP1.Enabled = false;
+            this.textBoxQP1.Location = new System.Drawing.Point(115, 15);
+            this.textBoxQP1.Name = "textBoxQP1";
+            this.textBoxQP1.Size = new System.Drawing.Size(62, 20);
+            this.textBoxQP1.TabIndex = 3;
+            this.textBoxQP1.Text = "1";
+            // 
+            // panelQP1
+            // 
+            this.panelQP1.BackColor = System.Drawing.Color.DimGray;
+            this.panelQP1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQP1.Location = new System.Drawing.Point(6, 42);
+            this.panelQP1.Name = "panelQP1";
+            this.panelQP1.Size = new System.Drawing.Size(318, 190);
+            this.panelQP1.TabIndex = 1;
             // 
             // tabPageQueueUtilities
             // 
             this.tabPageQueueUtilities.Controls.Add(this.panelQueueUtilities);
             this.tabPageQueueUtilities.Location = new System.Drawing.Point(4, 22);
             this.tabPageQueueUtilities.Name = "tabPageQueueUtilities";
-            this.tabPageQueueUtilities.Size = new System.Drawing.Size(1075, 783);
+            this.tabPageQueueUtilities.Size = new System.Drawing.Size(1093, 792);
             this.tabPageQueueUtilities.TabIndex = 6;
             this.tabPageQueueUtilities.Text = "   Queue Utilities   ";
             this.tabPageQueueUtilities.UseVisualStyleBackColor = true;
@@ -4976,393 +5521,6 @@
             this.textBoxQ4.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ4.TabIndex = 0;
             // 
-            // tabPageQuickPrint
-            // 
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP9);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP8);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP6);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP5);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP7);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP4);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP2);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP3);
-            this.tabPageQuickPrint.Controls.Add(this.groupBoxQP1);
-            this.tabPageQuickPrint.Location = new System.Drawing.Point(4, 22);
-            this.tabPageQuickPrint.Name = "tabPageQuickPrint";
-            this.tabPageQuickPrint.Size = new System.Drawing.Size(1075, 783);
-            this.tabPageQuickPrint.TabIndex = 7;
-            this.tabPageQuickPrint.Text = "   Quick Print   ";
-            this.tabPageQuickPrint.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxQP9
-            // 
-            this.groupBoxQP9.Controls.Add(this.buttonQP9);
-            this.groupBoxQP9.Controls.Add(this.textBoxQP9);
-            this.groupBoxQP9.Controls.Add(this.panelQP9);
-            this.groupBoxQP9.Location = new System.Drawing.Point(728, 530);
-            this.groupBoxQP9.Name = "groupBoxQP9";
-            this.groupBoxQP9.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP9.TabIndex = 7;
-            this.groupBoxQP9.TabStop = false;
-            this.groupBoxQP9.Text = "Quick Print";
-            // 
-            // buttonQP9
-            // 
-            this.buttonQP9.Enabled = false;
-            this.buttonQP9.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP9.Name = "buttonQP9";
-            this.buttonQP9.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP9.TabIndex = 4;
-            this.buttonQP9.Text = "Print";
-            this.buttonQP9.UseVisualStyleBackColor = true;
-            this.buttonQP9.Click += new System.EventHandler(this.buttonQP9_Click);
-            // 
-            // textBoxQP9
-            // 
-            this.textBoxQP9.Enabled = false;
-            this.textBoxQP9.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP9.Name = "textBoxQP9";
-            this.textBoxQP9.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP9.TabIndex = 3;
-            this.textBoxQP9.Text = "1";
-            // 
-            // panelQP9
-            // 
-            this.panelQP9.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP9.Location = new System.Drawing.Point(6, 42);
-            this.panelQP9.Name = "panelQP9";
-            this.panelQP9.Size = new System.Drawing.Size(318, 190);
-            this.panelQP9.TabIndex = 1;
-            // 
-            // groupBoxQP8
-            // 
-            this.groupBoxQP8.Controls.Add(this.buttonQP8);
-            this.groupBoxQP8.Controls.Add(this.textBoxQP8);
-            this.groupBoxQP8.Controls.Add(this.panelQP8);
-            this.groupBoxQP8.Location = new System.Drawing.Point(373, 530);
-            this.groupBoxQP8.Name = "groupBoxQP8";
-            this.groupBoxQP8.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP8.TabIndex = 7;
-            this.groupBoxQP8.TabStop = false;
-            this.groupBoxQP8.Text = "Quick Print";
-            // 
-            // buttonQP8
-            // 
-            this.buttonQP8.Enabled = false;
-            this.buttonQP8.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP8.Name = "buttonQP8";
-            this.buttonQP8.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP8.TabIndex = 4;
-            this.buttonQP8.Text = "Print";
-            this.buttonQP8.UseVisualStyleBackColor = true;
-            this.buttonQP8.Click += new System.EventHandler(this.buttonQP8_Click);
-            // 
-            // textBoxQP8
-            // 
-            this.textBoxQP8.Enabled = false;
-            this.textBoxQP8.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP8.Name = "textBoxQP8";
-            this.textBoxQP8.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP8.TabIndex = 3;
-            this.textBoxQP8.Text = "1";
-            // 
-            // panelQP8
-            // 
-            this.panelQP8.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP8.Location = new System.Drawing.Point(6, 42);
-            this.panelQP8.Name = "panelQP8";
-            this.panelQP8.Size = new System.Drawing.Size(318, 190);
-            this.panelQP8.TabIndex = 1;
-            // 
-            // groupBoxQP6
-            // 
-            this.groupBoxQP6.Controls.Add(this.buttonQP6);
-            this.groupBoxQP6.Controls.Add(this.textBoxQP6);
-            this.groupBoxQP6.Controls.Add(this.panelQP6);
-            this.groupBoxQP6.Location = new System.Drawing.Point(728, 270);
-            this.groupBoxQP6.Name = "groupBoxQP6";
-            this.groupBoxQP6.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP6.TabIndex = 8;
-            this.groupBoxQP6.TabStop = false;
-            this.groupBoxQP6.Text = "Quick Print";
-            // 
-            // buttonQP6
-            // 
-            this.buttonQP6.Enabled = false;
-            this.buttonQP6.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP6.Name = "buttonQP6";
-            this.buttonQP6.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP6.TabIndex = 4;
-            this.buttonQP6.Text = "Print";
-            this.buttonQP6.UseVisualStyleBackColor = true;
-            this.buttonQP6.Click += new System.EventHandler(this.buttonQP6_Click);
-            // 
-            // textBoxQP6
-            // 
-            this.textBoxQP6.Enabled = false;
-            this.textBoxQP6.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP6.Name = "textBoxQP6";
-            this.textBoxQP6.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP6.TabIndex = 3;
-            this.textBoxQP6.Text = "1";
-            // 
-            // panelQP6
-            // 
-            this.panelQP6.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP6.Location = new System.Drawing.Point(6, 42);
-            this.panelQP6.Name = "panelQP6";
-            this.panelQP6.Size = new System.Drawing.Size(318, 190);
-            this.panelQP6.TabIndex = 1;
-            // 
-            // groupBoxQP5
-            // 
-            this.groupBoxQP5.Controls.Add(this.buttonQP5);
-            this.groupBoxQP5.Controls.Add(this.textBoxQP5);
-            this.groupBoxQP5.Controls.Add(this.panelQP5);
-            this.groupBoxQP5.Location = new System.Drawing.Point(373, 270);
-            this.groupBoxQP5.Name = "groupBoxQP5";
-            this.groupBoxQP5.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP5.TabIndex = 8;
-            this.groupBoxQP5.TabStop = false;
-            this.groupBoxQP5.Text = "Quick Print";
-            // 
-            // buttonQP5
-            // 
-            this.buttonQP5.Enabled = false;
-            this.buttonQP5.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP5.Name = "buttonQP5";
-            this.buttonQP5.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP5.TabIndex = 4;
-            this.buttonQP5.Text = "Print";
-            this.buttonQP5.UseVisualStyleBackColor = true;
-            this.buttonQP5.Click += new System.EventHandler(this.buttonQP5_Click);
-            // 
-            // textBoxQP5
-            // 
-            this.textBoxQP5.Enabled = false;
-            this.textBoxQP5.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP5.Name = "textBoxQP5";
-            this.textBoxQP5.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP5.TabIndex = 3;
-            this.textBoxQP5.Text = "1";
-            // 
-            // panelQP5
-            // 
-            this.panelQP5.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP5.Location = new System.Drawing.Point(6, 42);
-            this.panelQP5.Name = "panelQP5";
-            this.panelQP5.Size = new System.Drawing.Size(318, 190);
-            this.panelQP5.TabIndex = 1;
-            // 
-            // groupBoxQP7
-            // 
-            this.groupBoxQP7.Controls.Add(this.buttonQP7);
-            this.groupBoxQP7.Controls.Add(this.textBoxQP7);
-            this.groupBoxQP7.Controls.Add(this.panelQP7);
-            this.groupBoxQP7.Location = new System.Drawing.Point(13, 530);
-            this.groupBoxQP7.Name = "groupBoxQP7";
-            this.groupBoxQP7.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP7.TabIndex = 5;
-            this.groupBoxQP7.TabStop = false;
-            this.groupBoxQP7.Text = "Quick Print";
-            // 
-            // buttonQP7
-            // 
-            this.buttonQP7.Enabled = false;
-            this.buttonQP7.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP7.Name = "buttonQP7";
-            this.buttonQP7.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP7.TabIndex = 4;
-            this.buttonQP7.Text = "Print";
-            this.buttonQP7.UseVisualStyleBackColor = true;
-            this.buttonQP7.Click += new System.EventHandler(this.buttonQP7_Click);
-            // 
-            // textBoxQP7
-            // 
-            this.textBoxQP7.Enabled = false;
-            this.textBoxQP7.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP7.Name = "textBoxQP7";
-            this.textBoxQP7.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP7.TabIndex = 3;
-            this.textBoxQP7.Text = "1";
-            // 
-            // panelQP7
-            // 
-            this.panelQP7.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP7.Location = new System.Drawing.Point(6, 42);
-            this.panelQP7.Name = "panelQP7";
-            this.panelQP7.Size = new System.Drawing.Size(318, 190);
-            this.panelQP7.TabIndex = 1;
-            // 
-            // groupBoxQP4
-            // 
-            this.groupBoxQP4.Controls.Add(this.buttonQP4);
-            this.groupBoxQP4.Controls.Add(this.textBoxQP4);
-            this.groupBoxQP4.Controls.Add(this.panelQP4);
-            this.groupBoxQP4.Location = new System.Drawing.Point(13, 270);
-            this.groupBoxQP4.Name = "groupBoxQP4";
-            this.groupBoxQP4.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP4.TabIndex = 6;
-            this.groupBoxQP4.TabStop = false;
-            this.groupBoxQP4.Text = "Quick Print";
-            // 
-            // buttonQP4
-            // 
-            this.buttonQP4.Enabled = false;
-            this.buttonQP4.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP4.Name = "buttonQP4";
-            this.buttonQP4.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP4.TabIndex = 4;
-            this.buttonQP4.Text = "Print";
-            this.buttonQP4.UseVisualStyleBackColor = true;
-            this.buttonQP4.Click += new System.EventHandler(this.buttonQP4_Click);
-            // 
-            // textBoxQP4
-            // 
-            this.textBoxQP4.Enabled = false;
-            this.textBoxQP4.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP4.Name = "textBoxQP4";
-            this.textBoxQP4.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP4.TabIndex = 3;
-            this.textBoxQP4.Text = "1";
-            // 
-            // panelQP4
-            // 
-            this.panelQP4.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP4.Location = new System.Drawing.Point(6, 42);
-            this.panelQP4.Name = "panelQP4";
-            this.panelQP4.Size = new System.Drawing.Size(318, 190);
-            this.panelQP4.TabIndex = 1;
-            // 
-            // groupBoxQP2
-            // 
-            this.groupBoxQP2.Controls.Add(this.buttonQP2);
-            this.groupBoxQP2.Controls.Add(this.textBoxQP2);
-            this.groupBoxQP2.Controls.Add(this.panelQP2);
-            this.groupBoxQP2.Location = new System.Drawing.Point(373, 15);
-            this.groupBoxQP2.Name = "groupBoxQP2";
-            this.groupBoxQP2.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP2.TabIndex = 5;
-            this.groupBoxQP2.TabStop = false;
-            this.groupBoxQP2.Text = "Quick Print";
-            // 
-            // buttonQP2
-            // 
-            this.buttonQP2.Enabled = false;
-            this.buttonQP2.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP2.Name = "buttonQP2";
-            this.buttonQP2.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP2.TabIndex = 4;
-            this.buttonQP2.Text = "Print";
-            this.buttonQP2.UseVisualStyleBackColor = true;
-            this.buttonQP2.Click += new System.EventHandler(this.buttonQP2_Click);
-            // 
-            // textBoxQP2
-            // 
-            this.textBoxQP2.Enabled = false;
-            this.textBoxQP2.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP2.Name = "textBoxQP2";
-            this.textBoxQP2.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP2.TabIndex = 3;
-            this.textBoxQP2.Text = "1";
-            // 
-            // panelQP2
-            // 
-            this.panelQP2.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP2.Location = new System.Drawing.Point(6, 42);
-            this.panelQP2.Name = "panelQP2";
-            this.panelQP2.Size = new System.Drawing.Size(318, 190);
-            this.panelQP2.TabIndex = 1;
-            // 
-            // groupBoxQP3
-            // 
-            this.groupBoxQP3.Controls.Add(this.buttonQP3);
-            this.groupBoxQP3.Controls.Add(this.textBoxQP3);
-            this.groupBoxQP3.Controls.Add(this.panelQP3);
-            this.groupBoxQP3.Location = new System.Drawing.Point(728, 15);
-            this.groupBoxQP3.Name = "groupBoxQP3";
-            this.groupBoxQP3.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP3.TabIndex = 5;
-            this.groupBoxQP3.TabStop = false;
-            this.groupBoxQP3.Text = "Quick Print";
-            // 
-            // buttonQP3
-            // 
-            this.buttonQP3.Enabled = false;
-            this.buttonQP3.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP3.Name = "buttonQP3";
-            this.buttonQP3.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP3.TabIndex = 4;
-            this.buttonQP3.Text = "Print";
-            this.buttonQP3.UseVisualStyleBackColor = true;
-            this.buttonQP3.Click += new System.EventHandler(this.buttonQP3_Click);
-            // 
-            // textBoxQP3
-            // 
-            this.textBoxQP3.Enabled = false;
-            this.textBoxQP3.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP3.Name = "textBoxQP3";
-            this.textBoxQP3.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP3.TabIndex = 3;
-            this.textBoxQP3.Text = "1";
-            // 
-            // panelQP3
-            // 
-            this.panelQP3.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP3.Location = new System.Drawing.Point(6, 42);
-            this.panelQP3.Name = "panelQP3";
-            this.panelQP3.Size = new System.Drawing.Size(318, 190);
-            this.panelQP3.TabIndex = 1;
-            // 
-            // groupBoxQP1
-            // 
-            this.groupBoxQP1.Controls.Add(this.buttonQP1);
-            this.groupBoxQP1.Controls.Add(this.textBoxQP1);
-            this.groupBoxQP1.Controls.Add(this.panelQP1);
-            this.groupBoxQP1.Location = new System.Drawing.Point(13, 15);
-            this.groupBoxQP1.Name = "groupBoxQP1";
-            this.groupBoxQP1.Size = new System.Drawing.Size(330, 240);
-            this.groupBoxQP1.TabIndex = 4;
-            this.groupBoxQP1.TabStop = false;
-            this.groupBoxQP1.Text = "Quick Print";
-            // 
-            // buttonQP1
-            // 
-            this.buttonQP1.Enabled = false;
-            this.buttonQP1.Location = new System.Drawing.Point(183, 13);
-            this.buttonQP1.Name = "buttonQP1";
-            this.buttonQP1.Size = new System.Drawing.Size(141, 23);
-            this.buttonQP1.TabIndex = 4;
-            this.buttonQP1.Text = "Print";
-            this.buttonQP1.UseVisualStyleBackColor = true;
-            this.buttonQP1.Click += new System.EventHandler(this.buttonQP1_Click);
-            // 
-            // textBoxQP1
-            // 
-            this.textBoxQP1.Enabled = false;
-            this.textBoxQP1.Location = new System.Drawing.Point(115, 15);
-            this.textBoxQP1.Name = "textBoxQP1";
-            this.textBoxQP1.Size = new System.Drawing.Size(62, 20);
-            this.textBoxQP1.TabIndex = 3;
-            this.textBoxQP1.Text = "1";
-            // 
-            // panelQP1
-            // 
-            this.panelQP1.BackColor = System.Drawing.Color.DimGray;
-            this.panelQP1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelQP1.Location = new System.Drawing.Point(6, 42);
-            this.panelQP1.Name = "panelQP1";
-            this.panelQP1.Size = new System.Drawing.Size(318, 190);
-            this.panelQP1.TabIndex = 1;
-            // 
             // tableProfilesTableAdapter
             // 
             this.tableProfilesTableAdapter.ClearBeforeFill = true;
@@ -5387,9 +5545,9 @@
             // 
             // buttonDeleteQLines
             // 
-            this.buttonDeleteQLines.Location = new System.Drawing.Point(1417, 791);
+            this.buttonDeleteQLines.Location = new System.Drawing.Point(316, 3);
             this.buttonDeleteQLines.Name = "buttonDeleteQLines";
-            this.buttonDeleteQLines.Size = new System.Drawing.Size(95, 48);
+            this.buttonDeleteQLines.Size = new System.Drawing.Size(95, 45);
             this.buttonDeleteQLines.TabIndex = 10;
             this.buttonDeleteQLines.Text = "Delete All Selected Lines";
             this.buttonDeleteQLines.UseVisualStyleBackColor = true;
@@ -5397,9 +5555,9 @@
             // 
             // buttonDeleteBothQueues
             // 
-            this.buttonDeleteBothQueues.Location = new System.Drawing.Point(1202, 790);
+            this.buttonDeleteBothQueues.Location = new System.Drawing.Point(215, 3);
             this.buttonDeleteBothQueues.Name = "buttonDeleteBothQueues";
-            this.buttonDeleteBothQueues.Size = new System.Drawing.Size(95, 48);
+            this.buttonDeleteBothQueues.Size = new System.Drawing.Size(95, 45);
             this.buttonDeleteBothQueues.TabIndex = 11;
             this.buttonDeleteBothQueues.Text = "Delete Both Queues";
             this.buttonDeleteBothQueues.UseVisualStyleBackColor = true;
@@ -5407,13 +5565,84 @@
             // 
             // buttonDeleteThisQueue
             // 
-            this.buttonDeleteThisQueue.Location = new System.Drawing.Point(1101, 790);
+            this.buttonDeleteThisQueue.Location = new System.Drawing.Point(114, 3);
             this.buttonDeleteThisQueue.Name = "buttonDeleteThisQueue";
-            this.buttonDeleteThisQueue.Size = new System.Drawing.Size(95, 48);
+            this.buttonDeleteThisQueue.Size = new System.Drawing.Size(95, 45);
             this.buttonDeleteThisQueue.TabIndex = 12;
             this.buttonDeleteThisQueue.Text = "Delete This Queue";
             this.buttonDeleteThisQueue.UseVisualStyleBackColor = true;
             this.buttonDeleteThisQueue.Click += new System.EventHandler(this.buttonDeleteThisQueue_Click);
+            // 
+            // tableColourQueueTableAdapter
+            // 
+            this.tableColourQueueTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAutoTableAdapter
+            // 
+            this.tableAutoTableAdapter.ClearBeforeFill = true;
+            // 
+            // tablePlantsTableAdapter
+            // 
+            this.tablePlantsTableAdapter.ClearBeforeFill = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "order_export_short.csv";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(60, 7);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(37, 13);
+            this.label84.TabIndex = 16;
+            this.label84.Text = "Colour";
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(6, 7);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(30, 13);
+            this.label85.TabIndex = 15;
+            this.label85.Text = "Main";
+            // 
+            // labelColourCountQ
+            // 
+            this.labelColourCountQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelColourCountQ.Location = new System.Drawing.Point(63, 22);
+            this.labelColourCountQ.MinimumSize = new System.Drawing.Size(40, 25);
+            this.labelColourCountQ.Name = "labelColourCountQ";
+            this.labelColourCountQ.Size = new System.Drawing.Size(40, 25);
+            this.labelColourCountQ.TabIndex = 14;
+            this.labelColourCountQ.Text = "0";
+            this.labelColourCountQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelMainCountQ
+            // 
+            this.labelMainCountQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMainCountQ.Location = new System.Drawing.Point(6, 22);
+            this.labelMainCountQ.MinimumSize = new System.Drawing.Size(40, 25);
+            this.labelMainCountQ.Name = "labelMainCountQ";
+            this.labelMainCountQ.Size = new System.Drawing.Size(40, 25);
+            this.labelMainCountQ.TabIndex = 13;
+            this.labelMainCountQ.Text = "0";
+            this.labelMainCountQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.buttonDeleteThisQueue);
+            this.panel4.Controls.Add(this.buttonDeleteBothQueues);
+            this.panel4.Controls.Add(this.buttonDeleteQLines);
+            this.panel4.Controls.Add(this.labelColourCountQ);
+            this.panel4.Controls.Add(this.labelMainCountQ);
+            this.panel4.Controls.Add(this.label84);
+            this.panel4.Controls.Add(this.label85);
+            this.panel4.Location = new System.Drawing.Point(1115, 795);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(416, 53);
+            this.panel4.TabIndex = 17;
             // 
             // bindingSourceLabels
             // 
@@ -5441,31 +5670,13 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // tableColourQueueTableAdapter
-            // 
-            this.tableColourQueueTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAutoTableAdapter
-            // 
-            this.tableAutoTableAdapter.ClearBeforeFill = true;
-            // 
-            // tablePlantsTableAdapter
-            // 
-            this.tablePlantsTableAdapter.ClearBeforeFill = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "order_export_short.csv";
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1516, 852);
-            this.Controls.Add(this.buttonDeleteThisQueue);
-            this.Controls.Add(this.buttonDeleteBothQueues);
-            this.Controls.Add(this.buttonDeleteQLines);
+            this.ClientSize = new System.Drawing.Size(1534, 861);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
             this.Controls.Add(this.tabControlMain);
@@ -5549,18 +5760,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxThumb1)).EndInit();
             this.groupBoxPlantData.ResumeLayout(false);
+            this.groupBoxPlantData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlants)).EndInit();
             this.tabControlMain.ResumeLayout(false);
-            this.tabPageQueueUtilities.ResumeLayout(false);
-            this.panelQueueUtilities.ResumeLayout(false);
-            this.panelQueueUtilities.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).EndInit();
             this.tabPageQuickPrint.ResumeLayout(false);
             this.groupBoxQP9.ResumeLayout(false);
             this.groupBoxQP9.PerformLayout();
@@ -5580,8 +5785,20 @@
             this.groupBoxQP3.PerformLayout();
             this.groupBoxQP1.ResumeLayout(false);
             this.groupBoxQP1.PerformLayout();
+            this.tabPageQueueUtilities.ResumeLayout(false);
+            this.panelQueueUtilities.ResumeLayout(false);
+            this.panelQueueUtilities.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQAGM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
             this.ResumeLayout(false);
@@ -6087,6 +6304,24 @@
         private System.Windows.Forms.Label labelPrinterChoice;
         private System.Windows.Forms.ListBox listBoxPrinter;
         private System.Windows.Forms.ToolStripMenuItem resetLabelFlagsToolStripMenuItem;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.Label labelColourCountQ;
+        private System.Windows.Forms.Label labelMainCountQ;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

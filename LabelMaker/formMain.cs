@@ -202,6 +202,7 @@ namespace LabelMaker
                             }
                             dataGridViewMainQ.Refresh();
                             labelMainCount.Text = addMainQueueTotal().ToString();
+                            labelMainCountQ.Text = labelMainCount.Text;
                             count--;
                         }
                         else
@@ -219,6 +220,7 @@ namespace LabelMaker
                             }
                             dataGridViewColourQ.Refresh();
                             labelColourCount.Text = addColourQueueTotal().ToString();
+                            labelColourCountQ.Text = labelColourCount.Text;
                             count--;//cancel increment if we are deleting so we always take the first item
                         }
                     }
@@ -235,6 +237,24 @@ namespace LabelMaker
 
             PrintDialog pDialog = new PrintDialog();
             pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
+            pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
+            pDialog.Document.DefaultPageSettings.PaperSource.SourceName =  listBoxPrinter.Items[15].ToString().TrimEnd();
+            string paperSourceName = listBoxPrinter.Items[15].ToString().TrimEnd();
+
+            //set right paper tray
+            string[] sources = new string[20];
+
+            PaperSource pkSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+            PaperSource pkFoundSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+
+            for (int q = 0; q < pDialog.PrinterSettings.PaperSources.Count; q++)
+            {
+                pkSource = pDialog.PrinterSettings.PaperSources[q];
+                sources[q] = pkSource.SourceName;
+                if (pkSource.SourceName == listBoxPrinter.Items[15].ToString().TrimEnd()) { pkFoundSource = pkSource; }
+            }
+            pDialog.Document.DefaultPageSettings.PaperSource = pkFoundSource;
+
 
             if (DialogResult.OK == pDialog.ShowDialog())
             {
@@ -303,7 +323,17 @@ namespace LabelMaker
                     countX = 0;
                     countY = 0;
                     PrintDocument pd = new PrintDocument();
+
                     pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
+                    pd.DefaultPageSettings.PaperSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+
+                    
+
+
+
+                    //pd.DefaultPageSettings.PaperSource = pkFoundSource;// sources[6];// "Multipurpose Tray";// = pDialog.PrinterSettings.PaperSources.Count;
+                    //pd.PrinterSettings.DefaultPageSettings.PaperSource.SourceName = "Multipurpose Tray";// = pDialog.PrinterSettings.PaperSources.Count;
+
                     if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
                     {
                         pd.DefaultPageSettings.Landscape = true;
@@ -394,6 +424,7 @@ namespace LabelMaker
                             }
                             dataGridViewColourQ.Refresh();
                             labelColourCount.Text = addColourQueueTotal().ToString();
+                            labelColourCountQ.Text = labelColourCount.Text;
 
                         }
 
@@ -435,6 +466,7 @@ namespace LabelMaker
                             }
                             dataGridViewMainQ.Refresh();
                             labelMainCount.Text = addMainQueueTotal().ToString();
+                            labelMainCountQ.Text = labelMainCount.Text;
 
                         }
                     }
@@ -1484,7 +1516,9 @@ namespace LabelMaker
         private void assignQueueTotals()
         {
             labelMainCount.Text = addMainQueueTotal().ToString();
+            labelMainCountQ.Text = labelMainCount.Text;
             labelColourCount.Text = addColourQueueTotal().ToString();
+            labelColourCountQ.Text = labelColourCount.Text;
         }
 
         private int addColourQueueTotal()
@@ -1512,8 +1546,8 @@ namespace LabelMaker
             float division = (float)count / (float)perSheet;
 
 
-            if (division == (int)division) { labelColourCount.ForeColor = Color.Black; }
-            else { labelColourCount.ForeColor = Color.Firebrick; }
+            if (division == (int)division) { labelColourCount.ForeColor = Color.Black; labelColourCountQ.ForeColor = Color.Black; }
+            else { labelColourCount.ForeColor = Color.Firebrick; labelColourCountQ.ForeColor=Color.Firebrick; }
 
             return count;
         }
@@ -1543,8 +1577,8 @@ namespace LabelMaker
             float division = (float)count / (float)perSheet;
 
 
-            if (division == (int)division) { labelMainCount.ForeColor = Color.Black; }
-            else { labelMainCount.ForeColor = Color.Firebrick; }
+            if (division == (int)division) { labelMainCount.ForeColor = Color.Black; labelMainCountQ.ForeColor = Color.Black; }
+            else { labelMainCount.ForeColor = Color.Firebrick; labelMainCountQ.ForeColor = Color.Firebrick; }
 
             return count;
         }
@@ -2406,6 +2440,7 @@ namespace LabelMaker
                         MessageBox.Show("Failed to update Colour Queue - " + ex);
                     }
                     labelColourCount.Text = addColourQueueTotal().ToString();
+                    labelColourCountQ.Text = labelColourCount.Text;
                 }
                 else
                 {
@@ -2422,6 +2457,7 @@ namespace LabelMaker
                         MessageBox.Show("Failed to update Main Queue - " + ex);
                     }
                     labelMainCount.Text = addMainQueueTotal().ToString();
+                    labelMainCountQ.Text = labelMainCount.Text;
                 }
             }
             else
@@ -2498,6 +2534,7 @@ namespace LabelMaker
                     }
 
                     labelMainCount.Text = addMainQueueTotal().ToString(); //updates a quantity count on screen
+                    labelMainCount.Text = labelMainCount.Text;
                 }
                 else
                 {
@@ -2518,6 +2555,7 @@ namespace LabelMaker
                     }
 
                     labelColourCount.Text = addColourQueueTotal().ToString(); //updates a quantity count on screen
+                    labelColourCountQ.Text = labelColourCount.Text;
                 }
 
                 paintQueueUtilities(); // updates some visuals representing the textbox data
@@ -3152,6 +3190,7 @@ namespace LabelMaker
                 MessageBox.Show("Failed to add to Main Queue - " + ex);
             }
             labelMainCount.Text = addMainQueueTotal().ToString();
+            labelMainCountQ.Text = labelMainCount.Text;
         }
 
         private void addRowToColourQ(string[] queue, string which)
@@ -3206,6 +3245,7 @@ namespace LabelMaker
                 MessageBox.Show("Failed to add to Colour Queue - " + ex);
             }
             labelColourCount.Text = addColourQueueTotal().ToString();
+            labelColourCountQ.Text = labelColourCount.Text;
         }
 
         public string[] CollectQueueEntry()
@@ -3339,6 +3379,7 @@ namespace LabelMaker
                 MessageBox.Show("Failed to delete from Colour Queue - " + ex);
             }
             labelColourCount.Text = addColourQueueTotal().ToString();
+            labelColourCountQ.Text = labelColourCount.Text;
         }
 
         private void deleteMainQueueLine()
@@ -3357,6 +3398,7 @@ namespace LabelMaker
                 MessageBox.Show("Failed to delete from Main Queue - " + ex);
             }
             labelMainCount.Text = addMainQueueTotal().ToString();
+            labelMainCountQ.Text = labelMainCount.Text;
         }
 
         private void deleteQueue(string which)
@@ -3385,6 +3427,7 @@ namespace LabelMaker
                     MessageBox.Show("Failed to delete from Main Queue - " + ex);
                 }
                 labelMainCount.Text = addMainQueueTotal().ToString();
+                labelMainCountQ.Text = labelMainCount.Text;
             }
 
             if (whichOnes != 0)
@@ -3407,6 +3450,7 @@ namespace LabelMaker
                     MessageBox.Show("Failed to delete from Colour Queue - " + ex);
                 }
                 labelColourCount.Text = addColourQueueTotal().ToString();
+                labelColourCountQ.Text = labelColourCount.Text;
             }
         }
 
@@ -3756,7 +3800,7 @@ namespace LabelMaker
             LabelsLabelCategoriesTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelCategories, CategoryName );
             DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelCategories"].Rows[0];
             listBoxPrinter.Items.Clear();
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 16; i++)
             {
                 listBoxPrinter.Items.Add(dRow.ItemArray[i].ToString());
             }
@@ -3892,6 +3936,7 @@ namespace LabelMaker
                 if (countLabels > 1) { entry = " Entries"; }
                 if (countFlags > 1) { flag = " flags"; }
                 labelColourCount.Text = addColourQueueTotal().ToString();
+                labelColourCountQ.Text = labelColourCount.Text;
                 fillLabelStocksGrid();
                 MessageBox.Show(countLabels + entry + " removed from colour queue, " + countFlags + flag + " reset to 'False'.");
             }
@@ -3934,6 +3979,7 @@ namespace LabelMaker
                 string entry = " Entry";
                 if (count > 1) { entry = " Entries"; }
                 labelColourCount.Text = addColourQueueTotal().ToString();
+                labelColourCountQ.Text = labelColourCount.Text;
                 fillMissingPicturesGrid();
                 MessageBox.Show(count + entry + " removed from colour queue");
             }
@@ -5022,6 +5068,94 @@ namespace LabelMaker
         {
             string pictureFile = getPicture( textBoxData15.Text);
             textBoxData15.Text = pictureFile;
+        }
+
+        private void dataGridView1ProfileView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int cellColumn = dataGridView1ProfileView.CurrentCell.ColumnIndex;
+            if (cellColumn == 1 | cellColumn == 5 | cellColumn==6 )
+            {
+                ColorDialog colourPicker = new ColorDialog();
+                int oldColour = int.Parse(dataGridView1ProfileView.CurrentCell.Value.ToString());
+                int B = oldColour / 256 / 256;
+                int G = (oldColour - (B * 256 * 256)) / 256;
+                int R = (oldColour - (B * 256 * 256) - (G * 256));
+                colourPicker.Color = Color.FromArgb (255,R,G,B);
+                colourPicker.AnyColor = true;
+                colourPicker.FullOpen = true;
+                DialogResult result = colourPicker.ShowDialog();
+            }
+        }
+
+        
+
+        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
+        {
+            updateMainDetails(dataGridViewPlants.CurrentRow.Index );
+        }
+
+        private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
+        {
+            updateMainDetails(dataGridViewPlants.CurrentRow.Index);
+        }
+
+        private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
+        {
+            updateMainDetails(dataGridViewPlants.CurrentRow.Index);
+        }
+
+        private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
+        {
+            updateMainDetails(dataGridViewPlants.CurrentRow.Index);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            DataTable searchTable = new DataTable("searchTable");
+            searchTable = tablePlantsTableAdapter.GetDataBySearch(toolStripComboBox1.Text);
+            toolStripComboBox1.Items.Clear();
+            for (int i = 0;i< searchTable.Rows.Count; i++)
+            {
+                string[] sendData = new string[5];
+                for (int j = 0; j <= 4; j++)
+                {
+                    sendData[j] = searchTable.Rows[i].ItemArray[j+1].ToString();
+                }
+                string[] names = getPlantName(sendData);
+                string number = searchTable.Rows[i].ItemArray[0].ToString();
+                for (int k = number.Length+1; k <= 5; k++) { number = number + " "; }
+                toolStripComboBox1.Items.Add(number+names[0]);
+            }
+            if (toolStripComboBox1.Items.Count > 0) { toolStripComboBox1.Text = toolStripComboBox1.Items[0].ToString(); }
+            searchTable.Dispose();
+
+            string idToFind = toolStripComboBox1.Text.Substring(0, 4).Trim();
+            if (idToFind.All(char.IsDigit)) { findById(); }
+        }
+
+        private void findById()
+        {
+            //get Id
+            string idToFind = toolStripComboBox1.Text.Substring(0, 4).Trim();
+
+            int rowSeek = 0;
+            for (int i = 0; i < dataGridViewPlants.RowCount; i++)
+            {
+                //check id
+                if (dataGridViewPlants.Rows[i].Cells[0].Value.ToString().Trim() == idToFind)
+                {
+                    //Bingo, set this as the right row, otherwise default to first of the letter (ie if added a hidden line)
+                    rowSeek = i;
+                }
+            }
+            //go there and refresh the display
+            makeTheJump(rowSeek);
+        }
+
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string idToFind = toolStripComboBox1.Text.Substring(0, 4).Trim();
+            if (idToFind.All(char.IsDigit)) { findById(); }
         }
     }
 }

@@ -242,6 +242,7 @@
       <DependentUpon>DatabaseLabels.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="PictureFiles\search.bmp" />
     <None Include="PictureFiles\redarrow.jpg" />
     <None Include="PictureFiles\arrow.jpg" />
   </ItemGroup>
