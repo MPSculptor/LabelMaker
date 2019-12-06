@@ -58,8 +58,19 @@
             this.picture3DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.picture4DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableMainQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetMainQueue = new LabelMaker.DatabaseLabelsDataSetMainQueue();
+            this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipFirstDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipLastDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipLine1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipLine2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipCityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipStateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shipPostcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelStocksDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.plantIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceMainQueue = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSetMainQueue = new LabelMaker.DatabaseLabelsDataSet2();
             this.tabPageColourQueue = new System.Windows.Forms.TabPage();
             this.dataGridViewColourQ = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +98,15 @@
             this.picture3DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.picture4DataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipLast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipLine1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipLine2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipPostcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelStocksDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.plantIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableColourQueueBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -119,15 +139,17 @@
             this.queueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForLabelStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForMissingPicturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPageLabelProfiles = new System.Windows.Forms.TabPage();
             this.label74 = new System.Windows.Forms.Label();
             this.groupBoxProfiles = new System.Windows.Forms.GroupBox();
             this.panelProfilePlantPreview = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.panelProfileSampleBorder = new System.Windows.Forms.Panel();
+            this.labelProfileSampleText = new System.Windows.Forms.Label();
             this.dataGridView1ProfileView = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borderColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fontNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -135,19 +157,21 @@
             this.italicDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fontColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableProfilesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableProfilesbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetProfiles = new LabelMaker.DatabaseLabelsDataSet1();
             this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonUpdateProfile = new System.Windows.Forms.Button();
-            this.richTextBoxProfiles = new System.Windows.Forms.RichTextBox();
-            this.label75 = new System.Windows.Forms.Label();
-            this.buttonEditProfile = new System.Windows.Forms.Button();
             this.buttonDeleteProfile = new System.Windows.Forms.Button();
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.radioButtonAddress2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonAddress1 = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonLockPlants = new System.Windows.Forms.Button();
+            this.buttonUnlockPlants = new System.Windows.Forms.Button();
+            this.buttonLockEntries = new System.Windows.Forms.Button();
             this.buttonUnlockAll = new System.Windows.Forms.Button();
             this.checkBoxColorQSingle = new System.Windows.Forms.CheckBox();
             this.label82 = new System.Windows.Forms.Label();
@@ -159,7 +183,6 @@
             this.listBoxAutoErrors = new System.Windows.Forms.ListBox();
             this.buttonCheckSKUs = new System.Windows.Forms.Button();
             this.listBoxAuto = new System.Windows.Forms.ListBox();
-            this.buttonDeletePrinted = new System.Windows.Forms.Button();
             this.buttonSortAutoPlant = new System.Windows.Forms.Button();
             this.buttonSortAutoON = new System.Windows.Forms.Button();
             this.buttonAutoCustomer = new System.Windows.Forms.Button();
@@ -175,11 +198,22 @@
             this.sKUDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableAutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetAuto = new LabelMaker.DatabaseLabelsDataSetAuto();
             this.buttonUploadAuto = new System.Windows.Forms.Button();
             this.labelAutoFile = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
+            this.buttonLockPrinted = new System.Windows.Forms.Button();
+            this.buttonResetPrinted = new System.Windows.Forms.Button();
+            this.buttonDeletePrinted = new System.Windows.Forms.Button();
             this.tabPagePreview = new System.Windows.Forms.TabPage();
             this.label73 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
@@ -440,9 +474,29 @@
             this.panelQP1 = new System.Windows.Forms.Panel();
             this.tabPageQueueUtilities = new System.Windows.Forms.TabPage();
             this.panelQueueUtilities = new System.Windows.Forms.Panel();
+            this.textBoxQ26 = new System.Windows.Forms.TextBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.textBoxQ34 = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.textBoxQ33 = new System.Windows.Forms.TextBox();
+            this.label90 = new System.Windows.Forms.Label();
+            this.textBoxQ32 = new System.Windows.Forms.TextBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.textBoxQ31 = new System.Windows.Forms.TextBox();
+            this.label88 = new System.Windows.Forms.Label();
+            this.textBoxQ30 = new System.Windows.Forms.TextBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.textBoxQ29 = new System.Windows.Forms.TextBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.textBoxQ28 = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.textBoxQ27 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.buttonMoveLineUp = new System.Windows.Forms.Button();
             this.buttonMoveLineDown = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBoxPricestoSame = new System.Windows.Forms.TextBox();
+            this.buttonPricestoSame = new System.Windows.Forms.Button();
             this.textBoxQtyToSame = new System.Windows.Forms.TextBox();
             this.buttonQtyToSame = new System.Windows.Forms.Button();
             this.label70 = new System.Windows.Forms.Label();
@@ -520,33 +574,36 @@
             this.textBoxQ1 = new System.Windows.Forms.TextBox();
             this.textBoxQ4 = new System.Windows.Forms.TextBox();
             this.tableProfilesTableAdapter = new LabelMaker.DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter();
-            this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetDefaults = new LabelMaker.DatabaseLabelsDataSetDefaults();
             this.defaultsTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter();
-            this.buttonDeleteQLines = new System.Windows.Forms.Button();
-            this.buttonDeleteBothQueues = new System.Windows.Forms.Button();
-            this.buttonDeleteThisQueue = new System.Windows.Forms.Button();
             this.tableColourQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters.TableColourQueueTableAdapter();
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label84 = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.labelColourCountQ = new System.Windows.Forms.Label();
-            this.labelMainCountQ = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.bindingSourceLabels = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetLabelNames = new LabelMaker.DatabaseLabelsDataSetLabelNames();
             this.LabelsLabelNamesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelNamesTableAdapter();
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
+            this.tabControlDesign = new System.Windows.Forms.TabControl();
+            this.tabPageDesign = new System.Windows.Forms.TabPage();
+            this.tabPageCategories = new System.Windows.Forms.TabPage();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.labelMainCountQ = new System.Windows.Forms.Label();
+            this.labelColourCountQ = new System.Windows.Forms.Label();
+            this.buttonDeleteQLines = new System.Windows.Forms.Button();
+            this.buttonDeleteBothQueues = new System.Windows.Forms.Button();
+            this.buttonDeleteThisQueue = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet2TableAdapters.TableMainQueueTableAdapter();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableMainQueueBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMainQueue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQueue)).BeginInit();
             this.tabPageColourQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColourQ)).BeginInit();
@@ -559,14 +616,14 @@
             this.menuStrip1.SuspendLayout();
             this.tabPageLabelProfiles.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelProfileSampleBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetProfiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPageAuto.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuto)).BeginInit();
@@ -623,9 +680,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).BeginInit();
+            this.tabControlDesign.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -684,8 +742,20 @@
             this.picture2DataGridViewTextBoxColumn1,
             this.picture3DataGridViewTextBoxColumn1,
             this.picture4DataGridViewTextBoxColumn1,
-            this.orderNoDataGridViewTextBoxColumn});
-            this.dataGridViewMainQ.DataSource = this.tableMainQueueBindingSource;
+            this.orderNoDataGridViewTextBoxColumn,
+            this.ShipName,
+            this.shipFirstDataGridViewTextBoxColumn,
+            this.shipLastDataGridViewTextBoxColumn,
+            this.shipLine1DataGridViewTextBoxColumn,
+            this.shipLine2DataGridViewTextBoxColumn,
+            this.shipCityDataGridViewTextBoxColumn,
+            this.shipStateDataGridViewTextBoxColumn,
+            this.shipPostcodeDataGridViewTextBoxColumn,
+            this.orderNotesDataGridViewTextBoxColumn,
+            this.labelStocksDataGridViewCheckBoxColumn1,
+            this.plantIdDataGridViewTextBoxColumn1});
+            this.dataGridViewMainQ.DataMember = "TableMainQueue";
+            this.dataGridViewMainQ.DataSource = this.bindingSourceMainQueue;
             this.dataGridViewMainQ.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewMainQ.Name = "dataGridViewMainQ";
             this.dataGridViewMainQ.RowHeadersVisible = false;
@@ -846,10 +916,76 @@
             this.orderNoDataGridViewTextBoxColumn.HeaderText = "OrderNo";
             this.orderNoDataGridViewTextBoxColumn.Name = "orderNoDataGridViewTextBoxColumn";
             // 
-            // tableMainQueueBindingSource
+            // ShipName
             // 
-            this.tableMainQueueBindingSource.DataMember = "TableMainQueue";
-            this.tableMainQueueBindingSource.DataSource = this.databaseLabelsDataSetMainQueue;
+            this.ShipName.DataPropertyName = "ShipName";
+            this.ShipName.HeaderText = "ShipName";
+            this.ShipName.Name = "ShipName";
+            // 
+            // shipFirstDataGridViewTextBoxColumn
+            // 
+            this.shipFirstDataGridViewTextBoxColumn.DataPropertyName = "ShipFirst";
+            this.shipFirstDataGridViewTextBoxColumn.HeaderText = "ShipFirst";
+            this.shipFirstDataGridViewTextBoxColumn.Name = "shipFirstDataGridViewTextBoxColumn";
+            // 
+            // shipLastDataGridViewTextBoxColumn
+            // 
+            this.shipLastDataGridViewTextBoxColumn.DataPropertyName = "ShipLast";
+            this.shipLastDataGridViewTextBoxColumn.HeaderText = "ShipLast";
+            this.shipLastDataGridViewTextBoxColumn.Name = "shipLastDataGridViewTextBoxColumn";
+            // 
+            // shipLine1DataGridViewTextBoxColumn
+            // 
+            this.shipLine1DataGridViewTextBoxColumn.DataPropertyName = "ShipLine1";
+            this.shipLine1DataGridViewTextBoxColumn.HeaderText = "ShipLine1";
+            this.shipLine1DataGridViewTextBoxColumn.Name = "shipLine1DataGridViewTextBoxColumn";
+            // 
+            // shipLine2DataGridViewTextBoxColumn
+            // 
+            this.shipLine2DataGridViewTextBoxColumn.DataPropertyName = "ShipLine2";
+            this.shipLine2DataGridViewTextBoxColumn.HeaderText = "ShipLine2";
+            this.shipLine2DataGridViewTextBoxColumn.Name = "shipLine2DataGridViewTextBoxColumn";
+            // 
+            // shipCityDataGridViewTextBoxColumn
+            // 
+            this.shipCityDataGridViewTextBoxColumn.DataPropertyName = "ShipCity";
+            this.shipCityDataGridViewTextBoxColumn.HeaderText = "ShipCity";
+            this.shipCityDataGridViewTextBoxColumn.Name = "shipCityDataGridViewTextBoxColumn";
+            // 
+            // shipStateDataGridViewTextBoxColumn
+            // 
+            this.shipStateDataGridViewTextBoxColumn.DataPropertyName = "ShipState";
+            this.shipStateDataGridViewTextBoxColumn.HeaderText = "ShipState";
+            this.shipStateDataGridViewTextBoxColumn.Name = "shipStateDataGridViewTextBoxColumn";
+            // 
+            // shipPostcodeDataGridViewTextBoxColumn
+            // 
+            this.shipPostcodeDataGridViewTextBoxColumn.DataPropertyName = "ShipPostcode";
+            this.shipPostcodeDataGridViewTextBoxColumn.HeaderText = "ShipPostcode";
+            this.shipPostcodeDataGridViewTextBoxColumn.Name = "shipPostcodeDataGridViewTextBoxColumn";
+            // 
+            // orderNotesDataGridViewTextBoxColumn
+            // 
+            this.orderNotesDataGridViewTextBoxColumn.DataPropertyName = "OrderNotes";
+            this.orderNotesDataGridViewTextBoxColumn.HeaderText = "OrderNotes";
+            this.orderNotesDataGridViewTextBoxColumn.Name = "orderNotesDataGridViewTextBoxColumn";
+            // 
+            // labelStocksDataGridViewCheckBoxColumn1
+            // 
+            this.labelStocksDataGridViewCheckBoxColumn1.DataPropertyName = "LabelStocks";
+            this.labelStocksDataGridViewCheckBoxColumn1.HeaderText = "LabelStocks";
+            this.labelStocksDataGridViewCheckBoxColumn1.Name = "labelStocksDataGridViewCheckBoxColumn1";
+            // 
+            // plantIdDataGridViewTextBoxColumn1
+            // 
+            this.plantIdDataGridViewTextBoxColumn1.DataPropertyName = "PlantId";
+            this.plantIdDataGridViewTextBoxColumn1.HeaderText = "PlantId";
+            this.plantIdDataGridViewTextBoxColumn1.Name = "plantIdDataGridViewTextBoxColumn1";
+            // 
+            // bindingSourceMainQueue
+            // 
+            this.bindingSourceMainQueue.DataSource = this.databaseLabelsDataSetMainQueue;
+            this.bindingSourceMainQueue.Position = 0;
             // 
             // databaseLabelsDataSetMainQueue
             // 
@@ -898,6 +1034,15 @@
             this.picture3DataGridViewTextBoxColumn2,
             this.picture4DataGridViewTextBoxColumn2,
             this.orderNoDataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn8,
+            this.ShipFirst,
+            this.ShipLast,
+            this.ShipLine1,
+            this.ShipLine2,
+            this.ShipCity,
+            this.ShipState,
+            this.ShipPostcode,
+            this.OrderNotes,
             this.labelStocksDataGridViewCheckBoxColumn,
             this.plantIdDataGridViewTextBoxColumn});
             this.dataGridViewColourQ.DataSource = this.tableColourQueueBindingSource;
@@ -1060,6 +1205,60 @@
             this.orderNoDataGridViewTextBoxColumn1.DataPropertyName = "OrderNo";
             this.orderNoDataGridViewTextBoxColumn1.HeaderText = "OrderNo";
             this.orderNoDataGridViewTextBoxColumn1.Name = "orderNoDataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ShipName";
+            this.dataGridViewTextBoxColumn8.HeaderText = "ShipName";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // ShipFirst
+            // 
+            this.ShipFirst.DataPropertyName = "ShipFirst";
+            this.ShipFirst.HeaderText = "ShipFirst";
+            this.ShipFirst.Name = "ShipFirst";
+            // 
+            // ShipLast
+            // 
+            this.ShipLast.DataPropertyName = "ShipLast";
+            this.ShipLast.HeaderText = "ShipLast";
+            this.ShipLast.Name = "ShipLast";
+            // 
+            // ShipLine1
+            // 
+            this.ShipLine1.DataPropertyName = "ShipLine1";
+            this.ShipLine1.HeaderText = "ShipLine1";
+            this.ShipLine1.Name = "ShipLine1";
+            // 
+            // ShipLine2
+            // 
+            this.ShipLine2.DataPropertyName = "ShipLine2";
+            this.ShipLine2.HeaderText = "ShipLine2";
+            this.ShipLine2.Name = "ShipLine2";
+            // 
+            // ShipCity
+            // 
+            this.ShipCity.DataPropertyName = "ShipCity";
+            this.ShipCity.HeaderText = "ShipCity";
+            this.ShipCity.Name = "ShipCity";
+            // 
+            // ShipState
+            // 
+            this.ShipState.DataPropertyName = "ShipState";
+            this.ShipState.HeaderText = "ShipState";
+            this.ShipState.Name = "ShipState";
+            // 
+            // ShipPostcode
+            // 
+            this.ShipPostcode.DataPropertyName = "ShipPostcode";
+            this.ShipPostcode.HeaderText = "ShipPostcode";
+            this.ShipPostcode.Name = "ShipPostcode";
+            // 
+            // OrderNotes
+            // 
+            this.OrderNotes.DataPropertyName = "OrderNotes";
+            this.OrderNotes.HeaderText = "OrderNotes";
+            this.OrderNotes.Name = "OrderNotes";
             // 
             // labelStocksDataGridViewCheckBoxColumn
             // 
@@ -1288,7 +1487,8 @@
             this.toolStripMenuItem1,
             this.profilesToolStripMenuItem2,
             this.toolsToolStripMenuItem,
-            this.queueToolStripMenuItem});
+            this.queueToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1534, 24);
@@ -1362,6 +1562,13 @@
             this.checkForMissingPicturesToolStripMenuItem.Text = "Check for Missing Pictures";
             this.checkForMissingPicturesToolStripMenuItem.Click += new System.EventHandler(this.checkForMissingPicturesToolStripMenuItem_Click);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // fillByToolStripButton
             // 
             this.fillByToolStripButton.Name = "fillByToolStripButton";
@@ -1379,7 +1586,7 @@
             this.tabPageLabelProfiles.Location = new System.Drawing.Point(4, 22);
             this.tabPageLabelProfiles.Name = "tabPageLabelProfiles";
             this.tabPageLabelProfiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLabelProfiles.Size = new System.Drawing.Size(1093, 792);
+            this.tabPageLabelProfiles.Size = new System.Drawing.Size(1072, 792);
             this.tabPageLabelProfiles.TabIndex = 5;
             this.tabPageLabelProfiles.Text = "   Label Profiles   ";
             this.tabPageLabelProfiles.UseVisualStyleBackColor = true;
@@ -1413,7 +1620,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.panel2);
+            this.groupBox6.Controls.Add(this.panelProfileSampleBorder);
             this.groupBox6.Location = new System.Drawing.Point(254, 654);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(516, 100);
@@ -1421,26 +1628,26 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Current Profile";
             // 
-            // panel2
+            // panelProfileSampleBorder
             // 
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(10, 15);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(493, 75);
-            this.panel2.TabIndex = 0;
+            this.panelProfileSampleBorder.BackColor = System.Drawing.Color.Green;
+            this.panelProfileSampleBorder.Controls.Add(this.labelProfileSampleText);
+            this.panelProfileSampleBorder.Location = new System.Drawing.Point(10, 15);
+            this.panelProfileSampleBorder.Name = "panelProfileSampleBorder";
+            this.panelProfileSampleBorder.Size = new System.Drawing.Size(493, 75);
+            this.panelProfileSampleBorder.TabIndex = 0;
             // 
-            // label4
+            // labelProfileSampleText
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Green;
-            this.label4.Location = new System.Drawing.Point(10, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(473, 55);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Sample";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelProfileSampleText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.labelProfileSampleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProfileSampleText.ForeColor = System.Drawing.Color.Green;
+            this.labelProfileSampleText.Location = new System.Drawing.Point(7, 7);
+            this.labelProfileSampleText.Name = "labelProfileSampleText";
+            this.labelProfileSampleText.Size = new System.Drawing.Size(479, 61);
+            this.labelProfileSampleText.TabIndex = 0;
+            this.labelProfileSampleText.Text = "Sample";
+            this.labelProfileSampleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridView1ProfileView
             // 
@@ -1448,6 +1655,7 @@
             this.dataGridView1ProfileView.AutoGenerateColumns = false;
             this.dataGridView1ProfileView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1ProfileView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn2,
             this.nameDataGridViewTextBoxColumn,
             this.borderColourDataGridViewTextBoxColumn,
             this.fontNameDataGridViewTextBoxColumn,
@@ -1455,12 +1663,18 @@
             this.italicDataGridViewCheckBoxColumn,
             this.fontColourDataGridViewTextBoxColumn,
             this.backgroundColourDataGridViewTextBoxColumn});
-            this.dataGridView1ProfileView.DataSource = this.tableProfilesBindingSource1;
+            this.dataGridView1ProfileView.DataSource = this.tableProfilesbindingSource;
             this.dataGridView1ProfileView.Location = new System.Drawing.Point(20, 20);
             this.dataGridView1ProfileView.Name = "dataGridView1ProfileView";
-            this.dataGridView1ProfileView.Size = new System.Drawing.Size(740, 188);
+            this.dataGridView1ProfileView.Size = new System.Drawing.Size(845, 188);
             this.dataGridView1ProfileView.TabIndex = 3;
             this.dataGridView1ProfileView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1ProfileView_CellContentClick);
+            // 
+            // idDataGridViewTextBoxColumn2
+            // 
+            this.idDataGridViewTextBoxColumn2.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn2.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -1504,15 +1718,10 @@
             this.backgroundColourDataGridViewTextBoxColumn.HeaderText = "BackgroundColour";
             this.backgroundColourDataGridViewTextBoxColumn.Name = "backgroundColourDataGridViewTextBoxColumn";
             // 
-            // tableProfilesBindingSource1
-            // 
-            this.tableProfilesBindingSource1.DataMember = "TableProfiles";
-            this.tableProfilesBindingSource1.DataSource = this.tableProfilesbindingSource;
-            // 
             // tableProfilesbindingSource
             // 
+            this.tableProfilesbindingSource.DataMember = "TableProfiles";
             this.tableProfilesbindingSource.DataSource = this.databaseLabelsDataSetProfiles;
-            this.tableProfilesbindingSource.Position = 0;
             // 
             // databaseLabelsDataSetProfiles
             // 
@@ -1525,68 +1734,24 @@
             this.dataGridViewProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProfiles.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewProfiles.Name = "dataGridViewProfiles";
-            this.dataGridViewProfiles.Size = new System.Drawing.Size(760, 208);
+            this.dataGridViewProfiles.Size = new System.Drawing.Size(867, 208);
             this.dataGridViewProfiles.TabIndex = 2;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.buttonUpdateProfile);
-            this.groupBox2.Controls.Add(this.richTextBoxProfiles);
-            this.groupBox2.Controls.Add(this.label75);
-            this.groupBox2.Controls.Add(this.buttonEditProfile);
             this.groupBox2.Controls.Add(this.buttonDeleteProfile);
             this.groupBox2.Controls.Add(this.buttonNewProfile);
             this.groupBox2.Controls.Add(this.buttonAssignProfile);
-            this.groupBox2.Location = new System.Drawing.Point(800, 10);
+            this.groupBox2.Location = new System.Drawing.Point(800, 234);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(255, 339);
+            this.groupBox2.Size = new System.Drawing.Size(255, 131);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
             // 
-            // buttonUpdateProfile
-            // 
-            this.buttonUpdateProfile.Location = new System.Drawing.Point(135, 299);
-            this.buttonUpdateProfile.Name = "buttonUpdateProfile";
-            this.buttonUpdateProfile.Size = new System.Drawing.Size(105, 23);
-            this.buttonUpdateProfile.TabIndex = 6;
-            this.buttonUpdateProfile.Text = "Update";
-            this.buttonUpdateProfile.UseVisualStyleBackColor = true;
-            // 
-            // richTextBoxProfiles
-            // 
-            this.richTextBoxProfiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxProfiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxProfiles.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.richTextBoxProfiles.Location = new System.Drawing.Point(17, 187);
-            this.richTextBoxProfiles.Name = "richTextBoxProfiles";
-            this.richTextBoxProfiles.Size = new System.Drawing.Size(223, 106);
-            this.richTextBoxProfiles.TabIndex = 5;
-            this.richTextBoxProfiles.Text = resources.GetString("richTextBoxProfiles.Text");
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label75.Location = new System.Drawing.Point(106, 164);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(37, 20);
-            this.label75.TabIndex = 4;
-            this.label75.Text = "Edit";
-            // 
-            // buttonEditProfile
-            // 
-            this.buttonEditProfile.Location = new System.Drawing.Point(17, 299);
-            this.buttonEditProfile.Name = "buttonEditProfile";
-            this.buttonEditProfile.Size = new System.Drawing.Size(112, 23);
-            this.buttonEditProfile.TabIndex = 3;
-            this.buttonEditProfile.Text = "Edit this Value";
-            this.buttonEditProfile.UseVisualStyleBackColor = true;
-            // 
             // buttonDeleteProfile
             // 
-            this.buttonDeleteProfile.Location = new System.Drawing.Point(17, 124);
+            this.buttonDeleteProfile.Location = new System.Drawing.Point(17, 94);
             this.buttonDeleteProfile.Name = "buttonDeleteProfile";
             this.buttonDeleteProfile.Size = new System.Drawing.Size(223, 23);
             this.buttonDeleteProfile.TabIndex = 2;
@@ -1595,24 +1760,30 @@
             // 
             // buttonNewProfile
             // 
-            this.buttonNewProfile.Location = new System.Drawing.Point(17, 95);
+            this.buttonNewProfile.Location = new System.Drawing.Point(17, 65);
             this.buttonNewProfile.Name = "buttonNewProfile";
             this.buttonNewProfile.Size = new System.Drawing.Size(223, 23);
             this.buttonNewProfile.TabIndex = 1;
             this.buttonNewProfile.Text = "Create a New Profile";
             this.buttonNewProfile.UseVisualStyleBackColor = true;
+            this.buttonNewProfile.Click += new System.EventHandler(this.buttonNewProfile_Click);
             // 
             // buttonAssignProfile
             // 
-            this.buttonAssignProfile.Location = new System.Drawing.Point(17, 40);
+            this.buttonAssignProfile.Location = new System.Drawing.Point(17, 27);
             this.buttonAssignProfile.Name = "buttonAssignProfile";
             this.buttonAssignProfile.Size = new System.Drawing.Size(223, 23);
             this.buttonAssignProfile.TabIndex = 0;
             this.buttonAssignProfile.Text = "Assign this Profile to the Current Entry";
             this.buttonAssignProfile.UseVisualStyleBackColor = true;
+            this.buttonAssignProfile.Click += new System.EventHandler(this.buttonAssignProfile_Click);
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.panel2);
+            this.tabPageAuto.Controls.Add(this.buttonLockPlants);
+            this.tabPageAuto.Controls.Add(this.buttonUnlockPlants);
+            this.tabPageAuto.Controls.Add(this.buttonLockEntries);
             this.tabPageAuto.Controls.Add(this.buttonUnlockAll);
             this.tabPageAuto.Controls.Add(this.checkBoxColorQSingle);
             this.tabPageAuto.Controls.Add(this.label82);
@@ -1621,7 +1792,6 @@
             this.tabPageAuto.Controls.Add(this.listBoxAutoErrors);
             this.tabPageAuto.Controls.Add(this.buttonCheckSKUs);
             this.tabPageAuto.Controls.Add(this.listBoxAuto);
-            this.tabPageAuto.Controls.Add(this.buttonDeletePrinted);
             this.tabPageAuto.Controls.Add(this.buttonSortAutoPlant);
             this.tabPageAuto.Controls.Add(this.buttonSortAutoON);
             this.tabPageAuto.Controls.Add(this.buttonAutoCustomer);
@@ -1629,21 +1799,97 @@
             this.tabPageAuto.Controls.Add(this.buttonUploadAuto);
             this.tabPageAuto.Controls.Add(this.labelAutoFile);
             this.tabPageAuto.Controls.Add(this.label79);
+            this.tabPageAuto.Controls.Add(this.buttonLockPrinted);
+            this.tabPageAuto.Controls.Add(this.buttonResetPrinted);
+            this.tabPageAuto.Controls.Add(this.buttonDeletePrinted);
             this.tabPageAuto.Location = new System.Drawing.Point(4, 22);
             this.tabPageAuto.Name = "tabPageAuto";
             this.tabPageAuto.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAuto.Size = new System.Drawing.Size(1093, 792);
+            this.tabPageAuto.Size = new System.Drawing.Size(1072, 792);
             this.tabPageAuto.TabIndex = 1;
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.radioButtonAddress2);
+            this.panel2.Controls.Add(this.radioButtonAddress1);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Location = new System.Drawing.Point(819, 8);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(246, 50);
+            this.panel2.TabIndex = 24;
+            // 
+            // radioButtonAddress2
+            // 
+            this.radioButtonAddress2.AutoSize = true;
+            this.radioButtonAddress2.Checked = true;
+            this.radioButtonAddress2.Location = new System.Drawing.Point(4, 27);
+            this.radioButtonAddress2.Name = "radioButtonAddress2";
+            this.radioButtonAddress2.Size = new System.Drawing.Size(139, 17);
+            this.radioButtonAddress2.TabIndex = 2;
+            this.radioButtonAddress2.TabStop = true;
+            this.radioButtonAddress2.Text = "All Addresses regardless";
+            this.radioButtonAddress2.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAddress1
+            // 
+            this.radioButtonAddress1.AutoSize = true;
+            this.radioButtonAddress1.Location = new System.Drawing.Point(4, 6);
+            this.radioButtonAddress1.Name = "radioButtonAddress1";
+            this.radioButtonAddress1.Size = new System.Drawing.Size(144, 17);
+            this.radioButtonAddress1.TabIndex = 1;
+            this.radioButtonAddress1.Text = "Only unlocked customers";
+            this.radioButtonAddress1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(154, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 38);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Create Address Queue";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_5);
+            // 
+            // buttonLockPlants
+            // 
+            this.buttonLockPlants.Location = new System.Drawing.Point(550, 712);
+            this.buttonLockPlants.Name = "buttonLockPlants";
+            this.buttonLockPlants.Size = new System.Drawing.Size(119, 23);
+            this.buttonLockPlants.TabIndex = 23;
+            this.buttonLockPlants.Text = "Lock All Plants";
+            this.buttonLockPlants.UseVisualStyleBackColor = true;
+            this.buttonLockPlants.Click += new System.EventHandler(this.button1_Click_4);
+            // 
+            // buttonUnlockPlants
+            // 
+            this.buttonUnlockPlants.Location = new System.Drawing.Point(675, 712);
+            this.buttonUnlockPlants.Name = "buttonUnlockPlants";
+            this.buttonUnlockPlants.Size = new System.Drawing.Size(119, 23);
+            this.buttonUnlockPlants.TabIndex = 22;
+            this.buttonUnlockPlants.Text = "Unlock All Plants";
+            this.buttonUnlockPlants.UseVisualStyleBackColor = true;
+            this.buttonUnlockPlants.Click += new System.EventHandler(this.buttonUnlockPlants_Click);
+            // 
+            // buttonLockEntries
+            // 
+            this.buttonLockEntries.Location = new System.Drawing.Point(550, 682);
+            this.buttonLockEntries.Name = "buttonLockEntries";
+            this.buttonLockEntries.Size = new System.Drawing.Size(119, 23);
+            this.buttonLockEntries.TabIndex = 20;
+            this.buttonLockEntries.Text = "Lock All Customers";
+            this.buttonLockEntries.UseVisualStyleBackColor = true;
+            this.buttonLockEntries.Click += new System.EventHandler(this.buttonLockEntries_Click);
+            // 
             // buttonUnlockAll
             // 
-            this.buttonUnlockAll.Location = new System.Drawing.Point(577, 710);
+            this.buttonUnlockAll.Location = new System.Drawing.Point(673, 682);
             this.buttonUnlockAll.Name = "buttonUnlockAll";
             this.buttonUnlockAll.Size = new System.Drawing.Size(119, 23);
             this.buttonUnlockAll.TabIndex = 18;
-            this.buttonUnlockAll.Text = "Unlock All Entries";
+            this.buttonUnlockAll.Text = "Unlock All Customers";
             this.buttonUnlockAll.UseVisualStyleBackColor = true;
             this.buttonUnlockAll.Click += new System.EventHandler(this.buttonUnlockAll_Click);
             // 
@@ -1653,7 +1899,7 @@
             this.checkBoxColorQSingle.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxColorQSingle.Checked = true;
             this.checkBoxColorQSingle.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxColorQSingle.Location = new System.Drawing.Point(414, 38);
+            this.checkBoxColorQSingle.Location = new System.Drawing.Point(308, 39);
             this.checkBoxColorQSingle.Name = "checkBoxColorQSingle";
             this.checkBoxColorQSingle.Size = new System.Drawing.Size(215, 17);
             this.checkBoxColorQSingle.TabIndex = 17;
@@ -1665,7 +1911,7 @@
             this.label82.AutoSize = true;
             this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label82.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label82.Location = new System.Drawing.Point(925, 9);
+            this.label82.Location = new System.Drawing.Point(925, 61);
             this.label82.Name = "label82";
             this.label82.Size = new System.Drawing.Size(86, 20);
             this.label82.TabIndex = 16;
@@ -1677,7 +1923,7 @@
             this.panel3.Controls.Add(this.radioButtonAutoModified);
             this.panel3.Controls.Add(this.radioButtonAutoStated);
             this.panel3.Controls.Add(this.buttonCreateQueue);
-            this.panel3.Location = new System.Drawing.Point(635, 7);
+            this.panel3.Location = new System.Drawing.Point(529, 8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(284, 48);
             this.panel3.TabIndex = 15;
@@ -1697,7 +1943,7 @@
             // radioButtonAutoStated
             // 
             this.radioButtonAutoStated.AutoSize = true;
-            this.radioButtonAutoStated.Location = new System.Drawing.Point(12, 4);
+            this.radioButtonAutoStated.Location = new System.Drawing.Point(12, 6);
             this.radioButtonAutoStated.Name = "radioButtonAutoStated";
             this.radioButtonAutoStated.Size = new System.Drawing.Size(124, 17);
             this.radioButtonAutoStated.TabIndex = 12;
@@ -1718,7 +1964,7 @@
             // 
             this.pictureBoxArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxArrow.Image = global::LabelMaker.Properties.Resources.redarrow;
-            this.pictureBoxArrow.Location = new System.Drawing.Point(421, 711);
+            this.pictureBoxArrow.Location = new System.Drawing.Point(338, 711);
             this.pictureBoxArrow.MaximumSize = new System.Drawing.Size(60, 60);
             this.pictureBoxArrow.MinimumSize = new System.Drawing.Size(60, 60);
             this.pictureBoxArrow.Name = "pictureBoxArrow";
@@ -1731,14 +1977,14 @@
             this.listBoxAutoErrors.FormattingEnabled = true;
             this.listBoxAutoErrors.Location = new System.Drawing.Point(10, 682);
             this.listBoxAutoErrors.Name = "listBoxAutoErrors";
-            this.listBoxAutoErrors.Size = new System.Drawing.Size(405, 95);
+            this.listBoxAutoErrors.Size = new System.Drawing.Size(322, 95);
             this.listBoxAutoErrors.TabIndex = 13;
             // 
             // buttonCheckSKUs
             // 
-            this.buttonCheckSKUs.Location = new System.Drawing.Point(421, 682);
+            this.buttonCheckSKUs.Location = new System.Drawing.Point(338, 682);
             this.buttonCheckSKUs.Name = "buttonCheckSKUs";
-            this.buttonCheckSKUs.Size = new System.Drawing.Size(113, 23);
+            this.buttonCheckSKUs.Size = new System.Drawing.Size(81, 23);
             this.buttonCheckSKUs.TabIndex = 12;
             this.buttonCheckSKUs.Text = "Check SKUs";
             this.buttonCheckSKUs.UseVisualStyleBackColor = true;
@@ -1747,27 +1993,17 @@
             // listBoxAuto
             // 
             this.listBoxAuto.FormattingEnabled = true;
-            this.listBoxAuto.Location = new System.Drawing.Point(926, 35);
+            this.listBoxAuto.Location = new System.Drawing.Point(926, 87);
             this.listBoxAuto.Name = "listBoxAuto";
-            this.listBoxAuto.Size = new System.Drawing.Size(143, 732);
+            this.listBoxAuto.Size = new System.Drawing.Size(143, 680);
             this.listBoxAuto.TabIndex = 10;
             this.listBoxAuto.Click += new System.EventHandler(this.listBoxAuto_Click);
             // 
-            // buttonDeletePrinted
-            // 
-            this.buttonDeletePrinted.Location = new System.Drawing.Point(577, 681);
-            this.buttonDeletePrinted.Name = "buttonDeletePrinted";
-            this.buttonDeletePrinted.Size = new System.Drawing.Size(119, 23);
-            this.buttonDeletePrinted.TabIndex = 9;
-            this.buttonDeletePrinted.Text = "Delete Printed Lines";
-            this.buttonDeletePrinted.UseVisualStyleBackColor = true;
-            this.buttonDeletePrinted.Click += new System.EventHandler(this.button2_Click);
-            // 
             // buttonSortAutoPlant
             // 
-            this.buttonSortAutoPlant.Location = new System.Drawing.Point(784, 740);
+            this.buttonSortAutoPlant.Location = new System.Drawing.Point(798, 740);
             this.buttonSortAutoPlant.Name = "buttonSortAutoPlant";
-            this.buttonSortAutoPlant.Size = new System.Drawing.Size(135, 23);
+            this.buttonSortAutoPlant.Size = new System.Drawing.Size(121, 23);
             this.buttonSortAutoPlant.TabIndex = 8;
             this.buttonSortAutoPlant.Text = "Sort by Plant Name";
             this.buttonSortAutoPlant.UseVisualStyleBackColor = true;
@@ -1775,9 +2011,9 @@
             // 
             // buttonSortAutoON
             // 
-            this.buttonSortAutoON.Location = new System.Drawing.Point(784, 711);
+            this.buttonSortAutoON.Location = new System.Drawing.Point(798, 711);
             this.buttonSortAutoON.Name = "buttonSortAutoON";
-            this.buttonSortAutoON.Size = new System.Drawing.Size(135, 23);
+            this.buttonSortAutoON.Size = new System.Drawing.Size(121, 23);
             this.buttonSortAutoON.TabIndex = 7;
             this.buttonSortAutoON.Text = "Sort by Order No.";
             this.buttonSortAutoON.UseVisualStyleBackColor = true;
@@ -1785,9 +2021,9 @@
             // 
             // buttonAutoCustomer
             // 
-            this.buttonAutoCustomer.Location = new System.Drawing.Point(784, 682);
+            this.buttonAutoCustomer.Location = new System.Drawing.Point(798, 682);
             this.buttonAutoCustomer.Name = "buttonAutoCustomer";
-            this.buttonAutoCustomer.Size = new System.Drawing.Size(135, 23);
+            this.buttonAutoCustomer.Size = new System.Drawing.Size(121, 23);
             this.buttonAutoCustomer.TabIndex = 6;
             this.buttonAutoCustomer.Text = "Sort by Customer";
             this.buttonAutoCustomer.UseVisualStyleBackColor = true;
@@ -1808,7 +2044,15 @@
             this.qtyDataGridViewTextBoxColumn2,
             this.sKUDataGridViewTextBoxColumn1,
             this.firstDataGridViewTextBoxColumn,
-            this.lastDataGridViewTextBoxColumn});
+            this.lastDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.ShipNotes});
             this.dataGridViewAuto.DataSource = this.tableAutoBindingSource;
             this.dataGridViewAuto.Location = new System.Drawing.Point(10, 61);
             this.dataGridViewAuto.Name = "dataGridViewAuto";
@@ -1891,6 +2135,54 @@
             this.lastDataGridViewTextBoxColumn.HeaderText = "Last";
             this.lastDataGridViewTextBoxColumn.Name = "lastDataGridViewTextBoxColumn";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ShipFirst";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ShipFirst";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ShipLast";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ShipLast";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ShipLine1";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ShipLine1";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ShipLine2";
+            this.dataGridViewTextBoxColumn4.HeaderText = "ShipLine2";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ShipCity";
+            this.dataGridViewTextBoxColumn5.HeaderText = "ShipCity";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "ShipState";
+            this.dataGridViewTextBoxColumn6.HeaderText = "ShipState";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "ShipPostcode";
+            this.dataGridViewTextBoxColumn7.HeaderText = "ShipPostcode";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // ShipNotes
+            // 
+            this.ShipNotes.DataPropertyName = "ShipNotes";
+            this.ShipNotes.HeaderText = "ShipNotes";
+            this.ShipNotes.Name = "ShipNotes";
+            // 
             // tableAutoBindingSource
             // 
             this.tableAutoBindingSource.DataMember = "TableAuto";
@@ -1930,6 +2222,36 @@
             this.label79.TabIndex = 0;
             this.label79.Text = "File to Upload (click to change)";
             // 
+            // buttonLockPrinted
+            // 
+            this.buttonLockPrinted.Location = new System.Drawing.Point(550, 740);
+            this.buttonLockPrinted.Name = "buttonLockPrinted";
+            this.buttonLockPrinted.Size = new System.Drawing.Size(119, 23);
+            this.buttonLockPrinted.TabIndex = 21;
+            this.buttonLockPrinted.Text = "Lock Printed Flags";
+            this.buttonLockPrinted.UseVisualStyleBackColor = true;
+            this.buttonLockPrinted.Click += new System.EventHandler(this.buttonLockPrinted_Click);
+            // 
+            // buttonResetPrinted
+            // 
+            this.buttonResetPrinted.Location = new System.Drawing.Point(673, 740);
+            this.buttonResetPrinted.Name = "buttonResetPrinted";
+            this.buttonResetPrinted.Size = new System.Drawing.Size(119, 23);
+            this.buttonResetPrinted.TabIndex = 19;
+            this.buttonResetPrinted.Text = "Unlock Printed Flags";
+            this.buttonResetPrinted.UseVisualStyleBackColor = true;
+            this.buttonResetPrinted.Click += new System.EventHandler(this.buttonResetPrinted_Click);
+            // 
+            // buttonDeletePrinted
+            // 
+            this.buttonDeletePrinted.Location = new System.Drawing.Point(425, 741);
+            this.buttonDeletePrinted.Name = "buttonDeletePrinted";
+            this.buttonDeletePrinted.Size = new System.Drawing.Size(119, 23);
+            this.buttonDeletePrinted.TabIndex = 9;
+            this.buttonDeletePrinted.Text = "Delete Printed Lines";
+            this.buttonDeletePrinted.UseVisualStyleBackColor = true;
+            this.buttonDeletePrinted.Click += new System.EventHandler(this.button2_Click);
+            // 
             // tabPagePreview
             // 
             this.tabPagePreview.BackColor = System.Drawing.Color.White;
@@ -1943,7 +2265,7 @@
             this.tabPagePreview.Location = new System.Drawing.Point(4, 22);
             this.tabPagePreview.Name = "tabPagePreview";
             this.tabPagePreview.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePreview.Size = new System.Drawing.Size(1093, 792);
+            this.tabPagePreview.Size = new System.Drawing.Size(1072, 792);
             this.tabPagePreview.TabIndex = 3;
             this.tabPagePreview.Text = "     Label Preview   ";
             // 
@@ -2039,7 +2361,7 @@
             this.tabPageDatabase.Controls.Add(this.label9);
             this.tabPageDatabase.Location = new System.Drawing.Point(4, 22);
             this.tabPageDatabase.Name = "tabPageDatabase";
-            this.tabPageDatabase.Size = new System.Drawing.Size(1093, 792);
+            this.tabPageDatabase.Size = new System.Drawing.Size(1072, 792);
             this.tabPageDatabase.TabIndex = 2;
             this.tabPageDatabase.Text = "     Database Entry";
             this.tabPageDatabase.UseVisualStyleBackColor = true;
@@ -2728,7 +3050,7 @@
             this.tabPageManual.Location = new System.Drawing.Point(4, 22);
             this.tabPageManual.Name = "tabPageManual";
             this.tabPageManual.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageManual.Size = new System.Drawing.Size(1093, 792);
+            this.tabPageManual.Size = new System.Drawing.Size(1072, 792);
             this.tabPageManual.TabIndex = 0;
             this.tabPageManual.Text = "     Manual Entry     ";
             // 
@@ -4318,10 +4640,10 @@
             this.tabControlMain.Controls.Add(this.tabPageAuto);
             this.tabControlMain.Controls.Add(this.tabPageQuickPrint);
             this.tabControlMain.Controls.Add(this.tabPageQueueUtilities);
-            this.tabControlMain.Location = new System.Drawing.Point(12, 34);
+            this.tabControlMain.Location = new System.Drawing.Point(33, 34);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1101, 818);
+            this.tabControlMain.Size = new System.Drawing.Size(1080, 818);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
             // 
@@ -4338,7 +4660,7 @@
             this.tabPageQuickPrint.Controls.Add(this.groupBoxQP1);
             this.tabPageQuickPrint.Location = new System.Drawing.Point(4, 22);
             this.tabPageQuickPrint.Name = "tabPageQuickPrint";
-            this.tabPageQuickPrint.Size = new System.Drawing.Size(1093, 792);
+            this.tabPageQuickPrint.Size = new System.Drawing.Size(1072, 792);
             this.tabPageQuickPrint.TabIndex = 7;
             this.tabPageQuickPrint.Text = "   Quick Print   ";
             this.tabPageQuickPrint.UseVisualStyleBackColor = true;
@@ -4717,7 +5039,7 @@
             this.tabPageQueueUtilities.Controls.Add(this.panelQueueUtilities);
             this.tabPageQueueUtilities.Location = new System.Drawing.Point(4, 22);
             this.tabPageQueueUtilities.Name = "tabPageQueueUtilities";
-            this.tabPageQueueUtilities.Size = new System.Drawing.Size(1093, 792);
+            this.tabPageQueueUtilities.Size = new System.Drawing.Size(1072, 792);
             this.tabPageQueueUtilities.TabIndex = 6;
             this.tabPageQueueUtilities.Text = "   Queue Utilities   ";
             this.tabPageQueueUtilities.UseVisualStyleBackColor = true;
@@ -4725,6 +5047,24 @@
             // panelQueueUtilities
             // 
             this.panelQueueUtilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ26);
+            this.panelQueueUtilities.Controls.Add(this.label93);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ34);
+            this.panelQueueUtilities.Controls.Add(this.label91);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ33);
+            this.panelQueueUtilities.Controls.Add(this.label90);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ32);
+            this.panelQueueUtilities.Controls.Add(this.label89);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ31);
+            this.panelQueueUtilities.Controls.Add(this.label88);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ30);
+            this.panelQueueUtilities.Controls.Add(this.label87);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ29);
+            this.panelQueueUtilities.Controls.Add(this.label86);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ28);
+            this.panelQueueUtilities.Controls.Add(this.label75);
+            this.panelQueueUtilities.Controls.Add(this.textBoxQ27);
+            this.panelQueueUtilities.Controls.Add(this.label4);
             this.panelQueueUtilities.Controls.Add(this.buttonMoveLineUp);
             this.panelQueueUtilities.Controls.Add(this.buttonMoveLineDown);
             this.panelQueueUtilities.Controls.Add(this.groupBox7);
@@ -4807,9 +5147,163 @@
             this.panelQueueUtilities.Size = new System.Drawing.Size(1068, 771);
             this.panelQueueUtilities.TabIndex = 0;
             // 
+            // textBoxQ26
+            // 
+            this.textBoxQ26.Location = new System.Drawing.Point(267, 600);
+            this.textBoxQ26.Name = "textBoxQ26";
+            this.textBoxQ26.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ26.TabIndex = 92;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(156, 603);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(97, 13);
+            this.label93.TabIndex = 91;
+            this.label93.Text = "26. Shipping Name";
+            this.label93.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ34
+            // 
+            this.textBoxQ34.Location = new System.Drawing.Point(702, 682);
+            this.textBoxQ34.Multiline = true;
+            this.textBoxQ34.Name = "textBoxQ34";
+            this.textBoxQ34.Size = new System.Drawing.Size(318, 61);
+            this.textBoxQ34.TabIndex = 90;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(582, 685);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(103, 13);
+            this.label91.TabIndex = 89;
+            this.label91.Text = "34. Order Comments";
+            this.label91.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ33
+            // 
+            this.textBoxQ33.Location = new System.Drawing.Point(702, 652);
+            this.textBoxQ33.Name = "textBoxQ33";
+            this.textBoxQ33.Size = new System.Drawing.Size(101, 20);
+            this.textBoxQ33.TabIndex = 88;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(582, 655);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(114, 13);
+            this.label90.TabIndex = 87;
+            this.label90.Text = "33. Shipping Postcode";
+            this.label90.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ32
+            // 
+            this.textBoxQ32.Location = new System.Drawing.Point(267, 730);
+            this.textBoxQ32.Name = "textBoxQ32";
+            this.textBoxQ32.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ32.TabIndex = 86;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(156, 733);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(94, 13);
+            this.label89.TabIndex = 85;
+            this.label89.Text = "32. Shipping State";
+            this.label89.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ31
+            // 
+            this.textBoxQ31.Location = new System.Drawing.Point(267, 704);
+            this.textBoxQ31.Name = "textBoxQ31";
+            this.textBoxQ31.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ31.TabIndex = 84;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(156, 707);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(86, 13);
+            this.label88.TabIndex = 83;
+            this.label88.Text = "31. Shipping City";
+            this.label88.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ30
+            // 
+            this.textBoxQ30.Location = new System.Drawing.Point(267, 678);
+            this.textBoxQ30.Name = "textBoxQ30";
+            this.textBoxQ30.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ30.TabIndex = 82;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(156, 681);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(98, 13);
+            this.label87.TabIndex = 81;
+            this.label87.Text = "30. Shipping Line 2";
+            this.label87.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ29
+            // 
+            this.textBoxQ29.Location = new System.Drawing.Point(267, 652);
+            this.textBoxQ29.Name = "textBoxQ29";
+            this.textBoxQ29.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ29.TabIndex = 80;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(156, 655);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(98, 13);
+            this.label86.TabIndex = 79;
+            this.label86.Text = "29. Shipping Line 1";
+            this.label86.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ28
+            // 
+            this.textBoxQ28.Location = new System.Drawing.Point(418, 626);
+            this.textBoxQ28.Name = "textBoxQ28";
+            this.textBoxQ28.Size = new System.Drawing.Size(147, 20);
+            this.textBoxQ28.TabIndex = 78;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(582, 629);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(76, 13);
+            this.label75.TabIndex = 77;
+            this.label75.Text = "28. Last Name";
+            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxQ27
+            // 
+            this.textBoxQ27.Location = new System.Drawing.Point(267, 626);
+            this.textBoxQ27.Name = "textBoxQ27";
+            this.textBoxQ27.Size = new System.Drawing.Size(145, 20);
+            this.textBoxQ27.TabIndex = 76;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(156, 629);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.TabIndex = 75;
+            this.label4.Text = "27. First Name";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // buttonMoveLineUp
             // 
-            this.buttonMoveLineUp.Location = new System.Drawing.Point(23, 206);
+            this.buttonMoveLineUp.Location = new System.Drawing.Point(23, 166);
             this.buttonMoveLineUp.Name = "buttonMoveLineUp";
             this.buttonMoveLineUp.Size = new System.Drawing.Size(116, 39);
             this.buttonMoveLineUp.TabIndex = 74;
@@ -4819,7 +5313,7 @@
             // 
             // buttonMoveLineDown
             // 
-            this.buttonMoveLineDown.Location = new System.Drawing.Point(23, 160);
+            this.buttonMoveLineDown.Location = new System.Drawing.Point(23, 121);
             this.buttonMoveLineDown.Name = "buttonMoveLineDown";
             this.buttonMoveLineDown.Size = new System.Drawing.Size(116, 39);
             this.buttonMoveLineDown.TabIndex = 2;
@@ -4829,14 +5323,35 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.textBoxPricestoSame);
+            this.groupBox7.Controls.Add(this.buttonPricestoSame);
             this.groupBox7.Controls.Add(this.textBoxQtyToSame);
             this.groupBox7.Controls.Add(this.buttonQtyToSame);
-            this.groupBox7.Location = new System.Drawing.Point(16, 511);
+            this.groupBox7.Location = new System.Drawing.Point(16, 591);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(129, 239);
+            this.groupBox7.Size = new System.Drawing.Size(129, 159);
             this.groupBox7.TabIndex = 73;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "General Functions";
+            // 
+            // textBoxPricestoSame
+            // 
+            this.textBoxPricestoSame.Location = new System.Drawing.Point(6, 87);
+            this.textBoxPricestoSame.Name = "textBoxPricestoSame";
+            this.textBoxPricestoSame.Size = new System.Drawing.Size(116, 20);
+            this.textBoxPricestoSame.TabIndex = 3;
+            this.textBoxPricestoSame.Text = "1";
+            this.textBoxPricestoSame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonPricestoSame
+            // 
+            this.buttonPricestoSame.Location = new System.Drawing.Point(6, 113);
+            this.buttonPricestoSame.Name = "buttonPricestoSame";
+            this.buttonPricestoSame.Size = new System.Drawing.Size(116, 39);
+            this.buttonPricestoSame.TabIndex = 2;
+            this.buttonPricestoSame.Text = "Set all Prices to value above\r\n";
+            this.buttonPricestoSame.UseVisualStyleBackColor = true;
+            this.buttonPricestoSame.Click += new System.EventHandler(this.buttonPricestoSame_Click);
             // 
             // textBoxQtyToSame
             // 
@@ -4871,7 +5386,7 @@
             // 
             // buttonUpdateQLine
             // 
-            this.buttonUpdateQLine.Location = new System.Drawing.Point(23, 105);
+            this.buttonUpdateQLine.Location = new System.Drawing.Point(22, 83);
             this.buttonUpdateQLine.Name = "buttonUpdateQLine";
             this.buttonUpdateQLine.Size = new System.Drawing.Size(116, 23);
             this.buttonUpdateQLine.TabIndex = 71;
@@ -4881,7 +5396,7 @@
             // 
             // buttonQackgroundColour
             // 
-            this.buttonQackgroundColour.Location = new System.Drawing.Point(463, 472);
+            this.buttonQackgroundColour.Location = new System.Drawing.Point(253, 397);
             this.buttonQackgroundColour.Name = "buttonQackgroundColour";
             this.buttonQackgroundColour.Size = new System.Drawing.Size(120, 23);
             this.buttonQackgroundColour.TabIndex = 70;
@@ -4891,7 +5406,7 @@
             // 
             // buttonQBorderColour
             // 
-            this.buttonQBorderColour.Location = new System.Drawing.Point(464, 448);
+            this.buttonQBorderColour.Location = new System.Drawing.Point(254, 373);
             this.buttonQBorderColour.Name = "buttonQBorderColour";
             this.buttonQBorderColour.Size = new System.Drawing.Size(119, 23);
             this.buttonQBorderColour.TabIndex = 69;
@@ -4901,7 +5416,7 @@
             // 
             // buttonQFontColour
             // 
-            this.buttonQFontColour.Location = new System.Drawing.Point(463, 370);
+            this.buttonQFontColour.Location = new System.Drawing.Point(253, 295);
             this.buttonQFontColour.Name = "buttonQFontColour";
             this.buttonQFontColour.Size = new System.Drawing.Size(120, 23);
             this.buttonQFontColour.TabIndex = 68;
@@ -4912,14 +5427,14 @@
             // label67
             // 
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(464, 408);
+            this.label67.Location = new System.Drawing.Point(426, 337);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(0, 13);
             this.label67.TabIndex = 67;
             // 
             // buttonQItalic
             // 
-            this.buttonQItalic.Location = new System.Drawing.Point(381, 419);
+            this.buttonQItalic.Location = new System.Drawing.Point(252, 346);
             this.buttonQItalic.Name = "buttonQItalic";
             this.buttonQItalic.Size = new System.Drawing.Size(75, 23);
             this.buttonQItalic.TabIndex = 66;
@@ -4929,7 +5444,7 @@
             // 
             // buttonQBold
             // 
-            this.buttonQBold.Location = new System.Drawing.Point(382, 393);
+            this.buttonQBold.Location = new System.Drawing.Point(253, 320);
             this.buttonQBold.Name = "buttonQBold";
             this.buttonQBold.Size = new System.Drawing.Size(75, 23);
             this.buttonQBold.TabIndex = 65;
@@ -4960,7 +5475,7 @@
             // pictureBoxQAGM
             // 
             this.pictureBoxQAGM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxQAGM.Location = new System.Drawing.Point(633, 530);
+            this.pictureBoxQAGM.Location = new System.Drawing.Point(633, 219);
             this.pictureBoxQAGM.Name = "pictureBoxQAGM";
             this.pictureBoxQAGM.Size = new System.Drawing.Size(100, 100);
             this.pictureBoxQAGM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -4988,9 +5503,9 @@
             // pictureBoxQ1
             // 
             this.pictureBoxQ1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxQ1.Location = new System.Drawing.Point(633, 634);
+            this.pictureBoxQ1.Location = new System.Drawing.Point(418, 461);
             this.pictureBoxQ1.Name = "pictureBoxQ1";
-            this.pictureBoxQ1.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ1.Size = new System.Drawing.Size(79, 95);
             this.pictureBoxQ1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxQ1.TabIndex = 59;
             this.pictureBoxQ1.TabStop = false;
@@ -4998,9 +5513,9 @@
             // pictureBoxQ2
             // 
             this.pictureBoxQ2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxQ2.Location = new System.Drawing.Point(739, 634);
+            this.pictureBoxQ2.Location = new System.Drawing.Point(503, 461);
             this.pictureBoxQ2.Name = "pictureBoxQ2";
-            this.pictureBoxQ2.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ2.Size = new System.Drawing.Size(76, 95);
             this.pictureBoxQ2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxQ2.TabIndex = 58;
             this.pictureBoxQ2.TabStop = false;
@@ -5008,9 +5523,9 @@
             // pictureBoxQ3
             // 
             this.pictureBoxQ3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxQ3.Location = new System.Drawing.Point(845, 634);
+            this.pictureBoxQ3.Location = new System.Drawing.Point(585, 461);
             this.pictureBoxQ3.Name = "pictureBoxQ3";
-            this.pictureBoxQ3.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ3.Size = new System.Drawing.Size(73, 95);
             this.pictureBoxQ3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxQ3.TabIndex = 57;
             this.pictureBoxQ3.TabStop = false;
@@ -5018,9 +5533,9 @@
             // pictureBoxQ4
             // 
             this.pictureBoxQ4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxQ4.Location = new System.Drawing.Point(951, 634);
+            this.pictureBoxQ4.Location = new System.Drawing.Point(664, 461);
             this.pictureBoxQ4.Name = "pictureBoxQ4";
-            this.pictureBoxQ4.Size = new System.Drawing.Size(100, 124);
+            this.pictureBoxQ4.Size = new System.Drawing.Size(69, 95);
             this.pictureBoxQ4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxQ4.TabIndex = 56;
             this.pictureBoxQ4.TabStop = false;
@@ -5028,15 +5543,15 @@
             // labelBorderColour
             // 
             this.labelBorderColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBorderColour.Location = new System.Drawing.Point(589, 448);
+            this.labelBorderColour.Location = new System.Drawing.Point(379, 373);
             this.labelBorderColour.Name = "labelBorderColour";
-            this.labelBorderColour.Size = new System.Drawing.Size(80, 20);
+            this.labelBorderColour.Size = new System.Drawing.Size(75, 20);
             this.labelBorderColour.TabIndex = 55;
             // 
             // labelFontColour
             // 
             this.labelFontColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelFontColour.Location = new System.Drawing.Point(589, 370);
+            this.labelFontColour.Location = new System.Drawing.Point(374, 297);
             this.labelFontColour.Name = "labelFontColour";
             this.labelFontColour.Size = new System.Drawing.Size(80, 20);
             this.labelFontColour.TabIndex = 54;
@@ -5044,15 +5559,15 @@
             // labelBackgroundColour
             // 
             this.labelBackgroundColour.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBackgroundColour.Location = new System.Drawing.Point(589, 474);
+            this.labelBackgroundColour.Location = new System.Drawing.Point(379, 399);
             this.labelBackgroundColour.Name = "labelBackgroundColour";
-            this.labelBackgroundColour.Size = new System.Drawing.Size(80, 20);
+            this.labelBackgroundColour.Size = new System.Drawing.Size(75, 20);
             this.labelBackgroundColour.TabIndex = 53;
             // 
             // textBoxQ12
             // 
             this.textBoxQ12.Enabled = false;
-            this.textBoxQ12.Location = new System.Drawing.Point(285, 396);
+            this.textBoxQ12.Location = new System.Drawing.Point(156, 323);
             this.textBoxQ12.Name = "textBoxQ12";
             this.textBoxQ12.Size = new System.Drawing.Size(90, 20);
             this.textBoxQ12.TabIndex = 52;
@@ -5060,7 +5575,7 @@
             // textBoxQ13
             // 
             this.textBoxQ13.Enabled = false;
-            this.textBoxQ13.Location = new System.Drawing.Point(285, 422);
+            this.textBoxQ13.Location = new System.Drawing.Point(156, 349);
             this.textBoxQ13.Name = "textBoxQ13";
             this.textBoxQ13.Size = new System.Drawing.Size(90, 20);
             this.textBoxQ13.TabIndex = 51;
@@ -5087,14 +5602,14 @@
             // 
             // textBoxQ24
             // 
-            this.textBoxQ24.Location = new System.Drawing.Point(285, 708);
+            this.textBoxQ24.Location = new System.Drawing.Point(156, 536);
             this.textBoxQ24.Name = "textBoxQ24";
-            this.textBoxQ24.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ24.Size = new System.Drawing.Size(256, 20);
             this.textBoxQ24.TabIndex = 50;
             // 
             // textBoxQ25
             // 
-            this.textBoxQ25.Location = new System.Drawing.Point(285, 734);
+            this.textBoxQ25.Location = new System.Drawing.Point(267, 574);
             this.textBoxQ25.Name = "textBoxQ25";
             this.textBoxQ25.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ25.TabIndex = 49;
@@ -5102,7 +5617,7 @@
             // label64
             // 
             this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(210, 529);
+            this.label64.Location = new System.Drawing.Point(478, 329);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(56, 13);
             this.label64.TabIndex = 48;
@@ -5112,7 +5627,7 @@
             // label63
             // 
             this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(202, 555);
+            this.label63.Location = new System.Drawing.Point(470, 355);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(63, 13);
             this.label63.TabIndex = 47;
@@ -5122,7 +5637,7 @@
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(208, 581);
+            this.label62.Location = new System.Drawing.Point(476, 381);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(57, 13);
             this.label62.TabIndex = 46;
@@ -5132,7 +5647,7 @@
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(222, 108);
+            this.label61.Location = new System.Drawing.Point(611, 59);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(43, 13);
             this.label61.TabIndex = 45;
@@ -5142,7 +5657,7 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(180, 633);
+            this.label60.Location = new System.Drawing.Point(51, 461);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(86, 13);
             this.label60.TabIndex = 44;
@@ -5152,7 +5667,7 @@
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(179, 685);
+            this.label59.Location = new System.Drawing.Point(50, 513);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(86, 13);
             this.label59.TabIndex = 43;
@@ -5162,7 +5677,7 @@
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(179, 659);
+            this.label58.Location = new System.Drawing.Point(50, 487);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(86, 13);
             this.label58.TabIndex = 42;
@@ -5172,7 +5687,7 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(174, 737);
+            this.label57.Location = new System.Drawing.Point(156, 577);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(91, 13);
             this.label57.TabIndex = 41;
@@ -5182,7 +5697,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(203, 160);
+            this.label56.Location = new System.Drawing.Point(165, 88);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(63, 13);
             this.label56.TabIndex = 40;
@@ -5192,7 +5707,7 @@
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(175, 295);
+            this.label55.Location = new System.Drawing.Point(46, 222);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(91, 13);
             this.label55.TabIndex = 39;
@@ -5202,7 +5717,7 @@
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(179, 711);
+            this.label54.Location = new System.Drawing.Point(50, 539);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(86, 13);
             this.label54.TabIndex = 38;
@@ -5212,7 +5727,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(150, 477);
+            this.label53.Location = new System.Drawing.Point(21, 404);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(116, 13);
             this.label53.TabIndex = 37;
@@ -5222,7 +5737,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(212, 503);
+            this.label52.Location = new System.Drawing.Point(83, 430);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(53, 13);
             this.label52.TabIndex = 36;
@@ -5232,7 +5747,7 @@
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(177, 451);
+            this.label51.Location = new System.Drawing.Point(48, 378);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(89, 13);
             this.label51.TabIndex = 35;
@@ -5242,7 +5757,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(216, 607);
+            this.label50.Location = new System.Drawing.Point(484, 306);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(49, 13);
             this.label50.TabIndex = 34;
@@ -5252,7 +5767,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(194, 212);
+            this.label49.Location = new System.Drawing.Point(156, 140);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(72, 13);
             this.label49.TabIndex = 33;
@@ -5262,7 +5777,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(164, 399);
+            this.label48.Location = new System.Drawing.Point(35, 326);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(101, 13);
             this.label48.TabIndex = 32;
@@ -5272,7 +5787,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(188, 321);
+            this.label47.Location = new System.Drawing.Point(59, 248);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(78, 13);
             this.label47.TabIndex = 31;
@@ -5282,7 +5797,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(208, 81);
+            this.label46.Location = new System.Drawing.Point(597, 32);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(58, 13);
             this.label46.TabIndex = 30;
@@ -5292,7 +5807,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(203, 134);
+            this.label45.Location = new System.Drawing.Point(591, 85);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(63, 13);
             this.label45.TabIndex = 29;
@@ -5302,7 +5817,7 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(207, 186);
+            this.label44.Location = new System.Drawing.Point(169, 114);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(59, 13);
             this.label44.TabIndex = 28;
@@ -5312,7 +5827,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(188, 347);
+            this.label43.Location = new System.Drawing.Point(59, 274);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(77, 13);
             this.label43.TabIndex = 27;
@@ -5322,7 +5837,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(187, 373);
+            this.label42.Location = new System.Drawing.Point(58, 300);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(79, 13);
             this.label42.TabIndex = 26;
@@ -5332,7 +5847,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(164, 425);
+            this.label41.Location = new System.Drawing.Point(35, 352);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(102, 13);
             this.label41.TabIndex = 25;
@@ -5342,7 +5857,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(191, 56);
+            this.label39.Location = new System.Drawing.Point(153, 56);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(74, 13);
             this.label39.TabIndex = 24;
@@ -5352,7 +5867,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(237, 30);
+            this.label38.Location = new System.Drawing.Point(199, 30);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(28, 13);
             this.label38.TabIndex = 23;
@@ -5361,173 +5876,169 @@
             // 
             // textBoxQ23
             // 
-            this.textBoxQ23.Location = new System.Drawing.Point(285, 682);
+            this.textBoxQ23.Location = new System.Drawing.Point(156, 510);
             this.textBoxQ23.Name = "textBoxQ23";
-            this.textBoxQ23.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ23.Size = new System.Drawing.Size(256, 20);
             this.textBoxQ23.TabIndex = 22;
             // 
             // textBoxQ21
             // 
-            this.textBoxQ21.Location = new System.Drawing.Point(285, 630);
+            this.textBoxQ21.Location = new System.Drawing.Point(156, 458);
             this.textBoxQ21.Name = "textBoxQ21";
-            this.textBoxQ21.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ21.Size = new System.Drawing.Size(256, 20);
             this.textBoxQ21.TabIndex = 21;
             // 
             // textBoxQ22
             // 
-            this.textBoxQ22.Location = new System.Drawing.Point(285, 656);
+            this.textBoxQ22.Location = new System.Drawing.Point(156, 484);
             this.textBoxQ22.Name = "textBoxQ22";
-            this.textBoxQ22.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ22.Size = new System.Drawing.Size(256, 20);
             this.textBoxQ22.TabIndex = 20;
             // 
             // textBoxQ20
             // 
-            this.textBoxQ20.Location = new System.Drawing.Point(285, 604);
+            this.textBoxQ20.Location = new System.Drawing.Point(539, 299);
             this.textBoxQ20.Name = "textBoxQ20";
-            this.textBoxQ20.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ20.Size = new System.Drawing.Size(88, 20);
             this.textBoxQ20.TabIndex = 19;
             // 
             // textBoxQ18
             // 
-            this.textBoxQ18.Location = new System.Drawing.Point(285, 552);
+            this.textBoxQ18.Location = new System.Drawing.Point(539, 352);
             this.textBoxQ18.Name = "textBoxQ18";
-            this.textBoxQ18.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ18.Size = new System.Drawing.Size(194, 20);
             this.textBoxQ18.TabIndex = 18;
             // 
             // textBoxQ19
             // 
-            this.textBoxQ19.Location = new System.Drawing.Point(285, 578);
+            this.textBoxQ19.Location = new System.Drawing.Point(539, 378);
             this.textBoxQ19.Name = "textBoxQ19";
-            this.textBoxQ19.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ19.Size = new System.Drawing.Size(194, 20);
             this.textBoxQ19.TabIndex = 17;
             // 
             // textBoxQ17
             // 
-            this.textBoxQ17.Location = new System.Drawing.Point(285, 526);
+            this.textBoxQ17.Location = new System.Drawing.Point(539, 326);
             this.textBoxQ17.Name = "textBoxQ17";
-            this.textBoxQ17.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ17.Size = new System.Drawing.Size(194, 20);
             this.textBoxQ17.TabIndex = 16;
             // 
             // textBoxQ15
             // 
             this.textBoxQ15.Enabled = false;
-            this.textBoxQ15.Location = new System.Drawing.Point(285, 474);
+            this.textBoxQ15.Location = new System.Drawing.Point(156, 401);
             this.textBoxQ15.Name = "textBoxQ15";
-            this.textBoxQ15.Size = new System.Drawing.Size(171, 20);
+            this.textBoxQ15.Size = new System.Drawing.Size(90, 20);
             this.textBoxQ15.TabIndex = 15;
             // 
             // textBoxQ16
             // 
-            this.textBoxQ16.Location = new System.Drawing.Point(285, 500);
+            this.textBoxQ16.Location = new System.Drawing.Point(156, 427);
             this.textBoxQ16.Multiline = true;
             this.textBoxQ16.Name = "textBoxQ16";
             this.textBoxQ16.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxQ16.Size = new System.Drawing.Size(448, 20);
+            this.textBoxQ16.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ16.TabIndex = 14;
             // 
             // textBoxQ14
             // 
             this.textBoxQ14.Enabled = false;
-            this.textBoxQ14.Location = new System.Drawing.Point(285, 448);
+            this.textBoxQ14.Location = new System.Drawing.Point(156, 375);
             this.textBoxQ14.Name = "textBoxQ14";
-            this.textBoxQ14.Size = new System.Drawing.Size(172, 20);
+            this.textBoxQ14.Size = new System.Drawing.Size(90, 20);
             this.textBoxQ14.TabIndex = 13;
             // 
             // textBoxQ2
             // 
-            this.textBoxQ2.Location = new System.Drawing.Point(285, 79);
+            this.textBoxQ2.Location = new System.Drawing.Point(674, 30);
             this.textBoxQ2.Name = "textBoxQ2";
-            this.textBoxQ2.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ2.Size = new System.Drawing.Size(59, 20);
             this.textBoxQ2.TabIndex = 12;
             // 
             // textBoxQ11
             // 
             this.textBoxQ11.Enabled = false;
-            this.textBoxQ11.Location = new System.Drawing.Point(285, 370);
+            this.textBoxQ11.Location = new System.Drawing.Point(156, 297);
             this.textBoxQ11.Name = "textBoxQ11";
-            this.textBoxQ11.Size = new System.Drawing.Size(172, 20);
+            this.textBoxQ11.Size = new System.Drawing.Size(90, 20);
             this.textBoxQ11.TabIndex = 10;
             // 
             // textBoxQ9
             // 
-            this.textBoxQ9.Location = new System.Drawing.Point(285, 318);
+            this.textBoxQ9.Location = new System.Drawing.Point(156, 245);
             this.textBoxQ9.Name = "textBoxQ9";
             this.textBoxQ9.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ9.TabIndex = 9;
             // 
             // textBoxQ10
             // 
-            this.textBoxQ10.Location = new System.Drawing.Point(285, 344);
+            this.textBoxQ10.Location = new System.Drawing.Point(156, 271);
             this.textBoxQ10.Name = "textBoxQ10";
             this.textBoxQ10.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ10.TabIndex = 8;
             // 
             // textBoxQ8
             // 
-            this.textBoxQ8.Location = new System.Drawing.Point(285, 292);
+            this.textBoxQ8.Location = new System.Drawing.Point(156, 219);
             this.textBoxQ8.Name = "textBoxQ8";
             this.textBoxQ8.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ8.TabIndex = 7;
             // 
             // textBoxQ6
             // 
-            this.textBoxQ6.Location = new System.Drawing.Point(285, 183);
+            this.textBoxQ6.Location = new System.Drawing.Point(247, 111);
             this.textBoxQ6.Name = "textBoxQ6";
             this.textBoxQ6.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ6.TabIndex = 6;
             // 
             // textBoxQ7
             // 
-            this.textBoxQ7.Location = new System.Drawing.Point(285, 209);
+            this.textBoxQ7.Location = new System.Drawing.Point(247, 137);
             this.textBoxQ7.Multiline = true;
             this.textBoxQ7.Name = "textBoxQ7";
             this.textBoxQ7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxQ7.Size = new System.Drawing.Size(448, 77);
+            this.textBoxQ7.Size = new System.Drawing.Size(486, 77);
             this.textBoxQ7.TabIndex = 5;
             // 
             // textBoxQ5
             // 
-            this.textBoxQ5.Location = new System.Drawing.Point(285, 157);
+            this.textBoxQ5.Location = new System.Drawing.Point(247, 85);
             this.textBoxQ5.Name = "textBoxQ5";
             this.textBoxQ5.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ5.TabIndex = 4;
             // 
             // textBoxQ3
             // 
-            this.textBoxQ3.Location = new System.Drawing.Point(285, 105);
+            this.textBoxQ3.Location = new System.Drawing.Point(674, 56);
             this.textBoxQ3.Name = "textBoxQ3";
-            this.textBoxQ3.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ3.Size = new System.Drawing.Size(59, 20);
             this.textBoxQ3.TabIndex = 3;
             // 
             // textBoxQ0
             // 
             this.textBoxQ0.Enabled = false;
-            this.textBoxQ0.Location = new System.Drawing.Point(285, 27);
+            this.textBoxQ0.Location = new System.Drawing.Point(247, 27);
             this.textBoxQ0.Name = "textBoxQ0";
             this.textBoxQ0.Size = new System.Drawing.Size(70, 20);
             this.textBoxQ0.TabIndex = 2;
             // 
             // textBoxQ1
             // 
-            this.textBoxQ1.Location = new System.Drawing.Point(285, 53);
+            this.textBoxQ1.Location = new System.Drawing.Point(247, 53);
             this.textBoxQ1.Name = "textBoxQ1";
             this.textBoxQ1.Size = new System.Drawing.Size(298, 20);
             this.textBoxQ1.TabIndex = 1;
             // 
             // textBoxQ4
             // 
-            this.textBoxQ4.Location = new System.Drawing.Point(285, 131);
+            this.textBoxQ4.Location = new System.Drawing.Point(673, 82);
             this.textBoxQ4.Name = "textBoxQ4";
-            this.textBoxQ4.Size = new System.Drawing.Size(298, 20);
+            this.textBoxQ4.Size = new System.Drawing.Size(60, 20);
             this.textBoxQ4.TabIndex = 0;
             // 
             // tableProfilesTableAdapter
             // 
             this.tableProfilesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableMainQueueTableAdapter
-            // 
-            this.tableMainQueueTableAdapter.ClearBeforeFill = true;
             // 
             // bindingSource1
             // 
@@ -5542,6 +6053,121 @@
             // defaultsTableAdapter1
             // 
             this.defaultsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableColourQueueTableAdapter
+            // 
+            this.tableColourQueueTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAutoTableAdapter
+            // 
+            this.tableAutoTableAdapter.ClearBeforeFill = true;
+            // 
+            // tablePlantsTableAdapter
+            // 
+            this.tablePlantsTableAdapter.ClearBeforeFill = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "order_export_short.csv";
+            // 
+            // bindingSourceLabels
+            // 
+            this.bindingSourceLabels.DataSource = this.databaseLabelsDataSetLabelNames;
+            this.bindingSourceLabels.Position = 0;
+            // 
+            // databaseLabelsDataSetLabelNames
+            // 
+            this.databaseLabelsDataSetLabelNames.DataSetName = "DatabaseLabelsDataSetLabelNames";
+            this.databaseLabelsDataSetLabelNames.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // LabelsLabelNamesTableAdapter
+            // 
+            this.LabelsLabelNamesTableAdapter.ClearBeforeFill = true;
+            // 
+            // LabelsLabelCategoriesTableAdapter
+            // 
+            this.LabelsLabelCategoriesTableAdapter.ClearBeforeFill = true;
+            // 
+            // LabelsLabelFieldsTableAdapter
+            // 
+            this.LabelsLabelFieldsTableAdapter.ClearBeforeFill = true;
+            // 
+            // PrintersTableAdapter
+            // 
+            this.PrintersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tabControlDesign
+            // 
+            this.tabControlDesign.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.tabControlDesign.Controls.Add(this.tabPageDesign);
+            this.tabControlDesign.Controls.Add(this.tabPageCategories);
+            this.tabControlDesign.Location = new System.Drawing.Point(12, 60);
+            this.tabControlDesign.Multiline = true;
+            this.tabControlDesign.Name = "tabControlDesign";
+            this.tabControlDesign.SelectedIndex = 0;
+            this.tabControlDesign.Size = new System.Drawing.Size(1100, 790);
+            this.tabControlDesign.TabIndex = 18;
+            this.tabControlDesign.Click += new System.EventHandler(this.tabControlDesign_Click);
+            // 
+            // tabPageDesign
+            // 
+            this.tabPageDesign.Location = new System.Drawing.Point(23, 4);
+            this.tabPageDesign.Name = "tabPageDesign";
+            this.tabPageDesign.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDesign.Size = new System.Drawing.Size(1073, 782);
+            this.tabPageDesign.TabIndex = 1;
+            this.tabPageDesign.Text = "   Label Design   ";
+            this.tabPageDesign.UseVisualStyleBackColor = true;
+            // 
+            // tabPageCategories
+            // 
+            this.tabPageCategories.Location = new System.Drawing.Point(23, 4);
+            this.tabPageCategories.Name = "tabPageCategories";
+            this.tabPageCategories.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCategories.Size = new System.Drawing.Size(1073, 782);
+            this.tabPageCategories.TabIndex = 0;
+            this.tabPageCategories.Text = "   Label Categories   ";
+            this.tabPageCategories.UseVisualStyleBackColor = true;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(6, 7);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(30, 13);
+            this.label85.TabIndex = 15;
+            this.label85.Text = "Main";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(60, 7);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(37, 13);
+            this.label84.TabIndex = 16;
+            this.label84.Text = "Colour";
+            // 
+            // labelMainCountQ
+            // 
+            this.labelMainCountQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMainCountQ.Location = new System.Drawing.Point(6, 22);
+            this.labelMainCountQ.MinimumSize = new System.Drawing.Size(40, 25);
+            this.labelMainCountQ.Name = "labelMainCountQ";
+            this.labelMainCountQ.Size = new System.Drawing.Size(40, 25);
+            this.labelMainCountQ.TabIndex = 13;
+            this.labelMainCountQ.Text = "0";
+            this.labelMainCountQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelColourCountQ
+            // 
+            this.labelColourCountQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelColourCountQ.Location = new System.Drawing.Point(63, 22);
+            this.labelColourCountQ.MinimumSize = new System.Drawing.Size(40, 25);
+            this.labelColourCountQ.Name = "labelColourCountQ";
+            this.labelColourCountQ.Size = new System.Drawing.Size(40, 25);
+            this.labelColourCountQ.TabIndex = 14;
+            this.labelColourCountQ.Text = "0";
+            this.labelColourCountQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonDeleteQLines
             // 
@@ -5573,64 +6199,10 @@
             this.buttonDeleteThisQueue.UseVisualStyleBackColor = true;
             this.buttonDeleteThisQueue.Click += new System.EventHandler(this.buttonDeleteThisQueue_Click);
             // 
-            // tableColourQueueTableAdapter
-            // 
-            this.tableColourQueueTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAutoTableAdapter
-            // 
-            this.tableAutoTableAdapter.ClearBeforeFill = true;
-            // 
-            // tablePlantsTableAdapter
-            // 
-            this.tablePlantsTableAdapter.ClearBeforeFill = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "order_export_short.csv";
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(60, 7);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(37, 13);
-            this.label84.TabIndex = 16;
-            this.label84.Text = "Colour";
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(6, 7);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(30, 13);
-            this.label85.TabIndex = 15;
-            this.label85.Text = "Main";
-            // 
-            // labelColourCountQ
-            // 
-            this.labelColourCountQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelColourCountQ.Location = new System.Drawing.Point(63, 22);
-            this.labelColourCountQ.MinimumSize = new System.Drawing.Size(40, 25);
-            this.labelColourCountQ.Name = "labelColourCountQ";
-            this.labelColourCountQ.Size = new System.Drawing.Size(40, 25);
-            this.labelColourCountQ.TabIndex = 14;
-            this.labelColourCountQ.Text = "0";
-            this.labelColourCountQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelMainCountQ
-            // 
-            this.labelMainCountQ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMainCountQ.Location = new System.Drawing.Point(6, 22);
-            this.labelMainCountQ.MinimumSize = new System.Drawing.Size(40, 25);
-            this.labelMainCountQ.Name = "labelMainCountQ";
-            this.labelMainCountQ.Size = new System.Drawing.Size(40, 25);
-            this.labelMainCountQ.TabIndex = 13;
-            this.labelMainCountQ.Text = "0";
-            this.labelMainCountQ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.buttonDeleteThisQueue);
             this.panel4.Controls.Add(this.buttonDeleteBothQueues);
@@ -5639,36 +6211,15 @@
             this.panel4.Controls.Add(this.labelMainCountQ);
             this.panel4.Controls.Add(this.label84);
             this.panel4.Controls.Add(this.label85);
+            this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(1115, 795);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(416, 53);
             this.panel4.TabIndex = 17;
             // 
-            // bindingSourceLabels
+            // tableMainQueueTableAdapter
             // 
-            this.bindingSourceLabels.DataSource = this.databaseLabelsDataSetLabelNames;
-            this.bindingSourceLabels.Position = 0;
-            // 
-            // databaseLabelsDataSetLabelNames
-            // 
-            this.databaseLabelsDataSetLabelNames.DataSetName = "DatabaseLabelsDataSetLabelNames";
-            this.databaseLabelsDataSetLabelNames.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // LabelsLabelNamesTableAdapter
-            // 
-            this.LabelsLabelNamesTableAdapter.ClearBeforeFill = true;
-            // 
-            // LabelsLabelCategoriesTableAdapter
-            // 
-            this.LabelsLabelCategoriesTableAdapter.ClearBeforeFill = true;
-            // 
-            // LabelsLabelFieldsTableAdapter
-            // 
-            this.LabelsLabelFieldsTableAdapter.ClearBeforeFill = true;
-            // 
-            // PrintersTableAdapter
-            // 
-            this.PrintersTableAdapter.ClearBeforeFill = true;
+            this.tableMainQueueTableAdapter.ClearBeforeFill = true;
             // 
             // formMain
             // 
@@ -5680,6 +6231,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
             this.Controls.Add(this.tabControlMain);
+            this.Controls.Add(this.tabControlDesign);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formMain";
@@ -5689,7 +6241,7 @@
             this.tabControlQueue.ResumeLayout(false);
             this.tabPageMainQueue.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableMainQueueBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMainQueue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetMainQueue)).EndInit();
             this.tabPageColourQueue.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColourQ)).EndInit();
@@ -5706,16 +6258,16 @@
             this.tabPageLabelProfiles.ResumeLayout(false);
             this.tabPageLabelProfiles.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.panelProfileSampleBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1ProfileView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableProfilesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableProfilesbindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetProfiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.tabPageAuto.ResumeLayout(false);
             this.tabPageAuto.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArrow)).EndInit();
@@ -5797,10 +6349,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQ4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLabels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetLabelNames)).EndInit();
+            this.tabControlDesign.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5818,15 +6371,14 @@
         private DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter tablePlantsTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem profilesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
-        private System.Windows.Forms.BindingSource tableProfilesbindingSource;
         private DatabaseLabelsDataSet1 databaseLabelsDataSetProfiles;
         private DatabaseLabelsDataSet1TableAdapters.TableProfilesTableAdapter tableProfilesTableAdapter;
         private System.Windows.Forms.TabPage tabPageLabelProfiles;
         private System.Windows.Forms.GroupBox groupBoxProfiles;
         private System.Windows.Forms.Panel panelProfilePlantPreview;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panelProfileSampleBorder;
+        private System.Windows.Forms.Label labelProfileSampleText;
         private System.Windows.Forms.DataGridView dataGridView1ProfileView;
         private System.Windows.Forms.DataGridView dataGridViewProfiles;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -6023,43 +6575,7 @@
         private System.Windows.Forms.Button buttonHiddenOnly;
         private System.Windows.Forms.Button buttonVisibleOnly;
         private System.Windows.Forms.Button buttonAllEntries;
-        private System.Windows.Forms.BindingSource tableProfilesBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn borderColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fontNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn boldDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn italicDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fontColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn backgroundColourDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridViewMainQ;
-        private DatabaseLabelsDataSetMainQueue databaseLabelsDataSetMainQueue;
-        private System.Windows.Forms.BindingSource tableMainQueueBindingSource;
-        private DatabaseLabelsDataSetMainQueueTableAdapters.TableMainQueueTableAdapter tableMainQueueTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pictureFileDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn potSizeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commonNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn fontBoldDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn fontItalicDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourBorderColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colourBackgroundColourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genusDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn speciesDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn varietyDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aGMDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture1DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture2DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture3DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn picture4DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dataGridViewColourQ;
         private DatabaseLabelsDataSetColourQueue databaseLabelsDataSetColourQueue;
         private System.Windows.Forms.BindingSource tableColourQueueBindingSource;
@@ -6150,10 +6666,6 @@
         private DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter LabelsLabelCategoriesTableAdapter;
         private DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter LabelsLabelFieldsTableAdapter;
         private DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter PrintersTableAdapter;
-        //
-        private System.Windows.Forms.Button buttonDeleteQLines;
-        private System.Windows.Forms.Button buttonDeleteBothQueues;
-        private System.Windows.Forms.Button buttonDeleteThisQueue;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Label label71;
@@ -6212,13 +6724,9 @@
         private System.Windows.Forms.ProgressBar progressBarDatabase;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.Button buttonEditProfile;
         private System.Windows.Forms.Button buttonDeleteProfile;
         private System.Windows.Forms.Button buttonNewProfile;
         private System.Windows.Forms.Button buttonAssignProfile;
-        private System.Windows.Forms.Button buttonUpdateProfile;
-        private System.Windows.Forms.RichTextBox richTextBoxProfiles;
-        private System.Windows.Forms.Label label75;
         private System.Windows.Forms.ToolStripMenuItem queueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForLabelStocksToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPageLabelStocks;
@@ -6238,6 +6746,155 @@
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button buttonMissingRemove;
         private System.Windows.Forms.ToolStripMenuItem checkForMissingPicturesToolStripMenuItem;
+        private System.Windows.Forms.Label labelRemoveMissing;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Button buttonUploadAuto;
+        private System.Windows.Forms.Label labelAutoFile;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.DataGridView dataGridViewAuto;
+        private DatabaseLabelsDataSetAuto databaseLabelsDataSetAuto;
+        private System.Windows.Forms.BindingSource tableAutoBindingSource;
+        private DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter tableAutoTableAdapter;
+        private System.Windows.Forms.Button buttonSortAutoPlant;
+        private System.Windows.Forms.Button buttonSortAutoON;
+        private System.Windows.Forms.Button buttonAutoCustomer;
+        private System.Windows.Forms.Button buttonDeletePrinted;
+        private System.Windows.Forms.ListBox listBoxAuto;
+        private System.Windows.Forms.Button buttonCreateQueue;
+        private System.Windows.Forms.Button buttonCheckSKUs;
+        private System.Windows.Forms.ListBox listBoxAutoErrors;
+        private System.Windows.Forms.PictureBox pictureBoxArrow;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.RadioButton radioButtonAutoModified;
+        private System.Windows.Forms.RadioButton radioButtonAutoStated;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.CheckBox checkBoxColorQSingle;
+        private System.Windows.Forms.Button buttonUnlockAll;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label labelPrinterChoice;
+        private System.Windows.Forms.ListBox listBoxPrinter;
+        private System.Windows.Forms.ToolStripMenuItem resetLabelFlagsToolStripMenuItem;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.TabControl tabControlDesign;
+        private System.Windows.Forms.TabPage tabPageCategories;
+        private System.Windows.Forms.TabPage tabPageDesign;
+        private System.Windows.Forms.TextBox textBoxPricestoSame;
+        private System.Windows.Forms.Button buttonPricestoSame;
+        private System.Windows.Forms.Button buttonResetPrinted;
+        private System.Windows.Forms.Button buttonLockEntries;
+        private System.Windows.Forms.Button buttonLockPrinted;
+        private System.Windows.Forms.Button buttonLockPlants;
+        private System.Windows.Forms.Button buttonUnlockPlants;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.Label labelMainCountQ;
+        private System.Windows.Forms.Label labelColourCountQ;
+        private System.Windows.Forms.Button buttonDeleteQLines;
+        private System.Windows.Forms.Button buttonDeleteBothQueues;
+        private System.Windows.Forms.Button buttonDeleteThisQueue;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn borderColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fontNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn boldDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn italicDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fontColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn backgroundColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource tableProfilesbindingSource;
+        private System.Windows.Forms.TextBox textBoxQ33;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.TextBox textBoxQ32;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.TextBox textBoxQ31;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.TextBox textBoxQ30;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.TextBox textBoxQ29;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.TextBox textBoxQ28;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.TextBox textBoxQ27;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxQ34;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.BindingSource bindingSourceMainQueue;
+        private DatabaseLabelsDataSet2 databaseLabelsDataSetMainQueue;
+        private DatabaseLabelsDataSet2TableAdapters.TableMainQueueTableAdapter tableMainQueueTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn lockCustDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn lockLineDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn printedDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn oNDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sKUDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipNotes;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radioButtonAddress2;
+        private System.Windows.Forms.RadioButton radioButtonAddress1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxQ26;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pictureFileDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barcodeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn potSizeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commonNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourFontColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn fontBoldDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn fontItalicDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourBorderColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colourBackgroundColourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genusDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn speciesDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn varietyDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aGMDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture1DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture2DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture3DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn picture4DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shipFirstDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shipLastDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shipLine1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shipLine2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shipCityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shipStateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shipPostcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderNotesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn labelStocksDataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn plantIdDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
@@ -6263,65 +6920,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn picture3DataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn picture4DataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipFirst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipLast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipLine1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipLine2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipCity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipState;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipPostcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderNotes;
         private System.Windows.Forms.DataGridViewCheckBoxColumn labelStocksDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn plantIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label labelRemoveMissing;
-        private System.Windows.Forms.Label label81;
-        private System.Windows.Forms.Button buttonUploadAuto;
-        private System.Windows.Forms.Label labelAutoFile;
-        private System.Windows.Forms.Label label79;
-        private System.Windows.Forms.DataGridView dataGridViewAuto;
-        private DatabaseLabelsDataSetAuto databaseLabelsDataSetAuto;
-        private System.Windows.Forms.BindingSource tableAutoBindingSource;
-        private DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter tableAutoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn lockCustDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn lockLineDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn printedDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn oNDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sKUDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button buttonSortAutoPlant;
-        private System.Windows.Forms.Button buttonSortAutoON;
-        private System.Windows.Forms.Button buttonAutoCustomer;
-        private System.Windows.Forms.Button buttonDeletePrinted;
-        private System.Windows.Forms.ListBox listBoxAuto;
-        private System.Windows.Forms.Button buttonCreateQueue;
-        private System.Windows.Forms.Button buttonCheckSKUs;
-        private System.Windows.Forms.ListBox listBoxAutoErrors;
-        private System.Windows.Forms.PictureBox pictureBoxArrow;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButtonAutoModified;
-        private System.Windows.Forms.RadioButton radioButtonAutoStated;
-        private System.Windows.Forms.Label label82;
-        private System.Windows.Forms.CheckBox checkBoxColorQSingle;
-        private System.Windows.Forms.Button buttonUnlockAll;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Label labelPrinterChoice;
-        private System.Windows.Forms.ListBox listBoxPrinter;
-        private System.Windows.Forms.ToolStripMenuItem resetLabelFlagsToolStripMenuItem;
-        private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.Label labelColourCountQ;
-        private System.Windows.Forms.Label labelMainCountQ;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

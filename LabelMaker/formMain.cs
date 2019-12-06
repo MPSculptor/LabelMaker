@@ -7,6 +7,7 @@ using System.IO;
 using CreationUtilities;
 using Microsoft.VisualBasic.FileIO;
 using System.Drawing.Printing;
+using System.Deployment.Application;
 
 namespace LabelMaker
 {
@@ -127,7 +128,7 @@ namespace LabelMaker
             
             string[] defaultsString = getDefaultSettings(); 
 
-            string name = comboBoxLabelName.Text.ToString();
+            string name = comboBoxLabelName.Text.ToString(); //whereToNow
             string[] labelData = returnLabelData(name);
             string[] labelHeader = returnLabelHeaderData(name);
 
@@ -496,11 +497,12 @@ namespace LabelMaker
 
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tabControlMain.BringToFront();
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
-                TempMakeALabel(panelLabelTabMain, "Main", "database");
-                TempMakeALabel(panelLabelTabColour, "Colour", "database");
-                TempMakeALabel(panelLabelTabChoice, "Choice", "database");
+                TempMakeALabel(panelLabelTabMain, "Main", "database","");
+                TempMakeALabel(panelLabelTabColour, "Colour", "database","");
+                TempMakeALabel(panelLabelTabChoice, "Choice", "database","");
             }
             if (tabControlMain.SelectedTab == tabPageDatabase)
             {
@@ -508,8 +510,10 @@ namespace LabelMaker
             }
             if (tabControlMain.SelectedTab == tabPageLabelProfiles)
             {
+                dataGridView1ProfileView.CurrentCell = dataGridView1ProfileView.Rows[1].Cells[1];
                 addProfileButtons();
-                addProfilePicture();
+                updateProfileSample();
+                addProfilePicture("database");
             }
             if (tabControlMain.SelectedTab == tabPageQueueUtilities)
             {
@@ -796,7 +800,7 @@ namespace LabelMaker
             labelData[0] = labelHeaderData[6];
             labelData[1] = labelHeaderData[7];
             fillPrinterDetails();
-            TempMakeALabel(panelLabelPreview, "Choice", "database");
+            TempMakeALabel(panelLabelPreview, "Choice", "database","");
             
         }
 
@@ -1425,7 +1429,7 @@ namespace LabelMaker
             }
 
             updateMainPicture(filePlace, indexOfRow);
-            TempMakeALabel(panelLabelPreview, "Main", "database");
+            TempMakeALabel(panelLabelPreview, "Main", "database","");
 
 
             //Price and Quantity
@@ -1602,8 +1606,8 @@ namespace LabelMaker
             textBoxGridIndex.Text = indexOfRow.ToString();
 
             //Paint two label examples
-            TempMakeALabel(panelDatabaseMain, "Main", "database");
-            TempMakeALabel(panelDatabaseColour, "Colour", "database");
+            TempMakeALabel(panelDatabaseMain, "Main", "database","");
+            TempMakeALabel(panelDatabaseColour, "Colour", "database","");
 
             //Fill in Plant Name
             for (int i = 2; i <= 6; i++)
@@ -1663,7 +1667,7 @@ namespace LabelMaker
 
             for (int i = 0; i < databaseLabelsDataSetProfiles.TableProfiles.Rows.Count; i++)
             {
-                comboBoxProfilePick.Items.Add(dataGridView1ProfileView.Rows[i].Cells[0].Value.ToString());
+                comboBoxProfilePick.Items.Add(dataGridView1ProfileView.Rows[i].Cells[1].Value.ToString());
             }
 
             //FillTogles
@@ -2231,10 +2235,12 @@ namespace LabelMaker
             flowLayoutPanelProfiles.Left = 10;
             flowLayoutPanelProfiles.Top = 20;
 
+            groupBoxProfiles.Controls.Clear();
             groupBoxProfiles.Controls.Add(flowLayoutPanelProfiles);
 
 
             int profileIndex = 0;
+            tableProfilesTableAdapter.Fill(databaseLabelsDataSetProfiles.TableProfiles);
             Button[] ProfileSample = new Button[databaseLabelsDataSetProfiles.TableProfiles.Rows.Count + 1];
             //Iterate through dataset
 
@@ -2271,9 +2277,16 @@ namespace LabelMaker
             }
         }
 
-        private void addProfilePicture()
+        private void addProfilePicture(string whichProfile)
         {
-            TempMakeALabel(panelProfilePlantPreview, "Colour", "database");
+            if (whichProfile == "database")
+            {
+                TempMakeALabel(panelProfilePlantPreview, "Colour", "database", "");
+            }
+            else
+            {
+                TempMakeALabel(panelProfilePlantPreview, "Colour", "database", dataGridView1ProfileView.CurrentRow.Cells[1].Value.ToString());
+            }
         }
 
         #endregion
@@ -2345,8 +2358,8 @@ namespace LabelMaker
                 pictureBoxQAGM.Image = Image.FromFile(pictureFileAGM);
             }
             //Label Previews
-            TempMakeALabel(panelQMain, "Main", "queue");
-            TempMakeALabel(panelQColour, "Colour", "queue");
+            TempMakeALabel(panelQMain, "Main", "queue","");
+            TempMakeALabel(panelQColour, "Colour", "queue","");
         }
 
         private void fillQueueUtilitiesTab()
@@ -2360,7 +2373,8 @@ namespace LabelMaker
                     textBoxQ0.Text = indexOfRow.ToString();
                     //Fill in Plant Name
 
-                    for (int i = 1; i <= 25; i++)
+                    for (int i = 1; i <= 34
+                        ; i++)
                     {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
                         curText.Text = dataGridViewMainQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
@@ -2384,7 +2398,7 @@ namespace LabelMaker
                     textBoxQ0.Text = indexOfRow.ToString();
                     //Fill in Plant Name
 
-                    for (int i = 1; i <= 25; i++)
+                    for (int i = 1; i <= 34; i++)
                     {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
                         curText.Text = dataGridViewColourQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
@@ -2405,7 +2419,7 @@ namespace LabelMaker
 
         private void makeNoQueueEntry()
         {
-            for (int i = 0; i <= 25; i++)
+            for (int i = 0; i <= 34; i++)
             {
                 TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
                 curText.Text = "";
@@ -2938,7 +2952,7 @@ namespace LabelMaker
 
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
-                TempMakeALabel(panelLabelTabChoice, "Choice", "database");
+                TempMakeALabel(panelLabelTabChoice, "Choice", "database","");
             }
 
             if (tabControlQueue.SelectedTab == tabPageLabelStocks)
@@ -2974,13 +2988,13 @@ namespace LabelMaker
 
             for (int i = 0; i <= (dataGridViewColourQ.RowCount - 2); i++)
             {
-                if (dataGridViewColourQ.Rows[i].Cells[25].Value.ToString() == "True")
+                if (dataGridViewColourQ.Rows[i].Cells[33].Value.ToString() == "True")
                 {
                     string[] toAdd = new string[] {
                         dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
                         "True",
                         "True",
-                        dataGridViewColourQ.Rows[i].Cells[26].Value.ToString()};
+                        dataGridViewColourQ.Rows[i].Cells[34].Value.ToString()};
                     dataGridViewQueueList.Rows.Add(toAdd);
                 }
             }
@@ -3078,7 +3092,7 @@ namespace LabelMaker
 
         private string[] collectQueueRow(int desiredRow, string whichQueue)
         {
-            string[] queueEntry = new string[25];
+            string[] queueEntry = new string[34];
 
             //Take into account rearranged data grid
             if (whichQueue == "Main")
@@ -3106,7 +3120,8 @@ namespace LabelMaker
                 queueEntry[8] = dataGridViewColourQ.Rows[desiredRow].Cells[5].Value.ToString();
             }
 
-            for (int i = 9; i < 25; i++)
+            //maybe here
+            for (int i = 9; i < 34; i++)
             {
                 if (whichQueue == "Main")
                 {
@@ -3178,6 +3193,17 @@ namespace LabelMaker
             row["Picture3"] = queue[22];
             row["Picture4"] = queue[23];
             row["OrderNo"] = queue[24];
+            row["LabelStocks"] = queue[25];
+            row["PlantId"] = queue[26];
+            row["ShipName"] = queue[27];
+            row["ShipFirst"] = queue[28];
+            row["ShipLast"] = queue[29];
+            row["ShipLine1"] = queue[30];
+            row["ShipLine2"] = queue[31];
+            row["ShipCity"] = queue[32];
+            row["ShipState"] = queue[33];
+            row["ShipPostcode"] = queue[34];
+            row["OrderNotes"] = queue[35];
 
             databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Add(row);
             dataGridViewMainQ.EndEdit();
@@ -3233,6 +3259,15 @@ namespace LabelMaker
             row["OrderNo"] = queue[24];
             row["LabelStocks"] = queue[25];
             row["PlantId"] = queue[26];
+            row["ShipName"] = queue[27];
+            row["ShipFirst"] = queue[28];
+            row["ShipLast"] = queue[29];
+            row["ShipLine1"] = queue[30];
+            row["ShipLine2"] = queue[31];
+            row["ShipCity"] = queue[32];
+            row["ShipState"] = queue[33];
+            row["ShipPostcode"] = queue[34];
+            row["OrderNotes"] = queue[35];
 
             databaseLabelsDataSetColourQueue.Tables[0].Rows.Add(row);
             dataGridViewColourQ.EndEdit();
@@ -3250,7 +3285,7 @@ namespace LabelMaker
 
         public string[] CollectQueueEntry()
         {
-            string[] queueData = new string[27];
+            string[] queueData = new string[36];
 
             string[] defaultsString = getDefaultSettings(); 
 
@@ -3544,7 +3579,7 @@ namespace LabelMaker
                 curTextBoxQP.Enabled = true;
                 curButtonQP.Enabled = true;
 
-                TempMakeALabel(curPanelQP, curGroupQP.Text, "database");
+                TempMakeALabel(curPanelQP, curGroupQP.Text, "database","");
 
             }
         }
@@ -3552,10 +3587,11 @@ namespace LabelMaker
 
         #region *** Label Stuff *** - routines to get Label Name and find the information needed and TempMakeALabel
 
-        public void TempMakeALabel(Panel whichPanel, string whichLabel, string DatabaseOrQueue)
+        public void TempMakeALabel(Panel whichPanel, string whichLabel, string DatabaseOrQueue, string whichProfile)
         {
+            //must be here somewhere
             string[] defaultsString = getDefaultSettings(); 
-            string[] queueString = new string[25];
+            string[] queueString = new string[34];
 
             if (DatabaseOrQueue == "database")
             {
@@ -3606,6 +3642,7 @@ namespace LabelMaker
 
                 // profile
                 string profileName = dataGridViewPlants.Rows[currentRow].Cells[17].Value.ToString();
+                if (whichProfile != "") { profileName = whichProfile; }
 
                 DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
                 string expression;
@@ -3625,7 +3662,7 @@ namespace LabelMaker
             }
             else
             {
-                for (int i = 0; i <= 24; i++)
+                for (int i = 0; i <= 33; i++)
                 {
                     TextBox curTextBox = (TextBox)panelQueueUtilities.Controls["textBoxQ" + (i + 1).ToString()];
                     queueString[i] = curTextBox.Text.ToString();
@@ -3889,7 +3926,7 @@ namespace LabelMaker
                         //go through colour queue
                         for (int j = 0; j <= dataGridViewColourQ.RowCount - 2; j++)
                         {
-                            if (idFind == dataGridViewColourQ.Rows[j].Cells[26].Value.ToString())
+                            if (idFind == dataGridViewColourQ.Rows[j].Cells[34].Value.ToString())
                             {
                                 dataGridViewColourQ.Rows.RemoveAt(j);
 
@@ -3907,7 +3944,7 @@ namespace LabelMaker
                         }
                     }
                     //check if need to remove flag
-                    if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
+                    if (dataGridViewQueueList.Rows[i].Cells[3].Value.ToString() == "True")
                     {
                         string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
                         for (int j = 0; j <= (dataGridViewPlants.RowCount - 1); j++)
@@ -4017,6 +4054,7 @@ namespace LabelMaker
         private void buttonUploadAuto_Click(object sender, EventArgs e)
         {
             csvReaderAutoBody(labelAutoFile.Text.ToString());
+            dataGridViewAuto.Refresh();
             fillAutoListBox();
             checkSKUs();
         }
@@ -4033,11 +4071,11 @@ namespace LabelMaker
 
         private string[] findAutoHeaderRow()
         {
-            string[] returnString = new string[7];
+            string[] returnString = new string[15];
             try
             {
                 string[] header = CreationUtilities.dataReader.csvReaderHeader(labelAutoFile.Text.ToString());
-                string[] headerData = new string[7];
+                string[] headerData = new string[15];
                 for (int i = 0; i <= header.Length - 1; i++)
                 {
 
@@ -4065,6 +4103,42 @@ namespace LabelMaker
                     {
                         headerData[6] = i.ToString();
                     }
+                    if (header[i] == "Shipping First Name")
+                    {
+                        headerData[7] = i.ToString();
+                    }
+                    if (header[i] == "Shipping Last Name")
+                    {
+                        headerData[8] = i.ToString();
+                    }
+                    if (header[i] == "Shipping Address Line 1")
+                    {
+                        headerData[9] = i.ToString();
+                    }
+                    if (header[i] == "Shipping Address Line 2")
+                    {
+                        headerData[10] = i.ToString();
+                    }
+                    if (header[i] == "Shipping City")
+                    {
+                        headerData[11] = i.ToString();
+                    }
+                    if (header[i] == "Shipping State")
+                    {
+                        headerData[12] = i.ToString();
+                    }
+                    if (header[i] == "Shipping Postcode")
+                    {
+                        headerData[13] = i.ToString();
+                    }
+                    if (header[i] == "Customer Notes")
+                    {
+                        headerData[14] = i.ToString();
+                    }
+                    
+
+
+
                 }
                 returnString = headerData;
 
@@ -4205,6 +4279,16 @@ namespace LabelMaker
                         row["First"] = currentRow[int.Parse(headerData[5])];
                         row["Last"] = currentRow[int.Parse(headerData[6])];
 
+                        row["ShipFirst"] = currentRow[int.Parse(headerData[7])];
+                        row["ShipLast"] = currentRow[int.Parse(headerData[8])];
+                        row["ShipLine1"] = currentRow[int.Parse(headerData[9])];
+                        row["ShipLine2"] = currentRow[int.Parse(headerData[10])];
+                        row["ShipCity"] = currentRow[int.Parse(headerData[11])];
+                        row["ShipState"] = currentRow[int.Parse(headerData[12])];
+                        row["ShipPostcode"] = currentRow[int.Parse(headerData[13])];
+                        //row["ShipNotes"] = currentRow[int.Parse(headerData[14])];
+
+
                         databaseLabelsDataSetAuto.TableAuto.Rows.Add(row);
                         dataGridViewAuto.EndEdit();
                         try
@@ -4233,15 +4317,15 @@ namespace LabelMaker
         public void sortAuto(string which)
         {
             // default is by customer
-            string selectionText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto ORDER BY Customer, Name";
+            string selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY Customer, Name";
 
             if (which == "ON")
             {
-                selectionText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto ORDER BY [ON], Name";
+                selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY [ON], Name";
             }
             else if (which == "Plant")
             {
-                selectionText = "SELECT Id, LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last FROM TableAuto ORDER BY Name";
+                selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY Name";
             }
 
             dataGridViewAuto.ClearSelection();
@@ -4425,8 +4509,8 @@ namespace LabelMaker
             {
                 if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() == customer)
                 {
-                    string[] collect = new string[9];
-                    for (int j = 0; j <= 8; j++)
+                    string[] collect = new string[19];
+                    for (int j = 0; j <= 18; j++)
                     {
                         collect[j] = dataGridViewAuto.Rows[i].Cells[j].Value.ToString();
                     }
@@ -4623,11 +4707,20 @@ namespace LabelMaker
                         string sendCustomer = sentOrder[i][5];
                         string sendOrderNumber = sentOrder[i][4];
 
-                        string[] queue = CollectAutoQueueEntry(sendAutoRow, sendQty, sendCustomer, sendOrderNumber);
+                        string[] sendAddress = new string[9];
+                        for (int k = 0; k <= 7; k++)
+                        {
+                            sendAddress[k + 1] =  sentOrder[i][k+11];
+                        }
+                        sendAddress[0] =  "To: "+ sendAddress[1].Trim()+ " " + sendAddress[2].Trim();
+
+                        string[] queue = CollectAutoQueueEntry(sendAutoRow, sendQty, sendCustomer, sendOrderNumber, sendAddress);
                         doTheAdding(queue, "autolabel");
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(ex.ToString());
+
                         if (firstError && pictureBoxArrow.Visible == false )
                         {
                             //listBoxAutoErrors.Items.Clear();
@@ -4692,9 +4785,9 @@ namespace LabelMaker
             checkSKUs();
         }
 
-        public string[] CollectAutoQueueEntry(string[] sentAutoRow, string sentQty, string sentCustomer, string sentOrderNumber)
+        public string[] CollectAutoQueueEntry(string[] sentAutoRow, string sentQty, string sentCustomer, string sentOrderNumber, string[] sentAddress)
         {
-            string[] queueData = new string[27];
+            string[] queueData = new string[36];
 
             
             string[] defaultsString = getDefaultSettings();
@@ -4775,6 +4868,16 @@ namespace LabelMaker
             { queueData[24] = "Order No. #" + queueData[24]; }
             queueData[25] = sendData[20];
             queueData[26] = sendData[0];
+
+            queueData[27] = sentAddress[0];
+            queueData[28] = sentAddress[1];
+            queueData[29] = sentAddress[2];
+            queueData[30] = sentAddress[3];
+            queueData[31] = sentAddress[4];
+            queueData[32] = sentAddress[5];
+            queueData[33] = sentAddress[6];
+            queueData[34] = sentAddress[7];
+            queueData[35] = sentAddress[8];
 
             return queueData;
         }
@@ -5073,7 +5176,7 @@ namespace LabelMaker
         private void dataGridView1ProfileView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int cellColumn = dataGridView1ProfileView.CurrentCell.ColumnIndex;
-            if (cellColumn == 1 | cellColumn == 5 | cellColumn==6 )
+            if (cellColumn == 2 | cellColumn == 6 | cellColumn==7 )
             {
                 ColorDialog colourPicker = new ColorDialog();
                 int oldColour = int.Parse(dataGridView1ProfileView.CurrentCell.Value.ToString());
@@ -5084,7 +5187,36 @@ namespace LabelMaker
                 colourPicker.AnyColor = true;
                 colourPicker.FullOpen = true;
                 DialogResult result = colourPicker.ShowDialog();
+                
+                if (result == DialogResult.OK)
+                {
+                    int colour = 0;
+                    colour = colour + colourPicker.Color.R;
+                    colour = colour + (colourPicker.Color.G * 256);
+                    colour = colour + (colourPicker.Color.B * 256 * 256);
+                    int row = dataGridView1ProfileView.CurrentRow.Index;
+                    databaseLabelsDataSetProfiles.TableProfiles.Rows[row].SetField( cellColumn, colour.ToString());
+                }
             }
+            if (cellColumn == 2 | cellColumn == 3 | cellColumn == 4 | cellColumn == 6 | cellColumn == 7)
+            {
+                try
+                {
+
+                    tableProfilesTableAdapter.Update(databaseLabelsDataSetProfiles.TableProfiles);
+                    //MessageBox.Show("Updating");
+                    //dataGridView1ProfileView.Refresh();
+                    addProfileButtons();
+
+                    addProfilePicture(dataGridView1ProfileView.CurrentRow.Cells[1].Value.ToString());
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to Update Profiles Table");
+                }
+            }
+            updateProfileSample();
+            addProfilePicture( dataGridView1ProfileView.CurrentRow.Cells[1].Value.ToString());
         }
 
         
@@ -5156,6 +5288,331 @@ namespace LabelMaker
         {
             string idToFind = toolStripComboBox1.Text.Substring(0, 4).Trim();
             if (idToFind.All(char.IsDigit)) { findById(); }
+        }
+
+        private void tabControlDesign_Click(object sender, EventArgs e)
+        {
+            tabControlDesign.BringToFront();
+        }
+
+        private void buttonPricestoSame_Click(object sender, EventArgs e)
+        {
+            bool valid = true;
+
+            //Check Price
+            String PriceBox = textBoxPricestoSame.Text.ToString().Trim();
+            if (PriceBox.Trim() != "")
+            {
+                var isPriceNumeric = double.TryParse(textBoxQ3.Text.ToString(), out double price);
+                //convert to currency if a number, leave a string if not
+                if (isPriceNumeric)
+                {
+                    textBoxPricestoSame.Text = formatPrice(textBoxPricestoSame.Text.ToString());
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Price is not a number (" + textBoxPricestoSame.Text.ToString() + "). Press 'Yes' if you are happy with this, 'No' if not.", "Is the Price right ?", MessageBoxButtons.YesNo);
+                    if (result == System.Windows.Forms.DialogResult.No)
+                    {
+                        valid = false;
+                    }
+                }
+            }
+
+            if (valid)
+            {
+                if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+                {
+                    for (int i = 0; i < databaseLabelsDataSetColourQueue.TableColourQueue.Rows.Count; i++)
+                    {
+                        databaseLabelsDataSetColourQueue.TableColourQueue.Rows[i].SetField(3, textBoxPricestoSame.Text.ToString());
+                    }
+                    try
+                    {
+                        tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to update Colour Queue - " + ex);
+                    }
+                    
+                }
+                else
+                {
+                    for (int i = 0; i < databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Count; i++)
+                    {
+                        databaseLabelsDataSetMainQueue.TableMainQueue.Rows[i].SetField(3, textBoxPricestoSame.Text.ToString());
+                    }
+                    try
+                    {
+                        tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to update Main Queue - " + ex);
+                    }
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Can't set the Price above");
+            }
+        }
+
+        private void buttonResetPrinted_Click(object sender, EventArgs e)
+        {
+            //Delete Printed Lines
+            for (int i = dataGridViewAuto.RowCount - 2; i >= 0; i--)
+            {
+                dataGridViewAuto.Rows[i].Cells[3].Value = "False";
+                
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            fillAutoListBox();
+        }
+
+        private void buttonLockEntries_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                dataGridViewAuto.Rows[i].Cells[1].Value = true;
+            }
+            try
+            {
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            catch
+            {
+                //MessageBox.Show("Haven't found - " + collect[6]);
+            }
+            fillAutoListBox();
+        }
+
+        private void buttonLockPrinted_Click(object sender, EventArgs e)
+        {
+            //Delete Printed Lines
+            for (int i = dataGridViewAuto.RowCount - 2; i >= 0; i--)
+            {
+                dataGridViewAuto.Rows[i].Cells[3].Value = "True";
+
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            fillAutoListBox();
+        }
+
+        private void button1_Click_4(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                dataGridViewAuto.Rows[i].Cells[2].Value = true;
+            }
+            try
+            {
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            catch
+            {
+                //MessageBox.Show("Haven't found - " + collect[6]);
+            }
+            fillAutoListBox();
+        }
+
+        private void buttonUnlockPlants_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
+            {
+                dataGridViewAuto.Rows[i].Cells[2].Value = false;
+            }
+            try
+            {
+                tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+            }
+            catch
+            {
+                //MessageBox.Show("Haven't found - " + collect[6]);
+            }
+            fillAutoListBox();
+        }
+
+        private void buttonEditProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonUpdateProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAssignProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonNewProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateProfileSample()
+        {
+            labelProfileSampleText.Text = dataGridView1ProfileView.CurrentRow.Cells[1].Value.ToString();
+
+            labelProfileSampleText.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(dataGridView1ProfileView.CurrentRow.Cells[7].Value.ToString()));
+            labelProfileSampleText.ForeColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(dataGridView1ProfileView.CurrentRow.Cells[6].Value.ToString()));
+            labelProfileSampleText.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(dataGridView1ProfileView.CurrentRow.Cells[7].Value.ToString()));
+            panelProfileSampleBorder.BackColor= System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(dataGridView1ProfileView.CurrentRow.Cells[2].Value.ToString()));
+
+
+
+        }
+
+        
+
+        private void button1_Click_5(object sender, EventArgs e)
+        {
+            createAddressList();
+        }
+
+        private void createAddressList()
+        {
+            Boolean includeDPD = false; //default
+            DialogResult result = MessageBox.Show( "Do you want to exclude orders that look like DPD orders","DPD order", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No) { includeDPD = true; }
+            
+            // count customers
+            string customer = "";
+            int count = 0;
+            for (int i = 0; i < dataGridViewAuto.RowCount - 1; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() != customer)
+                {
+                    count++;
+                    customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                }
+            }
+            int rememberCustomers = count;
+            //gather names and counts
+            string[,] customers = new string[count,3];
+            customer = "";
+            count = 0;
+            int plantCount = 0;
+            for (int i = 0; i < dataGridViewAuto.RowCount - 1; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() != customer)
+                {
+                    
+                    customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                    plantCount = int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
+                    customers[count,0] = customer;
+                    customers[count, 1] = plantCount.ToString();
+                    customers[count, 2] = dataGridViewAuto.Rows[i].Cells[1].Value.ToString();
+                    count++;
+                }
+                else
+                {
+                    plantCount = plantCount + int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
+                    customers[count-1, 1] = plantCount.ToString();
+                }
+                //MessageBox.Show(customer.Trim() + " plants - " + plantCount.ToString() + " , count - "+count.ToString());
+            }
+
+            //make the queue
+
+            for (int i = 0; i<=rememberCustomers-1; i++)
+            {
+                Boolean addIt = false;
+
+                if (radioButtonAddress2.Checked == true) { addIt = true; } //use all addresses, locked and unlocked
+                //MessageBox.Show(customers[i, 2].ToString());
+                if (customers[i, 2].ToString() == "False") { addIt = true; } //unlocked customers
+                if (includeDPD == false) //check for DPD, false = no DPD
+                {
+                    if (int.Parse(customers[i,1].ToString()) > 6) { addIt = false; } //>6 = likely to be DPD
+                }
+
+                if (addIt)
+                {
+                    //rountine to make a line if it needs adding
+                    //MessageBox.Show("Adding - " + customers[i, 0]);
+                    for (int j = 0; j<= dataGridViewAuto.RowCount - 1; j++)
+                    {
+                        if (dataGridViewAuto.Rows[j].Cells[5].Value.ToString() == customers[i,0])
+                        {
+                            //MessageBox.Show("Found "+ customers[i, 0]);
+
+                            string[] queueData = new string[36];
+
+                            queueData[0] = customers[i,0]; //Full name
+                            int qty = 1;
+                            int qtySent = (int.Parse(customers[i, 1].ToString()));
+                            if (qtySent > 3) { qty = 2; }
+                            if (qtySent > 6) { qty = 1; }
+                            queueData[1] = qty.ToString(); // Qty
+                            queueData[2] = ""; // price - set to 0
+                            queueData[3] = "";  //Potsize
+                            queueData[4] = customers[i,0]; // Customer Name
+                            queueData[5] = ""; // Barcode
+                            queueData[6] = "This is an Address only Queue"; //Description
+                            queueData[7] = ""; //Common Name
+                            queueData[8] = ""; // Main Picture
+                            queueData[9] = "Arial"; // Font Name
+                            queueData[10] = "0"; // Font Colour
+                            queueData[11] = "True"; // Bold
+                            queueData[12] = "True"; // Italic
+                            queueData[13] = "0"; // Border Colour
+                            queueData[14] = "0"; // Back Colour
+                            queueData[15] = ""; // notes
+                            queueData[16] = ""; // Genus
+                            queueData[17] = ""; // species
+                            queueData[18] = "";  // Variety
+                            queueData[19] = ""; // AGM picture to use
+                            queueData[20] = ""; // Picture1
+                            queueData[21] = ""; // Picture2
+                            queueData[22] = ""; // Picture3
+                            queueData[23] = ""; // Picture4
+                            queueData[24] = dataGridViewAuto.Rows[j].Cells[4].Value.ToString(); //Order Number
+                            if (string.IsNullOrEmpty(queueData[24]))
+                            { queueData[24] = ""; }
+                            else
+                            { queueData[24] = "Order No. #" + queueData[24]; }
+                            queueData[25] = "True";
+                            queueData[26] = "1";
+
+                            queueData[27] = "To : " + dataGridViewAuto.Rows[j].Cells[11].Value.ToString().Trim() +" "+ dataGridViewAuto.Rows[j].Cells[12].Value.ToString().Trim();
+                            queueData[28] = dataGridViewAuto.Rows[j].Cells[11].Value.ToString().Trim(); 
+
+                            queueData[29] = dataGridViewAuto.Rows[j].Cells[12].Value.ToString().Trim();
+                            queueData[30] = dataGridViewAuto.Rows[j].Cells[13].Value.ToString().Trim();
+                            queueData[31] = dataGridViewAuto.Rows[j].Cells[14].Value.ToString().Trim();
+                            queueData[32] = dataGridViewAuto.Rows[j].Cells[15].Value.ToString().Trim();
+                            queueData[33] = dataGridViewAuto.Rows[j].Cells[16].Value.ToString().Trim();
+                            queueData[34] = dataGridViewAuto.Rows[j].Cells[17].Value.ToString().Trim();
+                            queueData[35] = dataGridViewAuto.Rows[j].Cells[18].Value.ToString().Trim();
+
+                            doTheAdding(queueData, "AutoLabel");
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string myVersion = "";
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                myVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+            }
+            else
+            {
+                myVersion = "Debug";
+        }
+            MessageBox.Show(myVersion);
         }
     }
 }

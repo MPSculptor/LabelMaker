@@ -13,19 +13,20 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>D:\LabelMaker\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
+    <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -46,6 +47,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8532612BA15724DFCCA56B748DE6C6457A93D5DF</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>LabelMaker_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NewIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -79,6 +95,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseLabelsDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseLabelsDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSetAuto.cs">
+      <DependentUpon>DatabaseLabelsDataSetAuto.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseLabelsDataSetAuto.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,14 +128,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSetLabelNames.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseLabelsDataSetMainQueue.cs">
-      <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseLabelsDataSetMainQueue.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
     </Compile>
     <Compile Include="formLabel.cs">
       <SubType>Form</SubType>
@@ -166,6 +182,17 @@
     <None Include="DatabaseLabelsDataSet1.xss">
       <DependentUpon>DatabaseLabelsDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="DatabaseLabelsDataSet21.xsc">
+      <DependentUpon>DatabaseLabelsDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseLabelsDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseLabelsDataSet21.xss">
+      <DependentUpon>DatabaseLabelsDataSet21.xsd</DependentUpon>
+    </None>
     <None Include="DatabaseLabelsDataSetAuto.xsc">
       <DependentUpon>DatabaseLabelsDataSetAuto.xsd</DependentUpon>
     </None>
@@ -210,17 +237,7 @@
     <None Include="DatabaseLabelsDataSetLabelNames.xss">
       <DependentUpon>DatabaseLabelsDataSetLabelNames.xsd</DependentUpon>
     </None>
-    <None Include="DatabaseLabelsDataSetMainQueue.xsc">
-      <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
-    </None>
-    <None Include="DatabaseLabelsDataSetMainQueue.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseLabelsDataSetMainQueue.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DatabaseLabelsDataSetMainQueue.xss">
-      <DependentUpon>DatabaseLabelsDataSetMainQueue.xsd</DependentUpon>
-    </None>
+    <None Include="LabelMaker_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -242,6 +259,8 @@
       <DependentUpon>DatabaseLabels.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="NewIcon.ico" />
+    <None Include="Resources\Image1.bmp" />
     <None Include="PictureFiles\search.bmp" />
     <None Include="PictureFiles\redarrow.jpg" />
     <None Include="PictureFiles\arrow.jpg" />

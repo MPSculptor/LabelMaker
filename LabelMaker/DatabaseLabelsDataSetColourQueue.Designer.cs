@@ -335,6 +335,24 @@ namespace LabelMaker {
             
             private global::System.Data.DataColumn columnPlantId;
             
+            private global::System.Data.DataColumn columnShipFirst;
+            
+            private global::System.Data.DataColumn columnShipLast;
+            
+            private global::System.Data.DataColumn columnShipLine1;
+            
+            private global::System.Data.DataColumn columnShipLine2;
+            
+            private global::System.Data.DataColumn columnShipCity;
+            
+            private global::System.Data.DataColumn columnShipState;
+            
+            private global::System.Data.DataColumn columnShipPostcode;
+            
+            private global::System.Data.DataColumn columnOrderNotes;
+            
+            private global::System.Data.DataColumn columnShipName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TableColourQueueDataTable() {
@@ -594,6 +612,78 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipFirstColumn {
+                get {
+                    return this.columnShipFirst;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipLastColumn {
+                get {
+                    return this.columnShipLast;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipLine1Column {
+                get {
+                    return this.columnShipLine1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipLine2Column {
+                get {
+                    return this.columnShipLine2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipCityColumn {
+                get {
+                    return this.columnShipCity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipStateColumn {
+                get {
+                    return this.columnShipState;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipPostcodeColumn {
+                get {
+                    return this.columnShipPostcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OrderNotesColumn {
+                get {
+                    return this.columnOrderNotes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ShipNameColumn {
+                get {
+                    return this.columnShipName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -656,7 +746,16 @@ namespace LabelMaker {
                         string Picture4, 
                         string OrderNo, 
                         bool LabelStocks, 
-                        int PlantId) {
+                        int PlantId, 
+                        string ShipFirst, 
+                        string ShipLast, 
+                        string ShipLine1, 
+                        string ShipLine2, 
+                        string ShipCity, 
+                        string ShipState, 
+                        string ShipPostcode, 
+                        string OrderNotes, 
+                        string ShipName) {
                 TableColourQueueRow rowTableColourQueueRow = ((TableColourQueueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -686,7 +785,16 @@ namespace LabelMaker {
                         Picture4,
                         OrderNo,
                         LabelStocks,
-                        PlantId};
+                        PlantId,
+                        ShipFirst,
+                        ShipLast,
+                        ShipLine1,
+                        ShipLine2,
+                        ShipCity,
+                        ShipState,
+                        ShipPostcode,
+                        OrderNotes,
+                        ShipName};
                 rowTableColourQueueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTableColourQueueRow);
                 return rowTableColourQueueRow;
@@ -744,6 +852,15 @@ namespace LabelMaker {
                 this.columnOrderNo = base.Columns["OrderNo"];
                 this.columnLabelStocks = base.Columns["LabelStocks"];
                 this.columnPlantId = base.Columns["PlantId"];
+                this.columnShipFirst = base.Columns["ShipFirst"];
+                this.columnShipLast = base.Columns["ShipLast"];
+                this.columnShipLine1 = base.Columns["ShipLine1"];
+                this.columnShipLine2 = base.Columns["ShipLine2"];
+                this.columnShipCity = base.Columns["ShipCity"];
+                this.columnShipState = base.Columns["ShipState"];
+                this.columnShipPostcode = base.Columns["ShipPostcode"];
+                this.columnOrderNotes = base.Columns["OrderNotes"];
+                this.columnShipName = base.Columns["ShipName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -805,6 +922,24 @@ namespace LabelMaker {
                 base.Columns.Add(this.columnLabelStocks);
                 this.columnPlantId = new global::System.Data.DataColumn("PlantId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPlantId);
+                this.columnShipFirst = new global::System.Data.DataColumn("ShipFirst", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipFirst);
+                this.columnShipLast = new global::System.Data.DataColumn("ShipLast", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipLast);
+                this.columnShipLine1 = new global::System.Data.DataColumn("ShipLine1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipLine1);
+                this.columnShipLine2 = new global::System.Data.DataColumn("ShipLine2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipLine2);
+                this.columnShipCity = new global::System.Data.DataColumn("ShipCity", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipCity);
+                this.columnShipState = new global::System.Data.DataColumn("ShipState", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipState);
+                this.columnShipPostcode = new global::System.Data.DataColumn("ShipPostcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipPostcode);
+                this.columnOrderNotes = new global::System.Data.DataColumn("OrderNotes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrderNotes);
+                this.columnShipName = new global::System.Data.DataColumn("ShipName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnShipName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -838,7 +973,15 @@ namespace LabelMaker {
                 this.columnPicture3.MaxLength = 200;
                 this.columnPicture4.MaxLength = 200;
                 this.columnOrderNo.MaxLength = 20;
-                this.columnLabelStocks.AllowDBNull = false;
+                this.columnShipFirst.MaxLength = 100;
+                this.columnShipLast.MaxLength = 100;
+                this.columnShipLine1.MaxLength = 200;
+                this.columnShipLine2.MaxLength = 200;
+                this.columnShipCity.MaxLength = 200;
+                this.columnShipState.MaxLength = 200;
+                this.columnShipPostcode.MaxLength = 15;
+                this.columnOrderNotes.MaxLength = 2147483647;
+                this.columnShipName.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1380,7 +1523,12 @@ namespace LabelMaker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool LabelStocks {
                 get {
-                    return ((bool)(this[this.tableTableColourQueue.LabelStocksColumn]));
+                    try {
+                        return ((bool)(this[this.tableTableColourQueue.LabelStocksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LabelStocks\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTableColourQueue.LabelStocksColumn] = value;
@@ -1400,6 +1548,150 @@ namespace LabelMaker {
                 }
                 set {
                     this[this.tableTableColourQueue.PlantIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipFirst {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipFirstColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipFirst\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipFirstColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipLast {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipLastColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipLast\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipLastColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipLine1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipLine1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipLine1\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipLine1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipLine2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipLine2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipLine2\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipLine2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipCity {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipCityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipCity\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipCityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipState {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipStateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipState\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipStateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipPostcode {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipPostcodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipPostcode\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipPostcodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string OrderNotes {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.OrderNotesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrderNotes\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.OrderNotesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ShipName {
+                get {
+                    try {
+                        return ((string)(this[this.tableTableColourQueue.ShipNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ShipName\' in table \'TableColourQueue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTableColourQueue.ShipNameColumn] = value;
                 }
             }
             
@@ -1669,6 +1961,18 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsLabelStocksNull() {
+                return this.IsNull(this.tableTableColourQueue.LabelStocksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetLabelStocksNull() {
+                this[this.tableTableColourQueue.LabelStocksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPlantIdNull() {
                 return this.IsNull(this.tableTableColourQueue.PlantIdColumn);
             }
@@ -1677,6 +1981,114 @@ namespace LabelMaker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetPlantIdNull() {
                 this[this.tableTableColourQueue.PlantIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipFirstNull() {
+                return this.IsNull(this.tableTableColourQueue.ShipFirstColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipFirstNull() {
+                this[this.tableTableColourQueue.ShipFirstColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipLastNull() {
+                return this.IsNull(this.tableTableColourQueue.ShipLastColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipLastNull() {
+                this[this.tableTableColourQueue.ShipLastColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipLine1Null() {
+                return this.IsNull(this.tableTableColourQueue.ShipLine1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipLine1Null() {
+                this[this.tableTableColourQueue.ShipLine1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipLine2Null() {
+                return this.IsNull(this.tableTableColourQueue.ShipLine2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipLine2Null() {
+                this[this.tableTableColourQueue.ShipLine2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipCityNull() {
+                return this.IsNull(this.tableTableColourQueue.ShipCityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipCityNull() {
+                this[this.tableTableColourQueue.ShipCityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipStateNull() {
+                return this.IsNull(this.tableTableColourQueue.ShipStateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipStateNull() {
+                this[this.tableTableColourQueue.ShipStateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipPostcodeNull() {
+                return this.IsNull(this.tableTableColourQueue.ShipPostcodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipPostcodeNull() {
+                this[this.tableTableColourQueue.ShipPostcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOrderNotesNull() {
+                return this.IsNull(this.tableTableColourQueue.OrderNotesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOrderNotesNull() {
+                this[this.tableTableColourQueue.OrderNotesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsShipNameNull() {
+                return this.IsNull(this.tableTableColourQueue.ShipNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetShipNameNull() {
+                this[this.tableTableColourQueue.ShipNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1867,39 +2279,58 @@ namespace LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters {
             tableMapping.ColumnMappings.Add("OrderNo", "OrderNo");
             tableMapping.ColumnMappings.Add("LabelStocks", "LabelStocks");
             tableMapping.ColumnMappings.Add("PlantId", "PlantId");
+            tableMapping.ColumnMappings.Add("ShipFirst", "ShipFirst");
+            tableMapping.ColumnMappings.Add("ShipLast", "ShipLast");
+            tableMapping.ColumnMappings.Add("ShipLine1", "ShipLine1");
+            tableMapping.ColumnMappings.Add("ShipLine2", "ShipLine2");
+            tableMapping.ColumnMappings.Add("ShipCity", "ShipCity");
+            tableMapping.ColumnMappings.Add("ShipState", "ShipState");
+            tableMapping.ColumnMappings.Add("ShipPostcode", "ShipPostcode");
+            tableMapping.ColumnMappings.Add("OrderNotes", "OrderNotes");
+            tableMapping.ColumnMappings.Add("ShipName", "ShipName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TableColourQueue] WHERE (([Id] = @Original_Id) AND ((@IsNull_N" +
-                "ame = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ([qty] = @Original" +
-                "_qty) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = @Original_Price" +
-                ")) AND ((@IsNull_PotSize = 1 AND [PotSize] IS NULL) OR ([PotSize] = @Original_Po" +
-                "tSize)) AND ((@IsNull_Customer = 1 AND [Customer] IS NULL) OR ([Customer] = @Ori" +
-                "ginal_Customer)) AND ((@IsNull_Barcode = 1 AND [Barcode] IS NULL) OR ([Barcode] " +
-                "= @Original_Barcode)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) O" +
-                "R ([Description] = @Original_Description)) AND ((@IsNull_CommonName = 1 AND [Com" +
-                "monName] IS NULL) OR ([CommonName] = @Original_CommonName)) AND ((@IsNull_Pictur" +
-                "eFile = 1 AND [PictureFile] IS NULL) OR ([PictureFile] = @Original_PictureFile))" +
-                " AND ((@IsNull_ColourFont = 1 AND [ColourFont] IS NULL) OR ([ColourFont] = @Orig" +
-                "inal_ColourFont)) AND ((@IsNull_ColourFontColour = 1 AND [ColourFontColour] IS N" +
-                "ULL) OR ([ColourFontColour] = @Original_ColourFontColour)) AND ([FontBold] = @Or" +
-                "iginal_FontBold) AND ([FontItalic] = @Original_FontItalic) AND ((@IsNull_ColourB" +
-                "orderColour = 1 AND [ColourBorderColour] IS NULL) OR ([ColourBorderColour] = @Or" +
-                "iginal_ColourBorderColour)) AND ((@IsNull_ColourBackgroundColour = 1 AND [Colour" +
-                "BackgroundColour] IS NULL) OR ([ColourBackgroundColour] = @Original_ColourBackgr" +
-                "oundColour)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Origina" +
-                "l_notes)) AND ((@IsNull_Genus = 1 AND [Genus] IS NULL) OR ([Genus] = @Original_G" +
-                "enus)) AND ((@IsNull_Species = 1 AND [Species] IS NULL) OR ([Species] = @Origina" +
-                "l_Species)) AND ((@IsNull_Variety = 1 AND [Variety] IS NULL) OR ([Variety] = @Or" +
-                "iginal_Variety)) AND ((@IsNull_AGM = 1 AND [AGM] IS NULL) OR ([AGM] = @Original_" +
-                "AGM)) AND ((@IsNull_Picture1 = 1 AND [Picture1] IS NULL) OR ([Picture1] = @Origi" +
-                "nal_Picture1)) AND ((@IsNull_Picture2 = 1 AND [Picture2] IS NULL) OR ([Picture2]" +
-                " = @Original_Picture2)) AND ((@IsNull_Picture3 = 1 AND [Picture3] IS NULL) OR ([" +
-                "Picture3] = @Original_Picture3)) AND ((@IsNull_Picture4 = 1 AND [Picture4] IS NU" +
-                "LL) OR ([Picture4] = @Original_Picture4)) AND ((@IsNull_OrderNo = 1 AND [OrderNo" +
-                "] IS NULL) OR ([OrderNo] = @Original_OrderNo)) AND ([LabelStocks] = @Original_La" +
-                "belStocks) AND ((@IsNull_PlantId = 1 AND [PlantId] IS NULL) OR ([PlantId] = @Ori" +
-                "ginal_PlantId)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [TableColourQueue] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = " +
+                "1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ([qty] = @Original_qty) " +
+                "AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = @Original_Price)) AND" +
+                " ((@IsNull_PotSize = 1 AND [PotSize] IS NULL) OR ([PotSize] = @Original_PotSize)" +
+                ") AND ((@IsNull_Customer = 1 AND [Customer] IS NULL) OR ([Customer] = @Original_" +
+                "Customer)) AND ((@IsNull_Barcode = 1 AND [Barcode] IS NULL) OR ([Barcode] = @Ori" +
+                "ginal_Barcode)) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([De" +
+                "scription] = @Original_Description)) AND ((@IsNull_CommonName = 1 AND [CommonNam" +
+                "e] IS NULL) OR ([CommonName] = @Original_CommonName)) AND ((@IsNull_PictureFile " +
+                "= 1 AND [PictureFile] IS NULL) OR ([PictureFile] = @Original_PictureFile)) AND (" +
+                "(@IsNull_ColourFont = 1 AND [ColourFont] IS NULL) OR ([ColourFont] = @Original_C" +
+                "olourFont)) AND ((@IsNull_ColourFontColour = 1 AND [ColourFontColour] IS NULL) O" +
+                "R ([ColourFontColour] = @Original_ColourFontColour)) AND ([FontBold] = @Original" +
+                "_FontBold) AND ([FontItalic] = @Original_FontItalic) AND ((@IsNull_ColourBorderC" +
+                "olour = 1 AND [ColourBorderColour] IS NULL) OR ([ColourBorderColour] = @Original" +
+                "_ColourBorderColour)) AND ((@IsNull_ColourBackgroundColour = 1 AND [ColourBackgr" +
+                "oundColour] IS NULL) OR ([ColourBackgroundColour] = @Original_ColourBackgroundCo" +
+                "lour)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Original_note" +
+                "s)) AND ((@IsNull_Genus = 1 AND [Genus] IS NULL) OR ([Genus] = @Original_Genus))" +
+                " AND ((@IsNull_Species = 1 AND [Species] IS NULL) OR ([Species] = @Original_Spec" +
+                "ies)) AND ((@IsNull_Variety = 1 AND [Variety] IS NULL) OR ([Variety] = @Original" +
+                "_Variety)) AND ((@IsNull_AGM = 1 AND [AGM] IS NULL) OR ([AGM] = @Original_AGM)) " +
+                "AND ((@IsNull_Picture1 = 1 AND [Picture1] IS NULL) OR ([Picture1] = @Original_Pi" +
+                "cture1)) AND ((@IsNull_Picture2 = 1 AND [Picture2] IS NULL) OR ([Picture2] = @Or" +
+                "iginal_Picture2)) AND ((@IsNull_Picture3 = 1 AND [Picture3] IS NULL) OR ([Pictur" +
+                "e3] = @Original_Picture3)) AND ((@IsNull_Picture4 = 1 AND [Picture4] IS NULL) OR" +
+                " ([Picture4] = @Original_Picture4)) AND ((@IsNull_OrderNo = 1 AND [OrderNo] IS N" +
+                "ULL) OR ([OrderNo] = @Original_OrderNo)) AND ((@IsNull_LabelStocks = 1 AND [Labe" +
+                "lStocks] IS NULL) OR ([LabelStocks] = @Original_LabelStocks)) AND ((@IsNull_Plan" +
+                "tId = 1 AND [PlantId] IS NULL) OR ([PlantId] = @Original_PlantId)) AND ((@IsNull" +
+                "_ShipFirst = 1 AND [ShipFirst] IS NULL) OR ([ShipFirst] = @Original_ShipFirst)) " +
+                "AND ((@IsNull_ShipLast = 1 AND [ShipLast] IS NULL) OR ([ShipLast] = @Original_Sh" +
+                "ipLast)) AND ((@IsNull_ShipLine1 = 1 AND [ShipLine1] IS NULL) OR ([ShipLine1] = " +
+                "@Original_ShipLine1)) AND ((@IsNull_ShipLine2 = 1 AND [ShipLine2] IS NULL) OR ([" +
+                "ShipLine2] = @Original_ShipLine2)) AND ((@IsNull_ShipCity = 1 AND [ShipCity] IS " +
+                "NULL) OR ([ShipCity] = @Original_ShipCity)) AND ((@IsNull_ShipState = 1 AND [Shi" +
+                "pState] IS NULL) OR ([ShipState] = @Original_ShipState)) AND ((@IsNull_ShipPostc" +
+                "ode = 1 AND [ShipPostcode] IS NULL) OR ([ShipPostcode] = @Original_ShipPostcode)" +
+                ") AND ((@IsNull_ShipName = 1 AND [ShipName] IS NULL) OR ([ShipName] = @Original_" +
+                "ShipName)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1949,13 +2380,30 @@ namespace LabelMaker.DatabaseLabelsDataSetColourQueueTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Picture4", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Picture4", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LabelStocks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStocks", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LabelStocks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStocks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PlantId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlantId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlantId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlantId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipFirst", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipFirst", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipFirst", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipFirst", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipLast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipLast", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipLine1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine1", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipLine1", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipLine2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipLine2", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipCity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipCity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipCity", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipCity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipState", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipState", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipState", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipState", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipPostcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipPostcode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipPostcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipPostcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TableColourQueue] ([Name], [qty], [Price], [PotSize], [Customer], [Barcode], [Description], [CommonName], [PictureFile], [ColourFont], [ColourFontColour], [FontBold], [FontItalic], [ColourBorderColour], [ColourBackgroundColour], [notes], [Genus], [Species], [Variety], [AGM], [Picture1], [Picture2], [Picture3], [Picture4], [OrderNo], [LabelStocks], [PlantId]) VALUES (@Name, @qty, @Price, @PotSize, @Customer, @Barcode, @Description, @CommonName, @PictureFile, @ColourFont, @ColourFontColour, @FontBold, @FontItalic, @ColourBorderColour, @ColourBackgroundColour, @notes, @Genus, @Species, @Variety, @AGM, @Picture1, @Picture2, @Picture3, @Picture4, @OrderNo, @LabelStocks, @PlantId);
-SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName, PictureFile, ColourFont, ColourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgroundColour, notes, Genus, Species, Variety, AGM, Picture1, Picture2, Picture3, Picture4, OrderNo, LabelStocks, PlantId FROM TableColourQueue WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [TableColourQueue] ([Name], [qty], [Price], [PotSize], [Customer], [Barcode], [Description], [CommonName], [PictureFile], [ColourFont], [ColourFontColour], [FontBold], [FontItalic], [ColourBorderColour], [ColourBackgroundColour], [notes], [Genus], [Species], [Variety], [AGM], [Picture1], [Picture2], [Picture3], [Picture4], [OrderNo], [LabelStocks], [PlantId], [ShipFirst], [ShipLast], [ShipLine1], [ShipLine2], [ShipCity], [ShipState], [ShipPostcode], [OrderNotes], [ShipName]) VALUES (@Name, @qty, @Price, @PotSize, @Customer, @Barcode, @Description, @CommonName, @PictureFile, @ColourFont, @ColourFontColour, @FontBold, @FontItalic, @ColourBorderColour, @ColourBackgroundColour, @notes, @Genus, @Species, @Variety, @AGM, @Picture1, @Picture2, @Picture3, @Picture4, @OrderNo, @LabelStocks, @PlantId, @ShipFirst, @ShipLast, @ShipLine1, @ShipLine2, @ShipCity, @ShipState, @ShipPostcode, @OrderNotes, @ShipName);
+SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName, PictureFile, ColourFont, ColourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgroundColour, notes, Genus, Species, Variety, AGM, Picture1, Picture2, Picture3, Picture4, OrderNo, LabelStocks, PlantId, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, OrderNotes, ShipName FROM TableColourQueue WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qty", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1984,50 +2432,74 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LabelStocks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStocks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlantId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlantId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipFirst", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipFirst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipLast", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipLine1", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipLine2", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipCity", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipState", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipPostcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipPostcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderNotes", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TableColourQueue] SET [Name] = @Name, [qty] = @qty, [Price] = @Pric" +
-                "e, [PotSize] = @PotSize, [Customer] = @Customer, [Barcode] = @Barcode, [Descript" +
-                "ion] = @Description, [CommonName] = @CommonName, [PictureFile] = @PictureFile, [" +
-                "ColourFont] = @ColourFont, [ColourFontColour] = @ColourFontColour, [FontBold] = " +
-                "@FontBold, [FontItalic] = @FontItalic, [ColourBorderColour] = @ColourBorderColou" +
-                "r, [ColourBackgroundColour] = @ColourBackgroundColour, [notes] = @notes, [Genus]" +
-                " = @Genus, [Species] = @Species, [Variety] = @Variety, [AGM] = @AGM, [Picture1] " +
-                "= @Picture1, [Picture2] = @Picture2, [Picture3] = @Picture3, [Picture4] = @Pictu" +
-                "re4, [OrderNo] = @OrderNo, [LabelStocks] = @LabelStocks, [PlantId] = @PlantId WH" +
-                "ERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name]" +
-                " = @Original_Name)) AND ([qty] = @Original_qty) AND ((@IsNull_Price = 1 AND [Pri" +
-                "ce] IS NULL) OR ([Price] = @Original_Price)) AND ((@IsNull_PotSize = 1 AND [PotS" +
-                "ize] IS NULL) OR ([PotSize] = @Original_PotSize)) AND ((@IsNull_Customer = 1 AND" +
-                " [Customer] IS NULL) OR ([Customer] = @Original_Customer)) AND ((@IsNull_Barcode" +
-                " = 1 AND [Barcode] IS NULL) OR ([Barcode] = @Original_Barcode)) AND ((@IsNull_De" +
-                "scription = 1 AND [Description] IS NULL) OR ([Description] = @Original_Descripti" +
-                "on)) AND ((@IsNull_CommonName = 1 AND [CommonName] IS NULL) OR ([CommonName] = @" +
-                "Original_CommonName)) AND ((@IsNull_PictureFile = 1 AND [PictureFile] IS NULL) O" +
-                "R ([PictureFile] = @Original_PictureFile)) AND ((@IsNull_ColourFont = 1 AND [Col" +
-                "ourFont] IS NULL) OR ([ColourFont] = @Original_ColourFont)) AND ((@IsNull_Colour" +
-                "FontColour = 1 AND [ColourFontColour] IS NULL) OR ([ColourFontColour] = @Origina" +
-                "l_ColourFontColour)) AND ([FontBold] = @Original_FontBold) AND ([FontItalic] = @" +
-                "Original_FontItalic) AND ((@IsNull_ColourBorderColour = 1 AND [ColourBorderColou" +
-                "r] IS NULL) OR ([ColourBorderColour] = @Original_ColourBorderColour)) AND ((@IsN" +
-                "ull_ColourBackgroundColour = 1 AND [ColourBackgroundColour] IS NULL) OR ([Colour" +
-                "BackgroundColour] = @Original_ColourBackgroundColour)) AND ((@IsNull_notes = 1 A" +
-                "ND [notes] IS NULL) OR ([notes] = @Original_notes)) AND ((@IsNull_Genus = 1 AND " +
-                "[Genus] IS NULL) OR ([Genus] = @Original_Genus)) AND ((@IsNull_Species = 1 AND [" +
-                "Species] IS NULL) OR ([Species] = @Original_Species)) AND ((@IsNull_Variety = 1 " +
-                "AND [Variety] IS NULL) OR ([Variety] = @Original_Variety)) AND ((@IsNull_AGM = 1" +
-                " AND [AGM] IS NULL) OR ([AGM] = @Original_AGM)) AND ((@IsNull_Picture1 = 1 AND [" +
-                "Picture1] IS NULL) OR ([Picture1] = @Original_Picture1)) AND ((@IsNull_Picture2 " +
-                "= 1 AND [Picture2] IS NULL) OR ([Picture2] = @Original_Picture2)) AND ((@IsNull_" +
-                "Picture3 = 1 AND [Picture3] IS NULL) OR ([Picture3] = @Original_Picture3)) AND (" +
-                "(@IsNull_Picture4 = 1 AND [Picture4] IS NULL) OR ([Picture4] = @Original_Picture" +
-                "4)) AND ((@IsNull_OrderNo = 1 AND [OrderNo] IS NULL) OR ([OrderNo] = @Original_O" +
-                "rderNo)) AND ([LabelStocks] = @Original_LabelStocks) AND ((@IsNull_PlantId = 1 A" +
-                "ND [PlantId] IS NULL) OR ([PlantId] = @Original_PlantId)));\r\nSELECT Id, Name, qt" +
-                "y, Price, PotSize, Customer, Barcode, Description, CommonName, PictureFile, Colo" +
-                "urFont, ColourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgr" +
-                "oundColour, notes, Genus, Species, Variety, AGM, Picture1, Picture2, Picture3, P" +
-                "icture4, OrderNo, LabelStocks, PlantId FROM TableColourQueue WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [TableColourQueue] SET [Name] = @Name, [qty] = @qty, [Price] = @Price, [Po" +
+                "tSize] = @PotSize, [Customer] = @Customer, [Barcode] = @Barcode, [Description] =" +
+                " @Description, [CommonName] = @CommonName, [PictureFile] = @PictureFile, [Colour" +
+                "Font] = @ColourFont, [ColourFontColour] = @ColourFontColour, [FontBold] = @FontB" +
+                "old, [FontItalic] = @FontItalic, [ColourBorderColour] = @ColourBorderColour, [Co" +
+                "lourBackgroundColour] = @ColourBackgroundColour, [notes] = @notes, [Genus] = @Ge" +
+                "nus, [Species] = @Species, [Variety] = @Variety, [AGM] = @AGM, [Picture1] = @Pic" +
+                "ture1, [Picture2] = @Picture2, [Picture3] = @Picture3, [Picture4] = @Picture4, [" +
+                "OrderNo] = @OrderNo, [LabelStocks] = @LabelStocks, [PlantId] = @PlantId, [ShipFi" +
+                "rst] = @ShipFirst, [ShipLast] = @ShipLast, [ShipLine1] = @ShipLine1, [ShipLine2]" +
+                " = @ShipLine2, [ShipCity] = @ShipCity, [ShipState] = @ShipState, [ShipPostcode] " +
+                "= @ShipPostcode, [OrderNotes] = @OrderNotes, [ShipName] = @ShipName WHERE (([Id]" +
+                " = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Origin" +
+                "al_Name)) AND ([qty] = @Original_qty) AND ((@IsNull_Price = 1 AND [Price] IS NUL" +
+                "L) OR ([Price] = @Original_Price)) AND ((@IsNull_PotSize = 1 AND [PotSize] IS NU" +
+                "LL) OR ([PotSize] = @Original_PotSize)) AND ((@IsNull_Customer = 1 AND [Customer" +
+                "] IS NULL) OR ([Customer] = @Original_Customer)) AND ((@IsNull_Barcode = 1 AND [" +
+                "Barcode] IS NULL) OR ([Barcode] = @Original_Barcode)) AND ((@IsNull_Description " +
+                "= 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND (" +
+                "(@IsNull_CommonName = 1 AND [CommonName] IS NULL) OR ([CommonName] = @Original_C" +
+                "ommonName)) AND ((@IsNull_PictureFile = 1 AND [PictureFile] IS NULL) OR ([Pictur" +
+                "eFile] = @Original_PictureFile)) AND ((@IsNull_ColourFont = 1 AND [ColourFont] I" +
+                "S NULL) OR ([ColourFont] = @Original_ColourFont)) AND ((@IsNull_ColourFontColour" +
+                " = 1 AND [ColourFontColour] IS NULL) OR ([ColourFontColour] = @Original_ColourFo" +
+                "ntColour)) AND ([FontBold] = @Original_FontBold) AND ([FontItalic] = @Original_F" +
+                "ontItalic) AND ((@IsNull_ColourBorderColour = 1 AND [ColourBorderColour] IS NULL" +
+                ") OR ([ColourBorderColour] = @Original_ColourBorderColour)) AND ((@IsNull_Colour" +
+                "BackgroundColour = 1 AND [ColourBackgroundColour] IS NULL) OR ([ColourBackground" +
+                "Colour] = @Original_ColourBackgroundColour)) AND ((@IsNull_notes = 1 AND [notes]" +
+                " IS NULL) OR ([notes] = @Original_notes)) AND ((@IsNull_Genus = 1 AND [Genus] IS" +
+                " NULL) OR ([Genus] = @Original_Genus)) AND ((@IsNull_Species = 1 AND [Species] I" +
+                "S NULL) OR ([Species] = @Original_Species)) AND ((@IsNull_Variety = 1 AND [Varie" +
+                "ty] IS NULL) OR ([Variety] = @Original_Variety)) AND ((@IsNull_AGM = 1 AND [AGM]" +
+                " IS NULL) OR ([AGM] = @Original_AGM)) AND ((@IsNull_Picture1 = 1 AND [Picture1] " +
+                "IS NULL) OR ([Picture1] = @Original_Picture1)) AND ((@IsNull_Picture2 = 1 AND [P" +
+                "icture2] IS NULL) OR ([Picture2] = @Original_Picture2)) AND ((@IsNull_Picture3 =" +
+                " 1 AND [Picture3] IS NULL) OR ([Picture3] = @Original_Picture3)) AND ((@IsNull_P" +
+                "icture4 = 1 AND [Picture4] IS NULL) OR ([Picture4] = @Original_Picture4)) AND ((" +
+                "@IsNull_OrderNo = 1 AND [OrderNo] IS NULL) OR ([OrderNo] = @Original_OrderNo)) A" +
+                "ND ((@IsNull_LabelStocks = 1 AND [LabelStocks] IS NULL) OR ([LabelStocks] = @Ori" +
+                "ginal_LabelStocks)) AND ((@IsNull_PlantId = 1 AND [PlantId] IS NULL) OR ([PlantI" +
+                "d] = @Original_PlantId)) AND ((@IsNull_ShipFirst = 1 AND [ShipFirst] IS NULL) OR" +
+                " ([ShipFirst] = @Original_ShipFirst)) AND ((@IsNull_ShipLast = 1 AND [ShipLast] " +
+                "IS NULL) OR ([ShipLast] = @Original_ShipLast)) AND ((@IsNull_ShipLine1 = 1 AND [" +
+                "ShipLine1] IS NULL) OR ([ShipLine1] = @Original_ShipLine1)) AND ((@IsNull_ShipLi" +
+                "ne2 = 1 AND [ShipLine2] IS NULL) OR ([ShipLine2] = @Original_ShipLine2)) AND ((@" +
+                "IsNull_ShipCity = 1 AND [ShipCity] IS NULL) OR ([ShipCity] = @Original_ShipCity)" +
+                ") AND ((@IsNull_ShipState = 1 AND [ShipState] IS NULL) OR ([ShipState] = @Origin" +
+                "al_ShipState)) AND ((@IsNull_ShipPostcode = 1 AND [ShipPostcode] IS NULL) OR ([S" +
+                "hipPostcode] = @Original_ShipPostcode)) AND ((@IsNull_ShipName = 1 AND [ShipName" +
+                "] IS NULL) OR ([ShipName] = @Original_ShipName)));\r\nSELECT Id, Name, qty, Price," +
+                " PotSize, Customer, Barcode, Description, CommonName, PictureFile, ColourFont, C" +
+                "olourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgroundColou" +
+                "r, notes, Genus, Species, Variety, AGM, Picture1, Picture2, Picture3, Picture4, " +
+                "OrderNo, LabelStocks, PlantId, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCi" +
+                "ty, ShipState, ShipPostcode, OrderNotes, ShipName FROM TableColourQueue WHERE (I" +
+                "d = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qty", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2056,6 +2528,15 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LabelStocks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStocks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlantId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlantId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipFirst", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipFirst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipLast", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipLine1", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipLine2", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipCity", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipCity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipState", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipState", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipPostcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipPostcode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderNotes", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNotes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ShipName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2104,9 +2585,26 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Picture4", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Picture4", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_OrderNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OrderNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrderNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LabelStocks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStocks", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LabelStocks", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStocks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PlantId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlantId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlantId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlantId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipFirst", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipFirst", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipFirst", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipFirst", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipLast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipLast", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipLine1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine1", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipLine1", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine1", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipLine2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine2", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipLine2", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipLine2", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipCity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipCity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipCity", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipCity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipState", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipState", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipState", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipState", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipPostcode", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipPostcode", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipPostcode", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipPostcode", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ShipName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ShipName", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ShipName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2123,7 +2621,9 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName, PictureFile, ColourFont, ColourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgroundColour, notes, Genus, Species, Variety, AGM, Picture1, Picture2, Picture3, Picture4, OrderNo, LabelStocks, PlantId  FROM dbo.TableColourQueue";
+            this._commandCollection[0].CommandText = @"SELECT        Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName, PictureFile, ColourFont, ColourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgroundColour, notes, Genus, Species, Variety, AGM, 
+                         Picture1, Picture2, Picture3, Picture4, OrderNo, LabelStocks, PlantId, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, OrderNotes, ShipName
+FROM            TableColourQueue";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2211,8 +2711,16 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
                     string Original_Picture3, 
                     string Original_Picture4, 
                     string Original_OrderNo, 
-                    bool Original_LabelStocks, 
-                    global::System.Nullable<int> Original_PlantId) {
+                    global::System.Nullable<bool> Original_LabelStocks, 
+                    global::System.Nullable<int> Original_PlantId, 
+                    string Original_ShipFirst, 
+                    string Original_ShipLast, 
+                    string Original_ShipLine1, 
+                    string Original_ShipLine2, 
+                    string Original_ShipCity, 
+                    string Original_ShipState, 
+                    string Original_ShipPostcode, 
+                    string Original_ShipName) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -2393,14 +2901,85 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
                 this.Adapter.DeleteCommand.Parameters[46].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[47].Value = ((string)(Original_OrderNo));
             }
-            this.Adapter.DeleteCommand.Parameters[48].Value = ((bool)(Original_LabelStocks));
-            if ((Original_PlantId.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[50].Value = ((int)(Original_PlantId.Value));
+            if ((Original_LabelStocks.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((bool)(Original_LabelStocks.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[49].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PlantId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((int)(Original_PlantId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[51].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ShipFirst == null)) {
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[53].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((string)(Original_ShipFirst));
+            }
+            if ((Original_ShipLast == null)) {
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[55].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((string)(Original_ShipLast));
+            }
+            if ((Original_ShipLine1 == null)) {
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[57].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((string)(Original_ShipLine1));
+            }
+            if ((Original_ShipLine2 == null)) {
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[59].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((string)(Original_ShipLine2));
+            }
+            if ((Original_ShipCity == null)) {
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[61].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((string)(Original_ShipCity));
+            }
+            if ((Original_ShipState == null)) {
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[63].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[63].Value = ((string)(Original_ShipState));
+            }
+            if ((Original_ShipPostcode == null)) {
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[65].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((string)(Original_ShipPostcode));
+            }
+            if ((Original_ShipName == null)) {
+                this.Adapter.DeleteCommand.Parameters[66].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[67].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[66].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[67].Value = ((string)(Original_ShipName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2448,8 +3027,17 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
                     string Picture3, 
                     string Picture4, 
                     string OrderNo, 
-                    bool LabelStocks, 
-                    global::System.Nullable<int> PlantId) {
+                    global::System.Nullable<bool> LabelStocks, 
+                    global::System.Nullable<int> PlantId, 
+                    string ShipFirst, 
+                    string ShipLast, 
+                    string ShipLine1, 
+                    string ShipLine2, 
+                    string ShipCity, 
+                    string ShipState, 
+                    string ShipPostcode, 
+                    string OrderNotes, 
+                    string ShipName) {
             if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -2585,12 +3173,71 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
             else {
                 this.Adapter.InsertCommand.Parameters[24].Value = ((string)(OrderNo));
             }
-            this.Adapter.InsertCommand.Parameters[25].Value = ((bool)(LabelStocks));
+            if ((LabelStocks.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((bool)(LabelStocks.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
             if ((PlantId.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[26].Value = ((int)(PlantId.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((ShipFirst == null)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(ShipFirst));
+            }
+            if ((ShipLast == null)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(ShipLast));
+            }
+            if ((ShipLine1 == null)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(ShipLine1));
+            }
+            if ((ShipLine2 == null)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(ShipLine2));
+            }
+            if ((ShipCity == null)) {
+                this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(ShipCity));
+            }
+            if ((ShipState == null)) {
+                this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[32].Value = ((string)(ShipState));
+            }
+            if ((ShipPostcode == null)) {
+                this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((string)(ShipPostcode));
+            }
+            if ((OrderNotes == null)) {
+                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[34].Value = ((string)(OrderNotes));
+            }
+            if ((ShipName == null)) {
+                this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[35].Value = ((string)(ShipName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2638,8 +3285,17 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
                     string Picture3, 
                     string Picture4, 
                     string OrderNo, 
-                    bool LabelStocks, 
+                    global::System.Nullable<bool> LabelStocks, 
                     global::System.Nullable<int> PlantId, 
+                    string ShipFirst, 
+                    string ShipLast, 
+                    string ShipLine1, 
+                    string ShipLine2, 
+                    string ShipCity, 
+                    string ShipState, 
+                    string ShipPostcode, 
+                    string OrderNotes, 
+                    string ShipName, 
                     int Original_Id, 
                     string Original_Name, 
                     byte Original_qty, 
@@ -2666,8 +3322,16 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
                     string Original_Picture3, 
                     string Original_Picture4, 
                     string Original_OrderNo, 
-                    bool Original_LabelStocks, 
+                    global::System.Nullable<bool> Original_LabelStocks, 
                     global::System.Nullable<int> Original_PlantId, 
+                    string Original_ShipFirst, 
+                    string Original_ShipLast, 
+                    string Original_ShipLine1, 
+                    string Original_ShipLine2, 
+                    string Original_ShipCity, 
+                    string Original_ShipState, 
+                    string Original_ShipPostcode, 
+                    string Original_ShipName, 
                     int Id) {
             if ((Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -2804,203 +3468,333 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
             else {
                 this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(OrderNo));
             }
-            this.Adapter.UpdateCommand.Parameters[25].Value = ((bool)(LabelStocks));
+            if ((LabelStocks.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((bool)(LabelStocks.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
             if ((PlantId.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(PlantId.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_Id));
-            if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+            if ((ShipFirst == null)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(ShipFirst));
+            }
+            if ((ShipLast == null)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(ShipLast));
+            }
+            if ((ShipLine1 == null)) {
                 this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(ShipLine1));
             }
-            this.Adapter.UpdateCommand.Parameters[30].Value = ((byte)(Original_qty));
-            if ((Original_Price == null)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+            if ((ShipLine2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(ShipLine2));
+            }
+            if ((ShipCity == null)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(ShipCity));
+            }
+            if ((ShipState == null)) {
                 this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Price));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(ShipState));
             }
-            if ((Original_PotSize == null)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+            if ((ShipPostcode == null)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(ShipPostcode));
+            }
+            if ((OrderNotes == null)) {
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_PotSize));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(OrderNotes));
             }
-            if ((Original_Customer == null)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            if ((ShipName == null)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_Customer));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(ShipName));
             }
-            if ((Original_Barcode == null)) {
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_Id));
+            if ((Original_Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_Barcode));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_Name));
+            }
+            this.Adapter.UpdateCommand.Parameters[39].Value = ((byte)(Original_qty));
+            if ((Original_Price == null)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_Price));
+            }
+            if ((Original_PotSize == null)) {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_PotSize));
+            }
+            if ((Original_Customer == null)) {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(Original_Customer));
+            }
+            if ((Original_Barcode == null)) {
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_Barcode));
             }
             if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_Description));
             }
             if ((Original_CommonName == null)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_CommonName));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(Original_CommonName));
             }
             if ((Original_PictureFile == null)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_PictureFile));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((string)(Original_PictureFile));
             }
             if ((Original_ColourFont == null)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_ColourFont));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(Original_ColourFont));
             }
             if ((Original_ColourFontColour == null)) {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_ColourFontColour));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((string)(Original_ColourFontColour));
             }
-            this.Adapter.UpdateCommand.Parameters[49].Value = ((bool)(Original_FontBold));
-            this.Adapter.UpdateCommand.Parameters[50].Value = ((bool)(Original_FontItalic));
+            this.Adapter.UpdateCommand.Parameters[58].Value = ((bool)(Original_FontBold));
+            this.Adapter.UpdateCommand.Parameters[59].Value = ((bool)(Original_FontItalic));
             if ((Original_ColourBorderColour == null)) {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_ColourBorderColour));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((string)(Original_ColourBorderColour));
             }
             if ((Original_ColourBackgroundColour == null)) {
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((string)(Original_ColourBackgroundColour));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((string)(Original_ColourBackgroundColour));
             }
             if ((Original_notes == null)) {
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_notes));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((string)(Original_notes));
             }
             if ((Original_Genus == null)) {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((string)(Original_Genus));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((string)(Original_Genus));
             }
             if ((Original_Species == null)) {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((string)(Original_Species));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((string)(Original_Species));
             }
             if ((Original_Variety == null)) {
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((string)(Original_Variety));
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((string)(Original_Variety));
             }
             if ((Original_AGM == null)) {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((string)(Original_AGM));
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((string)(Original_AGM));
             }
             if ((Original_Picture1 == null)) {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((string)(Original_Picture1));
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((string)(Original_Picture1));
             }
             if ((Original_Picture2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((string)(Original_Picture2));
-            }
-            if ((Original_Picture3 == null)) {
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((string)(Original_Picture3));
-            }
-            if ((Original_Picture4 == null)) {
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((string)(Original_Picture4));
-            }
-            if ((Original_OrderNo == null)) {
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((string)(Original_OrderNo));
-            }
-            this.Adapter.UpdateCommand.Parameters[75].Value = ((bool)(Original_LabelStocks));
-            if ((Original_PlantId.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((int)(Original_PlantId.Value));
-            }
-            else {
                 this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[78].Value = ((int)(Id));
+            else {
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((string)(Original_Picture2));
+            }
+            if ((Original_Picture3 == null)) {
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((string)(Original_Picture3));
+            }
+            if ((Original_Picture4 == null)) {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((string)(Original_Picture4));
+            }
+            if ((Original_OrderNo == null)) {
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[83].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((string)(Original_OrderNo));
+            }
+            if ((Original_LabelStocks.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((bool)(Original_LabelStocks.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PlantId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((int)(Original_PlantId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[87].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ShipFirst == null)) {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((string)(Original_ShipFirst));
+            }
+            if ((Original_ShipLast == null)) {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((string)(Original_ShipLast));
+            }
+            if ((Original_ShipLine1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[93].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((string)(Original_ShipLine1));
+            }
+            if ((Original_ShipLine2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[95].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((string)(Original_ShipLine2));
+            }
+            if ((Original_ShipCity == null)) {
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[97].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((string)(Original_ShipCity));
+            }
+            if ((Original_ShipState == null)) {
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[99].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((string)(Original_ShipState));
+            }
+            if ((Original_ShipPostcode == null)) {
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[101].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[101].Value = ((string)(Original_ShipPostcode));
+            }
+            if ((Original_ShipName == null)) {
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[103].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[102].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[103].Value = ((string)(Original_ShipName));
+            }
+            this.Adapter.UpdateCommand.Parameters[104].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3047,8 +3841,17 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
                     string Picture3, 
                     string Picture4, 
                     string OrderNo, 
-                    bool LabelStocks, 
+                    global::System.Nullable<bool> LabelStocks, 
                     global::System.Nullable<int> PlantId, 
+                    string ShipFirst, 
+                    string ShipLast, 
+                    string ShipLine1, 
+                    string ShipLine2, 
+                    string ShipCity, 
+                    string ShipState, 
+                    string ShipPostcode, 
+                    string OrderNotes, 
+                    string ShipName, 
                     int Original_Id, 
                     string Original_Name, 
                     byte Original_qty, 
@@ -3075,9 +3878,17 @@ SELECT Id, Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName
                     string Original_Picture3, 
                     string Original_Picture4, 
                     string Original_OrderNo, 
-                    bool Original_LabelStocks, 
-                    global::System.Nullable<int> Original_PlantId) {
-            return this.Update(Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName, PictureFile, ColourFont, ColourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgroundColour, notes, Genus, Species, Variety, AGM, Picture1, Picture2, Picture3, Picture4, OrderNo, LabelStocks, PlantId, Original_Id, Original_Name, Original_qty, Original_Price, Original_PotSize, Original_Customer, Original_Barcode, Original_Description, Original_CommonName, Original_PictureFile, Original_ColourFont, Original_ColourFontColour, Original_FontBold, Original_FontItalic, Original_ColourBorderColour, Original_ColourBackgroundColour, Original_notes, Original_Genus, Original_Species, Original_Variety, Original_AGM, Original_Picture1, Original_Picture2, Original_Picture3, Original_Picture4, Original_OrderNo, Original_LabelStocks, Original_PlantId, Original_Id);
+                    global::System.Nullable<bool> Original_LabelStocks, 
+                    global::System.Nullable<int> Original_PlantId, 
+                    string Original_ShipFirst, 
+                    string Original_ShipLast, 
+                    string Original_ShipLine1, 
+                    string Original_ShipLine2, 
+                    string Original_ShipCity, 
+                    string Original_ShipState, 
+                    string Original_ShipPostcode, 
+                    string Original_ShipName) {
+            return this.Update(Name, qty, Price, PotSize, Customer, Barcode, Description, CommonName, PictureFile, ColourFont, ColourFontColour, FontBold, FontItalic, ColourBorderColour, ColourBackgroundColour, notes, Genus, Species, Variety, AGM, Picture1, Picture2, Picture3, Picture4, OrderNo, LabelStocks, PlantId, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, OrderNotes, ShipName, Original_Id, Original_Name, Original_qty, Original_Price, Original_PotSize, Original_Customer, Original_Barcode, Original_Description, Original_CommonName, Original_PictureFile, Original_ColourFont, Original_ColourFontColour, Original_FontBold, Original_FontItalic, Original_ColourBorderColour, Original_ColourBackgroundColour, Original_notes, Original_Genus, Original_Species, Original_Variety, Original_AGM, Original_Picture1, Original_Picture2, Original_Picture3, Original_Picture4, Original_OrderNo, Original_LabelStocks, Original_PlantId, Original_ShipFirst, Original_ShipLast, Original_ShipLine1, Original_ShipLine2, Original_ShipCity, Original_ShipState, Original_ShipPostcode, Original_ShipName, Original_Id);
         }
     }
     

@@ -222,7 +222,7 @@ namespace CreationUtilities
     {
         public static string[] readQueue( string[] sentData, string[] sentName, string[] moreData)
         {
-            string[] queueData = new string[25];
+            string[] queueData = new string[34];
 
             queueData[0] = sentName[0]; //Full name
             queueData[1] = moreData[2]; //qty
@@ -249,9 +249,21 @@ namespace CreationUtilities
             queueData[22] = sentData[14];
             queueData[23] = sentData[15];
             queueData[24] = "Order No. #" + moreData[5]; //Order Number
+            queueData[25] = "Shipping Name";
+            queueData[26] = "First Name";
+            queueData[27] = "Last Name";
+            queueData[28] = "Address Line 1";
+            queueData[29] = "Address Line 2";
+            queueData[30] = "Address City";
+            queueData[31] = "Address State";
+            queueData[32] = "Postcode";
+            queueData[33] = "Notes";
+
+
 
             return queueData;
         }
+
         public static string[] readFile(string fileName, char separator)
         {
             try
