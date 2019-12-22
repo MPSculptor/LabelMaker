@@ -4080,27 +4080,27 @@ SELECT Id, Name, Child, Batch, QuickPrint FROM LabelsLabelNames WHERE (Id = @Id)
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[LabelsLabelFields] WHERE (([Id] = @Original_Id) AND ((@IsNull_" +
-                "Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Notes =" +
-                " 1 AND [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND ((@IsNull_Type = 1 A" +
-                "ND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_XSize = 1 AND [XS" +
-                "ize] IS NULL) OR ([XSize] = @Original_XSize)) AND ((@IsNull_YSize = 1 AND [YSize" +
-                "] IS NULL) OR ([YSize] = @Original_YSize)) AND ((@IsNull_XStart = 1 AND [XStart]" +
-                " IS NULL) OR ([XStart] = @Original_XStart)) AND ((@IsNull_YStart = 1 AND [YStart" +
-                "] IS NULL) OR ([YStart] = @Original_YStart)) AND ([ProfileDefaults] = @Original_" +
-                "ProfileDefaults) AND ([FontVariable] = @Original_FontVariable) AND ([LinesReduce" +
-                "able] = @Original_LinesReduceable) AND ((@IsNull_ListboxIndex = 1 AND [ListboxIn" +
-                "dex] IS NULL) OR ([ListboxIndex] = @Original_ListboxIndex)) AND ((@IsNull_FixedV" +
-                "alue = 1 AND [FixedValue] IS NULL) OR ([FixedValue] = @Original_FixedValue)) AND" +
-                " ((@IsNull_FontLines = 1 AND [FontLines] IS NULL) OR ([FontLines] = @Original_Fo" +
-                "ntLines)) AND ((@IsNull_FontOrinetation = 1 AND [FontOrinetation] IS NULL) OR ([" +
-                "FontOrinetation] = @Original_FontOrinetation)) AND ([FontColour] = @Original_Fon" +
-                "tColour) AND ((@IsNull_FontName = 1 AND [FontName] IS NULL) OR ([FontName] = @Or" +
-                "iginal_FontName)) AND ((@IsNull_FontSize = 1 AND [FontSize] IS NULL) OR ([FontSi" +
-                "ze] = @Original_FontSize)) AND ([FontBold] = @Original_FontBold) AND ([FontItali" +
-                "c] = @Original_FontItalic) AND ((@IsNull_Colour = 1 AND [Colour] IS NULL) OR ([C" +
-                "olour] = @Original_Colour)) AND ((@IsNull_ordering = 1 AND [ordering] IS NULL) O" +
-                "R ([ordering] = @Original_ordering)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [LabelsLabelFields] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name =" +
+                " 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Notes = 1 AND" +
+                " [Notes] IS NULL) OR ([Notes] = @Original_Notes)) AND ((@IsNull_Type = 1 AND [Ty" +
+                "pe] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_XSize = 1 AND [XSize] I" +
+                "S NULL) OR ([XSize] = @Original_XSize)) AND ((@IsNull_YSize = 1 AND [YSize] IS N" +
+                "ULL) OR ([YSize] = @Original_YSize)) AND ((@IsNull_XStart = 1 AND [XStart] IS NU" +
+                "LL) OR ([XStart] = @Original_XStart)) AND ((@IsNull_YStart = 1 AND [YStart] IS N" +
+                "ULL) OR ([YStart] = @Original_YStart)) AND ([ProfileDefaults] = @Original_Profil" +
+                "eDefaults) AND ([FontVariable] = @Original_FontVariable) AND ([LinesReduceable] " +
+                "= @Original_LinesReduceable) AND ((@IsNull_ListboxIndex = 1 AND [ListboxIndex] I" +
+                "S NULL) OR ([ListboxIndex] = @Original_ListboxIndex)) AND ((@IsNull_FixedValue =" +
+                " 1 AND [FixedValue] IS NULL) OR ([FixedValue] = @Original_FixedValue)) AND ((@Is" +
+                "Null_FontLines = 1 AND [FontLines] IS NULL) OR ([FontLines] = @Original_FontLine" +
+                "s)) AND ((@IsNull_FontOrinetation = 1 AND [FontOrinetation] IS NULL) OR ([FontOr" +
+                "inetation] = @Original_FontOrinetation)) AND ([FontColour] = @Original_FontColou" +
+                "r) AND ((@IsNull_FontName = 1 AND [FontName] IS NULL) OR ([FontName] = @Original" +
+                "_FontName)) AND ((@IsNull_FontSize = 1 AND [FontSize] IS NULL) OR ([FontSize] = " +
+                "@Original_FontSize)) AND ([FontBold] = @Original_FontBold) AND ([FontItalic] = @" +
+                "Original_FontItalic) AND ((@IsNull_Colour = 1 AND [Colour] IS NULL) OR ([Colour]" +
+                " = @Original_Colour)) AND ((@IsNull_ordering = 1 AND [ordering] IS NULL) OR ([or" +
+                "dering] = @Original_ordering)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -4141,8 +4141,8 @@ SELECT Id, Name, Child, Batch, QuickPrint FROM LabelsLabelNames WHERE (Id = @Id)
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ordering", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ordering", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[LabelsLabelFields] ([Name], [Notes], [Type], [XSize], [YSize], [XStart], [YStart], [ProfileDefaults], [FontVariable], [LinesReduceable], [ListboxIndex], [FixedValue], [FontLines], [FontOrinetation], [FontColour], [FontName], [FontSize], [FontBold], [FontItalic], [Colour], [ordering]) VALUES (@Name, @Notes, @Type, @XSize, @YSize, @XStart, @YStart, @ProfileDefaults, @FontVariable, @LinesReduceable, @ListboxIndex, @FixedValue, @FontLines, @FontOrinetation, @FontColour, @FontName, @FontSize, @FontBold, @FontItalic, @Colour, @ordering);
-SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour, ordering FROM LabelsLabelFields WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [LabelsLabelFields] ([Name], [Notes], [Type], [XSize], [YSize], [XStart], [YStart], [ProfileDefaults], [FontVariable], [LinesReduceable], [ListboxIndex], [FixedValue], [FontLines], [FontOrinetation], [FontColour], [FontName], [FontSize], [FontBold], [FontItalic], [Colour], [ordering]) VALUES (@Name, @Notes, @Type, @XSize, @YSize, @XStart, @YStart, @ProfileDefaults, @FontVariable, @LinesReduceable, @ListboxIndex, @FixedValue, @FontLines, @FontOrinetation, @FontColour, @FontName, @FontSize, @FontBold, @FontItalic, @Colour, @ordering);
+SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour, ordering FROM LabelsLabelFields WHERE (Id = SCOPE_IDENTITY()) ORDER BY ordering";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Notes", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4167,37 +4167,37 @@ SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, Fon
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ordering", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ordering", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[LabelsLabelFields] SET [Name] = @Name, [Notes] = @Notes, [Type] = @" +
-                "Type, [XSize] = @XSize, [YSize] = @YSize, [XStart] = @XStart, [YStart] = @YStart" +
-                ", [ProfileDefaults] = @ProfileDefaults, [FontVariable] = @FontVariable, [LinesRe" +
-                "duceable] = @LinesReduceable, [ListboxIndex] = @ListboxIndex, [FixedValue] = @Fi" +
-                "xedValue, [FontLines] = @FontLines, [FontOrinetation] = @FontOrinetation, [FontC" +
-                "olour] = @FontColour, [FontName] = @FontName, [FontSize] = @FontSize, [FontBold]" +
-                " = @FontBold, [FontItalic] = @FontItalic, [Colour] = @Colour, [ordering] = @orde" +
-                "ring WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR " +
-                "([Name] = @Original_Name)) AND ((@IsNull_Notes = 1 AND [Notes] IS NULL) OR ([Not" +
-                "es] = @Original_Notes)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = " +
-                "@Original_Type)) AND ((@IsNull_XSize = 1 AND [XSize] IS NULL) OR ([XSize] = @Ori" +
-                "ginal_XSize)) AND ((@IsNull_YSize = 1 AND [YSize] IS NULL) OR ([YSize] = @Origin" +
-                "al_YSize)) AND ((@IsNull_XStart = 1 AND [XStart] IS NULL) OR ([XStart] = @Origin" +
-                "al_XStart)) AND ((@IsNull_YStart = 1 AND [YStart] IS NULL) OR ([YStart] = @Origi" +
-                "nal_YStart)) AND ([ProfileDefaults] = @Original_ProfileDefaults) AND ([FontVaria" +
-                "ble] = @Original_FontVariable) AND ([LinesReduceable] = @Original_LinesReduceabl" +
-                "e) AND ((@IsNull_ListboxIndex = 1 AND [ListboxIndex] IS NULL) OR ([ListboxIndex]" +
-                " = @Original_ListboxIndex)) AND ((@IsNull_FixedValue = 1 AND [FixedValue] IS NUL" +
-                "L) OR ([FixedValue] = @Original_FixedValue)) AND ((@IsNull_FontLines = 1 AND [Fo" +
-                "ntLines] IS NULL) OR ([FontLines] = @Original_FontLines)) AND ((@IsNull_FontOrin" +
-                "etation = 1 AND [FontOrinetation] IS NULL) OR ([FontOrinetation] = @Original_Fon" +
-                "tOrinetation)) AND ([FontColour] = @Original_FontColour) AND ((@IsNull_FontName " +
-                "= 1 AND [FontName] IS NULL) OR ([FontName] = @Original_FontName)) AND ((@IsNull_" +
-                "FontSize = 1 AND [FontSize] IS NULL) OR ([FontSize] = @Original_FontSize)) AND (" +
-                "[FontBold] = @Original_FontBold) AND ([FontItalic] = @Original_FontItalic) AND (" +
-                "(@IsNull_Colour = 1 AND [Colour] IS NULL) OR ([Colour] = @Original_Colour)) AND " +
-                "((@IsNull_ordering = 1 AND [ordering] IS NULL) OR ([ordering] = @Original_orderi" +
-                "ng)));\r\nSELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefau" +
-                "lts, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOri" +
-                "netation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour, ordering" +
-                " FROM LabelsLabelFields WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [LabelsLabelFields] SET [Name] = @Name, [Notes] = @Notes, [Type] = @Type, " +
+                "[XSize] = @XSize, [YSize] = @YSize, [XStart] = @XStart, [YStart] = @YStart, [Pro" +
+                "fileDefaults] = @ProfileDefaults, [FontVariable] = @FontVariable, [LinesReduceab" +
+                "le] = @LinesReduceable, [ListboxIndex] = @ListboxIndex, [FixedValue] = @FixedVal" +
+                "ue, [FontLines] = @FontLines, [FontOrinetation] = @FontOrinetation, [FontColour]" +
+                " = @FontColour, [FontName] = @FontName, [FontSize] = @FontSize, [FontBold] = @Fo" +
+                "ntBold, [FontItalic] = @FontItalic, [Colour] = @Colour, [ordering] = @ordering W" +
+                "HERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name" +
+                "] = @Original_Name)) AND ((@IsNull_Notes = 1 AND [Notes] IS NULL) OR ([Notes] = " +
+                "@Original_Notes)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Origi" +
+                "nal_Type)) AND ((@IsNull_XSize = 1 AND [XSize] IS NULL) OR ([XSize] = @Original_" +
+                "XSize)) AND ((@IsNull_YSize = 1 AND [YSize] IS NULL) OR ([YSize] = @Original_YSi" +
+                "ze)) AND ((@IsNull_XStart = 1 AND [XStart] IS NULL) OR ([XStart] = @Original_XSt" +
+                "art)) AND ((@IsNull_YStart = 1 AND [YStart] IS NULL) OR ([YStart] = @Original_YS" +
+                "tart)) AND ([ProfileDefaults] = @Original_ProfileDefaults) AND ([FontVariable] =" +
+                " @Original_FontVariable) AND ([LinesReduceable] = @Original_LinesReduceable) AND" +
+                " ((@IsNull_ListboxIndex = 1 AND [ListboxIndex] IS NULL) OR ([ListboxIndex] = @Or" +
+                "iginal_ListboxIndex)) AND ((@IsNull_FixedValue = 1 AND [FixedValue] IS NULL) OR " +
+                "([FixedValue] = @Original_FixedValue)) AND ((@IsNull_FontLines = 1 AND [FontLine" +
+                "s] IS NULL) OR ([FontLines] = @Original_FontLines)) AND ((@IsNull_FontOrinetatio" +
+                "n = 1 AND [FontOrinetation] IS NULL) OR ([FontOrinetation] = @Original_FontOrine" +
+                "tation)) AND ([FontColour] = @Original_FontColour) AND ((@IsNull_FontName = 1 AN" +
+                "D [FontName] IS NULL) OR ([FontName] = @Original_FontName)) AND ((@IsNull_FontSi" +
+                "ze = 1 AND [FontSize] IS NULL) OR ([FontSize] = @Original_FontSize)) AND ([FontB" +
+                "old] = @Original_FontBold) AND ([FontItalic] = @Original_FontItalic) AND ((@IsNu" +
+                "ll_Colour = 1 AND [Colour] IS NULL) OR ([Colour] = @Original_Colour)) AND ((@IsN" +
+                "ull_ordering = 1 AND [ordering] IS NULL) OR ([ordering] = @Original_ordering)));" +
+                "\r\nSELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, F" +
+                "ontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetati" +
+                "on, FontColour, FontName, FontSize, FontBold, FontItalic, Colour, ordering FROM " +
+                "LabelsLabelFields WHERE (Id = @Id) ORDER BY ordering";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Notes", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4273,11 +4273,14 @@ SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, Fon
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour, ordering FROM dbo.LabelsLabelFields";
+            this._commandCollection[0].CommandText = @"SELECT        Id, Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour, 
+                         ordering
+FROM            LabelsLabelFields
+ORDER BY ordering";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT Name, Notes, Type, XSize, YSize, XStart, YStart, ProfileDefaults, FontVariable, LinesReduceable, ListboxIndex, FixedValue, FontLines, FontOrinetation, FontColour, FontName, FontSize, FontBold, FontItalic, Colour FROM dbo.LabelsLabelFields WHERE Name = @Name ORDER BY Ordering";
+            this._commandCollection[1].CommandText = @"SELECT Colour, FixedValue, FontBold, FontColour, FontItalic, FontLines, FontName, FontOrinetation, FontSize, FontVariable, Id, LinesReduceable, ListboxIndex, Name, Notes, ProfileDefaults, Type, XSize, XStart, YSize, YStart, ordering FROM LabelsLabelFields WHERE (Name = @Name) ORDER BY ordering";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

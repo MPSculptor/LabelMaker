@@ -5343,13 +5343,6 @@ namespace LabelMaker
             fillLabelNamesTextBoxes(0);
             comboBoxLabelsWithin.Text = "Find labels from this Category Here";
 
-            comboBoxLabelsAll.Items.Clear();
-            LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
-            for (int i = 0; i < databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Count; i++)
-            {
-                    comboBoxLabelsAll.Items.Add(databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[i].ItemArray[1]);
-            }
-            comboBoxLabelsAll.Text = "Find All Labels Here";
         }
         private void fillLabelNamesTextBoxes(int sentRow)
         {
@@ -5959,59 +5952,7 @@ namespace LabelMaker
             }
         }
 
-        private void comboBoxLabelsAll_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (textBoxLabel1.Text == "Find All Labels Here") { return; }
-            
-            //Fill the Label Names Section
-
-            LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
-
-            int sentRow = 0;
-            for (int i = 0; i < databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Count; i++)
-            {
-                if (databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[i].ItemArray[1].ToString().Trim() == comboBoxLabelsAll.Text.Trim())
-                {
-                    sentRow = i;
-                    break;
-                }
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                                TextBox curText = (TextBox)groupBoxLabelNames.Controls["textBoxLabel" + i.ToString()];
-                curText.Text = "";
-                try
-                {
-                    curText.Text = databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[sentRow].ItemArray[i].ToString();
-                }
-                catch { }
-            }
-
-            // Alter Category if needed
-
-            // exit if same category
-            if (textBoxCat1.Text == textBoxLabel1.Text) { return; }
-            int catRow = 0;
-            for (int i = 0; i < dataGridViewCategories.RowCount; i++)
-            {
-                if (dataGridViewCategories.Rows[i].Cells[1].Value.ToString() == textBoxLabel1.Text)
-                {
-                    catRow = i;
-                    break;
-                }
-            }
-            fillCategories(catRow.ToString());
-
-            //refill Second ComboBox if needed
-            comboBoxLabelsWithin.Items.Clear();
-            LabelsLabelNamesTableAdapter.FillByChild(databaseLabelsDataSetLabelNames.LabelsLabelNames, textBoxCat1.Text.ToString().Trim());
-            for (int i = 0; i < databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Count; i++)
-            {
-                comboBoxLabelsWithin.Items.Add(databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[i].ItemArray[1]);
-            }
-            fillLabelNamesTextBoxes(0);
-            comboBoxLabelsWithin.Text = comboBoxLabelsWithin.Items[0].ToString();
-        }
+        
 
         private void comboBoxLabelsForDesign_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -6028,6 +5969,9 @@ namespace LabelMaker
                 TextBox curText = (TextBox)tabPageDesignFields.Controls["textBoxDesign" + i.ToString()];
                 curText.Text = dataGridViewDesign.Rows[rowChosen].Cells[i].Value.ToString();
             }
+            labelDesignColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxDesign20.Text));
+            textBoxDesignRow.Text = dataGridViewDesign.CurrentRow.Index.ToString();
+            PaintFields();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -6356,6 +6300,7 @@ namespace LabelMaker
             Color newColour = pickMeAColour(oldColour);
             storeColour = (newColour.B * 256 * 256) + (newColour.G * 256) + newColour.R;
             textBoxDesign20.Text = storeColour.ToString();
+            labelDesignColour.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(textBoxDesign20.Text));
         }
 
         private void labelDesignColour_Click(object sender, EventArgs e)
@@ -6368,6 +6313,7 @@ namespace LabelMaker
             DataRow newRow = databaseLabelsDataSetAddClean.TableAddressFilters.NewRow();
             newRow[1] = textBoxAddClean.Text;
             databaseLabelsDataSetAddClean.TableAddressFilters.Rows.Add(newRow);
+            tableAddressFiltersTableAdapter.Update(databaseLabelsDataSetAddClean.TableAddressFilters);
         }
 
         private void buttonAddCleanDelete_Click(object sender, EventArgs e)
@@ -6386,6 +6332,157 @@ namespace LabelMaker
                 MessageBox.Show("Failed to delete from Address Filters - " + ex);
             }
         }
+
+        
+        private void buttonDesignDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewDesign.RowCount == 2) {
+                MessageBox.Show("Every Label needs one field or erors occur, delete the label instead");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Do you want to Delete the selected lines. If you have selected all entries then errors will occur. Please leave one line.", "Delete field lines", MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (DataGridViewCell oneCell in dataGridViewDesign.SelectedCells)
+                {
+                    if (oneCell.Selected)
+                        dataGridViewDesign.Rows.RemoveAt(oneCell.RowIndex);
+                }
+                try
+                {
+                    LabelsLabelFieldsTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelFields);
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to delete from Label Fields - " + ex);
+                }
+            }
+        }
+
+        private void buttonDesignUpdate_Click(object sender, EventArgs e)
+        {
+            int indexOfRow = int.Parse(textBoxDesignRow.Text); //gets row to update
+
+            for (int i = 1; i <= 21; i++) //move through textboxes and update appropriate column
+            {
+                TextBox curText = (TextBox)tabPageDesignFields.Controls["textBoxdesign" + i.ToString()];
+                string changeText = curText.Text.ToString().Trim();
+                try
+                {
+                    databaseLabelsDataSetLabelNames.LabelsLabelFields.Rows[indexOfRow].SetField(i, changeText);
+                }
+                catch
+                {
+                    MessageBox.Show("The line no longer exists", "Bad Line");
+                    return;
+                }
+            }
+
+            try
+            {
+                LabelsLabelFieldsTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelFields);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to update Label Field - " + ex);
+            }
+        }
+
+        private void buttonDesignAdd_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = databaseLabelsDataSetLabelNames.LabelsLabelFields.NewRow();
+            for (int i = 1; i <= 21; i++) //move through textboxes and update appropriate column
+            {
+                TextBox curText = (TextBox)tabPageDesignFields.Controls["textBoxdesign" + i.ToString()];
+                string changeText = curText.Text.ToString().Trim();
+                newRow[i] = changeText;
+            }
+            try
+            {
+                databaseLabelsDataSetLabelNames.LabelsLabelFields.Rows.Add(newRow);
+                LabelsLabelFieldsTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelFields);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to Add Label Field - " + ex);
+            }
+
+        }
+
+        private void buttonBatchLabel_Click(object sender, EventArgs e)
+        {
+            if (textBoxLabel3.Text == "True")
+            {
+                textBoxLabel3.Text = "False"; 
+            }
+            else
+            {
+                textBoxLabel3.Text = "True";
+            }
+        }
+
+        private void buttonQuickPrint_Click(object sender, EventArgs e)
+        {
+            if (textBoxCat2.Text.Trim() == "Picture")
+            {
+                MessageBox.Show("Only 'Text' labels can be QuickPrint labels", "Naughty Naughty");
+                return;
+            }
+            if (textBoxLabel4.Text == "True")
+            {
+                textBoxLabel4.Text = "False";
+            }
+            else
+            {
+                textBoxLabel4.Text = "True";
+            }
+        }
+
+        private void PaintFields()
+        {
+            string[] text = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21" };
+            string[] border = new string[] { "1", "2", "3", "4", "5", "6", "7", "12", "20", "21" };
+            string[] colourbox = new string[] { "1", "2", "3", "4", "5", "6", "7", "20", "21" };
+            string[] image = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "20", "21" };
+
+            string which = textBoxDesign3.Text.Trim();
+            switch (which)
+            {
+                case "text":
+                    highlightFields(text);
+                    break;
+                case "border":
+                    highlightFields(border);
+                    break;
+                case "colourbox":
+                    highlightFields(colourbox);
+                    break;
+                case "image":
+                    highlightFields(image);
+                    break;
+            }
+        }
+
+
+            private void highlightFields(string[] which)
+            { 
+
+                    for (int i = 0; i < 22; i++)
+            {
+                TextBox curText = (TextBox)tabPageDesignFields.Controls["textBoxDesign" + i.ToString()];
+                curText.BackColor = Color.White;
+            }
+            for (int i = 0; i < which.Length; i++)
+            {
+                TextBox curText = (TextBox)tabPageDesignFields.Controls["textBoxDesign" + which[i]];
+                curText.BackColor = Color.LemonChiffon;
+            }
+        }
+
+        
+            
+        
     }
 }
     
