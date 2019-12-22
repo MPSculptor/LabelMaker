@@ -222,7 +222,7 @@ namespace CreationUtilities
     {
         public static string[] readQueue( string[] sentData, string[] sentName, string[] moreData)
         {
-            string[] queueData = new string[34];
+            string[] queueData = new string[36];
 
             queueData[0] = sentName[0]; //Full name
             queueData[1] = moreData[2]; //qty

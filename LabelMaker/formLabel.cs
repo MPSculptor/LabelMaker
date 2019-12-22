@@ -176,6 +176,7 @@ namespace LabelMaker
                             //if text comes from queue entry, load this instead
                             textToSend = queueData[listboxNo];
                         }
+                        if (string.IsNullOrEmpty(textToSend)){ textToSend = ""; }
                         textToSend = textToSend.Trim();
                         //Work out colour
                         Color colourFont = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(sentColour));
@@ -231,6 +232,7 @@ namespace LabelMaker
                         {
                             pictureString = (defaultsString[1] + fixedValueString);
                         }
+                        pictureString = pictureString.Trim();
                         PaintImage(formGraphics, xPosd, yPosd, xSized, ySized, pictureString);
 
                         break;
