@@ -18,54 +18,7 @@ namespace LabelMaker
         {
             InitializeComponent();
 
-            //Set up the label size and shape
-            int labelWidth = int.Parse(labelData[0]);
-            int labelHeight = int.Parse(labelData[1]);
-            string widthString = labelWidth.ToString();
-            string heightString = labelHeight.ToString();
-            int finalWidth = 1;
-            int finalHeight = 1;
-
-            
-            string orientation = "portrait";
-            if (labelWidth > labelHeight)
-            {
-                orientation = "landscape";
-            }
-
-            switch (orientation)
-            {
-                case "portrait":
-                    int Ysizep = this.ClientRectangle.Height - 20;
-                    int Xsizep = Ysizep / labelHeight * labelWidth;
-                    finalHeight = Ysizep;
-                    finalWidth = Xsizep;
-                    int plusWidth = this.Width - this.ClientRectangle.Width;
-                    this.Width = Xsizep + 20 + plusWidth;
-                    break;
-
-                case "landscape":
-                    int Xsizel = this.ClientRectangle.Width - 20;
-                    int Ysizel = Xsizel / labelWidth * labelHeight;
-                    finalHeight = Ysizel;
-                    finalWidth = Xsizel;
-                    int plusHeight = this.Height - this.ClientRectangle.Height;
-                    this.Height = Ysizel + 20 + plusHeight; 
-                    break;
-            }
-            this.Text = queueData[0] + " as " + labelData[2] + " ( " + orientation + " - " + heightString + " , " + widthString + " )";
-
-            whereToNow whereTo = new whereToNow(queueData, labelData, defaultsString, finalWidth, finalHeight, "screen");
-            whereTo.BackColor = Color.White;
-
-            whereTo.Width = finalWidth;
-            whereTo.Height = finalHeight;
-
-            whereTo.Location = new Point(10, 10);
-            return;
         }
-
-
 
         private void formLabel_Load(object sender, EventArgs e)
         {
@@ -73,72 +26,30 @@ namespace LabelMaker
         }
     }
 
-
-
     public class whereToNow : Panel
     {
-        public whereToNow(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight, string printORscreen)
+        public whereToNow(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight,int marginX, int placementX, int marginY, int placementY, string printORscreen, Graphics printGraphics)
         {
-            int contentWidth = sentWidth;
-            int contentHeight = sentHeight;
-            Panel cp = this;
-
             if (printORscreen == "print")
             {
-                PrintDocument pd = new PrintDocument();
-
-                PrintDialog pDialog = new PrintDialog();
-                pDialog.Document = pd;
-                if (DialogResult.OK == pDialog.ShowDialog())
-                {
-                    pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
-                    int resolutionX = pDialog.PrinterSettings.DefaultPageSettings.PrinterResolution.X;
-                    sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width*(resolutionX/100));
-                    sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height * (resolutionX / 100));
-                    string paperSize = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.ToString();
-                    string resolution = pDialog.PrinterSettings.DefaultPageSettings.ToString();
-                    MessageBox.Show(sentWidth.ToString() + " , " + sentHeight.ToString()+" ," +paperSize+" , "+resolution );
-
-                    pd.PrintPage += (sender, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, sender, args);
-                    pd.Print();
-                }
-                pDialog.Dispose();
-            } 
-
-            this.Paint += (sender2, e2) => whereToNow_Paint(sender2, e2, queueData, labelData, defaultsString, contentWidth, contentHeight, cp, printORscreen);
-         
+                //MessageBox.Show("whereToNow - print");
+                CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, printGraphics);
+            }
+            this.Paint += (sender2, e2) => whereToNow_Paint(sender2, e2, queueData, labelData, defaultsString, sentWidth, sentHeight);
         }
 
-        private void whereToNow_Paint(object sender, PaintEventArgs e, string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight, Panel cp, string printORscreen)
+        private void whereToNow_Paint(object sender, PaintEventArgs e, string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight)
         {
-            if (printORscreen == "screen")
-            {
-                Graphics formGraphics;
-                formGraphics = CreateGraphics();
-                CreateLabel(queueData, labelData, defaultsString, contentWidth, contentHeight, formGraphics);
-                formGraphics.Dispose();
-            }
+            CreateLabel(queueData, labelData, defaultsString, contentWidth, contentHeight,0,0,0,0, e.Graphics);
         }
 
         #region ***PRINTING***
 
-
-        private void DrawImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight, object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            //MessageBox.Show("Got to DrawImage");
-            CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, e.Graphics);
-            }
-
-        public void PrintImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight)
-        {
-
-            
-        }
-
+        
 
         #endregion
 
-        public void CreateLabel(string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight, Graphics formGraphics)
+        public void CreateLabel(string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight,int marginX, int placementX,int marginY, int placementY, Graphics formGraphics)
         {
 
             //DISCOVER LABEL PARAMETERS
@@ -171,7 +82,6 @@ namespace LabelMaker
             //iterate through fields
             for (int i = 0; i < fields; i++)
             {
-
                 int jump = dataInputs;
                 int start = 2 + (jump * i);
 
@@ -203,7 +113,6 @@ namespace LabelMaker
                 string fontName = "Arial"; // Backstop value
                 if (isFontColourProfile.Value)
                 {
-                    //MessageBox.Show(labelData[start + 7] + " , " + labelData[start + 15]);
                     fontName = (labelData[start + 15]); // As label data
                     profileTextColour = ("0");
                 }
@@ -252,6 +161,9 @@ namespace LabelMaker
                 {
                     yPosd = contentHeight * yPos / 100;
                 }
+                //Adjust for printer margins
+                xPosd = xPosd - marginX + placementX;
+                yPosd = yPosd - marginY + placementY;
 
                 switch (type)
                 {
@@ -264,13 +176,16 @@ namespace LabelMaker
                             //if text comes from queue entry, load this instead
                             textToSend = queueData[listboxNo];
                         }
-
+                        if (string.IsNullOrEmpty(textToSend)){ textToSend = ""; }
+                        textToSend = textToSend.Trim();
                         //Work out colour
                         Color colourFont = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(sentColour));
                         if (!isFontColourProfile.Value)
                         {
                             colourFont = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileTextColour));
                         }
+
+                        //MessageBox.Show("Sending Text - content = " + xSized.ToString() + "," + ySized.ToString());
 
                         string[] textToSendArray = new string[1];
                         textToSendArray[0] = textToSend;
@@ -294,6 +209,7 @@ namespace LabelMaker
                         Color borderColour = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(profileBorderColour));
                         float borderWidth = float.Parse(fixedValueString);
                         borderWidth = (contentWidth * borderWidth / 100);
+                        //MessageBox.Show("Sending Border - content = " + xSized.ToString() + "," + ySized.ToString());
                         paintBorder(formGraphics, xPosd, yPosd, xSized, ySized, borderWidth, borderColour);
 
                         break;
@@ -316,6 +232,7 @@ namespace LabelMaker
                         {
                             pictureString = (defaultsString[1] + fixedValueString);
                         }
+                        pictureString = pictureString.Trim();
                         PaintImage(formGraphics, xPosd, yPosd, xSized, ySized, pictureString);
 
                         break;
@@ -350,6 +267,7 @@ namespace LabelMaker
             Pen p = new Pen(colourFont);
             Brush b = new SolidBrush(colourFont);
 
+            if (fontName == "") { fontName = "Arial"; }
             float ffontSize = fontSize;
             FontFamily fFont = new FontFamily(fontName);
             FontStyle ffontStyle = new FontStyle();
@@ -496,6 +414,7 @@ namespace LabelMaker
             for (int i = 0; i < (realNoLines); i++)
             {
                 factorToUse = factorsToUse[i];
+                if (factorToUse == 0) { factorToUse = 1; }
                 // create new font using sized data 
                 float useThisFontSize = fontSize * (float)factorToUse;
                 Font useThisFont = new Font(fontName, useThisFontSize, ffontStyle);
@@ -503,10 +422,14 @@ namespace LabelMaker
                 //find size and find positions
                 Size proposedSize = new Size(int.MaxValue, int.MaxValue);
 
-                Size textSize = TextRenderer.MeasureText(textArray[i], useThisFont);
+                //Size textSize = TextRenderer.MeasureText(textArray[i], useThisFont);
+                SizeF textSize = formGraphics.MeasureString(textArray[i], useThisFont);
                 
                 float newWidth = textSize.Width; 
                 float newHeight = textSize.Height;
+
+                //MessageBox.Show("Final Text Size -  " + newWidth.ToString() + "," + newHeight.ToString());
+
 
                 //Set horizontal position
                 float xxPosd = 0;
@@ -531,8 +454,9 @@ namespace LabelMaker
 
                 //Draw the Text on the Object
                 Point P = new Point((int)xxPosd, (int)yyPosd);
-                TextRenderer.DrawText(formGraphics, textArray[i], useThisFont, P,colourFont);//, xxPosd, yyPosd);
-            
+                //TextRenderer.DrawText(formGraphics, textArray[i], useThisFont, P,colourFont);//, xxPosd, yyPosd);
+                formGraphics.DrawString( textArray[i], useThisFont,b, P);//, xxPosd, yyPosd);
+
                 useThisFont.Dispose();
             }
             p.Dispose();
@@ -556,8 +480,9 @@ namespace LabelMaker
 
             // Measure string.
             SizeF stringSize = new SizeF();
-                        
-            stringSize = TextRenderer.MeasureText(measureString , firstFont);
+
+            //stringSize = TextRenderer.MeasureText(measureString , firstFont);
+            stringSize = formGraphics.MeasureString(measureString, firstFont);
 
             //Get sizes
             float width = stringSize.Width;
@@ -588,6 +513,7 @@ namespace LabelMaker
         {
             Pen p = new Pen(definedColour);
             p.Width = borderWidth;
+            //MessageBox.Show("Border painting at - " + xSized.ToString() + "," + ySized.ToString());
             Rectangle r = new Rectangle((int)xPosd, (int)yPosd, (int)xSized, (int)ySized);
             formGraphics.DrawRectangle(p, r);
             p.Dispose();

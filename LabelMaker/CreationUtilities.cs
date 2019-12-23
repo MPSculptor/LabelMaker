@@ -1,18 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.Drawing;
+using System.Windows.Forms;
+
+using Microsoft.VisualBasic.FileIO;
 
 namespace CreationUtilities
 
-
-
-
 {
-
-
-    
-
-
 
     //Handles all of the text manipulation routines
 
@@ -32,7 +26,7 @@ namespace CreationUtilities
             int green = (greenred / 256);
             int red = (greenred - (green * 256));
 
-            Console.WriteLine("colours - " + red + " , " + green + " , " + blue);
+            //Console.WriteLine("colours - " + red + " , " + green + " , " + blue);
 
             //convert integer to Hex value
             // value of 00 can convert to "0", so check and change
@@ -228,10 +222,10 @@ namespace CreationUtilities
     {
         public static string[] readQueue( string[] sentData, string[] sentName, string[] moreData)
         {
-            string[] queueData = new string[25];
+            string[] queueData = new string[36];
 
             queueData[0] = sentName[0]; //Full name
-            queueData[1] = "2";
+            queueData[1] = moreData[2]; //qty
             queueData[2] = moreData[3]; // price
             queueData[3] = sentData[9];
             queueData[4] = moreData[4]; // Customer Name
@@ -255,10 +249,22 @@ namespace CreationUtilities
             queueData[22] = sentData[14];
             queueData[23] = sentData[15];
             queueData[24] = "Order No. #" + moreData[5]; //Order Number
+            queueData[25] = "Shipping Name";
+            queueData[26] = "First Name";
+            queueData[27] = "Last Name";
+            queueData[28] = "Address Line 1";
+            queueData[29] = "Address Line 2";
+            queueData[30] = "Address City";
+            queueData[31] = "Address State";
+            queueData[32] = "Postcode";
+            queueData[33] = "Notes";
+
+
 
             return queueData;
         }
-        public static string[] readFile(string fileName)
+
+        public static string[] readFile(string fileName, char separator)
         {
             try
             {
@@ -271,7 +277,8 @@ namespace CreationUtilities
                 int pipeCount = 0;
                 for (int i = 0; i < readInString.Length; i++)
                 {
-                    if (readInString[i] == '|')
+                    //if (readInString[i] == '|')
+                    if (readInString[i] == separator)
                     {
                         pipeCount++;
                     }
@@ -285,7 +292,7 @@ namespace CreationUtilities
 
                 for (int i = 0; i < readInString.Length; i++)
                 {
-                    if (readInString[i] != '|')
+                    if (readInString[i] != separator)
                     {
                         addString = addString + readInString[i];
                     }
@@ -303,12 +310,28 @@ namespace CreationUtilities
             }
             catch (IOException)
             {
-
+                 MessageBox.Show("Failed to read file - ");
                 string[] outputString = new string[1];
                 return outputString;
             }
 
 
+        }
+
+       
+
+        public static string[] csvReaderHeader(string path)
+        {
+            using (TextFieldParser csvParser = new TextFieldParser(path))
+            {
+                csvParser.CommentTokens = new string[] { "#" };
+                csvParser.SetDelimiters(new string[] { "," });
+                csvParser.HasFieldsEnclosedInQuotes = true;
+                
+                // Read the row with the column names
+                string[] headers = csvParser.ReadFields();
+                return headers;
+            }
         }
 
     }

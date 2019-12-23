@@ -1,0 +1,12 @@
+This is the Database that is used by the Application
+
+Copy these first to both directories in the LabelMaker directory before publishing a new version
+as it uses the least used database each time.
+
+The program sits at: 
+
+C:\Users\Martin\AppData\Local\Apps\2.0\5P3BAB0B.XNX\KYYM98NP.ATY\labe..tion_914e1ef8d1363bf9_0001.0000_62bf5f7d2949999a
+
+The Database at:
+
+C:\Users\Martin\AppData\Local\Apps\2.0\Data\DTQWVBGO.DDG\06ZR3MZD.DG1\labe..tion_914e1ef8d1363bf9_0001.0000_62bf5f7d2949999a\Data
