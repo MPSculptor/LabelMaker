@@ -8,6 +8,8 @@ using CreationUtilities;
 using Microsoft.VisualBasic.FileIO;
 using System.Drawing.Printing;
 using System.Deployment.Application;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace LabelMaker
 {
@@ -43,6 +45,11 @@ namespace LabelMaker
 
 
             this.BackColor = Color.DarkGray;
+            updateManualTab();
+        }
+
+        private void updateManualTab()
+        { 
 
             //dataGridViewPlants.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPlants.Columns[0].Width = 50;
@@ -62,6 +69,8 @@ namespace LabelMaker
             
             // Queue Quantities
             assignQueueTotals();
+
+            tabControlMain.BringToFront();
         }
 
         #region Menu Strip Events
@@ -114,6 +123,9 @@ namespace LabelMaker
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            string[] message = { "Printing has started", "", "Please wait while labels render"};
+            FormInformation form = new FormInformation("Labels are Printing", message, 250, 150);
+            form.Show();
 
             // Determine the Queue and no. entries
             int howManyLines = 0;
@@ -139,6 +151,7 @@ namespace LabelMaker
             if (labelHeader[2] == "Text") { printAsText(labelData, whichQueue, howManyLines, defaultsString); }
             else { printAsColour(labelData, whichQueue, howManyLines, defaultsString); }
 
+            form.Dispose();
         }
 
         private void DrawImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight,int marginX, int placementX,int marginY, int placementY, object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -499,9 +512,19 @@ namespace LabelMaker
 
         #region * Main tabControl Events *
 
-        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControlMain_Click(object sender, EventArgs e)
         {
             tabControlMain.BringToFront();
+            updateManualTab();
+        }
+
+
+        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            tabControlMain.BringToFront();
+            
+
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
                 TempMakeALabel(panelLabelTabMain, "Main", "database","");
@@ -686,15 +709,15 @@ namespace LabelMaker
         private void changeFlag(int cellIndex)
         {
             int currentRow = dataGridViewPlants.CurrentRow.Index;
-            if (dataGridViewPlants.Rows[currentRow].Cells[cellIndex].Value.ToString() == "True") 
+            if (databaseLabelsDataSet.TablePlants.Rows[currentRow].ItemArray[cellIndex].ToString() == "True") 
             {
-                dataGridViewPlants.Rows[currentRow].Cells[cellIndex].Value = false;
+                databaseLabelsDataSet.TablePlants.Rows[currentRow].SetField(cellIndex, "False");
             }
             else
             {
-                dataGridViewPlants.Rows[currentRow].Cells[cellIndex].Value = true;
+                databaseLabelsDataSet.TablePlants.Rows[currentRow].SetField(cellIndex, "True");
             }
-                try
+            try
                 {
                     tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
                     MessageBox.Show("Updated Database Entry");
@@ -5988,8 +6011,7 @@ namespace LabelMaker
 
         private void button8_Click(object sender, EventArgs e)
         {
-
-            string[] message = { "Set to true or false" ,"","Determines whether the font is printed in the","profile colour (true) or the colour from","the value in box 22 (false)"};
+            string[] message = { "Set to true or false" ,"","Determines whether the font is printed in the","profile colour (false) or the colour from","the value in box 22 (true)"};
             FormInformation form = new FormInformation("Font Colour", message,250,150);
             form.Show();
         }
@@ -6064,6 +6086,11 @@ namespace LabelMaker
 
         private void buttonRefreshPreviews_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(comboBoxLabelsForDesign.Text))
+            {
+                MessageBox.Show("There is no label selected", "Choose a label first");
+                return;
+            }
             TempMakeALabel(panelDesignPreview, "Design", "database", "");
             String[] labelData = CollectDesignLabelData();
             makeLabelFieldsPreview(panelDesignFields, labelData);
@@ -6479,10 +6506,201 @@ namespace LabelMaker
                 curText.BackColor = Color.LemonChiffon;
             }
         }
+        #region  Updating Label Types
 
-        
+        private void button18_Click(object sender, EventArgs e)
+        {
+            // Updating a Label
+            MessageBox.Show("This will not change the Label Name, just the Label details", "Update Label");
+            int rowIndex = int.Parse(textBoxLabel0.Text);
+
+            //LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
+            for (int i = 2; i < 5; i++)
+            {
+                TextBox curText = (TextBox)groupBoxLabelNames.Controls["textBoxLabel" + i.ToString()];
+                databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[rowIndex].BeginEdit();
+                databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[rowIndex].SetField(i, curText.Text);
+                databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[rowIndex].EndEdit();
+            }
+            try
+            {
+                LabelsLabelNamesTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelNames);
+            }
+            catch
+            {
+                MessageBox.Show("Failed to Update Label Description");
+            }
+
+        }
+
+        #endregion
+
+        private void buttonAddNewLabel_Click(object sender, EventArgs e)
+        {
+            Boolean create = true;
+            for (int i = 0; i< databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Count; i++)
+            {
+                if (databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[i].ItemArray[1].ToString() == textBoxLabel1.Text) { create = false; }
+            }
+            if (create)
+            {
+                Boolean succeed = true;
+                DataRow newRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].NewRow();
+                for (int i = 1; i < 5; i++)
+                {
+                    TextBox curText = (TextBox)groupBoxLabelNames.Controls["textBoxLabel" + i.ToString()];
+                    newRow[i] = curText.Text;
+                }
+                try {
+                    databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Add(newRow);
+                    LabelsLabelNamesTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelNames);
+                }
+                catch { MessageBox.Show("Failed to Add " + textBoxLabel1.Text, "Fail");  succeed = false; }
+
+                if (succeed)
+                {
+                    DataRow newField = databaseLabelsDataSetLabelNames.Tables["LabelsLabelFields"].NewRow();
+
+                    newField[1] = textBoxLabel1.Text;
+                    newField[2] = "Trial Text";
+                    newField[3] = "text";
+                    newField[4] = "50";
+                    newField[5] = "50";
+                    newField[6] = "0";
+                    newField[7] = "0";
+                    newField[8] = "True";
+                    newField[9] = "True";
+                    newField[10] = "True";
+                    newField[11] = "0";
+                    newField[12] = "";
+                    newField[13] = "2";
+                    newField[14] = "center";
+                    newField[15] = "True";
+                    newField[16] = "Arial";
+                    newField[17] = "10";
+                    newField[18] = "True";
+                    newField[19] = "False";
+                    newField[20] = "0";
+                    newField[21] = "1";
+
+                    try {
+                        databaseLabelsDataSetLabelNames.LabelsLabelFields.Rows.Add(newField);
+                        LabelsLabelFieldsTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelFields);
+                    }
+                    catch { MessageBox.Show("Failed to Add " + textBoxLabel1.Text+ "sample field", "Fail"); }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sorry, Label already exists", "Existing Label");
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            string[] message = { "Add a Label", "", " - Adds a new Label with the label name","typed as a child of the current Category.","", "It will create 1 field within this label.",
+                                 "","","Update a Label",""," - Updates just the last two fields",
+                                 "","","Delete a Label","","This deletes the label and ALL of its fields","Use with Caution !"};
+            FormInformation form = new FormInformation("New Label", message, 300, 350);
+            form.Show();
+        }
+
+        private void buttonDuplicateLabel_Click(object sender, EventArgs e)
+        {
+            string newName = textBoxDuplicatedLabel.Text;
+            string oldName = textBoxLabel1.Text;
+
+            Boolean create = true;
+            for (int i = 0; i < databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Count; i++)
+            {
+                if (databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows[i].ItemArray[1].ToString() == newName) { create = false; }
+            }
+            if (create)
+            {
+                Boolean succeed = true;
+                DataRow newRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].NewRow();
+                newRow[1] = newName;
+                for (int i = 2; i < 5; i++)
+                {
+                    TextBox curText = (TextBox)groupBoxLabelNames.Controls["textBoxLabel" + i.ToString()];
+                    newRow[i] = curText.Text;
+                }
+                try
+                {
+                    databaseLabelsDataSetLabelNames.LabelsLabelNames.Rows.Add(newRow);
+                    LabelsLabelNamesTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelNames);
+                }
+                catch { MessageBox.Show("Failed to Add " + textBoxLabel1.Text, "Fail"); succeed = false; }
+                if (succeed)
+                {
+                    //Add fields only if label created
+                    LabelsLabelFieldsTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelFields, oldName);
+                    int rowCount = databaseLabelsDataSetLabelNames.LabelsLabelFields.Rows.Count;
+                    for (int i=0;i< rowCount; i++)
+                    {
+                        DataRow newField = databaseLabelsDataSetLabelNames.Tables["LabelsLabelFields"].NewRow();
+
+                        newField[1] = newName;
+                        for (int j = 2; j < 22; j++)
+                        {
+                            newField[j] = databaseLabelsDataSetLabelNames.Tables["LabelsLabelFields"].Rows[i].ItemArray[j];
+                        }
+                        try
+                        {
+                            databaseLabelsDataSetLabelNames.LabelsLabelFields.Rows.Add(newField);
+                            LabelsLabelFieldsTableAdapter.Update(databaseLabelsDataSetLabelNames.LabelsLabelFields);
+                        }
+                        catch { MessageBox.Show("Failed to Add " + textBoxLabel1.Text + "sample field", "Fail"); }
+                    }
+                    MessageBox.Show(newName + " Created successfully", "New Label");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Sorry, Label already exists", "Existing Label");
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            string[] message = { "Altering Labels works live on the database.", "", "If you want to experiment, duplicate your","label. Then experiment with this and when you are ready","alter the fields so that they refer to the label", "you want to work on."
+                                 };
+            FormInformation form = new FormInformation("Altering Labels", message, 350, 250);
+            form.Show();
+        }
+
+        private void backupToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // read connectionstring from config file
+            var connectionString = ConfigurationManager.ConnectionStrings[1].ConnectionString;
+
+            string backupFolder = Application.UserAppDataPath+"\\";
+
+            var sqlConStrBuilder = new SqlConnectionStringBuilder(connectionString);
+
+            // set backupfilename (you will get something like: "C:/temp/MyDatabase-2013-12-07.bak")
+            var backupFileName = String.Format("{0}{1}-{2}.bak",
+                backupFolder, "DatabaseBackup",
+                DateTime.Now.ToString("yyyy-MM-dd"));
+
+            using (var connection = new SqlConnection(sqlConStrBuilder.ConnectionString))
+            {
+                var query = String.Format("BACKUP DATABASE {0} TO DISK='{1}'",
+                    "DatabaseLabels.mdf", backupFileName);
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void appPathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(ApplicationDeployment.CurrentDeployment.DataDirectory + " , "+ Application.UserAppDataPath);
             
-        
+        }
     }
 }
     

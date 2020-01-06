@@ -692,9 +692,9 @@
             this.panelDesignFields = new System.Windows.Forms.Panel();
             this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.groupBoxLabelNames = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.buttonUpdateLabelDesign = new System.Windows.Forms.Button();
+            this.buttonDeleteALabel = new System.Windows.Forms.Button();
+            this.buttonAddNewLabel = new System.Windows.Forms.Button();
             this.buttonQuickPrint = new System.Windows.Forms.Button();
             this.buttonBatchLabel = new System.Windows.Forms.Button();
             this.label128 = new System.Windows.Forms.Label();
@@ -832,6 +832,16 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
+            this.button16 = new System.Windows.Forms.Button();
+            this.buttonDuplicateLabel = new System.Windows.Forms.Button();
+            this.textBoxDuplicatedLabel = new System.Windows.Forms.TextBox();
+            this.label129 = new System.Windows.Forms.Label();
+            this.label168 = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -1725,12 +1735,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AllowDrop = true;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.profilesToolStripMenuItem2,
             this.toolsToolStripMenuItem,
             this.queueToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.backupToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1534, 24);
@@ -1806,6 +1818,8 @@
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appPathToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
@@ -4900,6 +4914,7 @@
             this.tabControlMain.Size = new System.Drawing.Size(1080, 818);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.SelectedIndexChanged += new System.EventHandler(this.tabControlMain_SelectedIndexChanged);
+            this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
             // 
             // tabPageQuickPrint
             // 
@@ -6322,6 +6337,9 @@
             // 
             // tabPageDesignFields
             // 
+            this.tabPageDesignFields.BackColor = System.Drawing.Color.White;
+            this.tabPageDesignFields.Controls.Add(this.button17);
+            this.tabPageDesignFields.Controls.Add(this.label168);
             this.tabPageDesignFields.Controls.Add(this.label167);
             this.tabPageDesignFields.Controls.Add(this.textBoxDesignRow);
             this.tabPageDesignFields.Controls.Add(this.label166);
@@ -6412,7 +6430,6 @@
             this.tabPageDesignFields.Size = new System.Drawing.Size(1073, 780);
             this.tabPageDesignFields.TabIndex = 3;
             this.tabPageDesignFields.Text = "   2. Label Design   ";
-            this.tabPageDesignFields.UseVisualStyleBackColor = true;
             // 
             // label167
             // 
@@ -6434,36 +6451,36 @@
             // label166
             // 
             this.label166.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label166.Location = new System.Drawing.Point(417, 359);
+            this.label166.Location = new System.Drawing.Point(386, 315);
             this.label166.Name = "label166";
-            this.label166.Size = new System.Drawing.Size(82, 61);
+            this.label166.Size = new System.Drawing.Size(110, 57);
             this.label166.TabIndex = 104;
-            this.label166.Text = "Click here to amend this line to the values to the left";
+            this.label166.Text = "Click here to amend this label field to the values to the left";
             this.label166.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label165
             // 
             this.label165.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label165.Location = new System.Drawing.Point(417, 180);
+            this.label165.Location = new System.Drawing.Point(378, 182);
             this.label165.Name = "label165";
-            this.label165.Size = new System.Drawing.Size(82, 69);
+            this.label165.Size = new System.Drawing.Size(118, 69);
             this.label165.TabIndex = 103;
-            this.label165.Text = "Click here to add the description to the left to the Database";
+            this.label165.Text = "Click here to add the description to the left as a New label field";
             this.label165.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label164
             // 
             this.label164.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label164.Location = new System.Drawing.Point(417, 525);
+            this.label164.Location = new System.Drawing.Point(381, 439);
             this.label164.Name = "label164";
-            this.label164.Size = new System.Drawing.Size(82, 69);
+            this.label164.Size = new System.Drawing.Size(115, 61);
             this.label164.TabIndex = 102;
-            this.label164.Text = "To delete, select lines in the grid above and click here";
+            this.label164.Text = "To delete; Select lines in the grid above and click here";
             this.label164.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonDesignDelete
             // 
-            this.buttonDesignDelete.Location = new System.Drawing.Point(417, 597);
+            this.buttonDesignDelete.Location = new System.Drawing.Point(398, 503);
             this.buttonDesignDelete.Name = "buttonDesignDelete";
             this.buttonDesignDelete.Size = new System.Drawing.Size(82, 64);
             this.buttonDesignDelete.TabIndex = 101;
@@ -6473,7 +6490,7 @@
             // 
             // buttonDesignUpdate
             // 
-            this.buttonDesignUpdate.Location = new System.Drawing.Point(417, 424);
+            this.buttonDesignUpdate.Location = new System.Drawing.Point(398, 375);
             this.buttonDesignUpdate.Name = "buttonDesignUpdate";
             this.buttonDesignUpdate.Size = new System.Drawing.Size(82, 53);
             this.buttonDesignUpdate.TabIndex = 99;
@@ -6483,7 +6500,7 @@
             // 
             // buttonDesignAdd
             // 
-            this.buttonDesignAdd.Location = new System.Drawing.Point(417, 252);
+            this.buttonDesignAdd.Location = new System.Drawing.Point(398, 242);
             this.buttonDesignAdd.Name = "buttonDesignAdd";
             this.buttonDesignAdd.Size = new System.Drawing.Size(82, 58);
             this.buttonDesignAdd.TabIndex = 98;
@@ -7367,6 +7384,7 @@
             // 
             // tabPageCategories
             // 
+            this.tabPageCategories.BackColor = System.Drawing.Color.White;
             this.tabPageCategories.Controls.Add(this.groupBoxLabelNames);
             this.tabPageCategories.Controls.Add(this.label111);
             this.tabPageCategories.Controls.Add(this.panelLabelCategoryPreview);
@@ -7417,13 +7435,16 @@
             this.tabPageCategories.Size = new System.Drawing.Size(1073, 780);
             this.tabPageCategories.TabIndex = 0;
             this.tabPageCategories.Text = "   1. Label Categories   ";
-            this.tabPageCategories.UseVisualStyleBackColor = true;
             // 
             // groupBoxLabelNames
             // 
-            this.groupBoxLabelNames.Controls.Add(this.button18);
-            this.groupBoxLabelNames.Controls.Add(this.button17);
+            this.groupBoxLabelNames.Controls.Add(this.label129);
+            this.groupBoxLabelNames.Controls.Add(this.textBoxDuplicatedLabel);
+            this.groupBoxLabelNames.Controls.Add(this.buttonDuplicateLabel);
             this.groupBoxLabelNames.Controls.Add(this.button16);
+            this.groupBoxLabelNames.Controls.Add(this.buttonUpdateLabelDesign);
+            this.groupBoxLabelNames.Controls.Add(this.buttonDeleteALabel);
+            this.groupBoxLabelNames.Controls.Add(this.buttonAddNewLabel);
             this.groupBoxLabelNames.Controls.Add(this.buttonQuickPrint);
             this.groupBoxLabelNames.Controls.Add(this.buttonBatchLabel);
             this.groupBoxLabelNames.Controls.Add(this.label128);
@@ -7438,39 +7459,41 @@
             this.groupBoxLabelNames.Controls.Add(this.label125);
             this.groupBoxLabelNames.Controls.Add(this.label124);
             this.groupBoxLabelNames.Controls.Add(this.label121);
-            this.groupBoxLabelNames.Location = new System.Drawing.Point(530, 549);
+            this.groupBoxLabelNames.Location = new System.Drawing.Point(491, 549);
             this.groupBoxLabelNames.Name = "groupBoxLabelNames";
             this.groupBoxLabelNames.Size = new System.Drawing.Size(519, 218);
             this.groupBoxLabelNames.TabIndex = 43;
             this.groupBoxLabelNames.TabStop = false;
             this.groupBoxLabelNames.Text = "Label Designs";
             // 
-            // button18
+            // buttonUpdateLabelDesign
             // 
-            this.button18.Location = new System.Drawing.Point(233, 173);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(123, 26);
-            this.button18.TabIndex = 17;
-            this.button18.Text = "Update this Label";
-            this.button18.UseVisualStyleBackColor = true;
+            this.buttonUpdateLabelDesign.Location = new System.Drawing.Point(233, 152);
+            this.buttonUpdateLabelDesign.Name = "buttonUpdateLabelDesign";
+            this.buttonUpdateLabelDesign.Size = new System.Drawing.Size(123, 26);
+            this.buttonUpdateLabelDesign.TabIndex = 17;
+            this.buttonUpdateLabelDesign.Text = "Update this Label";
+            this.buttonUpdateLabelDesign.UseVisualStyleBackColor = true;
+            this.buttonUpdateLabelDesign.Click += new System.EventHandler(this.button18_Click);
             // 
-            // button17
+            // buttonDeleteALabel
             // 
-            this.button17.Location = new System.Drawing.Point(372, 172);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(123, 26);
-            this.button17.TabIndex = 16;
-            this.button17.Text = "Delete this Label";
-            this.button17.UseVisualStyleBackColor = true;
+            this.buttonDeleteALabel.Location = new System.Drawing.Point(372, 148);
+            this.buttonDeleteALabel.Name = "buttonDeleteALabel";
+            this.buttonDeleteALabel.Size = new System.Drawing.Size(123, 26);
+            this.buttonDeleteALabel.TabIndex = 16;
+            this.buttonDeleteALabel.Text = "Delete this Label";
+            this.buttonDeleteALabel.UseVisualStyleBackColor = true;
             // 
-            // button16
+            // buttonAddNewLabel
             // 
-            this.button16.Location = new System.Drawing.Point(89, 173);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(123, 26);
-            this.button16.TabIndex = 15;
-            this.button16.Text = "Add a New Label";
-            this.button16.UseVisualStyleBackColor = true;
+            this.buttonAddNewLabel.Location = new System.Drawing.Point(90, 152);
+            this.buttonAddNewLabel.Name = "buttonAddNewLabel";
+            this.buttonAddNewLabel.Size = new System.Drawing.Size(123, 26);
+            this.buttonAddNewLabel.TabIndex = 15;
+            this.buttonAddNewLabel.Text = "Add a New Label";
+            this.buttonAddNewLabel.UseVisualStyleBackColor = true;
+            this.buttonAddNewLabel.Click += new System.EventHandler(this.buttonAddNewLabel_Click);
             // 
             // buttonQuickPrint
             // 
@@ -8117,6 +8140,7 @@
             // 
             // tabPageDefaults
             // 
+            this.tabPageDefaults.BackColor = System.Drawing.Color.White;
             this.tabPageDefaults.Controls.Add(this.label163);
             this.tabPageDefaults.Controls.Add(this.textBoxAddClean);
             this.tabPageDefaults.Controls.Add(this.buttonAddCleanDelete);
@@ -8162,7 +8186,6 @@
             this.tabPageDefaults.Size = new System.Drawing.Size(1073, 780);
             this.tabPageDefaults.TabIndex = 1;
             this.tabPageDefaults.Text = "   Default Settings   ";
-            this.tabPageDefaults.UseVisualStyleBackColor = true;
             // 
             // label163
             // 
@@ -8669,14 +8692,101 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.White;
+            this.button16.BackgroundImage = global::LabelMaker.Properties.Resources.info;
+            this.button16.Location = new System.Drawing.Point(51, 174);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(23, 23);
+            this.button16.TabIndex = 88;
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // buttonDuplicateLabel
+            // 
+            this.buttonDuplicateLabel.Location = new System.Drawing.Point(90, 184);
+            this.buttonDuplicateLabel.Name = "buttonDuplicateLabel";
+            this.buttonDuplicateLabel.Size = new System.Drawing.Size(123, 26);
+            this.buttonDuplicateLabel.TabIndex = 89;
+            this.buttonDuplicateLabel.Text = "Duplicate this Label";
+            this.buttonDuplicateLabel.UseVisualStyleBackColor = true;
+            this.buttonDuplicateLabel.Click += new System.EventHandler(this.buttonDuplicateLabel_Click);
+            // 
+            // textBoxDuplicatedLabel
+            // 
+            this.textBoxDuplicatedLabel.Location = new System.Drawing.Point(233, 188);
+            this.textBoxDuplicatedLabel.Name = "textBoxDuplicatedLabel";
+            this.textBoxDuplicatedLabel.Size = new System.Drawing.Size(123, 20);
+            this.textBoxDuplicatedLabel.TabIndex = 90;
+            // 
+            // label129
+            // 
+            this.label129.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label129.Location = new System.Drawing.Point(362, 188);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(141, 23);
+            this.label129.TabIndex = 91;
+            this.label129.Text = "Name for Duplicated Label";
+            // 
+            // label168
+            // 
+            this.label168.AutoSize = true;
+            this.label168.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label168.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label168.Location = new System.Drawing.Point(27, 744);
+            this.label168.Name = "label168";
+            this.label168.Size = new System.Drawing.Size(114, 20);
+            this.label168.TabIndex = 107;
+            this.label168.Text = "Altering Labels";
+            // 
+            // button17
+            // 
+            this.button17.Image = global::LabelMaker.Properties.Resources.info;
+            this.button17.Location = new System.Drawing.Point(140, 741);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(23, 23);
+            this.button17.TabIndex = 108;
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupToolStripMenuItem1,
+            this.restoreToolStripMenuItem});
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.backupToolStripMenuItem.Text = "Backup";
+            // 
+            // backupToolStripMenuItem1
+            // 
+            this.backupToolStripMenuItem1.Name = "backupToolStripMenuItem1";
+            this.backupToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.backupToolStripMenuItem1.Text = "Backup";
+            this.backupToolStripMenuItem1.Click += new System.EventHandler(this.backupToolStripMenuItem1_Click);
+            // 
+            // restoreToolStripMenuItem
+            // 
+            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.restoreToolStripMenuItem.Text = "Restore";
+            // 
+            // appPathToolStripMenuItem
+            // 
+            this.appPathToolStripMenuItem.Name = "appPathToolStripMenuItem";
+            this.appPathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.appPathToolStripMenuItem.Text = "App Path";
+            this.appPathToolStripMenuItem.Click += new System.EventHandler(this.appPathToolStripMenuItem_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1534, 861);
-            this.Controls.Add(this.tabControlDesign);
             this.Controls.Add(this.tabControlMain);
+            this.Controls.Add(this.tabControlDesign);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
@@ -9622,9 +9732,19 @@
         private System.Windows.Forms.TextBox textBoxDesignRow;
         private System.Windows.Forms.Button buttonQuickPrint;
         private System.Windows.Forms.Button buttonBatchLabel;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button buttonUpdateLabelDesign;
+        private System.Windows.Forms.Button buttonDeleteALabel;
+        private System.Windows.Forms.Button buttonAddNewLabel;
         private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button buttonDuplicateLabel;
+        private System.Windows.Forms.Label label129;
+        private System.Windows.Forms.TextBox textBoxDuplicatedLabel;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label168;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appPathToolStripMenuItem;
     }
 }
 
