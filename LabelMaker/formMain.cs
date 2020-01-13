@@ -63,10 +63,12 @@ namespace LabelMaker
             applyDefaultSetting();
             updateMainDetails(0);
             getLabelName();
+            changeButtonColours();
             indexNavigationButtons();
             initialiseLabelStockGrid();
             initialiseMissingPictureGrid();
             
+
             // Queue Quantities
             assignQueueTotals();
 
@@ -122,6 +124,16 @@ namespace LabelMaker
         #region Printing Routines
 
         private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            doThePrinting();
+        }
+
+        private void buttonAutoPrint_Click(object sender, EventArgs e)
+        {
+            doThePrinting();
+        }
+
+        private void doThePrinting()
         {
             string[] message = { "Printing has started", "", "Please wait while labels render"};
             FormInformation form = new FormInformation("Labels are Printing", message, 250, 150);
@@ -828,6 +840,7 @@ namespace LabelMaker
             labelData[1] = labelHeaderData[7];
             fillPrinterDetails();
             TempMakeALabel(panelLabelPreview, "Choice", "database","");
+            changeButtonColours();
             
         }
 
@@ -2979,14 +2992,41 @@ namespace LabelMaker
 
         #region * Queue tabControl Events *
 
+        private void changeButtonColours()
+        {
+            string[] defaults = getDefaultSettings(); 
+            Color newColour = new Color();
+            newColour = Color.Orange;
+            if (tabControlQueue.SelectedTab == tabPageColourQueue)
+            {
+                if (comboBoxLabelName.Text.Trim() == defaults[3].Trim())
+                {
+                    newColour = Color.IndianRed;
+                }
+            }
+            else
+            {
+                if (comboBoxLabelName.Text.Trim() == defaults[2].Trim())
+                {
+                    newColour = Color.CadetBlue;
+                }
+            }
+            buttonPrint.BackColor = newColour;
+            buttonAutoPrint.BackColor = newColour;
+        }
+
+
         private void tabControlQueue_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+
             if (tabControlMain.SelectedTab == tabPageQueueUtilities)
             {
                 fillQueueUtilitiesTab();
             }
 
             getLabelName();
+            changeButtonColours();
 
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
@@ -3886,7 +3926,7 @@ namespace LabelMaker
             {
                 comboBoxLabelName.Text = defaults[2];
             }
-            else
+            else if (tabControlQueue.SelectedTab == tabPageColourQueue)
             {
                 comboBoxLabelName.Text = defaults[3];
             }
@@ -5385,6 +5425,27 @@ namespace LabelMaker
         {
             tabControlDesign.BringToFront();
 
+            if (tabControlDesign.SelectedTab == tabPageAppData)
+            {
+                richTextBoxAppData.Clear();
+
+                try
+                {
+                    richTextBoxAppData.AppendText("ApplicationDeployment.CurrentDeployment.CurrentVersion" + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText(ApplicationDeployment.CurrentDeployment.CurrentVersion + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText("ApplicationDeployment.CurrentDeployment.ActivationUri" + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText(ApplicationDeployment.CurrentDeployment.ActivationUri + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText("ApplicationDeployment.CurrentDeployment.DataDirectory" + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText(ApplicationDeployment.CurrentDeployment.DataDirectory + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText("Application.UserAppDataPath" + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText(Application.UserAppDataPath + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                }
+                catch
+                {
+                    MessageBox.Show("Can't fill in data as this is not a deployed version", "No data available");
+                }
+            }
+
             if (tabControlDesign.SelectedTab == tabPageCategories)
             {
                 LabelsLabelCategoriesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelCategories);
@@ -6701,6 +6762,8 @@ namespace LabelMaker
             MessageBox.Show(ApplicationDeployment.CurrentDeployment.DataDirectory + " , "+ Application.UserAppDataPath);
             
         }
+
+        
     }
 }
     

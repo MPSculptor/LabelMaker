@@ -140,6 +140,10 @@
             this.checkForLabelStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForMissingPicturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPageLabelProfiles = new System.Windows.Forms.TabPage();
             this.label74 = new System.Windows.Forms.Label();
@@ -165,6 +169,7 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.buttonAutoPrint = new System.Windows.Forms.Button();
             this.checkBoxCorrectAddress = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.radioButtonAddress2 = new System.Windows.Forms.RadioButton();
@@ -581,6 +586,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlDesign = new System.Windows.Forms.TabControl();
             this.tabPageDesignFields = new System.Windows.Forms.TabPage();
+            this.button17 = new System.Windows.Forms.Button();
+            this.label168 = new System.Windows.Forms.Label();
             this.label167 = new System.Windows.Forms.Label();
             this.textBoxDesignRow = new System.Windows.Forms.TextBox();
             this.label166 = new System.Windows.Forms.Label();
@@ -692,6 +699,10 @@
             this.panelDesignFields = new System.Windows.Forms.Panel();
             this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.groupBoxLabelNames = new System.Windows.Forms.GroupBox();
+            this.label129 = new System.Windows.Forms.Label();
+            this.textBoxDuplicatedLabel = new System.Windows.Forms.TextBox();
+            this.buttonDuplicateLabel = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
             this.buttonUpdateLabelDesign = new System.Windows.Forms.Button();
             this.buttonDeleteALabel = new System.Windows.Forms.Button();
             this.buttonAddNewLabel = new System.Windows.Forms.Button();
@@ -832,16 +843,8 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.button16 = new System.Windows.Forms.Button();
-            this.buttonDuplicateLabel = new System.Windows.Forms.Button();
-            this.textBoxDuplicatedLabel = new System.Windows.Forms.TextBox();
-            this.label129 = new System.Windows.Forms.Label();
-            this.label168 = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backupToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPageAppData = new System.Windows.Forms.TabPage();
+            this.richTextBoxAppData = new System.Windows.Forms.RichTextBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -936,6 +939,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
+            this.tabPageAppData.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -1825,6 +1829,35 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // appPathToolStripMenuItem
+            // 
+            this.appPathToolStripMenuItem.Name = "appPathToolStripMenuItem";
+            this.appPathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.appPathToolStripMenuItem.Text = "App Path";
+            this.appPathToolStripMenuItem.Click += new System.EventHandler(this.appPathToolStripMenuItem_Click);
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupToolStripMenuItem1,
+            this.restoreToolStripMenuItem});
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.backupToolStripMenuItem.Text = "Backup";
+            // 
+            // backupToolStripMenuItem1
+            // 
+            this.backupToolStripMenuItem1.Name = "backupToolStripMenuItem1";
+            this.backupToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.backupToolStripMenuItem1.Text = "Backup";
+            this.backupToolStripMenuItem1.Click += new System.EventHandler(this.backupToolStripMenuItem1_Click);
+            // 
+            // restoreToolStripMenuItem
+            // 
+            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.restoreToolStripMenuItem.Text = "Restore";
+            // 
             // fillByToolStripButton
             // 
             this.fillByToolStripButton.Name = "fillByToolStripButton";
@@ -2036,6 +2069,7 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.buttonAutoPrint);
             this.tabPageAuto.Controls.Add(this.checkBoxCorrectAddress);
             this.tabPageAuto.Controls.Add(this.panel2);
             this.tabPageAuto.Controls.Add(this.buttonLockPlants);
@@ -2066,6 +2100,16 @@
             this.tabPageAuto.TabIndex = 1;
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
+            // 
+            // buttonAutoPrint
+            // 
+            this.buttonAutoPrint.Location = new System.Drawing.Point(926, 725);
+            this.buttonAutoPrint.Name = "buttonAutoPrint";
+            this.buttonAutoPrint.Size = new System.Drawing.Size(140, 52);
+            this.buttonAutoPrint.TabIndex = 26;
+            this.buttonAutoPrint.Text = "Print Queue";
+            this.buttonAutoPrint.UseVisualStyleBackColor = true;
+            this.buttonAutoPrint.Click += new System.EventHandler(this.buttonAutoPrint_Click);
             // 
             // checkBoxCorrectAddress
             // 
@@ -2263,7 +2307,7 @@
             this.listBoxAuto.FormattingEnabled = true;
             this.listBoxAuto.Location = new System.Drawing.Point(926, 87);
             this.listBoxAuto.Name = "listBoxAuto";
-            this.listBoxAuto.Size = new System.Drawing.Size(143, 693);
+            this.listBoxAuto.Size = new System.Drawing.Size(143, 628);
             this.listBoxAuto.TabIndex = 10;
             this.listBoxAuto.Click += new System.EventHandler(this.listBoxAuto_Click);
             // 
@@ -6327,6 +6371,7 @@
             this.tabControlDesign.Controls.Add(this.tabPageDesignFields);
             this.tabControlDesign.Controls.Add(this.tabPageCategories);
             this.tabControlDesign.Controls.Add(this.tabPageDefaults);
+            this.tabControlDesign.Controls.Add(this.tabPageAppData);
             this.tabControlDesign.Location = new System.Drawing.Point(12, 62);
             this.tabControlDesign.Multiline = true;
             this.tabControlDesign.Name = "tabControlDesign";
@@ -6430,6 +6475,27 @@
             this.tabPageDesignFields.Size = new System.Drawing.Size(1073, 780);
             this.tabPageDesignFields.TabIndex = 3;
             this.tabPageDesignFields.Text = "   2. Label Design   ";
+            // 
+            // button17
+            // 
+            this.button17.Image = global::LabelMaker.Properties.Resources.info;
+            this.button17.Location = new System.Drawing.Point(140, 741);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(23, 23);
+            this.button17.TabIndex = 108;
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // label168
+            // 
+            this.label168.AutoSize = true;
+            this.label168.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label168.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label168.Location = new System.Drawing.Point(27, 744);
+            this.label168.Name = "label168";
+            this.label168.Size = new System.Drawing.Size(114, 20);
+            this.label168.TabIndex = 107;
+            this.label168.Text = "Altering Labels";
             // 
             // label167
             // 
@@ -7466,6 +7532,43 @@
             this.groupBoxLabelNames.TabStop = false;
             this.groupBoxLabelNames.Text = "Label Designs";
             // 
+            // label129
+            // 
+            this.label129.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label129.Location = new System.Drawing.Point(362, 188);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(141, 23);
+            this.label129.TabIndex = 91;
+            this.label129.Text = "Name for Duplicated Label";
+            // 
+            // textBoxDuplicatedLabel
+            // 
+            this.textBoxDuplicatedLabel.Location = new System.Drawing.Point(233, 188);
+            this.textBoxDuplicatedLabel.Name = "textBoxDuplicatedLabel";
+            this.textBoxDuplicatedLabel.Size = new System.Drawing.Size(123, 20);
+            this.textBoxDuplicatedLabel.TabIndex = 90;
+            // 
+            // buttonDuplicateLabel
+            // 
+            this.buttonDuplicateLabel.Location = new System.Drawing.Point(90, 184);
+            this.buttonDuplicateLabel.Name = "buttonDuplicateLabel";
+            this.buttonDuplicateLabel.Size = new System.Drawing.Size(123, 26);
+            this.buttonDuplicateLabel.TabIndex = 89;
+            this.buttonDuplicateLabel.Text = "Duplicate this Label";
+            this.buttonDuplicateLabel.UseVisualStyleBackColor = true;
+            this.buttonDuplicateLabel.Click += new System.EventHandler(this.buttonDuplicateLabel_Click);
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.White;
+            this.button16.BackgroundImage = global::LabelMaker.Properties.Resources.info;
+            this.button16.Location = new System.Drawing.Point(51, 174);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(23, 23);
+            this.button16.TabIndex = 88;
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
             // buttonUpdateLabelDesign
             // 
             this.buttonUpdateLabelDesign.Location = new System.Drawing.Point(233, 152);
@@ -8270,7 +8373,7 @@
             // 
             // buttonCorrectAddresses
             // 
-            this.buttonCorrectAddresses.Location = new System.Drawing.Point(468, 437);
+            this.buttonCorrectAddresses.Location = new System.Drawing.Point(398, 404);
             this.buttonCorrectAddresses.Name = "buttonCorrectAddresses";
             this.buttonCorrectAddresses.Size = new System.Drawing.Size(75, 23);
             this.buttonCorrectAddresses.TabIndex = 55;
@@ -8281,7 +8384,7 @@
             // textBoxDefaultsCorrectAdd
             // 
             this.textBoxDefaultsCorrectAdd.Enabled = false;
-            this.textBoxDefaultsCorrectAdd.Location = new System.Drawing.Point(363, 440);
+            this.textBoxDefaultsCorrectAdd.Location = new System.Drawing.Point(293, 407);
             this.textBoxDefaultsCorrectAdd.Name = "textBoxDefaultsCorrectAdd";
             this.textBoxDefaultsCorrectAdd.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsCorrectAdd.TabIndex = 54;
@@ -8289,7 +8392,7 @@
             // label130
             // 
             this.label130.AutoSize = true;
-            this.label130.Location = new System.Drawing.Point(187, 443);
+            this.label130.Location = new System.Drawing.Point(117, 410);
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(164, 13);
             this.label130.TabIndex = 53;
@@ -8297,7 +8400,7 @@
             // 
             // buttonUpdateDefaults
             // 
-            this.buttonUpdateDefaults.Location = new System.Drawing.Point(363, 488);
+            this.buttonUpdateDefaults.Location = new System.Drawing.Point(293, 455);
             this.buttonUpdateDefaults.Name = "buttonUpdateDefaults";
             this.buttonUpdateDefaults.Size = new System.Drawing.Size(180, 48);
             this.buttonUpdateDefaults.TabIndex = 52;
@@ -8308,7 +8411,7 @@
             // comboBoxColourLabel
             // 
             this.comboBoxColourLabel.FormattingEnabled = true;
-            this.comboBoxColourLabel.Location = new System.Drawing.Point(808, 238);
+            this.comboBoxColourLabel.Location = new System.Drawing.Point(537, 207);
             this.comboBoxColourLabel.Name = "comboBoxColourLabel";
             this.comboBoxColourLabel.Size = new System.Drawing.Size(185, 21);
             this.comboBoxColourLabel.TabIndex = 51;
@@ -8318,7 +8421,7 @@
             // comboBoxMainLabel
             // 
             this.comboBoxMainLabel.FormattingEnabled = true;
-            this.comboBoxMainLabel.Location = new System.Drawing.Point(808, 211);
+            this.comboBoxMainLabel.Location = new System.Drawing.Point(537, 180);
             this.comboBoxMainLabel.Name = "comboBoxMainLabel";
             this.comboBoxMainLabel.Size = new System.Drawing.Size(185, 21);
             this.comboBoxMainLabel.TabIndex = 50;
@@ -8327,7 +8430,7 @@
             // 
             // buttonDeleteQ
             // 
-            this.buttonDeleteQ.Location = new System.Drawing.Point(468, 299);
+            this.buttonDeleteQ.Location = new System.Drawing.Point(398, 266);
             this.buttonDeleteQ.Name = "buttonDeleteQ";
             this.buttonDeleteQ.Size = new System.Drawing.Size(75, 23);
             this.buttonDeleteQ.TabIndex = 49;
@@ -8337,7 +8440,7 @@
             // 
             // buttonAutoQty
             // 
-            this.buttonAutoQty.Location = new System.Drawing.Point(468, 339);
+            this.buttonAutoQty.Location = new System.Drawing.Point(398, 306);
             this.buttonAutoQty.Name = "buttonAutoQty";
             this.buttonAutoQty.Size = new System.Drawing.Size(75, 39);
             this.buttonAutoQty.TabIndex = 48;
@@ -8347,7 +8450,7 @@
             // 
             // buttonAutoAddress
             // 
-            this.buttonAutoAddress.Location = new System.Drawing.Point(468, 391);
+            this.buttonAutoAddress.Location = new System.Drawing.Point(398, 358);
             this.buttonAutoAddress.Name = "buttonAutoAddress";
             this.buttonAutoAddress.Size = new System.Drawing.Size(75, 39);
             this.buttonAutoAddress.TabIndex = 47;
@@ -8357,7 +8460,7 @@
             // 
             // buttonColourQChange
             // 
-            this.buttonColourQChange.Location = new System.Drawing.Point(468, 273);
+            this.buttonColourQChange.Location = new System.Drawing.Point(398, 240);
             this.buttonColourQChange.Name = "buttonColourQChange";
             this.buttonColourQChange.Size = new System.Drawing.Size(75, 23);
             this.buttonColourQChange.TabIndex = 46;
@@ -8379,7 +8482,7 @@
             // textBoxDefaultsId
             // 
             this.textBoxDefaultsId.Enabled = false;
-            this.textBoxDefaultsId.Location = new System.Drawing.Point(363, 127);
+            this.textBoxDefaultsId.Location = new System.Drawing.Point(293, 94);
             this.textBoxDefaultsId.Name = "textBoxDefaultsId";
             this.textBoxDefaultsId.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsId.TabIndex = 44;
@@ -8387,7 +8490,7 @@
             // textBoxDefaultsAddressAll
             // 
             this.textBoxDefaultsAddressAll.Enabled = false;
-            this.textBoxDefaultsAddressAll.Location = new System.Drawing.Point(363, 414);
+            this.textBoxDefaultsAddressAll.Location = new System.Drawing.Point(293, 381);
             this.textBoxDefaultsAddressAll.Name = "textBoxDefaultsAddressAll";
             this.textBoxDefaultsAddressAll.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAddressAll.TabIndex = 42;
@@ -8396,7 +8499,7 @@
             // textBoxDefaultsAddressUnlock
             // 
             this.textBoxDefaultsAddressUnlock.Enabled = false;
-            this.textBoxDefaultsAddressUnlock.Location = new System.Drawing.Point(363, 388);
+            this.textBoxDefaultsAddressUnlock.Location = new System.Drawing.Point(293, 355);
             this.textBoxDefaultsAddressUnlock.Name = "textBoxDefaultsAddressUnlock";
             this.textBoxDefaultsAddressUnlock.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAddressUnlock.TabIndex = 40;
@@ -8404,7 +8507,7 @@
             // textBoxDefaultsAutoModified
             // 
             this.textBoxDefaultsAutoModified.Enabled = false;
-            this.textBoxDefaultsAutoModified.Location = new System.Drawing.Point(363, 362);
+            this.textBoxDefaultsAutoModified.Location = new System.Drawing.Point(293, 329);
             this.textBoxDefaultsAutoModified.Name = "textBoxDefaultsAutoModified";
             this.textBoxDefaultsAutoModified.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAutoModified.TabIndex = 38;
@@ -8412,7 +8515,7 @@
             // textBoxDefaultsAutoStated
             // 
             this.textBoxDefaultsAutoStated.Enabled = false;
-            this.textBoxDefaultsAutoStated.Location = new System.Drawing.Point(363, 336);
+            this.textBoxDefaultsAutoStated.Location = new System.Drawing.Point(293, 303);
             this.textBoxDefaultsAutoStated.Name = "textBoxDefaultsAutoStated";
             this.textBoxDefaultsAutoStated.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAutoStated.TabIndex = 36;
@@ -8420,7 +8523,7 @@
             // textBoxDefaultsDeleteQueue
             // 
             this.textBoxDefaultsDeleteQueue.Enabled = false;
-            this.textBoxDefaultsDeleteQueue.Location = new System.Drawing.Point(363, 301);
+            this.textBoxDefaultsDeleteQueue.Location = new System.Drawing.Point(293, 268);
             this.textBoxDefaultsDeleteQueue.Name = "textBoxDefaultsDeleteQueue";
             this.textBoxDefaultsDeleteQueue.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsDeleteQueue.TabIndex = 34;
@@ -8428,7 +8531,7 @@
             // textBoxDefaultsAddColour
             // 
             this.textBoxDefaultsAddColour.Enabled = false;
-            this.textBoxDefaultsAddColour.Location = new System.Drawing.Point(363, 275);
+            this.textBoxDefaultsAddColour.Location = new System.Drawing.Point(293, 242);
             this.textBoxDefaultsAddColour.Name = "textBoxDefaultsAddColour";
             this.textBoxDefaultsAddColour.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAddColour.TabIndex = 32;
@@ -8436,29 +8539,29 @@
             // textBoxDefaultsColourLabel
             // 
             this.textBoxDefaultsColourLabel.Enabled = false;
-            this.textBoxDefaultsColourLabel.Location = new System.Drawing.Point(363, 240);
+            this.textBoxDefaultsColourLabel.Location = new System.Drawing.Point(293, 207);
             this.textBoxDefaultsColourLabel.Name = "textBoxDefaultsColourLabel";
-            this.textBoxDefaultsColourLabel.Size = new System.Drawing.Size(429, 20);
+            this.textBoxDefaultsColourLabel.Size = new System.Drawing.Size(236, 20);
             this.textBoxDefaultsColourLabel.TabIndex = 30;
             // 
             // textBoxDefaultsMainLabel
             // 
             this.textBoxDefaultsMainLabel.Enabled = false;
-            this.textBoxDefaultsMainLabel.Location = new System.Drawing.Point(363, 214);
+            this.textBoxDefaultsMainLabel.Location = new System.Drawing.Point(293, 181);
             this.textBoxDefaultsMainLabel.Name = "textBoxDefaultsMainLabel";
-            this.textBoxDefaultsMainLabel.Size = new System.Drawing.Size(429, 20);
+            this.textBoxDefaultsMainLabel.Size = new System.Drawing.Size(236, 20);
             this.textBoxDefaultsMainLabel.TabIndex = 28;
             // 
             // textBoxDefaultsFileFolder
             // 
-            this.textBoxDefaultsFileFolder.Location = new System.Drawing.Point(363, 188);
+            this.textBoxDefaultsFileFolder.Location = new System.Drawing.Point(293, 155);
             this.textBoxDefaultsFileFolder.Name = "textBoxDefaultsFileFolder";
             this.textBoxDefaultsFileFolder.Size = new System.Drawing.Size(429, 20);
             this.textBoxDefaultsFileFolder.TabIndex = 26;
             // 
             // textBoxDefaultsPictureFolder
             // 
-            this.textBoxDefaultsPictureFolder.Location = new System.Drawing.Point(363, 162);
+            this.textBoxDefaultsPictureFolder.Location = new System.Drawing.Point(293, 129);
             this.textBoxDefaultsPictureFolder.Name = "textBoxDefaultsPictureFolder";
             this.textBoxDefaultsPictureFolder.Size = new System.Drawing.Size(429, 20);
             this.textBoxDefaultsPictureFolder.TabIndex = 24;
@@ -8466,7 +8569,7 @@
             // label122
             // 
             this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(323, 130);
+            this.label122.Location = new System.Drawing.Point(253, 97);
             this.label122.Name = "label122";
             this.label122.Size = new System.Drawing.Size(28, 13);
             this.label122.TabIndex = 43;
@@ -8475,7 +8578,7 @@
             // labeladdresses
             // 
             this.labeladdresses.AutoSize = true;
-            this.labeladdresses.Location = new System.Drawing.Point(159, 417);
+            this.labeladdresses.Location = new System.Drawing.Point(89, 384);
             this.labeladdresses.Name = "labeladdresses";
             this.labeladdresses.Size = new System.Drawing.Size(192, 13);
             this.labeladdresses.TabIndex = 41;
@@ -8484,7 +8587,7 @@
             // label120
             // 
             this.label120.AutoSize = true;
-            this.label120.Location = new System.Drawing.Point(110, 391);
+            this.label120.Location = new System.Drawing.Point(40, 358);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(241, 13);
             this.label120.TabIndex = 39;
@@ -8493,7 +8596,7 @@
             // label119
             // 
             this.label119.AutoSize = true;
-            this.label119.Location = new System.Drawing.Point(172, 365);
+            this.label119.Location = new System.Drawing.Point(102, 332);
             this.label119.Name = "label119";
             this.label119.Size = new System.Drawing.Size(179, 13);
             this.label119.TabIndex = 37;
@@ -8502,7 +8605,7 @@
             // label118
             // 
             this.label118.AutoSize = true;
-            this.label118.Location = new System.Drawing.Point(182, 339);
+            this.label118.Location = new System.Drawing.Point(112, 306);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(169, 13);
             this.label118.TabIndex = 35;
@@ -8511,7 +8614,7 @@
             // label117
             // 
             this.label117.AutoSize = true;
-            this.label117.Location = new System.Drawing.Point(205, 304);
+            this.label117.Location = new System.Drawing.Point(135, 271);
             this.label117.Name = "label117";
             this.label117.Size = new System.Drawing.Size(146, 13);
             this.label117.TabIndex = 33;
@@ -8520,7 +8623,7 @@
             // label116
             // 
             this.label116.AutoSize = true;
-            this.label116.Location = new System.Drawing.Point(203, 278);
+            this.label116.Location = new System.Drawing.Point(133, 245);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(148, 13);
             this.label116.TabIndex = 31;
@@ -8529,7 +8632,7 @@
             // label115
             // 
             this.label115.AutoSize = true;
-            this.label115.Location = new System.Drawing.Point(207, 243);
+            this.label115.Location = new System.Drawing.Point(137, 210);
             this.label115.Name = "label115";
             this.label115.Size = new System.Drawing.Size(144, 13);
             this.label115.TabIndex = 29;
@@ -8538,7 +8641,7 @@
             // label114
             // 
             this.label114.AutoSize = true;
-            this.label114.Location = new System.Drawing.Point(214, 217);
+            this.label114.Location = new System.Drawing.Point(144, 184);
             this.label114.Name = "label114";
             this.label114.Size = new System.Drawing.Size(137, 13);
             this.label114.TabIndex = 27;
@@ -8547,7 +8650,7 @@
             // label113
             // 
             this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(279, 191);
+            this.label113.Location = new System.Drawing.Point(209, 158);
             this.label113.Name = "label113";
             this.label113.Size = new System.Drawing.Size(72, 13);
             this.label113.TabIndex = 25;
@@ -8556,7 +8659,7 @@
             // label112
             // 
             this.label112.AutoSize = true;
-            this.label112.Location = new System.Drawing.Point(267, 165);
+            this.label112.Location = new System.Drawing.Point(197, 132);
             this.label112.Name = "label112";
             this.label112.Size = new System.Drawing.Size(84, 13);
             this.label112.TabIndex = 23;
@@ -8692,92 +8795,24 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // button16
+            // tabPageAppData
             // 
-            this.button16.BackColor = System.Drawing.Color.White;
-            this.button16.BackgroundImage = global::LabelMaker.Properties.Resources.info;
-            this.button16.Location = new System.Drawing.Point(51, 174);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(23, 23);
-            this.button16.TabIndex = 88;
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.tabPageAppData.Controls.Add(this.richTextBoxAppData);
+            this.tabPageAppData.Location = new System.Drawing.Point(23, 4);
+            this.tabPageAppData.Name = "tabPageAppData";
+            this.tabPageAppData.Size = new System.Drawing.Size(1073, 780);
+            this.tabPageAppData.TabIndex = 4;
+            this.tabPageAppData.Text = "  App. Data   ";
+            this.tabPageAppData.UseVisualStyleBackColor = true;
             // 
-            // buttonDuplicateLabel
+            // richTextBoxAppData
             // 
-            this.buttonDuplicateLabel.Location = new System.Drawing.Point(90, 184);
-            this.buttonDuplicateLabel.Name = "buttonDuplicateLabel";
-            this.buttonDuplicateLabel.Size = new System.Drawing.Size(123, 26);
-            this.buttonDuplicateLabel.TabIndex = 89;
-            this.buttonDuplicateLabel.Text = "Duplicate this Label";
-            this.buttonDuplicateLabel.UseVisualStyleBackColor = true;
-            this.buttonDuplicateLabel.Click += new System.EventHandler(this.buttonDuplicateLabel_Click);
-            // 
-            // textBoxDuplicatedLabel
-            // 
-            this.textBoxDuplicatedLabel.Location = new System.Drawing.Point(233, 188);
-            this.textBoxDuplicatedLabel.Name = "textBoxDuplicatedLabel";
-            this.textBoxDuplicatedLabel.Size = new System.Drawing.Size(123, 20);
-            this.textBoxDuplicatedLabel.TabIndex = 90;
-            // 
-            // label129
-            // 
-            this.label129.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label129.Location = new System.Drawing.Point(362, 188);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(141, 23);
-            this.label129.TabIndex = 91;
-            this.label129.Text = "Name for Duplicated Label";
-            // 
-            // label168
-            // 
-            this.label168.AutoSize = true;
-            this.label168.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label168.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label168.Location = new System.Drawing.Point(27, 744);
-            this.label168.Name = "label168";
-            this.label168.Size = new System.Drawing.Size(114, 20);
-            this.label168.TabIndex = 107;
-            this.label168.Text = "Altering Labels";
-            // 
-            // button17
-            // 
-            this.button17.Image = global::LabelMaker.Properties.Resources.info;
-            this.button17.Location = new System.Drawing.Point(140, 741);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(23, 23);
-            this.button17.TabIndex = 108;
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // backupToolStripMenuItem
-            // 
-            this.backupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.backupToolStripMenuItem1,
-            this.restoreToolStripMenuItem});
-            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.backupToolStripMenuItem.Text = "Backup";
-            // 
-            // backupToolStripMenuItem1
-            // 
-            this.backupToolStripMenuItem1.Name = "backupToolStripMenuItem1";
-            this.backupToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.backupToolStripMenuItem1.Text = "Backup";
-            this.backupToolStripMenuItem1.Click += new System.EventHandler(this.backupToolStripMenuItem1_Click);
-            // 
-            // restoreToolStripMenuItem
-            // 
-            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.restoreToolStripMenuItem.Text = "Restore";
-            // 
-            // appPathToolStripMenuItem
-            // 
-            this.appPathToolStripMenuItem.Name = "appPathToolStripMenuItem";
-            this.appPathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.appPathToolStripMenuItem.Text = "App Path";
-            this.appPathToolStripMenuItem.Click += new System.EventHandler(this.appPathToolStripMenuItem_Click);
+            this.richTextBoxAppData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxAppData.Location = new System.Drawing.Point(77, 70);
+            this.richTextBoxAppData.Name = "richTextBoxAppData";
+            this.richTextBoxAppData.Size = new System.Drawing.Size(931, 432);
+            this.richTextBoxAppData.TabIndex = 0;
+            this.richTextBoxAppData.Text = "";
             // 
             // formMain
             // 
@@ -8785,8 +8820,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1534, 861);
-            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.tabControlDesign);
+            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
@@ -8926,6 +8961,7 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
+            this.tabPageAppData.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -9745,6 +9781,9 @@
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appPathToolStripMenuItem;
+        private System.Windows.Forms.Button buttonAutoPrint;
+        private System.Windows.Forms.TabPage tabPageAppData;
+        private System.Windows.Forms.RichTextBox richTextBoxAppData;
     }
 }
 
