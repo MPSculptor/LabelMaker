@@ -825,6 +825,8 @@
             this.label114 = new System.Windows.Forms.Label();
             this.label113 = new System.Windows.Forms.Label();
             this.label112 = new System.Windows.Forms.Label();
+            this.tabPageAppData = new System.Windows.Forms.TabPage();
+            this.richTextBoxAppData = new System.Windows.Forms.RichTextBox();
             this.label85 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
             this.labelMainCountQ = new System.Windows.Forms.Label();
@@ -843,8 +845,6 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.tabPageAppData = new System.Windows.Forms.TabPage();
-            this.richTextBoxAppData = new System.Windows.Forms.RichTextBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -936,10 +936,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddClean)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableAddressFiltersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetAddClean)).BeginInit();
+            this.tabPageAppData.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
-            this.tabPageAppData.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -1832,7 +1832,7 @@
             // appPathToolStripMenuItem
             // 
             this.appPathToolStripMenuItem.Name = "appPathToolStripMenuItem";
-            this.appPathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.appPathToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.appPathToolStripMenuItem.Text = "App Path";
             this.appPathToolStripMenuItem.Click += new System.EventHandler(this.appPathToolStripMenuItem_Click);
             // 
@@ -8665,6 +8665,25 @@
             this.label112.TabIndex = 23;
             this.label112.Text = "1. Picture Folder";
             // 
+            // tabPageAppData
+            // 
+            this.tabPageAppData.Controls.Add(this.richTextBoxAppData);
+            this.tabPageAppData.Location = new System.Drawing.Point(23, 4);
+            this.tabPageAppData.Name = "tabPageAppData";
+            this.tabPageAppData.Size = new System.Drawing.Size(1073, 780);
+            this.tabPageAppData.TabIndex = 4;
+            this.tabPageAppData.Text = "  App. Data   ";
+            this.tabPageAppData.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxAppData
+            // 
+            this.richTextBoxAppData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxAppData.Location = new System.Drawing.Point(77, 70);
+            this.richTextBoxAppData.Name = "richTextBoxAppData";
+            this.richTextBoxAppData.Size = new System.Drawing.Size(931, 432);
+            this.richTextBoxAppData.TabIndex = 0;
+            this.richTextBoxAppData.Text = "";
+            // 
             // label85
             // 
             this.label85.AutoSize = true;
@@ -8795,33 +8814,14 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // tabPageAppData
-            // 
-            this.tabPageAppData.Controls.Add(this.richTextBoxAppData);
-            this.tabPageAppData.Location = new System.Drawing.Point(23, 4);
-            this.tabPageAppData.Name = "tabPageAppData";
-            this.tabPageAppData.Size = new System.Drawing.Size(1073, 780);
-            this.tabPageAppData.TabIndex = 4;
-            this.tabPageAppData.Text = "  App. Data   ";
-            this.tabPageAppData.UseVisualStyleBackColor = true;
-            // 
-            // richTextBoxAppData
-            // 
-            this.richTextBoxAppData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxAppData.Location = new System.Drawing.Point(77, 70);
-            this.richTextBoxAppData.Name = "richTextBoxAppData";
-            this.richTextBoxAppData.Size = new System.Drawing.Size(931, 432);
-            this.richTextBoxAppData.TabIndex = 0;
-            this.richTextBoxAppData.Text = "";
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1534, 861);
-            this.Controls.Add(this.tabControlDesign);
             this.Controls.Add(this.tabControlMain);
+            this.Controls.Add(this.tabControlDesign);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
@@ -8957,11 +8957,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddClean)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableAddressFiltersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetAddClean)).EndInit();
+            this.tabPageAppData.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
-            this.tabPageAppData.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
