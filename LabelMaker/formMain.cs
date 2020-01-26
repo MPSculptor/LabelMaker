@@ -49,7 +49,10 @@ namespace LabelMaker
         }
 
         private void updateManualTab()
-        { 
+        {
+            int updateNumber = 0;
+            try { updateNumber = dataGridViewPlants.CurrentRow.Index; }
+            catch { }
 
             //dataGridViewPlants.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewPlants.Columns[0].Width = 50;
@@ -61,7 +64,7 @@ namespace LabelMaker
             dataGridViewPlants.Columns[6].Width = 100;
 
             applyDefaultSetting();
-            updateMainDetails(0);
+            updateMainDetails(updateNumber);
             getLabelName();
             changeButtonColours();
             indexNavigationButtons();
@@ -535,7 +538,7 @@ namespace LabelMaker
         {
             
             tabControlMain.BringToFront();
-            
+                       
 
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
@@ -569,6 +572,10 @@ namespace LabelMaker
                 labelAutoFile.Text = where + file;
                 fillAutoListBox();
                 checkSKUs();
+            }
+            if (tabControlMain.SelectedTab == tabPageManual)
+            {
+                
             }
         }
 
@@ -1469,7 +1476,7 @@ namespace LabelMaker
             }
 
             updateMainPicture(filePlace, indexOfRow);
-            TempMakeALabel(panelLabelPreview, "Main", "database","");
+            
 
 
             //Price and Quantity
@@ -1522,6 +1529,14 @@ namespace LabelMaker
             // Queue Quantities
             addMainQueueTotal();
             addColourQueueTotal();
+            if (String.IsNullOrEmpty(comboBoxLabelName.Text.Trim()))
+            {
+                TempMakeALabel(panelLabelPreview, "Main", "database", "");
+            }
+            else
+            {
+                TempMakeALabel(panelLabelPreview, "Choice", "database", "");
+            }
 
         }
 
@@ -3027,6 +3042,7 @@ namespace LabelMaker
 
             getLabelName();
             changeButtonColours();
+            TempMakeALabel(panelLabelPreview, "Choice", "database", "");
 
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
@@ -3066,13 +3082,13 @@ namespace LabelMaker
 
             for (int i = 0; i <= (dataGridViewColourQ.RowCount - 2); i++)
             {
-                if (dataGridViewColourQ.Rows[i].Cells[33].Value.ToString() == "True")
+                if (dataGridViewColourQ.Rows[i].Cells[34].Value.ToString() == "True")
                 {
                     string[] toAdd = new string[] {
                         dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
                         "True",
                         "True",
-                        dataGridViewColourQ.Rows[i].Cells[34].Value.ToString()};
+                        dataGridViewColourQ.Rows[i].Cells[35].Value.ToString()};
                     dataGridViewQueueList.Rows.Add(toAdd);
                 }
             }
@@ -3799,6 +3815,7 @@ namespace LabelMaker
 
         public String[] returnLabelHeaderData(string labelName)
         {
+            
             String[] labelHeaderData = new String[18];
             DataTable headerDataSet = new DataTable("headerDataSet");
             headerDataSet = LabelsLabelNamesTableAdapter.GetDataByName(labelName);
@@ -4024,10 +4041,11 @@ namespace LabelMaker
                 //go through the list
                 for (int i = 0; i <= dataGridViewQueueList.RowCount - 1; i++)
                 {
+                    string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
                     //check if need to remove this one
-                    if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
+                    if (dataGridViewQueueList.Rows[i].Cells[1].Value.ToString() == "True")
                     {
-                        string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
+                        
                         //go through colour queue
                         for (int j = 0; j <= dataGridViewColourQ.RowCount - 2; j++)
                         {
@@ -4049,9 +4067,9 @@ namespace LabelMaker
                         }
                     }
                     //check if need to remove flag
-                    if (dataGridViewQueueList.Rows[i].Cells[3].Value.ToString() == "True")
+                    if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
                     {
-                        string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
+
                         for (int j = 0; j <= (dataGridViewPlants.RowCount - 1); j++)
                         {
                             if (idFind == dataGridViewPlants.Rows[j].Cells[0].Value.ToString())
@@ -4824,7 +4842,7 @@ namespace LabelMaker
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.ToString());
+                        MessageBox.Show("Failed to match "+ sentOrder[i][6].Trim());
 
                         if (firstError && pictureBoxArrow.Visible == false )
                         {
