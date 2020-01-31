@@ -128,15 +128,15 @@ namespace LabelMaker
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            doThePrinting();
+            doThePrinting("Main");
         }
 
         private void buttonAutoPrint_Click(object sender, EventArgs e)
         {
-            doThePrinting();
+            doThePrinting("Main");
         }
 
-        private void doThePrinting()
+        private void doThePrinting(string whichCombo)
         {
             string[] message = { "Printing has started", "", "Please wait while labels render"};
             FormInformation form = new FormInformation("Labels are Printing", message, 250, 150);
@@ -157,9 +157,19 @@ namespace LabelMaker
             }
 
             
-            string[] defaultsString = getDefaultSettings(); 
+            string[] defaultsString = getDefaultSettings();
 
-            string name = comboBoxLabelName.Text.ToString(); //whereToNow
+            string name = "";
+            if (whichCombo == "Main")
+            {
+                //Take label from Main Tab
+                name = comboBoxLabelName.Text.ToString().Trim(); //whereToNow
+            }
+            else
+            {
+                //use alternative on Autolabel Tab
+                name = comboBoxAutoLabelName.Text.ToString().Trim();
+            }
             string[] labelData = returnLabelData(name);
             string[] labelHeader = returnLabelHeaderData(name);
 
@@ -855,6 +865,7 @@ namespace LabelMaker
         {
             string getName = "";
             comboBoxLabelName.Items.Clear();
+            comboBoxAutoLabelName.Items.Clear();
             LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
 
             //DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
@@ -863,6 +874,9 @@ namespace LabelMaker
                 DataRow dRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows[i];
                 getName = dRow.ItemArray[1].ToString();
                 comboBoxLabelName.Items.Add(getName);
+                comboBoxAutoLabelName.Items.Add(getName);
+                comboBoxAutoLabelName.Text = "Sticker C Address";
+
                 //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
             }
         }
@@ -3011,12 +3025,18 @@ namespace LabelMaker
         {
             string[] defaults = getDefaultSettings(); 
             Color newColour = new Color();
+            Color newColour1 = new Color();
             newColour = Color.Orange;
+            newColour1 = Color.Orange;
             if (tabControlQueue.SelectedTab == tabPageColourQueue)
             {
                 if (comboBoxLabelName.Text.Trim() == defaults[3].Trim())
                 {
                     newColour = Color.IndianRed;
+                }
+                if (comboBoxAutoLabelName.Text.Trim() == defaults[3].Trim())
+                {
+                    newColour1 = Color.IndianRed;
                 }
             }
             else
@@ -3025,15 +3045,21 @@ namespace LabelMaker
                 {
                     newColour = Color.CadetBlue;
                 }
+                if (comboBoxAutoLabelName.Text.Trim() == defaults[2].Trim())
+                {
+                    newColour1 = Color.CadetBlue;
+                }
             }
             buttonPrint.BackColor = newColour;
             buttonAutoPrint.BackColor = newColour;
+            button1AutoPrint.BackColor = newColour1;
+            labelAutoPrintLabel.Text = comboBoxLabelName.Text;
         }
 
 
         private void tabControlQueue_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
 
             if (tabControlMain.SelectedTab == tabPageQueueUtilities)
             {
@@ -3046,7 +3072,7 @@ namespace LabelMaker
 
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
-                TempMakeALabel(panelLabelTabChoice, "Choice", "database","");
+                TempMakeALabel(panelLabelTabChoice, "Choice", "database", "");
             }
 
             if (tabControlQueue.SelectedTab == tabPageLabelStocks)
@@ -3059,10 +3085,51 @@ namespace LabelMaker
             {
                 fillMissingPicturesGrid();
             }
+            if (tabControlQueue.SelectedTab == tabPageComparison)
+            {
+                fillComparisonTab();
+            }
+        }
 
+            private void fillComparisonTab()
+            {
+                listBoxCompareMain.Items.Clear();
+                listBoxCompareColour.Items.Clear();
+
+            listBoxCompareMain.Items.Add("");
+            listBoxCompareColour.Items.Add("");
+
+            //Look for Items only on the Main Queue
+            for (int i = 0; i < dataGridViewMainQ.Rows.Count - 1; i++)
+                    {
+                        string name = dataGridViewMainQ.Rows[i].Cells[0].Value.ToString();
+                        Boolean found = false;
+                        for (int j=0;j < dataGridViewColourQ.Rows.Count - 1; j++)
+                        {
+                            if (name == dataGridViewColourQ.Rows[j].Cells[0].Value.ToString())
+                                { found = true; }
+                        }
+                        if (!found) { listBoxCompareMain.Items.Add("  "+name); }
+                    }
+            //Look for Items only on the Colour Queue
+            for (int i = 0; i < dataGridViewColourQ.Rows.Count - 1; i++)
+            {
+                string name = dataGridViewColourQ.Rows[i].Cells[0].Value.ToString();
+                Boolean found = false;
+                for (int j = 0; j < dataGridViewMainQ.Rows.Count - 1; j++)
+                {
+                    if (name == dataGridViewMainQ.Rows[j].Cells[0].Value.ToString())
+                    { found = true; }
+                }
+                if (!found) { listBoxCompareColour.Items.Add("  "+name); }
+            }
 
 
         }
+
+
+
+        
 
 
         #endregion
@@ -3244,8 +3311,9 @@ namespace LabelMaker
             else
             {
                 addRowToMainQ(queue);
-                if (buttonAddtoColourQueue.Text == "add Colour")
-                {
+                //if (buttonAddtoColourQueue.Text == "add Colour")
+                if (queue[36] == "add Colour")
+                    {
                     if (checkBoxColourAdd.Checked == true)
                     {
                         addRowToColourQ(queue, which);
@@ -3379,7 +3447,7 @@ namespace LabelMaker
 
         public string[] CollectQueueEntry()
         {
-            string[] queueData = new string[36];
+            string[] queueData = new string[37];
 
             string[] defaultsString = getDefaultSettings(); 
 
@@ -3460,6 +3528,7 @@ namespace LabelMaker
             { queueData[24] = "Order No. #" + queueData[24]; }
             queueData[25] = sendData[20];
             queueData[26] = sendData[0];
+            queueData[36] = buttonAddtoColourQueue.Text;
 
             return queueData;
         }
@@ -4842,6 +4911,7 @@ namespace LabelMaker
                     }
                     catch (Exception ex)
                     {
+                        string exception = ex.ToString();
                         MessageBox.Show("Failed to match "+ sentOrder[i][6].Trim());
 
                         if (firstError && pictureBoxArrow.Visible == false )
@@ -4910,7 +4980,7 @@ namespace LabelMaker
 
         public string[] CollectAutoQueueEntry(string[] sentAutoRow, string sentQty, string sentCustomer, string sentOrderNumber, string[] sentAddress)
         {
-            string[] queueData = new string[36];
+            string[] queueData = new string[37];
 
             
             string[] defaultsString = getDefaultSettings();
@@ -5001,6 +5071,9 @@ namespace LabelMaker
             queueData[33] = sentAddress[6];
             queueData[34] = sentAddress[7];
             queueData[35] = sentAddress[8];
+            //Transfer Add to Colour Queue flag to queueData
+            queueData[36] = "No Colour";
+            if (sendData[10] == "True") { queueData[36] = "add Colour"; }
 
             return queueData;
         }
@@ -6779,6 +6852,16 @@ namespace LabelMaker
         {
             MessageBox.Show(ApplicationDeployment.CurrentDeployment.DataDirectory + " , "+ Application.UserAppDataPath);
             
+        }
+
+        private void button18_Click_1(object sender, EventArgs e)
+        {
+            doThePrinting("Auto");
+        }
+
+        private void comboBoxAutoLabelName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            changeButtonColours();
         }
 
         

@@ -129,6 +129,9 @@
             this.labelMissingPictures = new System.Windows.Forms.Label();
             this.label77 = new System.Windows.Forms.Label();
             this.dataGridViewMissingPictures = new System.Windows.Forms.DataGridView();
+            this.tabPageComparison = new System.Windows.Forms.TabPage();
+            this.label174 = new System.Windows.Forms.Label();
+            this.label173 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -169,6 +172,13 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.comboBoxAutoLabelName = new System.Windows.Forms.ComboBox();
+            this.labelAutoPrintLabel = new System.Windows.Forms.Label();
+            this.button1AutoPrint = new System.Windows.Forms.Button();
+            this.label172 = new System.Windows.Forms.Label();
+            this.label171 = new System.Windows.Forms.Label();
+            this.label170 = new System.Windows.Forms.Label();
+            this.label169 = new System.Windows.Forms.Label();
             this.buttonAutoPrint = new System.Windows.Forms.Button();
             this.checkBoxCorrectAddress = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -845,6 +855,8 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
+            this.listBoxCompareMain = new System.Windows.Forms.ListBox();
+            this.listBoxCompareColour = new System.Windows.Forms.ListBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -858,6 +870,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewQueueList)).BeginInit();
             this.tabPageMissingPictures.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMissingPictures)).BeginInit();
+            this.tabPageComparison.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPageLabelProfiles.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -950,6 +963,7 @@
             this.tabControlQueue.Controls.Add(this.tabPageColourQueue);
             this.tabControlQueue.Controls.Add(this.tabPageLabelStocks);
             this.tabControlQueue.Controls.Add(this.tabPageMissingPictures);
+            this.tabControlQueue.Controls.Add(this.tabPageComparison);
             this.tabControlQueue.Location = new System.Drawing.Point(1235, 34);
             this.tabControlQueue.Name = "tabControlQueue";
             this.tabControlQueue.SelectedIndex = 0;
@@ -966,7 +980,7 @@
             this.tabPageMainQueue.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageMainQueue.Size = new System.Drawing.Size(411, 873);
             this.tabPageMainQueue.TabIndex = 0;
-            this.tabPageMainQueue.Text = "     Main Queue     ";
+            this.tabPageMainQueue.Text = " Main Queue ";
             // 
             // dataGridViewMainQ
             // 
@@ -1257,7 +1271,7 @@
             this.tabPageColourQueue.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageColourQueue.Size = new System.Drawing.Size(411, 873);
             this.tabPageColourQueue.TabIndex = 1;
-            this.tabPageColourQueue.Text = "     Colour Queue     ";
+            this.tabPageColourQueue.Text = " Colour Queue ";
             // 
             // dataGridViewColourQ
             // 
@@ -1553,7 +1567,7 @@
             this.tabPageLabelStocks.Name = "tabPageLabelStocks";
             this.tabPageLabelStocks.Size = new System.Drawing.Size(411, 873);
             this.tabPageLabelStocks.TabIndex = 2;
-            this.tabPageLabelStocks.Text = "   Label Stocks   ";
+            this.tabPageLabelStocks.Text = " Label Stocks ";
             this.tabPageLabelStocks.UseVisualStyleBackColor = true;
             // 
             // richTextBox1
@@ -1661,7 +1675,7 @@
             this.tabPageMissingPictures.Name = "tabPageMissingPictures";
             this.tabPageMissingPictures.Size = new System.Drawing.Size(411, 873);
             this.tabPageMissingPictures.TabIndex = 3;
-            this.tabPageMissingPictures.Text = "  Missing Pictures   ";
+            this.tabPageMissingPictures.Text = " Missing Pics ";
             this.tabPageMissingPictures.UseVisualStyleBackColor = true;
             // 
             // labelRemoveMissing
@@ -1736,6 +1750,41 @@
             this.dataGridViewMissingPictures.Size = new System.Drawing.Size(399, 569);
             this.dataGridViewMissingPictures.TabIndex = 0;
             this.dataGridViewMissingPictures.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMissingPictures_CellContentClick);
+            // 
+            // tabPageComparison
+            // 
+            this.tabPageComparison.Controls.Add(this.listBoxCompareColour);
+            this.tabPageComparison.Controls.Add(this.listBoxCompareMain);
+            this.tabPageComparison.Controls.Add(this.label174);
+            this.tabPageComparison.Controls.Add(this.label173);
+            this.tabPageComparison.Location = new System.Drawing.Point(4, 22);
+            this.tabPageComparison.Name = "tabPageComparison";
+            this.tabPageComparison.Size = new System.Drawing.Size(411, 873);
+            this.tabPageComparison.TabIndex = 4;
+            this.tabPageComparison.Text = " Compare ";
+            this.tabPageComparison.UseVisualStyleBackColor = true;
+            // 
+            // label174
+            // 
+            this.label174.AutoSize = true;
+            this.label174.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label174.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label174.Location = new System.Drawing.Point(38, 441);
+            this.label174.Name = "label174";
+            this.label174.Size = new System.Drawing.Size(271, 16);
+            this.label174.TabIndex = 1;
+            this.label174.Text = "Lines Only Found on the Colour Queue";
+            // 
+            // label173
+            // 
+            this.label173.AutoSize = true;
+            this.label173.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label173.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label173.Location = new System.Drawing.Point(38, 10);
+            this.label173.Name = "label173";
+            this.label173.Size = new System.Drawing.Size(259, 16);
+            this.label173.TabIndex = 0;
+            this.label173.Text = "Lines Only Found on the Main Queue";
             // 
             // menuStrip1
             // 
@@ -2069,6 +2118,13 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.comboBoxAutoLabelName);
+            this.tabPageAuto.Controls.Add(this.labelAutoPrintLabel);
+            this.tabPageAuto.Controls.Add(this.button1AutoPrint);
+            this.tabPageAuto.Controls.Add(this.label172);
+            this.tabPageAuto.Controls.Add(this.label171);
+            this.tabPageAuto.Controls.Add(this.label170);
+            this.tabPageAuto.Controls.Add(this.label169);
             this.tabPageAuto.Controls.Add(this.buttonAutoPrint);
             this.tabPageAuto.Controls.Add(this.checkBoxCorrectAddress);
             this.tabPageAuto.Controls.Add(this.panel2);
@@ -2101,13 +2157,87 @@
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
             // 
+            // comboBoxAutoLabelName
+            // 
+            this.comboBoxAutoLabelName.FormattingEnabled = true;
+            this.comboBoxAutoLabelName.Location = new System.Drawing.Point(987, 903);
+            this.comboBoxAutoLabelName.Name = "comboBoxAutoLabelName";
+            this.comboBoxAutoLabelName.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxAutoLabelName.TabIndex = 33;
+            this.comboBoxAutoLabelName.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoLabelName_SelectedIndexChanged);
+            // 
+            // labelAutoPrintLabel
+            // 
+            this.labelAutoPrintLabel.Location = new System.Drawing.Point(987, 814);
+            this.labelAutoPrintLabel.Name = "labelAutoPrintLabel";
+            this.labelAutoPrintLabel.Size = new System.Drawing.Size(189, 24);
+            this.labelAutoPrintLabel.TabIndex = 32;
+            this.labelAutoPrintLabel.Text = "label173";
+            this.labelAutoPrintLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // button1AutoPrint
+            // 
+            this.button1AutoPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1AutoPrint.Location = new System.Drawing.Point(987, 841);
+            this.button1AutoPrint.Name = "button1AutoPrint";
+            this.button1AutoPrint.Size = new System.Drawing.Size(189, 59);
+            this.button1AutoPrint.TabIndex = 31;
+            this.button1AutoPrint.Text = "Print Queue Using the Alternative Label Below";
+            this.button1AutoPrint.UseVisualStyleBackColor = true;
+            this.button1AutoPrint.Click += new System.EventHandler(this.button18_Click_1);
+            // 
+            // label172
+            // 
+            this.label172.AutoSize = true;
+            this.label172.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label172.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label172.Location = new System.Drawing.Point(553, 793);
+            this.label172.Name = "label172";
+            this.label172.Size = new System.Drawing.Size(91, 18);
+            this.label172.TabIndex = 30;
+            this.label172.Text = "Customers";
+            // 
+            // label171
+            // 
+            this.label171.AutoSize = true;
+            this.label171.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label171.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label171.Location = new System.Drawing.Point(675, 793);
+            this.label171.Name = "label171";
+            this.label171.Size = new System.Drawing.Size(82, 18);
+            this.label171.TabIndex = 29;
+            this.label171.Text = "Plant Line";
+            // 
+            // label170
+            // 
+            this.label170.AutoSize = true;
+            this.label170.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label170.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label170.Location = new System.Drawing.Point(798, 793);
+            this.label170.Name = "label170";
+            this.label170.Size = new System.Drawing.Size(62, 18);
+            this.label170.TabIndex = 28;
+            this.label170.Text = "Sorting";
+            // 
+            // label169
+            // 
+            this.label169.AutoSize = true;
+            this.label169.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label169.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label169.Location = new System.Drawing.Point(428, 793);
+            this.label169.Name = "label169";
+            this.label169.Size = new System.Drawing.Size(96, 18);
+            this.label169.TabIndex = 27;
+            this.label169.Text = "Print Status";
+            // 
             // buttonAutoPrint
             // 
-            this.buttonAutoPrint.Location = new System.Drawing.Point(926, 725);
+            this.buttonAutoPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAutoPrint.Location = new System.Drawing.Point(987, 751);
             this.buttonAutoPrint.Name = "buttonAutoPrint";
-            this.buttonAutoPrint.Size = new System.Drawing.Size(140, 52);
+            this.buttonAutoPrint.Size = new System.Drawing.Size(189, 60);
             this.buttonAutoPrint.TabIndex = 26;
-            this.buttonAutoPrint.Text = "Print Queue";
+            this.buttonAutoPrint.Text = "Print Queue with Main Tab Label as Below";
             this.buttonAutoPrint.UseVisualStyleBackColor = true;
             this.buttonAutoPrint.Click += new System.EventHandler(this.buttonAutoPrint_Click);
             // 
@@ -2115,7 +2245,7 @@
             // 
             this.checkBoxCorrectAddress.AutoSize = true;
             this.checkBoxCorrectAddress.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBoxCorrectAddress.Location = new System.Drawing.Point(707, 770);
+            this.checkBoxCorrectAddress.Location = new System.Drawing.Point(710, 907);
             this.checkBoxCorrectAddress.Name = "checkBoxCorrectAddress";
             this.checkBoxCorrectAddress.Size = new System.Drawing.Size(212, 17);
             this.checkBoxCorrectAddress.TabIndex = 25;
@@ -2167,7 +2297,7 @@
             // 
             // buttonLockPlants
             // 
-            this.buttonLockPlants.Location = new System.Drawing.Point(550, 712);
+            this.buttonLockPlants.Location = new System.Drawing.Point(676, 820);
             this.buttonLockPlants.Name = "buttonLockPlants";
             this.buttonLockPlants.Size = new System.Drawing.Size(119, 23);
             this.buttonLockPlants.TabIndex = 23;
@@ -2177,7 +2307,7 @@
             // 
             // buttonUnlockPlants
             // 
-            this.buttonUnlockPlants.Location = new System.Drawing.Point(675, 712);
+            this.buttonUnlockPlants.Location = new System.Drawing.Point(678, 849);
             this.buttonUnlockPlants.Name = "buttonUnlockPlants";
             this.buttonUnlockPlants.Size = new System.Drawing.Size(119, 23);
             this.buttonUnlockPlants.TabIndex = 22;
@@ -2187,7 +2317,7 @@
             // 
             // buttonLockEntries
             // 
-            this.buttonLockEntries.Location = new System.Drawing.Point(550, 682);
+            this.buttonLockEntries.Location = new System.Drawing.Point(553, 819);
             this.buttonLockEntries.Name = "buttonLockEntries";
             this.buttonLockEntries.Size = new System.Drawing.Size(119, 23);
             this.buttonLockEntries.TabIndex = 20;
@@ -2197,7 +2327,7 @@
             // 
             // buttonUnlockAll
             // 
-            this.buttonUnlockAll.Location = new System.Drawing.Point(673, 682);
+            this.buttonUnlockAll.Location = new System.Drawing.Point(553, 849);
             this.buttonUnlockAll.Name = "buttonUnlockAll";
             this.buttonUnlockAll.Size = new System.Drawing.Size(119, 23);
             this.buttonUnlockAll.TabIndex = 18;
@@ -2223,7 +2353,7 @@
             this.label82.AutoSize = true;
             this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label82.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label82.Location = new System.Drawing.Point(925, 61);
+            this.label82.Location = new System.Drawing.Point(989, 61);
             this.label82.Name = "label82";
             this.label82.Size = new System.Drawing.Size(86, 20);
             this.label82.TabIndex = 16;
@@ -2276,7 +2406,7 @@
             // 
             this.pictureBoxArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxArrow.Image = global::LabelMaker.Properties.Resources.redarrow;
-            this.pictureBoxArrow.Location = new System.Drawing.Point(338, 711);
+            this.pictureBoxArrow.Location = new System.Drawing.Point(341, 848);
             this.pictureBoxArrow.MaximumSize = new System.Drawing.Size(60, 60);
             this.pictureBoxArrow.MinimumSize = new System.Drawing.Size(60, 60);
             this.pictureBoxArrow.Name = "pictureBoxArrow";
@@ -2287,14 +2417,14 @@
             // listBoxAutoErrors
             // 
             this.listBoxAutoErrors.FormattingEnabled = true;
-            this.listBoxAutoErrors.Location = new System.Drawing.Point(10, 682);
+            this.listBoxAutoErrors.Location = new System.Drawing.Point(13, 793);
             this.listBoxAutoErrors.Name = "listBoxAutoErrors";
-            this.listBoxAutoErrors.Size = new System.Drawing.Size(322, 95);
+            this.listBoxAutoErrors.Size = new System.Drawing.Size(322, 121);
             this.listBoxAutoErrors.TabIndex = 13;
             // 
             // buttonCheckSKUs
             // 
-            this.buttonCheckSKUs.Location = new System.Drawing.Point(338, 682);
+            this.buttonCheckSKUs.Location = new System.Drawing.Point(341, 819);
             this.buttonCheckSKUs.Name = "buttonCheckSKUs";
             this.buttonCheckSKUs.Size = new System.Drawing.Size(81, 23);
             this.buttonCheckSKUs.TabIndex = 12;
@@ -2305,15 +2435,15 @@
             // listBoxAuto
             // 
             this.listBoxAuto.FormattingEnabled = true;
-            this.listBoxAuto.Location = new System.Drawing.Point(926, 87);
+            this.listBoxAuto.Location = new System.Drawing.Point(987, 89);
             this.listBoxAuto.Name = "listBoxAuto";
-            this.listBoxAuto.Size = new System.Drawing.Size(143, 628);
+            this.listBoxAuto.Size = new System.Drawing.Size(189, 654);
             this.listBoxAuto.TabIndex = 10;
             this.listBoxAuto.Click += new System.EventHandler(this.listBoxAuto_Click);
             // 
             // buttonSortAutoPlant
             // 
-            this.buttonSortAutoPlant.Location = new System.Drawing.Point(798, 740);
+            this.buttonSortAutoPlant.Location = new System.Drawing.Point(801, 877);
             this.buttonSortAutoPlant.Name = "buttonSortAutoPlant";
             this.buttonSortAutoPlant.Size = new System.Drawing.Size(121, 23);
             this.buttonSortAutoPlant.TabIndex = 8;
@@ -2323,7 +2453,7 @@
             // 
             // buttonSortAutoON
             // 
-            this.buttonSortAutoON.Location = new System.Drawing.Point(798, 711);
+            this.buttonSortAutoON.Location = new System.Drawing.Point(801, 848);
             this.buttonSortAutoON.Name = "buttonSortAutoON";
             this.buttonSortAutoON.Size = new System.Drawing.Size(121, 23);
             this.buttonSortAutoON.TabIndex = 7;
@@ -2333,7 +2463,7 @@
             // 
             // buttonAutoCustomer
             // 
-            this.buttonAutoCustomer.Location = new System.Drawing.Point(798, 682);
+            this.buttonAutoCustomer.Location = new System.Drawing.Point(801, 819);
             this.buttonAutoCustomer.Name = "buttonAutoCustomer";
             this.buttonAutoCustomer.Size = new System.Drawing.Size(121, 23);
             this.buttonAutoCustomer.TabIndex = 6;
@@ -2368,7 +2498,7 @@
             this.dataGridViewAuto.DataSource = this.tableAutoBindingSource;
             this.dataGridViewAuto.Location = new System.Drawing.Point(10, 61);
             this.dataGridViewAuto.Name = "dataGridViewAuto";
-            this.dataGridViewAuto.Size = new System.Drawing.Size(909, 614);
+            this.dataGridViewAuto.Size = new System.Drawing.Size(958, 716);
             this.dataGridViewAuto.TabIndex = 5;
             this.dataGridViewAuto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAuto_CellContentClick);
             // 
@@ -2536,7 +2666,7 @@
             // 
             // buttonLockPrinted
             // 
-            this.buttonLockPrinted.Location = new System.Drawing.Point(550, 740);
+            this.buttonLockPrinted.Location = new System.Drawing.Point(428, 819);
             this.buttonLockPrinted.Name = "buttonLockPrinted";
             this.buttonLockPrinted.Size = new System.Drawing.Size(119, 23);
             this.buttonLockPrinted.TabIndex = 21;
@@ -2546,7 +2676,7 @@
             // 
             // buttonResetPrinted
             // 
-            this.buttonResetPrinted.Location = new System.Drawing.Point(673, 740);
+            this.buttonResetPrinted.Location = new System.Drawing.Point(428, 849);
             this.buttonResetPrinted.Name = "buttonResetPrinted";
             this.buttonResetPrinted.Size = new System.Drawing.Size(119, 23);
             this.buttonResetPrinted.TabIndex = 19;
@@ -2556,7 +2686,7 @@
             // 
             // buttonDeletePrinted
             // 
-            this.buttonDeletePrinted.Location = new System.Drawing.Point(425, 741);
+            this.buttonDeletePrinted.Location = new System.Drawing.Point(428, 878);
             this.buttonDeletePrinted.Name = "buttonDeletePrinted";
             this.buttonDeletePrinted.Size = new System.Drawing.Size(119, 23);
             this.buttonDeletePrinted.TabIndex = 9;
@@ -8821,6 +8951,24 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
+            // listBoxCompareMain
+            // 
+            this.listBoxCompareMain.FormattingEnabled = true;
+            this.listBoxCompareMain.Location = new System.Drawing.Point(11, 36);
+            this.listBoxCompareMain.Name = "listBoxCompareMain";
+            this.listBoxCompareMain.Size = new System.Drawing.Size(392, 381);
+            this.listBoxCompareMain.Sorted = true;
+            this.listBoxCompareMain.TabIndex = 2;
+            // 
+            // listBoxCompareColour
+            // 
+            this.listBoxCompareColour.FormattingEnabled = true;
+            this.listBoxCompareColour.Location = new System.Drawing.Point(11, 476);
+            this.listBoxCompareColour.Name = "listBoxCompareColour";
+            this.listBoxCompareColour.Size = new System.Drawing.Size(392, 381);
+            this.listBoxCompareColour.Sorted = true;
+            this.listBoxCompareColour.TabIndex = 3;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8853,6 +9001,8 @@
             this.tabPageMissingPictures.ResumeLayout(false);
             this.tabPageMissingPictures.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMissingPictures)).EndInit();
+            this.tabPageComparison.ResumeLayout(false);
+            this.tabPageComparison.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabPageLabelProfiles.ResumeLayout(false);
@@ -9791,6 +9941,18 @@
         private System.Windows.Forms.Button buttonAutoPrint;
         private System.Windows.Forms.TabPage tabPageAppData;
         private System.Windows.Forms.RichTextBox richTextBoxAppData;
+        private System.Windows.Forms.Label label172;
+        private System.Windows.Forms.Label label171;
+        private System.Windows.Forms.Label label170;
+        private System.Windows.Forms.Label label169;
+        private System.Windows.Forms.Label labelAutoPrintLabel;
+        private System.Windows.Forms.Button button1AutoPrint;
+        private System.Windows.Forms.ComboBox comboBoxAutoLabelName;
+        private System.Windows.Forms.TabPage tabPageComparison;
+        private System.Windows.Forms.Label label174;
+        private System.Windows.Forms.Label label173;
+        private System.Windows.Forms.ListBox listBoxCompareColour;
+        private System.Windows.Forms.ListBox listBoxCompareMain;
     }
 }
 
