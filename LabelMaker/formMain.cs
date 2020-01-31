@@ -875,10 +875,11 @@ namespace LabelMaker
                 getName = dRow.ItemArray[1].ToString();
                 comboBoxLabelName.Items.Add(getName);
                 comboBoxAutoLabelName.Items.Add(getName);
-                comboBoxAutoLabelName.Text = "Sticker C Address";
-
-                //MessageBox.Show(dRow.ItemArray[i + 1].ToString());
+                
             }
+            string[] defaults = getDefaultSettings();
+            comboBoxAutoLabelName.Text = defaults[11];
+
         }
         #endregion
 
@@ -3981,15 +3982,15 @@ namespace LabelMaker
 
         public string[] getDefaultSettings()
         {
-            string[] defaults = new string[12];
+            string[] defaults = new string[13];
 
             defaultsTableAdapter1.Fill(databaseLabelsDataSetDefaults.Defaults);
             DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 11; i++)
             {
                 defaults[i] = dRow.ItemArray[i + 1].ToString().Trim();
             }
-            defaults[11] = dRow.ItemArray[0].ToString().Trim();
+            defaults[12] = dRow.ItemArray[0].ToString().Trim();
             return defaults;
         }
 
@@ -5561,7 +5562,7 @@ namespace LabelMaker
             {
                 string[] defaults = getDefaultSettings();
 
-                textBoxDefaultsId.Text = defaults[11];
+                textBoxDefaultsId.Text = defaults[12];
                 textBoxDefaultsPictureFolder.Text = defaults[0];
                 textBoxDefaultsFileFolder.Text = defaults[1];
                 textBoxDefaultsMainLabel.Text = defaults[2];
@@ -5573,11 +5574,13 @@ namespace LabelMaker
                 textBoxDefaultsAddressUnlock.Text = defaults[8];
                 textBoxDefaultsAddressAll.Text = defaults[9];
                 textBoxDefaultsCorrectAdd.Text = defaults[10];
+                textBoxDefaultsAutoLabel.Text = defaults[11];   
                 
 
                 string getName = "";
                 comboBoxMainLabel.Items.Clear();
                 comboBoxColourLabel.Items.Clear();
+                comboBoxAutoLabel.Items.Clear();
                 LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
 
                 for (int i = 0; i <= (databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows.Count - 1); i++)
@@ -5586,7 +5589,7 @@ namespace LabelMaker
                     getName = dRow.ItemArray[1].ToString();
                     comboBoxMainLabel.Items.Add(getName);
                     comboBoxColourLabel.Items.Add(getName);
-
+                    comboBoxAutoLabel.Items.Add(getName);
                 }
 
             }
@@ -6077,10 +6080,11 @@ namespace LabelMaker
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(9, textBoxDefaultsAddressUnlock.Text.ToString());
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(10, textBoxDefaultsAddressAll.Text.ToString());
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(11, textBoxDefaultsCorrectAdd.Text.ToString() );
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(12, textBoxDefaultsAutoLabel.Text.ToString());
 
 
             try
-                {
+            {
                 defaultsTableAdapter1.Update(databaseLabelsDataSetDefaults.Defaults);
                         MessageBox.Show("Default Settings Updated");
                 applyDefaultSetting();
@@ -6864,7 +6868,10 @@ namespace LabelMaker
             changeButtonColours();
         }
 
-        
+        private void comboBoxAutoLabel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxDefaultsAutoLabel.Text = comboBoxAutoLabel.Text;
+        }
     }
 }
     
