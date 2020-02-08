@@ -174,6 +174,8 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.buttonAddressClean = new System.Windows.Forms.Button();
+            this.comboBoxAutoPrinters = new System.Windows.Forms.ComboBox();
             this.comboBoxAutoLabelName = new System.Windows.Forms.ComboBox();
             this.labelAutoPrintLabel = new System.Windows.Forms.Label();
             this.button1AutoPrint = new System.Windows.Forms.Button();
@@ -794,6 +796,10 @@
             this.paperSourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelsLabelCategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDefaults = new System.Windows.Forms.TabPage();
+            this.comboBoxAddressClean = new System.Windows.Forms.ComboBox();
+            this.label177 = new System.Windows.Forms.Label();
+            this.label176 = new System.Windows.Forms.Label();
+            this.comboBoxAutoLabel = new System.Windows.Forms.ComboBox();
             this.textBoxDefaultsAutoLabel = new System.Windows.Forms.TextBox();
             this.label175 = new System.Windows.Forms.Label();
             this.label163 = new System.Windows.Forms.Label();
@@ -802,6 +808,9 @@
             this.buttonAddCleanAdd = new System.Windows.Forms.Button();
             this.label162 = new System.Windows.Forms.Label();
             this.dataGridViewAddClean = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableAddressFiltersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseLabelsDataSetAddClean = new LabelMaker.DatabaseLabelsDataSetAddClean();
             this.buttonCorrectAddresses = new System.Windows.Forms.Button();
@@ -857,9 +866,7 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.comboBoxAutoLabel = new System.Windows.Forms.ComboBox();
-            this.idDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -2139,6 +2146,8 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.buttonAddressClean);
+            this.tabPageAuto.Controls.Add(this.comboBoxAutoPrinters);
             this.tabPageAuto.Controls.Add(this.comboBoxAutoLabelName);
             this.tabPageAuto.Controls.Add(this.labelAutoPrintLabel);
             this.tabPageAuto.Controls.Add(this.button1AutoPrint);
@@ -2178,10 +2187,30 @@
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
             // 
+            // buttonAddressClean
+            // 
+            this.buttonAddressClean.Location = new System.Drawing.Point(1072, 15);
+            this.buttonAddressClean.Name = "buttonAddressClean";
+            this.buttonAddressClean.Size = new System.Drawing.Size(104, 38);
+            this.buttonAddressClean.TabIndex = 35;
+            this.buttonAddressClean.Text = "Clean Addresses Now";
+            this.buttonAddressClean.UseVisualStyleBackColor = true;
+            this.buttonAddressClean.Click += new System.EventHandler(this.buttonAddressClean_Click);
+            // 
+            // comboBoxAutoPrinters
+            // 
+            this.comboBoxAutoPrinters.Enabled = false;
+            this.comboBoxAutoPrinters.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.comboBoxAutoPrinters.FormattingEnabled = true;
+            this.comboBoxAutoPrinters.Location = new System.Drawing.Point(987, 904);
+            this.comboBoxAutoPrinters.Name = "comboBoxAutoPrinters";
+            this.comboBoxAutoPrinters.Size = new System.Drawing.Size(189, 21);
+            this.comboBoxAutoPrinters.TabIndex = 34;
+            // 
             // comboBoxAutoLabelName
             // 
             this.comboBoxAutoLabelName.FormattingEnabled = true;
-            this.comboBoxAutoLabelName.Location = new System.Drawing.Point(987, 903);
+            this.comboBoxAutoLabelName.Location = new System.Drawing.Point(987, 879);
             this.comboBoxAutoLabelName.Name = "comboBoxAutoLabelName";
             this.comboBoxAutoLabelName.Size = new System.Drawing.Size(189, 21);
             this.comboBoxAutoLabelName.TabIndex = 33;
@@ -2189,7 +2218,7 @@
             // 
             // labelAutoPrintLabel
             // 
-            this.labelAutoPrintLabel.Location = new System.Drawing.Point(987, 814);
+            this.labelAutoPrintLabel.Location = new System.Drawing.Point(987, 787);
             this.labelAutoPrintLabel.Name = "labelAutoPrintLabel";
             this.labelAutoPrintLabel.Size = new System.Drawing.Size(189, 24);
             this.labelAutoPrintLabel.TabIndex = 32;
@@ -2199,7 +2228,7 @@
             // button1AutoPrint
             // 
             this.button1AutoPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1AutoPrint.Location = new System.Drawing.Point(987, 841);
+            this.button1AutoPrint.Location = new System.Drawing.Point(987, 814);
             this.button1AutoPrint.Name = "button1AutoPrint";
             this.button1AutoPrint.Size = new System.Drawing.Size(189, 59);
             this.button1AutoPrint.TabIndex = 31;
@@ -2254,7 +2283,7 @@
             // buttonAutoPrint
             // 
             this.buttonAutoPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAutoPrint.Location = new System.Drawing.Point(987, 751);
+            this.buttonAutoPrint.Location = new System.Drawing.Point(987, 719);
             this.buttonAutoPrint.Name = "buttonAutoPrint";
             this.buttonAutoPrint.Size = new System.Drawing.Size(189, 60);
             this.buttonAutoPrint.TabIndex = 26;
@@ -2458,7 +2487,7 @@
             this.listBoxAuto.FormattingEnabled = true;
             this.listBoxAuto.Location = new System.Drawing.Point(987, 89);
             this.listBoxAuto.Name = "listBoxAuto";
-            this.listBoxAuto.Size = new System.Drawing.Size(189, 654);
+            this.listBoxAuto.Size = new System.Drawing.Size(189, 615);
             this.listBoxAuto.TabIndex = 10;
             this.listBoxAuto.Click += new System.EventHandler(this.listBoxAuto_Click);
             // 
@@ -7656,7 +7685,7 @@
             this.tabPageCategories.Location = new System.Drawing.Point(23, 4);
             this.tabPageCategories.Name = "tabPageCategories";
             this.tabPageCategories.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCategories.Size = new System.Drawing.Size(1190, 708);
+            this.tabPageCategories.Size = new System.Drawing.Size(1190, 917);
             this.tabPageCategories.TabIndex = 0;
             this.tabPageCategories.Text = "   1. Label Categories   ";
             // 
@@ -8402,6 +8431,10 @@
             // tabPageDefaults
             // 
             this.tabPageDefaults.BackColor = System.Drawing.Color.White;
+            this.tabPageDefaults.Controls.Add(this.listBox1);
+            this.tabPageDefaults.Controls.Add(this.comboBoxAddressClean);
+            this.tabPageDefaults.Controls.Add(this.label177);
+            this.tabPageDefaults.Controls.Add(this.label176);
             this.tabPageDefaults.Controls.Add(this.comboBoxAutoLabel);
             this.tabPageDefaults.Controls.Add(this.textBoxDefaultsAutoLabel);
             this.tabPageDefaults.Controls.Add(this.label175);
@@ -8447,9 +8480,59 @@
             this.tabPageDefaults.Location = new System.Drawing.Point(23, 4);
             this.tabPageDefaults.Name = "tabPageDefaults";
             this.tabPageDefaults.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDefaults.Size = new System.Drawing.Size(1190, 708);
+            this.tabPageDefaults.Size = new System.Drawing.Size(1190, 917);
             this.tabPageDefaults.TabIndex = 1;
             this.tabPageDefaults.Text = "   Default Settings   ";
+            // 
+            // comboBoxAddressClean
+            // 
+            this.comboBoxAddressClean.AutoCompleteCustomSource.AddRange(new string[] {
+            "Name",
+            "Delete"});
+            this.comboBoxAddressClean.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxAddressClean.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxAddressClean.FormattingEnabled = true;
+            this.comboBoxAddressClean.Items.AddRange(new object[] {
+            "Delete",
+            "Name"});
+            this.comboBoxAddressClean.Location = new System.Drawing.Point(722, 768);
+            this.comboBoxAddressClean.Name = "comboBoxAddressClean";
+            this.comboBoxAddressClean.Size = new System.Drawing.Size(162, 21);
+            this.comboBoxAddressClean.Sorted = true;
+            this.comboBoxAddressClean.TabIndex = 67;
+            this.comboBoxAddressClean.Text = "Name";
+            // 
+            // label177
+            // 
+            this.label177.AutoSize = true;
+            this.label177.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label177.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label177.Location = new System.Drawing.Point(743, 751);
+            this.label177.Name = "label177";
+            this.label177.Size = new System.Drawing.Size(44, 14);
+            this.label177.TabIndex = 66;
+            this.label177.Text = "Action";
+            // 
+            // label176
+            // 
+            this.label176.AutoSize = true;
+            this.label176.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label176.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label176.Location = new System.Drawing.Point(599, 751);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(91, 14);
+            this.label176.TabIndex = 65;
+            this.label176.Text = "Text to Amend";
+            // 
+            // comboBoxAutoLabel
+            // 
+            this.comboBoxAutoLabel.FormattingEnabled = true;
+            this.comboBoxAutoLabel.Location = new System.Drawing.Point(537, 433);
+            this.comboBoxAutoLabel.Name = "comboBoxAutoLabel";
+            this.comboBoxAutoLabel.Size = new System.Drawing.Size(185, 21);
+            this.comboBoxAutoLabel.TabIndex = 64;
+            this.comboBoxAutoLabel.Text = "Change AutoLabel Label Here";
+            this.comboBoxAutoLabel.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoLabel_SelectedIndexChanged);
             // 
             // textBoxDefaultsAutoLabel
             // 
@@ -8470,23 +8553,24 @@
             // 
             // label163
             // 
-            this.label163.Location = new System.Drawing.Point(670, 623);
+            this.label163.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label163.Location = new System.Drawing.Point(610, 675);
             this.label163.Name = "label163";
-            this.label163.Size = new System.Drawing.Size(120, 27);
+            this.label163.Size = new System.Drawing.Size(238, 58);
             this.label163.TabIndex = 61;
-            this.label163.Text = "Type new Entry Below and click button";
+            this.label163.Text = "Type new Entry Below, choose an Action and click Add button";
             this.label163.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxAddClean
             // 
-            this.textBoxAddClean.Location = new System.Drawing.Point(670, 658);
+            this.textBoxAddClean.Location = new System.Drawing.Point(586, 768);
             this.textBoxAddClean.Name = "textBoxAddClean";
             this.textBoxAddClean.Size = new System.Drawing.Size(120, 20);
             this.textBoxAddClean.TabIndex = 60;
             // 
             // buttonAddCleanDelete
             // 
-            this.buttonAddCleanDelete.Location = new System.Drawing.Point(670, 713);
+            this.buttonAddCleanDelete.Location = new System.Drawing.Point(586, 823);
             this.buttonAddCleanDelete.Name = "buttonAddCleanDelete";
             this.buttonAddCleanDelete.Size = new System.Drawing.Size(120, 35);
             this.buttonAddCleanDelete.TabIndex = 59;
@@ -8496,7 +8580,7 @@
             // 
             // buttonAddCleanAdd
             // 
-            this.buttonAddCleanAdd.Location = new System.Drawing.Point(670, 684);
+            this.buttonAddCleanAdd.Location = new System.Drawing.Point(586, 794);
             this.buttonAddCleanAdd.Name = "buttonAddCleanAdd";
             this.buttonAddCleanAdd.Size = new System.Drawing.Size(122, 23);
             this.buttonAddCleanAdd.TabIndex = 58;
@@ -8507,7 +8591,7 @@
             // label162
             // 
             this.label162.AutoSize = true;
-            this.label162.Location = new System.Drawing.Point(797, 362);
+            this.label162.Location = new System.Drawing.Point(896, 34);
             this.label162.Name = "label162";
             this.label162.Size = new System.Drawing.Size(106, 13);
             this.label162.TabIndex = 57;
@@ -8519,12 +8603,34 @@
             this.dataGridViewAddClean.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAddClean.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn5,
-            this.textDataGridViewTextBoxColumn});
+            this.textDataGridViewTextBoxColumn,
+            this.actionDataGridViewTextBoxColumn});
             this.dataGridViewAddClean.DataSource = this.tableAddressFiltersBindingSource;
-            this.dataGridViewAddClean.Location = new System.Drawing.Point(800, 383);
+            this.dataGridViewAddClean.Location = new System.Drawing.Point(899, 55);
             this.dataGridViewAddClean.Name = "dataGridViewAddClean";
-            this.dataGridViewAddClean.Size = new System.Drawing.Size(240, 365);
+            this.dataGridViewAddClean.RowHeadersVisible = false;
+            this.dataGridViewAddClean.Size = new System.Drawing.Size(240, 808);
             this.dataGridViewAddClean.TabIndex = 56;
+            // 
+            // idDataGridViewTextBoxColumn5
+            // 
+            this.idDataGridViewTextBoxColumn5.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn5.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn5.Name = "idDataGridViewTextBoxColumn5";
+            this.idDataGridViewTextBoxColumn5.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn5.Width = 20;
+            // 
+            // textDataGridViewTextBoxColumn
+            // 
+            this.textDataGridViewTextBoxColumn.DataPropertyName = "Text";
+            this.textDataGridViewTextBoxColumn.HeaderText = "Text";
+            this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
+            // 
+            // actionDataGridViewTextBoxColumn
+            // 
+            this.actionDataGridViewTextBoxColumn.DataPropertyName = "Action";
+            this.actionDataGridViewTextBoxColumn.HeaderText = "Action";
+            this.actionDataGridViewTextBoxColumn.Name = "actionDataGridViewTextBoxColumn";
             // 
             // tableAddressFiltersBindingSource
             // 
@@ -8835,7 +8941,7 @@
             this.tabPageAppData.Controls.Add(this.richTextBoxAppData);
             this.tabPageAppData.Location = new System.Drawing.Point(23, 4);
             this.tabPageAppData.Name = "tabPageAppData";
-            this.tabPageAppData.Size = new System.Drawing.Size(1190, 708);
+            this.tabPageAppData.Size = new System.Drawing.Size(1190, 917);
             this.tabPageAppData.TabIndex = 4;
             this.tabPageAppData.Text = "  App. Data   ";
             this.tabPageAppData.UseVisualStyleBackColor = true;
@@ -8979,29 +9085,18 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBoxAutoLabel
+            // listBox1
             // 
-            this.comboBoxAutoLabel.FormattingEnabled = true;
-            this.comboBoxAutoLabel.Location = new System.Drawing.Point(537, 433);
-            this.comboBoxAutoLabel.Name = "comboBoxAutoLabel";
-            this.comboBoxAutoLabel.Size = new System.Drawing.Size(185, 21);
-            this.comboBoxAutoLabel.TabIndex = 64;
-            this.comboBoxAutoLabel.Text = "Change AutoLabel Label Here";
-            this.comboBoxAutoLabel.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoLabel_SelectedIndexChanged);
-            // 
-            // idDataGridViewTextBoxColumn5
-            // 
-            this.idDataGridViewTextBoxColumn5.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn5.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn5.Name = "idDataGridViewTextBoxColumn5";
-            this.idDataGridViewTextBoxColumn5.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn5.Width = 20;
-            // 
-            // textDataGridViewTextBoxColumn
-            // 
-            this.textDataGridViewTextBoxColumn.DataPropertyName = "Text";
-            this.textDataGridViewTextBoxColumn.HeaderText = "Text";
-            this.textDataGridViewTextBoxColumn.Name = "textDataGridViewTextBoxColumn";
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "Delete - remove from Address",
+            "Name - Add to start of Name"});
+            this.listBox1.Location = new System.Drawing.Point(722, 795);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(162, 91);
+            this.listBox1.TabIndex = 68;
             // 
             // formMain
             // 
@@ -9988,8 +10083,15 @@
         private System.Windows.Forms.TextBox textBoxDefaultsAutoLabel;
         private System.Windows.Forms.Label label175;
         private System.Windows.Forms.ComboBox comboBoxAutoLabel;
+        private System.Windows.Forms.ComboBox comboBoxAutoPrinters;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button buttonAddressClean;
+        private System.Windows.Forms.ComboBox comboBoxAddressClean;
+        private System.Windows.Forms.Label label177;
+        private System.Windows.Forms.Label label176;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

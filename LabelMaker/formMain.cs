@@ -10,6 +10,7 @@ using System.Drawing.Printing;
 using System.Deployment.Application;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace LabelMaker
 {
@@ -172,9 +173,12 @@ namespace LabelMaker
             }
             string[] labelData = returnLabelData(name);
             string[] labelHeader = returnLabelHeaderData(name);
+            string[] printerDetails = new string[2];
+            printerDetails[0] = labelHeader[12];
+            printerDetails[1] = labelHeader[13];
 
-            if (labelHeader[2] == "Text") { printAsText(labelData, whichQueue, howManyLines, defaultsString); }
-            else { printAsColour(labelData, whichQueue, howManyLines, defaultsString); }
+            if (labelHeader[2] == "Text") { printAsText(labelData, whichQueue, howManyLines, defaultsString, printerDetails); }
+            else { printAsColour(labelData, whichQueue, howManyLines, defaultsString, printerDetails); }
 
             form.Dispose();
         }
@@ -188,13 +192,15 @@ namespace LabelMaker
             printWhere.Dispose();
         }
 
-        private void printAsText(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString)
+        private void printAsText(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString, string[] printerDetails)
         {
             //Print one label at a time using multiple copies for speed
 
             PrintDialog pDialog = new PrintDialog();
-            pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
-                
+            //pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
+            pDialog.PrinterSettings.PrinterName = printerDetails[0];
+
+
             if (DialogResult.OK == pDialog.ShowDialog())
             {
                 int count = 0;
@@ -274,16 +280,18 @@ namespace LabelMaker
             }
         }
 
-        private void printAsColour(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString)
+        private void printAsColour(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString, string[] printerDetails)
         {
             //Print multiple labels on one sheet. 
 
             PrintDialog pDialog = new PrintDialog();
             pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
             pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
-            pDialog.Document.DefaultPageSettings.PaperSource.SourceName =  listBoxPrinter.Items[15].ToString().TrimEnd();
-            string paperSourceName = listBoxPrinter.Items[15].ToString().TrimEnd();
-
+            //pDialog.Document.DefaultPageSettings.PaperSource.SourceName =  listBoxPrinter.Items[15].ToString().TrimEnd();
+            //string paperSourceName = listBoxPrinter.Items[15].ToString().TrimEnd();
+            pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[0];
+            string paperSourceName = printerDetails[0];
+            
             //set right paper tray
             string[] sources = new string[20];
 
@@ -4119,7 +4127,7 @@ namespace LabelMaker
                         //go through colour queue
                         for (int j = 0; j <= dataGridViewColourQ.RowCount - 2; j++)
                         {
-                            if (idFind == dataGridViewColourQ.Rows[j].Cells[34].Value.ToString())
+                            if (idFind == dataGridViewColourQ.Rows[j].Cells[35].Value.ToString())
                             {
                                 dataGridViewColourQ.Rows.RemoveAt(j);
 
@@ -5836,6 +5844,7 @@ namespace LabelMaker
 
         private void button1_Click_5(object sender, EventArgs e)
         {
+            if (checkBoxCorrectAddress.Checked) { cleanAddresses(); }
             createAddressList();
         }
 
@@ -5906,7 +5915,7 @@ namespace LabelMaker
                         {
                             //MessageBox.Show("Found "+ customers[i, 0]);
 
-                            string[] queueData = new string[36];
+                            string[] queueData = new string[37];
 
                             queueData[0] = customers[i,0]; //Full name
                             int qty = 1;
@@ -5954,6 +5963,7 @@ namespace LabelMaker
                             queueData[33] = dataGridViewAuto.Rows[j].Cells[16].Value.ToString().Trim();
                             queueData[34] = dataGridViewAuto.Rows[j].Cells[17].Value.ToString().Trim();
                             queueData[35] = dataGridViewAuto.Rows[j].Cells[18].Value.ToString().Trim();
+                            queueData[36] = "No Colour";
 
                             doTheAdding(queueData, "AutoLabel");
 
@@ -6493,10 +6503,26 @@ namespace LabelMaker
 
         private void buttonAddCleanAdd_Click(object sender, EventArgs e)
         {
-            DataRow newRow = databaseLabelsDataSetAddClean.TableAddressFilters.NewRow();
-            newRow[1] = textBoxAddClean.Text;
-            databaseLabelsDataSetAddClean.TableAddressFilters.Rows.Add(newRow);
-            tableAddressFiltersTableAdapter.Update(databaseLabelsDataSetAddClean.TableAddressFilters);
+            //Check Action is valid
+            string Action = comboBoxAddressClean.Text.Trim();
+            Boolean record = false;
+            for (int f = 0; f < comboBoxAddressClean.Items.Count; f++)
+            {
+                if (Action == comboBoxAddressClean.Items[f].ToString().Trim()) { record = true; }
+            }
+
+            if (record)
+            {
+                DataRow newRow = databaseLabelsDataSetAddClean.TableAddressFilters.NewRow();
+                newRow[1] = textBoxAddClean.Text;
+                newRow[2] = comboBoxAddressClean.Text;
+                databaseLabelsDataSetAddClean.TableAddressFilters.Rows.Add(newRow);
+                tableAddressFiltersTableAdapter.Update(databaseLabelsDataSetAddClean.TableAddressFilters);
+            }
+            else
+            {
+                MessageBox.Show("Action is not valid, please pick from the list");
+            }
         }
 
         private void buttonAddCleanDelete_Click(object sender, EventArgs e)
@@ -6872,6 +6898,246 @@ namespace LabelMaker
         {
             textBoxDefaultsAutoLabel.Text = comboBoxAutoLabel.Text;
         }
+
+        private void buttonAddressClean_Click(object sender, EventArgs e)
+        {
+            cleanAddresses();
+        }
+        private void cleanAddresses()
+        {
+            //Cleans up the Addresses in the DataGrid. Doesn't save changes in case the cleanup is imperfect.
+
+            for (int i =0;i<dataGridViewAuto.RowCount - 1; i++)
+            {
+                string[] address = new string[9];
+                //fill address from grid
+                for (int j = 0; j <= 8; j++)
+                {
+                    if (j == 0) { address[j] = dataGridViewAuto.Rows[i].Cells[j + 5].Value.ToString().Trim(); }
+                    else { address[j] = dataGridViewAuto.Rows[i].Cells[j + 10].Value.ToString().Trim(); }
+                }
+
+                //Move Mr / Mrs and delete oddities
+
+                for (int k = 0; k < dataGridViewAddClean.RowCount - 1; k++)
+                {
+                    for (int l = 3; l <= 8; l++)
+                    {
+                        if (address[l] == dataGridViewAddClean.Rows[k].Cells[1].Value.ToString().Trim())
+                        {
+                            //found a matching oddity, so delete or move
+                            string action = dataGridViewAddClean.Rows[k].Cells[2].Value.ToString().Trim();
+                            if (action == "Name") // move item to before first name
+                            {
+                                address[1] = address[8] + " " + address[1];
+                                address[8] = "";
+                            }
+                            if (action == "Delete") // move item to before first name
+                            {
+                                address[8] = "";
+                            }
+                        }
+                    }
+                }
+                //remove spurious numbers from line 2
+                int numberFound = 0;
+                string check = address[4].Trim();
+                bool result = int.TryParse(check, out numberFound); //numberFound = number if it is one and result=true;
+                if (result)
+                {
+                    //found an isolated number
+                    int numberLength = check.Length;
+                    string duplicateCheck = address[3].Substring(0, numberLength);
+                    if (check == duplicateCheck)
+                    {
+                        address[4] = ""; // duplicate, so just delete it
+                    }
+                    else
+                    {
+                        address[3] = check + " " + address[3]; //on wrong line so move and delete
+                        address[4] = "";
+                    }
+                }
+                //Check if Postcode appears twice
+                string Postcode = address[7];
+                for (int j = 1; j <= 8; j++)
+                {
+                    if (j != 7)  //skip postcode line
+                    {
+                        string newString = "";
+                        //check for postcode with space
+                        int textPosition1 = address[j].ToUpper().IndexOf(Postcode);
+                        if (textPosition1 != -1)
+                        {
+                            //MessageBox.Show("Found with space " + Postcode);
+                            newString = address[j].SubstringSpecial(0, textPosition1) + address[j].Substring(textPosition1 + Postcode.Length)+" ";
+                        }
+                        //check for postcode with space
+                        string PostcodeNoSpace = RemoveWhitespace(Postcode);
+
+                        int textPosition2 = address[j].ToUpper().IndexOf(PostcodeNoSpace);
+                        if (textPosition2 != -1)
+                        {
+                            //MessageBox.Show("Found " + PostcodeNoSpace);
+                            newString = address[j].SubstringSpecial(0, textPosition2) + address[j].Substring(textPosition2 + PostcodeNoSpace.Length)+" ";
+                        }
+                        if (newString != "") {
+                            address[j] = newString.Trim();
+                        }
+                    }
+                }
+
+                    //Un-capitalise and then capitalise first letters
+                    for (int j = 0; j <= 8; j++)
+                {
+                    TextInfo newText = CultureInfo.CurrentCulture.TextInfo;
+                    //convert to LowerCase First
+                    if (j != 7) { address[j] = address[j].ToLowerInvariant(); } // miss postcode
+                    //Convert to Title Case
+                    address[j] = newText.ToTitleCase(address[j]);
+                    //check for ands and ofs ????
+                }
+
+                //split into separate address lines
+                string[] splitAddress = new string[12];
+                for (int f = 0; f <= 11; f++) { splitAddress[f] = ""; } //make all empty strings to prevent null
+                int counter = 0;
+                string stringToSplit = "";
+
+                    //Organisation first
+                    stringToSplit = address[8].Trim();
+                    if (stringToSplit != "") { splitAddress = splitString(splitAddress, stringToSplit, counter); }
+
+                    //rest of address
+                    for (int j = 3; j<= 7; j++)
+                    {
+                        stringToSplit = address[j].Trim();
+                        if (stringToSplit != "")
+                        {
+                            //find counter
+                            counter = findCounter(splitAddress);
+                            splitAddress = splitString(splitAddress, stringToSplit, counter);
+                        }
+
+                    }
+
+
+                //Put back Name
+                address[0] = address[1] +" "+ address[2];
+
+                //Put back address lines
+
+                    //Put new Address back in right string
+
+                    //find how many address lines you have
+                    counter = findCounter(splitAddress);
+                    if (counter > 6)
+                    {
+                    do
+                    {
+                        //recombine some
+                        string compare1="";
+                        string compare2 = "";
+                        int bestFit = 0;
+                        int lowestLength = 1000;
+                        //find smallest combination
+                        for (int f = 0; f <= (counter - 3); f++)
+                        {
+                            compare1 = splitAddress[f].Trim();
+                            compare2 = splitAddress[f + 1].Trim();
+                            if ((compare1.Length + compare2.Length) < lowestLength) { bestFit = f; lowestLength = (compare1.Length + compare2.Length); }
+                        }
+                        splitAddress[bestFit] = splitAddress[bestFit].Trim() + ", "+ splitAddress[bestFit + 1].Trim();
+                        for (int f = (bestFit+1); f <= 10; f++) //shuffle the rest down
+                        {
+                            splitAddress[f] = splitAddress[f + 1];
+                            splitAddress[11] = "";
+                        }
+
+                            //MessageBox.Show("Needs recombining - " + address[2]);
+                        counter = findCounter(splitAddress);
+                    } while (counter > 6);
+                    }
+                    counter = findCounter(splitAddress);
+                    //last one should be Postcode
+                    address[7] = splitAddress[counter - 1].ToUpper();
+                    //first one to organisation
+                    address[8] = splitAddress[0];
+                    //and the rest
+                    for (int f = 1; f <= (counter - 2); f++)
+                    {
+                        address[f+2] = splitAddress[f];
+                    }
+
+                //put the string back in the dataGrid
+                for (int j = 0; j <= 8; j++)
+                {
+                    if (j == 0) {  dataGridViewAuto.Rows[i].Cells[j + 5].Value = address[j].Trim() ; }
+                    else {  dataGridViewAuto.Rows[i].Cells[j + 10].Value = address[j].Trim(); }
+                }
+
+                
+
+            }
+        }
+
+        private int findCounter(string[] sentString)
+        {
+            //find counter - finds first empty string in an array
+            int counter = 0;
+            for (int k = sentString.Length-1; k >= 0; k--)
+            {
+                try { if (string.IsNullOrEmpty(sentString[k].Trim())) { counter = k; } }
+                catch { }
+            }
+            return counter;
+        }
+
+        private string[] splitString(string[] splitAddress, string stringToSplit, int startPosition)
+        {
+            Boolean breakLoop = false;
+            do
+            {
+                int commaPosition = stringToSplit.IndexOf(",");
+                if (commaPosition == -1)
+                {
+                    splitAddress[startPosition] = stringToSplit;
+                    breakLoop = true;
+                }
+                else
+                {
+                    //look for comma following house number
+                    int numberFound = 0;
+                    string check = stringToSplit.SubstringSpecial(commaPosition - 1, commaPosition);
+                    bool result = int.TryParse(check, out numberFound); //numberFound = number if it is one and result=true;
+                    if (result)
+                    {
+                        //found number so change the comma so it doesn't keep triggering
+                        stringToSplit = stringToSplit.SubstringSpecial(0, commaPosition) + ";"+ stringToSplit.Substring(commaPosition + 1);
+                    }
+                    else
+                    {
+                        //no number so split in two
+                        splitAddress[startPosition] = stringToSplit.SubstringSpecial(0, commaPosition);
+                        stringToSplit = stringToSplit.Substring(commaPosition + 1);
+                        startPosition++;
+                    }
+                }
+            }
+            while (!breakLoop);
+
+                return splitAddress;
+        }
+
+
+        public static string RemoveWhitespace( string input)
+        {
+            return new string(input.ToCharArray()
+                .Where(c => !Char.IsWhiteSpace(c))
+                .ToArray());
+        }
+
+        
     }
 }
     
