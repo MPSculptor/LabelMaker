@@ -570,8 +570,18 @@ namespace LabelMaker
             }
             if (tabControlMain.SelectedTab == tabPageLabelProfiles)
             {
-                dataGridView1ProfileView.CurrentCell = dataGridView1ProfileView.Rows[1].Cells[1];
                 addProfileButtons();
+
+                string profileName = buttonMainProfile.Text;
+                for (int f =0;f< dataGridView1ProfileView.RowCount; f++)
+                {
+                    if (dataGridView1ProfileView.Rows[f].Cells[1].Value.ToString().Trim() == profileName)
+                    {
+                        dataGridView1ProfileView.CurrentCell = dataGridView1ProfileView[1,f];
+                        break;
+                    }
+                }
+                                
                 updateProfileSample();
                 addProfilePicture("database");
             }
@@ -1411,6 +1421,11 @@ namespace LabelMaker
 
             labelPlantName.Text = PlantNames[0];
 
+            //ID's for updates from other pages
+            labelRealID.Text = dataGridViewPlants.Rows[indexOfRow].Cells[0].Value.ToString();
+            labelGridID.Text = indexOfRow.ToString();
+
+
             //Description
             richTextBoxDesc.Text = dataGridViewPlants.Rows[indexOfRow].Cells[8].Value.ToString();
 
@@ -1560,6 +1575,26 @@ namespace LabelMaker
             {
                 TempMakeALabel(panelLabelPreview, "Choice", "database", "");
             }
+
+            //set profile details
+            string profileName = dataGridViewPlants.Rows[indexOfRow].Cells[17].Value.ToString().Trim();
+
+            buttonMainProfile.Text = profileName;
+
+            DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
+            string expression;
+            expression = "Name = '" + profileName + "'";
+            DataRow[] foundRows;
+            // Use the Select method to find all rows matching the filter.
+            foundRows = table.Select(expression);
+
+            buttonMainProfile.ForeColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(foundRows[0][6].ToString())); // Font Colour
+            buttonMainProfile.FlatStyle = FlatStyle.Flat;
+            buttonMainProfile.FlatAppearance.BorderSize = 2;
+            buttonMainProfile.FlatAppearance.BorderColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(foundRows[0][2].ToString())); // Border Colour
+            buttonMainProfile.BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(foundRows[0][7].ToString())); // Back Colour
+
+            //find this
 
         }
 
@@ -2336,16 +2371,12 @@ namespace LabelMaker
 
                 ProfileSample[profileIndex] = new Button();
                 ProfileSample[profileIndex].Text = rowString[1];
-                Console.WriteLine(rowString[1]);
                 ProfileSample[profileIndex].Width = 116;
                 ProfileSample[profileIndex].Height = 30;
-                Console.WriteLine("BackColour");
                 ProfileSample[profileIndex].BackColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[7]));
-                Console.WriteLine("ForeColour");
                 ProfileSample[profileIndex].ForeColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[6]));
                 ProfileSample[profileIndex].FlatStyle = FlatStyle.Flat;
                 ProfileSample[profileIndex].FlatAppearance.BorderSize = 3;
-                Console.WriteLine("BorderColour");
                 ProfileSample[profileIndex].FlatAppearance.BorderColor = System.Drawing.ColorTranslator.FromHtml(CreationUtilities.TextOperations.getHexColour(rowString[2]));
 
                 flowLayoutPanelProfiles.Controls.Add(ProfileSample[profileIndex]);
@@ -5819,7 +5850,32 @@ namespace LabelMaker
 
         private void buttonAssignProfile_Click(object sender, EventArgs e)
         {
+            string profileName = labelProfileSampleText.Text.Trim();
+            int row = dataGridViewPlants.CurrentRow.Index;
+            //int.TryParse(dataGridViewPlants.Rows[row].Cells[0].Value.ToString(), out int rowIndex);
+            Boolean result = int.TryParse(labelGridID.Text.ToString(),out int realRow);
+            databaseLabelsDataSet.TablePlants.Rows[realRow].SetField(17, profileName);
+            //MessageBox.Show(databaseLabelsDataSet.TablePlants.Rows[rowIndex].RowState.ToString());            
+            if (result)
+            {
+                try
+                {
+                    tablePlantsBindingSource.EndEdit();
+                    tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
 
+                    MessageBox.Show("Updated Profile for " + labelPlantName.Text + " as " + profileName);
+
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to update Profile for " + labelPlantName.Text);
+                }
+                updateMainDetails(row);
+            }
+            else
+            {
+                MessageBox.Show("Failed to update Profile for " + labelPlantName.Text + ", couldn't find right row !");
+            }
         }
 
         private void buttonNewProfile_Click(object sender, EventArgs e)
@@ -7137,7 +7193,10 @@ namespace LabelMaker
                 .ToArray());
         }
 
-        
+        private void textBoxQty_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
     
