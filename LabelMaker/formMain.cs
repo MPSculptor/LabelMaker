@@ -45,14 +45,18 @@ namespace LabelMaker
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
             this.tablePlantsTableAdapter.Fill(this.databaseLabelsDataSet.TablePlants);
 
-
             this.BackColor = Color.DarkGray;
 
-            tabPageColourQueue.BackColor = Color.FromName(textBoxColourColour.Text);
-            tabPageMainQueue.BackColor = Color.FromName(textBoxColourMain.Text);
-
-
+            colourQueueTab("first");
             updateManualTab();
+        }
+
+        private void colourQueueTab(string first)
+        {
+            string[] defaults = getDefaultSettings();
+            tabPageColourQueue.BackColor = Color.FromName(defaults[14]);
+            tabPageMainQueue.BackColor = Color.FromName(defaults[13]);
+            if (first == "first") { buttonVisibleOnly.BackColor = Color.FromName(defaults[17]); }
         }
 
         private void updateManualTab()
@@ -1376,7 +1380,8 @@ namespace LabelMaker
         private void buttonHiddenOnly_Click(object sender, EventArgs e)
         {
             doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'True'  ORDER BY Genus ASC, Species ASC, Variety ASC");
-            buttonHiddenOnly.BackColor = Color.YellowGreen;
+            string[] defaults = getDefaultSettings();
+            buttonHiddenOnly.BackColor = Color.FromName(defaults[17]);
             buttonVisibleOnly.BackColor = Color.Transparent;
             buttonAllEntries.BackColor = Color.Transparent;
         }
@@ -1384,17 +1389,19 @@ namespace LabelMaker
         private void buttonVisibleOnly_Click(object sender, EventArgs e)
         {
             doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC");
+            string[] defaults = getDefaultSettings();
             buttonHiddenOnly.BackColor = Color.Transparent;
-            buttonVisibleOnly.BackColor = Color.YellowGreen;
+            buttonVisibleOnly.BackColor = Color.FromName(defaults[17]);
             buttonAllEntries.BackColor = Color.Transparent;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants ORDER BY Genus ASC, Species ASC, Variety ASC");
+            string[] defaults = getDefaultSettings();
             buttonHiddenOnly.BackColor = Color.Transparent;
             buttonVisibleOnly.BackColor = Color.Transparent;
-            buttonAllEntries.BackColor = Color.YellowGreen;
+            buttonAllEntries.BackColor = Color.FromName(defaults[17]);
         }
         #endregion
 
@@ -1798,41 +1805,43 @@ namespace LabelMaker
             }
 
             //FillTogles
+            string colourTrue = defaultsString[15];
+            string colourFalse = defaultsString[17];
             ButtonData10.Text = dataGridViewPlants.Rows[indexOfRow].Cells[10].Value.ToString();
             if (ButtonData10.Text == "True")
             {
-                ButtonData10.BackColor = Color.YellowGreen;
+                ButtonData10.BackColor = Color.FromName(colourFalse);
             }
             else
             {
-                ButtonData10.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData10.BackColor = Color.FromName(colourTrue);
             }
             ButtonData16.Text = dataGridViewPlants.Rows[indexOfRow].Cells[16].Value.ToString();
             if (ButtonData16.Text == "True")
             {
-                ButtonData16.BackColor = Color.YellowGreen;
+                ButtonData16.BackColor = Color.FromName(colourFalse);
             }
             else
             {
-                ButtonData16.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData16.BackColor = Color.FromName(colourTrue);
             }
             ButtonData18.Text = dataGridViewPlants.Rows[indexOfRow].Cells[18].Value.ToString();
             if (ButtonData18.Text == "True")
             {
-                ButtonData18.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData18.BackColor = Color.FromName(colourTrue);
             }
             else
             {
-                ButtonData18.BackColor = Color.YellowGreen;
+                ButtonData18.BackColor = Color.FromName(colourFalse);
             }
             ButtonData20.Text = dataGridViewPlants.Rows[indexOfRow].Cells[20].Value.ToString();
             if (ButtonData20.Text == "True")
             {
-                ButtonData20.BackColor = Color.YellowGreen;
+                ButtonData20.BackColor = Color.FromName(colourFalse);
             }
             else
             {
-                ButtonData20.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData20.BackColor = Color.FromName(colourTrue);
             }
         }
 
@@ -2136,9 +2145,10 @@ namespace LabelMaker
                 }
 
                 //refilter the grid so entry ends up sorted
+                string[] defaults = getDefaultSettings();
                 doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC");
                 buttonHiddenOnly.BackColor = Color.Transparent;
-                buttonVisibleOnly.BackColor = Color.YellowGreen;
+                buttonVisibleOnly.BackColor = Color.FromName(defaults[17]);
                 buttonAllEntries.BackColor = Color.Transparent;
 
                 //load in name details
@@ -2183,61 +2193,65 @@ namespace LabelMaker
 
         private void ButtonData10_Click(object sender, EventArgs e)
         {
+            string[] defaults = getDefaultSettings();
             //Toggle Add to Colour Queue status
             if (ButtonData10.Text == "True")
             {
                 ButtonData10.Text = "False";
-                ButtonData10.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData10.BackColor = Color.FromName(defaults[15]);
             }
             else
             {
                 ButtonData10.Text = "True";
-                ButtonData10.BackColor = Color.YellowGreen;
+                ButtonData10.BackColor = Color.FromName(defaults[17]);
             }
         }
 
         private void ButtonData20_Click(object sender, EventArgs e)
         {
+            string[] defaults = getDefaultSettings();
             // Toggle Label Stocks status
             if (ButtonData20.Text == "True")
             {
                 ButtonData20.Text = "False";
-                ButtonData20.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData20.BackColor = Color.FromName(defaults[15]);
             }
             else
             {
                 ButtonData20.Text = "True";
-                ButtonData20.BackColor = Color.YellowGreen;
+                ButtonData20.BackColor = Color.FromName(defaults[17]);
             }
         }
 
         private void ButtonData16_Click(object sender, EventArgs e)
         {
+            string[] defaults = getDefaultSettings();
             //Toggle AGM status
             if (ButtonData16.Text == "True")
             {
                 ButtonData16.Text = "False";
-                ButtonData16.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData16.BackColor = Color.FromName(defaults[15]);
             }
             else
             {
                 ButtonData16.Text = "True";
-                ButtonData16.BackColor = Color.YellowGreen;
+                ButtonData16.BackColor = Color.FromName(defaults[17]);
             }
         }
 
         private void ButtonData18_Click(object sender, EventArgs e)
         {
+            string[] defaults = getDefaultSettings();
             //Toggle Hidden/Visible entry
             if (ButtonData18.Text == "True")
             {
                 ButtonData18.Text = "False";
-                ButtonData18.BackColor = Color.YellowGreen;
+                ButtonData18.BackColor = Color.FromName(defaults[17]);
             }
             else
             {
                 ButtonData18.Text = "True";
-                ButtonData18.BackColor = Color.FromName(textBoxColourFalse.Text);
+                ButtonData18.BackColor = Color.FromName(defaults[15]);
             }
         }
 
@@ -3080,28 +3094,28 @@ namespace LabelMaker
             string[] defaults = getDefaultSettings(); 
             Color newColour = new Color();
             Color newColour1 = new Color();
-            newColour = Color.FromName(textBoxColourHalfway.Text);
-            newColour1 = Color.FromName(textBoxColourHalfway.Text);
+            newColour = Color.FromName(defaults[13]);
+            newColour1 = Color.FromName(defaults[16]);
             if (tabControlQueue.SelectedTab == tabPageColourQueue)
             {
                 if (comboBoxLabelName.Text.Trim() == defaults[3].Trim())
                 {
-                    newColour = Color.FromName(textBoxColourColour.Text);
+                    newColour = Color.FromName(defaults[14]);
                 }
                 if (comboBoxAutoLabelName.Text.Trim() == defaults[3].Trim())
                 {
-                    newColour1 = Color.FromName(textBoxColourColour.Text);
+                    newColour1 = Color.FromName(defaults[14]);
                 }
             }
             else
             {
                 if (comboBoxLabelName.Text.Trim() == defaults[2].Trim())
                 {
-                    newColour = Color.FromName(textBoxColourMain.Text);
+                    newColour = Color.FromName(defaults[13]);
                 }
                 if (comboBoxAutoLabelName.Text.Trim() == defaults[2].Trim())
                 {
-                    newColour1 = Color.FromName(textBoxColourMain.Text);
+                    newColour1 = Color.FromName(defaults[13]);
                 }
             }
             buttonPrint.BackColor = newColour;
@@ -6236,6 +6250,13 @@ namespace LabelMaker
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(11, textBoxDefaultsCorrectAdd.Text.ToString() );
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(12, textBoxDefaultsAutoLabel.Text.ToString());
 
+            //Colours
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(13, textBoxColourMain .Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(14, textBoxColourColour.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(15, textBoxColourTrue.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(16, textBoxColourHalfway.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(17, textBoxColourFalse.Text.ToString());
+
 
             try
             {
@@ -7288,6 +7309,7 @@ namespace LabelMaker
             {
                 textBoxColourMain.Text = comboBoxColours.Text;
                 buttonColourMain.BackColor = Color.FromName(comboBoxColours.Text);
+                colourQueueTab("no");
             }
         }
 
@@ -7297,6 +7319,7 @@ namespace LabelMaker
             {
                 textBoxColourColour.Text = comboBoxColours.Text;
                 buttonColourColour.BackColor = Color.FromName(comboBoxColours.Text);
+                colourQueueTab("no");
             }
         }
 
