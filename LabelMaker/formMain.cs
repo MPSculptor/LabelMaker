@@ -11,6 +11,7 @@ using System.Deployment.Application;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Reflection;
 
 namespace LabelMaker
 {
@@ -46,6 +47,11 @@ namespace LabelMaker
 
 
             this.BackColor = Color.DarkGray;
+
+            tabPageColourQueue.BackColor = Color.FromName(textBoxColourColour.Text);
+            tabPageMainQueue.BackColor = Color.FromName(textBoxColourMain.Text);
+
+
             updateManualTab();
         }
 
@@ -699,41 +705,47 @@ namespace LabelMaker
         #region Status Buttons - functions and initial colouring
 
         public void colourStatusButtons()
+
         {
+            string[] defaults = getDefaultSettings();
+
+            Color colourTrue = Color.FromName(defaults[17]);
+            Color colourFalse = Color.FromName(defaults[15]);
+
             if (buttonAddtoColourQueue.Text == "add Colour")
             {
-                buttonAddtoColourQueue.BackColor = Color.YellowGreen;
+                buttonAddtoColourQueue.BackColor = colourTrue;
             }
             else
             {
-                buttonAddtoColourQueue.BackColor = Color.DarkSalmon;
+                buttonAddtoColourQueue.BackColor = colourFalse;
             }
 
             if (buttonAGMStatus.Text == "AGM")
             {
-                buttonAGMStatus.BackColor = Color.YellowGreen;
+                buttonAGMStatus.BackColor = colourTrue;
             }
             else
             {
-                buttonAGMStatus.BackColor = Color.DarkSalmon;
+                buttonAGMStatus.BackColor = colourFalse;
             }
 
             if (buttonLableStocks.Text == "Labels")
             {
-                buttonLableStocks.BackColor = Color.YellowGreen;
+                buttonLableStocks.BackColor = colourTrue;
             }
             else
             {
-                buttonLableStocks.BackColor = Color.DarkSalmon;
+                buttonLableStocks.BackColor = colourFalse;
             }
 
             if (buttonVisibleEntry.Text == "Visible")
             {
-                buttonVisibleEntry.BackColor = Color.YellowGreen;
+                buttonVisibleEntry.BackColor = colourTrue;
             }
             else
             {
-                buttonVisibleEntry.BackColor = Color.DarkSalmon;
+                buttonVisibleEntry.BackColor = colourFalse;
             }
         }
 
@@ -791,15 +803,16 @@ namespace LabelMaker
 
         private void buttonAGMStatus_Click(object sender, EventArgs e)
         {
+            string[] defaults = getDefaultSettings();
             if (buttonAGMStatus.Text == "AGM")
             {
                 buttonAGMStatus.Text = "no AGM";
-                buttonAGMStatus.BackColor = Color.DarkSalmon;
+                buttonAGMStatus.BackColor = Color.FromName(defaults[15]);
             }
             else
             {
                 buttonAGMStatus.Text = "AGM";
-                buttonAGMStatus.BackColor = Color.YellowGreen;
+                buttonAGMStatus.BackColor = Color.FromName(defaults[17]);
             }
             colourStatusButtons();
             changeFlag(16);
@@ -807,15 +820,16 @@ namespace LabelMaker
 
         private void buttonLableStocks_Click(object sender, EventArgs e)
         {
+            string[] defaults = getDefaultSettings();
             if (buttonLableStocks.Text == "Labels")
             {
                 buttonLableStocks.Text = "no Labels";
-                buttonLableStocks.BackColor = Color.DarkSalmon;
+                buttonLableStocks.BackColor = Color.FromName(defaults[17]);
             }
             else
             {
                 buttonLableStocks.Text = "Labels";
-                buttonLableStocks.BackColor = Color.YellowGreen;
+                buttonLableStocks.BackColor = Color.FromName(defaults[15]);
             }
             colourStatusButtons();
             changeFlag(20);
@@ -1791,7 +1805,7 @@ namespace LabelMaker
             }
             else
             {
-                ButtonData10.BackColor = Color.DarkSalmon;
+                ButtonData10.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
             ButtonData16.Text = dataGridViewPlants.Rows[indexOfRow].Cells[16].Value.ToString();
             if (ButtonData16.Text == "True")
@@ -1800,12 +1814,12 @@ namespace LabelMaker
             }
             else
             {
-                ButtonData16.BackColor = Color.DarkSalmon;
+                ButtonData16.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
             ButtonData18.Text = dataGridViewPlants.Rows[indexOfRow].Cells[18].Value.ToString();
             if (ButtonData18.Text == "True")
             {
-                ButtonData18.BackColor = Color.DarkSalmon;
+                ButtonData18.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
             else
             {
@@ -1818,7 +1832,7 @@ namespace LabelMaker
             }
             else
             {
-                ButtonData20.BackColor = Color.DarkSalmon;
+                ButtonData20.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
         }
 
@@ -2173,7 +2187,7 @@ namespace LabelMaker
             if (ButtonData10.Text == "True")
             {
                 ButtonData10.Text = "False";
-                ButtonData10.BackColor = Color.DarkSalmon;
+                ButtonData10.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
             else
             {
@@ -2188,7 +2202,7 @@ namespace LabelMaker
             if (ButtonData20.Text == "True")
             {
                 ButtonData20.Text = "False";
-                ButtonData20.BackColor = Color.DarkSalmon;
+                ButtonData20.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
             else
             {
@@ -2203,7 +2217,7 @@ namespace LabelMaker
             if (ButtonData16.Text == "True")
             {
                 ButtonData16.Text = "False";
-                ButtonData16.BackColor = Color.DarkSalmon;
+                ButtonData16.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
             else
             {
@@ -2223,7 +2237,7 @@ namespace LabelMaker
             else
             {
                 ButtonData18.Text = "True";
-                ButtonData18.BackColor = Color.DarkSalmon;
+                ButtonData18.BackColor = Color.FromName(textBoxColourFalse.Text);
             }
         }
 
@@ -3066,28 +3080,28 @@ namespace LabelMaker
             string[] defaults = getDefaultSettings(); 
             Color newColour = new Color();
             Color newColour1 = new Color();
-            newColour = Color.Orange;
-            newColour1 = Color.Orange;
+            newColour = Color.FromName(textBoxColourHalfway.Text);
+            newColour1 = Color.FromName(textBoxColourHalfway.Text);
             if (tabControlQueue.SelectedTab == tabPageColourQueue)
             {
                 if (comboBoxLabelName.Text.Trim() == defaults[3].Trim())
                 {
-                    newColour = Color.IndianRed;
+                    newColour = Color.FromName(textBoxColourColour.Text);
                 }
                 if (comboBoxAutoLabelName.Text.Trim() == defaults[3].Trim())
                 {
-                    newColour1 = Color.IndianRed;
+                    newColour1 = Color.FromName(textBoxColourColour.Text);
                 }
             }
             else
             {
                 if (comboBoxLabelName.Text.Trim() == defaults[2].Trim())
                 {
-                    newColour = Color.CadetBlue;
+                    newColour = Color.FromName(textBoxColourMain.Text);
                 }
                 if (comboBoxAutoLabelName.Text.Trim() == defaults[2].Trim())
                 {
-                    newColour1 = Color.CadetBlue;
+                    newColour1 = Color.FromName(textBoxColourMain.Text);
                 }
             }
             buttonPrint.BackColor = newColour;
@@ -3193,8 +3207,8 @@ namespace LabelMaker
                 {
                     string[] toAdd = new string[] {
                         dataGridViewColourQ.Rows[i].Cells[0].Value.ToString(),
-                        "True",
-                        "True",
+                        "False",
+                        "False",
                         dataGridViewColourQ.Rows[i].Cells[35].Value.ToString()};
                     dataGridViewQueueList.Rows.Add(toAdd);
                 }
@@ -3203,6 +3217,11 @@ namespace LabelMaker
             labelLabelStocks.Text = dataGridViewQueueList.RowCount.ToString();
 
             dataGridViewQueueList.Sort(dataGridViewQueueList.Columns[0], System.ComponentModel.ListSortDirection.Ascending);
+
+            for (int i = 0; i < dataGridViewQueueList.RowCount; i++)
+            {
+                colourRow(i);
+            }
 
             countLabelStocks();
         }
@@ -4021,7 +4040,7 @@ namespace LabelMaker
 
         public string[] getDefaultSettings()
         {
-            string[] defaults = new string[13];
+            string[] defaults = new string[18];
 
             defaultsTableAdapter1.Fill(databaseLabelsDataSetDefaults.Defaults);
             DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
@@ -4030,6 +4049,10 @@ namespace LabelMaker
                 defaults[i] = dRow.ItemArray[i + 1].ToString().Trim();
             }
             defaults[12] = dRow.ItemArray[0].ToString().Trim();
+            for (int i = 13; i <= 17; i++)
+            {
+                defaults[i] = dRow.ItemArray[i].ToString().Trim();
+            }
             return defaults;
         }
 
@@ -4129,16 +4152,53 @@ namespace LabelMaker
         {
             int rowIndex = e.RowIndex;
             int colIndex = e.ColumnIndex;
+
+            
             if (dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value.ToString() == "True")
             {
                 dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value = "False";
+                
             }
             else if (dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value.ToString() == "False")
             {
                 dataGridViewQueueList.Rows[rowIndex].Cells[colIndex].Value = "True";
+               
             }
+
+            colourRow(rowIndex);
             countLabelStocks();
         }
+
+        private void colourRow(int rowIndex)
+        {
+            int nameColour = 0;
+            Color colourTrue = Color.MistyRose;
+            Color colourMedium = Color.Cornsilk;
+            Color colourFalse = Color.Honeydew;
+            if (dataGridViewQueueList.Rows[rowIndex].Cells[1].Value.ToString() == "True")
+            {
+                dataGridViewQueueList.Rows[rowIndex].Cells[1].Style.BackColor = colourTrue;
+                nameColour++;
+            }
+            else
+            {
+                dataGridViewQueueList.Rows[rowIndex].Cells[1].Style.BackColor = colourFalse;
+            }
+
+            if (dataGridViewQueueList.Rows[rowIndex].Cells[2].Value.ToString() == "True")
+            {
+                dataGridViewQueueList.Rows[rowIndex].Cells[2].Style.BackColor = colourTrue;
+                nameColour++;
+            }
+            else
+            {
+                dataGridViewQueueList.Rows[rowIndex].Cells[2].Style.BackColor = colourFalse;
+            }
+            dataGridViewQueueList.Rows[rowIndex].Cells[0].Style.BackColor = colourFalse;
+            if (nameColour == 1) { dataGridViewQueueList.Rows[rowIndex].Cells[0].Style.BackColor = colourMedium; }
+            if (nameColour == 2) {dataGridViewQueueList.Rows[rowIndex].Cells[0].Style.BackColor = colourTrue; }
+        }
+
 
         private void buttonRemoveLabelStocks_Click(object sender, EventArgs e)
         {
@@ -4152,7 +4212,7 @@ namespace LabelMaker
                 {
                     string idFind = dataGridViewQueueList.Rows[i].Cells[3].Value.ToString();
                     //check if need to remove this one
-                    if (dataGridViewQueueList.Rows[i].Cells[1].Value.ToString() == "True")
+                    if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
                     {
                         
                         //go through colour queue
@@ -4176,7 +4236,7 @@ namespace LabelMaker
                         }
                     }
                     //check if need to remove flag
-                    if (dataGridViewQueueList.Rows[i].Cells[2].Value.ToString() == "True")
+                    if (dataGridViewQueueList.Rows[i].Cells[1].Value.ToString() == "True")
                     {
 
                         for (int j = 0; j <= (dataGridViewPlants.RowCount - 1); j++)
@@ -5613,8 +5673,21 @@ namespace LabelMaker
                 textBoxDefaultsAddressUnlock.Text = defaults[8];
                 textBoxDefaultsAddressAll.Text = defaults[9];
                 textBoxDefaultsCorrectAdd.Text = defaults[10];
-                textBoxDefaultsAutoLabel.Text = defaults[11];   
-                
+                textBoxDefaultsAutoLabel.Text = defaults[11];
+
+                //colours
+                textBoxColourMain.Text = defaults[13];
+                textBoxColourColour.Text = defaults[14];
+                textBoxColourTrue.Text = defaults[15];
+                textBoxColourHalfway.Text = defaults[16];
+                textBoxColourFalse.Text = defaults[17];
+
+                buttonColourMain.BackColor = Color.FromName(textBoxColourMain.Text);
+                buttonColourColour.BackColor = Color.FromName(textBoxColourColour.Text);
+                buttonColourTrue.BackColor = Color.FromName(textBoxColourTrue.Text);
+                buttonColourHalfway.BackColor = Color.FromName(textBoxColourHalfway.Text);
+                buttonColourFalse.BackColor = Color.FromName(textBoxColourFalse.Text);
+
 
                 string getName = "";
                 comboBoxMainLabel.Items.Clear();
@@ -5631,8 +5704,23 @@ namespace LabelMaker
                     comboBoxAutoLabel.Items.Add(getName);
                 }
 
+                //fill colours
+                fillColourCombo();
+
             }
         }
+
+        private void fillColourCombo()
+        {
+            Type colorType = typeof(System.Drawing.Color);
+            // We take only static property to avoid properties like Name, IsSystemColor ...
+            PropertyInfo[] propInfos = colorType.GetProperties(BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.Public);
+            foreach (PropertyInfo propInfo in propInfos)
+            {
+                comboBoxColours.Items.Add(propInfo.Name);
+            }
+        }
+
 
         private void fillCategories(string tabOrcombo)
         {
@@ -6985,12 +7073,12 @@ namespace LabelMaker
                             string action = dataGridViewAddClean.Rows[k].Cells[2].Value.ToString().Trim();
                             if (action == "Name") // move item to before first name
                             {
-                                address[1] = address[8] + " " + address[1];
-                                address[8] = "";
+                                address[1] = address[l] + " " + address[1];
+                                address[l] = "";
                             }
-                            if (action == "Delete") // move item to before first name
+                            if (action == "Delete") // remove item
                             {
-                                address[8] = "";
+                                address[l] = "";
                             }
                         }
                     }
@@ -7107,13 +7195,14 @@ namespace LabelMaker
                         for (int f = (bestFit+1); f <= 10; f++) //shuffle the rest down
                         {
                             splitAddress[f] = splitAddress[f + 1];
-                            splitAddress[11] = "";
+                            splitAddress[f+1] = "";
                         }
 
                             //MessageBox.Show("Needs recombining - " + address[2]);
                         counter = findCounter(splitAddress);
                     } while (counter > 6);
                     }
+                    for (int f = 3; f <= 8; f++) { address[f] = ""; }
                     counter = findCounter(splitAddress);
                     //last one should be Postcode
                     address[7] = splitAddress[counter - 1].ToUpper();
@@ -7193,9 +7282,40 @@ namespace LabelMaker
                 .ToArray());
         }
 
-        private void textBoxQty_TextChanged(object sender, EventArgs e)
+        private void buttonColourMain_Click(object sender, EventArgs e)
         {
+            if (comboBoxColours.Text !="Choose a Colour")
+            {
+                textBoxColourMain.Text = comboBoxColours.Text;
+                buttonColourMain.BackColor = Color.FromName(comboBoxColours.Text);
+            }
+        }
 
+        private void buttonColourColour_Click(object sender, EventArgs e)
+        {
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourColour.Text = comboBoxColours.Text;
+                buttonColourColour.BackColor = Color.FromName(comboBoxColours.Text);
+            }
+        }
+
+        private void buttonColourTrue_Click(object sender, EventArgs e)
+        {
+            textBoxColourTrue.Text = comboBoxColours.Text;
+            buttonColourTrue.BackColor = Color.FromName(comboBoxColours.Text);
+        }
+
+        private void buttonColourHalfway_Click(object sender, EventArgs e)
+        {
+            textBoxColourHalfway.Text = comboBoxColours.Text;
+            buttonColourHalfway.BackColor = Color.FromName(comboBoxColours.Text);
+        }
+
+        private void buttonColouFalse_Click(object sender, EventArgs e)
+        {
+            textBoxColourFalse.Text = comboBoxColours.Text;
+            buttonColourFalse.BackColor = Color.FromName(comboBoxColours.Text);
         }
     }
 }

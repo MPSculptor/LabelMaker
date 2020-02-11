@@ -312,6 +312,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPageManual = new System.Windows.Forms.TabPage();
+            this.buttonMainProfile = new System.Windows.Forms.Button();
             this.comboBoxLabelName = new System.Windows.Forms.ComboBox();
             this.label68 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -416,6 +417,10 @@
             this.pictureBoxThumb2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxThumb1 = new System.Windows.Forms.PictureBox();
             this.groupBoxPlantData = new System.Windows.Forms.GroupBox();
+            this.label179 = new System.Windows.Forms.Label();
+            this.label178 = new System.Windows.Forms.Label();
+            this.labelGridID = new System.Windows.Forms.Label();
+            this.labelRealID = new System.Windows.Forms.Label();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -796,6 +801,24 @@
             this.paperSourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelsLabelCategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDefaults = new System.Windows.Forms.TabPage();
+            this.label186 = new System.Windows.Forms.Label();
+            this.comboBoxColours = new System.Windows.Forms.ComboBox();
+            this.label183 = new System.Windows.Forms.Label();
+            this.buttonColourFalse = new System.Windows.Forms.Button();
+            this.buttonColourColour = new System.Windows.Forms.Button();
+            this.buttonColourTrue = new System.Windows.Forms.Button();
+            this.buttonColourHalfway = new System.Windows.Forms.Button();
+            this.buttonColourMain = new System.Windows.Forms.Button();
+            this.textBoxColourColour = new System.Windows.Forms.TextBox();
+            this.textBoxColourTrue = new System.Windows.Forms.TextBox();
+            this.textBoxColourHalfway = new System.Windows.Forms.TextBox();
+            this.textBoxColourFalse = new System.Windows.Forms.TextBox();
+            this.textBoxColourMain = new System.Windows.Forms.TextBox();
+            this.label184 = new System.Windows.Forms.Label();
+            this.label185 = new System.Windows.Forms.Label();
+            this.label182 = new System.Windows.Forms.Label();
+            this.label181 = new System.Windows.Forms.Label();
+            this.label180 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.comboBoxAddressClean = new System.Windows.Forms.ComboBox();
             this.label177 = new System.Windows.Forms.Label();
@@ -867,11 +890,6 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.buttonMainProfile = new System.Windows.Forms.Button();
-            this.labelRealID = new System.Windows.Forms.Label();
-            this.labelGridID = new System.Windows.Forms.Label();
-            this.label178 = new System.Windows.Forms.Label();
-            this.label179 = new System.Windows.Forms.Label();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -1589,7 +1607,7 @@
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox1.Location = new System.Drawing.Point(19, 565);
+            this.richTextBox1.Location = new System.Drawing.Point(19, 715);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(384, 75);
             this.richTextBox1.TabIndex = 9;
@@ -1597,7 +1615,7 @@
             // 
             // buttonRemoveLabelStocks
             // 
-            this.buttonRemoveLabelStocks.Location = new System.Drawing.Point(242, 646);
+            this.buttonRemoveLabelStocks.Location = new System.Drawing.Point(242, 796);
             this.buttonRemoveLabelStocks.Name = "buttonRemoveLabelStocks";
             this.buttonRemoveLabelStocks.Size = new System.Drawing.Size(161, 63);
             this.buttonRemoveLabelStocks.TabIndex = 8;
@@ -1609,7 +1627,7 @@
             // 
             this.labelLabelQueueRemove.AutoSize = true;
             this.labelLabelQueueRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 693);
+            this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 843);
             this.labelLabelQueueRemove.Name = "labelLabelQueueRemove";
             this.labelLabelQueueRemove.Size = new System.Drawing.Size(16, 16);
             this.labelLabelQueueRemove.TabIndex = 7;
@@ -1619,7 +1637,7 @@
             // 
             this.label80.AutoSize = true;
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.Location = new System.Drawing.Point(16, 693);
+            this.label80.Location = new System.Drawing.Point(16, 843);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(190, 16);
             this.label80.TabIndex = 6;
@@ -1629,7 +1647,7 @@
             // 
             this.labelLabelStockRemove.AutoSize = true;
             this.labelLabelStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 669);
+            this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 819);
             this.labelLabelStockRemove.Name = "labelLabelStockRemove";
             this.labelLabelStockRemove.Size = new System.Drawing.Size(16, 16);
             this.labelLabelStockRemove.TabIndex = 5;
@@ -1639,7 +1657,7 @@
             // 
             this.label78.AutoSize = true;
             this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(16, 669);
+            this.label78.Location = new System.Drawing.Point(16, 819);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(184, 16);
             this.label78.TabIndex = 4;
@@ -1649,7 +1667,7 @@
             // 
             this.labelLabelStocks.AutoSize = true;
             this.labelLabelStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLabelStocks.Location = new System.Drawing.Point(206, 645);
+            this.labelLabelStocks.Location = new System.Drawing.Point(206, 795);
             this.labelLabelStocks.Name = "labelLabelStocks";
             this.labelLabelStocks.Size = new System.Drawing.Size(16, 16);
             this.labelLabelStocks.TabIndex = 3;
@@ -1659,7 +1677,7 @@
             // 
             this.label76.AutoSize = true;
             this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(16, 645);
+            this.label76.Location = new System.Drawing.Point(16, 795);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(154, 16);
             this.label76.TabIndex = 2;
@@ -1673,7 +1691,7 @@
             this.dataGridViewQueueList.Location = new System.Drawing.Point(19, 14);
             this.dataGridViewQueueList.Name = "dataGridViewQueueList";
             this.dataGridViewQueueList.RowHeadersVisible = false;
-            this.dataGridViewQueueList.Size = new System.Drawing.Size(384, 545);
+            this.dataGridViewQueueList.Size = new System.Drawing.Size(384, 688);
             this.dataGridViewQueueList.TabIndex = 1;
             this.dataGridViewQueueList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewQueueList_CellContentClick);
             // 
@@ -3552,6 +3570,15 @@
             this.tabPageManual.TabIndex = 0;
             this.tabPageManual.Text = "     Manual Entry     ";
             // 
+            // buttonMainProfile
+            // 
+            this.buttonMainProfile.Location = new System.Drawing.Point(7, 551);
+            this.buttonMainProfile.Name = "buttonMainProfile";
+            this.buttonMainProfile.Size = new System.Drawing.Size(206, 26);
+            this.buttonMainProfile.TabIndex = 22;
+            this.buttonMainProfile.Text = "Profile";
+            this.buttonMainProfile.UseVisualStyleBackColor = true;
+            // 
             // comboBoxLabelName
             // 
             this.comboBoxLabelName.FormattingEnabled = true;
@@ -3794,7 +3821,6 @@
             this.textBoxQty.TabIndex = 0;
             this.textBoxQty.Text = "1";
             this.textBoxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxQty.TextChanged += new System.EventHandler(this.textBoxQty_TextChanged);
             this.textBoxQty.Enter += new System.EventHandler(this.textBoxQty_Enter);
             // 
             // groupBox4
@@ -4790,6 +4816,46 @@
             this.groupBoxPlantData.TabIndex = 14;
             this.groupBoxPlantData.TabStop = false;
             this.groupBoxPlantData.Text = "Plant Database";
+            // 
+            // label179
+            // 
+            this.label179.AutoSize = true;
+            this.label179.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label179.Location = new System.Drawing.Point(629, 884);
+            this.label179.Name = "label179";
+            this.label179.Size = new System.Drawing.Size(52, 13);
+            this.label179.TabIndex = 9;
+            this.label179.Text = "grid index";
+            // 
+            // label178
+            // 
+            this.label178.AutoSize = true;
+            this.label178.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label178.Location = new System.Drawing.Point(505, 883);
+            this.label178.Name = "label178";
+            this.label178.Size = new System.Drawing.Size(79, 13);
+            this.label178.TabIndex = 8;
+            this.label178.Text = "database index";
+            // 
+            // labelGridID
+            // 
+            this.labelGridID.AutoSize = true;
+            this.labelGridID.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelGridID.Location = new System.Drawing.Point(687, 884);
+            this.labelGridID.Name = "labelGridID";
+            this.labelGridID.Size = new System.Drawing.Size(13, 13);
+            this.labelGridID.TabIndex = 7;
+            this.labelGridID.Text = "0";
+            // 
+            // labelRealID
+            // 
+            this.labelRealID.AutoSize = true;
+            this.labelRealID.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelRealID.Location = new System.Drawing.Point(590, 883);
+            this.labelRealID.Name = "labelRealID";
+            this.labelRealID.Size = new System.Drawing.Size(13, 13);
+            this.labelRealID.TabIndex = 6;
+            this.labelRealID.Text = "0";
             // 
             // bindingNavigator1
             // 
@@ -8444,6 +8510,24 @@
             // tabPageDefaults
             // 
             this.tabPageDefaults.BackColor = System.Drawing.Color.White;
+            this.tabPageDefaults.Controls.Add(this.label186);
+            this.tabPageDefaults.Controls.Add(this.comboBoxColours);
+            this.tabPageDefaults.Controls.Add(this.label183);
+            this.tabPageDefaults.Controls.Add(this.buttonColourFalse);
+            this.tabPageDefaults.Controls.Add(this.buttonColourColour);
+            this.tabPageDefaults.Controls.Add(this.buttonColourTrue);
+            this.tabPageDefaults.Controls.Add(this.buttonColourHalfway);
+            this.tabPageDefaults.Controls.Add(this.buttonColourMain);
+            this.tabPageDefaults.Controls.Add(this.textBoxColourColour);
+            this.tabPageDefaults.Controls.Add(this.textBoxColourTrue);
+            this.tabPageDefaults.Controls.Add(this.textBoxColourHalfway);
+            this.tabPageDefaults.Controls.Add(this.textBoxColourFalse);
+            this.tabPageDefaults.Controls.Add(this.textBoxColourMain);
+            this.tabPageDefaults.Controls.Add(this.label184);
+            this.tabPageDefaults.Controls.Add(this.label185);
+            this.tabPageDefaults.Controls.Add(this.label182);
+            this.tabPageDefaults.Controls.Add(this.label181);
+            this.tabPageDefaults.Controls.Add(this.label180);
             this.tabPageDefaults.Controls.Add(this.listBox1);
             this.tabPageDefaults.Controls.Add(this.comboBoxAddressClean);
             this.tabPageDefaults.Controls.Add(this.label177);
@@ -8496,6 +8580,164 @@
             this.tabPageDefaults.Size = new System.Drawing.Size(1190, 917);
             this.tabPageDefaults.TabIndex = 1;
             this.tabPageDefaults.Text = "   Default Settings   ";
+            // 
+            // label186
+            // 
+            this.label186.Location = new System.Drawing.Point(391, 672);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(157, 34);
+            this.label186.TabIndex = 87;
+            this.label186.Text = "Choose colour here and then click the colour button";
+            // 
+            // comboBoxColours
+            // 
+            this.comboBoxColours.FormattingEnabled = true;
+            this.comboBoxColours.Location = new System.Drawing.Point(391, 709);
+            this.comboBoxColours.Name = "comboBoxColours";
+            this.comboBoxColours.Size = new System.Drawing.Size(157, 21);
+            this.comboBoxColours.TabIndex = 86;
+            this.comboBoxColours.Text = "Choose a Colour";
+            // 
+            // label183
+            // 
+            this.label183.AutoSize = true;
+            this.label183.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label183.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label183.Location = new System.Drawing.Point(164, 664);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(115, 31);
+            this.label183.TabIndex = 85;
+            this.label183.Text = "Colours";
+            // 
+            // buttonColourFalse
+            // 
+            this.buttonColourFalse.Location = new System.Drawing.Point(290, 835);
+            this.buttonColourFalse.Name = "buttonColourFalse";
+            this.buttonColourFalse.Size = new System.Drawing.Size(75, 23);
+            this.buttonColourFalse.TabIndex = 84;
+            this.buttonColourFalse.UseVisualStyleBackColor = true;
+            this.buttonColourFalse.Click += new System.EventHandler(this.buttonColouFalse_Click);
+            // 
+            // buttonColourColour
+            // 
+            this.buttonColourColour.Location = new System.Drawing.Point(290, 743);
+            this.buttonColourColour.Name = "buttonColourColour";
+            this.buttonColourColour.Size = new System.Drawing.Size(75, 23);
+            this.buttonColourColour.TabIndex = 83;
+            this.buttonColourColour.UseVisualStyleBackColor = true;
+            this.buttonColourColour.Click += new System.EventHandler(this.buttonColourColour_Click);
+            // 
+            // buttonColourTrue
+            // 
+            this.buttonColourTrue.Location = new System.Drawing.Point(290, 776);
+            this.buttonColourTrue.Name = "buttonColourTrue";
+            this.buttonColourTrue.Size = new System.Drawing.Size(75, 23);
+            this.buttonColourTrue.TabIndex = 82;
+            this.buttonColourTrue.UseVisualStyleBackColor = true;
+            this.buttonColourTrue.Click += new System.EventHandler(this.buttonColourTrue_Click);
+            // 
+            // buttonColourHalfway
+            // 
+            this.buttonColourHalfway.Location = new System.Drawing.Point(290, 806);
+            this.buttonColourHalfway.Name = "buttonColourHalfway";
+            this.buttonColourHalfway.Size = new System.Drawing.Size(75, 23);
+            this.buttonColourHalfway.TabIndex = 81;
+            this.buttonColourHalfway.UseVisualStyleBackColor = true;
+            this.buttonColourHalfway.Click += new System.EventHandler(this.buttonColourHalfway_Click);
+            // 
+            // buttonColourMain
+            // 
+            this.buttonColourMain.Location = new System.Drawing.Point(290, 709);
+            this.buttonColourMain.Name = "buttonColourMain";
+            this.buttonColourMain.Size = new System.Drawing.Size(75, 23);
+            this.buttonColourMain.TabIndex = 80;
+            this.buttonColourMain.UseVisualStyleBackColor = true;
+            this.buttonColourMain.Click += new System.EventHandler(this.buttonColourMain_Click);
+            // 
+            // textBoxColourColour
+            // 
+            this.textBoxColourColour.Location = new System.Drawing.Point(170, 745);
+            this.textBoxColourColour.Name = "textBoxColourColour";
+            this.textBoxColourColour.Size = new System.Drawing.Size(114, 20);
+            this.textBoxColourColour.TabIndex = 79;
+            // 
+            // textBoxColourTrue
+            // 
+            this.textBoxColourTrue.Location = new System.Drawing.Point(170, 778);
+            this.textBoxColourTrue.Name = "textBoxColourTrue";
+            this.textBoxColourTrue.Size = new System.Drawing.Size(114, 20);
+            this.textBoxColourTrue.TabIndex = 78;
+            // 
+            // textBoxColourHalfway
+            // 
+            this.textBoxColourHalfway.Location = new System.Drawing.Point(170, 808);
+            this.textBoxColourHalfway.Name = "textBoxColourHalfway";
+            this.textBoxColourHalfway.Size = new System.Drawing.Size(114, 20);
+            this.textBoxColourHalfway.TabIndex = 77;
+            // 
+            // textBoxColourFalse
+            // 
+            this.textBoxColourFalse.Location = new System.Drawing.Point(170, 837);
+            this.textBoxColourFalse.Name = "textBoxColourFalse";
+            this.textBoxColourFalse.Size = new System.Drawing.Size(114, 20);
+            this.textBoxColourFalse.TabIndex = 76;
+            // 
+            // textBoxColourMain
+            // 
+            this.textBoxColourMain.Location = new System.Drawing.Point(170, 712);
+            this.textBoxColourMain.Name = "textBoxColourMain";
+            this.textBoxColourMain.Size = new System.Drawing.Size(114, 20);
+            this.textBoxColourMain.TabIndex = 75;
+            // 
+            // label184
+            // 
+            this.label184.AutoSize = true;
+            this.label184.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label184.Location = new System.Drawing.Point(91, 806);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(65, 20);
+            this.label184.TabIndex = 74;
+            this.label184.Text = "Halfway";
+            // 
+            // label185
+            // 
+            this.label185.AutoSize = true;
+            this.label185.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label185.Location = new System.Drawing.Point(115, 776);
+            this.label185.Name = "label185";
+            this.label185.Size = new System.Drawing.Size(41, 20);
+            this.label185.TabIndex = 73;
+            this.label185.Text = "True";
+            // 
+            // label182
+            // 
+            this.label182.AutoSize = true;
+            this.label182.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label182.Location = new System.Drawing.Point(108, 835);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(48, 20);
+            this.label182.TabIndex = 72;
+            this.label182.Text = "False";
+            // 
+            // label181
+            // 
+            this.label181.AutoSize = true;
+            this.label181.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label181.Location = new System.Drawing.Point(49, 743);
+            this.label181.Name = "label181";
+            this.label181.Size = new System.Drawing.Size(107, 20);
+            this.label181.TabIndex = 70;
+            this.label181.Text = "Colour Queue";
+            // 
+            // label180
+            // 
+            this.label180.AutoSize = true;
+            this.label180.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label180.Location = new System.Drawing.Point(61, 713);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(95, 20);
+            this.label180.TabIndex = 69;
+            this.label180.Text = "Main Queue";
             // 
             // listBox1
             // 
@@ -9111,66 +9353,17 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // buttonMainProfile
-            // 
-            this.buttonMainProfile.Location = new System.Drawing.Point(7, 551);
-            this.buttonMainProfile.Name = "buttonMainProfile";
-            this.buttonMainProfile.Size = new System.Drawing.Size(206, 26);
-            this.buttonMainProfile.TabIndex = 22;
-            this.buttonMainProfile.Text = "Profile";
-            this.buttonMainProfile.UseVisualStyleBackColor = true;
-            // 
-            // labelRealID
-            // 
-            this.labelRealID.AutoSize = true;
-            this.labelRealID.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelRealID.Location = new System.Drawing.Point(590, 883);
-            this.labelRealID.Name = "labelRealID";
-            this.labelRealID.Size = new System.Drawing.Size(13, 13);
-            this.labelRealID.TabIndex = 6;
-            this.labelRealID.Text = "0";
-            // 
-            // labelGridID
-            // 
-            this.labelGridID.AutoSize = true;
-            this.labelGridID.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelGridID.Location = new System.Drawing.Point(687, 884);
-            this.labelGridID.Name = "labelGridID";
-            this.labelGridID.Size = new System.Drawing.Size(13, 13);
-            this.labelGridID.TabIndex = 7;
-            this.labelGridID.Text = "0";
-            // 
-            // label178
-            // 
-            this.label178.AutoSize = true;
-            this.label178.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label178.Location = new System.Drawing.Point(505, 883);
-            this.label178.Name = "label178";
-            this.label178.Size = new System.Drawing.Size(79, 13);
-            this.label178.TabIndex = 8;
-            this.label178.Text = "database index";
-            // 
-            // label179
-            // 
-            this.label179.AutoSize = true;
-            this.label179.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label179.Location = new System.Drawing.Point(629, 884);
-            this.label179.Name = "label179";
-            this.label179.Size = new System.Drawing.Size(52, 13);
-            this.label179.TabIndex = 9;
-            this.label179.Text = "grid index";
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1654, 1001);
+            this.Controls.Add(this.tabControlDesign);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
-            this.Controls.Add(this.tabControlDesign);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formMain";
@@ -10159,6 +10352,24 @@
         private System.Windows.Forms.Label labelRealID;
         private System.Windows.Forms.Label label179;
         private System.Windows.Forms.Label label178;
+        private System.Windows.Forms.Button buttonColourFalse;
+        private System.Windows.Forms.Button buttonColourColour;
+        private System.Windows.Forms.Button buttonColourTrue;
+        private System.Windows.Forms.Button buttonColourHalfway;
+        private System.Windows.Forms.Button buttonColourMain;
+        private System.Windows.Forms.TextBox textBoxColourColour;
+        private System.Windows.Forms.TextBox textBoxColourTrue;
+        private System.Windows.Forms.TextBox textBoxColourHalfway;
+        private System.Windows.Forms.TextBox textBoxColourFalse;
+        private System.Windows.Forms.TextBox textBoxColourMain;
+        private System.Windows.Forms.Label label184;
+        private System.Windows.Forms.Label label185;
+        private System.Windows.Forms.Label label182;
+        private System.Windows.Forms.Label label181;
+        private System.Windows.Forms.Label label180;
+        private System.Windows.Forms.Label label183;
+        private System.Windows.Forms.Label label186;
+        private System.Windows.Forms.ComboBox comboBoxColours;
     }
 }
 
