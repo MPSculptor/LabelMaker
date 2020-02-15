@@ -890,6 +890,8 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
+            this.tabPageColours = new System.Windows.Forms.TabPage();
+            this.panelColours = new System.Windows.Forms.Panel();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -986,6 +988,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
+            this.tabPageColours.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -6638,6 +6641,7 @@
             this.tabControlDesign.Controls.Add(this.tabPageCategories);
             this.tabControlDesign.Controls.Add(this.tabPageDefaults);
             this.tabControlDesign.Controls.Add(this.tabPageAppData);
+            this.tabControlDesign.Controls.Add(this.tabPageColours);
             this.tabControlDesign.Location = new System.Drawing.Point(12, 56);
             this.tabControlDesign.Multiline = true;
             this.tabControlDesign.Name = "tabControlDesign";
@@ -9353,14 +9357,31 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
+            // tabPageColours
+            // 
+            this.tabPageColours.Controls.Add(this.panelColours);
+            this.tabPageColours.Location = new System.Drawing.Point(23, 4);
+            this.tabPageColours.Name = "tabPageColours";
+            this.tabPageColours.Size = new System.Drawing.Size(1190, 917);
+            this.tabPageColours.TabIndex = 5;
+            this.tabPageColours.Text = "  Colours  ";
+            this.tabPageColours.UseVisualStyleBackColor = true;
+            // 
+            // panelColours
+            // 
+            this.panelColours.Location = new System.Drawing.Point(11, 11);
+            this.panelColours.Name = "panelColours";
+            this.panelColours.Size = new System.Drawing.Size(1166, 899);
+            this.panelColours.TabIndex = 0;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1654, 1001);
-            this.Controls.Add(this.tabControlDesign);
             this.Controls.Add(this.tabControlMain);
+            this.Controls.Add(this.tabControlDesign);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
@@ -9503,6 +9524,7 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
+            this.tabPageColours.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10370,6 +10392,8 @@
         private System.Windows.Forms.Label label183;
         private System.Windows.Forms.Label label186;
         private System.Windows.Forms.ComboBox comboBoxColours;
+        private System.Windows.Forms.TabPage tabPageColours;
+        private System.Windows.Forms.Panel panelColours;
     }
 }
 

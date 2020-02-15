@@ -1,17 +1,18 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using System.IO;
-using CreationUtilities;
+﻿using CreationUtilities;
 using Microsoft.VisualBasic.FileIO;
-using System.Drawing.Printing;
-using System.Deployment.Application;
+using System;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.Deployment.Application;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace LabelMaker
 {
@@ -3456,6 +3457,11 @@ namespace LabelMaker
 
         private void addRowToColourQ(string[] queue, string which)
         {
+            //getColour
+            string[] defaults = getDefaultSettings();
+            Color colourHalfWay = Color.FromName(defaults[16]);
+            Color colourTrue = Color.FromName(defaults[15]);
+            
             //string[] queue = CollectQueueEntry();
             DataRow row = databaseLabelsDataSetColourQueue.Tables[0].NewRow();
 
@@ -3516,7 +3522,19 @@ namespace LabelMaker
             }
             labelColourCount.Text = addColourQueueTotal().ToString();
             labelColourCountQ.Text = labelColourCount.Text;
-        }
+            if (queue[25] == "True") { dataGridViewColourQ.Rows[dataGridViewColourQ.RowCount-2].Cells[0].Style.BackColor=colourHalfWay; }
+            Boolean colourRed = false;
+            if (string.IsNullOrEmpty(queue[8])) { colourRed = true; }
+            try
+            {
+                Image test = Image.FromFile(defaults[0] + queue[8]);
+            }
+            catch
+            {
+                colourRed = true;
+            }
+                if (colourRed) { dataGridViewColourQ.Rows[dataGridViewColourQ.RowCount - 2].Cells[0].Style.BackColor = colourTrue; }
+            }
 
         public string[] CollectQueueEntry()
         {
@@ -4477,10 +4495,29 @@ namespace LabelMaker
 
         }
 
+        private void colourAutoDataGrid()
+        {
+            string[] defaults = getDefaultSettings();
+            Color colourTrue = Color.FromName(defaults[15]);
+            Color colourFalse = Color.FromName(defaults[17]);
+                for (int i = 0; i < dataGridViewAuto.RowCount-1; i++)
+            {
+                for (int f = 1; f <= 3; f++)
+                {
+                    if (dataGridViewAuto.Rows[i].Cells[f].Value.ToString() == "True")
+                    {
+                        dataGridViewAuto.Rows[i].Cells[f].Style.BackColor = colourTrue;
+                    }
+                    else
+                    {
+                        dataGridViewAuto.Rows[i].Cells[f].Style.BackColor = colourFalse;
+                    }
+                }
+            }
+        }
         private void fillAutoListBox()
         {
             string customerOld = "";
-
 
             listBoxAuto.Items.Clear();
 
@@ -4499,6 +4536,7 @@ namespace LabelMaker
             }
 
             sortAutoListBox();
+            colourAutoDataGrid();
 
         }
         private void sortAutoListBox()
@@ -4523,9 +4561,9 @@ namespace LabelMaker
             }
 
             //remove any duplicates
-            for (int i = listBoxAuto.Items.Count - 1; i >= 1; i--)
+            for (int i = (listBoxAuto.Items.Count - 1); i >= 1; i--)
             {
-                for (int j = i - 1; j >= 0; j--)
+                for (int j = (i - 1); j >= 0; j--)
                 {
                     string one = listBoxAuto.Items[i].ToString();
                     one = one.SubstringSpecial(2, one.Length - 1);
@@ -4535,6 +4573,7 @@ namespace LabelMaker
                     if (one == two)
                     {
                         listBoxAuto.Items.RemoveAt(j);
+                        i--;
                     }
 
                 }
@@ -4646,16 +4685,25 @@ namespace LabelMaker
         private void buttonAutoCustomer_Click(object sender, EventArgs e)
         {
             sortAuto("Customer");
+            colourAutoDataGrid();
+            fillAutoListBox();
+            checkSKUs();
         }
 
         private void buttonSortAutoON_Click(object sender, EventArgs e)
         {
             sortAuto("ON");
+            colourAutoDataGrid();
+            fillAutoListBox();
+            checkSKUs();
         }
 
         private void buttonSortAutoPlant_Click(object sender, EventArgs e)
         {
             sortAuto("Plant");
+            colourAutoDataGrid();
+            fillAutoListBox();
+            checkSKUs();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -4700,6 +4748,10 @@ namespace LabelMaker
 
         private void swapAutoByName(Boolean locked, string name, int index)
         {
+            //get colours
+            string[] defaults = getDefaultSettings();
+            Color colourTrue = Color.FromName(defaults[15]);
+            Color colourFalse = Color.FromName(defaults[17]);
             //MessageBox.Show(name + " - " + locked.ToString());
             Boolean changeTo = true;
             dataGridViewAuto.ClearSelection();
@@ -4715,6 +4767,14 @@ namespace LabelMaker
                 {
                     dataGridViewAuto.Rows[i].Cells[1].Value = changeTo;
                     tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
+                    if (changeTo)
+                    {
+                        dataGridViewAuto.Rows[i].Cells[1].Style.BackColor = colourTrue;
+                    }
+                    else
+                    {
+                        dataGridViewAuto.Rows[i].Cells[1].Style.BackColor = colourFalse;
+                    }
                 }
             }
 
@@ -4722,6 +4782,11 @@ namespace LabelMaker
 
         private void dataGridViewAuto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //get colours
+            string[] defaults = getDefaultSettings();
+            Color colourTrue = Color.FromName(defaults[15]);
+            Color colourFalse = Color.FromName(defaults[17]);
+
             if (e.ColumnIndex == 5 | e.ColumnIndex == 1 | e.ColumnIndex == 4) //LockCustomer, Order NUmber or Name change whole order
             {
                 //clicked on the name
@@ -4749,7 +4814,8 @@ namespace LabelMaker
             {
                 string changeValue = dataGridViewAuto.Rows[e.RowIndex].Cells[2].Value.ToString();
                 Boolean changeTo = true;
-                if (changeValue == "True") { changeTo = false; }
+                dataGridViewAuto.Rows[e.RowIndex].Cells[2].Style.BackColor = colourTrue;
+                if (changeValue == "True") { changeTo = false; dataGridViewAuto.Rows[e.RowIndex].Cells[2].Style.BackColor = colourFalse; }
                 dataGridViewAuto.Rows[e.RowIndex].Cells[2].Value = changeTo;
                 tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
 
@@ -4758,7 +4824,8 @@ namespace LabelMaker
             {
                 string changeValue = dataGridViewAuto.Rows[e.RowIndex].Cells[3].Value.ToString();
                 Boolean changeTo = true;
-                if (changeValue == "True") { changeTo = false; }
+                dataGridViewAuto.Rows[e.RowIndex].Cells[3].Style.BackColor = colourTrue;
+                if (changeValue == "True") { changeTo = false; dataGridViewAuto.Rows[e.RowIndex].Cells[3].Style.BackColor = colourFalse; }
                 dataGridViewAuto.Rows[e.RowIndex].Cells[3].Value = changeTo;
                 tableAutoTableAdapter.Update(databaseLabelsDataSetAuto.TableAuto);
 
@@ -5045,7 +5112,11 @@ namespace LabelMaker
 
         
         private void checkSKUs()
-        { 
+        {
+            //get colours
+            string[] defaults = getDefaultSettings();
+            Color colourTrue = Color.FromName(defaults[15]);
+
             DataTable table = databaseLabelsDataSet.Tables["TablePlants"];
             Boolean firstError = true;
             pictureBoxArrow.Visible = false;
@@ -5079,6 +5150,7 @@ namespace LabelMaker
                         }
                         //MessageBox.Show("failed to match SKU = " + sku + " for " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
                         listBoxAutoErrors.Items.Add(sku + " - " + dataGridViewAuto.Rows[i].Cells[6].Value.ToString());
+                        dataGridViewAuto.Rows[i].Cells[8].Style.BackColor = colourTrue;
                         firstError = false;
                         pictureBoxArrow.Visible = true;
                     }
@@ -5722,7 +5794,56 @@ namespace LabelMaker
                 fillColourCombo();
 
             }
+            if (tabControlDesign.SelectedTab == tabPageColours)
+            {
+                fillColourTab(); 
+            }
         }
+
+        private void fillColourTab()
+        {
+            int gap = 2;
+            int panelWidth = panelColours.Width - 22;
+            int panelHeight = panelColours.Height - 22;
+            int availableWidth = panelWidth / 4;
+            int availableHeight = panelHeight / 35;
+            int controlHeight = availableHeight - gap;
+            int controlWidth = ((availableWidth) - gap - gap) / 2;
+
+            int x = 0;
+            int y = 0;
+            panelColours.Controls.Clear();
+            Type colorType = typeof(System.Drawing.Color);
+            // We take only static property to avoid properties like Name, IsSystemColor ...
+            PropertyInfo[] propInfos = colorType.GetProperties(BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.Public);
+            foreach (PropertyInfo propInfo in propInfos)
+            {
+                Point where = new Point(x, y);
+                Label colourLabel = new Label();
+                colourLabel.Text = propInfo.Name;
+                colourLabel.Location = new Point(x*availableWidth+gap+controlWidth, y*availableHeight);
+                colourLabel.Size = new Size(controlWidth, controlHeight);
+                colourLabel.TextAlign = ContentAlignment.MiddleLeft;
+                Button colourButton = new Button();
+                colourButton.Text = "";
+                colourButton.FlatStyle = FlatStyle.Flat;
+                colourButton.Location = new Point(x * availableWidth, y * availableHeight);
+                colourButton.Size = new Size(controlWidth, controlHeight);
+                colourButton.BackColor = Color.FromName(propInfo.Name);
+
+                panelColours.Controls.Add(colourLabel);
+                panelColours.Controls.Add(colourButton);
+                
+                y++;
+                if (y == 36)
+                {
+                    y = 0;
+                    x++;    
+                }
+            }
+        }
+
+
 
         private void fillColourCombo()
         {
@@ -7068,6 +7189,47 @@ namespace LabelMaker
         {
             cleanAddresses();
         }
+
+
+        #region Clean Addresses
+
+        private Boolean checkForHouseNumber(string stringToTest)
+        {
+            Boolean result = false;
+            if (string.IsNullOrEmpty(stringToTest.Trim())) { return result; }
+
+            // call Regex.Match.
+            string testString = stringToTest.Trim();
+            //test for Flat and Unit and remove if found
+            if (testString.Length > 4) //only test if long enough to get Flat and 1 number in
+            {
+                if (testString.Substring(0, 4).ToLower() == "flat" | testString.Substring(0, 4).ToLower() == "unit")
+                {
+                    testString = testString.Substring(4);
+                }
+            }
+            //test for commas and full stops and remove if necessary
+            string smallTest = testString.Substring(testString.Length - 1, 1);
+            if (smallTest == "," | smallTest == ";" | smallTest == ".")
+            {
+                testString = testString.Substring(0, testString.Length - 1);
+            }
+            //match Any number of decimal digits plus 0 or more word characters, from first character of string
+            Match match = Regex.Match(testString.Trim(), @"(^\d+\w*$)", RegexOptions.IgnoreCase);
+
+            // check the Match for Success.
+            if (match.Success)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+
+
         private void cleanAddresses()
         {
             //Cleans up the Addresses in the DataGrid. Doesn't save changes in case the cleanup is imperfect.
@@ -7104,13 +7266,43 @@ namespace LabelMaker
                         }
                     }
                 }
-                //remove spurious numbers from line 2
-                int numberFound = 0;
-                string check = address[4].Trim();
-                bool result = int.TryParse(check, out numberFound); //numberFound = number if it is one and result=true;
+                //remove spurious numbers from line 1
+                string check = address[3].Trim();
+                bool result = checkForHouseNumber(check);
                 if (result)
                 {
-                    //found an isolated number
+                    //test for commas and full stops and remove if necessary
+                    string smallTest = check.Substring(check.Length - 1, 1);
+                    if (smallTest == "," | smallTest == ";" | smallTest == ".")
+                    {
+                        check = check.Substring(0, check.Length - 1);
+                    }
+                    //found an isolated number or similar
+                    int numberLength = check.Length;
+                    string duplicateCheck = address[4].Substring(0, numberLength);
+                    if (check == duplicateCheck)
+                    {
+                        address[3] = ""; // duplicate, so just delete it
+                    }
+                    else
+                    {
+                        address[3] = check + " " + address[4]; //on wrong line so move and delete
+                        address[4] = "";
+                    }
+                }
+
+                //remove spurious numbers from line 2
+                check = address[4].Trim();
+                result = checkForHouseNumber(check);
+                if (result)
+                {
+                    //test for commas and full stops and remove if necessary
+                    string smallTest = check.Substring(check.Length - 1, 1);
+                    if (smallTest == "," | smallTest == ";" | smallTest == ".")
+                    {
+                        check = check.Substring(0, check.Length - 1);
+                    }
+                    //found an isolated number or similar
                     int numberLength = check.Length;
                     string duplicateCheck = address[3].Substring(0, numberLength);
                     if (check == duplicateCheck)
@@ -7246,6 +7438,7 @@ namespace LabelMaker
 
             }
         }
+        
 
         private int findCounter(string[] sentString)
         {
@@ -7279,7 +7472,7 @@ namespace LabelMaker
                     if (result)
                     {
                         //found number so change the comma so it doesn't keep triggering
-                        stringToSplit = stringToSplit.SubstringSpecial(0, commaPosition) + ";"+ stringToSplit.Substring(commaPosition + 1);
+                        stringToSplit = stringToSplit.SubstringSpecial(0, commaPosition) + " "+ stringToSplit.Substring(commaPosition + 1);
                     }
                     else
                     {
@@ -7302,7 +7495,7 @@ namespace LabelMaker
                 .Where(c => !Char.IsWhiteSpace(c))
                 .ToArray());
         }
-
+        #endregion
         private void buttonColourMain_Click(object sender, EventArgs e)
         {
             if (comboBoxColours.Text !="Choose a Colour")
