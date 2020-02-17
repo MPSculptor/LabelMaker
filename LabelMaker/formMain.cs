@@ -33,10 +33,6 @@ namespace LabelMaker
             this.tableAddressFiltersTableAdapter.Fill(this.databaseLabelsDataSetAddClean.TableAddressFilters);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetAuto.TableAuto' table. You can move, or remove it, as needed.
             this.tableAutoTableAdapter.Fill(this.databaseLabelsDataSetAuto.TableAuto);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSetAuto.TableAuto' table. You can move, or remove it, as needed.
-            this.tableAutoTableAdapter.Fill(this.databaseLabelsDataSetAuto.TableAuto);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
-            this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
             this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetMainQueue.TableMainQueue' table. You can move, or remove it, as needed.
@@ -1367,10 +1363,20 @@ namespace LabelMaker
         #region ***Database Filter Buttons***
 
 
-        private void doSelection(string selectionText)
+        private void selectByJustFillMethod()
         {
-            tablePlantsTableAdapter.Adapter.SelectCommand.CommandText = selectionText;
             tablePlantsTableAdapter.Fill(databaseLabelsDataSet.TablePlants);
+            dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
+            dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
+            dataGridViewPlants.Refresh();
+            indexNavigationButtons();
+            updateMainDetails(0);
+            
+        }
+
+        private void selectByFillMethod(Boolean hidden)
+        {
+            tablePlantsTableAdapter.FillBy(databaseLabelsDataSet.TablePlants, hidden);
             dataGridViewPlants.CurrentCell = dataGridViewPlants.Rows[0].Cells[1];
             dataGridViewPlants.FirstDisplayedCell = dataGridViewPlants.CurrentCell;
             dataGridViewPlants.Refresh();
@@ -1378,9 +1384,11 @@ namespace LabelMaker
             updateMainDetails(0);
         }
 
+        
+
         private void buttonHiddenOnly_Click(object sender, EventArgs e)
         {
-            doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'True'  ORDER BY Genus ASC, Species ASC, Variety ASC");
+            selectByFillMethod(true);
             string[] defaults = getDefaultSettings();
             buttonHiddenOnly.BackColor = Color.FromName(defaults[17]);
             buttonVisibleOnly.BackColor = Color.Transparent;
@@ -1389,7 +1397,7 @@ namespace LabelMaker
 
         private void buttonVisibleOnly_Click(object sender, EventArgs e)
         {
-            doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC");
+            selectByFillMethod(false);
             string[] defaults = getDefaultSettings();
             buttonHiddenOnly.BackColor = Color.Transparent;
             buttonVisibleOnly.BackColor = Color.FromName(defaults[17]);
@@ -1398,7 +1406,7 @@ namespace LabelMaker
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants ORDER BY Genus ASC, Species ASC, Variety ASC");
+            selectByJustFillMethod();
             string[] defaults = getDefaultSettings();
             buttonHiddenOnly.BackColor = Color.Transparent;
             buttonVisibleOnly.BackColor = Color.Transparent;
@@ -2147,7 +2155,7 @@ namespace LabelMaker
 
                 //refilter the grid so entry ends up sorted
                 string[] defaults = getDefaultSettings();
-                doSelection("SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants WHERE Hide = 'False'  ORDER BY Genus ASC, Species ASC, Variety ASC");
+                selectByJustFillMethod();                   
                 buttonHiddenOnly.BackColor = Color.Transparent;
                 buttonVisibleOnly.BackColor = Color.FromName(defaults[17]);
                 buttonAllEntries.BackColor = Color.Transparent;
@@ -2780,8 +2788,8 @@ namespace LabelMaker
                 if (rowToMove >= minRow)
                 {
                     DataRow rowData = databaseLabelsDataSetMainQueue.TableMainQueue.NewRow();
-                    string[] allTheData = new string[26];
-                    for (int i = 0; i <= 25; i++)
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
                     {
                         allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -2813,7 +2821,17 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
-                    rowData["LabelStocks"] = allTheData[25];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
 
 
                     dataGridViewMainQ.Rows.RemoveAt(rowToMove);
@@ -2842,8 +2860,8 @@ namespace LabelMaker
                 if (rowToMove >= minRow)
                 {
                     DataRow rowData = databaseLabelsDataSetColourQueue.TableColourQueue.NewRow();
-                    string[] allTheData = new string[26];
-                    for (int i = 0; i <= 25; i++)
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
                     {
                         allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -2875,7 +2893,17 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
-                    rowData["LabelStocks"] = allTheData[25];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
 
 
                     dataGridViewColourQ.Rows.RemoveAt(rowToMove);
@@ -2908,8 +2936,8 @@ namespace LabelMaker
                 if (rowToMove < maxRow)
                 {
                     DataRow rowData = databaseLabelsDataSetMainQueue.TableMainQueue.NewRow();
-                    string[] allTheData = new string[26];
-                    for (int i = 0; i <= 25; i++)
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
                     {
                         allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -2941,7 +2969,17 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
-                    rowData["LabelStocks"] = allTheData[25];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
 
 
                     dataGridViewMainQ.Rows.RemoveAt(rowToMove);
@@ -2970,8 +3008,8 @@ namespace LabelMaker
                 if (rowToMove < maxRow)
                 {
                     DataRow rowData = databaseLabelsDataSetColourQueue.TableColourQueue.NewRow();
-                    string[] allTheData = new string[26];
-                    for (int i = 0; i <= 25; i++)
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
                     {
                         allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString();
                     }
@@ -3003,7 +3041,17 @@ namespace LabelMaker
                     rowData["Picture3"] = allTheData[22];
                     rowData["Picture4"] = allTheData[23];
                     rowData["OrderNo"] = allTheData[24];
-                    rowData["LabelStocks"] = allTheData[25];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
 
 
                     dataGridViewColourQ.Rows.RemoveAt(rowToMove);
