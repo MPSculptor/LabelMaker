@@ -29,7 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlQueue = new System.Windows.Forms.TabControl();
             this.tabPageMainQueue = new System.Windows.Forms.TabPage();
             this.dataGridViewMainQ = new System.Windows.Forms.DataGridView();
@@ -340,6 +360,8 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labelPlantName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tablePlantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSet = new LabelMaker.DatabaseLabelsDataSet();
             this.richTextBoxDesc = new System.Windows.Forms.RichTextBox();
             this.groupBoxAlpha = new System.Windows.Forms.GroupBox();
             this.buttonAlphaZplus = new System.Windows.Forms.Button();
@@ -436,6 +458,27 @@
             this.buttonAllEntries = new System.Windows.Forms.Button();
             this.buttonHiddenOnly = new System.Windows.Forms.Button();
             this.dataGridViewPlants = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genusCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speciesCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varietyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sKUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.potSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourQueueDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aGMDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.labelColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageQuickPrint = new System.Windows.Forms.TabPage();
             this.groupBoxQP9 = new System.Windows.Forms.GroupBox();
@@ -777,6 +820,14 @@
             this.paperSourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelsLabelCategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDefaults = new System.Windows.Forms.TabPage();
+            this.buttonColourColourText = new System.Windows.Forms.Button();
+            this.textBoxColourColourText = new System.Windows.Forms.TextBox();
+            this.label189 = new System.Windows.Forms.Label();
+            this.button1ColourMainText = new System.Windows.Forms.Button();
+            this.textBoxColourMainText = new System.Windows.Forms.TextBox();
+            this.label188 = new System.Windows.Forms.Label();
+            this.textBoxAutoLabelFile = new System.Windows.Forms.TextBox();
+            this.label187 = new System.Windows.Forms.Label();
             this.label186 = new System.Windows.Forms.Label();
             this.comboBoxColours = new System.Windows.Forms.ComboBox();
             this.label183 = new System.Windows.Forms.Label();
@@ -860,38 +911,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet2TableAdapters.TableMainQueueTableAdapter();
             this.tableAutoTableAdapter = new LabelMaker.DatabaseLabelsDataSetAutoTableAdapters.TableAutoTableAdapter();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetDefaults = new LabelMaker.DatabaseLabelsDataSetDefaults();
-            this.defaultsTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter();
             this.tableAddressFiltersTableAdapter = new LabelMaker.DatabaseLabelsDataSetAddCleanTableAdapters.TableAddressFiltersTableAdapter();
             this.LabelsLabelNamesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelNamesTableAdapter();
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.tablePlantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSet = new LabelMaker.DatabaseLabelsDataSet();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genusCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speciesCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.varietyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sKUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.potSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourQueueDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aGMDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.labelColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSetDefaults = new LabelMaker.DatabaseLabelsDataSetDefaults();
+            this.defaultsTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMainQ)).BeginInit();
@@ -939,6 +967,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
             this.groupBoxAlpha.SuspendLayout();
             this.groupBoxPrint.SuspendLayout();
             this.groupBoxImages.SuspendLayout();
@@ -987,8 +1017,6 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -1022,6 +1050,14 @@
             // 
             this.dataGridViewMainQ.AutoGenerateColumns = false;
             this.dataGridViewMainQ.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMainQ.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
             this.dataGridViewMainQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMainQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn1,
@@ -1062,6 +1098,14 @@
             this.plantIdDataGridViewTextBoxColumn1});
             this.dataGridViewMainQ.DataMember = "TableMainQueue";
             this.dataGridViewMainQ.DataSource = this.bindingSourceMainQueue;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMainQ.DefaultCellStyle = dataGridViewCellStyle42;
             this.dataGridViewMainQ.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewMainQ.Name = "dataGridViewMainQ";
             this.dataGridViewMainQ.RowHeadersVisible = false;
@@ -1313,6 +1357,14 @@
             // 
             this.dataGridViewColourQ.AutoGenerateColumns = false;
             this.dataGridViewColourQ.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewColourQ.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
             this.dataGridViewColourQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewColourQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn2,
@@ -1352,6 +1404,14 @@
             this.labelStocksDataGridViewCheckBoxColumn,
             this.plantIdDataGridViewTextBoxColumn});
             this.dataGridViewColourQ.DataSource = this.tableColourQueueBindingSource;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewColourQ.DefaultCellStyle = dataGridViewCellStyle44;
             this.dataGridViewColourQ.Location = new System.Drawing.Point(6, 6);
             this.dataGridViewColourQ.Name = "dataGridViewColourQ";
             this.dataGridViewColourQ.RowHeadersVisible = false;
@@ -1780,7 +1840,23 @@
             // 
             this.dataGridViewMissingPictures.AllowUserToAddRows = false;
             this.dataGridViewMissingPictures.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMissingPictures.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
             this.dataGridViewMissingPictures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMissingPictures.DefaultCellStyle = dataGridViewCellStyle46;
             this.dataGridViewMissingPictures.Location = new System.Drawing.Point(4, 6);
             this.dataGridViewMissingPictures.Name = "dataGridViewMissingPictures";
             this.dataGridViewMissingPictures.Size = new System.Drawing.Size(399, 569);
@@ -2045,6 +2121,14 @@
             // 
             this.dataGridView1ProfileView.AllowUserToOrderColumns = true;
             this.dataGridView1ProfileView.AutoGenerateColumns = false;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1ProfileView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.dataGridView1ProfileView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1ProfileView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn2,
@@ -2056,6 +2140,14 @@
             this.fontColourDataGridViewTextBoxColumn,
             this.backgroundColourDataGridViewTextBoxColumn});
             this.dataGridView1ProfileView.DataSource = this.tableProfilesbindingSource;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1ProfileView.DefaultCellStyle = dataGridViewCellStyle48;
             this.dataGridView1ProfileView.Location = new System.Drawing.Point(20, 20);
             this.dataGridView1ProfileView.Name = "dataGridView1ProfileView";
             this.dataGridView1ProfileView.Size = new System.Drawing.Size(845, 188);
@@ -2123,7 +2215,23 @@
             // dataGridViewProfiles
             // 
             this.dataGridViewProfiles.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProfiles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;
             this.dataGridViewProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProfiles.DefaultCellStyle = dataGridViewCellStyle50;
             this.dataGridViewProfiles.Location = new System.Drawing.Point(10, 10);
             this.dataGridViewProfiles.Name = "dataGridViewProfiles";
             this.dataGridViewProfiles.Size = new System.Drawing.Size(867, 208);
@@ -2550,6 +2658,14 @@
             // dataGridViewAuto
             // 
             this.dataGridViewAuto.AutoGenerateColumns = false;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAuto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle51;
             this.dataGridViewAuto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAuto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn1,
@@ -2572,6 +2688,14 @@
             this.dataGridViewTextBoxColumn7,
             this.ShipNotes});
             this.dataGridViewAuto.DataSource = this.tableAutoBindingSource;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewAuto.DefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridViewAuto.Location = new System.Drawing.Point(10, 61);
             this.dataGridViewAuto.Name = "dataGridViewAuto";
             this.dataGridViewAuto.Size = new System.Drawing.Size(958, 716);
@@ -3858,6 +3982,16 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
+            // tablePlantsBindingSource
+            // 
+            this.tablePlantsBindingSource.DataMember = "TablePlants";
+            this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
+            // 
+            // databaseLabelsDataSet
+            // 
+            this.databaseLabelsDataSet.DataSetName = "DatabaseLabelsDataSet";
+            this.databaseLabelsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // richTextBoxDesc
             // 
             this.richTextBoxDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -5020,6 +5154,14 @@
             this.dataGridViewPlants.AllowUserToResizeColumns = false;
             this.dataGridViewPlants.AllowUserToResizeRows = false;
             this.dataGridViewPlants.AutoGenerateColumns = false;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPlants.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
             this.dataGridViewPlants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPlants.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -5044,6 +5186,14 @@
             this.notesDataGridViewTextBoxColumn,
             this.labelStockDataGridViewCheckBoxColumn});
             this.dataGridViewPlants.DataSource = this.tablePlantsBindingSource;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPlants.DefaultCellStyle = dataGridViewCellStyle54;
             this.dataGridViewPlants.Location = new System.Drawing.Point(6, 40);
             this.dataGridViewPlants.Name = "dataGridViewPlants";
             this.dataGridViewPlants.ReadOnly = true;
@@ -5051,6 +5201,153 @@
             this.dataGridViewPlants.Size = new System.Drawing.Size(716, 838);
             this.dataGridViewPlants.TabIndex = 0;
             this.dataGridViewPlants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlants_CellContentClick);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genusCrossDataGridViewTextBoxColumn
+            // 
+            this.genusCrossDataGridViewTextBoxColumn.DataPropertyName = "GenusCross";
+            this.genusCrossDataGridViewTextBoxColumn.HeaderText = "GenusCross";
+            this.genusCrossDataGridViewTextBoxColumn.Name = "genusCrossDataGridViewTextBoxColumn";
+            this.genusCrossDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genusDataGridViewTextBoxColumn
+            // 
+            this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
+            this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
+            this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
+            this.genusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speciesCrossDataGridViewTextBoxColumn
+            // 
+            this.speciesCrossDataGridViewTextBoxColumn.DataPropertyName = "SpeciesCross";
+            this.speciesCrossDataGridViewTextBoxColumn.HeaderText = "SpeciesCross";
+            this.speciesCrossDataGridViewTextBoxColumn.Name = "speciesCrossDataGridViewTextBoxColumn";
+            this.speciesCrossDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speciesDataGridViewTextBoxColumn
+            // 
+            this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
+            this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
+            this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
+            this.speciesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // varietyDataGridViewTextBoxColumn
+            // 
+            this.varietyDataGridViewTextBoxColumn.DataPropertyName = "Variety";
+            this.varietyDataGridViewTextBoxColumn.HeaderText = "Variety";
+            this.varietyDataGridViewTextBoxColumn.Name = "varietyDataGridViewTextBoxColumn";
+            this.varietyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commonDataGridViewTextBoxColumn
+            // 
+            this.commonDataGridViewTextBoxColumn.DataPropertyName = "Common";
+            this.commonDataGridViewTextBoxColumn.HeaderText = "Common";
+            this.commonDataGridViewTextBoxColumn.Name = "commonDataGridViewTextBoxColumn";
+            this.commonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sKUDataGridViewTextBoxColumn
+            // 
+            this.sKUDataGridViewTextBoxColumn.DataPropertyName = "SKU";
+            this.sKUDataGridViewTextBoxColumn.HeaderText = "SKU";
+            this.sKUDataGridViewTextBoxColumn.Name = "sKUDataGridViewTextBoxColumn";
+            this.sKUDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descDataGridViewTextBoxColumn
+            // 
+            this.descDataGridViewTextBoxColumn.DataPropertyName = "Desc";
+            this.descDataGridViewTextBoxColumn.HeaderText = "Desc";
+            this.descDataGridViewTextBoxColumn.Name = "descDataGridViewTextBoxColumn";
+            this.descDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // potSizeDataGridViewTextBoxColumn
+            // 
+            this.potSizeDataGridViewTextBoxColumn.DataPropertyName = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn.HeaderText = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn.Name = "potSizeDataGridViewTextBoxColumn";
+            this.potSizeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colourQueueDataGridViewCheckBoxColumn
+            // 
+            this.colourQueueDataGridViewCheckBoxColumn.DataPropertyName = "ColourQueue";
+            this.colourQueueDataGridViewCheckBoxColumn.HeaderText = "ColourQueue";
+            this.colourQueueDataGridViewCheckBoxColumn.Name = "colourQueueDataGridViewCheckBoxColumn";
+            this.colourQueueDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // barcodeDataGridViewTextBoxColumn
+            // 
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture1DataGridViewTextBoxColumn
+            // 
+            this.picture1DataGridViewTextBoxColumn.DataPropertyName = "Picture1";
+            this.picture1DataGridViewTextBoxColumn.HeaderText = "Picture1";
+            this.picture1DataGridViewTextBoxColumn.Name = "picture1DataGridViewTextBoxColumn";
+            this.picture1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture2DataGridViewTextBoxColumn
+            // 
+            this.picture2DataGridViewTextBoxColumn.DataPropertyName = "Picture2";
+            this.picture2DataGridViewTextBoxColumn.HeaderText = "Picture2";
+            this.picture2DataGridViewTextBoxColumn.Name = "picture2DataGridViewTextBoxColumn";
+            this.picture2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture3DataGridViewTextBoxColumn
+            // 
+            this.picture3DataGridViewTextBoxColumn.DataPropertyName = "Picture3";
+            this.picture3DataGridViewTextBoxColumn.HeaderText = "Picture3";
+            this.picture3DataGridViewTextBoxColumn.Name = "picture3DataGridViewTextBoxColumn";
+            this.picture3DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture4DataGridViewTextBoxColumn
+            // 
+            this.picture4DataGridViewTextBoxColumn.DataPropertyName = "Picture4";
+            this.picture4DataGridViewTextBoxColumn.HeaderText = "Picture4";
+            this.picture4DataGridViewTextBoxColumn.Name = "picture4DataGridViewTextBoxColumn";
+            this.picture4DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aGMDataGridViewCheckBoxColumn
+            // 
+            this.aGMDataGridViewCheckBoxColumn.DataPropertyName = "AGM";
+            this.aGMDataGridViewCheckBoxColumn.HeaderText = "AGM";
+            this.aGMDataGridViewCheckBoxColumn.Name = "aGMDataGridViewCheckBoxColumn";
+            this.aGMDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // labelColourDataGridViewTextBoxColumn
+            // 
+            this.labelColourDataGridViewTextBoxColumn.DataPropertyName = "LabelColour";
+            this.labelColourDataGridViewTextBoxColumn.HeaderText = "LabelColour";
+            this.labelColourDataGridViewTextBoxColumn.Name = "labelColourDataGridViewTextBoxColumn";
+            this.labelColourDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hideDataGridViewCheckBoxColumn
+            // 
+            this.hideDataGridViewCheckBoxColumn.DataPropertyName = "Hide";
+            this.hideDataGridViewCheckBoxColumn.HeaderText = "Hide";
+            this.hideDataGridViewCheckBoxColumn.Name = "hideDataGridViewCheckBoxColumn";
+            this.hideDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // notesDataGridViewTextBoxColumn
+            // 
+            this.notesDataGridViewTextBoxColumn.DataPropertyName = "notes";
+            this.notesDataGridViewTextBoxColumn.HeaderText = "notes";
+            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // labelStockDataGridViewCheckBoxColumn
+            // 
+            this.labelStockDataGridViewCheckBoxColumn.DataPropertyName = "LabelStock";
+            this.labelStockDataGridViewCheckBoxColumn.HeaderText = "LabelStock";
+            this.labelStockDataGridViewCheckBoxColumn.Name = "labelStockDataGridViewCheckBoxColumn";
+            this.labelStockDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // tabControlMain
             // 
@@ -6901,6 +7198,14 @@
             // dataGridViewDesign
             // 
             this.dataGridViewDesign.AutoGenerateColumns = false;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDesign.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
             this.dataGridViewDesign.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDesign.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn4,
@@ -6927,6 +7232,14 @@
             this.orderingDataGridViewTextBoxColumn});
             this.dataGridViewDesign.DataMember = "LabelsLabelFields";
             this.dataGridViewDesign.DataSource = this.bindingSourceLabels;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDesign.DefaultCellStyle = dataGridViewCellStyle56;
             this.dataGridViewDesign.Location = new System.Drawing.Point(287, 19);
             this.dataGridViewDesign.Name = "dataGridViewDesign";
             this.dataGridViewDesign.Size = new System.Drawing.Size(778, 118);
@@ -8216,6 +8529,14 @@
             // dataGridViewCategories
             // 
             this.dataGridViewCategories.AutoGenerateColumns = false;
+            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle57.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle57;
             this.dataGridViewCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCategories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn3,
@@ -8236,6 +8557,14 @@
             this.rotateDataGridViewTextBoxColumn,
             this.paperSourceDataGridViewTextBoxColumn});
             this.dataGridViewCategories.DataSource = this.labelsLabelCategoriesBindingSource;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCategories.DefaultCellStyle = dataGridViewCellStyle58;
             this.dataGridViewCategories.Location = new System.Drawing.Point(12, 16);
             this.dataGridViewCategories.Name = "dataGridViewCategories";
             this.dataGridViewCategories.Size = new System.Drawing.Size(1051, 150);
@@ -8353,6 +8682,14 @@
             // tabPageDefaults
             // 
             this.tabPageDefaults.BackColor = System.Drawing.Color.White;
+            this.tabPageDefaults.Controls.Add(this.buttonColourColourText);
+            this.tabPageDefaults.Controls.Add(this.textBoxColourColourText);
+            this.tabPageDefaults.Controls.Add(this.label189);
+            this.tabPageDefaults.Controls.Add(this.button1ColourMainText);
+            this.tabPageDefaults.Controls.Add(this.textBoxColourMainText);
+            this.tabPageDefaults.Controls.Add(this.label188);
+            this.tabPageDefaults.Controls.Add(this.textBoxAutoLabelFile);
+            this.tabPageDefaults.Controls.Add(this.label187);
             this.tabPageDefaults.Controls.Add(this.label186);
             this.tabPageDefaults.Controls.Add(this.comboBoxColours);
             this.tabPageDefaults.Controls.Add(this.label183);
@@ -8424,6 +8761,74 @@
             this.tabPageDefaults.TabIndex = 1;
             this.tabPageDefaults.Text = "   Default Settings   ";
             // 
+            // buttonColourColourText
+            // 
+            this.buttonColourColourText.Location = new System.Drawing.Point(293, 728);
+            this.buttonColourColourText.Name = "buttonColourColourText";
+            this.buttonColourColourText.Size = new System.Drawing.Size(75, 23);
+            this.buttonColourColourText.TabIndex = 95;
+            this.buttonColourColourText.UseVisualStyleBackColor = true;
+            this.buttonColourColourText.Click += new System.EventHandler(this.buttonColourColourText_Click);
+            // 
+            // textBoxColourColourText
+            // 
+            this.textBoxColourColourText.Location = new System.Drawing.Point(173, 730);
+            this.textBoxColourColourText.Name = "textBoxColourColourText";
+            this.textBoxColourColourText.Size = new System.Drawing.Size(114, 20);
+            this.textBoxColourColourText.TabIndex = 94;
+            // 
+            // label189
+            // 
+            this.label189.AutoSize = true;
+            this.label189.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label189.Location = new System.Drawing.Point(26, 730);
+            this.label189.Name = "label189";
+            this.label189.Size = new System.Drawing.Size(133, 18);
+            this.label189.TabIndex = 93;
+            this.label189.Text = "Colour Queue Text";
+            // 
+            // button1ColourMainText
+            // 
+            this.button1ColourMainText.Location = new System.Drawing.Point(293, 663);
+            this.button1ColourMainText.Name = "button1ColourMainText";
+            this.button1ColourMainText.Size = new System.Drawing.Size(75, 23);
+            this.button1ColourMainText.TabIndex = 92;
+            this.button1ColourMainText.UseVisualStyleBackColor = true;
+            this.button1ColourMainText.Click += new System.EventHandler(this.button1ColourMainText_Click);
+            // 
+            // textBoxColourMainText
+            // 
+            this.textBoxColourMainText.Location = new System.Drawing.Point(173, 665);
+            this.textBoxColourMainText.Name = "textBoxColourMainText";
+            this.textBoxColourMainText.Size = new System.Drawing.Size(114, 20);
+            this.textBoxColourMainText.TabIndex = 91;
+            // 
+            // label188
+            // 
+            this.label188.AutoSize = true;
+            this.label188.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label188.Location = new System.Drawing.Point(39, 665);
+            this.label188.Name = "label188";
+            this.label188.Size = new System.Drawing.Size(120, 18);
+            this.label188.TabIndex = 90;
+            this.label188.Text = "Main Queue Text";
+            // 
+            // textBoxAutoLabelFile
+            // 
+            this.textBoxAutoLabelFile.Location = new System.Drawing.Point(293, 259);
+            this.textBoxAutoLabelFile.Name = "textBoxAutoLabelFile";
+            this.textBoxAutoLabelFile.Size = new System.Drawing.Size(236, 20);
+            this.textBoxAutoLabelFile.TabIndex = 89;
+            // 
+            // label187
+            // 
+            this.label187.AutoSize = true;
+            this.label187.Location = new System.Drawing.Point(146, 262);
+            this.label187.Name = "label187";
+            this.label187.Size = new System.Drawing.Size(135, 13);
+            this.label187.TabIndex = 88;
+            this.label187.Text = "18. Autolabel Default Label";
+            // 
             // label186
             // 
             this.label186.Location = new System.Drawing.Point(391, 672);
@@ -8446,7 +8851,7 @@
             this.label183.AutoSize = true;
             this.label183.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label183.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label183.Location = new System.Drawing.Point(164, 664);
+            this.label183.Location = new System.Drawing.Point(167, 591);
             this.label183.Name = "label183";
             this.label183.Size = new System.Drawing.Size(115, 31);
             this.label183.TabIndex = 85;
@@ -8454,7 +8859,7 @@
             // 
             // buttonColourFalse
             // 
-            this.buttonColourFalse.Location = new System.Drawing.Point(290, 835);
+            this.buttonColourFalse.Location = new System.Drawing.Point(292, 825);
             this.buttonColourFalse.Name = "buttonColourFalse";
             this.buttonColourFalse.Size = new System.Drawing.Size(75, 23);
             this.buttonColourFalse.TabIndex = 84;
@@ -8463,7 +8868,7 @@
             // 
             // buttonColourColour
             // 
-            this.buttonColourColour.Location = new System.Drawing.Point(290, 743);
+            this.buttonColourColour.Location = new System.Drawing.Point(293, 702);
             this.buttonColourColour.Name = "buttonColourColour";
             this.buttonColourColour.Size = new System.Drawing.Size(75, 23);
             this.buttonColourColour.TabIndex = 83;
@@ -8472,7 +8877,7 @@
             // 
             // buttonColourTrue
             // 
-            this.buttonColourTrue.Location = new System.Drawing.Point(290, 776);
+            this.buttonColourTrue.Location = new System.Drawing.Point(292, 766);
             this.buttonColourTrue.Name = "buttonColourTrue";
             this.buttonColourTrue.Size = new System.Drawing.Size(75, 23);
             this.buttonColourTrue.TabIndex = 82;
@@ -8481,7 +8886,7 @@
             // 
             // buttonColourHalfway
             // 
-            this.buttonColourHalfway.Location = new System.Drawing.Point(290, 806);
+            this.buttonColourHalfway.Location = new System.Drawing.Point(292, 796);
             this.buttonColourHalfway.Name = "buttonColourHalfway";
             this.buttonColourHalfway.Size = new System.Drawing.Size(75, 23);
             this.buttonColourHalfway.TabIndex = 81;
@@ -8490,7 +8895,7 @@
             // 
             // buttonColourMain
             // 
-            this.buttonColourMain.Location = new System.Drawing.Point(290, 709);
+            this.buttonColourMain.Location = new System.Drawing.Point(293, 636);
             this.buttonColourMain.Name = "buttonColourMain";
             this.buttonColourMain.Size = new System.Drawing.Size(75, 23);
             this.buttonColourMain.TabIndex = 80;
@@ -8499,35 +8904,35 @@
             // 
             // textBoxColourColour
             // 
-            this.textBoxColourColour.Location = new System.Drawing.Point(170, 745);
+            this.textBoxColourColour.Location = new System.Drawing.Point(173, 704);
             this.textBoxColourColour.Name = "textBoxColourColour";
             this.textBoxColourColour.Size = new System.Drawing.Size(114, 20);
             this.textBoxColourColour.TabIndex = 79;
             // 
             // textBoxColourTrue
             // 
-            this.textBoxColourTrue.Location = new System.Drawing.Point(170, 778);
+            this.textBoxColourTrue.Location = new System.Drawing.Point(172, 768);
             this.textBoxColourTrue.Name = "textBoxColourTrue";
             this.textBoxColourTrue.Size = new System.Drawing.Size(114, 20);
             this.textBoxColourTrue.TabIndex = 78;
             // 
             // textBoxColourHalfway
             // 
-            this.textBoxColourHalfway.Location = new System.Drawing.Point(170, 808);
+            this.textBoxColourHalfway.Location = new System.Drawing.Point(172, 798);
             this.textBoxColourHalfway.Name = "textBoxColourHalfway";
             this.textBoxColourHalfway.Size = new System.Drawing.Size(114, 20);
             this.textBoxColourHalfway.TabIndex = 77;
             // 
             // textBoxColourFalse
             // 
-            this.textBoxColourFalse.Location = new System.Drawing.Point(170, 837);
+            this.textBoxColourFalse.Location = new System.Drawing.Point(172, 827);
             this.textBoxColourFalse.Name = "textBoxColourFalse";
             this.textBoxColourFalse.Size = new System.Drawing.Size(114, 20);
             this.textBoxColourFalse.TabIndex = 76;
             // 
             // textBoxColourMain
             // 
-            this.textBoxColourMain.Location = new System.Drawing.Point(170, 712);
+            this.textBoxColourMain.Location = new System.Drawing.Point(173, 639);
             this.textBoxColourMain.Name = "textBoxColourMain";
             this.textBoxColourMain.Size = new System.Drawing.Size(114, 20);
             this.textBoxColourMain.TabIndex = 75;
@@ -8536,7 +8941,7 @@
             // 
             this.label184.AutoSize = true;
             this.label184.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label184.Location = new System.Drawing.Point(91, 806);
+            this.label184.Location = new System.Drawing.Point(93, 796);
             this.label184.Name = "label184";
             this.label184.Size = new System.Drawing.Size(65, 20);
             this.label184.TabIndex = 74;
@@ -8546,7 +8951,7 @@
             // 
             this.label185.AutoSize = true;
             this.label185.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label185.Location = new System.Drawing.Point(115, 776);
+            this.label185.Location = new System.Drawing.Point(117, 766);
             this.label185.Name = "label185";
             this.label185.Size = new System.Drawing.Size(41, 20);
             this.label185.TabIndex = 73;
@@ -8556,7 +8961,7 @@
             // 
             this.label182.AutoSize = true;
             this.label182.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label182.Location = new System.Drawing.Point(108, 835);
+            this.label182.Location = new System.Drawing.Point(110, 825);
             this.label182.Name = "label182";
             this.label182.Size = new System.Drawing.Size(48, 20);
             this.label182.TabIndex = 72;
@@ -8566,7 +8971,7 @@
             // 
             this.label181.AutoSize = true;
             this.label181.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label181.Location = new System.Drawing.Point(49, 743);
+            this.label181.Location = new System.Drawing.Point(52, 702);
             this.label181.Name = "label181";
             this.label181.Size = new System.Drawing.Size(107, 20);
             this.label181.TabIndex = 70;
@@ -8576,7 +8981,7 @@
             // 
             this.label180.AutoSize = true;
             this.label180.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label180.Location = new System.Drawing.Point(61, 713);
+            this.label180.Location = new System.Drawing.Point(64, 640);
             this.label180.Name = "label180";
             this.label180.Size = new System.Drawing.Size(95, 20);
             this.label180.TabIndex = 69;
@@ -8638,7 +9043,7 @@
             // comboBoxAutoLabel
             // 
             this.comboBoxAutoLabel.FormattingEnabled = true;
-            this.comboBoxAutoLabel.Location = new System.Drawing.Point(537, 433);
+            this.comboBoxAutoLabel.Location = new System.Drawing.Point(537, 457);
             this.comboBoxAutoLabel.Name = "comboBoxAutoLabel";
             this.comboBoxAutoLabel.Size = new System.Drawing.Size(185, 21);
             this.comboBoxAutoLabel.TabIndex = 64;
@@ -8648,7 +9053,7 @@
             // textBoxDefaultsAutoLabel
             // 
             this.textBoxDefaultsAutoLabel.Enabled = false;
-            this.textBoxDefaultsAutoLabel.Location = new System.Drawing.Point(293, 434);
+            this.textBoxDefaultsAutoLabel.Location = new System.Drawing.Point(293, 233);
             this.textBoxDefaultsAutoLabel.Name = "textBoxDefaultsAutoLabel";
             this.textBoxDefaultsAutoLabel.Size = new System.Drawing.Size(236, 20);
             this.textBoxDefaultsAutoLabel.TabIndex = 63;
@@ -8656,7 +9061,7 @@
             // label175
             // 
             this.label175.AutoSize = true;
-            this.label175.Location = new System.Drawing.Point(146, 437);
+            this.label175.Location = new System.Drawing.Point(146, 236);
             this.label175.Name = "label175";
             this.label175.Size = new System.Drawing.Size(135, 13);
             this.label175.TabIndex = 62;
@@ -8711,12 +9116,28 @@
             // dataGridViewAddClean
             // 
             this.dataGridViewAddClean.AutoGenerateColumns = false;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAddClean.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle59;
             this.dataGridViewAddClean.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAddClean.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn5,
             this.textDataGridViewTextBoxColumn,
             this.actionDataGridViewTextBoxColumn});
             this.dataGridViewAddClean.DataSource = this.tableAddressFiltersBindingSource;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewAddClean.DefaultCellStyle = dataGridViewCellStyle60;
             this.dataGridViewAddClean.Location = new System.Drawing.Point(899, 55);
             this.dataGridViewAddClean.Name = "dataGridViewAddClean";
             this.dataGridViewAddClean.RowHeadersVisible = false;
@@ -8755,7 +9176,7 @@
             // 
             // buttonCorrectAddresses
             // 
-            this.buttonCorrectAddresses.Location = new System.Drawing.Point(398, 404);
+            this.buttonCorrectAddresses.Location = new System.Drawing.Point(398, 463);
             this.buttonCorrectAddresses.Name = "buttonCorrectAddresses";
             this.buttonCorrectAddresses.Size = new System.Drawing.Size(75, 23);
             this.buttonCorrectAddresses.TabIndex = 55;
@@ -8766,7 +9187,7 @@
             // textBoxDefaultsCorrectAdd
             // 
             this.textBoxDefaultsCorrectAdd.Enabled = false;
-            this.textBoxDefaultsCorrectAdd.Location = new System.Drawing.Point(293, 407);
+            this.textBoxDefaultsCorrectAdd.Location = new System.Drawing.Point(293, 466);
             this.textBoxDefaultsCorrectAdd.Name = "textBoxDefaultsCorrectAdd";
             this.textBoxDefaultsCorrectAdd.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsCorrectAdd.TabIndex = 54;
@@ -8774,7 +9195,7 @@
             // label130
             // 
             this.label130.AutoSize = true;
-            this.label130.Location = new System.Drawing.Point(117, 410);
+            this.label130.Location = new System.Drawing.Point(117, 469);
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(164, 13);
             this.label130.TabIndex = 53;
@@ -8782,7 +9203,7 @@
             // 
             // buttonUpdateDefaults
             // 
-            this.buttonUpdateDefaults.Location = new System.Drawing.Point(293, 463);
+            this.buttonUpdateDefaults.Location = new System.Drawing.Point(293, 522);
             this.buttonUpdateDefaults.Name = "buttonUpdateDefaults";
             this.buttonUpdateDefaults.Size = new System.Drawing.Size(180, 48);
             this.buttonUpdateDefaults.TabIndex = 52;
@@ -8812,7 +9233,7 @@
             // 
             // buttonDeleteQ
             // 
-            this.buttonDeleteQ.Location = new System.Drawing.Point(398, 266);
+            this.buttonDeleteQ.Location = new System.Drawing.Point(398, 325);
             this.buttonDeleteQ.Name = "buttonDeleteQ";
             this.buttonDeleteQ.Size = new System.Drawing.Size(75, 23);
             this.buttonDeleteQ.TabIndex = 49;
@@ -8822,7 +9243,7 @@
             // 
             // buttonAutoQty
             // 
-            this.buttonAutoQty.Location = new System.Drawing.Point(398, 306);
+            this.buttonAutoQty.Location = new System.Drawing.Point(398, 365);
             this.buttonAutoQty.Name = "buttonAutoQty";
             this.buttonAutoQty.Size = new System.Drawing.Size(75, 39);
             this.buttonAutoQty.TabIndex = 48;
@@ -8832,7 +9253,7 @@
             // 
             // buttonAutoAddress
             // 
-            this.buttonAutoAddress.Location = new System.Drawing.Point(398, 358);
+            this.buttonAutoAddress.Location = new System.Drawing.Point(398, 417);
             this.buttonAutoAddress.Name = "buttonAutoAddress";
             this.buttonAutoAddress.Size = new System.Drawing.Size(75, 39);
             this.buttonAutoAddress.TabIndex = 47;
@@ -8842,7 +9263,7 @@
             // 
             // buttonColourQChange
             // 
-            this.buttonColourQChange.Location = new System.Drawing.Point(398, 240);
+            this.buttonColourQChange.Location = new System.Drawing.Point(398, 299);
             this.buttonColourQChange.Name = "buttonColourQChange";
             this.buttonColourQChange.Size = new System.Drawing.Size(75, 23);
             this.buttonColourQChange.TabIndex = 46;
@@ -8872,7 +9293,7 @@
             // textBoxDefaultsAddressAll
             // 
             this.textBoxDefaultsAddressAll.Enabled = false;
-            this.textBoxDefaultsAddressAll.Location = new System.Drawing.Point(293, 381);
+            this.textBoxDefaultsAddressAll.Location = new System.Drawing.Point(293, 440);
             this.textBoxDefaultsAddressAll.Name = "textBoxDefaultsAddressAll";
             this.textBoxDefaultsAddressAll.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAddressAll.TabIndex = 42;
@@ -8881,7 +9302,7 @@
             // textBoxDefaultsAddressUnlock
             // 
             this.textBoxDefaultsAddressUnlock.Enabled = false;
-            this.textBoxDefaultsAddressUnlock.Location = new System.Drawing.Point(293, 355);
+            this.textBoxDefaultsAddressUnlock.Location = new System.Drawing.Point(293, 414);
             this.textBoxDefaultsAddressUnlock.Name = "textBoxDefaultsAddressUnlock";
             this.textBoxDefaultsAddressUnlock.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAddressUnlock.TabIndex = 40;
@@ -8889,7 +9310,7 @@
             // textBoxDefaultsAutoModified
             // 
             this.textBoxDefaultsAutoModified.Enabled = false;
-            this.textBoxDefaultsAutoModified.Location = new System.Drawing.Point(293, 329);
+            this.textBoxDefaultsAutoModified.Location = new System.Drawing.Point(293, 388);
             this.textBoxDefaultsAutoModified.Name = "textBoxDefaultsAutoModified";
             this.textBoxDefaultsAutoModified.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAutoModified.TabIndex = 38;
@@ -8897,7 +9318,7 @@
             // textBoxDefaultsAutoStated
             // 
             this.textBoxDefaultsAutoStated.Enabled = false;
-            this.textBoxDefaultsAutoStated.Location = new System.Drawing.Point(293, 303);
+            this.textBoxDefaultsAutoStated.Location = new System.Drawing.Point(293, 362);
             this.textBoxDefaultsAutoStated.Name = "textBoxDefaultsAutoStated";
             this.textBoxDefaultsAutoStated.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAutoStated.TabIndex = 36;
@@ -8905,7 +9326,7 @@
             // textBoxDefaultsDeleteQueue
             // 
             this.textBoxDefaultsDeleteQueue.Enabled = false;
-            this.textBoxDefaultsDeleteQueue.Location = new System.Drawing.Point(293, 268);
+            this.textBoxDefaultsDeleteQueue.Location = new System.Drawing.Point(293, 327);
             this.textBoxDefaultsDeleteQueue.Name = "textBoxDefaultsDeleteQueue";
             this.textBoxDefaultsDeleteQueue.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsDeleteQueue.TabIndex = 34;
@@ -8913,7 +9334,7 @@
             // textBoxDefaultsAddColour
             // 
             this.textBoxDefaultsAddColour.Enabled = false;
-            this.textBoxDefaultsAddColour.Location = new System.Drawing.Point(293, 242);
+            this.textBoxDefaultsAddColour.Location = new System.Drawing.Point(293, 301);
             this.textBoxDefaultsAddColour.Name = "textBoxDefaultsAddColour";
             this.textBoxDefaultsAddColour.Size = new System.Drawing.Size(90, 20);
             this.textBoxDefaultsAddColour.TabIndex = 32;
@@ -8960,7 +9381,7 @@
             // labeladdresses
             // 
             this.labeladdresses.AutoSize = true;
-            this.labeladdresses.Location = new System.Drawing.Point(89, 384);
+            this.labeladdresses.Location = new System.Drawing.Point(89, 443);
             this.labeladdresses.Name = "labeladdresses";
             this.labeladdresses.Size = new System.Drawing.Size(192, 13);
             this.labeladdresses.TabIndex = 41;
@@ -8969,7 +9390,7 @@
             // label120
             // 
             this.label120.AutoSize = true;
-            this.label120.Location = new System.Drawing.Point(40, 358);
+            this.label120.Location = new System.Drawing.Point(40, 417);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(241, 13);
             this.label120.TabIndex = 39;
@@ -8978,7 +9399,7 @@
             // label119
             // 
             this.label119.AutoSize = true;
-            this.label119.Location = new System.Drawing.Point(102, 332);
+            this.label119.Location = new System.Drawing.Point(102, 391);
             this.label119.Name = "label119";
             this.label119.Size = new System.Drawing.Size(179, 13);
             this.label119.TabIndex = 37;
@@ -8987,7 +9408,7 @@
             // label118
             // 
             this.label118.AutoSize = true;
-            this.label118.Location = new System.Drawing.Point(112, 306);
+            this.label118.Location = new System.Drawing.Point(112, 365);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(169, 13);
             this.label118.TabIndex = 35;
@@ -8996,7 +9417,7 @@
             // label117
             // 
             this.label117.AutoSize = true;
-            this.label117.Location = new System.Drawing.Point(135, 271);
+            this.label117.Location = new System.Drawing.Point(135, 330);
             this.label117.Name = "label117";
             this.label117.Size = new System.Drawing.Size(146, 13);
             this.label117.TabIndex = 33;
@@ -9005,7 +9426,7 @@
             // label116
             // 
             this.label116.AutoSize = true;
-            this.label116.Location = new System.Drawing.Point(133, 245);
+            this.label116.Location = new System.Drawing.Point(133, 304);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(148, 13);
             this.label116.TabIndex = 31;
@@ -9179,20 +9600,6 @@
             // 
             this.tableAutoTableAdapter.ClearBeforeFill = true;
             // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = this.databaseLabelsDataSetDefaults;
-            this.bindingSource1.Position = 0;
-            // 
-            // databaseLabelsDataSetDefaults
-            // 
-            this.databaseLabelsDataSetDefaults.DataSetName = "DatabaseLabelsDataSetDefaults";
-            this.databaseLabelsDataSetDefaults.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // defaultsTableAdapter1
-            // 
-            this.defaultsTableAdapter1.ClearBeforeFill = true;
-            // 
             // tableAddressFiltersTableAdapter
             // 
             this.tableAddressFiltersTableAdapter.ClearBeforeFill = true;
@@ -9213,166 +9620,23 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
-            // tablePlantsBindingSource
-            // 
-            this.tablePlantsBindingSource.DataMember = "TablePlants";
-            this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
-            // 
-            // databaseLabelsDataSet
-            // 
-            this.databaseLabelsDataSet.DataSetName = "DatabaseLabelsDataSet";
-            this.databaseLabelsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genusCrossDataGridViewTextBoxColumn
-            // 
-            this.genusCrossDataGridViewTextBoxColumn.DataPropertyName = "GenusCross";
-            this.genusCrossDataGridViewTextBoxColumn.HeaderText = "GenusCross";
-            this.genusCrossDataGridViewTextBoxColumn.Name = "genusCrossDataGridViewTextBoxColumn";
-            this.genusCrossDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genusDataGridViewTextBoxColumn
-            // 
-            this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
-            this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
-            this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
-            this.genusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speciesCrossDataGridViewTextBoxColumn
-            // 
-            this.speciesCrossDataGridViewTextBoxColumn.DataPropertyName = "SpeciesCross";
-            this.speciesCrossDataGridViewTextBoxColumn.HeaderText = "SpeciesCross";
-            this.speciesCrossDataGridViewTextBoxColumn.Name = "speciesCrossDataGridViewTextBoxColumn";
-            this.speciesCrossDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speciesDataGridViewTextBoxColumn
-            // 
-            this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
-            this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
-            this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
-            this.speciesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // varietyDataGridViewTextBoxColumn
-            // 
-            this.varietyDataGridViewTextBoxColumn.DataPropertyName = "Variety";
-            this.varietyDataGridViewTextBoxColumn.HeaderText = "Variety";
-            this.varietyDataGridViewTextBoxColumn.Name = "varietyDataGridViewTextBoxColumn";
-            this.varietyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // commonDataGridViewTextBoxColumn
-            // 
-            this.commonDataGridViewTextBoxColumn.DataPropertyName = "Common";
-            this.commonDataGridViewTextBoxColumn.HeaderText = "Common";
-            this.commonDataGridViewTextBoxColumn.Name = "commonDataGridViewTextBoxColumn";
-            this.commonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sKUDataGridViewTextBoxColumn
-            // 
-            this.sKUDataGridViewTextBoxColumn.DataPropertyName = "SKU";
-            this.sKUDataGridViewTextBoxColumn.HeaderText = "SKU";
-            this.sKUDataGridViewTextBoxColumn.Name = "sKUDataGridViewTextBoxColumn";
-            this.sKUDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descDataGridViewTextBoxColumn
-            // 
-            this.descDataGridViewTextBoxColumn.DataPropertyName = "Desc";
-            this.descDataGridViewTextBoxColumn.HeaderText = "Desc";
-            this.descDataGridViewTextBoxColumn.Name = "descDataGridViewTextBoxColumn";
-            this.descDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // potSizeDataGridViewTextBoxColumn
-            // 
-            this.potSizeDataGridViewTextBoxColumn.DataPropertyName = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn.HeaderText = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn.Name = "potSizeDataGridViewTextBoxColumn";
-            this.potSizeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // colourQueueDataGridViewCheckBoxColumn
-            // 
-            this.colourQueueDataGridViewCheckBoxColumn.DataPropertyName = "ColourQueue";
-            this.colourQueueDataGridViewCheckBoxColumn.HeaderText = "ColourQueue";
-            this.colourQueueDataGridViewCheckBoxColumn.Name = "colourQueueDataGridViewCheckBoxColumn";
-            this.colourQueueDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture1DataGridViewTextBoxColumn
-            // 
-            this.picture1DataGridViewTextBoxColumn.DataPropertyName = "Picture1";
-            this.picture1DataGridViewTextBoxColumn.HeaderText = "Picture1";
-            this.picture1DataGridViewTextBoxColumn.Name = "picture1DataGridViewTextBoxColumn";
-            this.picture1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture2DataGridViewTextBoxColumn
-            // 
-            this.picture2DataGridViewTextBoxColumn.DataPropertyName = "Picture2";
-            this.picture2DataGridViewTextBoxColumn.HeaderText = "Picture2";
-            this.picture2DataGridViewTextBoxColumn.Name = "picture2DataGridViewTextBoxColumn";
-            this.picture2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture3DataGridViewTextBoxColumn
-            // 
-            this.picture3DataGridViewTextBoxColumn.DataPropertyName = "Picture3";
-            this.picture3DataGridViewTextBoxColumn.HeaderText = "Picture3";
-            this.picture3DataGridViewTextBoxColumn.Name = "picture3DataGridViewTextBoxColumn";
-            this.picture3DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture4DataGridViewTextBoxColumn
-            // 
-            this.picture4DataGridViewTextBoxColumn.DataPropertyName = "Picture4";
-            this.picture4DataGridViewTextBoxColumn.HeaderText = "Picture4";
-            this.picture4DataGridViewTextBoxColumn.Name = "picture4DataGridViewTextBoxColumn";
-            this.picture4DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aGMDataGridViewCheckBoxColumn
-            // 
-            this.aGMDataGridViewCheckBoxColumn.DataPropertyName = "AGM";
-            this.aGMDataGridViewCheckBoxColumn.HeaderText = "AGM";
-            this.aGMDataGridViewCheckBoxColumn.Name = "aGMDataGridViewCheckBoxColumn";
-            this.aGMDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // labelColourDataGridViewTextBoxColumn
-            // 
-            this.labelColourDataGridViewTextBoxColumn.DataPropertyName = "LabelColour";
-            this.labelColourDataGridViewTextBoxColumn.HeaderText = "LabelColour";
-            this.labelColourDataGridViewTextBoxColumn.Name = "labelColourDataGridViewTextBoxColumn";
-            this.labelColourDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hideDataGridViewCheckBoxColumn
-            // 
-            this.hideDataGridViewCheckBoxColumn.DataPropertyName = "Hide";
-            this.hideDataGridViewCheckBoxColumn.HeaderText = "Hide";
-            this.hideDataGridViewCheckBoxColumn.Name = "hideDataGridViewCheckBoxColumn";
-            this.hideDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // notesDataGridViewTextBoxColumn
-            // 
-            this.notesDataGridViewTextBoxColumn.DataPropertyName = "notes";
-            this.notesDataGridViewTextBoxColumn.HeaderText = "notes";
-            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
-            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // labelStockDataGridViewCheckBoxColumn
-            // 
-            this.labelStockDataGridViewCheckBoxColumn.DataPropertyName = "LabelStock";
-            this.labelStockDataGridViewCheckBoxColumn.HeaderText = "LabelStock";
-            this.labelStockDataGridViewCheckBoxColumn.Name = "labelStockDataGridViewCheckBoxColumn";
-            this.labelStockDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
             // tablePlantsTableAdapter
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.databaseLabelsDataSetDefaults;
+            this.bindingSource1.Position = 0;
+            // 
+            // databaseLabelsDataSetDefaults
+            // 
+            this.databaseLabelsDataSetDefaults.DataSetName = "DatabaseLabelsDataSetDefaults";
+            this.databaseLabelsDataSetDefaults.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // defaultsTableAdapter1
+            // 
+            this.defaultsTableAdapter1.ClearBeforeFill = true;
             // 
             // formMain
             // 
@@ -9380,8 +9644,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1654, 1001);
-            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.tabControlDesign);
+            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControlQueue);
@@ -9455,6 +9719,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
             this.groupBoxAlpha.ResumeLayout(false);
             this.groupBoxPrint.ResumeLayout(false);
             this.groupBoxPrint.PerformLayout();
@@ -9523,8 +9789,6 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10394,6 +10658,14 @@
         private System.Windows.Forms.ComboBox comboBoxColours;
         private System.Windows.Forms.TabPage tabPageColours;
         private System.Windows.Forms.Panel panelColours;
+        private System.Windows.Forms.TextBox textBoxAutoLabelFile;
+        private System.Windows.Forms.Label label187;
+        private System.Windows.Forms.Button buttonColourColourText;
+        private System.Windows.Forms.TextBox textBoxColourColourText;
+        private System.Windows.Forms.Label label189;
+        private System.Windows.Forms.Button button1ColourMainText;
+        private System.Windows.Forms.TextBox textBoxColourMainText;
+        private System.Windows.Forms.Label label188;
     }
 }
 

@@ -40,7 +40,7 @@ namespace LabelMaker
             // TODO: This line of code loads data into the 'databaseLabelsDataSet1.TableProfiles' table. You can move, or remove it, as needed.
             this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSetProfiles.TableProfiles);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
-            this.tablePlantsTableAdapter.Fill(this.databaseLabelsDataSet.TablePlants);
+            this.tablePlantsTableAdapter.FillBy(this.databaseLabelsDataSet.TablePlants,false);
 
             this.BackColor = Color.DarkGray;
 
@@ -52,7 +52,9 @@ namespace LabelMaker
         {
             string[] defaults = getDefaultSettings();
             tabPageColourQueue.BackColor = Color.FromName(defaults[14]);
+            dataGridViewColourQ.ForeColor = Color.FromName(defaults[20]);
             tabPageMainQueue.BackColor = Color.FromName(defaults[13]);
+            dataGridViewMainQ.ForeColor = Color.FromName(defaults[19]);
             if (first == "first") { buttonVisibleOnly.BackColor = Color.FromName(defaults[17]); }
         }
 
@@ -602,8 +604,9 @@ namespace LabelMaker
             }
             if (tabControlMain.SelectedTab == tabPageAuto)
             {
-                string where = "D:\\LabelMaker\\LabelMaker\\TextFiles\\";
-                string file = "order_export_short.csv";
+                string[] defaults = getDefaultSettings();
+                string where = defaults[1];
+                string file = defaults[18];
                 labelAutoFile.Text = where + file;
                 fillAutoListBox();
                 checkSKUs();
@@ -4120,7 +4123,7 @@ namespace LabelMaker
 
         public string[] getDefaultSettings()
         {
-            string[] defaults = new string[18];
+            string[] defaults = new string[21];
 
             defaultsTableAdapter1.Fill(databaseLabelsDataSetDefaults.Defaults);
             DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
@@ -4129,7 +4132,7 @@ namespace LabelMaker
                 defaults[i] = dRow.ItemArray[i + 1].ToString().Trim();
             }
             defaults[12] = dRow.ItemArray[0].ToString().Trim();
-            for (int i = 13; i <= 17; i++)
+            for (int i = 13; i <= 20; i++)
             {
                 defaults[i] = dRow.ItemArray[i].ToString().Trim();
             }
@@ -5815,12 +5818,16 @@ namespace LabelMaker
                 textBoxColourTrue.Text = defaults[15];
                 textBoxColourHalfway.Text = defaults[16];
                 textBoxColourFalse.Text = defaults[17];
+                textBoxColourMainText.Text = defaults[19];
+                textBoxColourColourText.Text = defaults[20];
 
                 buttonColourMain.BackColor = Color.FromName(textBoxColourMain.Text);
                 buttonColourColour.BackColor = Color.FromName(textBoxColourColour.Text);
                 buttonColourTrue.BackColor = Color.FromName(textBoxColourTrue.Text);
                 buttonColourHalfway.BackColor = Color.FromName(textBoxColourHalfway.Text);
                 buttonColourFalse.BackColor = Color.FromName(textBoxColourFalse.Text);
+                button1ColourMainText.BackColor = Color.FromName(textBoxColourMainText.Text);
+                buttonColourColourText.BackColor = Color.FromName(textBoxColourColourText.Text);
 
 
                 string getName = "";
@@ -6425,6 +6432,11 @@ namespace LabelMaker
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(15, textBoxColourTrue.Text.ToString());
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(16, textBoxColourHalfway.Text.ToString());
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(17, textBoxColourFalse.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(19, textBoxColourMainText.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(20, textBoxColourColourText.Text.ToString());
+
+            //autolabel file
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(18, textBoxAutoLabelFile.Text.ToString());
 
 
             try
@@ -7282,15 +7294,29 @@ namespace LabelMaker
         {
             //Cleans up the Addresses in the DataGrid. Doesn't save changes in case the cleanup is imperfect.
 
+            
+
             for (int i =0;i<dataGridViewAuto.RowCount - 1; i++)
             {
                 string[] address = new string[9];
                 //fill address from grid
+
+                //check for null address
+                Boolean checkNull = true;
                 for (int j = 0; j <= 8; j++)
                 {
-                    if (j == 0) { address[j] = dataGridViewAuto.Rows[i].Cells[j + 5].Value.ToString().Trim(); }
-                    else { address[j] = dataGridViewAuto.Rows[i].Cells[j + 10].Value.ToString().Trim(); }
+                    if (j == 0)
+                    {
+                        address[j] = dataGridViewAuto.Rows[i].Cells[j + 5].Value.ToString().Trim();                        
+                    }
+                    else
+                    {
+                        address[j] = dataGridViewAuto.Rows[i].Cells[j + 10].Value.ToString().Trim();
+                        if (String.IsNullOrEmpty(address[j]) != true) { checkNull = false; }
+                    }
                 }
+                //jump to next line if address is all null
+                if (checkNull) { continue; }
 
                 //Move Mr / Mrs and delete oddities
 
@@ -7566,20 +7592,46 @@ namespace LabelMaker
 
         private void buttonColourTrue_Click(object sender, EventArgs e)
         {
-            textBoxColourTrue.Text = comboBoxColours.Text;
-            buttonColourTrue.BackColor = Color.FromName(comboBoxColours.Text);
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourTrue.Text = comboBoxColours.Text;
+                buttonColourTrue.BackColor = Color.FromName(comboBoxColours.Text);
+            }
         }
-
         private void buttonColourHalfway_Click(object sender, EventArgs e)
         {
-            textBoxColourHalfway.Text = comboBoxColours.Text;
-            buttonColourHalfway.BackColor = Color.FromName(comboBoxColours.Text);
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourHalfway.Text = comboBoxColours.Text;
+                buttonColourHalfway.BackColor = Color.FromName(comboBoxColours.Text);
+            }
         }
 
         private void buttonColouFalse_Click(object sender, EventArgs e)
         {
-            textBoxColourFalse.Text = comboBoxColours.Text;
-            buttonColourFalse.BackColor = Color.FromName(comboBoxColours.Text);
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourFalse.Text = comboBoxColours.Text;
+                buttonColourFalse.BackColor = Color.FromName(comboBoxColours.Text);
+            }
+        }
+
+        private void button1ColourMainText_Click(object sender, EventArgs e)
+        {
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourMainText.Text = comboBoxColours.Text;
+                button1ColourMainText.BackColor = Color.FromName(comboBoxColours.Text);
+            }
+        }
+
+        private void buttonColourColourText_Click(object sender, EventArgs e)
+        {
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourColourText.Text = comboBoxColours.Text;
+                buttonColourColourText.BackColor = Color.FromName(comboBoxColours.Text);
+            }
         }
     }
 }

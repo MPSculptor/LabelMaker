@@ -315,6 +315,12 @@ namespace LabelMaker {
             
             private global::System.Data.DataColumn columncolourFalse;
             
+            private global::System.Data.DataColumn columnAutoLabelFile;
+            
+            private global::System.Data.DataColumn columncolourMainText;
+            
+            private global::System.Data.DataColumn columncolourColourText;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DefaultsDataTable() {
@@ -494,6 +500,30 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AutoLabelFileColumn {
+                get {
+                    return this.columnAutoLabelFile;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn colourMainTextColumn {
+                get {
+                    return this.columncolourMainText;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn colourColourTextColumn {
+                get {
+                    return this.columncolourColourText;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -547,7 +577,10 @@ namespace LabelMaker {
                         string colourColour, 
                         string colourTrue, 
                         string colourHalfway, 
-                        string colourFalse) {
+                        string colourFalse, 
+                        string AutoLabelFile, 
+                        string colourMainText, 
+                        string colourColourText) {
                 DefaultsRow rowDefaultsRow = ((DefaultsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -567,7 +600,10 @@ namespace LabelMaker {
                         colourColour,
                         colourTrue,
                         colourHalfway,
-                        colourFalse};
+                        colourFalse,
+                        AutoLabelFile,
+                        colourMainText,
+                        colourColourText};
                 rowDefaultsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDefaultsRow);
                 return rowDefaultsRow;
@@ -615,6 +651,9 @@ namespace LabelMaker {
                 this.columncolourTrue = base.Columns["colourTrue"];
                 this.columncolourHalfway = base.Columns["colourHalfway"];
                 this.columncolourFalse = base.Columns["colourFalse"];
+                this.columnAutoLabelFile = base.Columns["AutoLabelFile"];
+                this.columncolourMainText = base.Columns["colourMainText"];
+                this.columncolourColourText = base.Columns["colourColourText"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -656,6 +695,12 @@ namespace LabelMaker {
                 base.Columns.Add(this.columncolourHalfway);
                 this.columncolourFalse = new global::System.Data.DataColumn("colourFalse", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncolourFalse);
+                this.columnAutoLabelFile = new global::System.Data.DataColumn("AutoLabelFile", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAutoLabelFile);
+                this.columncolourMainText = new global::System.Data.DataColumn("colourMainText", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolourMainText);
+                this.columncolourColourText = new global::System.Data.DataColumn("colourColourText", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncolourColourText);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -670,6 +715,9 @@ namespace LabelMaker {
                 this.columncolourTrue.MaxLength = 50;
                 this.columncolourHalfway.MaxLength = 50;
                 this.columncolourFalse.MaxLength = 50;
+                this.columnAutoLabelFile.MaxLength = 50;
+                this.columncolourMainText.MaxLength = 50;
+                this.columncolourColourText.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1095,6 +1143,54 @@ namespace LabelMaker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string AutoLabelFile {
+                get {
+                    try {
+                        return ((string)(this[this.tableDefaults.AutoLabelFileColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AutoLabelFile\' in table \'Defaults\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDefaults.AutoLabelFileColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string colourMainText {
+                get {
+                    try {
+                        return ((string)(this[this.tableDefaults.colourMainTextColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'colourMainText\' in table \'Defaults\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDefaults.colourMainTextColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string colourColourText {
+                get {
+                    try {
+                        return ((string)(this[this.tableDefaults.colourColourTextColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'colourColourText\' in table \'Defaults\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDefaults.colourColourTextColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPicturesFolderNull() {
                 return this.IsNull(this.tableDefaults.PicturesFolderColumn);
             }
@@ -1296,6 +1392,42 @@ namespace LabelMaker {
             public void SetcolourFalseNull() {
                 this[this.tableDefaults.colourFalseColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsAutoLabelFileNull() {
+                return this.IsNull(this.tableDefaults.AutoLabelFileColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetAutoLabelFileNull() {
+                this[this.tableDefaults.AutoLabelFileColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscolourMainTextNull() {
+                return this.IsNull(this.tableDefaults.colourMainTextColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcolourMainTextNull() {
+                this[this.tableDefaults.colourMainTextColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IscolourColourTextNull() {
+                return this.IsNull(this.tableDefaults.colourColourTextColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetcolourColourTextNull() {
+                this[this.tableDefaults.colourColourTextColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -1475,6 +1607,9 @@ namespace LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters {
             tableMapping.ColumnMappings.Add("colourTrue", "colourTrue");
             tableMapping.ColumnMappings.Add("colourHalfway", "colourHalfway");
             tableMapping.ColumnMappings.Add("colourFalse", "colourFalse");
+            tableMapping.ColumnMappings.Add("AutoLabelFile", "AutoLabelFile");
+            tableMapping.ColumnMappings.Add("colourMainText", "colourMainText");
+            tableMapping.ColumnMappings.Add("colourColourText", "colourColourText");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1503,7 +1638,11 @@ namespace LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters {
                 "rTrue] IS NULL) OR ([colourTrue] = @Original_colourTrue)) AND ((@IsNull_colourHa" +
                 "lfway = 1 AND [colourHalfway] IS NULL) OR ([colourHalfway] = @Original_colourHal" +
                 "fway)) AND ((@IsNull_colourFalse = 1 AND [colourFalse] IS NULL) OR ([colourFalse" +
-                "] = @Original_colourFalse)))";
+                "] = @Original_colourFalse)) AND ((@IsNull_AutoLabelFile = 1 AND [AutoLabelFile] " +
+                "IS NULL) OR ([AutoLabelFile] = @Original_AutoLabelFile)) AND ((@IsNull_colourMai" +
+                "nText = 1 AND [colourMainText] IS NULL) OR ([colourMainText] = @Original_colourM" +
+                "ainText)) AND ((@IsNull_colourColourText = 1 AND [colourColourText] IS NULL) OR " +
+                "([colourColourText] = @Original_colourColourText)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PicturesFolder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturesFolder", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1540,10 +1679,16 @@ namespace LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourHalfway", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourHalfway", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_colourFalse", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourFalse", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourFalse", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourFalse", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AutoLabelFile", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AutoLabelFile", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AutoLabelFile", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AutoLabelFile", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_colourMainText", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourMainText", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourMainText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourMainText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_colourColourText", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourColourText", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourColourText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourColourText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Defaults] ([Id], [PicturesFolder], [FilesFolder], [MainLabelDefault], [ColourLabelDefault], [AddToColourQ], [DeleteAfterPrint], [AutoStatedQuantities], [AutoModifiedQuantities], [AutoUnlockedAddresses], [AutoAllAddresses], [AmendAddresses], [AutoLabelDefault], [colourMain], [colourColour], [colourTrue], [colourHalfway], [colourFalse]) VALUES (@Id, @PicturesFolder, @FilesFolder, @MainLabelDefault, @ColourLabelDefault, @AddToColourQ, @DeleteAfterPrint, @AutoStatedQuantities, @AutoModifiedQuantities, @AutoUnlockedAddresses, @AutoAllAddresses, @AmendAddresses, @AutoLabelDefault, @colourMain, @colourColour, @colourTrue, @colourHalfway, @colourFalse);
-SELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, AddToColourQ, DeleteAfterPrint, AutoStatedQuantities, AutoModifiedQuantities, AutoUnlockedAddresses, AutoAllAddresses, AmendAddresses, AutoLabelDefault, colourMain, colourColour, colourTrue, colourHalfway, colourFalse FROM Defaults WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Defaults] ([Id], [PicturesFolder], [FilesFolder], [MainLabelDefault], [ColourLabelDefault], [AddToColourQ], [DeleteAfterPrint], [AutoStatedQuantities], [AutoModifiedQuantities], [AutoUnlockedAddresses], [AutoAllAddresses], [AmendAddresses], [AutoLabelDefault], [colourMain], [colourColour], [colourTrue], [colourHalfway], [colourFalse], [AutoLabelFile], [colourMainText], [colourColourText]) VALUES (@Id, @PicturesFolder, @FilesFolder, @MainLabelDefault, @ColourLabelDefault, @AddToColourQ, @DeleteAfterPrint, @AutoStatedQuantities, @AutoModifiedQuantities, @AutoUnlockedAddresses, @AutoAllAddresses, @AmendAddresses, @AutoLabelDefault, @colourMain, @colourColour, @colourTrue, @colourHalfway, @colourFalse, @AutoLabelFile, @colourMainText, @colourColourText);
+SELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, AddToColourQ, DeleteAfterPrint, AutoStatedQuantities, AutoModifiedQuantities, AutoUnlockedAddresses, AutoAllAddresses, AmendAddresses, AutoLabelDefault, colourMain, colourColour, colourTrue, colourHalfway, colourFalse, AutoLabelFile, colourMainText, colourColourText FROM Defaults WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturesFolder", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturesFolder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1563,6 +1708,9 @@ SELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, Ad
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourTrue", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourTrue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourHalfway", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourHalfway", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourFalse", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourFalse", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AutoLabelFile", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AutoLabelFile", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourMainText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourMainText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourColourText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourColourText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [Defaults] SET [Id] = @Id, [PicturesFolder] = @PicturesFolder, [FilesFolde" +
@@ -1573,36 +1721,42 @@ SELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, Ad
                 "ses, [AutoAllAddresses] = @AutoAllAddresses, [AmendAddresses] = @AmendAddresses," +
                 " [AutoLabelDefault] = @AutoLabelDefault, [colourMain] = @colourMain, [colourColo" +
                 "ur] = @colourColour, [colourTrue] = @colourTrue, [colourHalfway] = @colourHalfwa" +
-                "y, [colourFalse] = @colourFalse WHERE (([Id] = @Original_Id) AND ((@IsNull_Pictu" +
-                "resFolder = 1 AND [PicturesFolder] IS NULL) OR ([PicturesFolder] = @Original_Pic" +
-                "turesFolder)) AND ((@IsNull_FilesFolder = 1 AND [FilesFolder] IS NULL) OR ([File" +
-                "sFolder] = @Original_FilesFolder)) AND ((@IsNull_MainLabelDefault = 1 AND [MainL" +
-                "abelDefault] IS NULL) OR ([MainLabelDefault] = @Original_MainLabelDefault)) AND " +
-                "((@IsNull_ColourLabelDefault = 1 AND [ColourLabelDefault] IS NULL) OR ([ColourLa" +
-                "belDefault] = @Original_ColourLabelDefault)) AND ((@IsNull_AddToColourQ = 1 AND " +
-                "[AddToColourQ] IS NULL) OR ([AddToColourQ] = @Original_AddToColourQ)) AND ((@IsN" +
-                "ull_DeleteAfterPrint = 1 AND [DeleteAfterPrint] IS NULL) OR ([DeleteAfterPrint] " +
-                "= @Original_DeleteAfterPrint)) AND ((@IsNull_AutoStatedQuantities = 1 AND [AutoS" +
-                "tatedQuantities] IS NULL) OR ([AutoStatedQuantities] = @Original_AutoStatedQuant" +
-                "ities)) AND ((@IsNull_AutoModifiedQuantities = 1 AND [AutoModifiedQuantities] IS" +
-                " NULL) OR ([AutoModifiedQuantities] = @Original_AutoModifiedQuantities)) AND ((@" +
-                "IsNull_AutoUnlockedAddresses = 1 AND [AutoUnlockedAddresses] IS NULL) OR ([AutoU" +
-                "nlockedAddresses] = @Original_AutoUnlockedAddresses)) AND ((@IsNull_AutoAllAddre" +
-                "sses = 1 AND [AutoAllAddresses] IS NULL) OR ([AutoAllAddresses] = @Original_Auto" +
-                "AllAddresses)) AND ((@IsNull_AmendAddresses = 1 AND [AmendAddresses] IS NULL) OR" +
-                " ([AmendAddresses] = @Original_AmendAddresses)) AND ((@IsNull_AutoLabelDefault =" +
-                " 1 AND [AutoLabelDefault] IS NULL) OR ([AutoLabelDefault] = @Original_AutoLabelD" +
-                "efault)) AND ((@IsNull_colourMain = 1 AND [colourMain] IS NULL) OR ([colourMain]" +
-                " = @Original_colourMain)) AND ((@IsNull_colourColour = 1 AND [colourColour] IS N" +
-                "ULL) OR ([colourColour] = @Original_colourColour)) AND ((@IsNull_colourTrue = 1 " +
-                "AND [colourTrue] IS NULL) OR ([colourTrue] = @Original_colourTrue)) AND ((@IsNul" +
-                "l_colourHalfway = 1 AND [colourHalfway] IS NULL) OR ([colourHalfway] = @Original" +
-                "_colourHalfway)) AND ((@IsNull_colourFalse = 1 AND [colourFalse] IS NULL) OR ([c" +
-                "olourFalse] = @Original_colourFalse)));\r\nSELECT Id, PicturesFolder, FilesFolder," +
-                " MainLabelDefault, ColourLabelDefault, AddToColourQ, DeleteAfterPrint, AutoState" +
-                "dQuantities, AutoModifiedQuantities, AutoUnlockedAddresses, AutoAllAddresses, Am" +
-                "endAddresses, AutoLabelDefault, colourMain, colourColour, colourTrue, colourHalf" +
-                "way, colourFalse FROM Defaults WHERE (Id = @Id)";
+                "y, [colourFalse] = @colourFalse, [AutoLabelFile] = @AutoLabelFile, [colourMainTe" +
+                "xt] = @colourMainText, [colourColourText] = @colourColourText WHERE (([Id] = @Or" +
+                "iginal_Id) AND ((@IsNull_PicturesFolder = 1 AND [PicturesFolder] IS NULL) OR ([P" +
+                "icturesFolder] = @Original_PicturesFolder)) AND ((@IsNull_FilesFolder = 1 AND [F" +
+                "ilesFolder] IS NULL) OR ([FilesFolder] = @Original_FilesFolder)) AND ((@IsNull_M" +
+                "ainLabelDefault = 1 AND [MainLabelDefault] IS NULL) OR ([MainLabelDefault] = @Or" +
+                "iginal_MainLabelDefault)) AND ((@IsNull_ColourLabelDefault = 1 AND [ColourLabelD" +
+                "efault] IS NULL) OR ([ColourLabelDefault] = @Original_ColourLabelDefault)) AND (" +
+                "(@IsNull_AddToColourQ = 1 AND [AddToColourQ] IS NULL) OR ([AddToColourQ] = @Orig" +
+                "inal_AddToColourQ)) AND ((@IsNull_DeleteAfterPrint = 1 AND [DeleteAfterPrint] IS" +
+                " NULL) OR ([DeleteAfterPrint] = @Original_DeleteAfterPrint)) AND ((@IsNull_AutoS" +
+                "tatedQuantities = 1 AND [AutoStatedQuantities] IS NULL) OR ([AutoStatedQuantitie" +
+                "s] = @Original_AutoStatedQuantities)) AND ((@IsNull_AutoModifiedQuantities = 1 A" +
+                "ND [AutoModifiedQuantities] IS NULL) OR ([AutoModifiedQuantities] = @Original_Au" +
+                "toModifiedQuantities)) AND ((@IsNull_AutoUnlockedAddresses = 1 AND [AutoUnlocked" +
+                "Addresses] IS NULL) OR ([AutoUnlockedAddresses] = @Original_AutoUnlockedAddresse" +
+                "s)) AND ((@IsNull_AutoAllAddresses = 1 AND [AutoAllAddresses] IS NULL) OR ([Auto" +
+                "AllAddresses] = @Original_AutoAllAddresses)) AND ((@IsNull_AmendAddresses = 1 AN" +
+                "D [AmendAddresses] IS NULL) OR ([AmendAddresses] = @Original_AmendAddresses)) AN" +
+                "D ((@IsNull_AutoLabelDefault = 1 AND [AutoLabelDefault] IS NULL) OR ([AutoLabelD" +
+                "efault] = @Original_AutoLabelDefault)) AND ((@IsNull_colourMain = 1 AND [colourM" +
+                "ain] IS NULL) OR ([colourMain] = @Original_colourMain)) AND ((@IsNull_colourColo" +
+                "ur = 1 AND [colourColour] IS NULL) OR ([colourColour] = @Original_colourColour))" +
+                " AND ((@IsNull_colourTrue = 1 AND [colourTrue] IS NULL) OR ([colourTrue] = @Orig" +
+                "inal_colourTrue)) AND ((@IsNull_colourHalfway = 1 AND [colourHalfway] IS NULL) O" +
+                "R ([colourHalfway] = @Original_colourHalfway)) AND ((@IsNull_colourFalse = 1 AND" +
+                " [colourFalse] IS NULL) OR ([colourFalse] = @Original_colourFalse)) AND ((@IsNul" +
+                "l_AutoLabelFile = 1 AND [AutoLabelFile] IS NULL) OR ([AutoLabelFile] = @Original" +
+                "_AutoLabelFile)) AND ((@IsNull_colourMainText = 1 AND [colourMainText] IS NULL) " +
+                "OR ([colourMainText] = @Original_colourMainText)) AND ((@IsNull_colourColourText" +
+                " = 1 AND [colourColourText] IS NULL) OR ([colourColourText] = @Original_colourCo" +
+                "lourText)));\r\nSELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLa" +
+                "belDefault, AddToColourQ, DeleteAfterPrint, AutoStatedQuantities, AutoModifiedQu" +
+                "antities, AutoUnlockedAddresses, AutoAllAddresses, AmendAddresses, AutoLabelDefa" +
+                "ult, colourMain, colourColour, colourTrue, colourHalfway, colourFalse, AutoLabel" +
+                "File, colourMainText, colourColourText FROM Defaults WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PicturesFolder", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturesFolder", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1622,6 +1776,9 @@ SELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, Ad
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourTrue", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourTrue", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourHalfway", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourHalfway", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourFalse", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourFalse", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AutoLabelFile", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AutoLabelFile", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourMainText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourMainText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@colourColourText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourColourText", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PicturesFolder", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturesFolder", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PicturesFolder", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PicturesFolder", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1657,6 +1814,12 @@ SELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, Ad
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourHalfway", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourHalfway", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_colourFalse", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourFalse", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourFalse", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourFalse", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AutoLabelFile", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AutoLabelFile", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AutoLabelFile", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AutoLabelFile", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_colourMainText", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourMainText", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourMainText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourMainText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_colourColourText", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourColourText", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_colourColourText", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "colourColourText", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1673,7 +1836,7 @@ SELECT Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, Ad
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, AddToColourQ, DeleteAfterPrint, AutoStatedQuantities, AutoModifiedQuantities, AutoUnlockedAddresses, AutoAllAddresses, AmendAddresses, 
-                         AutoLabelDefault, colourMain, colourColour, colourTrue, colourHalfway, colourFalse
+                         AutoLabelDefault, colourMain, colourColour, colourTrue, colourHalfway, colourFalse, AutoLabelFile, colourMainText, colourColourText
 FROM            Defaults";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -1753,7 +1916,10 @@ FROM            Defaults";
                     string Original_colourColour, 
                     string Original_colourTrue, 
                     string Original_colourHalfway, 
-                    string Original_colourFalse) {
+                    string Original_colourFalse, 
+                    string Original_AutoLabelFile, 
+                    string Original_colourMainText, 
+                    string Original_colourColourText) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_PicturesFolder == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -1891,6 +2057,30 @@ FROM            Defaults";
                 this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[34].Value = ((string)(Original_colourFalse));
             }
+            if ((Original_AutoLabelFile == null)) {
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((string)(Original_AutoLabelFile));
+            }
+            if ((Original_colourMainText == null)) {
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((string)(Original_colourMainText));
+            }
+            if ((Original_colourColourText == null)) {
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((string)(Original_colourColourText));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1929,7 +2119,10 @@ FROM            Defaults";
                     string colourColour, 
                     string colourTrue, 
                     string colourHalfway, 
-                    string colourFalse) {
+                    string colourFalse, 
+                    string AutoLabelFile, 
+                    string colourMainText, 
+                    string colourColourText) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
             if ((PicturesFolder == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -2033,6 +2226,24 @@ FROM            Defaults";
             else {
                 this.Adapter.InsertCommand.Parameters[17].Value = ((string)(colourFalse));
             }
+            if ((AutoLabelFile == null)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(AutoLabelFile));
+            }
+            if ((colourMainText == null)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(colourMainText));
+            }
+            if ((colourColourText == null)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(colourColourText));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2072,6 +2283,9 @@ FROM            Defaults";
                     string colourTrue, 
                     string colourHalfway, 
                     string colourFalse, 
+                    string AutoLabelFile, 
+                    string colourMainText, 
+                    string colourColourText, 
                     int Original_Id, 
                     string Original_PicturesFolder, 
                     string Original_FilesFolder, 
@@ -2089,7 +2303,10 @@ FROM            Defaults";
                     string Original_colourColour, 
                     string Original_colourTrue, 
                     string Original_colourHalfway, 
-                    string Original_colourFalse) {
+                    string Original_colourFalse, 
+                    string Original_AutoLabelFile, 
+                    string Original_colourMainText, 
+                    string Original_colourColourText) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
             if ((PicturesFolder == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -2193,142 +2410,184 @@ FROM            Defaults";
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(colourFalse));
             }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_Id));
-            if ((Original_PicturesFolder == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+            if ((AutoLabelFile == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(AutoLabelFile));
+            }
+            if ((colourMainText == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(colourMainText));
+            }
+            if ((colourColourText == null)) {
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_PicturesFolder));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(colourColourText));
+            }
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_Id));
+            if ((Original_PicturesFolder == null)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_PicturesFolder));
             }
             if ((Original_FilesFolder == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_FilesFolder));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_FilesFolder));
             }
             if ((Original_MainLabelDefault == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_MainLabelDefault));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_MainLabelDefault));
             }
             if ((Original_ColourLabelDefault == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_ColourLabelDefault));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_ColourLabelDefault));
             }
             if ((Original_AddToColourQ.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((bool)(Original_AddToColourQ.Value));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((bool)(Original_AddToColourQ.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             if ((Original_DeleteAfterPrint.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((bool)(Original_DeleteAfterPrint.Value));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((bool)(Original_DeleteAfterPrint.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             if ((Original_AutoStatedQuantities.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((bool)(Original_AutoStatedQuantities.Value));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((bool)(Original_AutoStatedQuantities.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             if ((Original_AutoModifiedQuantities.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((bool)(Original_AutoModifiedQuantities.Value));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((bool)(Original_AutoModifiedQuantities.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((Original_AutoUnlockedAddresses.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((bool)(Original_AutoUnlockedAddresses.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((bool)(Original_AutoUnlockedAddresses.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             if ((Original_AutoAllAddresses.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((bool)(Original_AutoAllAddresses.Value));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((bool)(Original_AutoAllAddresses.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             if ((Original_AmendAddresses.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((bool)(Original_AmendAddresses.Value));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((bool)(Original_AmendAddresses.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             if ((Original_AutoLabelDefault == null)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_AutoLabelDefault));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(Original_AutoLabelDefault));
             }
             if ((Original_colourMain == null)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_colourMain));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_colourMain));
             }
             if ((Original_colourColour == null)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_colourColour));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_colourColour));
             }
             if ((Original_colourTrue == null)) {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_colourTrue));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(Original_colourTrue));
             }
             if ((Original_colourHalfway == null)) {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((string)(Original_colourHalfway));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((string)(Original_colourHalfway));
             }
             if ((Original_colourFalse == null)) {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_colourFalse));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(Original_colourFalse));
+            }
+            if ((Original_AutoLabelFile == null)) {
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((string)(Original_AutoLabelFile));
+            }
+            if ((Original_colourMainText == null)) {
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((string)(Original_colourMainText));
+            }
+            if ((Original_colourColourText == null)) {
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((string)(Original_colourColourText));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2368,6 +2627,9 @@ FROM            Defaults";
                     string colourTrue, 
                     string colourHalfway, 
                     string colourFalse, 
+                    string AutoLabelFile, 
+                    string colourMainText, 
+                    string colourColourText, 
                     int Original_Id, 
                     string Original_PicturesFolder, 
                     string Original_FilesFolder, 
@@ -2385,8 +2647,11 @@ FROM            Defaults";
                     string Original_colourColour, 
                     string Original_colourTrue, 
                     string Original_colourHalfway, 
-                    string Original_colourFalse) {
-            return this.Update(Original_Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, AddToColourQ, DeleteAfterPrint, AutoStatedQuantities, AutoModifiedQuantities, AutoUnlockedAddresses, AutoAllAddresses, AmendAddresses, AutoLabelDefault, colourMain, colourColour, colourTrue, colourHalfway, colourFalse, Original_Id, Original_PicturesFolder, Original_FilesFolder, Original_MainLabelDefault, Original_ColourLabelDefault, Original_AddToColourQ, Original_DeleteAfterPrint, Original_AutoStatedQuantities, Original_AutoModifiedQuantities, Original_AutoUnlockedAddresses, Original_AutoAllAddresses, Original_AmendAddresses, Original_AutoLabelDefault, Original_colourMain, Original_colourColour, Original_colourTrue, Original_colourHalfway, Original_colourFalse);
+                    string Original_colourFalse, 
+                    string Original_AutoLabelFile, 
+                    string Original_colourMainText, 
+                    string Original_colourColourText) {
+            return this.Update(Original_Id, PicturesFolder, FilesFolder, MainLabelDefault, ColourLabelDefault, AddToColourQ, DeleteAfterPrint, AutoStatedQuantities, AutoModifiedQuantities, AutoUnlockedAddresses, AutoAllAddresses, AmendAddresses, AutoLabelDefault, colourMain, colourColour, colourTrue, colourHalfway, colourFalse, AutoLabelFile, colourMainText, colourColourText, Original_Id, Original_PicturesFolder, Original_FilesFolder, Original_MainLabelDefault, Original_ColourLabelDefault, Original_AddToColourQ, Original_DeleteAfterPrint, Original_AutoStatedQuantities, Original_AutoModifiedQuantities, Original_AutoUnlockedAddresses, Original_AutoAllAddresses, Original_AmendAddresses, Original_AutoLabelDefault, Original_colourMain, Original_colourColour, Original_colourTrue, Original_colourHalfway, Original_colourFalse, Original_AutoLabelFile, Original_colourMainText, Original_colourColourText);
         }
     }
     
