@@ -4577,8 +4577,8 @@ namespace LabelMaker
             for (int i = 0; i <= numRows; i++)
             {
                 string customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
-                string locked = "  ";
-                if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "True") { locked = "* "; }
+                string locked = "      ";
+                if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "True") { locked = "# "; }
                 if (customer != customerOld)
                 {
                     listBoxAuto.Items.Add(locked + customer);
@@ -4592,24 +4592,8 @@ namespace LabelMaker
         }
         private void sortAutoListBox()
         {
-            for (int i = 0; i <= listBoxAuto.Items.Count - 2; i++)
-            {
-                for (int j = i + 1; j <= listBoxAuto.Items.Count - 1; j++)
-                {
-                    string one = listBoxAuto.Items[i].ToString();
-                    one = one.SubstringSpecial(2, one.Length - 1);
-                    string two = listBoxAuto.Items[j].ToString();
-                    two = two.SubstringSpecial(2, two.Length - 1);
-                    int result = String.Compare(one, two);
-                    if (result >= 0)
-                    {
-                        string swap = listBoxAuto.Items[i].ToString();
-                        listBoxAuto.Items[i] = listBoxAuto.Items[j].ToString();
-                        listBoxAuto.Items[j] = swap;
-                    }
 
-                }
-            }
+            listBoxAuto.Sorted = true;
 
             //remove any duplicates
             for (int i = (listBoxAuto.Items.Count - 1); i >= 1; i--)
@@ -4629,6 +4613,32 @@ namespace LabelMaker
 
                 }
             }
+
+        }
+
+        private void rubbish()
+        {
+            //get rid of this if all works
+            for (int i = 0; i <= listBoxAuto.Items.Count - 2; i++)
+            {
+                for (int j = i + 1; j <= listBoxAuto.Items.Count - 1; j++)
+                {
+                    string one = listBoxAuto.Items[i].ToString();
+                    one = one.SubstringSpecial(2, one.Length - 1);
+                    string two = listBoxAuto.Items[j].ToString();
+                    two = two.SubstringSpecial(2, two.Length - 1);
+                    int result = String.Compare(one, two);
+                    if (result >= 0)
+                    {
+                        string swap = listBoxAuto.Items[i].ToString();
+                        listBoxAuto.Items[i] = listBoxAuto.Items[j].ToString();
+                        listBoxAuto.Items[j] = swap;
+                    }
+
+                }
+            }
+
+            
         }
 
         public void csvReaderAutoBody(string path)
@@ -4785,12 +4795,13 @@ namespace LabelMaker
             if (string.IsNullOrEmpty(selected)) { change = false; }
             if (change)
             {
-                if (selected.SubstringSpecial(0, 2) == "* ")
+                if (selected.SubstringSpecial(0, 2) == "# ")
                 {
                     locked = true;
                 }
 
                 string name = selected.Substring(2);
+                name=name.Trim();
                 swapAutoByName(locked, name, listBoxAuto.SelectedIndex);
 
             }
@@ -4799,6 +4810,7 @@ namespace LabelMaker
 
         private void swapAutoByName(Boolean locked, string name, int index)
         {
+                        
             //get colours
             string[] defaults = getDefaultSettings();
             Color colourTrue = Color.FromName(defaults[15]);
@@ -4808,8 +4820,8 @@ namespace LabelMaker
             dataGridViewAuto.ClearSelection();
 
             if (locked) { changeTo = false; }
-            string changeText = "  ";
-            if (changeTo) { changeText = "* "; }
+            string changeText = "      ";
+            if (changeTo) { changeText = "# "; }
             listBoxAuto.Items[index] = changeText + name;
 
             for (int i = 0; i <= dataGridViewAuto.Rows.Count - 2; i++)
@@ -4830,6 +4842,7 @@ namespace LabelMaker
             }
 
         }
+        
 
         private void dataGridViewAuto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -5811,6 +5824,7 @@ namespace LabelMaker
                 textBoxDefaultsAddressAll.Text = defaults[9];
                 textBoxDefaultsCorrectAdd.Text = defaults[10];
                 textBoxDefaultsAutoLabel.Text = defaults[11];
+                textBoxAutoLabelFile.Text = defaults[18];
 
                 //colours
                 textBoxColourMain.Text = defaults[13];
@@ -7633,6 +7647,8 @@ namespace LabelMaker
                 buttonColourColourText.BackColor = Color.FromName(comboBoxColours.Text);
             }
         }
+
+        
     }
 }
     
