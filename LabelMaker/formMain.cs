@@ -7367,7 +7367,11 @@ namespace LabelMaker
                     }
                     //found an isolated number or similar
                     int numberLength = check.Length;
-                    string duplicateCheck = address[4].Substring(0, numberLength);
+                    string duplicateCheck = "";
+                    if (!string.IsNullOrWhiteSpace(address[4]))
+                        {
+                        duplicateCheck = address[4].Substring(0, numberLength);
+                        }
                     if (check == duplicateCheck)
                     {
                         address[3] = ""; // duplicate, so just delete it
