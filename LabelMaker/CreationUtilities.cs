@@ -55,7 +55,7 @@ namespace CreationUtilities
 
             //add into single Hex value
             gotHexColour = "#" + redString + greenString + blueString;
-            Console.WriteLine(gotHexColour);
+            //Console.WriteLine(gotHexColour);
 
             return gotHexColour;
         }

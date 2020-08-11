@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace LabelMaker
 {
@@ -196,7 +197,6 @@ namespace LabelMaker
         {
 
             //MessageBox.Show("DrawImage");
-            //CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, e.Graphics);
             whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, "print", e.Graphics);
             printWhere.Dispose();
         }
@@ -206,7 +206,6 @@ namespace LabelMaker
             //Print one label at a time using multiple copies for speed
 
             PrintDialog pDialog = new PrintDialog();
-            //pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
             pDialog.PrinterSettings.PrinterName = printerDetails[0];
 
 
@@ -215,7 +214,14 @@ namespace LabelMaker
                 int count = 0;
                 for (int i = 0; i < howManyLines; i++)
                 {
+                    // count how long each label takes
+                    Stopwatch sw1 = new Stopwatch();
+                    sw1.Start();
+
                     string[] queueData = collectQueueRow(count, whichQueue);
+
+                    //About 0.1 %
+                    Console.WriteLine("Elapsed after collecting queueData ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.ffff"));
 
                     PrintDocument pd = new PrintDocument();
                     pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
@@ -238,8 +244,18 @@ namespace LabelMaker
 
                     pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight,marginX, placementX,marginY, placementY, sender1, args);
                     pd.PrinterSettings.Copies = short.Parse(queueData[1]);
+                    //About a quarter
+                    Console.WriteLine("Elapsed up until Print ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.ffff"));
+                    //This takes 75% of time of which label creation is about 12%, ie 60%+ of time is the printer driver.
                     pd.Print();
+                    //Same as end
+                    //Console.WriteLine("Elapsed up until Print.Dispose ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.ffff"));
                     pd.Dispose();
+
+
+                    sw1.Stop();
+                    Console.WriteLine("Elapsed for whole label ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.fff"));
+
                     count++; //increment so move through queue if not deleting
 
                     //delete line
@@ -296,11 +312,10 @@ namespace LabelMaker
             PrintDialog pDialog = new PrintDialog();
             pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
             pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
-            //pDialog.Document.DefaultPageSettings.PaperSource.SourceName =  listBoxPrinter.Items[15].ToString().TrimEnd();
-            //string paperSourceName = listBoxPrinter.Items[15].ToString().TrimEnd();
             pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[0];
             string paperSourceName = printerDetails[0];
             
+        
             //set right paper tray
             string[] sources = new string[20];
 
@@ -378,8 +393,11 @@ namespace LabelMaker
                 queuePositionCounter = 0;
 
                 for (int i = 1; i <= numberOfSheetsI; i++)
-                
-                {
+
+                { 
+                    Stopwatch sw2 = new Stopwatch();
+                    sw2.Start();
+
                     countX = 0;
                     countY = 0;
                     PrintDocument pd = new PrintDocument();
@@ -388,12 +406,6 @@ namespace LabelMaker
                     pd.DefaultPageSettings.PaperSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
 
                     
-
-
-
-                    //pd.DefaultPageSettings.PaperSource = pkFoundSource;// sources[6];// "Multipurpose Tray";// = pDialog.PrinterSettings.PaperSources.Count;
-                    //pd.PrinterSettings.DefaultPageSettings.PaperSource.SourceName = "Multipurpose Tray";// = pDialog.PrinterSettings.PaperSources.Count;
-
                     if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
                     {
                         pd.DefaultPageSettings.Landscape = true;
@@ -402,6 +414,7 @@ namespace LabelMaker
                     {
                         pd.DefaultPageSettings.Landscape = false;
                     }
+                
 
                     // put label on the sheet
                     for (int j = 1; j <= labelsPerSheet; j++)
@@ -412,9 +425,7 @@ namespace LabelMaker
                         int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
                         int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
                         int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
-                        //sentWidth = sentWidth + (2 * marginX); //get whole page width for equal division
-                        //sentHeight = sentHeight + (2 * marginY); //get whole page height for equal division
-
+                        
                         if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
                         {
                             int swap = sentWidth;
@@ -427,6 +438,7 @@ namespace LabelMaker
 
                         int XPosition = sentWidth * countX;
                         int YPosition = sentHeight * countY;
+                        Console.WriteLine("Elapsed for label " + j + "before DrawImage ={0}" + " - " + queueData[0], sw2.Elapsed.ToString("ss\\.fff"));
 
                         pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, XPosition, marginY,YPosition, sender1, args);
 
@@ -436,11 +448,15 @@ namespace LabelMaker
                         if (countY == labelsDown) { countX = 0; countY = 0; }
                         queuePositionCounter++;
                         if (queuePositionCounter == totalLabels) { break ; }
+
+                        Console.WriteLine("Elapsed for label " + j + " ={0}" + " - " + queueData[0], sw2.Elapsed.ToString("ss\\.fff"));
                     }
 
-                    //send to print documnet
+                    //send to print document
+                    Console.WriteLine("Total up until Print ={0}" + "  ", sw2.Elapsed.ToString("ss\\.fff"));
                     pd.Print();
                     pd.Dispose();
+                    Console.WriteLine("Total time elapsed for whole sheet ={0}" + "  " , sw2.Elapsed.ToString("ss\\.fff"));
                 }
 
                 //delete labels if required
@@ -2351,6 +2367,22 @@ namespace LabelMaker
 
             Graphics formGraphics = panel1.CreateGraphics();
 
+            //add agm if not correct 
+            int n = 19;
+            string AGMString = queueData[n];
+            switch (AGMString)
+            {
+                case "0":
+                    queueData[n] = "AGMblank.ico";
+                    break;
+                case "1":
+                    queueData[n] = "AGM.ico";
+                    break;
+                default :
+                    queueData[n] = "AGMblank.ico";
+                    break;
+            }
+
             whereToNow whereToTwo = new whereToNow(queueData, labelData, defaultsString, finalWidthInt, finalHeightInt,0,0,0,0, "screen", formGraphics );
             whereToTwo.BackColor = Color.White;
 
@@ -2586,7 +2618,11 @@ namespace LabelMaker
 
         private void buttonQtyToSame_Click(object sender, EventArgs e)
         {
-            if ((int.Parse(textBoxQtyToSame.Text.ToString()) <= 250))
+            setQueueQuantity(int.Parse(textBoxQtyToSame.Text.ToString()));
+        }
+        private void setQueueQuantity(int howMany)
+        { 
+            if (( howMany <= 250))
             {
                 if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
                 {
@@ -3624,7 +3660,7 @@ namespace LabelMaker
             }
             else
             {
-                moreData[1] = "AGMBlank.ico";
+                moreData[1] = "AGMblank.ico";
             }
 
             // profile
@@ -3933,7 +3969,7 @@ namespace LabelMaker
                 }
                 else
                 {
-                    moreData[1] = "AGMBlank.ico";
+                    moreData[1] = "AGMblank.ico";
                 }
 
                 // qty and price
@@ -5265,7 +5301,7 @@ namespace LabelMaker
             }
             else
             {
-                moreData[1] = "AGMBlank.ico";
+                moreData[1] = "AGMblank.ico";
             }
 
             // profile
@@ -5428,7 +5464,7 @@ namespace LabelMaker
                 }
                 else
                 {
-                    moreData[1] = "AGMBlank.ico";
+                    moreData[1] = "AGMblank.ico";
                 }
 
                 // qty and price
@@ -6193,7 +6229,16 @@ namespace LabelMaker
         private void button1_Click_5(object sender, EventArgs e)
         {
             if (checkBoxCorrectAddress.Checked) { cleanAddresses(); }
+            //sort by customer
+            sortAuto("Customer");
+            colourAutoDataGrid();
+            fillAutoListBox();
+            checkSKUs();
+
             createAddressList();
+
+            //set numbers to 1
+            setQueueQuantity(1);
         }
 
         private void createAddressList()
@@ -7653,6 +7698,53 @@ namespace LabelMaker
         }
 
         
+
+        private void buttonListOrders_Click_1(object sender, EventArgs e)
+        {
+            int countLines = 0;
+            int countPlants = 0;
+
+            string name = "";
+        Boolean notfirstTime = false;
+        int count = 0;
+        sortAuto("Plant");
+        string orders = "";
+
+            for (int i = 0; i < dataGridViewAuto.RowCount - 1; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[6].Value.ToString().Trim() == name)
+                {
+                    count = count + int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
+                    orders = orders + "," + dataGridViewAuto.Rows[i].Cells[7].Value.ToString();
+                }
+                else
+                {
+                    orders = orders + ")";
+                    if (notfirstTime)
+                    {
+                        listBoxOrders.Items.Add(name + " - " + count.ToString() + "  " + orders);
+                        countLines++;
+                        countPlants = countPlants + count;
+                    }
+                    count = 0;
+                    notfirstTime = true;
+                    orders = " (";
+                    name = dataGridViewAuto.Rows[i].Cells[6].Value.ToString().Trim();
+                    count = int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
+                    orders = orders + count.ToString();
+                }
+            }
+            orders = orders + ")";
+            listBoxOrders.Items.Add(name + " - " + count.ToString() + "  " + orders);
+            countLines++;
+            countPlants = countPlants + count;
+            labelOrderLines.Text = countLines.ToString();
+            labelOrderPlants.Text = countPlants.ToString();
+
+            //list by order
+            sortAuto("ON");
+
+        }
     }
 }
     
