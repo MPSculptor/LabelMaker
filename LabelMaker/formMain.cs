@@ -6230,7 +6230,7 @@ namespace LabelMaker
         {
             if (checkBoxCorrectAddress.Checked) { cleanAddresses(); }
             //sort by customer
-            sortAuto("Customer");
+            //sortAuto("Customer");
             colourAutoDataGrid();
             fillAutoListBox();
             checkSKUs();
@@ -6243,9 +6243,9 @@ namespace LabelMaker
 
         private void createAddressList()
         {
-            Boolean includeDPD = false; //default
-            DialogResult result = MessageBox.Show( "Do you want to exclude orders that look like DPD orders","DPD order", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No) { includeDPD = true; }
+            Boolean includeDPD = true; //default
+            DialogResult result = MessageBox.Show( "Do you want include courier orders as well as Post Office","Courier orders", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No) { includeDPD = false; }
             
             // count customers
             string customer = "";
@@ -6367,6 +6367,157 @@ namespace LabelMaker
             }
 
         }
+
+        private void createPassportList()
+        {
+            // count customers
+            string customer = "";
+            int count = 0;
+            for (int i = 0; i < dataGridViewAuto.RowCount - 1; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() != customer)
+                {
+                    count++;
+                    customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                }
+            }
+            int rememberCustomers = count;
+            //gather names and counts and Genera
+            string[,] customers = new string[count, 4];
+            customer = "";
+            count = 0;
+            int plantCount = 0;
+            
+            for (int i = 0; i < dataGridViewAuto.RowCount - 1; i++)
+            {
+                if (dataGridViewAuto.Rows[i].Cells[5].Value.ToString() != customer)
+                {
+
+                    customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                    plantCount = int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
+                    customers[count, 0] = customer;
+                    customers[count, 1] = plantCount.ToString();
+                    customers[count, 2] = dataGridViewAuto.Rows[i].Cells[1].Value.ToString();
+
+                    //Collect Genera
+                    customers[count, 3] = "";
+                    string Genus = "";
+                    for (int q = 0; q < dataGridViewAuto.RowCount - 1; q++)
+                            { 
+                               if (dataGridViewAuto.Rows[q].Cells[5].Value.ToString() == customer)
+                                {
+                                    string GenusCompareOriginal = dataGridViewAuto.Rows[q].Cells[6].Value.ToString();
+                                    int index = 0;
+                                    for (int j = GenusCompareOriginal.Length - 1; j > 0; j--)
+                                    {
+                                        if (GenusCompareOriginal[j].ToString() == " ")
+                                        {
+                                            index = j;
+                                        }
+                                    }
+
+                                    string GenusCompare = GenusCompareOriginal.SubstringSpecial(0, index);
+                                    if (GenusCompare != Genus)
+                                    {
+                                    customers[count, 3] = customers[count, 3].ToString() + GenusCompare + ", ";
+                                    Genus = GenusCompare;
+                                    }
+                                }
+                            }
+
+
+                    count++;
+                }
+                else
+                {
+                    plantCount = plantCount + int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
+                    customers[count - 1, 1] = plantCount.ToString();
+                }
+
+                
+                //MessageBox.Show(customer.Trim() + " plants - " + plantCount.ToString() + " , count - "+count.ToString());
+            }
+
+            //make the queue
+
+            for (int i = 0; i <= rememberCustomers - 1; i++)
+            {
+                Boolean addIt = false;
+
+                if (radioButtonAddress2.Checked == true) { addIt = true; } //use all addresses, locked and unlocked
+                //MessageBox.Show(customers[i, 2].ToString());
+                if (customers[i, 2].ToString() == "False") { addIt = true; } //unlocked customers
+                
+                if (addIt)
+                {
+                    //rountine to make a line if it needs adding
+                    //MessageBox.Show("Adding - " + customers[i, 0]);
+                    for (int j = 0; j <= dataGridViewAuto.RowCount - 1; j++)
+                    {
+                        if (dataGridViewAuto.Rows[j].Cells[5].Value.ToString() == customers[i, 0])
+                        {
+                            //MessageBox.Show("Found "+ customers[i, 0]);
+
+                            string[] queueData = new string[37];
+
+                            queueData[0] = customers[i, 0]; //Full name
+                            int qty = 1;
+                            int qtySent = (int.Parse(customers[i, 1].ToString()));
+                            if (qtySent > 3) { qty = 2; }
+                            if (qtySent > 6) { qty = 1; }
+                            queueData[1] = qty.ToString(); // Qty
+                            queueData[2] = ""; // price - set to 0
+                            queueData[3] = "";  //Potsize
+                            queueData[4] = customers[i, 0]; // Customer Name
+                            queueData[5] = ""; // Barcode
+                            queueData[6] = "This is a Plant Passport only Queue"; //Description
+                            queueData[7] = ""; //Common Name
+                            queueData[8] = ""; // Main Picture
+                            queueData[9] = "Arial"; // Font Name
+                            queueData[10] = "0"; // Font Colour
+                            queueData[11] = "True"; // Bold
+                            queueData[12] = "True"; // Italic
+                            queueData[13] = "0"; // Border Colour
+                            queueData[14] = "0"; // Back Colour
+                            queueData[15] = DateTime.Now.ToString("yyyy-d-M"); // notes
+                            queueData[16] = customers[i,3]; // Genus
+                            queueData[17] = ""; // species
+                            queueData[18] = "";  // Variety
+                            queueData[19] = ""; // AGM picture to use
+                            queueData[20] = ""; // Picture1
+                            queueData[21] = ""; // Picture2
+                            queueData[22] = ""; // Picture3
+                            queueData[23] = ""; // Picture4
+                            queueData[24] = dataGridViewAuto.Rows[j].Cells[4].Value.ToString(); //Order Number
+                            if (string.IsNullOrEmpty(queueData[24]))
+                            { queueData[24] = ""; }
+                            else
+                            { queueData[24] = "Order No. #" + queueData[24]; }
+                            queueData[25] = "True";
+                            queueData[26] = "1";
+
+                            queueData[27] = "To : " + dataGridViewAuto.Rows[j].Cells[11].Value.ToString().Trim() + " " + dataGridViewAuto.Rows[j].Cells[12].Value.ToString().Trim();
+                            queueData[28] = dataGridViewAuto.Rows[j].Cells[11].Value.ToString().Trim();
+
+                            queueData[29] = dataGridViewAuto.Rows[j].Cells[12].Value.ToString().Trim();
+                            queueData[30] = dataGridViewAuto.Rows[j].Cells[13].Value.ToString().Trim();
+                            queueData[31] = dataGridViewAuto.Rows[j].Cells[14].Value.ToString().Trim();
+                            queueData[32] = dataGridViewAuto.Rows[j].Cells[15].Value.ToString().Trim();
+                            queueData[33] = dataGridViewAuto.Rows[j].Cells[16].Value.ToString().Trim();
+                            queueData[34] = dataGridViewAuto.Rows[j].Cells[17].Value.ToString().Trim();
+                            queueData[35] = dataGridViewAuto.Rows[j].Cells[18].Value.ToString().Trim();
+                            queueData[36] = "No Colour";
+
+                            doTheAdding(queueData, "AutoLabel");
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -6750,7 +6901,7 @@ namespace LabelMaker
                 this.BackColor = Color.White;
                 this.BorderStyle = BorderStyle.FixedSingle;
                 Graphics formGraphics = this.CreateGraphics();
-                String[] colours = { "Aqua", "Coral", "Violet", "Tomato", "PaleVioletRed", "BlueViolet", "Chocolate", "Salmon", "Olive", "Thistle", "RosyBrown" };
+                String[] colours = { "Aqua", "Coral", "Violet", "Tomato", "PaleVioletRed", "BlueViolet", "Chocolate", "Salmon", "Olive", "Thistle", "RosyBrown", "Aqua", "Coral", "Violet", "Tomato", "PaleVioletRed", "BlueViolet", "Chocolate", "Salmon", "Olive", "Thistle", "RosyBrown" };
 
                 Pen gridPen = new Pen(Color.Gainsboro);
                 Pen gridPenPale = new Pen(Color.GhostWhite);
@@ -7744,6 +7895,19 @@ namespace LabelMaker
             //list by order
             sortAuto("ON");
 
+        }
+
+        private void button18_Click_2(object sender, EventArgs e)
+        {
+            //Passport list creation
+
+            //sort by customer
+            //sortAuto("Customer");
+            
+            createPassportList();
+
+            //set numbers to 1
+            setQueueQuantity(1);
         }
     }
 }
