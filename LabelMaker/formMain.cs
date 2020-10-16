@@ -30,6 +30,10 @@ namespace LabelMaker
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseLabelsDataSet4.TablePassportQueue' table. You can move, or remove it, as needed.
+            this.tablePassportQueueTableAdapter.Fill(this.databaseLabelsDataSet4.TablePassportQueue);
+            // TODO: This line of code loads data into the 'databaseLabelsDataSet3.TableAddressQueue' table. You can move, or remove it, as needed.
+            this.tableAddressQueueTableAdapter.Fill(this.databaseLabelsDataSet3.TableAddressQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetAddClean.TableAddressFilters' table. You can move, or remove it, as needed.
             this.tableAddressFiltersTableAdapter.Fill(this.databaseLabelsDataSetAddClean.TableAddressFilters);
             // TODO: This line of code loads data into the 'databaseLabelsDataSetAuto.TableAuto' table. You can move, or remove it, as needed.
@@ -56,6 +60,12 @@ namespace LabelMaker
             dataGridViewColourQ.ForeColor = Color.FromName(defaults[20]);
             tabPageMainQueue.BackColor = Color.FromName(defaults[13]);
             dataGridViewMainQ.ForeColor = Color.FromName(defaults[19]);
+
+            tabPageAddresses.BackColor = Color.FromName(defaults[27]);
+            dataGridViewAddressQ.ForeColor = Color.FromName(defaults[28]);
+            tabPagePassports.BackColor = Color.FromName(defaults[29]);
+            dataGridViewPassportQ.ForeColor = Color.FromName(defaults[30]);
+
             if (first == "first") { buttonVisibleOnly.BackColor = Color.FromName(defaults[17]); }
         }
 
@@ -160,6 +170,16 @@ namespace LabelMaker
             {
                 whichQueue = "Colour";
                 howManyLines = dataGridViewColourQ.RowCount - 1;
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
+            {
+                whichQueue = "Address";
+                howManyLines = dataGridViewMainQ.RowCount - 1;
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPagePassport")
+            {
+                whichQueue = "Passport";
+                howManyLines = dataGridViewMainQ.RowCount - 1;
             }
             else
             {
@@ -278,6 +298,40 @@ namespace LabelMaker
                             labelMainCount.Text = addMainQueueTotal().ToString();
                             labelMainCountQ.Text = labelMainCount.Text;
                             count--;
+                        }
+                        else if (whichQueue == "Address")
+                        {
+                            dataGridViewAddressQ.Rows.RemoveAt(0);
+                            dataGridViewAddressQ.EndEdit();
+                            try
+                            {
+                                tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+                                //MessageBox.Show("Succeeding in deleting from Address Queue");
+                            }
+                            catch (System.Exception ex)
+                            {
+                                MessageBox.Show("Failed to delete from Address Queue - " + ex);
+                            }
+                            dataGridViewAddressQ.Refresh();
+                            textBoxAddressCount.Text = addAddressQueueTotal().ToString();
+                            count--;//cancel increment if we are deleting so we always take the first item
+                        }
+                        else if (whichQueue == "Passport")
+                        {
+                            dataGridViewPassportQ.Rows.RemoveAt(0);
+                            dataGridViewPassportQ.EndEdit();
+                            try
+                            {
+                                tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+                                //MessageBox.Show("Succeeding in deleting from Passport Queue");
+                            }
+                            catch (System.Exception ex)
+                            {
+                                MessageBox.Show("Failed to delete from Passport Queue - " + ex);
+                            }
+                            dataGridViewPassportQ.Refresh();
+                            textBoxPassportCount.Text = addPassportQueueTotal().ToString();
+                            count--;//cancel increment if we are deleting so we always take the first item
                         }
                         else
                         {
@@ -1616,6 +1670,8 @@ namespace LabelMaker
             // Queue Quantities
             addMainQueueTotal();
             addColourQueueTotal();
+            addAddressQueueTotal();
+            addPassportQueueTotal();
             if (String.IsNullOrEmpty(comboBoxLabelName.Text.Trim()))
             {
                 TempMakeALabel(panelLabelPreview, "Main", "database", "");
@@ -1749,6 +1805,67 @@ namespace LabelMaker
             return count;
         }
 
+        private int addAddressQueueTotal()
+        {
+            int count = 0;
+            int Qvalue = 0;
+
+            for (int i = 0; i < (dataGridViewAddressQ.RowCount - 1); i++)
+            {
+                Qvalue = int.Parse(dataGridViewAddressQ.Rows[i].Cells[1].Value.ToString());
+                count = count + Qvalue;
+            }
+
+            //check if Address count is a multiple of labels per sheet
+            string[] defaultsString = getDefaultSettings();
+            string name = defaultsString[2];
+
+            if (tabControlQueue.SelectedTab == tabPageAddresses)
+            {
+                string tempName = comboBoxLabelName.Text.ToString().Trim();
+                if (tempName != "") { name = tempName; }
+            }
+            string[] headerData = returnLabelHeaderData(name);
+            int perSheet = int.Parse(headerData[3]) * int.Parse(headerData[4]);
+            float division = (float)count / (float)perSheet;
+
+
+            if (division == (int)division) { textBoxAddressCount.ForeColor = Color.Black; }
+            else { textBoxAddressCount.ForeColor = Color.Firebrick; }
+
+            return count;
+        }
+
+        private int addPassportQueueTotal()
+        {
+            int count = 0;
+            int Qvalue = 0;
+
+            for (int i = 0; i < (dataGridViewPassportQ.RowCount - 1); i++)
+            {
+                Qvalue = int.Parse(dataGridViewPassportQ.Rows[i].Cells[1].Value.ToString());
+                count = count + Qvalue;
+            }
+
+            //check if Passport count is a multiple of labels per sheet
+            string[] defaultsString = getDefaultSettings();
+            string name = defaultsString[2];
+
+            if (tabControlQueue.SelectedTab == tabPagePassports)
+            {
+                string tempName = comboBoxLabelName.Text.ToString().Trim();
+                if (tempName != "") { name = tempName; }
+            }
+            string[] headerData = returnLabelHeaderData(name);
+            int perSheet = int.Parse(headerData[3]) * int.Parse(headerData[4]);
+            float division = (float)count / (float)perSheet;
+
+
+            if (division == (int)division) { textBoxPassportCount.ForeColor = Color.Black; }
+            else { textBoxPassportCount.ForeColor = Color.Firebrick; }
+
+            return count;
+        }
 
         #endregion
 
@@ -2571,6 +2688,54 @@ namespace LabelMaker
                     makeNoQueueEntry();
                 }
             }
+            else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageAddresses")
+            {
+                if (dataGridViewAddressQ.RowCount > 1)
+                {
+                    int indexOfRow = dataGridViewAddressQ.CurrentRow.Index;
+                    textBoxQ0.Text = indexOfRow.ToString();
+                    //Fill in Plant Name
+
+                    for (int i = 1; i <= 34; i++)
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        curText.Text = dataGridViewAddressQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
+                    }
+                    swapTextBoxes(4, 8);
+                    swapTextBoxes(8, 5);
+                    swapTextBoxes(7, 8);
+                    swapTextBoxes(6, 8);
+                    swapTextBoxes(9, 8);
+                }
+                else
+                {
+                    makeNoQueueEntry();
+                }
+            }
+            else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPagePassports")
+            {
+                if (dataGridViewPassportQ.RowCount > 1)
+                {
+                    int indexOfRow = dataGridViewPassportQ.CurrentRow.Index;
+                    textBoxQ0.Text = indexOfRow.ToString();
+                    //Fill in Plant Name
+
+                    for (int i = 1; i <= 34; i++)
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        curText.Text = dataGridViewPassportQ.Rows[indexOfRow].Cells[i - 1].Value.ToString();
+                    }
+                    swapTextBoxes(4, 8);
+                    swapTextBoxes(8, 5);
+                    swapTextBoxes(7, 8);
+                    swapTextBoxes(6, 8);
+                    swapTextBoxes(9, 8);
+                }
+                else
+                {
+                    makeNoQueueEntry();
+                }
+            }
             else
             {
                 if (dataGridViewColourQ.RowCount > 1)
@@ -2785,6 +2950,24 @@ namespace LabelMaker
                     fillQueueUtilitiesTab();
                 }
             }
+            else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageAddresses")
+            {
+                int indexOfRow = dataGridViewAddressQ.CurrentRow.Index;
+                if (indexOfRow < dataGridViewAddressQ.RowCount - 2)
+                {
+                    dataGridViewAddressQ.CurrentCell = dataGridViewAddressQ.Rows[indexOfRow + 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
+            else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPagePassports")
+            {
+                int indexOfRow = dataGridViewPassportQ.CurrentRow.Index;
+                if (indexOfRow < dataGridViewPassportQ.RowCount - 2)
+                {
+                    dataGridViewPassportQ.CurrentCell = dataGridViewPassportQ.Rows[indexOfRow + 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
             else
             {
                 int indexOfRow = dataGridViewColourQ.CurrentRow.Index;
@@ -2804,6 +2987,24 @@ namespace LabelMaker
                 if (indexOfRow > 0)
                 {
                     dataGridViewMainQ.CurrentCell = dataGridViewMainQ.Rows[indexOfRow - 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
+            else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageAddresses")
+            {
+                int indexOfRow = dataGridViewAddressQ.CurrentRow.Index;
+                if (indexOfRow > 0)
+                {
+                    dataGridViewAddressQ.CurrentCell = dataGridViewAddressQ.Rows[indexOfRow - 1].Cells[0];
+                    fillQueueUtilitiesTab();
+                }
+            }
+            else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPagePassports")
+            {
+                int indexOfRow = dataGridViewPassportQ.CurrentRow.Index;
+                if (indexOfRow > 0)
+                {
+                    dataGridViewPassportQ.CurrentCell = dataGridViewPassportQ.Rows[indexOfRow - 1].Cells[0];
                     fillQueueUtilitiesTab();
                 }
             }
@@ -2830,7 +3031,7 @@ namespace LabelMaker
                     string[] allTheData = new string[37];
                     for (int i = 0; i <= 35; i++)
                     {
-                        allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString();
+                        allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString().Trim();
                     }
 
                     rowData["Name"] = allTheData[0];
@@ -2892,6 +3093,150 @@ namespace LabelMaker
                     textBoxQ0.Text = dataGridViewMainQ.CurrentRow.Index.ToString();
                 }
             }
+            else if (tabControlQueue.SelectedTab == tabPageAddresses)
+            {
+                int rowToMove = dataGridViewAddressQ.CurrentRow.Index;
+                int minRow = 1;
+                if (rowToMove >= minRow)
+                {
+                    DataRow rowData = databaseLabelsDataSet3.TableAddressQueue.NewRow();
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
+                    {
+                        allTheData[i] = dataGridViewAddressQ.CurrentRow.Cells[i].Value.ToString().Trim();
+                    }
+
+                    rowData["Name"] = allTheData[0];
+                    int answer = 0;
+                    int.TryParse(allTheData[1], out answer);
+                    rowData["qty"] = answer;
+                    rowData["Price"] = allTheData[2];
+                    rowData["PotSize"] = allTheData[7];
+                    rowData["Customer"] = allTheData[3];
+                    rowData["Barcode"] = allTheData[6];
+                    rowData["Description"] = allTheData[4];
+                    rowData["CommonName"] = allTheData[8];
+                    rowData["PictureFile"] = allTheData[5];
+                    rowData["ColourFont"] = allTheData[9];
+                    rowData["ColourFontColour"] = allTheData[10];
+                    rowData["FontBold"] = bool.Parse(allTheData[11]);
+                    rowData["FontItalic"] = bool.Parse(allTheData[12]);
+                    rowData["ColourBorderColour"] = allTheData[13];
+                    rowData["ColourBackgroundColour"] = allTheData[14];
+                    rowData["notes"] = allTheData[15];
+                    rowData["Genus"] = allTheData[16];
+                    rowData["Species"] = allTheData[17];
+                    rowData["Variety"] = allTheData[18];
+                    rowData["AGM"] = allTheData[19];
+                    rowData["Picture1"] = allTheData[20];
+                    rowData["Picture2"] = allTheData[21];
+                    rowData["Picture3"] = allTheData[22];
+                    rowData["Picture4"] = allTheData[23];
+                    rowData["OrderNo"] = allTheData[24];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
+
+
+                    dataGridViewAddressQ.Rows.RemoveAt(rowToMove);
+                    databaseLabelsDataSet3.TableAddressQueue.Rows.InsertAt(rowData, rowToMove - 1);
+                    dataGridViewAddressQ.EndEdit();
+
+                    try
+                    {
+                        tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+                        //MessageBox.Show("Succeeding in deleting from Colour Queue");
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to move line in Colour Queue - " + ex);
+                    }
+                    dataGridViewAddressQ.CurrentCell = dataGridViewAddressQ[0, rowToMove - 1];
+                    dataGridViewAddressQ.Rows[rowToMove - 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewAddressQ.CurrentRow.Index.ToString();
+                }
+            }
+            else if (tabControlQueue.SelectedTab == tabPagePassports)
+            {
+                int rowToMove = dataGridViewPassportQ.CurrentRow.Index;
+                int minRow = 1;
+                if (rowToMove >= minRow)
+                {
+                    DataRow rowData = databaseLabelsDataSet4.TablePassportQueue.NewRow();
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
+                    {
+                        allTheData[i] = dataGridViewPassportQ.CurrentRow.Cells[i].Value.ToString().Trim();
+                    }
+
+                    rowData["Name"] = allTheData[0];
+                    int answer = 0;
+                    int.TryParse(allTheData[1], out answer);
+                    rowData["qty"] = answer;
+                    rowData["Price"] = allTheData[2];
+                    rowData["PotSize"] = allTheData[7];
+                    rowData["Customer"] = allTheData[3];
+                    rowData["Barcode"] = allTheData[6];
+                    rowData["Description"] = allTheData[4];
+                    rowData["CommonName"] = allTheData[8];
+                    rowData["PictureFile"] = allTheData[5];
+                    rowData["ColourFont"] = allTheData[9];
+                    rowData["ColourFontColour"] = allTheData[10];
+                    rowData["FontBold"] = bool.Parse(allTheData[11]);
+                    rowData["FontItalic"] = bool.Parse(allTheData[12]);
+                    rowData["ColourBorderColour"] = allTheData[13];
+                    rowData["ColourBackgroundColour"] = allTheData[14];
+                    rowData["notes"] = allTheData[15];
+                    rowData["Genus"] = allTheData[16];
+                    rowData["Species"] = allTheData[17];
+                    rowData["Variety"] = allTheData[18];
+                    rowData["AGM"] = allTheData[19];
+                    rowData["Picture1"] = allTheData[20];
+                    rowData["Picture2"] = allTheData[21];
+                    rowData["Picture3"] = allTheData[22];
+                    rowData["Picture4"] = allTheData[23];
+                    rowData["OrderNo"] = allTheData[24];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
+
+
+                    dataGridViewPassportQ.Rows.RemoveAt(rowToMove);
+                    databaseLabelsDataSet4.TablePassportQueue.Rows.InsertAt(rowData, rowToMove - 1);
+                    dataGridViewPassportQ.EndEdit();
+
+                    try
+                    {
+                        tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+                        //MessageBox.Show("Succeeding in deleting from Passport Queue");
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to move line in Passport Queue - " + ex);
+                    }
+                    dataGridViewPassportQ.CurrentCell = dataGridViewPassportQ[0, rowToMove - 1];
+                    dataGridViewPassportQ.Rows[rowToMove - 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewPassportQ.CurrentRow.Index.ToString();
+                }
+            }
             else
             {
                 int rowToMove = dataGridViewColourQ.CurrentRow.Index;
@@ -2902,7 +3247,7 @@ namespace LabelMaker
                     string[] allTheData = new string[37];
                     for (int i = 0; i <= 35; i++)
                     {
-                        allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString();
+                        allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString().Trim();
                     }
 
                     rowData["Name"] = allTheData[0];
@@ -2978,7 +3323,7 @@ namespace LabelMaker
                     string[] allTheData = new string[37];
                     for (int i = 0; i <= 35; i++)
                     {
-                        allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString();
+                        allTheData[i] = dataGridViewMainQ.CurrentRow.Cells[i].Value.ToString().Trim();
                     }
 
                     rowData["Name"] = allTheData[0];
@@ -3040,6 +3385,150 @@ namespace LabelMaker
                     textBoxQ0.Text = dataGridViewMainQ.CurrentRow.Index.ToString();
                 }
             }
+            else if (tabControlQueue.SelectedTab == tabPageAddresses)
+            {
+                int rowToMove = dataGridViewAddressQ.CurrentRow.Index;
+                int maxRow = dataGridViewAddressQ.Rows.Count - 2;
+                if (rowToMove < maxRow)
+                {
+                    DataRow rowData = databaseLabelsDataSet3.TableAddressQueue.NewRow();
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
+                    {
+                        allTheData[i] = dataGridViewAddressQ.CurrentRow.Cells[i].Value.ToString().Trim();
+                    }
+
+                    rowData["Name"] = allTheData[0];
+                    int answer = 0;
+                    int.TryParse(allTheData[1], out answer);
+                    rowData["qty"] = answer;
+                    rowData["Price"] = allTheData[2];
+                    rowData["PotSize"] = allTheData[7];
+                    rowData["Customer"] = allTheData[3];
+                    rowData["Barcode"] = allTheData[6];
+                    rowData["Description"] = allTheData[4];
+                    rowData["CommonName"] = allTheData[8];
+                    rowData["PictureFile"] = allTheData[5];
+                    rowData["ColourFont"] = allTheData[9];
+                    rowData["ColourFontColour"] = allTheData[10];
+                    rowData["FontBold"] = bool.Parse(allTheData[11]);
+                    rowData["FontItalic"] = bool.Parse(allTheData[12]);
+                    rowData["ColourBorderColour"] = allTheData[13];
+                    rowData["ColourBackgroundColour"] = allTheData[14];
+                    rowData["notes"] = allTheData[15];
+                    rowData["Genus"] = allTheData[16];
+                    rowData["Species"] = allTheData[17];
+                    rowData["Variety"] = allTheData[18];
+                    rowData["AGM"] = allTheData[19];
+                    rowData["Picture1"] = allTheData[20];
+                    rowData["Picture2"] = allTheData[21];
+                    rowData["Picture3"] = allTheData[22];
+                    rowData["Picture4"] = allTheData[23];
+                    rowData["OrderNo"] = allTheData[24];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
+
+
+                    dataGridViewAddressQ.Rows.RemoveAt(rowToMove);
+                    databaseLabelsDataSet3.TableAddressQueue.Rows.InsertAt(rowData, rowToMove + 2);
+                    dataGridViewAddressQ.EndEdit();
+
+                    try
+                    {
+                        tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+                        //MessageBox.Show("Succeeding in deleting from Colour Queue");
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to move line in Colour Queue - " + ex);
+                    }
+                    dataGridViewAddressQ.CurrentCell = dataGridViewAddressQ[0, rowToMove + 1];
+                    dataGridViewAddressQ.Rows[rowToMove + 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewAddressQ.CurrentRow.Index.ToString();
+                }
+            }
+            else if (tabControlQueue.SelectedTab == tabPagePassports)
+            {
+                int rowToMove = dataGridViewPassportQ.CurrentRow.Index;
+                int maxRow = dataGridViewPassportQ.Rows.Count - 2;
+                if (rowToMove < maxRow)
+                {
+                    DataRow rowData = databaseLabelsDataSet4.TablePassportQueue.NewRow();
+                    string[] allTheData = new string[37];
+                    for (int i = 0; i <= 35; i++)
+                    {
+                        allTheData[i] = dataGridViewPassportQ.CurrentRow.Cells[i].Value.ToString().Trim();
+                    }
+
+                    rowData["Name"] = allTheData[0];
+                    int answer = 0;
+                    int.TryParse(allTheData[1], out answer);
+                    rowData["qty"] = answer;
+                    rowData["Price"] = allTheData[2];
+                    rowData["PotSize"] = allTheData[7];
+                    rowData["Customer"] = allTheData[3];
+                    rowData["Barcode"] = allTheData[6];
+                    rowData["Description"] = allTheData[4];
+                    rowData["CommonName"] = allTheData[8];
+                    rowData["PictureFile"] = allTheData[5];
+                    rowData["ColourFont"] = allTheData[9];
+                    rowData["ColourFontColour"] = allTheData[10];
+                    rowData["FontBold"] = bool.Parse(allTheData[11]);
+                    rowData["FontItalic"] = bool.Parse(allTheData[12]);
+                    rowData["ColourBorderColour"] = allTheData[13];
+                    rowData["ColourBackgroundColour"] = allTheData[14];
+                    rowData["notes"] = allTheData[15];
+                    rowData["Genus"] = allTheData[16];
+                    rowData["Species"] = allTheData[17];
+                    rowData["Variety"] = allTheData[18];
+                    rowData["AGM"] = allTheData[19];
+                    rowData["Picture1"] = allTheData[20];
+                    rowData["Picture2"] = allTheData[21];
+                    rowData["Picture3"] = allTheData[22];
+                    rowData["Picture4"] = allTheData[23];
+                    rowData["OrderNo"] = allTheData[24];
+                    rowData["ShipName"] = allTheData[25];
+                    rowData["ShipFirst"] = allTheData[26];
+                    rowData["ShipLast"] = allTheData[27];
+                    rowData["ShipLine1"] = allTheData[28];
+                    rowData["ShipLine2"] = allTheData[29];
+                    rowData["ShipCity"] = allTheData[30];
+                    rowData["ShipState"] = allTheData[31];
+                    rowData["ShipPostcode"] = allTheData[32];
+                    rowData["OrderNotes"] = allTheData[33];
+                    rowData["LabelStocks"] = allTheData[34];
+                    rowData["PlantId"] = allTheData[35];
+
+
+                    dataGridViewPassportQ.Rows.RemoveAt(rowToMove);
+                    databaseLabelsDataSet4.TablePassportQueue.Rows.InsertAt(rowData, rowToMove + 2);
+                    dataGridViewPassportQ.EndEdit();
+
+                    try
+                    {
+                        tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+                        //MessageBox.Show("Succeeding in deleting from Colour Queue");
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to move line in Colour Queue - " + ex);
+                    }
+                    dataGridViewPassportQ.CurrentCell = dataGridViewPassportQ[0, rowToMove + 1];
+                    dataGridViewPassportQ.Rows[rowToMove + 1].Cells[0].Selected = true;
+
+                    textBoxQ0.Text = dataGridViewPassportQ.CurrentRow.Index.ToString();
+                }
+            }
             else
             {
                 int rowToMove = dataGridViewColourQ.CurrentRow.Index;
@@ -3050,7 +3539,7 @@ namespace LabelMaker
                     string[] allTheData = new string[37];
                     for (int i = 0; i <= 35; i++)
                     {
-                        allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString();
+                        allTheData[i] = dataGridViewColourQ.CurrentRow.Cells[i].Value.ToString().Trim();
                     }
 
                     rowData["Name"] = allTheData[0];
@@ -3184,6 +3673,7 @@ namespace LabelMaker
             Color newColour1 = new Color();
             newColour = Color.FromName(defaults[13]);
             newColour1 = Color.FromName(defaults[16]);
+            
             if (tabControlQueue.SelectedTab == tabPageColourQueue)
             {
                 if (comboBoxLabelName.Text.Trim() == defaults[3].Trim())
@@ -3193,6 +3683,28 @@ namespace LabelMaker
                 if (comboBoxAutoLabelName.Text.Trim() == defaults[3].Trim())
                 {
                     newColour1 = Color.FromName(defaults[14]);
+                }
+            }
+            else if (tabControlQueue.SelectedTab == tabPageAddresses)
+            {
+                if (comboBoxLabelName.Text.Trim() == defaults[31].Trim())
+                {
+                    newColour = Color.FromName(defaults[27]);
+                }
+                if (comboBoxAutoLabelName.Text.Trim() == defaults[31].Trim())
+                {
+                    newColour1 = Color.FromName(defaults[27]);
+                }
+            }
+            else if (tabControlQueue.SelectedTab == tabPagePassports)
+            {
+                if (comboBoxLabelName.Text.Trim() == defaults[32].Trim())
+                {
+                    newColour = Color.FromName(defaults[29]);
+                }
+                if (comboBoxAutoLabelName.Text.Trim() == defaults[32].Trim())
+                {
+                    newColour1 = Color.FromName(defaults[29]);
                 }
             }
             else
@@ -3231,11 +3743,12 @@ namespace LabelMaker
                 TempMakeALabel(panelLabelTabChoice, "Choice", "database", "");
             }
 
+
+
+            //Handle Queue Utility Tabs
             if (tabControlQueue.SelectedTab == tabPageLabelStocks)
             {
-
                 fillLabelStocksGrid();
-
             }
             if (tabControlQueue.SelectedTab == tabPageMissingPictures)
             {
@@ -3429,6 +3942,30 @@ namespace LabelMaker
                 queueEntry[7] = dataGridViewMainQ.Rows[desiredRow].Cells[8].Value.ToString();
                 queueEntry[8] = dataGridViewMainQ.Rows[desiredRow].Cells[5].Value.ToString();
             }
+            else if (whichQueue == "Address")
+            {
+                queueEntry[0] = dataGridViewAddressQ.Rows[desiredRow].Cells[0].Value.ToString();
+                queueEntry[1] = dataGridViewAddressQ.Rows[desiredRow].Cells[1].Value.ToString();
+                queueEntry[2] = dataGridViewAddressQ.Rows[desiredRow].Cells[2].Value.ToString();
+                queueEntry[3] = dataGridViewAddressQ.Rows[desiredRow].Cells[7].Value.ToString();
+                queueEntry[4] = dataGridViewAddressQ.Rows[desiredRow].Cells[3].Value.ToString();
+                queueEntry[5] = dataGridViewAddressQ.Rows[desiredRow].Cells[6].Value.ToString();
+                queueEntry[6] = dataGridViewAddressQ.Rows[desiredRow].Cells[4].Value.ToString();
+                queueEntry[7] = dataGridViewAddressQ.Rows[desiredRow].Cells[8].Value.ToString();
+                queueEntry[8] = dataGridViewAddressQ.Rows[desiredRow].Cells[5].Value.ToString();
+            }
+            else if (whichQueue == "Passport")
+            {
+                queueEntry[0] = dataGridViewPassportQ.Rows[desiredRow].Cells[0].Value.ToString();
+                queueEntry[1] = dataGridViewPassportQ.Rows[desiredRow].Cells[1].Value.ToString();
+                queueEntry[2] = dataGridViewPassportQ.Rows[desiredRow].Cells[2].Value.ToString();
+                queueEntry[3] = dataGridViewPassportQ.Rows[desiredRow].Cells[7].Value.ToString();
+                queueEntry[4] = dataGridViewPassportQ.Rows[desiredRow].Cells[3].Value.ToString();
+                queueEntry[5] = dataGridViewPassportQ.Rows[desiredRow].Cells[6].Value.ToString();
+                queueEntry[6] = dataGridViewPassportQ.Rows[desiredRow].Cells[4].Value.ToString();
+                queueEntry[7] = dataGridViewPassportQ.Rows[desiredRow].Cells[8].Value.ToString();
+                queueEntry[8] = dataGridViewPassportQ.Rows[desiredRow].Cells[5].Value.ToString();
+            }
             else
             {
                 queueEntry[0] = dataGridViewColourQ.Rows[desiredRow].Cells[0].Value.ToString();
@@ -3449,6 +3986,14 @@ namespace LabelMaker
                 {
                     queueEntry[i] = dataGridViewMainQ.Rows[desiredRow].Cells[i].Value.ToString();
                 }
+                else if (whichQueue == "Address")
+                {
+                    queueEntry[i] = dataGridViewAddressQ.Rows[desiredRow].Cells[i].Value.ToString();
+                }
+                else if (whichQueue == "Passport")
+                {
+                    queueEntry[i] = dataGridViewPassportQ.Rows[desiredRow].Cells[i].Value.ToString();
+                }
                 else
                 {
                     queueEntry[i] = dataGridViewColourQ.Rows[desiredRow].Cells[i].Value.ToString();
@@ -3468,6 +4013,14 @@ namespace LabelMaker
             if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
             {
                 addRowToColourQ(queue, which);
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
+            {
+                addRowToAddressQ(queue, which);
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
+            {
+                addRowToPassportQ(queue, which);
             }
             else
             {
@@ -3541,6 +4094,125 @@ namespace LabelMaker
             labelMainCount.Text = addMainQueueTotal().ToString();
             labelMainCountQ.Text = labelMainCount.Text;
         }
+
+        private void addRowToAddressQ(string[] queue, string which)
+        {
+            //string[] queue = CollectQueueEntry();
+            DataRow row = databaseLabelsDataSet3.Tables[0].NewRow();
+
+            //row["Id"] = "1";
+            row["Name"] = queue[0];
+            int answer = 0;
+            int.TryParse(queue[1], out answer);
+            row["qty"] = answer;
+            row["Price"] = queue[2];
+            row["PotSize"] = queue[3];
+            row["Customer"] = queue[4];
+            row["Barcode"] = queue[5];
+            row["Description"] = queue[6];
+            row["CommonName"] = queue[7];
+            row["PictureFile"] = queue[8];
+            row["ColourFont"] = queue[9];
+            row["ColourFontColour"] = queue[10];
+            row["FontBold"] = queue[11];
+            row["FontItalic"] = queue[12];
+            row["ColourBorderColour"] = queue[13];
+            row["ColourBackgroundColour"] = queue[14];
+            row["notes"] = queue[15];
+            row["Genus"] = queue[16];
+            row["Species"] = queue[17];
+            row["Variety"] = queue[18];
+            row["AGM"] = queue[19];
+            row["Picture1"] = queue[20];
+            row["Picture2"] = queue[21];
+            row["Picture3"] = queue[22];
+            row["Picture4"] = queue[23];
+            row["OrderNo"] = queue[24];
+            row["LabelStocks"] = queue[25];
+            row["PlantId"] = queue[26];
+            row["ShipName"] = queue[27];
+            row["ShipFirst"] = queue[28];
+            row["ShipLast"] = queue[29];
+            row["ShipLine1"] = queue[30];
+            row["ShipLine2"] = queue[31];
+            row["ShipCity"] = queue[32];
+            row["ShipState"] = queue[33];
+            row["ShipPostcode"] = queue[34];
+            row["OrderNotes"] = queue[35];
+
+            databaseLabelsDataSet3.TableAddressQueue.Rows.Add(row);
+            dataGridViewAddressQ.EndEdit();
+            try
+            {
+                tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to add to Address Queue - " + ex);
+            }
+            textBoxAddressCount.Text = addAddressQueueTotal().ToString();
+            
+        }
+
+        private void addRowToPassportQ(string[] queue, string which)
+        {
+            //string[] queue = CollectQueueEntry();
+            DataRow row = databaseLabelsDataSet4.Tables[0].NewRow();
+
+            //row["Id"] = "1";
+            row["Name"] = queue[0];
+            int answer = 0;
+            int.TryParse(queue[1], out answer);
+            row["qty"] = answer;
+            row["Price"] = queue[2];
+            row["PotSize"] = queue[3];
+            row["Customer"] = queue[4];
+            row["Barcode"] = queue[5];
+            row["Description"] = queue[6];
+            row["CommonName"] = queue[7];
+            row["PictureFile"] = queue[8];
+            row["ColourFont"] = queue[9];
+            row["ColourFontColour"] = queue[10];
+            row["FontBold"] = queue[11];
+            row["FontItalic"] = queue[12];
+            row["ColourBorderColour"] = queue[13];
+            row["ColourBackgroundColour"] = queue[14];
+            row["notes"] = queue[15];
+            row["Genus"] = queue[16];
+            row["Species"] = queue[17];
+            row["Variety"] = queue[18];
+            row["AGM"] = queue[19];
+            row["Picture1"] = queue[20];
+            row["Picture2"] = queue[21];
+            row["Picture3"] = queue[22];
+            row["Picture4"] = queue[23];
+            row["OrderNo"] = queue[24];
+            row["LabelStocks"] = queue[25];
+            row["PlantId"] = queue[26];
+            row["ShipName"] = queue[27];
+            row["ShipFirst"] = queue[28];
+            row["ShipLast"] = queue[29];
+            row["ShipLine1"] = queue[30];
+            row["ShipLine2"] = queue[31];
+            row["ShipCity"] = queue[32];
+            row["ShipState"] = queue[33];
+            row["ShipPostcode"] = queue[34];
+            row["OrderNotes"] = queue[35];
+
+            databaseLabelsDataSet4.TablePassportQueue.Rows.Add(row);
+            dataGridViewPassportQ.EndEdit();
+            try
+            {
+                tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to add to Passport Queue - " + ex);
+            }
+            textBoxPassportCount.Text = addPassportQueueTotal().ToString();
+
+        }
+
 
         private void addRowToColourQ(string[] queue, string which)
         {
@@ -3758,6 +4430,44 @@ namespace LabelMaker
             labelColourCountQ.Text = labelColourCount.Text;
         }
 
+        private void deletePassportQueueLine()
+        {
+            foreach (DataGridViewCell oneCell in dataGridViewPassportQ.SelectedCells)
+            {
+                if (oneCell.Selected)
+                    dataGridViewPassportQ.Rows.RemoveAt(oneCell.RowIndex);
+            }
+            try
+            {
+                tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to delete from Passport Queue - " + ex);
+            }
+            textBoxPassportCount.Text = addPassportQueueTotal().ToString();
+
+        }
+
+        private void deleteAddressQueueLine()
+        {
+            foreach (DataGridViewCell oneCell in dataGridViewAddressQ.SelectedCells)
+            {
+                if (oneCell.Selected)
+                    dataGridViewAddressQ.Rows.RemoveAt(oneCell.RowIndex);
+            }
+            try
+            {
+                tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Failed to delete from Address Queue - " + ex);
+            }
+            textBoxAddressCount.Text = addAddressQueueTotal().ToString();
+ 
+        }
+
         private void deleteMainQueueLine()
         {
             foreach (DataGridViewCell oneCell in dataGridViewMainQ.SelectedCells)
@@ -3779,11 +4489,8 @@ namespace LabelMaker
 
         private void deleteQueue(string which)
         {
-            int whichOnes = 0;
-            if (which == "Both") { whichOnes = whichOnes + 32; }
-            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue") { whichOnes = whichOnes + 16; }
-
-            if (whichOnes == 0 || whichOnes == 32)
+            
+            if (which == "Main Queue" || which == "All")
             {
                 int numRows = databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Count - 1;
 
@@ -3806,7 +4513,7 @@ namespace LabelMaker
                 labelMainCountQ.Text = labelMainCount.Text;
             }
 
-            if (whichOnes != 0)
+            if (which == "Colour Queue" || which == "All")
             {
                 int numRows = databaseLabelsDataSetColourQueue.TableColourQueue.Rows.Count - 1;
 
@@ -3828,6 +4535,52 @@ namespace LabelMaker
                 labelColourCount.Text = addColourQueueTotal().ToString();
                 labelColourCountQ.Text = labelColourCount.Text;
             }
+
+            if (which == "Addresses Queue" || which == "All")
+            {
+                int numRows = databaseLabelsDataSet3.TableAddressQueue.Rows.Count - 1;
+
+                for (int i = 0; i <= numRows; i++)
+                {
+                    //databaseLabelsDataSetAddressesQueue.TableAddressesQueue.Rows.RemoveAt(0);
+                    dataGridViewAddressQ.Rows.RemoveAt(0);
+                }
+                dataGridViewAddressQ.EndEdit();
+                try
+                {
+                    tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+                    //MessageBox.Show("Succeeding in deleting from Addresses Queue");
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to delete from Addresses Queue - " + ex);
+                }
+                textBoxAddressCount.Text = addAddressQueueTotal().ToString();
+                
+            }
+
+            if (which == "Passports Queue" || which == "All")
+            {
+                int numRows = databaseLabelsDataSet4.TablePassportQueue.Rows.Count - 1;
+
+                for (int i = 0; i <= numRows; i++)
+                {
+                    //databaseLabelsDataSetPassportQueue.TablePassportQueue.Rows.RemoveAt(0);
+                    dataGridViewPassportQ.Rows.RemoveAt(0);
+                }
+                dataGridViewPassportQ.EndEdit();
+                try
+                {
+                    tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+                    //MessageBox.Show("Succeeding in deleting from Passport Queue");
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to delete from Passport Queue - " + ex);
+                }
+                textBoxPassportCount.Text = addPassportQueueTotal().ToString();
+                
+            }
         }
 
         private void buttonDeleteQLines_Click(object sender, EventArgs e)
@@ -3842,7 +4595,19 @@ namespace LabelMaker
                 DialogResult result = MessageBox.Show("Do you want to Delete all selected lines from the Colour Queue", "Colour Queue Line Delete", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes) { deleteColourQueueLine(); }
             }
-            else
+            else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
+            {
+                DialogResult result = MessageBox.Show("Do you want to Delete all selected lines from the Address Queue", "Address Queue Line Delete", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                { deleteAddressQueueLine(); }
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
+            {
+                DialogResult result = MessageBox.Show("Do you want to Delete all selected lines from the Passport Queue", "Passport Queue Line Delete", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                { deletePassportQueueLine(); }
+            }
+            else 
             {
                 DialogResult result = MessageBox.Show("Do you want to Delete all selected lines from the Main Queue", "Main Queue Line Delete", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -3854,16 +4619,18 @@ namespace LabelMaker
         {
             string which = "Main Queue";
             if (tabControlQueue.SelectedTab == tabPageColourQueue) { which = "Colour Queue"; }
+            if (tabControlQueue.SelectedTab == tabPageAddresses) { which = "Addresses Queue"; }
+            if (tabControlQueue.SelectedTab == tabPagePassports) { which = "Passports Queue"; }
             DialogResult result = MessageBox.Show("Do you want to Delete all entries from the " + which, "Delete " + which, MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
-            { deleteQueue("Single"); }
+            { deleteQueue(which); }
         }
 
         private void buttonDeleteBothQueues_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to Delete all entries from both Queues", "Delete Both Queues", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Do you want to Delete all entries from All Four Queues", "Delete All Queues", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
-            { deleteQueue("Both"); }
+            { deleteQueue("All"); }
         }
         #endregion
 
@@ -4159,7 +4926,7 @@ namespace LabelMaker
 
         public string[] getDefaultSettings()
         {
-            string[] defaults = new string[21];
+            string[] defaults = new string[33];
 
             defaultsTableAdapter1.Fill(databaseLabelsDataSetDefaults.Defaults);
             DataRow dRow = databaseLabelsDataSetDefaults.Tables["Defaults"].Rows[0];
@@ -4168,7 +4935,7 @@ namespace LabelMaker
                 defaults[i] = dRow.ItemArray[i + 1].ToString().Trim();
             }
             defaults[12] = dRow.ItemArray[0].ToString().Trim();
-            for (int i = 13; i <= 20; i++)
+            for (int i = 13; i <= 32; i++)
             {
                 defaults[i] = dRow.ItemArray[i].ToString().Trim();
             }
@@ -4197,6 +4964,14 @@ namespace LabelMaker
             else if (tabControlQueue.SelectedTab == tabPageColourQueue)
             {
                 comboBoxLabelName.Text = defaults[3];
+            }
+            else if (tabControlQueue.SelectedTab == tabPageAddresses)
+            {
+                comboBoxLabelName.Text = defaults[31];
+            }
+            else if (tabControlQueue.SelectedTab == tabPagePassports)
+            {
+                comboBoxLabelName.Text = defaults[32];
             }
             fillPrinterDetails();
         }
@@ -5862,6 +6637,14 @@ namespace LabelMaker
                 textBoxDefaultsAutoLabel.Text = defaults[11];
                 textBoxAutoLabelFile.Text = defaults[18];
 
+                textBoxAddressSort.Text = defaults[21];
+                textBoxOrderSort.Text = defaults[22];
+                textBoxIncludeCourier.Text = defaults[23];
+                textBoxAddressLabelQty.Text = defaults[24];
+                textBoxProduceAddressLabel.Text = defaults[25];
+                textBoxProducePassportLabel.Text = defaults[26];
+                
+
                 //colours
                 textBoxColourMain.Text = defaults[13];
                 textBoxColourColour.Text = defaults[14];
@@ -5879,11 +6662,27 @@ namespace LabelMaker
                 button1ColourMainText.BackColor = Color.FromName(textBoxColourMainText.Text);
                 buttonColourColourText.BackColor = Color.FromName(textBoxColourColourText.Text);
 
+                textBoxColourAddress.Text = defaults[27];
+                textBoxColourPassport.Text = defaults[29];
+                textBoxColourAddressText.Text = defaults[28];
+                textBoxColourPassportText.Text = defaults[30];
+
+                textBoxDefaultAddressLabel.Text = defaults[31];
+                textBoxDefaultPassportLabel.Text = defaults[32];
+                
+                buttonColourAddress.BackColor = Color.FromName(textBoxColourAddress.Text);
+                buttonColourPassport.BackColor = Color.FromName(textBoxColourPassport.Text);
+                buttonColourAddressText.BackColor = Color.FromName(textBoxColourAddressText.Text);
+                buttonColourPassportText.BackColor = Color.FromName(textBoxColourPassportText.Text);
+                
+
 
                 string getName = "";
                 comboBoxMainLabel.Items.Clear();
                 comboBoxColourLabel.Items.Clear();
                 comboBoxAutoLabel.Items.Clear();
+                comboBoxAddressLabel.Items.Clear();
+                comboBoxPassportLabel.Items.Clear();
                 LabelsLabelNamesTableAdapter.Fill(databaseLabelsDataSetLabelNames.LabelsLabelNames);
 
                 for (int i = 0; i <= (databaseLabelsDataSetLabelNames.Tables["LabelsLabelNames"].Rows.Count - 1); i++)
@@ -5893,6 +6692,8 @@ namespace LabelMaker
                     comboBoxMainLabel.Items.Add(getName);
                     comboBoxColourLabel.Items.Add(getName);
                     comboBoxAutoLabel.Items.Add(getName);
+                    comboBoxAddressLabel.Items.Add(getName);
+                    comboBoxPassportLabel.Items.Add(getName);
                 }
 
                 //fill colours
@@ -6645,9 +7446,23 @@ namespace LabelMaker
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(19, textBoxColourMainText.Text.ToString());
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(20, textBoxColourColourText.Text.ToString());
 
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(27, textBoxColourAddress.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(28, textBoxColourAddressText.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(29, textBoxColourPassport.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(30, textBoxColourPassportText.Text.ToString());
+
             //autolabel file
             databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(18, textBoxAutoLabelFile.Text.ToString());
 
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(21, textBoxAddressSort.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(22, textBoxOrderSort.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(23, textBoxIncludeCourier.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(24, textBoxAddressLabelQty.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(25, textBoxProduceAddressLabel.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(26, textBoxProducePassportLabel.Text.ToString());
+
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(31, textBoxDefaultAddressLabel.Text.ToString());
+            databaseLabelsDataSetDefaults.Defaults.Rows[indexOfRow].SetField(32, textBoxDefaultPassportLabel.Text.ToString());
 
             try
             {
@@ -7908,6 +8723,159 @@ namespace LabelMaker
 
             //set numbers to 1
             setQueueQuantity(1);
+        }
+
+        private void UsingQueues()
+        {
+            string[] message = { "These Tabs hold 4 different Print Queues", "", "Any queue can print any label type, but they are designed in the following way:","",
+                "Add the currently visible plant entry to the visible queue by pressing 'ENTER' whilst","the cursor is in the Price or Quantity box","",
+                "If you are adding to the 'Main' queue, the entry will also add to the 'Colour' queue if","certain rules are met.","","Each queue defaults to a particular label as specified on the defaults Tab,","although this can be overidden at any time",
+            "The 'Address' and 'Passport' Tabs are loaded with limited information when you use 'AutoLabel'","and are designed to print box and passport labels for dispatch."};
+            FormInformation form = new FormInformation("Queues", message, 500, 500);
+            form.Show();
+
+        }
+
+        private void howToUseQueuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsingQueues();
+        }
+
+        private void buttonColourAddress_Click(object sender, EventArgs e)
+        {
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourAddress.Text = comboBoxColours.Text;
+                buttonColourAddress.BackColor = Color.FromName(comboBoxColours.Text);
+                colourQueueTab("no");
+            }
+        }
+
+        private void buttonColourPassport_Click(object sender, EventArgs e)
+        {
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourPassport.Text = comboBoxColours.Text;
+                buttonColourPassport.BackColor = Color.FromName(comboBoxColours.Text);
+                colourQueueTab("no");
+            }
+        }
+
+        private void buttonColourAddressText_Click(object sender, EventArgs e)
+        {
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourAddressText.Text = comboBoxColours.Text;
+                buttonColourAddressText.BackColor = Color.FromName(comboBoxColours.Text);
+                colourQueueTab("no");
+            }
+        }
+
+        private void buttonColourPassportText_Click(object sender, EventArgs e)
+        {
+            if (comboBoxColours.Text != "Choose a Colour")
+            {
+                textBoxColourPassportText.Text = comboBoxColours.Text;
+                buttonColourPassportText.BackColor = Color.FromName(comboBoxColours.Text);
+                colourQueueTab("no");
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (textBoxProducePassportLabel.Text == "False") { textBoxProducePassportLabel.Text = "True"; }
+            else { textBoxProducePassportLabel.Text = "False"; }
+        }
+
+        private void buttonDefaultsInformation_Click(object sender, EventArgs e)
+        {
+            string[] message = { "These are the index numbers for the defaults string:","",
+                    "12. Id","",
+                    "Folder Paths and Files","    0. Picture Folder Path","    1. File Folder Path","   11. Autolabel file name","",
+                    "Default Labels",
+                    "    2. Main Queue Label","    3. Colour Queue Label","   31. Address Label","   32. Passport Label","   18. Alternative Label",
+                    "","Autolabel Defaults",
+                    "   21. Address sort order","   22. Orders sort order","   23. Include Courier oredrs in Address labels","   24. Address Label Quantity",
+                    "   25. Automatically produce Address labels","   26. Automatically produce Passport labels",
+                    "    6. Autolabel - use stated quantities","    7. Autolabel - use modified (batch) quantities",
+                    "    8. Autolabel - produce unlocked orders only","    9. Autolabel - produce all orders regardless of lock","   10. Automatically clean up addresses",
+                    "",
+                "Colours","   13. Main Queue background - (windows colour name)","   19. Main Queue Text - (windows colour name)",
+                    "   14. Colour Queue background - (windows colour name)","   20. Colour Queue Text - (windows colour name)",
+                    "   27. Address Queue background - (windows colour name)","   28. Address Queue Text - (windows colour name)",
+                    "   29. Passport Queue background - (windows colour name)","   30. Passport Queue Text - (windows colour name)",
+                    "","   15. True Button Colour - (windows colour name)","   16. Halfway Button Colour - (windows colour name)","   17. False Button Colour - (windows colour name)"
+            };
+
+                    
+            FormInformation form = new FormInformation("Defaults", message, 500, 750);
+            form.Show();
+        }
+
+        private void comboBoxAddressLabel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxDefaultAddressLabel.Text = comboBoxAddressLabel.Text;
+        }
+
+        private void comboBoxPassportLabel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxDefaultPassportLabel.Text = comboBoxPassportLabel.Text;
+        }
+
+        private void comboBoxAddressSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxAddressSort.Text = comboBoxAddressSort.Text;
+        }
+
+        private void comboBoxOrdersSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxOrderSort.Text = comboBoxOrdersSort.Text;
+        }
+
+        private void buttonIncludeCourierOrders_Click(object sender, EventArgs e)
+        {
+            if (textBoxIncludeCourier.Text == "False") { textBoxIncludeCourier.Text = "True"; }
+            else { textBoxIncludeCourier.Text = "False"; }
+        }
+
+        private void buttonChangeAddressProduce_Click(object sender, EventArgs e)
+        {
+            if (textBoxProduceAddressLabel.Text == "False") { textBoxProduceAddressLabel.Text = "True"; }
+            else { textBoxProduceAddressLabel.Text = "False"; }
+        }
+
+        private void buttonAddressQtyPlus_Click(object sender, EventArgs e)
+        {
+            int Qty = int.Parse(textBoxAddressLabelQty.Text.ToString().Trim());
+            Qty = Qty + 1;
+            textBoxAddressLabelQty.Text = Qty.ToString();
+        }
+
+        private void buttonAddressQtyMinus_Click(object sender, EventArgs e)
+        {
+            int Qty = int.Parse(textBoxAddressLabelQty.Text.ToString().Trim());
+            if (Qty > 1)
+            {
+                Qty = Qty - 1;
+                textBoxAddressLabelQty.Text = Qty.ToString();
+            }
+        }
+
+        private void textBoxQty_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewAddressQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabControlMain.SelectedTab == tabPageQueueUtilities)
+                fillQueueUtilitiesTab();
+        }
+
+        private void dataGridViewPassportQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabControlMain.SelectedTab == tabPageQueueUtilities)
+                fillQueueUtilitiesTab();
         }
     }
 }
