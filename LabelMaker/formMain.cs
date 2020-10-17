@@ -174,12 +174,12 @@ namespace LabelMaker
             else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
             {
                 whichQueue = "Address";
-                howManyLines = dataGridViewMainQ.RowCount - 1;
+                howManyLines = dataGridViewAddressQ.RowCount - 1;
             }
             else if (tabControlQueue.SelectedTab.Name == "tabPagePassport")
             {
                 whichQueue = "Passport";
-                howManyLines = dataGridViewMainQ.RowCount - 1;
+                howManyLines = dataGridViewPassportQ.RowCount - 1;
             }
             else
             {
@@ -2783,45 +2783,153 @@ namespace LabelMaker
 
         private void buttonQtyToSame_Click(object sender, EventArgs e)
         {
-            setQueueQuantity(int.Parse(textBoxQtyToSame.Text.ToString()));
+            setQueueQuantity(int.Parse(textBoxQtyToSame.Text.ToString()),"visible","Main");
         }
-        private void setQueueQuantity(int howMany)
+        private void setQueueQuantity(int howMany,string visibleOrSpecified,string specified)
         { 
             if (( howMany <= 250))
             {
-                if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+                if (visibleOrSpecified == "visible")
                 {
-                    for (int i = 0; i < databaseLabelsDataSetColourQueue.TableColourQueue.Rows.Count; i++)
+                    if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
                     {
-                        databaseLabelsDataSetColourQueue.TableColourQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        for (int i = 0; i < databaseLabelsDataSetColourQueue.TableColourQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSetColourQueue.TableColourQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Colour Queue - " + ex);
+                        }
+                        labelColourCount.Text = addColourQueueTotal().ToString();
+                        labelColourCountQ.Text = labelColourCount.Text;
                     }
-                    try
+                    else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
                     {
-                        tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                        for (int i = 0; i < databaseLabelsDataSet3.TableAddressQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSet3.TableAddressQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Address Queue - " + ex);
+                        }
+                        textBoxAddressCount.Text = addAddressQueueTotal().ToString();
+
                     }
-                    catch (System.Exception ex)
+                    else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
                     {
-                        MessageBox.Show("Failed to update Colour Queue - " + ex);
+                        for (int i = 0; i < databaseLabelsDataSet4.TablePassportQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSet4.TablePassportQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Passport Queue - " + ex);
+                        }
+                        textBoxPassportCount.Text = addPassportQueueTotal().ToString();
+
                     }
-                    labelColourCount.Text = addColourQueueTotal().ToString();
-                    labelColourCountQ.Text = labelColourCount.Text;
+                    else
+                    {
+                        for (int i = 0; i < databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSetMainQueue.TableMainQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Main Queue - " + ex);
+                        }
+                        labelMainCount.Text = addMainQueueTotal().ToString();
+                        labelMainCountQ.Text = labelMainCount.Text;
+                    }
                 }
                 else
                 {
-                    for (int i = 0; i < databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Count; i++)
+                    if (specified == "Colour")
                     {
-                        databaseLabelsDataSetMainQueue.TableMainQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        for (int i = 0; i < databaseLabelsDataSetColourQueue.TableColourQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSetColourQueue.TableColourQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Colour Queue - " + ex);
+                        }
+                        labelColourCount.Text = addColourQueueTotal().ToString();
+                        labelColourCountQ.Text = labelColourCount.Text;
                     }
-                    try
+                    else if (specified == "Address")
                     {
-                        tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                        for (int i = 0; i < databaseLabelsDataSet3.TableAddressQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSet3.TableAddressQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Address Queue - " + ex);
+                        }
+                        textBoxAddressCount.Text = addAddressQueueTotal().ToString();
+
                     }
-                    catch (System.Exception ex)
+                    else if (specified == "Passport")
                     {
-                        MessageBox.Show("Failed to update Main Queue - " + ex);
+                        for (int i = 0; i < databaseLabelsDataSet4.TablePassportQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSet4.TablePassportQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Passport Queue - " + ex);
+                        }
+                        textBoxPassportCount.Text = addPassportQueueTotal().ToString();
+
                     }
-                    labelMainCount.Text = addMainQueueTotal().ToString();
-                    labelMainCountQ.Text = labelMainCount.Text;
+                    else
+                    {
+                        for (int i = 0; i < databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Count; i++)
+                        {
+                            databaseLabelsDataSetMainQueue.TableMainQueue.Rows[i].SetField(2, textBoxQtyToSame.Text.ToString());
+                        }
+                        try
+                        {
+                            tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            MessageBox.Show("Failed to update Main Queue - " + ex);
+                        }
+                        labelMainCount.Text = addMainQueueTotal().ToString();
+                        labelMainCountQ.Text = labelMainCount.Text;
+                    }
                 }
             }
             else
@@ -4005,32 +4113,62 @@ namespace LabelMaker
         private void addToQueues(string which)
         {
             string[] queue = CollectQueueEntry();
-            doTheAdding(queue,which);
+            doTheAdding(queue,which,"visible","");
         }
 
-        private void doTheAdding(string[] queue, string which)
+        private void doTheAdding(string[] queue, string which, string visibleOrSpecified,string specified)
         {
-            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+            if (visibleOrSpecified == "visible")
             {
-                addRowToColourQ(queue, which);
-            }
-            else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
-            {
-                addRowToAddressQ(queue, which);
-            }
-            else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
-            {
-                addRowToPassportQ(queue, which);
+                if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+                {
+                    addRowToColourQ(queue, which);
+                }
+                else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
+                {
+                    addRowToAddressQ(queue, which);
+                }
+                else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
+                {
+                    addRowToPassportQ(queue, which);
+                }
+                else
+                {
+                    addRowToMainQ(queue);
+                    //if (buttonAddtoColourQueue.Text == "add Colour")
+                    if (queue[36] == "add Colour")
+                    {
+                        if (checkBoxColourAdd.Checked == true)
+                        {
+                            addRowToColourQ(queue, which);
+                        }
+                    }
+                }
             }
             else
             {
-                addRowToMainQ(queue);
-                //if (buttonAddtoColourQueue.Text == "add Colour")
-                if (queue[36] == "add Colour")
+                if (specified == "Colour")
+                {
+                    addRowToColourQ(queue, which);
+                }
+                else if (specified == "Address")
+                {
+                    addRowToAddressQ(queue, which);
+                }
+                else if (specified == "Passport")
+                {
+                    addRowToPassportQ(queue, which);
+                }
+                else
+                {
+                    addRowToMainQ(queue);
+                    //if (buttonAddtoColourQueue.Text == "add Colour")
+                    if (queue[36] == "add Colour")
                     {
-                    if (checkBoxColourAdd.Checked == true)
-                    {
-                        addRowToColourQ(queue, which);
+                        if (checkBoxColourAdd.Checked == true)
+                        {
+                            addRowToColourQ(queue, which);
+                        }
                     }
                 }
             }
@@ -4409,6 +4547,8 @@ namespace LabelMaker
                 fillQueueUtilitiesTab();
         }
 
+                
+        
         #region Delete Buttons
 
         private void deleteColourQueueLine()
@@ -5712,6 +5852,12 @@ namespace LabelMaker
             listBoxAutoErrors.Items.Clear();
             pictureBoxArrow.Visible = false;
             findAutoCustomer();
+            //Create Address Queue
+            createAddressList("specified", "Address");
+
+            //Create Passport Queue
+            createPassportList("specified", "Passport");
+
             //reset customer to prevent confusion with next manual entry
             textBoxCustomerName.Text = "";
             textBoxOrderNumber.Text = "";
@@ -5963,7 +6109,7 @@ namespace LabelMaker
                         sendAddress[0] =  "To: "+ sendAddress[1].Trim()+ " " + sendAddress[2].Trim();
 
                         string[] queue = CollectAutoQueueEntry(sendAutoRow, sendQty, sendCustomer, sendOrderNumber, sendAddress);
-                        doTheAdding(queue, "autolabel");
+                        doTheAdding(queue, "autolabel","visible","Main");
                     }
                     catch (Exception ex)
                     {
@@ -7029,21 +7175,23 @@ namespace LabelMaker
 
         private void button1_Click_5(object sender, EventArgs e)
         {
-            if (checkBoxCorrectAddress.Checked) { cleanAddresses(); }
+            
             //sort by customer
             //sortAuto("Customer");
-            colourAutoDataGrid();
-            fillAutoListBox();
-            checkSKUs();
+            //colourAutoDataGrid();
+            //fillAutoListBox();
+            //checkSKUs();
 
-            createAddressList();
+            createAddressList("visible","Address");
 
             //set numbers to 1
-            setQueueQuantity(1);
+            
         }
 
-        private void createAddressList()
+        private void createAddressList(string visibleOrSpecified, string specified)
         {
+
+            if (checkBoxCorrectAddress.Checked) { cleanAddresses(); }
             Boolean includeDPD = true; //default
             DialogResult result = MessageBox.Show( "Do you want include courier orders as well as Post Office","Courier orders", MessageBoxButtons.YesNo);
             if (result == DialogResult.No) { includeDPD = false; }
@@ -7159,17 +7307,17 @@ namespace LabelMaker
                             queueData[35] = dataGridViewAuto.Rows[j].Cells[18].Value.ToString().Trim();
                             queueData[36] = "No Colour";
 
-                            doTheAdding(queueData, "AutoLabel");
+                            doTheAdding(queueData, "AutoLabel",visibleOrSpecified,specified);
 
                             break;
                         }
                     }
                 }
             }
-
+            setQueueQuantity(1, visibleOrSpecified, specified);
         }
 
-        private void createPassportList()
+        private void createPassportList(string visibleOrSpecified, string specified)
         {
             // count customers
             string customer = "";
@@ -7236,8 +7384,7 @@ namespace LabelMaker
                 }
 
                 
-                //MessageBox.Show(customer.Trim() + " plants - " + plantCount.ToString() + " , count - "+count.ToString());
-            }
+                }
 
             //make the queue
 
@@ -7309,13 +7456,16 @@ namespace LabelMaker
                             queueData[35] = dataGridViewAuto.Rows[j].Cells[18].Value.ToString().Trim();
                             queueData[36] = "No Colour";
 
-                            doTheAdding(queueData, "AutoLabel");
+                            //add passport
+                            doTheAdding(queueData, "AutoLabel", visibleOrSpecified, specified);
 
                             break;
                         }
                     }
                 }
             }
+            //set numbers to 1
+            setQueueQuantity(1, visibleOrSpecified, specified);
 
         }
 
@@ -8719,10 +8869,9 @@ namespace LabelMaker
             //sort by customer
             //sortAuto("Customer");
             
-            createPassportList();
+            createPassportList("visible","Main");
 
-            //set numbers to 1
-            setQueueQuantity(1);
+            
         }
 
         private void UsingQueues()
@@ -8861,10 +9010,7 @@ namespace LabelMaker
             }
         }
 
-        private void textBoxQty_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void dataGridViewAddressQ_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -8877,6 +9023,8 @@ namespace LabelMaker
             if (tabControlMain.SelectedTab == tabPageQueueUtilities)
                 fillQueueUtilitiesTab();
         }
+
+        
     }
 }
     
