@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 using System.Drawing.Printing;
 
 namespace LabelMaker
@@ -52,6 +53,11 @@ namespace LabelMaker
         public void CreateLabel(string[] queueData, string[] labelData, string[] defaultsString, int contentWidth, int contentHeight,int marginX, int placementX,int marginY, int placementY, Graphics formGraphics)
         {
 
+            // count how long each label takes
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+
             //DISCOVER LABEL PARAMETERS
             //find name and split into fields
             string labelName = labelData[2];
@@ -77,11 +83,20 @@ namespace LabelMaker
                 }
             }
 
+            
+            
+
             //MAIN ROUTINE FOR ADDING LABEL FIELDS ONE BY ONE
 
             //iterate through fields
             for (int i = 0; i < fields; i++)
             {
+                // *** JUMP TO A THREAD HERE SO THAT EACH FIELD CAN BE CREATED IN PARALLEL??  
+
+                //WOULD NEED TO PUT PAINT ROUTINES IN AS WELL. 
+
+                //MAY NEED TO WAIT IF THE ORDER IS IMPORTANT *** //
+
                 int jump = dataInputs;
                 int start = 2 + (jump * i);
 
@@ -224,13 +239,14 @@ namespace LabelMaker
                     case "image":
 
                         string pictureString = "";
+
                         if (isProfile.Value)
                         {
-                            pictureString = (defaultsString[0] + queueData[listboxNo]);
+                            pictureString = (defaultsString[0] + queueData[listboxNo].Trim());
                         }
                         else
                         {
-                            pictureString = (defaultsString[1] + fixedValueString);
+                            pictureString = (defaultsString[0] + fixedValueString.Trim());
                         }
                         pictureString = pictureString.Trim();
                         PaintImage(formGraphics, xPosd, yPosd, xSized, ySized, pictureString);
@@ -240,6 +256,9 @@ namespace LabelMaker
                         break;
                 }
             }
+
+            sw.Stop();
+            Console.WriteLine("Elapsed {0}" + " for " + queueData[0]+ " label creation", sw.Elapsed.ToString("ss\\.fff"));
         }
 
         
@@ -536,6 +555,7 @@ namespace LabelMaker
             }
             catch (IOException)
             {
+                Console.WriteLine("PaintImage - Failed to Find {0}", imageFile);
             }
 
 

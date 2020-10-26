@@ -23,8 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -66,6 +66,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -100,6 +101,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSet21.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseLabelsDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseLabelsDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseLabelsDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseLabelsDataSetAddClean.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +131,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseLabelsDataSetColourQueue.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLabelsDataSetDefaults.cs">
+      <DependentUpon>DatabaseLabelsDataSetDefaults.xsd</DependentUpon>
     </Compile>
     <Compile Include="DatabaseLabelsDataSetDefaults.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -206,6 +220,28 @@
     </None>
     <None Include="DatabaseLabelsDataSet21.xss">
       <DependentUpon>DatabaseLabelsDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSet3.xsc">
+      <DependentUpon>DatabaseLabelsDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseLabelsDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseLabelsDataSet3.xss">
+      <DependentUpon>DatabaseLabelsDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSet4.xsc">
+      <DependentUpon>DatabaseLabelsDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseLabelsDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseLabelsDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseLabelsDataSet4.xss">
+      <DependentUpon>DatabaseLabelsDataSet4.xsd</DependentUpon>
     </None>
     <None Include="DatabaseLabelsDataSetAddClean.xsc">
       <DependentUpon>DatabaseLabelsDataSetAddClean.xsd</DependentUpon>
@@ -302,6 +338,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

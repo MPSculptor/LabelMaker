@@ -30,6 +30,9 @@ namespace LabelMaker
         {
                  }
 
-        
+        private void richTextBoxInformation_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

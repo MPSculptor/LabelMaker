@@ -40,10 +40,11 @@
             this.richTextBoxInformation.Size = new System.Drawing.Size(226, 226);
             this.richTextBoxInformation.TabIndex = 0;
             this.richTextBoxInformation.Text = "";
+            this.richTextBoxInformation.TextChanged += new System.EventHandler(this.richTextBoxInformation_TextChanged);
             // 
             // FormInformation
             // 
-            this.ClientSize = new System.Drawing.Size(250, 250);
+            this.ClientSize = new System.Drawing.Size(489, 250);
             this.Controls.Add(this.richTextBoxInformation);
             this.Name = "FormInformation";
             this.ResumeLayout(false);
