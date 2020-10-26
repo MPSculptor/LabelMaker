@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace LabelMaker
 {
@@ -176,7 +177,7 @@ namespace LabelMaker
                 whichQueue = "Address";
                 howManyLines = dataGridViewAddressQ.RowCount - 1;
             }
-            else if (tabControlQueue.SelectedTab.Name == "tabPagePassport")
+            else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
             {
                 whichQueue = "Passport";
                 howManyLines = dataGridViewPassportQ.RowCount - 1;
@@ -1741,6 +1742,8 @@ namespace LabelMaker
             labelMainCountQ.Text = labelMainCount.Text;
             labelColourCount.Text = addColourQueueTotal().ToString();
             labelColourCountQ.Text = labelColourCount.Text;
+            textBoxAddressCount.Text = addAddressQueueTotal().ToString();
+            textBoxPassportCount.Text = addPassportQueueTotal().ToString();
         }
 
         private int addColourQueueTotal()
@@ -2994,11 +2997,11 @@ namespace LabelMaker
                     {
                         TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
                         string changeText = curText.Text.ToString().Trim();
-                        //MessageBox.Show("i = " + i.ToString() + " . " + databaseLabelsDataSetMainQueue.TableMainQueue.Rows[indexOfRow]);
                         //messing about to align database and textboxes
                             j = i;
                             if (i == 26) { j = 36; }
                             if (i > 26) { j = i - 1; }
+                        //MessageBox.Show("i = " + i.ToString() + " . " + changeText + " . " + j.ToString());
                         databaseLabelsDataSetMainQueue.TableMainQueue.Rows[indexOfRow].SetField(j, changeText);
                     }
 
@@ -3012,7 +3015,61 @@ namespace LabelMaker
                     }
 
                     labelMainCount.Text = addMainQueueTotal().ToString(); //updates a quantity count on screen
-                    labelMainCount.Text = labelMainCount.Text;
+                    labelMainCountQ.Text = labelMainCount.Text;
+                }
+                else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPageAddresses")
+                {
+                    int j = 0; // to take into account rows not lining up with boxes as they should
+                    for (int i = 1; i <= 34; i++) //move through textboxes and update appropriate column
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        string changeText = curText.Text.ToString().Trim();
+                        
+                        //messing about to align database and textboxes
+                        j = i;
+                        //if (i == 26) { j = 36; }
+                        //if (i > 26) { j = i - 1; }
+                        //MessageBox.Show("i = " + i.ToString() + " . " + changeText + " . " + j.ToString());
+                        databaseLabelsDataSet3.TableAddressQueue.Rows[indexOfRow].SetField(j, changeText);
+                    }
+
+                    try
+                    {
+                        tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to update to Address Queue - " + ex);
+                    }
+
+                    textBoxAddressCount.Text = addAddressQueueTotal().ToString(); //updates a quantity count on screen
+                }
+                else if (tabControlQueue.SelectedTab.Name.ToString() == "tabPagePassports")
+                {
+                    int j = 0; // to take into account rows not lining up with boxes as they should
+                    for (int i = 1; i <= 34; i++) //move through textboxes and update appropriate column
+                    {
+                        TextBox curText = (TextBox)panelQueueUtilities.Controls["textBoxQ" + i.ToString()];
+                        string changeText = curText.Text.ToString().Trim();
+                        //MessageBox.Show("i = " + i.ToString() + " . " + databaseLabelsDataSetPassportQueue.TablePassportQueue.Rows[indexOfRow]);
+                        //messing about to align database and textboxes
+                        j = i;
+                        //if (i == 26) { j = 36; }
+                        //if (i > 26) { j = i - 1; }
+                        //MessageBox.Show("i = " + i.ToString() + " . " + changeText + " . " + j.ToString());
+                        databaseLabelsDataSet4.TablePassportQueue.Rows[indexOfRow].SetField(j, changeText);
+                    }
+
+                    try
+                    {
+                        tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show("Failed to update to Passport Queue - " + ex);
+                    }
+
+                    textBoxPassportCount.Text = addPassportQueueTotal().ToString(); //updates a quantity count on screen
                 }
                 else
                 {
@@ -5570,24 +5627,24 @@ namespace LabelMaker
         private void rubbish()
         {
             //get rid of this if all works
-            for (int i = 0; i <= listBoxAuto.Items.Count - 2; i++)
-            {
-                for (int j = i + 1; j <= listBoxAuto.Items.Count - 1; j++)
-                {
-                    string one = listBoxAuto.Items[i].ToString();
-                    one = one.SubstringSpecial(2, one.Length - 1);
-                    string two = listBoxAuto.Items[j].ToString();
-                    two = two.SubstringSpecial(2, two.Length - 1);
-                    int result = String.Compare(one, two);
-                    if (result >= 0)
-                    {
-                        string swap = listBoxAuto.Items[i].ToString();
-                        listBoxAuto.Items[i] = listBoxAuto.Items[j].ToString();
-                        listBoxAuto.Items[j] = swap;
-                    }
+            //for (int i = 0; i <= listBoxAuto.Items.Count - 2; i++)
+            //{
+            //    for (int j = i + 1; j <= listBoxAuto.Items.Count - 1; j++)
+            //    {
+            //        string one = listBoxAuto.Items[i].ToString();
+              //      one = one.SubstringSpecial(2, one.Length - 1);
+                //    string two = listBoxAuto.Items[j].ToString();
+                  //  two = two.SubstringSpecial(2, two.Length - 1);
+                    //int result = String.Compare(one, two);
+                    //if (result >= 0)
+                    //{
+                    //    string swap = listBoxAuto.Items[i].ToString();
+                    //    listBoxAuto.Items[i] = listBoxAuto.Items[j].ToString();
+                    //    listBoxAuto.Items[j] = swap;
+                    //}
 
-                }
-            }
+                //}
+            //}
 
             
         }
@@ -6341,8 +6398,6 @@ namespace LabelMaker
             }
         }
 
-       
-
         private void quickPrint(int qty, string labelName)
         {
             //Print one label without reference to the queue for speed
@@ -6466,6 +6521,8 @@ namespace LabelMaker
             }
         }
 
+        #region QuickPrint Buttons
+
         private void buttonQP1_Click(object sender, EventArgs e)
         {
             quickPrint(int.Parse(textBoxQP1.Text.ToString()), groupBoxQP1.Text.ToString());
@@ -6511,7 +6568,8 @@ namespace LabelMaker
             quickPrint(int.Parse(textBoxQP9.Text.ToString()), groupBoxQP9.Text.ToString());
         }
 
-        
+#endregion
+
 
         private string getPicture( string initialFile)
         {
@@ -7315,6 +7373,10 @@ namespace LabelMaker
                 }
             }
             setQueueQuantity(1, visibleOrSpecified, specified);
+            string[] defaults = getDefaultSettings();
+            if (defaults[21] == "Customer") { dataGridViewAddressQ.Sort(dataGridViewAddressQ.Columns[3], ListSortDirection.Ascending); }
+            else if (defaults[21] == "Plant") { dataGridViewAddressQ.Sort(dataGridViewAddressQ.Columns[16], ListSortDirection.Ascending); }
+            else { dataGridViewAddressQ.Sort(dataGridViewAddressQ.Columns[24], ListSortDirection.Ascending); }
         }
 
         private void createPassportList(string visibleOrSpecified, string specified)
@@ -7466,6 +7528,10 @@ namespace LabelMaker
             }
             //set numbers to 1
             setQueueQuantity(1, visibleOrSpecified, specified);
+            string[] defaults = getDefaultSettings();
+            if (defaults[21] == "Customer") { dataGridViewPassportQ.Sort(dataGridViewPassportQ.Columns[3], ListSortDirection.Ascending); }
+            else if (defaults[21] == "Plant") { dataGridViewPassportQ.Sort(dataGridViewPassportQ.Columns[16], ListSortDirection.Ascending); }
+            else { dataGridViewPassportQ.Sort(dataGridViewPassportQ.Columns[24], ListSortDirection.Ascending); }
 
         }
 
