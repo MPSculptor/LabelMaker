@@ -15,9 +15,14 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.ComponentModel;
+using System.Threading;
 
 namespace LabelMaker
 {
+
+
+
+
     public partial class formMain : Form
     {
         public formMain()
@@ -27,6 +32,7 @@ namespace LabelMaker
             //  ******* IMPORTANT *********
             // Before completion search    //needs amending    to find temporary bits that need fixing or correcting
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -159,36 +165,9 @@ namespace LabelMaker
         }
 
         private void doThePrinting(string whichCombo)
-        {
-            string[] message = { "Printing has started", "", "Please wait while labels render"};
-            FormInformation form = new FormInformation("Labels are Printing", message, 250, 150);
-            form.Show();
 
-            // Determine the Queue and no. entries
-            int howManyLines = 0;
-            string whichQueue = "";
-            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
-            {
-                whichQueue = "Colour";
-                howManyLines = dataGridViewColourQ.RowCount - 1;
-            }
-            else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
-            {
-                whichQueue = "Address";
-                howManyLines = dataGridViewAddressQ.RowCount - 1;
-            }
-            else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
-            {
-                whichQueue = "Passport";
-                howManyLines = dataGridViewPassportQ.RowCount - 1;
-            }
-            else
-            {
-                whichQueue = "Main";
-                howManyLines = dataGridViewMainQ.RowCount - 1;
-            }
+        {   // Start by determining which type of label to print
 
-            
             string[] defaultsString = getDefaultSettings();
 
             string name = "";
@@ -204,15 +183,182 @@ namespace LabelMaker
             }
             string[] labelData = returnLabelData(name);
             string[] labelHeader = returnLabelHeaderData(name);
-            string[] printerDetails = new string[2];
+            string[] printerDetails = new string[8];
             printerDetails[0] = labelHeader[12];
             printerDetails[1] = labelHeader[13];
 
-            if (labelHeader[2] == "Text") { printAsText(labelData, whichQueue, howManyLines, defaultsString, printerDetails); }
-            else { printAsColour(labelData, whichQueue, howManyLines, defaultsString, printerDetails); }
+            string whichQueue = "Main";
+            int totalLabels = 0;
+            int queueCount = 0; // ### May need to reduce by 1 before sending to printing ###
+                                // Determine the Queue and no. entries
+                        
+            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+            {
+                totalLabels = addColourQueueTotal();
+                queueCount = dataGridViewColourQ.RowCount-1;
+                whichQueue = "Colour";
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPageMainQueue")
+            {
+                totalLabels = addMainQueueTotal();
+                queueCount = dataGridViewMainQ.RowCount-1;
+                whichQueue = "Main ";
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
+            {
+                totalLabels = addAddressQueueTotal();
+                queueCount = dataGridViewAddressQ.RowCount-1;
+                whichQueue = "Address";
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
+            {
+                totalLabels = addPassportQueueTotal();
+                queueCount = dataGridViewPassportQ.RowCount-1;
+                whichQueue = "Passport";
+            }
+            int howManyLines = queueCount - 1; //howManyLines = top line no for queue
 
-            form.Dispose();
+            //Work out some sheet info here as outside scope of if and therefore passable
+            float labelsPerSheet = (float)(int.Parse(labelHeader[3]) * int.Parse(labelHeader[4]));
+            bool oddNumberOfLabels = true;
+            float numberOfSheetsF = (float)totalLabels / (float)labelsPerSheet;
+            int numberOfSheetsI = (int)numberOfSheetsF;
+            if (numberOfSheetsF == numberOfSheetsI) { oddNumberOfLabels = false; } //find out if labels fit
+            DialogResult printOnlyFitting = DialogResult.Yes;
+
+            if (labelHeader[2] == "Picture") //Just for multi label sheets
+            {                 
+                //Get total number of labels to print. Decide if a whole number and if start and stop position
+                //Work out number of labels sheets this needs
+                
+                if (oddNumberOfLabels) { printOnlyFitting = MessageBox.Show("Do you want to print just the labels that fit on a whole number of sheets", "Whole sheets only ?", MessageBoxButtons.YesNo); }
+                if (printOnlyFitting == DialogResult.No) { numberOfSheetsI++; } // if printing odd labels, allow one more loop to do it 
+
+            }
+            int qty = 0;
+            string allOrQty = "All";
+            if (labelHeader[2] == "Picture")
+            {
+                qty = numberOfSheetsI * (int)labelsPerSheet;
+                if (printOnlyFitting == DialogResult.No)
+                {
+                    allOrQty = "Qty";
+                    qty = numberOfSheetsI * (int)labelsPerSheet;
+                }
+            }
+                string[] message = { "Labels are Printing", "Printing has started", "", "Collecting Queue Data","", "Using Queue - "+whichQueue,"Whole Queue or set quantity = "+allOrQty, "Queue Count = "+queueCount.ToString() + " lines" };
+                Thread formShow = new Thread(() => showMessageFormWithDispose(message) );
+                formShow.Start();
+
+            string [,] wholeQueue = collectTheQueue(whichQueue, allOrQty, queueCount, qty);
+
+            
+            //Prduce Print Dialog Box
+            printerDetails[2] =  "NoPrint";
+
+                        #region pDialog to authorise print
+
+            PrintDialog pDialog = new PrintDialog();
+            //pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
+            pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
+            pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[0];
+            string paperSourceName = printerDetails[0];
+            
+            //set right paper tray
+            string[] sources = new string[20];
+
+            PaperSource pkSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+            PaperSource pkFoundSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+
+            for (int q = 0; q < pDialog.PrinterSettings.PaperSources.Count; q++)
+            {
+                pkSource = pDialog.PrinterSettings.PaperSources[q];
+                sources[q] = pkSource.SourceName;
+                if (pkSource.SourceName == listBoxPrinter.Items[15].ToString().TrimEnd()) { pkFoundSource = pkSource; }
+            }
+            pDialog.Document.DefaultPageSettings.PaperSource = pkFoundSource;
+
+            pDialog.PrinterSettings.PrinterName = printerDetails[0];
+            pDialog.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
+
+
+            printerDetails[3] = pDialog.PrinterSettings.PrinterName;
+            printerDetails[4] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString();
+            printerDetails[5] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString();
+            printerDetails[6] = pDialog.PrinterSettings.DefaultPageSettings.HardMarginX.ToString();
+            printerDetails[7] = pDialog.PrinterSettings.DefaultPageSettings.HardMarginY.ToString();
+            PaperSource paperSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+
+
+            int labelCount = 0;
+            for(int i = 0; i < ((int)(wholeQueue.Length) / 36); i++){ labelCount = labelCount + int.Parse(wholeQueue[i, 1]); }
+
+            //Set up all the required data needed to print
+            printDefaults printVariables = new printDefaults();
+            printVariables.labelData = labelData;
+            printVariables.whichQueue = whichQueue;
+            printVariables.howManyLines = howManyLines;
+            printVariables.defaultsString = defaultsString;
+            printVariables.printerDetails = printerDetails;
+            printVariables.paperSource = paperSource;
+            printVariables.wholeQueue = wholeQueue;
+            printVariables.labelCount = labelCount;
+
+            //DialogResult msg = MessageBox.Show(printVariables.howManyLines.ToString());
+
+            #endregion
+
+            if (DialogResult.OK == pDialog.ShowDialog())
+            {
+                printerDetails[2] = "Print";
+            }
+
+            if (printerDetails[2] == "Print")
+            {
+                if (labelHeader[2] == "Text")
+                {
+                    Thread textPrint = new Thread(() => printAsText(printVariables));    // Kick off a new thread
+                    textPrint.Start();
+                }
+                else
+                {
+                    Thread colourPrint = new Thread(() => printAsColour(printVariables));
+                    colourPrint.Start();
+                }
+
+                //Delete Queue
+                if (checkBoxQueueDelete.Checked)
+                {
+                    //Delete Whole Queue if printing all
+                    if (allOrQty =="All")
+                    {
+                        if (tabControlQueue.SelectedTab == tabPageMainQueue) { deleteQueue("Main Queue"); }
+                        else if (tabControlQueue.SelectedTab == tabPageColourQueue) { deleteQueue("Colour Queue"); }
+                        else if (tabControlQueue.SelectedTab == tabPageAddresses) { deleteQueue("Addresses Queue"); }
+                        else if (tabControlQueue.SelectedTab == tabPagePassports) { deleteQueue("Passports Queue"); }
+                    }
+                    //Delete Partial Queue if printing just labels that fit
+                }
+
+            }
+
+            
+                
+            }
+
+        private string[,] collectTheQueue(string whichQueue, string allOrQty , int howManyLines, int qty)
+        {
+            string[,] wholeQueue = new string[howManyLines,36];
+
+            for (int i = 0; i < howManyLines; i++)
+            {
+                string[] queueData = collectQueueRow(i, whichQueue);
+                for (int j=0; j <= 35; j++) { wholeQueue[i, j] = queueData[j]; }
+            }
+
+            return wholeQueue;
         }
+         
 
         private void DrawImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight,int marginX, int placementX,int marginY, int placementY, object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -222,7 +368,148 @@ namespace LabelMaker
             printWhere.Dispose();
         }
 
-        private void printAsText(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString, string[] printerDetails)
+        
+
+        private void printAsText( printDefaults printVariables)
+        {
+            //Print one label at a time using multiple copies for speed
+            int rowsToPrint = printVariables.howManyLines+1;
+            string[] queueData = new string[36];
+            for (int i = 0; i < rowsToPrint; i++)
+                {
+                for (int h = 0; h <= 35; h++) { queueData[h] = printVariables.wholeQueue[i, h]; }
+
+                    PrintDocument pd = new PrintDocument();
+                    pd.PrinterSettings.PrinterName = printVariables.printerDetails[3];
+                    if (listBoxPrinter.Items[4].ToString() == "Landscape")
+                    {
+                        pd.DefaultPageSettings.Landscape = true;
+                    }
+                    else
+                    {
+                        pd.DefaultPageSettings.Landscape = false;
+                    }
+
+                    int sentWidth = int.Parse(printVariables.printerDetails[4]);
+                    int sentHeight = int.Parse(printVariables.printerDetails[5]);
+                    int marginX = int.Parse(printVariables.printerDetails[6]) ;
+                    int marginY = int.Parse(printVariables.printerDetails[7]);
+                    int placementX = 0;
+                    int placementY = 0;
+
+
+                    pd.PrintPage += (sender1, args) => DrawImage(queueData, printVariables.labelData, printVariables.defaultsString, sentWidth, sentHeight,marginX, placementX,marginY, placementY, sender1, args);
+                    pd.PrinterSettings.Copies = short.Parse(queueData[1]);
+                    
+                    pd.Print();
+                    pd.Dispose();
+
+                }
+        }
+
+        private void printAsColour(  printDefaults printerVariables)
+        {
+            //Print multiple labels on one sheet. 
+
+                //Collect overall data
+                int countX = 0; //label x position
+                int countY = 0; //label y position
+                int labelsAcross = int.Parse(listBoxPrinter.Items[2].ToString());
+                int labelsDown = int.Parse(listBoxPrinter.Items[3].ToString()) ;
+                int labelsPerSheet = labelsAcross * labelsDown;
+                int totalLabels = printerVariables.labelCount;
+                int queueCount = printerVariables.howManyLines;
+                int howManyPrinted = 0;
+
+            //collect which labels are represented by which queue entry
+            int[] queuePositions = new int[totalLabels];
+            int queuePositionCounter = 0;
+            int queueQty = 1;
+            for (int j = 0; j <= queueCount; j++)
+            {
+                queueQty = int.Parse(printerVariables.wholeQueue[j,1].Trim());
+                    for (int k = 1; k <= queueQty; k++)
+                    {
+                        queuePositions[queuePositionCounter] = j;
+                        queuePositionCounter++;
+                    }
+                
+            }
+
+            //loop through number of iterations
+            int numberOfSheetsI = (int)(totalLabels / labelsPerSheet)+1;
+            queuePositionCounter = 0;
+
+                for (int i = 1; i <= numberOfSheetsI; i++)
+
+                { 
+                    countX = 0;
+                    countY = 0;
+                    PrintDocument pd = new PrintDocument();
+
+                    pd.PrinterSettings.PrinterName =  printerVariables.printerDetails[3];
+                    pd.DefaultPageSettings.PaperSource = printerVariables.paperSource;
+
+                    
+                    if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
+                    {
+                        pd.DefaultPageSettings.Landscape = true;
+                    }
+                    else
+                    {
+                        pd.DefaultPageSettings.Landscape = false;
+                    }
+                
+
+                    // put label on the sheet
+                    for (int j = 1; j <= labelsPerSheet; j++)
+                    {
+                    string[] queueData = new string[36];
+                    for (int h = 0; h <= 35; h++) { queueData[h] = printerVariables.wholeQueue[queuePositions[queuePositionCounter], h]; }
+                    //string[] queueData = collectQueueRow(queuePositions[queuePositionCounter], whichQueue);
+
+                        int sentWidth = int.Parse(printerVariables.printerDetails[4]);
+                        int sentHeight = int.Parse(printerVariables.printerDetails[5]);
+                        int marginX = int.Parse(printerVariables.printerDetails[6]);
+                        int marginY = int.Parse(printerVariables.printerDetails[7]);
+
+                    if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
+                        {
+                            int swap = sentWidth;
+                            sentWidth = sentHeight;
+                            sentHeight = swap;
+                        }
+
+                        sentWidth = sentWidth / labelsAcross;
+                        sentHeight = sentHeight / labelsDown;
+
+                        int XPosition = sentWidth * countX;
+                        int YPosition = sentHeight * countY;
+                        
+                        pd.PrintPage += (sender1, args) => DrawImage(queueData, printerVariables.labelData, printerVariables.defaultsString, sentWidth, sentHeight, marginX, XPosition, marginY,YPosition, sender1, args);
+
+                        howManyPrinted++;
+                        countX++;
+                        if (countX==labelsAcross) { countX = 0; countY++; }
+                        if (countY == labelsDown) { countX = 0; countY = 0; }
+                        queuePositionCounter++;
+                        if (queuePositionCounter == totalLabels) { break ; }
+
+                        
+                    }
+
+                    //send to print document
+                    pd.Print();
+                    pd.Dispose();
+                    
+                }
+
+        }
+
+        #region  ###  OLD PRINTING CODE FOR DELETION IF THREADING WORKS ####
+
+        private void OLDPRINTCODEprintAsText(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString, string[] printerDetails)
+        // ### delete when printing swapped ###
         {
             //Print one label at a time using multiple copies for speed
 
@@ -257,13 +544,13 @@ namespace LabelMaker
 
                     int sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
                     int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
-                    int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX ;
+                    int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
                     int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
                     int placementX = 0;
                     int placementY = 0;
 
 
-                    pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight,marginX, placementX,marginY, placementY, sender1, args);
+                    pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, sender1, args);
                     pd.PrinterSettings.Copies = short.Parse(queueData[1]);
                     //About a quarter
                     Console.WriteLine("Elapsed up until Print ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.ffff"));
@@ -354,23 +641,24 @@ namespace LabelMaker
                         }
                     }
                 }
-                
+
                 pDialog.Dispose();
-                
+
             }
         }
 
-        private void printAsColour(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString, string[] printerDetails)
+        private void OLDPRINTCODEprintAsColour(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString, string[] printerDetails)
+        // ### delete when printing swapped ###
         {
-            //Print multiple labels on one sheet. 
+        //Print multiple labels on one sheet. 
 
-            PrintDialog pDialog = new PrintDialog();
+        PrintDialog pDialog = new PrintDialog();
             pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
             pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
             pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[0];
             string paperSourceName = printerDetails[0];
-            
-        
+
+
             //set right paper tray
             string[] sources = new string[20];
 
@@ -392,18 +680,20 @@ namespace LabelMaker
                 int countX = 0; //label x position
                 int countY = 0; //label y position
                 int labelsAcross = int.Parse(listBoxPrinter.Items[2].ToString());
-                int labelsDown = int.Parse(listBoxPrinter.Items[3].ToString()) ;
+                int labelsDown = int.Parse(listBoxPrinter.Items[3].ToString());
                 int labelsPerSheet = labelsAcross * labelsDown;
                 int totalLabels = 0;
                 int queueCount = 0;
                 int howManyPrinted = 0;
 
                 //Get total number of labels to print. Decide if a whole number and if start and stop position
-                if (whichQueue == "Colour") {
+                if (whichQueue == "Colour")
+                {
                     totalLabels = addColourQueueTotal();
                     queueCount = dataGridViewColourQ.RowCount;
                 }
-                else {
+                else
+                {
                     totalLabels = addMainQueueTotal();
                     queueCount = dataGridViewMainQ.RowCount;
                 }
@@ -414,14 +704,14 @@ namespace LabelMaker
                 int numberOfSheetsI = (int)numberOfSheetsF;
                 if (numberOfSheetsF == numberOfSheetsI) { oddNumberOfLabels = false; } //find out if labels fit
                 DialogResult printOnlyFitting = DialogResult.Yes;
-                if (oddNumberOfLabels) {  printOnlyFitting = MessageBox.Show("Do you want to print just the labels that fit on a whole number of sheets", "Whole sheets only ?", MessageBoxButtons.YesNo); }
+                if (oddNumberOfLabels) { printOnlyFitting = MessageBox.Show("Do you want to print just the labels that fit on a whole number of sheets", "Whole sheets only ?", MessageBoxButtons.YesNo); }
                 if (printOnlyFitting == DialogResult.No) { numberOfSheetsI++; } // if printing odd labels, allow one more loop to do it
 
                 //collect which labels are represented by which queue entry
                 int[] queuePositions = new int[totalLabels];
                 int queuePositionCounter = 0;
                 int queueQty = 1;
-                for (int j = 0; j < (queueCount-1); j++)
+                for (int j = 0; j < (queueCount - 1); j++)
                 {
                     if (whichQueue == "Colour")
                     {
@@ -449,7 +739,7 @@ namespace LabelMaker
 
                 for (int i = 1; i <= numberOfSheetsI; i++)
 
-                { 
+                {
                     Stopwatch sw2 = new Stopwatch();
                     sw2.Start();
 
@@ -460,7 +750,7 @@ namespace LabelMaker
                     pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
                     pd.DefaultPageSettings.PaperSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
 
-                    
+
                     if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
                     {
                         pd.DefaultPageSettings.Landscape = true;
@@ -469,7 +759,7 @@ namespace LabelMaker
                     {
                         pd.DefaultPageSettings.Landscape = false;
                     }
-                
+
 
                     // put label on the sheet
                     for (int j = 1; j <= labelsPerSheet; j++)
@@ -480,7 +770,7 @@ namespace LabelMaker
                         int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
                         int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
                         int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
-                        
+
                         if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
                         {
                             int swap = sentWidth;
@@ -495,14 +785,14 @@ namespace LabelMaker
                         int YPosition = sentHeight * countY;
                         Console.WriteLine("Elapsed for label " + j + "before DrawImage ={0}" + " - " + queueData[0], sw2.Elapsed.ToString("ss\\.fff"));
 
-                        pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, XPosition, marginY,YPosition, sender1, args);
+                        pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, XPosition, marginY, YPosition, sender1, args);
 
                         howManyPrinted++;
                         countX++;
-                        if (countX==labelsAcross) { countX = 0; countY++; }
+                        if (countX == labelsAcross) { countX = 0; countY++; }
                         if (countY == labelsDown) { countX = 0; countY = 0; }
                         queuePositionCounter++;
-                        if (queuePositionCounter == totalLabels) { break ; }
+                        if (queuePositionCounter == totalLabels) { break; }
 
                         Console.WriteLine("Elapsed for label " + j + " ={0}" + " - " + queueData[0], sw2.Elapsed.ToString("ss\\.fff"));
                     }
@@ -511,7 +801,7 @@ namespace LabelMaker
                     Console.WriteLine("Total up until Print ={0}" + "  ", sw2.Elapsed.ToString("ss\\.fff"));
                     pd.Print();
                     pd.Dispose();
-                    Console.WriteLine("Total time elapsed for whole sheet ={0}" + "  " , sw2.Elapsed.ToString("ss\\.fff"));
+                    Console.WriteLine("Total time elapsed for whole sheet ={0}" + "  ", sw2.Elapsed.ToString("ss\\.fff"));
                 }
 
                 //delete labels if required
@@ -529,10 +819,10 @@ namespace LabelMaker
                         else
                         {
                             //look at last to print
-                            int queryPosition = queuePositions[howManyPrinted-1];
+                            int queryPosition = queuePositions[howManyPrinted - 1];
                             int numberPrinted = 1;
                             //count how many printed
-                            for (int i = (howManyPrinted-2); i>=0; i--)
+                            for (int i = (howManyPrinted - 2); i >= 0; i--)
                             {
                                 if (queuePositions[i] == queuePositions[howManyPrinted]) { numberPrinted++; }
                             }
@@ -540,7 +830,7 @@ namespace LabelMaker
                             int qtyToFix = int.Parse(dataGridViewColourQ.Rows[queryPosition].Cells[1].Value.ToString());
                             qtyToFix = qtyToFix - numberPrinted;
                             dataGridViewColourQ.Rows[queryPosition].Cells[1].Value = qtyToFix.ToString();
-                            for (int i = queryPosition-1; i >= 0; i--)
+                            for (int i = queryPosition - 1; i >= 0; i--)
                             {
                                 dataGridViewColourQ.Rows.RemoveAt(i);
                             }
@@ -602,15 +892,73 @@ namespace LabelMaker
                         }
                     }
 
-                    
+
                 }
                 pDialog.Dispose();
 
             }
         }
 
+        private void OLDPRINTCODEdoThePrinting(string whichCombo)
+        // ### delete when printing swapped ###
+        {
+            string[] message = { "Printing has started", "", "Please wait while labels render" };
+            showMessageForm(message);
+
+            // Determine the Queue and no. entries
+            int howManyLines = 0;
+            string whichQueue = "";
+            if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
+            {
+                whichQueue = "Colour";
+                howManyLines = dataGridViewColourQ.RowCount - 1;
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPageAddresses")
+            {
+                whichQueue = "Address";
+                howManyLines = dataGridViewAddressQ.RowCount - 1;
+            }
+            else if (tabControlQueue.SelectedTab.Name == "tabPagePassports")
+            {
+                whichQueue = "Passport";
+                howManyLines = dataGridViewPassportQ.RowCount - 1;
+            }
+            else
+            {
+                whichQueue = "Main";
+                howManyLines = dataGridViewMainQ.RowCount - 1;
+            }
+
+
+            string[] defaultsString = getDefaultSettings();
+
+            string name = "";
+            if (whichCombo == "Main")
+            {
+                //Take label from Main Tab
+                name = comboBoxLabelName.Text.ToString().Trim(); //whereToNow
+            }
+            else
+            {
+                //use alternative on Autolabel Tab
+                name = comboBoxAutoLabelName.Text.ToString().Trim();
+            }
+            string[] labelData = returnLabelData(name);
+            string[] labelHeader = returnLabelHeaderData(name);
+            string[] printerDetails = new string[2];
+            printerDetails[0] = labelHeader[12];
+            printerDetails[1] = labelHeader[13];
+
+            //if (labelHeader[2] == "Text") { printAsText(labelData, whichQueue, howManyLines, defaultsString, printerDetails); }
+            //else { printAsColour(labelData, whichQueue, howManyLines, defaultsString, printerDetails); }
+
+            
+        }
 
         #endregion
+
+
+#endregion
 
         #region *** Main Tab Routines ***- routines connected with controls on the Main screen 
 
@@ -4093,6 +4441,7 @@ namespace LabelMaker
         private string[] collectQueueRow(int desiredRow, string whichQueue)
         {
             string[] queueEntry = new string[36];
+            whichQueue = whichQueue.Trim();
 
             //Take into account rearranged data grid
             if (whichQueue == "Main")
@@ -7764,35 +8113,31 @@ namespace LabelMaker
 
         private void button8_Click(object sender, EventArgs e)
         {
-            string[] message = { "Set to true or false" ,"","Determines whether the font is printed in the","profile colour (false) or the colour from","the value in box 22 (true)"};
-            FormInformation form = new FormInformation("Font Colour", message,250,150);
-            form.Show();
+            string[] message = { "Font Colour", "Set to true or false" ,"","Determines whether the font is printed in the","profile colour (false) or the colour from","the value in box 22 (true)"};
+            showMessageForm(message);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            string[] message = { "Set to true or false", "", "Determines whether the information printed", "comes from the queue data (true)","governed by the field specified in box 11","or the fixed value in box 12 (false)" };
-            FormInformation form = new FormInformation("Profile Defaults", message, 300, 200);
-            form.Show();
+            string[] message = { "Profile Defaults", "Set to true or false", "", "Determines whether the information printed", "comes from the queue data (true)","governed by the field specified in box 11","or the fixed value in box 12 (false)" };
+            showMessageForm(message);
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            string[] message = { "Set to true or false", "", "Determines whether the program is allowed", "to vary the font size (true) to maximise its size", "or use the fixed value in box 17 (false)" };
-            FormInformation form = new FormInformation("Font Variable", message, 300, 150);
-            form.Show();
+            string[] message = { "Font Variable", "Set to true or false", "", "Determines whether the program is allowed", "to vary the font size (true) to maximise its size", "or use the fixed value in box 17 (false)" };
+            showMessageForm(message);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            string[] message = { "Set to true or false", "", "Determines whether the program is allowed", "to vary reduce the number of text lines (true)","to maximise font size.","Use in conjunction with 'Font Variable'" };
-            FormInformation form = new FormInformation("Font Variable", message, 300, 200);
-            form.Show();
+            string[] message = { "Font Variable", "Set to true or false", "", "Determines whether the program is allowed", "to vary reduce the number of text lines (true)","to maximise font size.","Use in conjunction with 'Font Variable'" };
+            showMessageForm(message);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            string[] message = { "Determines which item from the Queue is used to fill the field.","These numbers correspond to the numbers in 'Queue Utilities' less 1", "",
+            string[] message = { "ListBox index numbers","Determines which item from the Queue is used to fill the field.","These numbers correspond to the numbers in 'Queue Utilities' less 1", "",
                 " 0. Plant Name ( full name created from Genus, species and Variety )"," 1. Quantity - how many of label to print",                                      
                 " 2. Price - formatted with £ sign or pence", " 3. Pot Size", " 4. Customer - (usually from Billing Customer in Autolabel)",                    
                 " 5. Barcode - not currently supported",  " 6. Description - the full plant description"," 7. Common Name",                                                                
@@ -7805,22 +8150,19 @@ namespace LabelMaker
                 "28. Shipping Address - line 1","29. Shipping Address - line 2","30. Shipping Address - City","31. Shipping Address - State",
                 "32. shipping Address - Postcode","34. Shipping Company","",
                 "Shipping Address lines can be rearranged automatically by the 'modify address' function within Autolabel"};
-            FormInformation form = new FormInformation("ListBox index numbers", message, 550, 650);
-            form.Show();
+            showMessageForm(message);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            string[] message = { "Used to provide a fixed value such as", "a fixed text string or the width to draw a border line" };
-            FormInformation form = new FormInformation("Fixed Value", message, 300, 150);
-            form.Show();
+            string[] message = { "Fixed Value", "Used to provide a fixed value such as", "a fixed text string or the width to draw a border line" };
+            showMessageForm(message);
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            string[] message = { "All sizes and positions are entered as a percentage", "of the label size.", "","Positions enterd a '0' designate a position","that is centred on that axis." };
-            FormInformation form = new FormInformation("Size and Position", message, 300, 150);
-            form.Show();
+            string[] message = { "Size and Position", "All sizes and positions are entered as a percentage", "of the label size.", "","Positions enterd a '0' designate a position","that is centred on that axis." };
+            showMessageForm(message);
         }
 
         private void buttonFlipDesignSurface_Click(object sender, EventArgs e)
@@ -8367,10 +8709,10 @@ namespace LabelMaker
 
         private void button16_Click(object sender, EventArgs e)
         {
-            string[] message = { "Add a Label", "", " - Adds a new Label with the label name","typed as a child of the current Category.","", "It will create 1 field within this label.",
+            string[] message = {"New Label", "Add a Label", "", " - Adds a new Label with the label name","typed as a child of the current Category.","", "It will create 1 field within this label.",
                                  "","","Update a Label",""," - Updates just the last two fields",
                                  "","","Delete a Label","","This deletes the label and ALL of its fields","Use with Caution !"};
-            FormInformation form = new FormInformation("New Label", message, 300, 350);
+            FormInformation form = new FormInformation( message);
             form.Show();
         }
 
@@ -8432,9 +8774,9 @@ namespace LabelMaker
 
         private void button17_Click(object sender, EventArgs e)
         {
-            string[] message = { "Altering Labels works live on the database.", "", "If you want to experiment, duplicate your","label. Then experiment with this and when you are ready","alter the fields so that they refer to the label", "you want to work on."
+            string[] message = { "Altering Labels","Altering Labels works live on the database.", "", "If you want to experiment, duplicate your","label. Then experiment with this and when you are ready","alter the fields so that they refer to the label", "you want to work on."
                                  };
-            FormInformation form = new FormInformation("Altering Labels", message, 350, 250);
+            FormInformation form = new FormInformation( message);
             form.Show();
         }
 
@@ -8942,11 +9284,11 @@ namespace LabelMaker
 
         private void UsingQueues()
         {
-            string[] message = { "These Tabs hold 4 different Print Queues", "", "Any queue can print any label type, but they are designed in the following way:","",
+            string[] message = { "Queues","These Tabs hold 4 different Print Queues", "", "Any queue can print any label type, but they are designed in the following way:","",
                 "Add the currently visible plant entry to the visible queue by pressing 'ENTER' whilst","the cursor is in the Price or Quantity box","",
                 "If you are adding to the 'Main' queue, the entry will also add to the 'Colour' queue if","certain rules are met.","","Each queue defaults to a particular label as specified on the defaults Tab,","although this can be overidden at any time",
             "The 'Address' and 'Passport' Tabs are loaded with limited information when you use 'AutoLabel'","and are designed to print box and passport labels for dispatch."};
-            FormInformation form = new FormInformation("Queues", message, 500, 500);
+            FormInformation form = new FormInformation( message);
             form.Show();
 
         }
@@ -9004,7 +9346,7 @@ namespace LabelMaker
 
         private void buttonDefaultsInformation_Click(object sender, EventArgs e)
         {
-            string[] message = { "These are the index numbers for the defaults string:","",
+            string[] message = { "Defaults", "These are the index numbers for the defaults string:","",
                     "12. Id","",
                     "Folder Paths and Files","    0. Picture Folder Path","    1. File Folder Path","   11. Autolabel file name","",
                     "Default Labels",
@@ -9022,9 +9364,8 @@ namespace LabelMaker
                     "","   15. True Button Colour - (windows colour name)","   16. Halfway Button Colour - (windows colour name)","   17. False Button Colour - (windows colour name)"
             };
 
-                    
-            FormInformation form = new FormInformation("Defaults", message, 500, 750);
-            form.Show();
+
+            showMessageForm(message);
         }
 
         private void comboBoxAddressLabel_SelectedIndexChanged(object sender, EventArgs e)
@@ -9090,7 +9431,25 @@ namespace LabelMaker
                 fillQueueUtilitiesTab();
         }
 
-        
+        public void showMessageFormWithDispose(string[] message)
+        {
+            FormInformation form = new FormInformation( message);
+            form.Show();
+            form.Refresh();
+            Thread.Sleep(10000);
+            //form.Dispose();
+            
+        }
+
+        public void showMessageForm(string[] message)
+        {
+            FormInformation form = new FormInformation(message);
+            form.Show();
+            
+        }
+
+
+
     }
 }
     
