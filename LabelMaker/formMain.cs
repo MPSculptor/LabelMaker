@@ -21,22 +21,28 @@ namespace LabelMaker
 {
 
 
-
-
     public partial class formMain : Form
+    
     {
+
         public formMain()
 
-
         {
+           
+
+
             //  ******* IMPORTANT *********
             // Before completion search    //needs amending    to find temporary bits that need fixing or correcting
             InitializeComponent();
-            
+           
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Thread splashShow = new Thread(() => showSplashScreen());
+            splashShow.Start();
+
             // TODO: This line of code loads data into the 'databaseLabelsDataSet4.TablePassportQueue' table. You can move, or remove it, as needed.
             this.tablePassportQueueTableAdapter.Fill(this.databaseLabelsDataSet4.TablePassportQueue);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet3.TableAddressQueue' table. You can move, or remove it, as needed.
@@ -52,12 +58,25 @@ namespace LabelMaker
             // TODO: This line of code loads data into the 'databaseLabelsDataSet1.TableProfiles' table. You can move, or remove it, as needed.
             this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSetProfiles.TableProfiles);
             // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
-            this.tablePlantsTableAdapter.FillBy(this.databaseLabelsDataSet.TablePlants,false);
+            this.tablePlantsTableAdapter.FillBy(this.databaseLabelsDataSet.TablePlants, false);
 
             this.BackColor = Color.DarkGray;
 
             colourQueueTab("first");
             updateManualTab();
+
+            //Lock Grids to prevent uncommitted changes
+            //dataGridViewMainQ.AllowUserToAddRows = false;
+            //dataGridViewMainQ.AllowUserToDeleteRows = false;
+            //dataGridViewColourQ.AllowUserToAddRows = false;
+            //dataGridViewColourQ.AllowUserToDeleteRows = false;
+            //dataGridViewAddressQ.AllowUserToAddRows = false;
+            //dataGridViewAddressQ.AllowUserToDeleteRows = false;
+            //dataGridViewPassportQ.AllowUserToAddRows = false;
+            //dataGridViewPassportQ.AllowUserToDeleteRows = false;
+
+
+            //this.TopMost = true;
         }
 
         private void colourQueueTab(string first)
@@ -116,6 +135,7 @@ namespace LabelMaker
 
         private void validateDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             DialogResult result = MessageBox.Show("Do you want to trim whitespaces from all Plant names", "Clean Plant Names of White Spaces", MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
@@ -166,7 +186,11 @@ namespace LabelMaker
 
         private void doThePrinting(string whichCombo)
 
-        {   // Start by determining which type of label to print
+        {   // Start by determining which label to print and what type of label it is
+
+            string[] message = { "Printing has begun", "Printing has started", "", "", "Waiting for Windows to do some stuff" ,"","","This message will self destruct in 4 seconds"};
+            Thread formShow = new Thread(() => showMessageFormWithDispose(message, 3000));
+            formShow.Start();
 
             string[] defaultsString = getDefaultSettings();
 
@@ -189,8 +213,9 @@ namespace LabelMaker
 
             string whichQueue = "Main";
             int totalLabels = 0;
-            int queueCount = 0; // ### May need to reduce by 1 before sending to printing ###
-                                // Determine the Queue and no. entries
+            int queueCount = 0; 
+            
+            // Determine the Queue and no. entries
                         
             if (tabControlQueue.SelectedTab.Name == "tabPageColourQueue")
             {
@@ -223,43 +248,41 @@ namespace LabelMaker
             bool oddNumberOfLabels = true;
             float numberOfSheetsF = (float)totalLabels / (float)labelsPerSheet;
             int numberOfSheetsI = (int)numberOfSheetsF;
-            if (numberOfSheetsF == numberOfSheetsI) { oddNumberOfLabels = false; } //find out if labels fit
+            if (numberOfSheetsF == numberOfSheetsI) { oddNumberOfLabels = false; } //find out if labels fit : false = fit, true = no fit
             DialogResult printOnlyFitting = DialogResult.Yes;
 
-            if (labelHeader[2] == "Picture") //Just for multi label sheets
+            if (labelHeader[2] == "Picture") //Only ask for a response for multi label sheets
             {                 
                 //Get total number of labels to print. Decide if a whole number and if start and stop position
                 //Work out number of labels sheets this needs
                 
                 if (oddNumberOfLabels) { printOnlyFitting = MessageBox.Show("Do you want to print just the labels that fit on a whole number of sheets", "Whole sheets only ?", MessageBoxButtons.YesNo); }
-                if (printOnlyFitting == DialogResult.No) { numberOfSheetsI++; } // if printing odd labels, allow one more loop to do it 
+
+                if (printOnlyFitting == DialogResult.No) { numberOfSheetsI++; } // if printing odd labels, allow one more loop to do it : No = print whole sheets, Yes = print all labels
 
             }
+
+            //Reset qty and Flag up if only printinga partial queue
             int qty = 0;
-            string allOrQty = "All";
+            string allOrQty = "All"; // default = print all labels, no need for qty
             if (labelHeader[2] == "Picture")
             {
-                qty = numberOfSheetsI * (int)labelsPerSheet;
-                if (printOnlyFitting == DialogResult.No)
+                //qty = numberOfSheetsI * (int)labelsPerSheet;
+                if (printOnlyFitting == DialogResult.Yes)
                 {
                     allOrQty = "Qty";
                     qty = numberOfSheetsI * (int)labelsPerSheet;
                 }
             }
-                string[] message = { "Labels are Printing", "Printing has started", "", "Collecting Queue Data","", "Using Queue - "+whichQueue,"Whole Queue or set quantity = "+allOrQty, "Queue Count = "+queueCount.ToString() + " lines" };
-                Thread formShow = new Thread(() => showMessageFormWithDispose(message) );
-                formShow.Start();
-
-            string [,] wholeQueue = collectTheQueue(whichQueue, allOrQty, queueCount, qty);
-
-            
+                            
             //Prduce Print Dialog Box
             printerDetails[2] =  "NoPrint";
 
                         #region pDialog to authorise print
 
             PrintDialog pDialog = new PrintDialog();
-            //pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
+            pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
+
             pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
             pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[0];
             string paperSourceName = printerDetails[0];
@@ -280,7 +303,12 @@ namespace LabelMaker
 
             pDialog.PrinterSettings.PrinterName = printerDetails[0];
             pDialog.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
+            
 
+            //DialogResult msg = MessageBox.Show(printVariables.howManyLines.ToString());
+
+            #endregion
+            DialogResult printerResponse = pDialog.ShowDialog();
 
             printerDetails[3] = pDialog.PrinterSettings.PrinterName;
             printerDetails[4] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString();
@@ -289,9 +317,31 @@ namespace LabelMaker
             printerDetails[7] = pDialog.PrinterSettings.DefaultPageSettings.HardMarginY.ToString();
             PaperSource paperSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
 
+            if (printerResponse == DialogResult.OK)
+            {
+                printerDetails[2] = "Print";
+            }
 
+            if (printerDetails[2] == "Print")
+            {
+
+                //Information Box to read while printing takes place
+                string wholeOrPartial = "The whole Queue of ";
+            int declaredQty = queueCount;
+            if (allOrQty == "Qty") { wholeOrPartial = "A partial quantity of ";declaredQty = qty; }
+            
+            string[] messageMain = { "Labels are Printing", "Printing has started", "", "Collecting Queue Data", "", "Using Queue - " + whichQueue,
+                                    "","Printing:-",
+                                    wholeOrPartial, declaredQty + " Labels from " + (howManyLines +1).ToString() + " lines" ,"Sending to Printer - " + printerDetails[3],
+                                    "","","","This message will self destruct in 8 seconds"};
+            Thread formShowMain = new Thread(() => showMessageFormWithDispose(messageMain, 8000));
+            formShowMain.Start();
+
+            //Collect the Queue so it can be sent and deleted
+            string[,] wholeQueue = collectTheQueue(whichQueue, allOrQty, queueCount, qty);
             int labelCount = 0;
-            for(int i = 0; i < ((int)(wholeQueue.Length) / 36); i++){ labelCount = labelCount + int.Parse(wholeQueue[i, 1]); }
+            for (int i = 0; i < ((int)(wholeQueue.Length) / 36); i++) { labelCount = labelCount + int.Parse(wholeQueue[i, 1]); }
+            if (allOrQty == "Qty") { howManyLines = (wholeQueue.Length / 36); } //reduce row count for partial queues
 
             //Set up all the required data needed to print
             printDefaults printVariables = new printDefaults();
@@ -304,17 +354,8 @@ namespace LabelMaker
             printVariables.wholeQueue = wholeQueue;
             printVariables.labelCount = labelCount;
 
-            //DialogResult msg = MessageBox.Show(printVariables.howManyLines.ToString());
 
-            #endregion
-
-            if (DialogResult.OK == pDialog.ShowDialog())
-            {
-                printerDetails[2] = "Print";
-            }
-
-            if (printerDetails[2] == "Print")
-            {
+            
                 if (labelHeader[2] == "Text")
                 {
                     Thread textPrint = new Thread(() => printAsText(printVariables));    // Kick off a new thread
@@ -326,19 +367,7 @@ namespace LabelMaker
                     colourPrint.Start();
                 }
 
-                //Delete Queue
-                if (checkBoxQueueDelete.Checked)
-                {
-                    //Delete Whole Queue if printing all
-                    if (allOrQty =="All")
-                    {
-                        if (tabControlQueue.SelectedTab == tabPageMainQueue) { deleteQueue("Main Queue"); }
-                        else if (tabControlQueue.SelectedTab == tabPageColourQueue) { deleteQueue("Colour Queue"); }
-                        else if (tabControlQueue.SelectedTab == tabPageAddresses) { deleteQueue("Addresses Queue"); }
-                        else if (tabControlQueue.SelectedTab == tabPagePassports) { deleteQueue("Passports Queue"); }
-                    }
-                    //Delete Partial Queue if printing just labels that fit
-                }
+                
 
             }
 
@@ -348,13 +377,114 @@ namespace LabelMaker
 
         private string[,] collectTheQueue(string whichQueue, string allOrQty , int howManyLines, int qty)
         {
-            string[,] wholeQueue = new string[howManyLines,36];
+            int rowCount = 0;
+            Boolean completeRow = true;
+            int lastLineQty = 0;
+            if (allOrQty == "Qty")
+            {
+                //Need to reduce howManyLines to reflect true number
+                int qtyCount = 0;
+                for (int i = 0; i <= howManyLines; i++)
+                {
+                    string[] queueData = collectQueueRow(i, whichQueue);
+                    int lineQty = int.Parse(queueData[1]);
+                    if (qtyCount+lineQty < qty)
+                    {
+                        //total not reached
+                        qtyCount = qtyCount + lineQty;
+                    }
+                    else if (qtyCount + lineQty == qty)
+                    {
+                        //This Line makes it up exactly
+                        rowCount = i;
+                        goto SkipOut;
+                    }
+                    else if (qtyCount + lineQty > qty)
+                    {
+                        //This line tips over the quantity
+                        lastLineQty = qtyCount + lineQty - qty;
+                        rowCount = i;
+                        completeRow = false;
+                        goto SkipOut;
+                    }
+                }
+            }
+        SkipOut: //has to be outside IF statement
+            if (allOrQty == "Qty") { howManyLines = rowCount; }
 
+            //Actually collect the queue
+            string[,] wholeQueue = new string[howManyLines,36];
             for (int i = 0; i < howManyLines; i++)
             {
                 string[] queueData = collectQueueRow(i, whichQueue);
                 for (int j=0; j <= 35; j++) { wholeQueue[i, j] = queueData[j]; }
             }
+
+            //Delete Queue
+            if (checkBoxQueueDelete.Checked)
+            {
+                //Delete Whole Queue if printing all
+                if (allOrQty == "All")
+                {
+                    if (tabControlQueue.SelectedTab == tabPageMainQueue) { deleteQueue("Main Queue"); }
+                    else if (tabControlQueue.SelectedTab == tabPageColourQueue) { deleteQueue("Colour Queue"); }
+                    else if (tabControlQueue.SelectedTab == tabPageAddresses) { deleteQueue("Addresses Queue"); }
+                    else if (tabControlQueue.SelectedTab == tabPagePassports) { deleteQueue("Passports Queue"); }
+                }
+                //Delete Partial Queue if printing just labels that fit
+                else
+                {
+                    //delete most of the queue a line at a time
+                    for (int i = 0; i <rowCount; i++)
+                    {
+                        if (tabControlQueue.SelectedTab == tabPageMainQueue) { dataGridViewMainQ.Rows[0].Cells[1].Selected = true; deleteMainQueueLine(); }
+                        if (tabControlQueue.SelectedTab == tabPageColourQueue) { dataGridViewColourQ.Rows[0].Cells[1].Selected = true; deleteColourQueueLine(); }
+                        if (tabControlQueue.SelectedTab == tabPageAddresses) { dataGridViewAddressQ.Rows[0].Cells[1].Selected = true; deleteAddressQueueLine(); }
+                        if (tabControlQueue.SelectedTab == tabPagePassports) { dataGridViewPassportQ.Rows[0].Cells[1].Selected = true; deletePassportQueueLine(); }
+                    }
+                //do what is required to the last row : delete or reduce 
+                        if (completeRow) //last row completes the qty
+                    {
+                        if (tabControlQueue.SelectedTab == tabPageMainQueue) { dataGridViewMainQ.Rows[0].Cells[1].Selected = true; deleteMainQueueLine(); }
+                        if (tabControlQueue.SelectedTab == tabPageColourQueue) { dataGridViewColourQ.Rows[0].Cells[1].Selected = true; deleteColourQueueLine(); }
+                        if (tabControlQueue.SelectedTab == tabPageAddresses) { dataGridViewAddressQ.Rows[0].Cells[1].Selected = true; deleteAddressQueueLine(); }
+                        if (tabControlQueue.SelectedTab == tabPagePassports) { dataGridViewPassportQ.Rows[0].Cells[1].Selected = true; deletePassportQueueLine(); }
+                    }
+                    else //last row is a partial row
+                    {
+                        if (tabControlQueue.SelectedTab == tabPageMainQueue)
+                        {
+                            databaseLabelsDataSetMainQueue.TableMainQueue.Rows[0].SetField(2, lastLineQty);
+
+                            try { tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue); }
+                            catch (System.Exception ex) { }
+                        }
+                        if (tabControlQueue.SelectedTab == tabPageColourQueue)
+                        {
+                            databaseLabelsDataSetColourQueue.TableColourQueue.Rows[0].SetField(2, lastLineQty);
+
+                            try { tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue); }
+                            catch (System.Exception ex) { }
+                        }
+                        if (tabControlQueue.SelectedTab == tabPageAddresses)
+                        {
+                            databaseLabelsDataSet3.TableAddressQueue.Rows[0].SetField(2, lastLineQty);
+
+                            try { tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue); }
+                            catch (System.Exception ex) { }
+                        }
+                        if (tabControlQueue.SelectedTab == tabPagePassports)
+                        {
+                            databaseLabelsDataSet4.TablePassportQueue.Rows[0].SetField(2, lastLineQty);
+
+                            try { tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue); }
+                            catch (System.Exception ex) { }
+                        }
+                    }
+                }
+            }
+
+
 
             return wholeQueue;
         }
@@ -417,7 +547,7 @@ namespace LabelMaker
                 int labelsAcross = int.Parse(listBoxPrinter.Items[2].ToString());
                 int labelsDown = int.Parse(listBoxPrinter.Items[3].ToString()) ;
                 int labelsPerSheet = labelsAcross * labelsDown;
-                int totalLabels = printerVariables.labelCount;
+                int totalLabels = printerVariables.labelCount+1;
                 int queueCount = printerVariables.howManyLines;
                 int howManyPrinted = 0;
 
@@ -425,7 +555,7 @@ namespace LabelMaker
             int[] queuePositions = new int[totalLabels];
             int queuePositionCounter = 0;
             int queueQty = 1;
-            for (int j = 0; j <= queueCount; j++)
+            for (int j = 0; j < queueCount; j++)
             {
                 queueQty = int.Parse(printerVariables.wholeQueue[j,1].Trim());
                     for (int k = 1; k <= queueQty; k++)
@@ -437,7 +567,7 @@ namespace LabelMaker
             }
 
             //loop through number of iterations
-            int numberOfSheetsI = (int)(totalLabels / labelsPerSheet)+1;
+            int numberOfSheetsI = (int)((totalLabels-1) / labelsPerSheet)+1;
             queuePositionCounter = 0;
 
                 for (int i = 1; i <= numberOfSheetsI; i++)
@@ -492,11 +622,14 @@ namespace LabelMaker
                         countX++;
                         if (countX==labelsAcross) { countX = 0; countY++; }
                         if (countY == labelsDown) { countX = 0; countY = 0; }
-                        queuePositionCounter++;
-                        if (queuePositionCounter == totalLabels) { break ; }
 
-                        
-                    }
+                    
+                    if (queuePositionCounter == totalLabels) { break ; }
+                    queuePositionCounter++;
+
+
+
+                }
 
                     //send to print document
                     pd.Print();
@@ -4953,16 +5086,20 @@ namespace LabelMaker
                 fillQueueUtilitiesTab();
         }
 
-                
-        
+
+        //Routines that actually delete Queue lines one by one
         #region Delete Buttons
+
 
         private void deleteColourQueueLine()
         {
             foreach (DataGridViewCell oneCell in dataGridViewColourQ.SelectedCells)
             {
                 if (oneCell.Selected)
-                    dataGridViewColourQ.Rows.RemoveAt(oneCell.RowIndex);
+                    if (!dataGridViewColourQ.Rows[oneCell.RowIndex].IsNewRow)
+                    {
+                        dataGridViewColourQ.Rows.RemoveAt(oneCell.RowIndex);
+                    }
             }
             try
             {
@@ -4981,7 +5118,10 @@ namespace LabelMaker
             foreach (DataGridViewCell oneCell in dataGridViewPassportQ.SelectedCells)
             {
                 if (oneCell.Selected)
-                    dataGridViewPassportQ.Rows.RemoveAt(oneCell.RowIndex);
+                    if (!dataGridViewPassportQ.Rows[oneCell.RowIndex].IsNewRow)
+                    {
+                        dataGridViewPassportQ.Rows.RemoveAt(oneCell.RowIndex);
+                    }
             }
             try
             {
@@ -5000,7 +5140,10 @@ namespace LabelMaker
             foreach (DataGridViewCell oneCell in dataGridViewAddressQ.SelectedCells)
             {
                 if (oneCell.Selected)
-                    dataGridViewAddressQ.Rows.RemoveAt(oneCell.RowIndex);
+                    if (!dataGridViewAddressQ.Rows[oneCell.RowIndex].IsNewRow)
+                    {
+                        dataGridViewAddressQ.Rows.RemoveAt(oneCell.RowIndex);
+                    }
             }
             try
             {
@@ -5019,7 +5162,10 @@ namespace LabelMaker
             foreach (DataGridViewCell oneCell in dataGridViewMainQ.SelectedCells)
             {
                 if (oneCell.Selected)
-                    dataGridViewMainQ.Rows.RemoveAt(oneCell.RowIndex);
+                    if (!dataGridViewMainQ.Rows[oneCell.RowIndex].IsNewRow)
+                    {
+                        dataGridViewMainQ.Rows.RemoveAt(oneCell.RowIndex);
+                    }
             }
             try
             {
@@ -5068,7 +5214,7 @@ namespace LabelMaker
                     //databaseLabelsDataSetColourQueue.TableColourQueue.Rows.RemoveAt(0);
                     dataGridViewColourQ.Rows.RemoveAt(0);
                 }
-                dataGridViewColourQ.EndEdit();
+                
                 try
                 {
                     tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
@@ -5078,6 +5224,7 @@ namespace LabelMaker
                 {
                     MessageBox.Show("Failed to delete from Colour Queue - " + ex);
                 }
+                dataGridViewColourQ.EndEdit();
                 labelColourCount.Text = addColourQueueTotal().ToString();
                 labelColourCountQ.Text = labelColourCount.Text;
             }
@@ -6079,24 +6226,28 @@ namespace LabelMaker
 
         public void sortAuto(string which)
         {
-            // default is by customer
-            string selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY Customer, Name";
-
-            if (which == "ON")
-            {
-                selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY [ON], Name";
-            }
-            else if (which == "Plant")
-            {
-                selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY Name";
-            }
 
             dataGridViewAuto.ClearSelection();
+            //Always sort by Plant so that plants are in order even if sort is by O/N or Name
+            dataGridViewAuto.Sort(dataGridViewAuto.Columns[6], ListSortDirection.Ascending);
+            //selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY Name";
 
-            tableAutoTableAdapter.Adapter.SelectCommand.CommandText = selectionText;
-            tableAutoTableAdapter.Fill(databaseLabelsDataSetAuto.TableAuto);
-            dataGridViewAuto.CurrentCell = dataGridViewAuto.Rows[0].Cells[1];
-            dataGridViewAuto.FirstDisplayedCell = dataGridViewAuto.CurrentCell;
+            if (which == "Order")
+            {// default is by Order Number
+             //string selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY Customer, Name";
+                dataGridViewAuto.Sort(dataGridViewAuto.Columns[4], ListSortDirection.Ascending);
+            }
+
+            if (which == "Customer")
+            {
+                dataGridViewAuto.Sort(dataGridViewAuto.Columns[5], ListSortDirection.Ascending);
+                //selectionText = "SELECT LockCust, LockLine, Printed, [ON], Customer, Name, Qty, SKU, First, Last, Id, ShipFirst, ShipLast, ShipLine1, ShipLine2, ShipCity, ShipState, ShipPostcode, ShipNotes FROM TableAuto ORDER BY [ON], Name";
+            }
+            
+            //tableAutoTableAdapter.Adapter.SelectCommand.CommandText = selectionText;
+            //tableAutoTableAdapter.Fill(databaseLabelsDataSetAuto.TableAuto);
+            //dataGridViewAuto.CurrentCell = dataGridViewAuto.Rows[0].Cells[1];
+            //dataGridViewAuto.FirstDisplayedCell = dataGridViewAuto.CurrentCell;
             dataGridViewAuto.Refresh();
         }
 
@@ -6110,7 +6261,7 @@ namespace LabelMaker
 
         private void buttonSortAutoON_Click(object sender, EventArgs e)
         {
-            sortAuto("ON");
+            sortAuto("Order");
             colourAutoDataGrid();
             fillAutoListBox();
             checkSKUs();
@@ -6215,17 +6366,18 @@ namespace LabelMaker
                 Boolean locked = false;
 
                 int index = 0;
+                //MessageBox.Show("Looking for '" + name +"'");
+
                 for (int i = 0; i <= listBoxAuto.Items.Count - 1; i++)
                 {
-                    //MessageBox.Show(listBoxAuto.Items[i].ToString().Substring(2) + " , " + name);
-                    if (listBoxAuto.Items[i].ToString().Substring(2).TrimEnd() == name)
+                    if (listBoxAuto.Items[i].ToString().Substring(2).Trim() == name)
 
                     {
                         index = i;
-                        //MessageBox.Show("in loop, index = " + index.ToString());
+                        //MessageBox.Show("FOUND - "+ listBoxAuto.Items[i].ToString().Substring(2).Trim()+ "     In loop, index = " + index.ToString());
 
                         string lockedString = listBoxAuto.Items[i].ToString().SubstringSpecial(0, 2);
-                        if (lockedString == "* ") { locked = true; }
+                        if (lockedString == "# ") { locked = true; }
                         break;
                     }
                 }
@@ -6255,18 +6407,29 @@ namespace LabelMaker
 
         private void buttonCreateQueue_Click(object sender, EventArgs e)
         {
-            listBoxAutoErrors.Items.Clear();
-            pictureBoxArrow.Visible = false;
-            findAutoCustomer();
-            //Create Address Queue
-            createAddressList("specified", "Address");
+            if (tabControlQueue.SelectedTab == tabPageMainQueue || tabControlQueue.SelectedTab == tabPageColourQueue)
+            {
+                string[] message = { "Producing Label Queue", "Producing Label Queue", "", "Please wait while the program", "collects the data for the queue", "", "", "This message will evaporate shortly" };
+                Thread queueNote = new Thread(() => showMessageFormWithDispose(message, 3000));
+                queueNote.Start();
 
-            //Create Passport Queue
-            createPassportList("specified", "Passport");
+                listBoxAutoErrors.Items.Clear();
+                pictureBoxArrow.Visible = false;
+                findAutoCustomer();
+                //Create Address Queue
+                createAddressList("specified", "Address");
 
-            //reset customer to prevent confusion with next manual entry
-            textBoxCustomerName.Text = "";
-            textBoxOrderNumber.Text = "";
+                //Create Passport Queue
+                createPassportList("specified", "Passport");
+
+                //reset customer to prevent confusion with next manual entry
+                textBoxCustomerName.Text = "";
+                textBoxOrderNumber.Text = "";
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Please Set the Queue Tab to 'Main' or 'Colour' before trying to create an automatic queue", "Wrong Queue");
+            }
         }
 
         private void findAutoCustomer()
@@ -7584,7 +7747,7 @@ namespace LabelMaker
         {
             
             //sort by customer
-            //sortAuto("Customer");
+            sortAuto("Customer");
             //colourAutoDataGrid();
             //fillAutoListBox();
             //checkSKUs();
@@ -7598,9 +7761,12 @@ namespace LabelMaker
         private void createAddressList(string visibleOrSpecified, string specified)
         {
 
+            //sort by customer
+            sortAuto("Customer");
+
             if (checkBoxCorrectAddress.Checked) { cleanAddresses(); }
             Boolean includeDPD = true; //default
-            DialogResult result = MessageBox.Show( "Do you want include courier orders as well as Post Office","Courier orders", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show( "Do you want to include courier orders as well as Post Office","Courier orders", MessageBoxButtons.YesNo);
             if (result == DialogResult.No) { includeDPD = false; }
             
             // count customers
@@ -8881,6 +9047,7 @@ namespace LabelMaker
 
             for (int i =0;i<dataGridViewAuto.RowCount - 1; i++)
             {
+                Boolean sameShippingAsBilling = true; // to stop it replacing Billing name with Shipping name
                 string[] address = new string[9];
                 //fill address from grid
 
@@ -9431,13 +9598,13 @@ namespace LabelMaker
                 fillQueueUtilitiesTab();
         }
 
-        public void showMessageFormWithDispose(string[] message)
+        public void showMessageFormWithDispose(string[] message, int timer)
         {
             FormInformation form = new FormInformation( message);
             form.Show();
             form.Refresh();
-            Thread.Sleep(10000);
-            //form.Dispose();
+            Thread.Sleep(timer);
+            form.Dispose();
             
         }
 
@@ -9445,11 +9612,19 @@ namespace LabelMaker
         {
             FormInformation form = new FormInformation(message);
             form.Show();
-            
         }
 
 
-
+        private void showSplashScreen()
+        {
+            PerPixelAlphaForm splash = new PerPixelAlphaForm();
+            Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
+            splash.SelectBitmap(picture);
+            splash.Show();
+            Thread.Sleep(750);
+            splash.Dispose();
+            
+        }
     }
 }
     

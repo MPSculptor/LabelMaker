@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LabelMaker
 {
     public class printDefaults : Object
     {
 
-        // Holds different variables to pass to the Print Methods
+        // Holds different variables to pass to the Print Methods so that it can all be sent as one object
         public string[] labelData { get; set; }
         public string whichQueue { get; set; }
         public int howManyLines { get; set; }
@@ -24,7 +20,7 @@ namespace LabelMaker
 
         public printDefaults(string[] hlabelData, string hwhichQueue, int hhowManyLines, string[] hdefaultsString, string[] hprinterDetails, PaperSource hpaperSource, string[,] hwholeQueue, int hlabelCount)
         {
-            // h stands for header
+            // h stands for header just for readability
             labelData = hlabelData;
             whichQueue = hwhichQueue;
             howManyLines = hhowManyLines;
@@ -33,7 +29,6 @@ namespace LabelMaker
             paperSource = hpaperSource;
             wholeQueue = hwholeQueue;
             labelCount = hlabelCount;
-
 
         }
     }

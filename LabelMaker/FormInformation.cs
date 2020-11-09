@@ -23,11 +23,13 @@ namespace LabelMaker
                 if (message[i].Length > biggest) { biggest = message[i].Length; }
             }
 
-            int XX = (biggest * 12)+100;
+            int XX = (biggest * 8)+100;
             int YY = (message.Length * 15) + 100;
 
             this.Width = XX;
             this.Height = YY;
+            buttonHide.Left = XX - 103;
+            buttonHide.Top = YY - 74;
 
             richTextBoxInformation.Width = XX - 40;
             richTextBoxInformation.Height = YY - 63;
@@ -35,15 +37,15 @@ namespace LabelMaker
             {
                 richTextBoxInformation.AppendText(message[i]+ Environment.NewLine);
             }
+            //this.TopMost = true;
+            //Sets Focus to this form
+            this.Activate();
         }
 
-        private void FormInformation_Load(object sender, EventArgs e)
-        {
-                 }
 
-        private void richTextBoxInformation_TextChanged(object sender, EventArgs e)
+        private void buttonHide_Click(object sender, EventArgs e)
         {
-
+            this.Dispose();
         }
     }
 }
