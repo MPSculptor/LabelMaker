@@ -3,6 +3,69 @@ using System.Drawing.Printing;
 
 namespace LabelMaker
 {
+
+    static class canIusePrinter
+    {
+        public static string[] printerList;
+        public static Boolean[] inUseOrNot;
+
+        static int _getsetprinterList;
+        public static int getsetprinterList
+        {
+            set { _getsetprinterList = value; }
+            get { return _getsetprinterList; }
+        }
+
+        static int _getsetinUseOrNot;
+        public static int getsetinUseOrNot
+        {
+            set { _getsetinUseOrNot = value; }
+            get { return _getsetinUseOrNot; }
+        }
+
+        public static void getPrinterList()
+        {
+            int counter = 0;
+            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            {
+                counter++;
+            }
+            canIusePrinter.printerList = new string[counter];
+            canIusePrinter.inUseOrNot = new Boolean[counter];
+            counter = 0;
+            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            {
+                canIusePrinter.printerList[counter] = printer.ToString();
+                canIusePrinter.inUseOrNot[counter] = false;
+                counter++;
+            }
+        }
+
+        public static void alterPrinterStatus(string printerName, Boolean whichWay)
+        {
+            for (int i = 0; i < canIusePrinter.printerList.Length; i++)
+            {
+                if (printerName.Trim() == canIusePrinter.printerList[i].Trim())
+                {
+                    canIusePrinter.inUseOrNot[i] = whichWay;
+                }
+            }
+        }
+
+        public static int getPrinterIndex(string printerName)
+        {
+            int index = 0;
+            for (int i = 0; i < canIusePrinter.printerList.Length; i++)
+            {
+                if (printerName.Trim() == canIusePrinter.printerList[i].Trim())
+                {
+                    index =i;
+                }
+            }
+            return index;
+        }
+    }
+
     public class printDefaults : Object
     {
 
@@ -15,10 +78,11 @@ namespace LabelMaker
         public PaperSource paperSource { get; set; }
         public string[,] wholeQueue { get; set; }
         public int labelCount { get; set; }
+        public int printerListIndex { get; set; }
 
         public printDefaults() { }
 
-        public printDefaults(string[] hlabelData, string hwhichQueue, int hhowManyLines, string[] hdefaultsString, string[] hprinterDetails, PaperSource hpaperSource, string[,] hwholeQueue, int hlabelCount)
+        public printDefaults(string[] hlabelData, string hwhichQueue, int hhowManyLines, string[] hdefaultsString, string[] hprinterDetails, PaperSource hpaperSource, string[,] hwholeQueue, int hlabelCount,int hprinterListIndex)
         {
             // h stands for header just for readability
             labelData = hlabelData;
@@ -29,6 +93,7 @@ namespace LabelMaker
             paperSource = hpaperSource;
             wholeQueue = hwholeQueue;
             labelCount = hlabelCount;
+            printerListIndex = hprinterListIndex;
 
         }
     }

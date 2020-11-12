@@ -73,12 +73,14 @@ namespace LabelMaker
 
             colourQueueTab("first");
             updateManualTab();
+            
+            canIusePrinter.getPrinterList(); //Used to stop two threads printing to one printer at same time
 
             splash.Close();
 
-
-            //this.TopMost = true;
         }
+
+
 
         private void colourQueueTab(string first)
         {
@@ -368,9 +370,8 @@ namespace LabelMaker
             printVariables.paperSource = paperSource;
             printVariables.wholeQueue = wholeQueue;
             printVariables.labelCount = labelCount;
+            printVariables.printerListIndex = canIusePrinter.getPrinterIndex(printerDetails[0]);
 
-
-            
                 if (labelHeader[2] == "Text")
                 {
                     Thread textPrint = new Thread(() => printAsText(printVariables));    // Kick off a new thread
@@ -515,6 +516,20 @@ namespace LabelMaker
 
         private void printAsText( printDefaults printVariables)
         {
+            //MessageBox.Show("Got to Text Printing");
+            
+            //wait around so queues don't clash on print
+            int waitCounter = 0;
+        Busy:
+            if (canIusePrinter.inUseOrNot[printVariables.printerListIndex] == true)
+                {
+                Thread.Sleep(1000);
+                waitCounter++;
+                goto Busy;
+            }
+            canIusePrinter.inUseOrNot[printVariables.printerListIndex] = true;
+            //MessageBox.Show("Waited for " + waitCounter + " loops");
+
             //Print one label at a time using multiple copies for speed
             int rowsToPrint = printVariables.howManyLines+1;
             string[] queueData = new string[36];
@@ -548,14 +563,27 @@ namespace LabelMaker
                     pd.Dispose();
 
                 }
+            canIusePrinter.inUseOrNot[printVariables.printerListIndex] = false;
         }
 
         private void printAsColour(  printDefaults printerVariables)
         {
+            //wait around so queues don't clash on print
+            int waitCounter = 0;
+        Busy:
+            if (canIusePrinter.inUseOrNot[printerVariables.printerListIndex]==true)
+            {
+                Thread.Sleep(1000);
+                waitCounter++;
+                goto Busy;
+            }
+            canIusePrinter.inUseOrNot[printerVariables.printerListIndex] = true;
+            MessageBox.Show("Waited for " + waitCounter + " loops");
+
             //Print multiple labels on one sheet. 
 
-                //Collect overall data
-                int countX = 0; //label x position
+            //Collect overall data
+            int countX = 0; //label x position
                 int countY = 0; //label y position
                 int labelsAcross = int.Parse(listBoxPrinter.Items[2].ToString());
                 int labelsDown = int.Parse(listBoxPrinter.Items[3].ToString()) ;
@@ -650,6 +678,7 @@ namespace LabelMaker
                     pd.Dispose();
                     
                 }
+            canIusePrinter.inUseOrNot[printerVariables.printerListIndex] = false;
 
         }
 
