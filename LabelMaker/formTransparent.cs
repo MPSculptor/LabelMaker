@@ -25,7 +25,7 @@ namespace LabelMaker
 
         void PerPixelAlphaForm_Load(object sender, EventArgs e)
         {
-            //this.TopMost = true;
+            this.TopMost = true;
             this.CenterToScreen();
         }
         protected override CreateParams CreateParams
@@ -219,6 +219,7 @@ namespace LabelMaker
             // 
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "PerPixelAlphaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.PerPixelAlphaForm_Load_1);
             this.ResumeLayout(false);
 

@@ -40,8 +40,17 @@ namespace LabelMaker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Thread splashShow = new Thread(() => showSplashScreen());
-            splashShow.Start();
+            //Thread splashShow = new Thread(() => showSplashScreen());
+            //splashShow.Start();
+            //showSplashScreen();
+            PerPixelAlphaForm splash = new PerPixelAlphaForm();
+            Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
+            splash.SelectBitmap(picture);
+            
+            splash.StartPosition = FormStartPosition.CenterScreen;
+            splash.Show();
+
+
 
             // TODO: This line of code loads data into the 'databaseLabelsDataSet4.TablePassportQueue' table. You can move, or remove it, as needed.
             this.tablePassportQueueTableAdapter.Fill(this.databaseLabelsDataSet4.TablePassportQueue);
@@ -65,15 +74,7 @@ namespace LabelMaker
             colourQueueTab("first");
             updateManualTab();
 
-            //Lock Grids to prevent uncommitted changes
-            //dataGridViewMainQ.AllowUserToAddRows = false;
-            //dataGridViewMainQ.AllowUserToDeleteRows = false;
-            //dataGridViewColourQ.AllowUserToAddRows = false;
-            //dataGridViewColourQ.AllowUserToDeleteRows = false;
-            //dataGridViewAddressQ.AllowUserToAddRows = false;
-            //dataGridViewAddressQ.AllowUserToDeleteRows = false;
-            //dataGridViewPassportQ.AllowUserToAddRows = false;
-            //dataGridViewPassportQ.AllowUserToDeleteRows = false;
+            splash.Close();
 
 
             //this.TopMost = true;
@@ -280,12 +281,25 @@ namespace LabelMaker
 
                         #region pDialog to authorise print
 
+            //get Paper Tray right
+            switch (printerDetails[1])
+             {
+                case "9":
+                    printerDetails[1] = "Multipurpose Tray";
+                    break;
+            }
+
+
             PrintDialog pDialog = new PrintDialog();
-            pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
+            //pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
+
+            pDialog.PrinterSettings.PrinterName = printerDetails[0];
+            pDialog.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
 
             pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
-            pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[0];
-            string paperSourceName = printerDetails[0];
+            pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[1];
+            pDialog.PrinterSettings.DefaultPageSettings.PaperSource.SourceName = printerDetails[1];
+            string paperSourceName = printerDetails[1];
             
             //set right paper tray
             string[] sources = new string[20];
@@ -299,12 +313,10 @@ namespace LabelMaker
                 sources[q] = pkSource.SourceName;
                 if (pkSource.SourceName == listBoxPrinter.Items[15].ToString().TrimEnd()) { pkFoundSource = pkSource; }
             }
+
             pDialog.Document.DefaultPageSettings.PaperSource = pkFoundSource;
-
-            pDialog.PrinterSettings.PrinterName = printerDetails[0];
-            pDialog.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
+            pDialog.PrinterSettings.DefaultPageSettings.PaperSource = pkFoundSource;
             
-
             //DialogResult msg = MessageBox.Show(printVariables.howManyLines.ToString());
 
             #endregion
@@ -315,7 +327,10 @@ namespace LabelMaker
             printerDetails[5] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString();
             printerDetails[6] = pDialog.PrinterSettings.DefaultPageSettings.HardMarginX.ToString();
             printerDetails[7] = pDialog.PrinterSettings.DefaultPageSettings.HardMarginY.ToString();
-            PaperSource paperSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+            PaperSource paperSource = pDialog.Document.DefaultPageSettings.PaperSource;
+
+            
+
 
             if (printerResponse == DialogResult.OK)
             {
@@ -366,8 +381,6 @@ namespace LabelMaker
                     Thread colourPrint = new Thread(() => printAsColour(printVariables));
                     colourPrint.Start();
                 }
-
-                
 
             }
 
@@ -579,6 +592,7 @@ namespace LabelMaker
 
                     pd.PrinterSettings.PrinterName =  printerVariables.printerDetails[3];
                     pd.DefaultPageSettings.PaperSource = printerVariables.paperSource;
+                    pd.PrinterSettings.DefaultPageSettings.PaperSource = printerVariables.paperSource;
 
                     
                     if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
