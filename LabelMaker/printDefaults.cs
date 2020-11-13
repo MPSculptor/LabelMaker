@@ -97,4 +97,27 @@ namespace LabelMaker
 
         }
     }
+
+    public class quickPrintDefaults : Object
+    {
+
+        // Holds different variables to pass to quickPrint so that it can all be sent as one object and it can print as a thread (this allows it to wait for an empty printer in the background)
+        public string[] queueString { get; set; }
+        public string[] defaultsString { get; set; }
+        public string[] labelString { get; set; }
+        public string[] headerString  {get; set;}
+        
+
+        public quickPrintDefaults() { }
+
+        public quickPrintDefaults(string[] hqueueString, string[] hdefaultsString, string[] hlabelString, string[] hheaderString)
+        {
+            // h stands for header just for readability
+            queueString = hqueueString;
+            defaultsString = hdefaultsString;
+            labelString = hlabelString;
+            headerString = hheaderString;
+
+        }
+    }
 }

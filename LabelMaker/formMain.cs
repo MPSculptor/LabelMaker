@@ -6962,75 +6962,75 @@ namespace LabelMaker
             string[] defaultsString = getDefaultSettings();
             string[] queueString = new string[25];
 
-            
-                int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
-                string[] sendData = new String[21];
-                string[] findName = new String[5];
-                string[] moreData = new String[12];
+
+            int currentRow = dataGridViewPlants.CurrentCell.RowIndex;
+            string[] sendData = new String[21];
+            string[] findName = new String[5];
+            string[] moreData = new String[12];
 
 
-                // get general plant data
-                for (int i = 0; i <= 20; i++)
-                {
-                    sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString();
-                }
+            // get general plant data
+            for (int i = 0; i <= 20; i++)
+            {
+                sendData[i] = dataGridViewPlants.Rows[currentRow].Cells[i].Value.ToString();
+            }
 
-                // get various concatenated Name strings 
-                for (int i = 0; i <= 4; i++)
-                {
-                    findName[i] = dataGridViewPlants.Rows[currentRow].Cells[1 + i].Value.ToString();
-                }
-                string[] sendName = getPlantName(findName);
+            // get various concatenated Name strings 
+            for (int i = 0; i <= 4; i++)
+            {
+                findName[i] = dataGridViewPlants.Rows[currentRow].Cells[1 + i].Value.ToString();
+            }
+            string[] sendName = getPlantName(findName);
 
-                //get main pcture
-                if (radioButtonImage1.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[12].Value.ToString(); }
-                if (radioButtonImage2.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[13].Value.ToString(); }
-                if (radioButtonImage3.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[14].Value.ToString(); }
-                if (radioButtonImage4.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[15].Value.ToString(); }
+            //get main pcture
+            if (radioButtonImage1.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[12].Value.ToString(); }
+            if (radioButtonImage2.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[13].Value.ToString(); }
+            if (radioButtonImage3.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[14].Value.ToString(); }
+            if (radioButtonImage4.Checked) { moreData[0] = dataGridViewPlants.Rows[currentRow].Cells[15].Value.ToString(); }
 
-                // Check AGM Status
-                if (dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString() == "True")
-                {
-                    moreData[1] = "AGM.ico";
-                }
-                else
-                {
-                    moreData[1] = "AGMblank.ico";
-                }
+            // Check AGM Status
+            if (dataGridViewPlants.Rows[currentRow].Cells[16].Value.ToString() == "True")
+            {
+                moreData[1] = "AGM.ico";
+            }
+            else
+            {
+                moreData[1] = "AGMblank.ico";
+            }
 
-                // qty and price
+            // qty and price
 
-                moreData[2] = qty.ToString();
-                moreData[3] = "";
+            moreData[2] = qty.ToString();
+            moreData[3] = "";
 
-                // customer and Order NUmber
-                moreData[4] = "";
-                moreData[5] = "";
+            // customer and Order NUmber
+            moreData[4] = "";
+            moreData[5] = "";
 
-                // profile
-                string profileName = dataGridViewPlants.Rows[currentRow].Cells[17].Value.ToString();
+            // profile
+            string profileName = dataGridViewPlants.Rows[currentRow].Cells[17].Value.ToString();
 
-                DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
-                string expression;
-                expression = "Name = '" + profileName + "'";
-                DataRow[] foundRows;
+            DataTable table = databaseLabelsDataSetProfiles.Tables["TableProfiles"];
+            string expression;
+            expression = "Name = '" + profileName + "'";
+            DataRow[] foundRows;
 
-                // Use the Select method to find all rows matching the filter.
-                foundRows = table.Select(expression);
-                moreData[6] = foundRows[0][3].ToString(); // Font Name
-                moreData[7] = foundRows[0][6].ToString(); // Font Colour
-                moreData[8] = foundRows[0][4].ToString(); // Bold
-                moreData[9] = foundRows[0][5].ToString(); // Italic
-                moreData[10] = foundRows[0][2].ToString(); // Border Colour
-                moreData[11] = foundRows[0][7].ToString(); // Back Colour
+            // Use the Select method to find all rows matching the filter.
+            foundRows = table.Select(expression);
+            moreData[6] = foundRows[0][3].ToString(); // Font Name
+            moreData[7] = foundRows[0][6].ToString(); // Font Colour
+            moreData[8] = foundRows[0][4].ToString(); // Bold
+            moreData[9] = foundRows[0][5].ToString(); // Italic
+            moreData[10] = foundRows[0][2].ToString(); // Border Colour
+            moreData[11] = foundRows[0][7].ToString(); // Back Colour
 
-                queueString = dataReader.readQueue(sendData, sendName, moreData);
-            
+            queueString = dataReader.readQueue(sendData, sendName, moreData);
+
 
             //file with a sample label definition;
 
             string labelChoice = labelName;
-            
+
             String[] headerString = returnLabelHeaderData(labelChoice);
             String[] labelString = returnLabelData(labelChoice);
             labelString[0] = headerString[6];
@@ -7038,16 +7038,44 @@ namespace LabelMaker
 
             #endregion **end**
 
+            quickPrintDefaults quickPrintDefaults = new quickPrintDefaults();
+
+            quickPrintDefaults.labelString = labelString;
+            quickPrintDefaults.defaultsString = defaultsString;
+            quickPrintDefaults.queueString = queueString;
+            quickPrintDefaults.headerString = headerString;
+
+            Thread quickPrint = new Thread(() => doTheQuickPrint(quickPrintDefaults));    // Kick off a new thread
+            quickPrint.Start();
+
+        }
+
+        public void doTheQuickPrint( quickPrintDefaults quickPrintDefaults)
+        { 
+
             PrintDialog pDialog = new PrintDialog();
-            pDialog.PrinterSettings.PrinterName = headerString[12];
+            pDialog.PrinterSettings.PrinterName = quickPrintDefaults.headerString[12];
 
             if (DialogResult.OK == pDialog.ShowDialog())
             {
-                
-                
-                    //string[] queueData = collectQueueRow(count, whichQueue);
 
-                    PrintDocument pd = new PrintDocument();
+                //wait around so queues don't clash on print
+                int waitCounter = 0;
+
+                int printerIndex = canIusePrinter.getPrinterIndex(quickPrintDefaults.headerString[12]);
+            Busy:
+                if (canIusePrinter.inUseOrNot[printerIndex] == true)
+                {
+                    Thread.Sleep(1000);
+                    waitCounter++;
+                    goto Busy;
+                }
+                canIusePrinter.inUseOrNot[printerIndex] = true;
+
+
+                //string[] queueData = collectQueueRow(count, whichQueue);
+
+                PrintDocument pd = new PrintDocument();
                     pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
                     if (listBoxPrinter.Items[4].ToString() == "Landscape")
                     {
@@ -7066,14 +7094,15 @@ namespace LabelMaker
                     int placementY = 0;
 
 
-                    pd.PrintPage += (sender1, args) => DrawImage(queueString, labelString, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, sender1, args);
-                    pd.PrinterSettings.Copies = short.Parse(queueString[1]);
+                    pd.PrintPage += (sender1, args) => DrawImage(quickPrintDefaults.queueString, quickPrintDefaults.labelString, quickPrintDefaults.defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, sender1, args);
+                    pd.PrinterSettings.Copies = short.Parse(quickPrintDefaults.queueString[1]);
                     pd.Print();
                     pd.Dispose();
                
                 pDialog.Dispose();
-
+                canIusePrinter.inUseOrNot[printerIndex] = false;
             }
+            
         }
 
         #region QuickPrint Buttons
