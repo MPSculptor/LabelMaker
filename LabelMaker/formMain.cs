@@ -40,8 +40,6 @@ namespace LabelMaker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Thread splashShow = new Thread(() => showSplashScreen());
-            //splashShow.Start();
             //showSplashScreen();
             PerPixelAlphaForm splash = new PerPixelAlphaForm();
             Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
@@ -294,25 +292,22 @@ namespace LabelMaker
 
             PrintDialog pDialog = new PrintDialog();
             //pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
-
-            pDialog.PrinterSettings.PrinterName = printerDetails[0];
-            pDialog.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
-
-            pDialog.Document = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
-            pDialog.Document.PrinterSettings.PrinterName = printerDetails[0];
+            
+            pDialog.Document  = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
+            pDialog.Document.PrinterSettings.PrinterName = printerDetails[0].Trim();
             pDialog.Document.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
             try
             {
                 pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[1];
-                pDialog.PrinterSettings.DefaultPageSettings.PaperSource.SourceName = printerDetails[1];
+                //pDialog.PrinterSettings.DefaultPageSettings.PaperSource.SourceName = printerDetails[1];
             
                 string paperSourceName = printerDetails[1];
             
                 //set right paper tray
                 string[] sources = new string[20];
 
-                PaperSource pkSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
-                PaperSource pkFoundSource = pDialog.PrinterSettings.DefaultPageSettings.PaperSource;
+                PaperSource pkSource = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSource;
+                PaperSource pkFoundSource = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSource;
 
                 for (int q = 0; q < pDialog.PrinterSettings.PaperSources.Count; q++)
                 {
@@ -322,27 +317,31 @@ namespace LabelMaker
                 }
 
                 pDialog.Document.DefaultPageSettings.PaperSource = pkFoundSource;
-                pDialog.PrinterSettings.DefaultPageSettings.PaperSource = pkFoundSource;
-                }
+                //pDialog.PrinterSettings.DefaultPageSettings.PaperSource = pkFoundSource;
+
+                printerDetails[3] = pDialog.Document.PrinterSettings.PrinterName = printerDetails[0];
+                printerDetails[4] = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString();
+                printerDetails[5] = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString();
+                printerDetails[6] = pDialog.Document.PrinterSettings.DefaultPageSettings.HardMarginX.ToString();
+                printerDetails[7] = pDialog.Document.PrinterSettings.DefaultPageSettings.HardMarginY.ToString();
+               
+            }
             catch
             {
+                printerDetails[3] = pDialog.PrinterSettings.PrinterName;
+                //printerDetails[4] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString();
+                //printerDetails[5] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString();
+                printerDetails[6] = 0.ToString();
+                printerDetails[7] = 0.ToString();
                 MessageBox.Show("Failed to set correct paper tray, please make sure it is set as you need");
             }
+
+            PaperSource paperSource = pDialog.Document.DefaultPageSettings.PaperSource;
 
             //DialogResult msg = MessageBox.Show(printVariables.howManyLines.ToString());
 
             #endregion
             DialogResult printerResponse = pDialog.ShowDialog();
-
-            printerDetails[3] = pDialog.PrinterSettings.PrinterName;
-            printerDetails[4] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString();
-            printerDetails[5] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString();
-            printerDetails[6] = pDialog.PrinterSettings.DefaultPageSettings.HardMarginX.ToString();
-            printerDetails[7] = pDialog.PrinterSettings.DefaultPageSettings.HardMarginY.ToString();
-            PaperSource paperSource = pDialog.Document.DefaultPageSettings.PaperSource;
-
-            
-
 
             if (printerResponse == DialogResult.OK)
             {
@@ -381,6 +380,7 @@ namespace LabelMaker
             printVariables.wholeQueue = wholeQueue;
             printVariables.labelCount = labelCount;
             printVariables.printerListIndex = canIusePrinter.getPrinterIndex(printerDetails[0]);
+            
 
                 if (labelHeader[2] == "Text")
                 {
@@ -389,7 +389,7 @@ namespace LabelMaker
                 }
                 else
                 {
-                    Thread colourPrint = new Thread(() => printAsColour(printVariables));
+                    Thread colourPrint = new Thread(() => printAsColour(printVariables));   // Kick off a new thread
                     colourPrint.Start();
                 }
 
@@ -512,7 +512,6 @@ namespace LabelMaker
 
             return wholeQueue;
         }
-         
 
         private void DrawImage(string[] queueData, string[] labelData, string[] defaultsString, int sentWidth, int sentHeight,int marginX, int placementX,int marginY, int placementY, object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -521,8 +520,6 @@ namespace LabelMaker
             whereToNow printWhere = new whereToNow(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, "print", e.Graphics);
             printWhere.Dispose();
         }
-
-        
 
         private void printAsText( printDefaults printVariables)
         {
@@ -601,7 +598,7 @@ namespace LabelMaker
                 int totalLabels = printerVariables.labelCount;
                 int queueCount = printerVariables.howManyLines;
                 int howManyPrinted = 0;
-
+            
             //collect which labels are represented by which queue entry
             int[] queuePositions = new int[totalLabels];
             int queuePositionCounter = 0;
@@ -631,7 +628,7 @@ namespace LabelMaker
                     pd.PrinterSettings.PrinterName =  printerVariables.printerDetails[3];
                     pd.DefaultPageSettings.PaperSource = printerVariables.paperSource;
                     pd.PrinterSettings.DefaultPageSettings.PaperSource = printerVariables.paperSource;
-
+                
                     
                     if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
                     {
@@ -646,44 +643,40 @@ namespace LabelMaker
                     // put label on the sheet
                     for (int j = 1; j <= labelsPerSheet; j++)
                     {
-                    string[] queueData = new string[36];
-                    for (int h = 0; h <= 35; h++) { queueData[h] = printerVariables.wholeQueue[queuePositions[queuePositionCounter], h]; }
-                    //string[] queueData = collectQueueRow(queuePositions[queuePositionCounter], whichQueue);
-
-                        int sentWidth = int.Parse(printerVariables.printerDetails[4]);
-                        int sentHeight = int.Parse(printerVariables.printerDetails[5]);
-                        int marginX = int.Parse(printerVariables.printerDetails[6]);
-                        int marginY = int.Parse(printerVariables.printerDetails[7]);
-
-                    if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
-                        {
-                            int swap = sentWidth;
-                            sentWidth = sentHeight;
-                            sentHeight = swap;
-                        }
-
-                        sentWidth = sentWidth / labelsAcross;
-                        sentHeight = sentHeight / labelsDown;
-
-                        int XPosition = sentWidth * countX;
-                        int YPosition = sentHeight * countY;
+                            string[] queueData = new string[36];
+                            for (int h = 0; h <= 35; h++) { queueData[h] = printerVariables.wholeQueue[queuePositions[queuePositionCounter], h];}
                         
-                        pd.PrintPage += (sender1, args) => DrawImage(queueData, printerVariables.labelData, printerVariables.defaultsString, sentWidth, sentHeight, marginX, XPosition, marginY,YPosition, sender1, args);
+                            int sentWidth = int.Parse(printerVariables.printerDetails[4]);
+                            int sentHeight = int.Parse(printerVariables.printerDetails[5]);
+                            int marginX = int.Parse(printerVariables.printerDetails[6]);
+                            int marginY = int.Parse(printerVariables.printerDetails[7]);
 
-                        howManyPrinted++;
-                        countX++;
-                        if (countX==labelsAcross) { countX = 0; countY++; }
-                        if (countY == labelsDown) { countX = 0; countY = 0; }
+                            if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
+                                {
+                                    int swap = sentWidth;
+                                    sentWidth = sentHeight;
+                                    sentHeight = swap;
+                                }
+
+                            sentWidth = sentWidth / labelsAcross;
+                            sentHeight = sentHeight / labelsDown;
+
+                            int XPosition = sentWidth * countX;
+                            int YPosition = sentHeight * countY;
+                        
+                            pd.PrintPage += (sender1, args) => DrawImage(queueData, printerVariables.labelData, printerVariables.defaultsString, sentWidth, sentHeight, marginX, XPosition, marginY,YPosition, sender1, args);
+
+                            howManyPrinted++;
+                            countX++;
+                            if (countX==labelsAcross) { countX = 0; countY++; }
+                            if (countY == labelsDown) { countX = 0; countY = 0; }
 
                     
-                    if (queuePositionCounter == totalLabels) { break ; }
-                    queuePositionCounter++;
+                        if (queuePositionCounter == (totalLabels-1)) { break ; }
+                        queuePositionCounter++;
+                    }
 
-
-
-                }
-
-                    //send to print document
+                    ////send to print document
                     pd.Print();
                     pd.Dispose();
                     
@@ -691,152 +684,6 @@ namespace LabelMaker
             canIusePrinter.inUseOrNot[printerVariables.printerListIndex] = false;
 
         }
-
-        #region  ###  OLD PRINTING CODE FOR DELETION IF THREADING WORKS ####
-
-        private void OLDPRINTCODEprintAsText(string[] labelData, string whichQueue, int howManyLines, string[] defaultsString, string[] printerDetails)
-        // ### delete when printing swapped ###
-        {
-            //Print one label at a time using multiple copies for speed
-
-            PrintDialog pDialog = new PrintDialog();
-            pDialog.PrinterSettings.PrinterName = printerDetails[0];
-
-
-            if (DialogResult.OK == pDialog.ShowDialog())
-            {
-                int count = 0;
-                for (int i = 0; i < howManyLines; i++)
-                {
-                    // count how long each label takes
-                    Stopwatch sw1 = new Stopwatch();
-                    sw1.Start();
-
-                    string[] queueData = collectQueueRow(count, whichQueue);
-
-                    //About 0.1 %
-                    Console.WriteLine("Elapsed after collecting queueData ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.ffff"));
-
-                    PrintDocument pd = new PrintDocument();
-                    pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
-                    if (listBoxPrinter.Items[4].ToString() == "Landscape")
-                    {
-                        pd.DefaultPageSettings.Landscape = true;
-                    }
-                    else
-                    {
-                        pd.DefaultPageSettings.Landscape = false;
-                    }
-
-                    int sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
-                    int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
-                    int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
-                    int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
-                    int placementX = 0;
-                    int placementY = 0;
-
-
-                    pd.PrintPage += (sender1, args) => DrawImage(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, sender1, args);
-                    pd.PrinterSettings.Copies = short.Parse(queueData[1]);
-                    //About a quarter
-                    Console.WriteLine("Elapsed up until Print ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.ffff"));
-                    //This takes 75% of time of which label creation is about 12%, ie 60%+ of time is the printer driver.
-                    pd.Print();
-                    //Same as end
-                    //Console.WriteLine("Elapsed up until Print.Dispose ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.ffff"));
-                    pd.Dispose();
-
-
-                    sw1.Stop();
-                    Console.WriteLine("Elapsed for whole label ={0}" + "  " + queueData[0], sw1.Elapsed.ToString("ss\\.fff"));
-
-                    count++; //increment so move through queue if not deleting
-
-                    //delete line
-                    if (checkBoxQueueDelete.Checked)
-                    {
-                        if (whichQueue == "Main")
-                        {
-                            dataGridViewMainQ.Rows.RemoveAt(0);
-                            dataGridViewMainQ.EndEdit();
-                            try
-                            {
-                                tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
-                                //MessageBox.Show("Succeeding in deleting from Main Queue");
-                            }
-                            catch (System.Exception ex)
-                            {
-                                MessageBox.Show("Failed to delete from Main Queue - " + ex);
-                            }
-                            dataGridViewMainQ.Refresh();
-                            labelMainCount.Text = addMainQueueTotal().ToString();
-                            labelMainCountQ.Text = labelMainCount.Text;
-                            count--;
-                        }
-                        else if (whichQueue == "Address")
-                        {
-                            dataGridViewAddressQ.Rows.RemoveAt(0);
-                            dataGridViewAddressQ.EndEdit();
-                            try
-                            {
-                                tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue);
-                                //MessageBox.Show("Succeeding in deleting from Address Queue");
-                            }
-                            catch (System.Exception ex)
-                            {
-                                MessageBox.Show("Failed to delete from Address Queue - " + ex);
-                            }
-                            dataGridViewAddressQ.Refresh();
-                            textBoxAddressCount.Text = addAddressQueueTotal().ToString();
-                            count--;//cancel increment if we are deleting so we always take the first item
-                        }
-                        else if (whichQueue == "Passport")
-                        {
-                            dataGridViewPassportQ.Rows.RemoveAt(0);
-                            dataGridViewPassportQ.EndEdit();
-                            try
-                            {
-                                tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue);
-                                //MessageBox.Show("Succeeding in deleting from Passport Queue");
-                            }
-                            catch (System.Exception ex)
-                            {
-                                MessageBox.Show("Failed to delete from Passport Queue - " + ex);
-                            }
-                            dataGridViewPassportQ.Refresh();
-                            textBoxPassportCount.Text = addPassportQueueTotal().ToString();
-                            count--;//cancel increment if we are deleting so we always take the first item
-                        }
-                        else
-                        {
-                            dataGridViewColourQ.Rows.RemoveAt(0);
-                            dataGridViewColourQ.EndEdit();
-                            try
-                            {
-                                tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue);
-                                //MessageBox.Show("Succeeding in deleting from Colour Queue");
-                            }
-                            catch (System.Exception ex)
-                            {
-                                MessageBox.Show("Failed to delete from Colour Queue - " + ex);
-                            }
-                            dataGridViewColourQ.Refresh();
-                            labelColourCount.Text = addColourQueueTotal().ToString();
-                            labelColourCountQ.Text = labelColourCount.Text;
-                            count--;//cancel increment if we are deleting so we always take the first item
-                        }
-                    }
-                }
-
-                pDialog.Dispose();
-
-            }
-        }
-
-    
-
-        #endregion
-
 
 #endregion
 
@@ -4191,9 +4038,6 @@ namespace LabelMaker
 
 
 
-        
-
-
         #endregion
 
         #region Label Stocks Tab
@@ -4636,7 +4480,6 @@ namespace LabelMaker
             textBoxPassportCount.Text = addPassportQueueTotal().ToString();
 
         }
-
 
         private void addRowToColourQ(string[] queue, string which)
         {
@@ -5941,7 +5784,7 @@ namespace LabelMaker
                     }
 
                 }
-                sortAuto("Name");
+                sortAuto("Order");
                 fillAutoListBox();
 
 
@@ -6075,7 +5918,6 @@ namespace LabelMaker
 
         }
         
-
         private void dataGridViewAuto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //get colours
@@ -7519,7 +7361,7 @@ namespace LabelMaker
 
             if (checkBoxCorrectAddress.Checked) { cleanAddresses(); }
             Boolean includeDPD = true; //default
-            DialogResult result = MessageBox.Show( "Do you want to include courier orders as well as Post Office","Courier orders", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show( "Do you want to include Courier orders as well as Post Office orders in the Address Labels","About to Produce Address Queue", MessageBoxButtons.YesNo);
             if (result == DialogResult.No) { includeDPD = false; }
             
             // count customers
@@ -7803,7 +7645,6 @@ namespace LabelMaker
 
         }
 
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string myVersion = "";
@@ -7960,8 +7801,6 @@ namespace LabelMaker
                 }
             }
 
-       
-
         private void buttonCorrectAddresses_Click(object sender, EventArgs e)
         {
             if (textBoxDefaultsCorrectAdd.Text == "True")
@@ -7995,8 +7834,6 @@ namespace LabelMaker
                 catch { }
             }
         }
-
-        
 
         private void comboBoxLabelsForDesign_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -9378,6 +9215,8 @@ namespace LabelMaker
             splash.Dispose();
             
         }
+
+        
     }
 }
     
