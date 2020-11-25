@@ -7394,7 +7394,8 @@ namespace LabelMaker
                     
                     customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
                     plantCount = int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
-                    customers[count,0] = customer;
+                    //Adds the Billing Customer  customers[count,0] = customer;
+                    customers[count, 0] = (dataGridViewAuto.Rows[i].Cells[11].Value.ToString().Trim() + " " + dataGridViewAuto.Rows[i].Cells[12].Value.ToString().Trim()); // Adds Shipping Customer
                     customers[count, 1] = plantCount.ToString();
                     customers[count, 2] = dataGridViewAuto.Rows[i].Cells[1].Value.ToString();
                     count++;
@@ -7425,7 +7426,7 @@ namespace LabelMaker
                 {
                     //rountine to make a line if it needs adding
                     //MessageBox.Show("Adding - " + customers[i, 0]);
-                    for (int j = 0; j<= dataGridViewAuto.RowCount - 1; j++)
+                    for (int j = 0; j<= dataGridViewAuto.RowCount - 2; j++)
                     {
                         if (dataGridViewAuto.Rows[j].Cells[5].Value.ToString() == customers[i,0])
                         {
@@ -7596,7 +7597,7 @@ namespace LabelMaker
                             queueData[3] = "";  //Potsize
                             queueData[4] = customers[i, 0]; // Customer Name
                             queueData[5] = ""; // Barcode
-                            queueData[6] = "This is a Plant Passport only Queue"; //Description
+                            queueData[6] = customers[i, 3]; //Moved here as can get large !! //"This is a Plant Passport only Queue"; //Description
                             queueData[7] = ""; //Common Name
                             queueData[8] = ""; // Main Picture
                             queueData[9] = "Arial"; // Font Name
@@ -7606,7 +7607,7 @@ namespace LabelMaker
                             queueData[13] = "0"; // Border Colour
                             queueData[14] = "0"; // Back Colour
                             queueData[15] = DateTime.Now.ToString("yyyy-d-M"); // notes
-                            queueData[16] = customers[i,3]; // Genus
+                            queueData[16] = "This is a Plant Passport only Queue"; // customers[i,3]; // Genus
                             queueData[17] = ""; // species
                             queueData[18] = "";  // Variety
                             queueData[19] = ""; // AGM picture to use
@@ -8642,6 +8643,8 @@ namespace LabelMaker
             {
                 Boolean sameShippingAsBilling = true; // to stop it replacing Billing name with Shipping name
                 string[] address = new string[9];
+                string billing = "";
+                string shipping = "";
                 //fill address from grid
 
                 //check for null address
@@ -8658,10 +8661,14 @@ namespace LabelMaker
                         if (String.IsNullOrEmpty(address[j]) != true) { checkNull = false; }
                     }
                 }
+                billing  = dataGridViewAuto.Rows[i].Cells[9].Value.ToString().Trim() + " " + dataGridViewAuto.Rows[i].Cells[10].Value.ToString().Trim();
+                shipping = dataGridViewAuto.Rows[i].Cells[11].Value.ToString().Trim() + " " + dataGridViewAuto.Rows[i].Cells[12].Value.ToString().Trim();
+                if (billing != shipping) { sameShippingAsBilling = false; }
+
                 //jump to next line if address is all null
                 if (checkNull) { continue; }
 
-                //Move Mr / Mrs and delete oddities
+                //Move Mr / Mrs etc and delete oddities
 
                 for (int k = 0; k < dataGridViewAddClean.RowCount - 1; k++)
                 {
@@ -8799,16 +8806,15 @@ namespace LabelMaker
 
                     }
 
-
                 //Put back Name
-                address[0] = address[1] +" "+ address[2];
-
+                if (sameShippingAsBilling) { address[0] = address[1] + " " + address[2]; }
+                
                 //Put back address lines
 
-                    //Put new Address back in right string
+                //Put new Address back in right string
 
-                    //find how many address lines you have
-                    counter = findCounter(splitAddress);
+                //find how many address lines you have
+                counter = findCounter(splitAddress);
                     if (counter > 6)
                     {
                     do
