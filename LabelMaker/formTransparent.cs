@@ -156,7 +156,7 @@ namespace LabelMaker
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        struct Size
+        new struct Size
         {
             public Int32 cx;
             public Int32 cy;

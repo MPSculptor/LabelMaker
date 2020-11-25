@@ -481,28 +481,28 @@ namespace LabelMaker
                             databaseLabelsDataSetMainQueue.TableMainQueue.Rows[0].SetField(2, lastLineQty);
 
                             try { tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue); }
-                            catch (System.Exception ex) { }
+                            catch { }//()//System.Exception ex) { }
                         }
                         if (tabControlQueue.SelectedTab == tabPageColourQueue)
                         {
                             databaseLabelsDataSetColourQueue.TableColourQueue.Rows[0].SetField(2, lastLineQty);
 
                             try { tableColourQueueTableAdapter.Update(databaseLabelsDataSetColourQueue.TableColourQueue); }
-                            catch (System.Exception ex) { }
+                            catch { }// (System.Exception ex) { }
                         }
                         if (tabControlQueue.SelectedTab == tabPageAddresses)
                         {
                             databaseLabelsDataSet3.TableAddressQueue.Rows[0].SetField(2, lastLineQty);
 
                             try { tableAddressQueueTableAdapter.Update(databaseLabelsDataSet3.TableAddressQueue); }
-                            catch (System.Exception ex) { }
+                            catch { }// (System.Exception ex) { }
                         }
                         if (tabControlQueue.SelectedTab == tabPagePassports)
                         {
                             databaseLabelsDataSet4.TablePassportQueue.Rows[0].SetField(2, lastLineQty);
 
                             try { tablePassportQueueTableAdapter.Update(databaseLabelsDataSet4.TablePassportQueue); }
-                            catch (System.Exception ex) { }
+                            catch { }// (System.Exception ex) { }
                         }
                     }
                 }
@@ -545,6 +545,8 @@ namespace LabelMaker
                 for (int h = 0; h <= 35; h++) { queueData[h] = printVariables.wholeQueue[i, h]; }
 
                     PrintDocument pd = new PrintDocument();
+                    pd.PrintController = new StandardPrintController();
+
                     pd.PrinterSettings.PrinterName = printVariables.printerDetails[3];
                     if (listBoxPrinter.Items[4].ToString() == "Landscape")
                     {
@@ -624,6 +626,8 @@ namespace LabelMaker
                     countX = 0;
                     countY = 0;
                     PrintDocument pd = new PrintDocument();
+
+                    pd.PrintController = new StandardPrintController();
 
                     pd.PrinterSettings.PrinterName =  printerVariables.printerDetails[3];
                     pd.DefaultPageSettings.PaperSource = printerVariables.paperSource;
@@ -5982,6 +5986,8 @@ namespace LabelMaker
                 listBoxAutoErrors.Items.Clear();
                 pictureBoxArrow.Visible = false;
                 findAutoCustomer();
+                sortAuto("Plant");
+                sortAuto("Order");
                 //Create Address Queue
                 createAddressList("specified", "Address");
 
@@ -8628,12 +8634,9 @@ namespace LabelMaker
             return result;
         }
 
-
         private void cleanAddresses()
         {
             //Cleans up the Addresses in the DataGrid. Doesn't save changes in case the cleanup is imperfect.
-
-            
 
             for (int i =0;i<dataGridViewAuto.RowCount - 1; i++)
             {
@@ -8856,8 +8859,7 @@ namespace LabelMaker
 
             }
         }
-        
-
+ 
         private int findCounter(string[] sentString)
         {
             //find counter - finds first empty string in an array
