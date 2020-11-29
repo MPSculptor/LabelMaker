@@ -6038,6 +6038,7 @@ namespace LabelMaker
             //make an array to fill with this order
             string[][] collectedOrder = new string[size][];
             int counter = 0;
+            //How to Pick a Plant from Database from SKU **FIND-A-PLANT**
             DataTable tryTable = databaseLabelsDataSet.Tables["TablePlants"];
 
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
@@ -7511,7 +7512,7 @@ namespace LabelMaker
             }
             int rememberCustomers = count;
             //gather names and counts and Genera
-            string[,] customers = new string[count, 4];
+            string[,] customers = new string[count, 5];
             customer = "";
             count = 0;
             int plantCount = 0;
@@ -7526,7 +7527,8 @@ namespace LabelMaker
                     customers[count, 0] = customer;
                     customers[count, 1] = plantCount.ToString();
                     customers[count, 2] = dataGridViewAuto.Rows[i].Cells[1].Value.ToString();
-
+                    customers[count, 4] = dataGridViewAuto.Rows[i].Cells[8].Value.ToString(); //SKU
+ 
                     //Collect Genera
                     customers[count, 3] = "";
                     string Genus = "";
@@ -7552,17 +7554,14 @@ namespace LabelMaker
                                     }
                                 }
                             }
+                        count++;
+                        }
+                    else
+                        {
+                            plantCount = plantCount + int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
+                            customers[count - 1, 1] = plantCount.ToString();
+                        }
 
-
-                    count++;
-                }
-                else
-                {
-                    plantCount = plantCount + int.Parse(dataGridViewAuto.Rows[i].Cells[7].Value.ToString());
-                    customers[count - 1, 1] = plantCount.ToString();
-                }
-
-                
                 }
 
             //make the queue
@@ -9224,7 +9223,46 @@ namespace LabelMaker
             
         }
 
-        
+        private string returnPassport(string SKU)
+        {
+            //How to Pick a Plant from Database from SKU **FIND-A-PLANT**
+            DataTable tryTable = databaseLabelsDataSet.Tables["TablePlants"];
+
+            string expression;
+            expression = "SKU = '" + SKU.Trim() + "'";
+            DataRow[] foundRows;
+
+            // Use the Select method to find all rows matching the filter.
+            foundRows = tryTable.Select(expression);
+            string passport = "";
+            try
+            {
+                //See if there is a specified passport
+                passport = foundRows[0][19].ToString().Trim();
+                if (passport == "")
+                {
+                    //Make one up if it doesn't exist
+                    passport = SKU + DateTime.Now.ToString("yyyy-M"); 
+                }
+            }
+            catch
+            {
+                //Make one up if it doesn't exist
+                passport = SKU + DateTime.Now.ToString("yyyy-M");
+            }
+            return passport;
+        }
+
+        private void tryAPassportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int rowNumber = 0;
+            try { rowNumber = dataGridViewPlants.CurrentRow.Index; }
+            catch { }
+
+            string SKU = databaseLabelsDataSet.TablePlants.Rows[rowNumber].ItemArray[7].ToString().Trim();
+
+            MessageBox.Show("The Passport for code " + SKU + " is " + returnPassport(SKU));
+        }
     }
 }
     
