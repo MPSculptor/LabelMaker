@@ -394,9 +394,6 @@ namespace LabelMaker
                 }
 
             }
-
-            
-                
             }
 
         private string[,] collectTheQueue(string whichQueue, string allOrQty , int howManyLines, int qty)
@@ -420,15 +417,17 @@ namespace LabelMaker
                     else if (qtyCount + lineQty == qty)
                     {
                         //This Line makes it up exactly
-                        rowCount = i;
+                        rowCount = i+1;
+                        MessageBox.Show("Skipout from exactly");
                         goto SkipOut;
                     }
                     else if (qtyCount + lineQty > qty)
                     {
                         //This line tips over the quantity
                         lastLineQty = qtyCount + lineQty - qty;
-                        rowCount = i;
+                        rowCount = i+1;
                         completeRow = false;
+                        MessageBox.Show("Skipout from partial");
                         goto SkipOut;
                     }
                 }
@@ -459,7 +458,7 @@ namespace LabelMaker
                 else
                 {
                     //delete most of the queue a line at a time
-                    for (int i = 0; i <rowCount; i++)
+                    for (int i = 0; i < rowCount-1; i++)
                     {
                         if (tabControlQueue.SelectedTab == tabPageMainQueue) { dataGridViewMainQ.Rows[0].Cells[1].Selected = true; deleteMainQueueLine(); }
                         if (tabControlQueue.SelectedTab == tabPageColourQueue) { dataGridViewColourQ.Rows[0].Cells[1].Selected = true; deleteColourQueueLine(); }
@@ -605,7 +604,7 @@ namespace LabelMaker
             int[] queuePositions = new int[totalLabels];
             int queuePositionCounter = 0;
             int queueQty = 1;
-            for (int j = 0; j <= queueCount; j++)
+            for (int j = 0; j <= queueCount-1; j++)
             {
                 queueQty = int.Parse(printerVariables.wholeQueue[j,1].Trim());
                     for (int k = 1; k <= queueQty; k++)
