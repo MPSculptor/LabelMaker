@@ -20,7 +20,6 @@ using System.Threading;
 namespace LabelMaker
 {
 
-
     public partial class formMain : Form
     
     {
@@ -28,45 +27,32 @@ namespace LabelMaker
         public formMain()
 
         {
-           
-
-
             //  ******* IMPORTANT *********
             // Before completion search    //needs amending    to find temporary bits that need fixing or correcting
             InitializeComponent();
-           
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //showSplashScreen();
             PerPixelAlphaForm splash = new PerPixelAlphaForm();
-            Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
-            splash.SelectBitmap(picture);
+            try
+            {
+                Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
+                splash.SelectBitmap(picture);
+            }
+            catch
+            {
+                Bitmap picture = new Bitmap(@"C:\LabelMaker\PictureFiles\splash.png");
+                splash.SelectBitmap(picture);
+            }
             
             splash.StartPosition = FormStartPosition.CenterScreen;
             splash.Show();
 
-
-
-            // TODO: This line of code loads data into the 'databaseLabelsDataSet4.TablePassportQueue' table. You can move, or remove it, as needed.
-            this.tablePassportQueueTableAdapter.Fill(this.databaseLabelsDataSet4.TablePassportQueue);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSet3.TableAddressQueue' table. You can move, or remove it, as needed.
-            this.tableAddressQueueTableAdapter.Fill(this.databaseLabelsDataSet3.TableAddressQueue);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSetAddClean.TableAddressFilters' table. You can move, or remove it, as needed.
-            this.tableAddressFiltersTableAdapter.Fill(this.databaseLabelsDataSetAddClean.TableAddressFilters);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSetAuto.TableAuto' table. You can move, or remove it, as needed.
-            this.tableAutoTableAdapter.Fill(this.databaseLabelsDataSetAuto.TableAuto);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSetColourQueue.TableColourQueue' table. You can move, or remove it, as needed.
-            this.tableColourQueueTableAdapter.Fill(this.databaseLabelsDataSetColourQueue.TableColourQueue);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSetMainQueue.TableMainQueue' table. You can move, or remove it, as needed.
-            this.tableMainQueueTableAdapter.Fill(this.databaseLabelsDataSetMainQueue.TableMainQueue);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSet1.TableProfiles' table. You can move, or remove it, as needed.
-            this.tableProfilesTableAdapter.Fill(this.databaseLabelsDataSetProfiles.TableProfiles);
-            // TODO: This line of code loads data into the 'databaseLabelsDataSet.TablePlants' table. You can move, or remove it, as needed.
-            this.tablePlantsTableAdapter.FillBy(this.databaseLabelsDataSet.TablePlants, false);
-
+            tablePlantsTableAdapter.FillBy(databaseLabelsDataSet.TablePlants, false);
+            tableProfilesTableAdapter.Fill(databaseLabelsDataSetProfiles.TableProfiles);
+            
             this.BackColor = Color.DarkGray;
 
             colourQueueTab("first");
@@ -75,6 +61,14 @@ namespace LabelMaker
             canIusePrinter.getPrinterList(); //Used to stop two threads printing to one printer at same time
 
             splash.Close();
+
+
+            tableAddressFiltersTableAdapter.Fill(databaseLabelsDataSetAddClean.TableAddressFilters);
+
+            tableMainQueueTableAdapter.Fill(databaseLabelsDataSetMainQueue.TableMainQueue);
+            tableColourQueueTableAdapter.Fill(databaseLabelsDataSetColourQueue.TableColourQueue);
+            tableAddressQueueTableAdapter.Fill(databaseLabelsDataSet3.TableAddressQueue);
+            tablePassportQueueTableAdapter.Fill(databaseLabelsDataSet4.TablePassportQueue);
 
         }
 
@@ -99,11 +93,15 @@ namespace LabelMaker
         private void updateManualTab()
         {
             int updateNumber = 0;
-            try { updateNumber = dataGridViewPlants.CurrentRow.Index; }
-            catch { }
+            try { updateNumber = dataGridViewPlants.CurrentRow.Index;
+                //MessageBox.Show("Got to updateNumber " + updateNumber.ToString() );
+            }
+            catch {
+                //MessageBox.Show("failed updateNumber ");
+            }
 
             //dataGridViewPlants.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewPlants.Columns[0].Width = 50;
+            dataGridViewPlants.Columns[0].Width = 0;
             dataGridViewPlants.Columns[1].Width = 10;
             dataGridViewPlants.Columns[2].Width = 100;
             dataGridViewPlants.Columns[3].Width = 10;
@@ -418,7 +416,7 @@ namespace LabelMaker
                     {
                         //This Line makes it up exactly
                         rowCount = i+1;
-                        MessageBox.Show("Skipout from exactly");
+                        //MessageBox.Show("Skipout from exactly");
                         goto SkipOut;
                     }
                     else if (qtyCount + lineQty > qty)
@@ -427,7 +425,7 @@ namespace LabelMaker
                         lastLineQty = qtyCount + lineQty - qty;
                         rowCount = i+1;
                         completeRow = false;
-                        MessageBox.Show("Skipout from partial");
+                        //MessageBox.Show("Skipout from partial");
                         goto SkipOut;
                     }
                 }
@@ -753,6 +751,8 @@ namespace LabelMaker
             }
             if (tabControlMain.SelectedTab == tabPageAuto)
             {
+                this.tableAutoTableAdapter.Fill(this.databaseLabelsDataSetAuto.TableAuto);
+
                 string[] defaults = getDefaultSettings();
                 string where = defaults[1];
                 string file = defaults[18];
@@ -1623,13 +1623,13 @@ namespace LabelMaker
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString().Trim()))
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    pictureFile = filePlace + "blank.jpg";
                 }
                 else
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    pictureFile = filePlace + "NoPicture.jpg";
                 }
                 pictureBoxThumb1.Image = Image.FromFile(pictureFile);
             }
@@ -1643,13 +1643,13 @@ namespace LabelMaker
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[13].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString().Trim()))
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    pictureFile = filePlace + "blank.jpg";
                 }
                 else
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    pictureFile = filePlace + "NoPicture.jpg";
                 }
                 pictureBoxThumb2.Image = Image.FromFile(pictureFile);
             }
@@ -1663,13 +1663,13 @@ namespace LabelMaker
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[14].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString().Trim()))
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    pictureFile = filePlace + "blank.jpg";
                 }
                 else
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    pictureFile = filePlace + "NoPicture.jpg";
                 }
                 pictureBoxThumb3.Image = Image.FromFile(pictureFile);
             }
@@ -1684,13 +1684,13 @@ namespace LabelMaker
             catch (IOException)
             {
                 string pictureFile = "";
-                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[15].Value.ToString()))
+                if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[12].Value.ToString().Trim()))
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    pictureFile = filePlace + "blank.jpg";
                 }
                 else
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    pictureFile = filePlace + "NoPicture.jpg";
                 }
                 pictureBoxThumb4.Image = Image.FromFile(pictureFile);
             }
@@ -1790,7 +1790,7 @@ namespace LabelMaker
             else if (radioButtonImage3.Checked) { whichOne = 14; }
             else if (radioButtonImage2.Checked) { whichOne = 13; }
             else { whichOne = 12; }
-
+            string[] defaultsString = getDefaultSettings();
 
             try // #Main
             {
@@ -1803,11 +1803,11 @@ namespace LabelMaker
                 string pictureFile = "";
                 if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[whichOne].Value.ToString()))
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    pictureFile = filePlace + "blank.jpg";
                 }
                 else
                 {
-                    pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    pictureFile = filePlace[0] + "NoPicture.jpg";
                 }
                 pictureBoxMain.Image = Image.FromFile(pictureFile);
             }
@@ -2004,11 +2004,11 @@ namespace LabelMaker
                     string pictureFile = "";
                     if (String.IsNullOrEmpty(dataGridViewPlants.Rows[indexOfRow].Cells[i].Value.ToString()))
                     {
-                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                        pictureFile = defaultsString[0] + "blank.jpg";
                     }
                     else
                     {
-                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                        pictureFile = defaultsString[0] + "NoPicture.jpg";
                     }
                     curPictureBox.Image = Image.FromFile(pictureFile);
                 }
@@ -2098,6 +2098,8 @@ namespace LabelMaker
                 curText.Text = "";
             }
             //Fill in Pictures
+            string[] defaultsString = getDefaultSettings();
+            string picturePlace = defaultsString[0];
 
             for (int i = 12; i <= 15; i++)
             {
@@ -2108,12 +2110,12 @@ namespace LabelMaker
                 //Picture images
                 try // #1
                 {
-                    string pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    string pictureFile = picturePlace + "blank.jpg";
                     curPictureBox.Image = Image.FromFile(pictureFile);
                 }
                 catch (IOException)
                 {
-                    string pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    string pictureFile = picturePlace + "NoPicture.jpg";
 
                     curPictureBox.Image = Image.FromFile(pictureFile);
                 }
@@ -2707,11 +2709,11 @@ namespace LabelMaker
                     testString = testString.Trim();
                     if (String.IsNullOrEmpty(testString))
                     {
-                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                        pictureFile = filePlace +"blank.jpg";
                     }
                     else
                     {
-                        pictureFile = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                        pictureFile = filePlace +"NoPicture.jpg";
                     }
                     curPictureBox.Image = Image.FromFile(pictureFile);
                 }
@@ -2728,11 +2730,11 @@ namespace LabelMaker
                 pictureFileAGM = "";
                 if (String.IsNullOrEmpty(fileNameAGM))
                 {
-                    pictureFileAGM = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\blank.jpg";
+                    pictureFileAGM = filePlace +  "blank.jpg";
                 }
                 else
                 {
-                    pictureFileAGM = "D:\\LabelMaker\\LabelMaker\\" + "PictureFiles\\NoPicture.jpg";
+                    pictureFileAGM = filePlace + "NoPicture.jpg";
                 }
                 pictureBoxQAGM.Image = Image.FromFile(pictureFileAGM);
             }
@@ -5670,11 +5672,12 @@ namespace LabelMaker
 
             listBoxAuto.Items.Clear();
 
-            int numRows = databaseLabelsDataSetAuto.TableAuto.Rows.Count - 1;
+            //int numRows = databaseLabelsDataSetAuto.TableAuto.Rows.Count - 1;
+            int numRows = dataGridViewAuto.RowCount - 2;
 
             for (int i = 0; i <= numRows; i++)
             {
-                string customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+                string customer = dataGridViewAuto.Rows[i].Cells[5].Value.ToString().Trim();
                 string locked = "      ";
                 if (dataGridViewAuto.Rows[i].Cells[1].Value.ToString() == "True") { locked = "# "; }
                 if (customer != customerOld)
@@ -5985,8 +5988,8 @@ namespace LabelMaker
                 listBoxAutoErrors.Items.Clear();
                 pictureBoxArrow.Visible = false;
                 findAutoCustomer();
-                sortAuto("Plant");
-                sortAuto("Order");
+                //sortAuto("Plant");
+                //sortAuto("Order");
                 //Create Address Queue
                 createAddressList("specified", "Address");
 
@@ -6005,7 +6008,7 @@ namespace LabelMaker
 
         private void findAutoCustomer()
         {
-           
+            Boolean foundNone = true;
             // findAutoCustomer the next printable customer
             for (int i = 0; i <= dataGridViewAuto.RowCount - 2; i++)
             {
@@ -6017,8 +6020,10 @@ namespace LabelMaker
                     //MessageBox.Show("findAutoCustomer i = " + i);
                     string[][] collectedOrder = collectAutoCustomer(customer);
                     createAutoQueueEntry(collectedOrder);
+                    foundNone = false;
                 }
             }
+            if (foundNone) { MessageBox.Show("No Customers are unlocked to make a queue from. Try unlocking some Customers and then try again", "No Customers"); }
         }
 
         private string[][] collectAutoCustomer(string customer)
@@ -6908,11 +6913,25 @@ namespace LabelMaker
                     richTextBoxAppData.AppendText(ApplicationDeployment.CurrentDeployment.DataDirectory + Environment.NewLine + Environment.NewLine + Environment.NewLine);
                     richTextBoxAppData.AppendText("Application.UserAppDataPath" + Environment.NewLine + Environment.NewLine);
                     richTextBoxAppData.AppendText(Application.UserAppDataPath + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                    
                 }
                 catch
                 {
                     MessageBox.Show("Can't fill in data as this is not a deployed version", "No data available");
                 }
+                try {
+                    richTextBoxAppData.AppendText("Connection String" + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText(ConfigurationManager.ConnectionStrings[1].ConnectionString + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                }
+                catch { }
+                try
+                {
+                    richTextBoxAppData.AppendText("Primary Screen Resolution" );
+                    richTextBoxAppData.AppendText("          "+"Width : " + Screen.PrimaryScreen.Bounds.Width.ToString() + "     "+"Height : " + Screen.PrimaryScreen.Bounds.Height.ToString() + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                    richTextBoxAppData.AppendText("Working Area");
+                    richTextBoxAppData.AppendText("          " + "Width : " + Screen.PrimaryScreen.WorkingArea.Width.ToString() +"     "+ "Height : " + Screen.PrimaryScreen.WorkingArea.Height.ToString() + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                }
+                catch { }
             }
 
             if (tabControlDesign.SelectedTab == tabPageCategories)
@@ -7025,9 +7044,13 @@ namespace LabelMaker
 
         private void fillColourTab()
         {
+            panelColours.Width = tabControlDesign.Width-8;
+            panelColours.Height = tabControlDesign.Height - tabControlMain.ItemSize.Height-6;
+            panelColours.Location = new Point(6, 6);
+            
             int gap = 2;
-            int panelWidth = panelColours.Width - 22;
-            int panelHeight = panelColours.Height - 22;
+            int panelWidth = panelColours.Width - 2;
+            int panelHeight = panelColours.Height - 2;
             int availableWidth = panelWidth / 4;
             int availableHeight = panelHeight / 35;
             int controlHeight = availableHeight - gap;
@@ -8640,7 +8663,7 @@ namespace LabelMaker
             for (int i =0;i<dataGridViewAuto.RowCount - 1; i++)
             {
                 Boolean sameShippingAsBilling = true; // to stop it replacing Billing name with Shipping name
-                string[] address = new string[9];
+                string[] address = new string[11];
                 string billing = "";
                 string shipping = "";
                 //fill address from grid
@@ -8658,6 +8681,10 @@ namespace LabelMaker
                         address[j] = dataGridViewAuto.Rows[i].Cells[j + 10].Value.ToString().Trim();
                         if (String.IsNullOrEmpty(address[j]) != true) { checkNull = false; }
                     }
+                    //collect Billing Address
+                    address[9] = dataGridViewAuto.Rows[i].Cells[9].Value.ToString().Trim();
+                    address[10] = dataGridViewAuto.Rows[i].Cells[10].Value.ToString().Trim();
+
                 }
                 billing  = dataGridViewAuto.Rows[i].Cells[9].Value.ToString().Trim() + " " + dataGridViewAuto.Rows[i].Cells[10].Value.ToString().Trim();
                 shipping = dataGridViewAuto.Rows[i].Cells[11].Value.ToString().Trim() + " " + dataGridViewAuto.Rows[i].Cells[12].Value.ToString().Trim();
@@ -8771,7 +8798,7 @@ namespace LabelMaker
                 }
 
                     //Un-capitalise and then capitalise first letters
-                    for (int j = 0; j <= 8; j++)
+                    for (int j = 0; j <= 10; j++)
                 {
                     TextInfo newText = CultureInfo.CurrentCulture.TextInfo;
                     //convert to LowerCase First
@@ -8805,8 +8832,11 @@ namespace LabelMaker
                     }
 
                 //Put back Name
+                //if (sameShippingAsBilling) { address[0] = address[1] + " " + address[2]; }
                 if (sameShippingAsBilling) { address[0] = address[1] + " " + address[2]; }
-                
+                else { address[0] = address[9] + " " + address[10]; }
+
+
                 //Put back address lines
 
                 //Put new Address back in right string
@@ -8862,6 +8892,7 @@ namespace LabelMaker
                 
 
             }
+            sortAutoListBox(); //To clean duplicates
         }
  
         private int findCounter(string[] sentString)
@@ -9261,6 +9292,158 @@ namespace LabelMaker
             string SKU = databaseLabelsDataSet.TablePlants.Rows[rowNumber].ItemArray[7].ToString().Trim();
 
             MessageBox.Show("The Passport for code " + SKU + " is " + returnPassport(SKU));
+        }
+
+        private void bigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resizeForm(1670,1040);
+        }
+
+        private void smallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resizeForm(1320,720);
+        }
+
+        
+    
+        private void resizeForm(int newWidth, int newHeight)
+        {
+            int sides = 8;
+            int top = 24+sides;
+            Boolean isSmall = false;
+            if (newWidth <= 1500) { isSmall = true; }
+            
+            //Whole Form
+            Point Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - newWidth)/2, (Screen.PrimaryScreen.WorkingArea.Height - newHeight)/2);
+            formMain.ActiveForm.Width = newWidth;
+            formMain.ActiveForm.Height = newHeight;
+            formMain.ActiveForm.Location = Location;
+            int activeWidth = newWidth - 32;
+            int activeHeight = newHeight - 48;
+
+            #region ## Resize Main Tab ##
+            //Main Tab
+
+            int topAllowance = tabControlMain.ItemSize.Height + 16;
+            tabControlQueue.Width = 420;
+            tabControlQueue.Location = new Point(newWidth - sides * 2 - tabControlQueue.Width , top );
+
+            panelQueue.Location = new Point(tabControlQueue.Left, newHeight - 100);
+            panelQueue.Width = tabControlQueue.Width;
+
+            tabControlQueue.Height = (panelQueue.Top - tabControlQueue.Top - sides) ;
+
+            tabControlMain.Location = new Point(sides+tabControlMain.ItemSize.Height , top);
+            tabControlMain.Height = newHeight - tabControlMain.Top - sides - topAllowance ;
+            tabControlMain.Width = tabControlQueue.Left-sides-4-tabControlMain.ItemSize.Height ;
+
+            Point mainLocation = new Point(tabControlMain.Left - tabControlMain.ItemSize.Height, tabControlMain.Top+ tabControlMain.ItemSize.Height);
+            tabControlDesign.Location = mainLocation;
+            tabControlDesign.Width = tabControlMain.Width+tabControlMain.ItemSize.Height ;
+            tabControlDesign.Height = tabControlMain.Height- tabControlMain.ItemSize.Height;
+
+            int panelTops = 6;
+            //groupBoxPlantData = datagrid
+            groupBoxPlantData.Height = tabControlMain.Height - panelTops - topAllowance;
+            if (isSmall)
+            {
+                dataGridViewPlants.Width = 330;
+            }
+            else
+            {
+                dataGridViewPlants.Width = 720;
+            }
+            dataGridViewPlants.Height = groupBoxPlantData.Height - 75;
+            groupBoxPlantData.Width = dataGridViewPlants.Width + 12;
+            groupBoxPlantData.Location = new Point(tabControlMain.Width - groupBoxPlantData.Width - panelTops,panelTops);
+            //groupBoxAlpha = alphabet buttons
+                groupBoxAlpha.Location = new Point(groupBoxPlantData.Left - 62, panelTops);
+            //groupBox5 = Price and qty
+                groupBox5.Location = new Point(groupBoxAlpha.Left - panelTops - groupBox5.Width, groupBoxAlpha.Top);
+            //groupBox1 - Toggle Buttons
+                if (isSmall)
+                {
+                    groupBox1.Width = 104;
+                    groupBox1.Height = 152;
+                    groupBox1.Location = new Point(groupBoxAlpha.Left-panelTops-groupBox1.Width , groupBox5.Bottom+panelTops);
+                    buttonAddtoColourQueue.Width = 90;
+                    buttonAGMStatus.Width = 90;
+                    buttonAGMStatus.Location = new Point(6, 92);
+                    buttonVisibleEntry.Width = 90;
+                    buttonLableStocks.Width = 90;
+                    buttonLableStocks.Location = new Point(6, 122);
+                }
+                else
+                {
+                
+                    groupBox1.Width = 154;
+                    groupBox1.Height =92;
+                    groupBox1.Location = new Point(groupBox5.Left - panelTops - groupBox1.Width, groupBoxAlpha.Top);
+                    buttonAddtoColourQueue.Width = 70;
+                    buttonAGMStatus.Width = 70;
+                    buttonAGMStatus.Location = new Point(78, 32);
+                    buttonVisibleEntry.Width = 70;
+                    buttonLableStocks.Width = 70;
+                    buttonLableStocks.Location = new Point(78, 62);
+                }
+            // GroupBox4 - Name and Description
+                if (isSmall)
+                {
+                    groupBox4.Width = groupBox1.Left - panelTops - groupBox4.Left;
+                    groupBox4.Top = groupBox1.Top;
+                    groupBox4.Height = groupBox1.Height;
+                }
+                else
+                {
+                    groupBox4.Width = groupBoxAlpha.Left - panelTops - groupBox4.Left;
+                }
+                labelPlantName.Width = groupBox4.Width - 20;
+                label3.Width = labelPlantName.Width;
+                richTextBoxDesc.Width = labelPlantName.Width;
+                richTextBoxDesc.Height = groupBox4.Height - 4 - richTextBoxDesc.Top;
+
+
+            #region -- Queues --
+            int border = 4;
+            Point gridStart = new Point(border,border);
+            dataGridViewMainQ.Location = gridStart;
+            dataGridViewMainQ.Width = tabControlQueue.Width - (border * 2)-10;
+            dataGridViewMainQ.Height = tabControlQueue.Height - (border * 2) - 27;
+
+            dataGridViewColourQ.Location = gridStart;
+            dataGridViewColourQ.Width = tabControlQueue.Width - (border * 2) - 10;
+            dataGridViewColourQ.Height = tabControlQueue.Height - (border * 2) - 27;
+
+            dataGridViewAddressQ.Location = gridStart;
+            dataGridViewAddressQ.Width = tabControlQueue.Width - (border * 2) - 10;
+            dataGridViewAddressQ.Height = tabControlQueue.Height - (border * 2) - 27;
+
+            dataGridViewPassportQ.Location = gridStart;
+            dataGridViewPassportQ.Width = tabControlQueue.Width - (border * 2) - 10;
+            dataGridViewPassportQ.Height = tabControlQueue.Height - (border * 2) - 27;
+            #endregion
+
+            #endregion
+        }
+
+
+        private void screenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            int width = Screen.PrimaryScreen.WorkingArea.Width;
+            int height = Screen.PrimaryScreen.WorkingArea.Height;
+            resizeForm(width, height);
+        
+        }
+
+        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
