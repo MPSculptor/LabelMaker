@@ -56,7 +56,9 @@ namespace LabelMaker
             this.BackColor = Color.DarkGray;
 
             colourQueueTab("first");
+            resizeToScreen();
             updateManualTab();
+            
             
             canIusePrinter.getPrinterList(); //Used to stop two threads printing to one printer at same time
 
@@ -69,6 +71,8 @@ namespace LabelMaker
             tableColourQueueTableAdapter.Fill(databaseLabelsDataSetColourQueue.TableColourQueue);
             tableAddressQueueTableAdapter.Fill(databaseLabelsDataSet3.TableAddressQueue);
             tablePassportQueueTableAdapter.Fill(databaseLabelsDataSet4.TablePassportQueue);
+
+            
 
         }
 
@@ -9315,14 +9319,17 @@ namespace LabelMaker
             
             //Whole Form
             Point Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - newWidth)/2, (Screen.PrimaryScreen.WorkingArea.Height - newHeight)/2);
-            formMain.ActiveForm.Width = newWidth;
-            formMain.ActiveForm.Height = newHeight;
-            formMain.ActiveForm.Location = Location;
+            this.Width = newWidth;
+            this.Height = newHeight;
+            this.Location = Location;
+            //formMain.ActiveForm.Height = newHeight;
+            //formMain.ActiveForm.Location = Location;
             int activeWidth = newWidth - 32;
             int activeHeight = newHeight - 48;
 
             #region ## Resize Main Tab ##
             //Main Tab
+            #region -- Main Area --
 
             int topAllowance = tabControlMain.ItemSize.Height + 16;
             tabControlQueue.Width = 420;
@@ -9358,6 +9365,7 @@ namespace LabelMaker
             groupBoxPlantData.Location = new Point(tabControlMain.Width - groupBoxPlantData.Width - panelTops,panelTops);
             //groupBoxAlpha = alphabet buttons
                 groupBoxAlpha.Location = new Point(groupBoxPlantData.Left - 62, panelTops);
+                
             //groupBox5 = Price and qty
                 groupBox5.Location = new Point(groupBoxAlpha.Left - panelTops - groupBox5.Width, groupBoxAlpha.Top);
             //groupBox1 - Toggle Buttons
@@ -9386,6 +9394,19 @@ namespace LabelMaker
                     buttonLableStocks.Width = 70;
                     buttonLableStocks.Location = new Point(78, 62);
                 }
+            //Customer Name etc
+                int right = groupBox1.Left - panelTops;
+                if (isSmall) { right = groupBox5.Left - panelTops; }
+                textBoxOrderNumber.Location = new Point(right - textBoxOrderNumber.Width, groupBox5.Top + label36.Height);
+                label36.Left = textBoxOrderNumber.Left;
+                label36.Top = groupBox5.Top;
+                textBoxCustomerName.Width = textBoxOrderNumber.Left - panelTops - textBoxCustomerName.Left;
+                textBoxCustomerName.Top = textBoxOrderNumber.Top;
+                label35.Top = label36.Top;
+                comboBoxLabelName.Top = groupBox5.Bottom - comboBoxLabelName.Height-2;
+                label68.Top = comboBoxLabelName.Top - label68.Height;
+                comboBoxLabelName.Width = right - comboBoxLabelName.Left;
+
             // GroupBox4 - Name and Description
                 if (isSmall)
                 {
@@ -9396,13 +9417,108 @@ namespace LabelMaker
                 else
                 {
                     groupBox4.Width = groupBoxAlpha.Left - panelTops - groupBox4.Left;
+                    groupBox4.Top = groupBox5.Bottom + panelTops;
                 }
                 labelPlantName.Width = groupBox4.Width - 20;
                 label3.Width = labelPlantName.Width;
                 richTextBoxDesc.Width = labelPlantName.Width;
                 richTextBoxDesc.Height = groupBox4.Height - 4 - richTextBoxDesc.Top;
+            //groupBoxPrint  Print Button
+            if (isSmall)
+            {
+                groupBoxPrint.Location = new Point(panelTops, groupBoxPlantData.Bottom - groupBoxPrint.Height);
+                groupBoxPrint.Width = groupBoxAlpha.Left - panelTops - groupBoxPrint.Left;
+            }
+            else
+            {
+                groupBoxPrint.Location = new Point(groupBoxPlantData.Left - panelTops - groupBoxPrint.Width, groupBoxPlantData.Bottom - groupBoxPrint.Height);
+            }
 
 
+            //groupBoxImages - thumbnail images
+            int imagesPos = 4;
+            if (isSmall)
+            {
+                    groupBoxImages.Location = new Point(panelTops, panelLabelPreview.Top);
+                    groupBoxImages.Width = ((groupBoxAlpha.Left / imagesPos) -panelTops)-panelTops;
+                    groupBoxImages.Height = groupBoxPrint.Top - panelLabelPreview.Top - panelTops*2;
+
+                    int imageHeight = ((groupBoxImages.Height - 28 - (panelTops * 2)) - (radioButtonImage1.Height * 2)) / 2;
+                    int imageWidth = (groupBoxImages.Width - (panelTops * 3)) / 2;
+                    pictureBoxThumb1.Width = imageWidth;
+                    pictureBoxThumb1.Height = imageHeight;
+                    pictureBoxThumb1.Left = panelTops;
+                    radioButtonImage1.Top = pictureBoxThumb1.Bottom + 2;
+                    pictureBoxThumb2.Width = imageWidth;
+                    pictureBoxThumb2.Height = imageHeight;
+                    pictureBoxThumb2.Left = pictureBoxThumb1.Right + panelTops;
+                    radioButtonImage2.Location = new Point(pictureBoxThumb2.Left, radioButtonImage1.Top);
+                    pictureBoxThumb3.Width = imageWidth;
+                    pictureBoxThumb3.Height = imageHeight;
+                    pictureBoxThumb3.Location = new Point(panelTops, radioButtonImage1.Bottom + panelTops);
+                    radioButtonImage3.Location = new Point(pictureBoxThumb1.Left, pictureBoxThumb3.Bottom + 2);
+                    pictureBoxThumb4.Width = imageWidth;
+                    pictureBoxThumb4.Height = imageHeight;
+                    pictureBoxThumb4.Location = new Point(pictureBoxThumb2.Left, pictureBoxThumb3.Top);
+                    radioButtonImage4.Location = new Point(pictureBoxThumb2.Left, radioButtonImage3.Top);
+                
+            }
+            else
+            {
+                groupBoxImages.Location = new Point(panelTops, buttonMainProfile.Bottom + panelTops);
+                groupBoxImages.Width = groupBoxPrint.Left - groupBoxImages.Left - panelTops;
+                groupBoxImages.Height = groupBoxPrint.Bottom - groupBoxImages.Top;
+                int imageHeight = ((groupBoxImages.Height - 28 - (panelTops * 2)) - (radioButtonImage1.Height * 2)) / 2;
+                int imageWidth = (groupBoxImages.Width - (panelTops * 3)) / 2;
+                pictureBoxThumb1.Width = imageWidth;
+                pictureBoxThumb1.Height = imageHeight;
+                pictureBoxThumb1.Left = panelTops;
+                radioButtonImage1.Top = pictureBoxThumb1.Bottom + 2;
+                pictureBoxThumb2.Width = imageWidth;
+                pictureBoxThumb2.Height = imageHeight;
+                pictureBoxThumb2.Left = pictureBoxThumb1.Right + panelTops;
+                radioButtonImage2.Location = new Point(pictureBoxThumb2.Left, radioButtonImage1.Top);
+                pictureBoxThumb3.Width = imageWidth;
+                pictureBoxThumb3.Height = imageHeight;
+                pictureBoxThumb3.Location = new Point(panelTops, radioButtonImage1.Bottom + panelTops);
+                radioButtonImage3.Location = new Point(pictureBoxThumb1.Left, pictureBoxThumb3.Bottom + 2);
+                pictureBoxThumb4.Width = imageWidth;
+                pictureBoxThumb4.Height = imageHeight;
+                pictureBoxThumb4.Location = new Point(pictureBoxThumb2.Left, pictureBoxThumb3.Top);
+                radioButtonImage4.Location = new Point(pictureBoxThumb2.Left, radioButtonImage3.Top);
+            }
+            //GroupBox3 - Main Picture
+            if (isSmall)
+            {
+                groupBox3.Visible = false;
+                buttonMainProfile.Visible = false;
+            }
+            else
+            {
+                groupBox3.Left = groupBoxImages.Right - groupBox3.Width;
+                buttonMainProfile.Left = groupBox3.Left;
+                groupBox3.Visible = true;
+                buttonMainProfile.Visible = true;         
+            }
+
+            //panelPreview - preview of current Label
+            if (isSmall)
+            {
+                panelLabelPreview.Location = new Point((groupBoxAlpha.Left / imagesPos) - panelTops, groupBox4.Bottom + panelTops);
+                panelLabelPreview.Width = (groupBoxAlpha.Left - panelLabelPreview.Left) - panelTops;
+                panelLabelPreview.Height = groupBoxPrint.Top - (panelTops*2) - panelLabelPreview.Top;
+            }
+            else
+            {
+                panelLabelPreview.Location = new Point(groupBox3.Right + panelTops, groupBox3.Top);
+                panelLabelPreview.Width = groupBoxAlpha.Left - groupBox3.Right - (panelTops * 2);
+                panelLabelPreview.Height = groupBoxPrint.Top - panelTops - panelLabelPreview.Top;
+            }
+
+
+            
+
+            #endregion
             #region -- Queues --
             int border = 4;
             Point gridStart = new Point(border,border);
@@ -9424,6 +9540,18 @@ namespace LabelMaker
             #endregion
 
             #endregion
+
+            #region ## Design Tabs ##
+            #region -- Defaults --
+            dataGridViewAddClean.Height = tabControlDesign.Height - (panelTops*2) - dataGridViewAddClean.Top;
+            #endregion
+            #endregion
+        }
+        private void resizeToScreen()
+        {
+                int width = Screen.PrimaryScreen.WorkingArea.Width;
+                int height = Screen.PrimaryScreen.WorkingArea.Height;
+                resizeForm(width, height);
         }
 
 
@@ -9436,15 +9564,7 @@ namespace LabelMaker
         
         }
 
-        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
     
