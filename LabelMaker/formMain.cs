@@ -720,6 +720,18 @@ namespace LabelMaker
 
             if (tabControlMain.SelectedTab == tabPagePreview)
             {
+                int panelTops = 16;
+                //resize components
+                panelLabelTabChoice.Width = (tabControlMain.Width - (panelTops * 3)) / 2;
+                panelLabelTabChoice.Height = tabControlMain.Height - panelTops - panelLabelTabChoice.Top - 100;
+                panelLabelTabColour.Width = tabControlMain.Width - (panelLabelTabChoice.Right + (panelTops * 3));
+                panelLabelTabColour.Height = (tabControlMain.Height - 41 - 49 - panelTops) / 2;
+                panelLabelTabMain.Width = panelLabelTabColour.Width;
+                panelLabelTabMain.Height = panelLabelTabColour.Height;
+                panelLabelTabMain.Location = new Point(panelLabelTabChoice.Right + panelTops, 41);
+                panelLabelTabColour.Location = new Point(panelLabelTabMain.Left, panelLabelTabMain.Bottom + 40);
+
+
                 TempMakeALabel(panelLabelTabMain, "Main", "database","");
                 TempMakeALabel(panelLabelTabColour, "Colour", "database","");
                 TempMakeALabel(panelLabelTabChoice, "Choice", "database","");
@@ -780,6 +792,10 @@ namespace LabelMaker
             {
                 if (keyData == Keys.Return)
                 {
+                    if (checkBoxQty.Checked)
+                    {
+                        textBoxQty.Text = textBoxQtyAuto.Text;
+                    }
                     addToQueues("database");
                     return true;
                 }
@@ -9355,10 +9371,18 @@ namespace LabelMaker
             if (isSmall)
             {
                 dataGridViewPlants.Width = 330;
+                label179.Visible = false;
+                label178.Visible = false;
+                labelRealID.Visible = false;
+                labelGridID.Visible = false;
             }
             else
             {
                 dataGridViewPlants.Width = 720;
+                label179.Visible = true;
+                label178.Visible = true;
+                labelRealID.Visible = true;
+                labelGridID.Visible = true;
             }
             dataGridViewPlants.Height = groupBoxPlantData.Height - 75;
             groupBoxPlantData.Width = dataGridViewPlants.Width + 12;
@@ -9516,8 +9540,69 @@ namespace LabelMaker
             }
 
 
-            
+            #endregion
+            #region --Queue Utilities--
+            if (isSmall)
+            {
+                panelQueueUtilities.Location = new Point(panelTops, panelTops);
+                panelQueueUtilities.Width = (tabPageQueueUtilities.Width - (panelTops * 2));
+                panelQueueUtilities.Height = (tabPageQueueUtilities.Height - (panelTops * 2));
 
+                panelQMain.Visible = false;
+                panelQColour.Visible = false;
+                label65.Visible = false;
+                label66.Visible = false;
+                label191.Visible = false;
+                label70.Visible = false;
+                label208.Visible = true;
+            }
+            else
+            {
+                panelQueueUtilities.Location = new Point(panelTops, panelTops);
+                panelQueueUtilities.Width = (tabPageQueueUtilities.Width - (panelTops * 2));
+                panelQueueUtilities.Height = (tabPageQueueUtilities.Height - (panelTops * 2));
+
+                panelQMain.Visible = true;
+                panelQColour.Visible = true;
+                label65.Visible = true;
+                label66.Visible = true;
+                label191.Visible = true;
+                label70.Visible = true;
+                label208.Visible = false;
+            }
+            #endregion
+            #region --Database Entry--
+            if (isSmall)
+            {
+                label69.Visible = false;
+                groupBoxDataPictures.Location = new Point(672, 309);
+                label31.Location = new Point(751, 30);
+                label32.Location = new Point(954, 30);
+                panelDatabaseMain.Location = new Point(751, 49);
+                panelDatabaseMain.Width = 200;
+                panelDatabaseMain.Height = 248;
+                panelDatabaseColour.Location = new Point(954, 49);
+                panelDatabaseColour.Width = 200;
+                panelDatabaseColour.Height = 248;
+            }
+            else
+            {
+                label69.Visible = true;
+                groupBoxDataPictures.Location = new Point(16, 618);
+                label31.Location = new Point(645, 74);
+                panelDatabaseMain.Location = new Point(645,100);
+                int halfway = ((label69.Top - label31.Top) / 2)+label31.Top;
+                
+                panelDatabaseColour.Location = new Point(645,halfway+26);
+                label32.Location = new Point(645,halfway);
+                panelDatabaseMain.Height = label32.Top - panelDatabaseMain.Top - 20;
+                panelDatabaseColour.Height = label69.Top - panelDatabaseColour.Top - 20;
+                panelDatabaseMain.Width = tabPageDatabase.Width - panelTops - panelDatabaseMain.Left;
+                panelDatabaseColour.Width = tabPageDatabase.Width - panelTops - panelDatabaseColour.Left;
+            }
+            #endregion
+            #region --Label Preview --
+            //Resize components in tabPagePreview on clicked routine to save time here
             #endregion
             #region -- Queues --
             int border = 4;
@@ -9545,6 +9630,9 @@ namespace LabelMaker
             #region -- Defaults --
             dataGridViewAddClean.Height = tabControlDesign.Height - (panelTops*2) - dataGridViewAddClean.Top;
             #endregion
+            #region --Colours--
+            //resizes on tab opening
+            #endregion
             #endregion
         }
         private void resizeToScreen()
@@ -9564,7 +9652,7 @@ namespace LabelMaker
         
         }
 
-       
+        
     }
 }
     

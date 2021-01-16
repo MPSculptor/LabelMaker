@@ -26,8 +26,8 @@
     <ProductName>LabelMaker</ProductName>
     <PublisherName>Martin Preston</PublisherName>
     <SuiteName>LabelMaker</SuiteName>
-    <ApplicationRevision>14</ApplicationRevision>
-    <ApplicationVersion>4.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationVersion>4.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
