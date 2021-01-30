@@ -58,7 +58,7 @@
             this.Controls.Add(this.buttonHide);
             this.Controls.Add(this.richTextBoxInformation);
             this.Name = "FormInformation";
-
+            this.Load += new System.EventHandler(this.FormInformation_Load);
             this.ResumeLayout(false);
 
         }

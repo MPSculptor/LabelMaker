@@ -122,6 +122,7 @@ namespace LabelMaker
                     ref blend,       // Transparency of the layered window
                     ULW_ALPHA        // Use blend as the blend function
                     );
+                
             }
             finally
             {

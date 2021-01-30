@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace LabelMaker
 {
@@ -197,6 +198,7 @@ namespace LabelMaker
 
             string[] defaultsString = getDefaultSettings();
 
+            //Get the label to Print
             string name = "";
             if (whichCombo == "Main")
             {
@@ -208,9 +210,16 @@ namespace LabelMaker
                 //use alternative on Autolabel Tab
                 name = comboBoxAutoLabelName.Text.ToString().Trim();
             }
-            string[] labelData = returnLabelData(name);
+
+            //Fetch the label information
             string[] labelHeader = returnLabelHeaderData(name);
-            string[] printerDetails = new string[8];
+            string[] labelData = returnLabelData(name);
+            //set the right width and height
+            labelData[0] =  labelHeader[6];
+            labelData[1] =  labelHeader[7];
+            string[] printerDetails = new string[10];
+
+
             printerDetails[0] = labelHeader[12];
             printerDetails[1] = labelHeader[13];
 
@@ -246,7 +255,7 @@ namespace LabelMaker
             }
             int howManyLines = queueCount-1; //howManyLines = top line no for queue
 
-            //Work out some sheet info here as outside scope of if and therefore passable
+            //Work out some sheet info here as outside scope of 'if' statement and therefore passable
             float labelsPerSheet = (float)(int.Parse(labelHeader[3]) * int.Parse(labelHeader[4]));
             bool oddNumberOfLabels = true;
             float numberOfSheetsF = (float)totalLabels / (float)labelsPerSheet;
@@ -265,7 +274,7 @@ namespace LabelMaker
 
             }
 
-            //Reset qty and Flag up if only printinga partial queue
+            //Reset qty and Flag up if only printing a partial queue
             int qty = 0;
             string allOrQty = "All"; // default = print all labels, no need for qty
             if (labelHeader[2] == "Picture")
@@ -278,12 +287,13 @@ namespace LabelMaker
                 }
             }
                             
-            //Prduce Print Dialog Box
-            printerDetails[2] =  "NoPrint";
+            //Pr0duce Print Dialog Box
+            printerDetails[2] =  "NoPrint"; //set default fro cancellation
 
     #region pDialog to authorise print
 
-            //get Paper Tray right
+            
+            //get Paper Tray right ** may be redundant now **
             switch (printerDetails[1])
              {
                 case "9":
@@ -295,60 +305,38 @@ namespace LabelMaker
             PrintDialog pDialog = new PrintDialog();
             //pDialog.PrinterSettings.PrinterName = labelPrinterChoice.Text.ToString().Trim();
             
-            pDialog.Document  = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
-            pDialog.Document.PrinterSettings.PrinterName = printerDetails[0].Trim();
-            pDialog.Document.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
-            try
+            //pDialog.Document  = new System.Drawing.Printing.PrintDocument(); // set dummy document to allow papersource setting
+            pDialog.PrinterSettings.PrinterName = printerDetails[0].Trim();
+            //pDialog.PrinterSettings.DefaultPageSettings.PrinterSettings.PrinterName = printerDetails[0];
+            
+            //Set correct paperSize from the printers selection. Default to Default if none found
+            PaperSize pSFound = new PaperSize();
+            Boolean foundSize = false;
+            foreach (PaperSize pS in pDialog.PrinterSettings.PaperSizes)
             {
-                pDialog.Document.DefaultPageSettings.PaperSource.SourceName = printerDetails[1];
-                //pDialog.PrinterSettings.DefaultPageSettings.PaperSource.SourceName = printerDetails[1];
-            
-                string paperSourceName = printerDetails[1];
-            
-                //set right paper tray
-                string[] sources = new string[20];
-
-                PaperSource pkSource = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSource;
-                PaperSource pkFoundSource = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSource;
-
-                for (int q = 0; q < pDialog.PrinterSettings.PaperSources.Count; q++)
+                if (pS.PaperName == labelHeader[18])
                 {
-                    pkSource = pDialog.PrinterSettings.PaperSources[q];
-                    sources[q] = pkSource.SourceName;
-                    if (pkSource.SourceName == listBoxPrinter.Items[15].ToString().TrimEnd()) { pkFoundSource = pkSource; }
+                    pSFound = pS;
+                    foundSize = true;
                 }
-
-                pDialog.Document.DefaultPageSettings.PaperSource = pkFoundSource;
-                //pDialog.PrinterSettings.DefaultPageSettings.PaperSource = pkFoundSource;
-
-                printerDetails[3] = pDialog.Document.PrinterSettings.PrinterName = printerDetails[0];
-                printerDetails[4] = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString();
-                printerDetails[5] = pDialog.Document.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString();
-                printerDetails[6] = pDialog.Document.PrinterSettings.DefaultPageSettings.HardMarginX.ToString();
-                printerDetails[7] = pDialog.Document.PrinterSettings.DefaultPageSettings.HardMarginY.ToString();
-               
             }
-            catch
-            {
-                printerDetails[3] = pDialog.PrinterSettings.PrinterName;
-                //printerDetails[4] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString();
-                //printerDetails[5] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString();
-                printerDetails[6] = 0.ToString();
-                printerDetails[7] = 0.ToString();
-                MessageBox.Show("Failed to set correct paper tray, please make sure it is set as you need");
-            }
+            if (foundSize) { pDialog.PrinterSettings.DefaultPageSettings.PaperSize = pSFound;
+                MessageBox.Show("Set PaperSize to " + pSFound.PaperName.ToString()); } // only set if found it
+            else { MessageBox.Show("Couldn't find correct paper size so leaving as the default","Failed Paper Size"); }
 
-            PaperSource paperSource = pDialog.Document.DefaultPageSettings.PaperSource;
+            printerDetails[8] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString(); // Width as Printer Sees it
+            printerDetails[9] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString(); // Height as Printer Sees it         
 
-            //DialogResult msg = MessageBox.Show(printVariables.howManyLines.ToString());
-
-            #endregion
             DialogResult printerResponse = pDialog.ShowDialog();
-
             if (printerResponse == DialogResult.OK)
             {
                 printerDetails[2] = "Print";
+                printerDetails[3] = pDialog.PrinterSettings.PrinterName;
+            //DialogResult msg = MessageBox.Show(printVariables.howManyLines.ToString());
+
             }
+            #endregion
+            //PaperSource paperSource = pDialog.DefaultPageSettings.PaperSource;
 
             if (printerDetails[2] == "Print")
             {
@@ -378,7 +366,7 @@ namespace LabelMaker
             printVariables.howManyLines = howManyLines;
             printVariables.defaultsString = defaultsString;
             printVariables.printerDetails = printerDetails;
-            printVariables.paperSource = paperSource;
+            //printVariables.paperSource = paperSource;
             printVariables.wholeQueue = wholeQueue;
             printVariables.labelCount = labelCount;
             printVariables.printerListIndex = canIusePrinter.getPrinterIndex(printerDetails[0]);
@@ -522,6 +510,72 @@ namespace LabelMaker
             printWhere.Dispose();
         }
 
+        private PrintDocument makePrintDocument(printDefaults printVariables)
+        {
+            //int multiplier = 4;
+            PrintDocument pd = new PrintDocument();
+            pd.PrintController = new StandardPrintController();
+
+            pd.PrinterSettings.PrinterName = printVariables.printerDetails[3];
+            if (listBoxPrinter.Items[4].ToString() == "Landscape")
+            {
+                pd.DefaultPageSettings.Landscape = true;
+            }
+            else
+            {
+                pd.DefaultPageSettings.Landscape = false;
+            }
+
+            //Set right papertray
+            try
+            {
+                pd.DefaultPageSettings.PaperSource.SourceName = printVariables.printerDetails[1];
+                
+                string paperSourceName = printVariables.printerDetails[1];
+
+                //set right paper tray
+                string[] sources = new string[20];
+
+                PaperSource pkSource = pd.PrinterSettings.DefaultPageSettings.PaperSource;
+                PaperSource pkFoundSource = pd.PrinterSettings.DefaultPageSettings.PaperSource;
+
+                for (int q = 0; q < pd.PrinterSettings.PaperSources.Count; q++)
+                {
+                    pkSource = pd.PrinterSettings.PaperSources[q];
+                    sources[q] = pkSource.SourceName;
+                    //maybe need to change to labelHeader
+                    if (pkSource.SourceName == listBoxPrinter.Items[15].ToString().TrimEnd()) { pkFoundSource = pkSource; }
+                }
+
+                pd.DefaultPageSettings.PaperSource = pkFoundSource;
+                
+            }
+            catch
+            {
+                printVariables.printerDetails[3] = pd.PrinterSettings.PrinterName;
+                printVariables.printerDetails[6] = 0.ToString();
+                printVariables.printerDetails[7] = 0.ToString();
+                MessageBox.Show("Failed to set correct paper tray, please make sure it is set as you need");
+            }
+
+            int newWidth = int.Parse(printVariables.printerDetails[8]);//multiplier * int.Parse(printVariables.labelData[0]);
+            int newHeight = int.Parse(printVariables.printerDetails[9]);//multiplier * int.Parse(printVariables.labelData[1]);
+
+            //pd.DefaultPageSettings.PaperSize.RawKind = 119; // Any value over 118 is a custom size
+            //pd.DefaultPageSettings.PaperSize = new PaperSize("Custom", newWidth, newHeight);
+            //pd.OriginAtMargins = true;
+            //pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+
+            //pd.PrinterSettings.DefaultPageSettings.PaperSize.RawKind = 119;
+            //pd.DefaultPageSettings.Landscape = false;
+            //pd.DefaultPageSettings.PrinterSettings.DefaultPageSettings.PaperSize = new PaperSize("Custom", newWidth, newHeight);
+            //pd.DefaultPageSettings.PrinterSettings.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+            //pd.PrinterSettings.DefaultPageSettings.PaperSize = new PaperSize("Custom", newWidth, newHeight);
+            //pd.PrinterSettings.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+
+            return pd;
+        }
+
         private void printAsText( printDefaults printVariables)
         {
             //MessageBox.Show("Got to Text Printing");
@@ -542,31 +596,36 @@ namespace LabelMaker
             int rowsToPrint = printVariables.howManyLines+1;
             string[] queueData = new string[36];
             for (int i = 0; i < rowsToPrint; i++)
-                {
+            {
                 for (int h = 0; h <= 35; h++) { queueData[h] = printVariables.wholeQueue[i, h]; }
 
-                    PrintDocument pd = new PrintDocument();
-                    pd.PrintController = new StandardPrintController();
+                int newWidth = int.Parse(printVariables.labelData[0].ToString());
+                int newHeight = int.Parse(printVariables.labelData[1].ToString());
 
-                    pd.PrinterSettings.PrinterName = printVariables.printerDetails[3];
-                    if (listBoxPrinter.Items[4].ToString() == "Landscape")
-                    {
-                        pd.DefaultPageSettings.Landscape = true;
-                    }
-                    else
-                    {
-                        pd.DefaultPageSettings.Landscape = false;
-                    }
+                PrintDocument pd = makePrintDocument(printVariables);
 
-                    int sentWidth = int.Parse(printVariables.printerDetails[4]);
-                    int sentHeight = int.Parse(printVariables.printerDetails[5]);
-                    int marginX = int.Parse(printVariables.printerDetails[6]) ;
-                    int marginY = int.Parse(printVariables.printerDetails[7]);
-                    int placementX = 0;
+
+                //int sentWidth = int.Parse(printVariables.labelData[0]);
+                //int sentHeight = int.Parse(printVariables.labelData[1]);
+                //int sentWidth = int.Parse(listBoxPrinter.Items[5].ToString());
+                //int sentHeight = int.Parse(listBoxPrinter.Items[6].ToString());
+                //printVariables.labelData[0] = (listBoxPrinter.Items[5].ToString());
+                //printVariables.labelData[1] =(listBoxPrinter.Items[6].ToString());
+
+                int marginX = 0;
+                int marginY = 0;
+                try
+                {
+                    marginX = int.Parse(printVariables.printerDetails[6]);
+                    marginY = int.Parse(printVariables.printerDetails[7]);
+                }
+                catch
+                {  }
+            int placementX = 0;
                     int placementY = 0;
 
 
-                    pd.PrintPage += (sender1, args) => DrawImage(queueData, printVariables.labelData, printVariables.defaultsString, sentWidth, sentHeight,marginX, placementX,marginY, placementY, sender1, args);
+                    pd.PrintPage += (sender1, args) => DrawImage(queueData, printVariables.labelData, printVariables.defaultsString, newWidth, newHeight,marginX, placementX,marginY, placementY, sender1, args);
                     pd.PrinterSettings.Copies = short.Parse(queueData[1]);
                     
                     pd.Print();
@@ -5138,34 +5197,41 @@ namespace LabelMaker
         public String[] returnLabelHeaderData(string labelName)
         {
             
-            String[] labelHeaderData = new String[18];
+            
             DataTable headerDataSet = new DataTable("headerDataSet");
             headerDataSet = LabelsLabelNamesTableAdapter.GetDataByName(labelName);
             DataRow dRow = headerDataSet.Rows[0];
             
-            //Batch or Not
-            string batch = dRow.ItemArray[3].ToString().Trim();
-            labelHeaderData[0] = batch;
+            
 
             //Selector for next table
             String childName = dRow.ItemArray[2].ToString().Trim();
 
-            LabelsLabelCategoriesTableAdapter.FillBy(databaseLabelsDataSetLabelNames.LabelsLabelCategories, childName);
+            LabelsLabelCategoriesTableAdapter.FillBy2(databaseLabelsDataSetLabelNames.LabelsLabelCategories, childName);
             DataRow eRow = databaseLabelsDataSetLabelNames.Tables["LabelsLabelCategories"].Rows[0];
+            int headerCount = eRow.ItemArray.Count();
+            String[] labelHeaderData = new String[headerCount + 2];
+
+            //Batch or Not
+            string batch = dRow.ItemArray[3].ToString().Trim();
+            labelHeaderData[0] = batch;
+
             //Header Data
-            for (int i = 1; i <= 15; i++)
+            int i = 0;
+            foreach (var Item in eRow.ItemArray  )
             {
-                labelHeaderData[i] = eRow.ItemArray[i].ToString().Trim();
+                if (i > 1) { labelHeaderData[i] = Item.ToString().Trim(); } //eRow.ItemArray[i].ToString().Trim();
+                i++;
             }
+            
             String printerName = eRow.ItemArray[12].ToString();
             printerName = printerName.Trim();
 
-            //PrintersTableAdapter.Adapter.SelectCommand.CommandText = "SELECT Id, Name, OffsetDown, OffsetRight FROM dbo.Printers WHERE Name = '"+ printerName +"'";
             PrintersTableAdapter.FillBy(databaseLabelsDataSetLabelNames.Printers, printerName);
             DataRow fRow = databaseLabelsDataSetLabelNames.Tables["Printers"].Rows[0];
 
-            labelHeaderData[16] = fRow.ItemArray[2].ToString().Trim();
-            labelHeaderData[17] = fRow.ItemArray[3].ToString().Trim();
+            labelHeaderData[19] = fRow.ItemArray[2].ToString().Trim(); // Printer Offset Down
+            labelHeaderData[20] = fRow.ItemArray[3].ToString().Trim(); // Printer Offset Right
 
             return labelHeaderData;
 
@@ -5182,6 +5248,7 @@ namespace LabelMaker
             String[] outputString = new string[count];
 
             int counter = 2; // leave space for dimensions
+            //Set defaults as sticker size. Reset these on return.
             outputString[0] = "90";
             outputString[1] = "50";
             for (int i = 0; i <= (databaseLabelsDataSetLabelNames.Tables["LabelsLabelFields"].Rows.Count - 1); i++)
@@ -6609,10 +6676,27 @@ namespace LabelMaker
 
             PrintDialog pDialog = new PrintDialog();
             pDialog.PrinterSettings.PrinterName = quickPrintDefaults.headerString[12];
+            //set correct papersource and papersize here
+            //Set correct paperSize from the printers selection. Default to Default if none found
+            PaperSize pSFound = new PaperSize();
+            Boolean foundSize = false;
+            foreach (PaperSize pS in pDialog.PrinterSettings.PaperSizes)
+            {
+                if (pS.PaperName == quickPrintDefaults.headerString[18])
+                {
+                    pSFound = pS;
+                    foundSize = true;
+                }
+            }
+            if (foundSize)
+            {
+                pDialog.PrinterSettings.DefaultPageSettings.PaperSize = pSFound;
+                MessageBox.Show("Set PaperSize to " + pSFound.PaperName.ToString());
+            } // only set if found it
+            else { MessageBox.Show("Couldn't find correct paper size so leaving as the default", "Failed Paper Size"); }
 
             if (DialogResult.OK == pDialog.ShowDialog())
             {
-
                 //wait around so queues don't clash on print
                 int waitCounter = 0;
 
@@ -6626,9 +6710,6 @@ namespace LabelMaker
                 }
                 canIusePrinter.inUseOrNot[printerIndex] = true;
 
-
-                //string[] queueData = collectQueueRow(count, whichQueue);
-
                 PrintDocument pd = new PrintDocument();
                     pd.PrinterSettings.PrinterName = pDialog.PrinterSettings.PrinterName;
                     if (listBoxPrinter.Items[4].ToString() == "Landscape")
@@ -6640,7 +6721,35 @@ namespace LabelMaker
                         pd.DefaultPageSettings.Landscape = false;
                     }
 
-                    int sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
+                //Set right papertray
+                try
+                {
+                    string paperSourceName = quickPrintDefaults.headerString[16];
+
+                    //set right paper tray
+                    string[] sources = new string[20];
+
+                    PaperSource pkSource = pd.PrinterSettings.DefaultPageSettings.PaperSource;
+                    PaperSource pkFoundSource = pd.PrinterSettings.DefaultPageSettings.PaperSource;
+
+                    for (int q = 0; q < pd.PrinterSettings.PaperSources.Count; q++)
+                    {
+                        pkSource = pd.PrinterSettings.PaperSources[q];
+                        sources[q] = pkSource.SourceName;
+                        if (pkSource.SourceName == paperSourceName.TrimEnd()) { pkFoundSource = pkSource; }
+                    }
+
+                    pd.DefaultPageSettings.PaperSource = pkFoundSource;
+
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to set correct paper tray, please make sure it is set as you need");
+                }
+
+
+
+                int sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
                     int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
                     int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
                     int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
@@ -9652,7 +9761,145 @@ namespace LabelMaker
         
         }
 
-        
+        private void tripleLabelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int number = dataGridViewPlants.SelectedRows.Count;
+            String[] PlantNames = new string[number+2];
+            int counter = 0;
+            foreach (DataGridViewRow r in dataGridViewPlants.SelectedRows)
+            {
+                string[] PlantNameBuilder = new string[5];
+                string[] sendData = new String[5];
+                for (int i = 0; i <= 4; i++)
+                {
+                    sendData[i] = r.Cells[1 + i].Value.ToString();
+                }
+                PlantNameBuilder =  getPlantName(sendData);
+
+                PlantNames[counter] = PlantNameBuilder[0];
+                counter++;
+            }
+
+            for (int j = 0; j < PlantNames.Length; j = j + 3)
+            {
+                DataRow row = databaseLabelsDataSetMainQueue.Tables[0].NewRow();
+
+                //row["Id"] = "1";
+                row["Name"] = PlantNames[j];
+                int answer = 0;
+                row["qty"] = answer;
+                row["Price"] = "";
+                row["PotSize"] = "";
+                row["Customer"] = "";
+                row["Barcode"] = "";
+                row["Description"] = "";
+                row["CommonName"] = "";
+                row["PictureFile"] = "";
+                row["ColourFont"] = "";
+                row["ColourFontColour"] = "0";
+                row["FontBold"] = false;
+                row["FontItalic"] = false;
+                row["ColourBorderColour"] = "0";
+                row["ColourBackgroundColour"] = "0";
+                row["notes"] = "";
+                row["Genus"] = "";
+                row["Species"] = "";
+                row["Variety"] = "";
+                row["AGM"] = "";
+                row["Picture1"] = PlantNames[j];
+                row["Picture2"] = PlantNames[j + 1];
+                row["Picture3"] = PlantNames[j + 2]; ;
+                row["Picture4"] = "";
+                row["OrderNo"] = "";
+                row["LabelStocks"] = false;
+                row["PlantId"] = 0;
+                row["ShipName"] = "";
+                row["ShipFirst"] = "";
+                row["ShipLast"] = "";
+                row["ShipLine1"] = "";
+                row["ShipLine2"] = "";
+                row["ShipCity"] = "";
+                row["ShipState"] = "";
+                row["ShipPostcode"] = "";
+                row["OrderNotes"] = "";
+
+                databaseLabelsDataSetMainQueue.TableMainQueue.Rows.Add(row);
+                dataGridViewMainQ.EndEdit();
+                try
+                {
+                    tableMainQueueTableAdapter.Update(databaseLabelsDataSetMainQueue.TableMainQueue);
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show("Failed to add to Main Queue - " + ex);
+                }
+                labelMainCount.Text = addMainQueueTotal().ToString();
+                labelMainCountQ.Text = labelMainCount.Text;
+            }
+
+        }
+
+        private void paperSizesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Produce list of PaperSizes so you can set your printer
+            PrintDialog pDialog = new PrintDialog();
+            DialogResult result = pDialog.ShowDialog();
+
+            int count = pDialog.PrinterSettings.PaperSizes.Count;
+            string[] paperSizes = new string[count+3];
+            int counter = 3;
+            paperSizes[0] = pDialog.PrinterSettings.PrinterName;//Title
+            paperSizes[1] = "Paper Sizes for :- "+ pDialog.PrinterSettings.PrinterName;
+            paperSizes[2] = ""
+;
+            foreach (PaperSize pS in pDialog.PrinterSettings.PaperSizes)
+            {
+                paperSizes[counter] = pS.PaperName;
+                counter++;
+            }
+            FormInformation display = new FormInformation(paperSizes);
+            display.Show();
+            pDialog.Dispose();
+        }
+
+        private void listTablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetDatabaseTabels(ConfigurationManager.ConnectionStrings[1].ConnectionString);
+        }
+        public void GetDatabaseTabels(string connectionString)
+        {
+            List<string> TableNames = new List<string>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                DataTable schema = connection.GetSchema("Tables");
+                
+                foreach (DataRow row in schema.Rows)
+                {
+                    TableNames.Add(row[2].ToString());
+                }
+            }
+            int count = TableNames.Count;
+            int offset = 6;
+            string[] AllNames = new string[count + offset];
+            int counter = offset;
+            foreach (string s in TableNames)
+            {
+                AllNames[counter] = s;
+                counter++;
+            }
+            AllNames[0] = "Database Tables";
+            AllNames[1] = "Here is a list of the Tables in your Database";
+            AllNames[2] = "";
+            AllNames[3] = connectionString;
+            try { AllNames[4] = ApplicationDeployment.CurrentDeployment.DataDirectory; }
+            catch { AllNames[4] = "Not a Deployed version so no Data Directory"; }
+            AllNames[5] = "";
+
+            FormInformation Tables = new FormInformation(AllNames);
+            Tables.Show();
+
+        }
     }
 }
     

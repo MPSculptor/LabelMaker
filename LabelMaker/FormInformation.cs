@@ -47,5 +47,10 @@ namespace LabelMaker
         {
             this.Dispose();
         }
+
+        private void FormInformation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
