@@ -35,7 +35,7 @@ namespace LabelMaker
             {
                 printGraphics.PageUnit = GraphicsUnit.Millimeter;
                 printGraphics.PageScale = 1;
-                MessageBox.Show("PageUnit - " + printGraphics.PageUnit.ToString() + ", PageScale - "+printGraphics.PageScale);
+                //MessageBox.Show("PageUnit - " + printGraphics.PageUnit.ToString() + ", PageScale - "+printGraphics.PageScale);
                 
                 //can take into account margins here ??
 

@@ -223,6 +223,11 @@ namespace LabelMaker
             printerDetails[0] = labelHeader[12];
             printerDetails[1] = labelHeader[13];
 
+            printerDetails[4] = labelHeader[6];//Width
+            printerDetails[5] = labelHeader[7];//Height
+            printerDetails[6] = labelHeader[8];//Margins
+            printerDetails[7] = labelHeader[9];
+
             string whichQueue = "Main";
             int totalLabels = 0;
             int queueCount = 0; 
@@ -320,9 +325,9 @@ namespace LabelMaker
                     foundSize = true;
                 }
             }
-            if (foundSize) { pDialog.PrinterSettings.DefaultPageSettings.PaperSize = pSFound;
-                MessageBox.Show("Set PaperSize to " + pSFound.PaperName.ToString()); } // only set if found it
-            else { MessageBox.Show("Couldn't find correct paper size so leaving as the default","Failed Paper Size"); }
+            if (foundSize) { pDialog.PrinterSettings.DefaultPageSettings.PaperSize = pSFound; }
+            //MessageBox.Show("Set PaperSize to " + pSFound.PaperName.ToString()); } // only set if found it
+            else { MessageBox.Show("Couldn't find correct paper size so leaving as the default", "Failed Paper Size"); }
 
             printerDetails[8] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width.ToString(); // Width as Printer Sees it
             printerDetails[9] = pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height.ToString(); // Height as Printer Sees it         
@@ -558,8 +563,9 @@ namespace LabelMaker
                 MessageBox.Show("Failed to set correct paper tray, please make sure it is set as you need");
             }
 
-            int newWidth = int.Parse(printVariables.printerDetails[8]);//multiplier * int.Parse(printVariables.labelData[0]);
-            int newHeight = int.Parse(printVariables.printerDetails[9]);//multiplier * int.Parse(printVariables.labelData[1]);
+            pd.OriginAtMargins = false;
+            //int newWidth = int.Parse(printVariables.printerDetails[8]);//multiplier * int.Parse(printVariables.labelData[0]);
+            //int newHeight = int.Parse(printVariables.printerDetails[9]);//multiplier * int.Parse(printVariables.labelData[1]);
 
             //pd.DefaultPageSettings.PaperSize.RawKind = 119; // Any value over 118 is a custom size
             //pd.DefaultPageSettings.PaperSize = new PaperSize("Custom", newWidth, newHeight);
@@ -685,13 +691,14 @@ namespace LabelMaker
                 { 
                     countX = 0;
                     countY = 0;
-                    PrintDocument pd = new PrintDocument();
+                //PrintDocument pd = new PrintDocument();
+                PrintDocument pd = makePrintDocument(printerVariables);
 
                     pd.PrintController = new StandardPrintController();
 
-                    pd.PrinterSettings.PrinterName =  printerVariables.printerDetails[3];
-                    pd.DefaultPageSettings.PaperSource = printerVariables.paperSource;
-                    pd.PrinterSettings.DefaultPageSettings.PaperSource = printerVariables.paperSource;
+                    //pd.PrinterSettings.PrinterName =  printerVariables.printerDetails[3];
+                    //pd.DefaultPageSettings.PaperSource = printerVariables.paperSource;
+                    //pd.PrinterSettings.DefaultPageSettings.PaperSource = printerVariables.paperSource;
                 
                     
                     if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
@@ -702,31 +709,37 @@ namespace LabelMaker
                     {
                         pd.DefaultPageSettings.Landscape = false;
                     }
-                
 
-                    // put label on the sheet
-                    for (int j = 1; j <= labelsPerSheet; j++)
+                //Printer adjustment
+                string printerName = printerVariables.printerDetails[0];
+                PrintersTableAdapter.FillBy(databaseLabelsDataSetLabelNames.Printers, printerName);
+                DataRow printerRow = databaseLabelsDataSetLabelNames.Tables["Printers"].Rows[0];
+                int offsetDown = (int)(float.Parse(printerRow[2].ToString()));
+                int offsetRight = (int)float.Parse(printerRow[3].ToString());
+
+                // put label on the sheet
+                for (int j = 1; j <= labelsPerSheet; j++)
                     {
                             string[] queueData = new string[36];
                             for (int h = 0; h <= 35; h++) { queueData[h] = printerVariables.wholeQueue[queuePositions[queuePositionCounter], h];}
-                        
+
                             int sentWidth = int.Parse(printerVariables.printerDetails[4]);
                             int sentHeight = int.Parse(printerVariables.printerDetails[5]);
                             int marginX = int.Parse(printerVariables.printerDetails[6]);
                             int marginY = int.Parse(printerVariables.printerDetails[7]);
 
-                            if (listBoxPrinter.Items[4].ToString().Trim() == "Landscape")
+                            if (listBoxPrinter.Items[4].ToString().Trim() != "Landscape")
                                 {
                                     int swap = sentWidth;
                                     sentWidth = sentHeight;
                                     sentHeight = swap;
                                 }
 
-                            sentWidth = sentWidth / labelsAcross;
-                            sentHeight = sentHeight / labelsDown;
+                            //sentWidth = sentWidth / labelsAcross;
+                            //sentHeight = sentHeight / labelsDown;
 
-                            int XPosition = sentWidth * countX;
-                            int YPosition = sentHeight * countY;
+                            int XPosition = sentWidth * countX + offsetRight;
+                            int YPosition = sentHeight * countY + offsetDown;
                         
                             pd.PrintPage += (sender1, args) => DrawImage(queueData, printerVariables.labelData, printerVariables.defaultsString, sentWidth, sentHeight, marginX, XPosition, marginY,YPosition, sender1, args);
 
@@ -6691,7 +6704,7 @@ namespace LabelMaker
             if (foundSize)
             {
                 pDialog.PrinterSettings.DefaultPageSettings.PaperSize = pSFound;
-                MessageBox.Show("Set PaperSize to " + pSFound.PaperName.ToString());
+                //MessageBox.Show("Set PaperSize to " + pSFound.PaperName.ToString());
             } // only set if found it
             else { MessageBox.Show("Couldn't find correct paper size so leaving as the default", "Failed Paper Size"); }
 
@@ -6749,10 +6762,10 @@ namespace LabelMaker
 
 
 
-                int sentWidth = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
-                    int sentHeight = (int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
-                    int marginX = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
-                    int marginY = (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
+                int sentWidth = int.Parse(quickPrintDefaults.headerString[6]);  //(int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Width);
+                    int sentHeight = int.Parse(quickPrintDefaults.headerString[7]);  //(int)(pDialog.PrinterSettings.DefaultPageSettings.PaperSize.Height);
+                int marginX = 0;// (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginX;
+                int marginY = 0;// (int)pDialog.PrinterSettings.DefaultPageSettings.HardMarginY;
                     int placementX = 0;
                     int placementY = 0;
 
