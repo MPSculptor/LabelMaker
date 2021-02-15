@@ -832,6 +832,7 @@ namespace LabelMaker
             }
             if (tabControlMain.SelectedTab == tabPageLabelProfiles)
             {
+                sizeProfileTab();
                 addProfileButtons();
 
                 string profileName = buttonMainProfile.Text;
@@ -885,6 +886,33 @@ namespace LabelMaker
         }
 
         #endregion
+
+        private void sizeProfileTab()
+        {
+            int gap = 10;
+
+            groupBox2.Left = tabPageLabelProfiles.Width - gap - groupBox2.Width;
+            groupBox2.Top = gap;
+
+            dataGridView1ProfileView.Left = gap;
+            dataGridView1ProfileView.Top = gap;
+            dataGridView1ProfileView.Width = groupBox2.Left - gap -gap;
+            dataGridView1ProfileView.Height = tabPageLabelProfiles.Height /4;
+
+            groupBox6.Top = tabPageLabelProfiles.Height - gap - groupBox6.Height;
+            groupBox6.Left = gap;
+
+            panelProfilePlantPreview.Top = dataGridView1ProfileView.Bottom + gap;
+            panelProfilePlantPreview.Height = groupBox6.Top - gap - panelProfilePlantPreview.Top;
+            panelProfilePlantPreview.Width = panelProfilePlantPreview.Height * 352 / 526;
+            panelProfilePlantPreview.Left = gap;
+
+            groupBoxProfiles.Left = panelProfilePlantPreview.Right + gap;
+            groupBoxProfiles.Top = dataGridView1ProfileView.Bottom + gap;
+            groupBoxProfiles.Width = tabPageLabelProfiles.Width - gap - groupBoxProfiles.Left;
+            groupBoxProfiles.Height = panelProfilePlantPreview.Height;
+            
+        }
 
         #region Qty Box and Price routines
 
@@ -2757,10 +2785,12 @@ namespace LabelMaker
         {
             FlowLayoutPanel flowLayoutPanelProfiles = new FlowLayoutPanel();
 
-            flowLayoutPanelProfiles.Width = groupBoxProfiles.Width - 20;
-            flowLayoutPanelProfiles.Height = groupBoxProfiles.Height - 40;
-            flowLayoutPanelProfiles.Left = 10;
-            flowLayoutPanelProfiles.Top = 20;
+            flowLayoutPanelProfiles.Width = groupBoxProfiles.Width - 12;
+            flowLayoutPanelProfiles.Height = groupBoxProfiles.Height - 25;
+            flowLayoutPanelProfiles.Left = 6;
+            flowLayoutPanelProfiles.Top = 19;
+            flowLayoutPanelProfiles.AutoScroll = true;
+            flowLayoutPanelProfiles.AutoSize = false;
 
             groupBoxProfiles.Controls.Clear();
             groupBoxProfiles.Controls.Add(flowLayoutPanelProfiles);
