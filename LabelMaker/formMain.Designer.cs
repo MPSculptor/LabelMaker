@@ -253,7 +253,6 @@
             this.appPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSpecialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tripleLabelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -449,6 +448,8 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labelPlantName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tablePlantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSet = new LabelMaker.DatabaseLabelsDataSet();
             this.richTextBoxDesc = new System.Windows.Forms.RichTextBox();
             this.groupBoxAlpha = new System.Windows.Forms.GroupBox();
             this.buttonAlphaZplus = new System.Windows.Forms.Button();
@@ -549,6 +550,27 @@
             this.buttonAllEntries = new System.Windows.Forms.Button();
             this.buttonHiddenOnly = new System.Windows.Forms.Button();
             this.dataGridViewPlants = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genusCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speciesCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varietyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sKUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.potSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colourQueueDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.picture4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aGMDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.labelColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageQuickPrint = new System.Windows.Forms.TabPage();
             this.groupBoxQP9 = new System.Windows.Forms.GroupBox();
@@ -1043,29 +1065,6 @@
             this.tableAddressQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet3TableAdapters.TableAddressQueueTableAdapter();
             this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet2TableAdapters.TableMainQueueTableAdapter();
             this.tablePassportQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet4TableAdapters.TablePassportQueueTableAdapter();
-            this.tablePlantsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSet = new LabelMaker.DatabaseLabelsDataSet();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genusCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speciesCrossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speciesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.varietyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sKUDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.potSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colourQueueDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.barcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picture4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aGMDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.labelColourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hideDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelStockDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
@@ -1121,6 +1120,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
             this.groupBoxAlpha.SuspendLayout();
             this.groupBoxPrint.SuspendLayout();
             this.groupBoxImages.SuspendLayout();
@@ -1175,8 +1176,6 @@
             this.panelQueue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlQueue
@@ -2811,7 +2810,6 @@
             // 
             this.backupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.backupToolStripMenuItem1,
-            this.restoreToolStripMenuItem,
             this.listTablesToolStripMenuItem});
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
             this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
@@ -2823,12 +2821,6 @@
             this.backupToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.backupToolStripMenuItem1.Text = "Backup";
             this.backupToolStripMenuItem1.Click += new System.EventHandler(this.backupToolStripMenuItem1_Click);
-            // 
-            // restoreToolStripMenuItem
-            // 
-            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
-            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.restoreToolStripMenuItem.Text = "Restore";
             // 
             // listTablesToolStripMenuItem
             // 
@@ -4799,6 +4791,16 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
+            // tablePlantsBindingSource
+            // 
+            this.tablePlantsBindingSource.DataMember = "TablePlants";
+            this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
+            // 
+            // databaseLabelsDataSet
+            // 
+            this.databaseLabelsDataSet.DataSetName = "DatabaseLabelsDataSet";
+            this.databaseLabelsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // richTextBoxDesc
             // 
             this.richTextBoxDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -6056,6 +6058,153 @@
             this.dataGridViewPlants.Size = new System.Drawing.Size(716, 838);
             this.dataGridViewPlants.TabIndex = 0;
             this.dataGridViewPlants.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlants_CellContentClick);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genusCrossDataGridViewTextBoxColumn
+            // 
+            this.genusCrossDataGridViewTextBoxColumn.DataPropertyName = "GenusCross";
+            this.genusCrossDataGridViewTextBoxColumn.HeaderText = "GenusCross";
+            this.genusCrossDataGridViewTextBoxColumn.Name = "genusCrossDataGridViewTextBoxColumn";
+            this.genusCrossDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genusDataGridViewTextBoxColumn
+            // 
+            this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
+            this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
+            this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
+            this.genusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speciesCrossDataGridViewTextBoxColumn
+            // 
+            this.speciesCrossDataGridViewTextBoxColumn.DataPropertyName = "SpeciesCross";
+            this.speciesCrossDataGridViewTextBoxColumn.HeaderText = "SpeciesCross";
+            this.speciesCrossDataGridViewTextBoxColumn.Name = "speciesCrossDataGridViewTextBoxColumn";
+            this.speciesCrossDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speciesDataGridViewTextBoxColumn
+            // 
+            this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
+            this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
+            this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
+            this.speciesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // varietyDataGridViewTextBoxColumn
+            // 
+            this.varietyDataGridViewTextBoxColumn.DataPropertyName = "Variety";
+            this.varietyDataGridViewTextBoxColumn.HeaderText = "Variety";
+            this.varietyDataGridViewTextBoxColumn.Name = "varietyDataGridViewTextBoxColumn";
+            this.varietyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commonDataGridViewTextBoxColumn
+            // 
+            this.commonDataGridViewTextBoxColumn.DataPropertyName = "Common";
+            this.commonDataGridViewTextBoxColumn.HeaderText = "Common";
+            this.commonDataGridViewTextBoxColumn.Name = "commonDataGridViewTextBoxColumn";
+            this.commonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sKUDataGridViewTextBoxColumn
+            // 
+            this.sKUDataGridViewTextBoxColumn.DataPropertyName = "SKU";
+            this.sKUDataGridViewTextBoxColumn.HeaderText = "SKU";
+            this.sKUDataGridViewTextBoxColumn.Name = "sKUDataGridViewTextBoxColumn";
+            this.sKUDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descDataGridViewTextBoxColumn
+            // 
+            this.descDataGridViewTextBoxColumn.DataPropertyName = "Desc";
+            this.descDataGridViewTextBoxColumn.HeaderText = "Desc";
+            this.descDataGridViewTextBoxColumn.Name = "descDataGridViewTextBoxColumn";
+            this.descDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // potSizeDataGridViewTextBoxColumn
+            // 
+            this.potSizeDataGridViewTextBoxColumn.DataPropertyName = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn.HeaderText = "PotSize";
+            this.potSizeDataGridViewTextBoxColumn.Name = "potSizeDataGridViewTextBoxColumn";
+            this.potSizeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colourQueueDataGridViewCheckBoxColumn
+            // 
+            this.colourQueueDataGridViewCheckBoxColumn.DataPropertyName = "ColourQueue";
+            this.colourQueueDataGridViewCheckBoxColumn.HeaderText = "ColourQueue";
+            this.colourQueueDataGridViewCheckBoxColumn.Name = "colourQueueDataGridViewCheckBoxColumn";
+            this.colourQueueDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // barcodeDataGridViewTextBoxColumn
+            // 
+            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
+            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
+            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture1DataGridViewTextBoxColumn
+            // 
+            this.picture1DataGridViewTextBoxColumn.DataPropertyName = "Picture1";
+            this.picture1DataGridViewTextBoxColumn.HeaderText = "Picture1";
+            this.picture1DataGridViewTextBoxColumn.Name = "picture1DataGridViewTextBoxColumn";
+            this.picture1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture2DataGridViewTextBoxColumn
+            // 
+            this.picture2DataGridViewTextBoxColumn.DataPropertyName = "Picture2";
+            this.picture2DataGridViewTextBoxColumn.HeaderText = "Picture2";
+            this.picture2DataGridViewTextBoxColumn.Name = "picture2DataGridViewTextBoxColumn";
+            this.picture2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture3DataGridViewTextBoxColumn
+            // 
+            this.picture3DataGridViewTextBoxColumn.DataPropertyName = "Picture3";
+            this.picture3DataGridViewTextBoxColumn.HeaderText = "Picture3";
+            this.picture3DataGridViewTextBoxColumn.Name = "picture3DataGridViewTextBoxColumn";
+            this.picture3DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // picture4DataGridViewTextBoxColumn
+            // 
+            this.picture4DataGridViewTextBoxColumn.DataPropertyName = "Picture4";
+            this.picture4DataGridViewTextBoxColumn.HeaderText = "Picture4";
+            this.picture4DataGridViewTextBoxColumn.Name = "picture4DataGridViewTextBoxColumn";
+            this.picture4DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aGMDataGridViewCheckBoxColumn
+            // 
+            this.aGMDataGridViewCheckBoxColumn.DataPropertyName = "AGM";
+            this.aGMDataGridViewCheckBoxColumn.HeaderText = "AGM";
+            this.aGMDataGridViewCheckBoxColumn.Name = "aGMDataGridViewCheckBoxColumn";
+            this.aGMDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // labelColourDataGridViewTextBoxColumn
+            // 
+            this.labelColourDataGridViewTextBoxColumn.DataPropertyName = "LabelColour";
+            this.labelColourDataGridViewTextBoxColumn.HeaderText = "LabelColour";
+            this.labelColourDataGridViewTextBoxColumn.Name = "labelColourDataGridViewTextBoxColumn";
+            this.labelColourDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hideDataGridViewCheckBoxColumn
+            // 
+            this.hideDataGridViewCheckBoxColumn.DataPropertyName = "Hide";
+            this.hideDataGridViewCheckBoxColumn.HeaderText = "Hide";
+            this.hideDataGridViewCheckBoxColumn.Name = "hideDataGridViewCheckBoxColumn";
+            this.hideDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // notesDataGridViewTextBoxColumn
+            // 
+            this.notesDataGridViewTextBoxColumn.DataPropertyName = "notes";
+            this.notesDataGridViewTextBoxColumn.HeaderText = "notes";
+            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // labelStockDataGridViewCheckBoxColumn
+            // 
+            this.labelStockDataGridViewCheckBoxColumn.DataPropertyName = "LabelStock";
+            this.labelStockDataGridViewCheckBoxColumn.HeaderText = "LabelStock";
+            this.labelStockDataGridViewCheckBoxColumn.Name = "labelStockDataGridViewCheckBoxColumn";
+            this.labelStockDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // tabControlMain
             // 
@@ -10890,163 +11039,6 @@
             // 
             this.tablePassportQueueTableAdapter.ClearBeforeFill = true;
             // 
-            // tablePlantsBindingSource
-            // 
-            this.tablePlantsBindingSource.DataMember = "TablePlants";
-            this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
-            // 
-            // databaseLabelsDataSet
-            // 
-            this.databaseLabelsDataSet.DataSetName = "DatabaseLabelsDataSet";
-            this.databaseLabelsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genusCrossDataGridViewTextBoxColumn
-            // 
-            this.genusCrossDataGridViewTextBoxColumn.DataPropertyName = "GenusCross";
-            this.genusCrossDataGridViewTextBoxColumn.HeaderText = "GenusCross";
-            this.genusCrossDataGridViewTextBoxColumn.Name = "genusCrossDataGridViewTextBoxColumn";
-            this.genusCrossDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // genusDataGridViewTextBoxColumn
-            // 
-            this.genusDataGridViewTextBoxColumn.DataPropertyName = "Genus";
-            this.genusDataGridViewTextBoxColumn.HeaderText = "Genus";
-            this.genusDataGridViewTextBoxColumn.Name = "genusDataGridViewTextBoxColumn";
-            this.genusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speciesCrossDataGridViewTextBoxColumn
-            // 
-            this.speciesCrossDataGridViewTextBoxColumn.DataPropertyName = "SpeciesCross";
-            this.speciesCrossDataGridViewTextBoxColumn.HeaderText = "SpeciesCross";
-            this.speciesCrossDataGridViewTextBoxColumn.Name = "speciesCrossDataGridViewTextBoxColumn";
-            this.speciesCrossDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speciesDataGridViewTextBoxColumn
-            // 
-            this.speciesDataGridViewTextBoxColumn.DataPropertyName = "Species";
-            this.speciesDataGridViewTextBoxColumn.HeaderText = "Species";
-            this.speciesDataGridViewTextBoxColumn.Name = "speciesDataGridViewTextBoxColumn";
-            this.speciesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // varietyDataGridViewTextBoxColumn
-            // 
-            this.varietyDataGridViewTextBoxColumn.DataPropertyName = "Variety";
-            this.varietyDataGridViewTextBoxColumn.HeaderText = "Variety";
-            this.varietyDataGridViewTextBoxColumn.Name = "varietyDataGridViewTextBoxColumn";
-            this.varietyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // commonDataGridViewTextBoxColumn
-            // 
-            this.commonDataGridViewTextBoxColumn.DataPropertyName = "Common";
-            this.commonDataGridViewTextBoxColumn.HeaderText = "Common";
-            this.commonDataGridViewTextBoxColumn.Name = "commonDataGridViewTextBoxColumn";
-            this.commonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sKUDataGridViewTextBoxColumn
-            // 
-            this.sKUDataGridViewTextBoxColumn.DataPropertyName = "SKU";
-            this.sKUDataGridViewTextBoxColumn.HeaderText = "SKU";
-            this.sKUDataGridViewTextBoxColumn.Name = "sKUDataGridViewTextBoxColumn";
-            this.sKUDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descDataGridViewTextBoxColumn
-            // 
-            this.descDataGridViewTextBoxColumn.DataPropertyName = "Desc";
-            this.descDataGridViewTextBoxColumn.HeaderText = "Desc";
-            this.descDataGridViewTextBoxColumn.Name = "descDataGridViewTextBoxColumn";
-            this.descDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // potSizeDataGridViewTextBoxColumn
-            // 
-            this.potSizeDataGridViewTextBoxColumn.DataPropertyName = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn.HeaderText = "PotSize";
-            this.potSizeDataGridViewTextBoxColumn.Name = "potSizeDataGridViewTextBoxColumn";
-            this.potSizeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // colourQueueDataGridViewCheckBoxColumn
-            // 
-            this.colourQueueDataGridViewCheckBoxColumn.DataPropertyName = "ColourQueue";
-            this.colourQueueDataGridViewCheckBoxColumn.HeaderText = "ColourQueue";
-            this.colourQueueDataGridViewCheckBoxColumn.Name = "colourQueueDataGridViewCheckBoxColumn";
-            this.colourQueueDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // barcodeDataGridViewTextBoxColumn
-            // 
-            this.barcodeDataGridViewTextBoxColumn.DataPropertyName = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.HeaderText = "Barcode";
-            this.barcodeDataGridViewTextBoxColumn.Name = "barcodeDataGridViewTextBoxColumn";
-            this.barcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture1DataGridViewTextBoxColumn
-            // 
-            this.picture1DataGridViewTextBoxColumn.DataPropertyName = "Picture1";
-            this.picture1DataGridViewTextBoxColumn.HeaderText = "Picture1";
-            this.picture1DataGridViewTextBoxColumn.Name = "picture1DataGridViewTextBoxColumn";
-            this.picture1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture2DataGridViewTextBoxColumn
-            // 
-            this.picture2DataGridViewTextBoxColumn.DataPropertyName = "Picture2";
-            this.picture2DataGridViewTextBoxColumn.HeaderText = "Picture2";
-            this.picture2DataGridViewTextBoxColumn.Name = "picture2DataGridViewTextBoxColumn";
-            this.picture2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture3DataGridViewTextBoxColumn
-            // 
-            this.picture3DataGridViewTextBoxColumn.DataPropertyName = "Picture3";
-            this.picture3DataGridViewTextBoxColumn.HeaderText = "Picture3";
-            this.picture3DataGridViewTextBoxColumn.Name = "picture3DataGridViewTextBoxColumn";
-            this.picture3DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // picture4DataGridViewTextBoxColumn
-            // 
-            this.picture4DataGridViewTextBoxColumn.DataPropertyName = "Picture4";
-            this.picture4DataGridViewTextBoxColumn.HeaderText = "Picture4";
-            this.picture4DataGridViewTextBoxColumn.Name = "picture4DataGridViewTextBoxColumn";
-            this.picture4DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aGMDataGridViewCheckBoxColumn
-            // 
-            this.aGMDataGridViewCheckBoxColumn.DataPropertyName = "AGM";
-            this.aGMDataGridViewCheckBoxColumn.HeaderText = "AGM";
-            this.aGMDataGridViewCheckBoxColumn.Name = "aGMDataGridViewCheckBoxColumn";
-            this.aGMDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // labelColourDataGridViewTextBoxColumn
-            // 
-            this.labelColourDataGridViewTextBoxColumn.DataPropertyName = "LabelColour";
-            this.labelColourDataGridViewTextBoxColumn.HeaderText = "LabelColour";
-            this.labelColourDataGridViewTextBoxColumn.Name = "labelColourDataGridViewTextBoxColumn";
-            this.labelColourDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hideDataGridViewCheckBoxColumn
-            // 
-            this.hideDataGridViewCheckBoxColumn.DataPropertyName = "Hide";
-            this.hideDataGridViewCheckBoxColumn.HeaderText = "Hide";
-            this.hideDataGridViewCheckBoxColumn.Name = "hideDataGridViewCheckBoxColumn";
-            this.hideDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // notesDataGridViewTextBoxColumn
-            // 
-            this.notesDataGridViewTextBoxColumn.DataPropertyName = "notes";
-            this.notesDataGridViewTextBoxColumn.HeaderText = "notes";
-            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
-            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // labelStockDataGridViewCheckBoxColumn
-            // 
-            this.labelStockDataGridViewCheckBoxColumn.DataPropertyName = "LabelStock";
-            this.labelStockDataGridViewCheckBoxColumn.HeaderText = "LabelStock";
-            this.labelStockDataGridViewCheckBoxColumn.Name = "labelStockDataGridViewCheckBoxColumn";
-            this.labelStockDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
             // tablePlantsTableAdapter
             // 
             this.tablePlantsTableAdapter.ClearBeforeFill = true;
@@ -11139,6 +11131,8 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
             this.groupBoxAlpha.ResumeLayout(false);
             this.groupBoxPrint.ResumeLayout(false);
             this.groupBoxPrint.PerformLayout();
@@ -11218,8 +11212,6 @@
             this.panelQueue.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSetDefaults)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePlantsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseLabelsDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12009,7 +12001,6 @@
         private System.Windows.Forms.Label label168;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appPathToolStripMenuItem;
         private System.Windows.Forms.Button buttonAutoPrint;
         private System.Windows.Forms.TabPage tabPageAppData;

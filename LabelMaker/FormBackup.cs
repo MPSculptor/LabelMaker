@@ -167,37 +167,41 @@ namespace LabelMaker
             
             string filePlace = labelBackup.Text ;
 
-            openFileDialog1.InitialDirectory = filePlace;
-            //openFileDialog1.Filter = "CSV (Comma Delimited) (*.csv)|*.csv";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            folderBrowserDialog1.SelectedPath = filePlace;
 
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK) { labelRestoreFile.Text = openFileDialog1.FileName; }
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK) { labelRestoreFile.Text = folderBrowserDialog1.SelectedPath; }
         }
 
         private void buttonDoAction_Click(object sender, EventArgs e)
         {
-            List<string> ActionAndTables = returnActionAndTables();
+            string message = "You have chosen to BACKUP your database. Choose OK to proceed or Cancel to abort.";
+            if (radioButtonRestoreTablesAdd.Checked) { message = "You have chosen to RESTORE the Tables selected by ADDING the restore data to your existing data. Choose OK to proceed or Cancel to abort."; }
+            if (radioButtonRestoreTablesOver.Checked) { message = "You have chosen to RESTORE the Tables selected by OVERWRITING your existing data with the restore data. Choose OK to proceed or Cancel to abort."; }
 
-            string[] AllNames = new string[ActionAndTables.Count+1];
-            int counter = 1;
-            AllNames[0] = "Selected Backup and Restore Actions";
-            foreach (string s in ActionAndTables)
+            DialogResult msg = MessageBox.Show(message,"Backup or Restore",MessageBoxButtons.OKCancel);
+
+            if (msg == DialogResult.OK)
             {
-                AllNames[counter] = s;
-                counter++;
-            }
+                List<string> ActionAndTables = returnActionAndTables();
 
-            FormInformation Tables = new FormInformation(AllNames);
-            Tables.Show();
+                string[] AllNames = new string[ActionAndTables.Count + 1];
+                int counter = 1;
+                AllNames[0] = "Selected Backup and Restore Actions";
+                foreach (string s in ActionAndTables)
+                {
+                    AllNames[counter] = s;
+                    counter++;
+                }
+
+                SQLBackup.SQLBackup.backupUtility(AllNames);
+            }
         }
 
         private List<string> returnActionAndTables()
         { 
             String Action = "";
             if (radioButtonBackup.Checked == true) { Action = "Backup"; }
-            if (radioButtonRestoreAll.Checked == true) { Action = "RestoreAll"; }
             if (radioButtonRestoreTablesOver.Checked == true) { Action = "SelectedOverwrite"; }
             if (radioButtonRestoreTablesAdd.Checked == true) { Action = "SelectedAdditive"; }
 

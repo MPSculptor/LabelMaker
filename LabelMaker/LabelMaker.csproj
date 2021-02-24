@@ -90,7 +90,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="FormBackup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +189,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLBackup.cs" />
     <Compile Include="StringHelper.cs" />
     <EmbeddedResource Include="FormBackup.resx">
       <DependentUpon>FormBackup.cs</DependentUpon>

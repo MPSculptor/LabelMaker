@@ -414,6 +414,7 @@ namespace LabelMaker
                 {
                     Thread colourPrint = new Thread(() => printAsColour(printVariables));   // Kick off a new thread
                     colourPrint.Start();
+                    assignQueueTotals();
                 }
 
             }
@@ -777,7 +778,7 @@ namespace LabelMaker
                     
                 }
             canIusePrinter.inUseOrNot[printerVariables.printerListIndex] = false;
-            assignQueueTotals();
+            
         }
 
 #endregion
@@ -2020,6 +2021,7 @@ namespace LabelMaker
             string[] defaultsString = getDefaultSettings();
             string name = defaultsString[2];
 
+            // **Cross Thread Error **
             if (tabControlQueue.SelectedTab == tabPageMainQueue)
             {
                 string tempName = comboBoxLabelName.Text.ToString().Trim();
@@ -7777,7 +7779,7 @@ namespace LabelMaker
             }
             int rememberCustomers = count;
             //gather names and counts and Genera
-            string[,] customers = new string[count, 5];
+            string[,] customers = new string[count, 6];
             customer = "";
             count = 0;
             int plantCount = 0;
@@ -7796,12 +7798,14 @@ namespace LabelMaker
  
                     //Collect Genera
                     customers[count, 3] = "";
+                    customers[count, 5] = "Locked"; //set order as locked and unlock if one item unlocked
                     string Genus = "";
                     for (int q = 0; q < dataGridViewAuto.RowCount - 1; q++)
                             { 
                                if (dataGridViewAuto.Rows[q].Cells[5].Value.ToString() == customer)
                                 {
                                     string GenusCompareOriginal = dataGridViewAuto.Rows[q].Cells[6].Value.ToString();
+                                    if (dataGridViewAuto.Rows[q].Cells[4].Value.ToString() == "False") { customers[count, 5] = "Unlocked"; }
                                     int index = 0;
                                     for (int j = GenusCompareOriginal.Length - 1; j > 0; j--)
                                     {
@@ -7838,7 +7842,8 @@ namespace LabelMaker
                 if (radioButtonAddress2.Checked == true) { addIt = true; } //use all addresses, locked and unlocked
                 //MessageBox.Show(customers[i, 2].ToString());
                 if (customers[i, 2].ToString() == "False") { addIt = true; } //unlocked customers
-                
+                if (customers[i,5] == "Locked") { addIt = false; }  // don't add printed orders
+
                 if (addIt)
                 {
                     //rountine to make a line if it needs adding

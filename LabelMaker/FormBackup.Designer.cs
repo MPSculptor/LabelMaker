@@ -34,22 +34,21 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSelect = new System.Windows.Forms.Button();
             this.groupBoxActions = new System.Windows.Forms.GroupBox();
+            this.buttonChooseRestore = new System.Windows.Forms.Button();
+            this.buttonDoAction = new System.Windows.Forms.Button();
+            this.radioButtonRestoreTablesAdd = new System.Windows.Forms.RadioButton();
+            this.radioButtonRestoreTablesOver = new System.Windows.Forms.RadioButton();
+            this.radioButtonBackup = new System.Windows.Forms.RadioButton();
             this.groupBoxProperties = new System.Windows.Forms.GroupBox();
+            this.labelRestoreFile = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.labelBackup = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelDeploy = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.labelConString = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButtonBackup = new System.Windows.Forms.RadioButton();
-            this.radioButtonRestoreTablesOver = new System.Windows.Forms.RadioButton();
-            this.radioButtonRestoreTablesAdd = new System.Windows.Forms.RadioButton();
-            this.radioButtonRestoreAll = new System.Windows.Forms.RadioButton();
-            this.labelRestoreFile = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.buttonDoAction = new System.Windows.Forms.Button();
-            this.buttonChooseRestore = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBoxTables.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
             this.groupBoxProperties.SuspendLayout();
@@ -110,7 +109,6 @@
             // 
             this.groupBoxActions.Controls.Add(this.buttonChooseRestore);
             this.groupBoxActions.Controls.Add(this.buttonDoAction);
-            this.groupBoxActions.Controls.Add(this.radioButtonRestoreAll);
             this.groupBoxActions.Controls.Add(this.radioButtonRestoreTablesAdd);
             this.groupBoxActions.Controls.Add(this.radioButtonRestoreTablesOver);
             this.groupBoxActions.Controls.Add(this.radioButtonBackup);
@@ -121,6 +119,61 @@
             this.groupBoxActions.TabIndex = 1;
             this.groupBoxActions.TabStop = false;
             this.groupBoxActions.Text = "Actions";
+            // 
+            // buttonChooseRestore
+            // 
+            this.buttonChooseRestore.Location = new System.Drawing.Point(182, 248);
+            this.buttonChooseRestore.Name = "buttonChooseRestore";
+            this.buttonChooseRestore.Size = new System.Drawing.Size(118, 89);
+            this.buttonChooseRestore.TabIndex = 5;
+            this.buttonChooseRestore.Text = "Choose Restore Folder";
+            this.buttonChooseRestore.UseVisualStyleBackColor = true;
+            this.buttonChooseRestore.Click += new System.EventHandler(this.buttonChooseRestore_Click);
+            // 
+            // buttonDoAction
+            // 
+            this.buttonDoAction.Location = new System.Drawing.Point(20, 248);
+            this.buttonDoAction.Name = "buttonDoAction";
+            this.buttonDoAction.Size = new System.Drawing.Size(131, 89);
+            this.buttonDoAction.TabIndex = 4;
+            this.buttonDoAction.Text = "Perform Backup or Restore";
+            this.buttonDoAction.UseVisualStyleBackColor = true;
+            this.buttonDoAction.Click += new System.EventHandler(this.buttonDoAction_Click);
+            // 
+            // radioButtonRestoreTablesAdd
+            // 
+            this.radioButtonRestoreTablesAdd.AutoSize = true;
+            this.radioButtonRestoreTablesAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonRestoreTablesAdd.Location = new System.Drawing.Point(20, 183);
+            this.radioButtonRestoreTablesAdd.Name = "radioButtonRestoreTablesAdd";
+            this.radioButtonRestoreTablesAdd.Size = new System.Drawing.Size(315, 28);
+            this.radioButtonRestoreTablesAdd.TabIndex = 2;
+            this.radioButtonRestoreTablesAdd.Text = "Restore Selected Tables (additive)";
+            this.radioButtonRestoreTablesAdd.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonRestoreTablesOver
+            // 
+            this.radioButtonRestoreTablesOver.AutoSize = true;
+            this.radioButtonRestoreTablesOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonRestoreTablesOver.Location = new System.Drawing.Point(20, 149);
+            this.radioButtonRestoreTablesOver.Name = "radioButtonRestoreTablesOver";
+            this.radioButtonRestoreTablesOver.Size = new System.Drawing.Size(327, 28);
+            this.radioButtonRestoreTablesOver.TabIndex = 1;
+            this.radioButtonRestoreTablesOver.Text = "Restore Selected Tables (overwrite)";
+            this.radioButtonRestoreTablesOver.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonBackup
+            // 
+            this.radioButtonBackup.AutoSize = true;
+            this.radioButtonBackup.Checked = true;
+            this.radioButtonBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonBackup.Location = new System.Drawing.Point(20, 39);
+            this.radioButtonBackup.Name = "radioButtonBackup";
+            this.radioButtonBackup.Size = new System.Drawing.Size(174, 28);
+            this.radioButtonBackup.TabIndex = 0;
+            this.radioButtonBackup.TabStop = true;
+            this.radioButtonBackup.Text = "Backup Database";
+            this.radioButtonBackup.UseVisualStyleBackColor = true;
             // 
             // groupBoxProperties
             // 
@@ -140,6 +193,26 @@
             this.groupBoxProperties.TabIndex = 2;
             this.groupBoxProperties.TabStop = false;
             this.groupBoxProperties.Text = "Properties";
+            // 
+            // labelRestoreFile
+            // 
+            this.labelRestoreFile.AutoSize = true;
+            this.labelRestoreFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRestoreFile.Location = new System.Drawing.Point(158, 92);
+            this.labelRestoreFile.Name = "labelRestoreFile";
+            this.labelRestoreFile.Size = new System.Drawing.Size(93, 16);
+            this.labelRestoreFile.TabIndex = 7;
+            this.labelRestoreFile.Text = "none selected";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(34, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 16);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Restore File : ";
             // 
             // labelBackup
             // 
@@ -200,98 +273,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ConnectionString : ";
             // 
-            // radioButtonBackup
-            // 
-            this.radioButtonBackup.AutoSize = true;
-            this.radioButtonBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonBackup.Location = new System.Drawing.Point(20, 39);
-            this.radioButtonBackup.Name = "radioButtonBackup";
-            this.radioButtonBackup.Size = new System.Drawing.Size(174, 28);
-            this.radioButtonBackup.TabIndex = 0;
-            this.radioButtonBackup.TabStop = true;
-            this.radioButtonBackup.Text = "Backup Database";
-            this.radioButtonBackup.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonRestoreTablesOver
-            // 
-            this.radioButtonRestoreTablesOver.AutoSize = true;
-            this.radioButtonRestoreTablesOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonRestoreTablesOver.Location = new System.Drawing.Point(20, 149);
-            this.radioButtonRestoreTablesOver.Name = "radioButtonRestoreTablesOver";
-            this.radioButtonRestoreTablesOver.Size = new System.Drawing.Size(327, 28);
-            this.radioButtonRestoreTablesOver.TabIndex = 1;
-            this.radioButtonRestoreTablesOver.TabStop = true;
-            this.radioButtonRestoreTablesOver.Text = "Restore Selected Tables (overwrite)";
-            this.radioButtonRestoreTablesOver.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonRestoreTablesAdd
-            // 
-            this.radioButtonRestoreTablesAdd.AutoSize = true;
-            this.radioButtonRestoreTablesAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonRestoreTablesAdd.Location = new System.Drawing.Point(20, 183);
-            this.radioButtonRestoreTablesAdd.Name = "radioButtonRestoreTablesAdd";
-            this.radioButtonRestoreTablesAdd.Size = new System.Drawing.Size(315, 28);
-            this.radioButtonRestoreTablesAdd.TabIndex = 2;
-            this.radioButtonRestoreTablesAdd.TabStop = true;
-            this.radioButtonRestoreTablesAdd.Text = "Restore Selected Tables (additive)";
-            this.radioButtonRestoreTablesAdd.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonRestoreAll
-            // 
-            this.radioButtonRestoreAll.AutoSize = true;
-            this.radioButtonRestoreAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonRestoreAll.Location = new System.Drawing.Point(20, 97);
-            this.radioButtonRestoreAll.Name = "radioButtonRestoreAll";
-            this.radioButtonRestoreAll.Size = new System.Drawing.Size(119, 28);
-            this.radioButtonRestoreAll.TabIndex = 3;
-            this.radioButtonRestoreAll.TabStop = true;
-            this.radioButtonRestoreAll.Text = "Restore All";
-            this.radioButtonRestoreAll.UseVisualStyleBackColor = true;
-            // 
-            // labelRestoreFile
-            // 
-            this.labelRestoreFile.AutoSize = true;
-            this.labelRestoreFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRestoreFile.Location = new System.Drawing.Point(158, 92);
-            this.labelRestoreFile.Name = "labelRestoreFile";
-            this.labelRestoreFile.Size = new System.Drawing.Size(93, 16);
-            this.labelRestoreFile.TabIndex = 7;
-            this.labelRestoreFile.Text = "none selected";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(34, 92);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 16);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Restore File : ";
-            // 
-            // buttonDoAction
-            // 
-            this.buttonDoAction.Location = new System.Drawing.Point(20, 248);
-            this.buttonDoAction.Name = "buttonDoAction";
-            this.buttonDoAction.Size = new System.Drawing.Size(131, 89);
-            this.buttonDoAction.TabIndex = 4;
-            this.buttonDoAction.Text = "Perform Backup or Restore";
-            this.buttonDoAction.UseVisualStyleBackColor = true;
-            this.buttonDoAction.Click += new System.EventHandler(this.buttonDoAction_Click);
-            // 
-            // buttonChooseRestore
-            // 
-            this.buttonChooseRestore.Location = new System.Drawing.Point(182, 248);
-            this.buttonChooseRestore.Name = "buttonChooseRestore";
-            this.buttonChooseRestore.Size = new System.Drawing.Size(118, 89);
-            this.buttonChooseRestore.TabIndex = 5;
-            this.buttonChooseRestore.Text = "Choose Restore File";
-            this.buttonChooseRestore.UseVisualStyleBackColor = true;
-            this.buttonChooseRestore.Click += new System.EventHandler(this.buttonChooseRestore_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // FormBackup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,7 +309,6 @@
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Label labelBackup;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButtonRestoreAll;
         private System.Windows.Forms.RadioButton radioButtonRestoreTablesAdd;
         private System.Windows.Forms.RadioButton radioButtonRestoreTablesOver;
         private System.Windows.Forms.RadioButton radioButtonBackup;
@@ -336,6 +316,6 @@
         private System.Windows.Forms.Button buttonDoAction;
         private System.Windows.Forms.Label labelRestoreFile;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
