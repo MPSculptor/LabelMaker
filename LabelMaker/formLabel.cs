@@ -33,7 +33,13 @@ namespace LabelMaker
         {
             if (printORscreen == "print")
             {
-                //MessageBox.Show("whereToNow - print");
+                printGraphics.PageUnit = GraphicsUnit.Millimeter;
+                printGraphics.PageScale = 1;
+                //MessageBox.Show("PageUnit - " + printGraphics.PageUnit.ToString() + ", PageScale - "+printGraphics.PageScale);
+                
+                //can take into account margins here ??
+
+
                 CreateLabel(queueData, labelData, defaultsString, sentWidth, sentHeight, marginX, placementX, marginY, placementY, printGraphics);
             }
             this.Paint += (sender2, e2) => whereToNow_Paint(sender2, e2, queueData, labelData, defaultsString, sentWidth, sentHeight);
