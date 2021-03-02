@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelMaker", "LabelMaker\LabelMaker.csproj", "{B8FABD06-E7E4-444C-BC8D-AF84C21CF768}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1AED8021-4B48-48B5-BC46-0EEB400DE3AB}"
-	ProjectSection(SolutionItems) = preProject
-		SQLBackup.cs = SQLBackup.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

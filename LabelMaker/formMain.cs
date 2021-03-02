@@ -7805,7 +7805,8 @@ namespace LabelMaker
                                if (dataGridViewAuto.Rows[q].Cells[5].Value.ToString() == customer)
                                 {
                                     string GenusCompareOriginal = dataGridViewAuto.Rows[q].Cells[6].Value.ToString();
-                                    if (dataGridViewAuto.Rows[q].Cells[4].Value.ToString() == "False") { customers[count, 5] = "Unlocked"; }
+                            //***CHANGE THIS LINE***
+                            if (dataGridViewAuto.Rows[q].Cells[4].Value.ToString() == "False") { customers[count, 5] = "Unlocked"; }
                                     int index = 0;
                                     for (int j = GenusCompareOriginal.Length - 1; j > 0; j--)
                                     {
@@ -7842,11 +7843,11 @@ namespace LabelMaker
                 if (radioButtonAddress2.Checked == true) { addIt = true; } //use all addresses, locked and unlocked
                 //MessageBox.Show(customers[i, 2].ToString());
                 if (customers[i, 2].ToString() == "False") { addIt = true; } //unlocked customers
-                if (customers[i,5] == "Locked") { addIt = false; }  // don't add printed orders
+                //if (customers[i,5] == "Locked") { addIt = false; }  // don't add printed orders
 
                 if (addIt)
                 {
-                    //rountine to make a line if it needs adding
+                    //routine to make a line if it needs adding
                     //MessageBox.Show("Adding - " + customers[i, 0]);
                     for (int j = 0; j <= dataGridViewAuto.RowCount - 1; j++)
                     {

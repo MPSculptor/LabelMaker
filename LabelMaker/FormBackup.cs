@@ -194,7 +194,7 @@ namespace LabelMaker
                     counter++;
                 }
 
-                SQLBackup.SQLBackup.backupUtility(AllNames);
+                SQLBackup.SQLBackup.DatabaseBackup(AllNames);
             }
         }
 
