@@ -4,6 +4,17 @@ using System.Drawing.Printing;
 namespace LabelMaker
 {
 
+    static class needBackup
+    {
+        static Boolean _doI;
+        public static Boolean doI
+        {
+            set { _doI = value; }
+            get { return _doI; }
+        }
+
+    }
+
     static class canIusePrinter
     {
         public static string[] printerList;

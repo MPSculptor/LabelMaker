@@ -150,6 +150,7 @@
             this.radioButtonRestoreTablesAdd.TabIndex = 2;
             this.radioButtonRestoreTablesAdd.Text = "Restore Selected Tables (additive)";
             this.radioButtonRestoreTablesAdd.UseVisualStyleBackColor = true;
+            this.radioButtonRestoreTablesAdd.CheckedChanged += new System.EventHandler(this.radioButtonRestoreTablesAdd_CheckedChanged);
             // 
             // radioButtonRestoreTablesOver
             // 
@@ -161,6 +162,7 @@
             this.radioButtonRestoreTablesOver.TabIndex = 1;
             this.radioButtonRestoreTablesOver.Text = "Restore Selected Tables (overwrite)";
             this.radioButtonRestoreTablesOver.UseVisualStyleBackColor = true;
+            this.radioButtonRestoreTablesOver.CheckedChanged += new System.EventHandler(this.radioButtonRestoreTablesOver_CheckedChanged);
             // 
             // radioButtonBackup
             // 

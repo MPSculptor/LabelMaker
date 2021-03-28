@@ -3,9 +3,14 @@ using System.Data;
 using System.IO;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using LabelMaker;
+using System.Threading;
 
 namespace SQLBackup
 {
+
+    
+
     class SQLBackup
     {
         /*
@@ -25,6 +30,16 @@ namespace SQLBackup
         private string operation;
         // internal. true=delete and remake table, false=add entries that don't exist
         private bool overwrite;
+
+        public static void showMessageFormWithDispose(string[] message, int timer)
+        {
+            FormInformation form = new FormInformation(message);
+            form.Show();
+            form.Refresh();
+            Thread.Sleep(timer);
+            form.Dispose();
+        }
+
         public static bool[] DatabaseBackup(string[] args)
         {
             /*
@@ -47,6 +62,10 @@ namespace SQLBackup
             **    for example, if args = {"", "connection", "C:/backups", "C:/backups/2021-02-24 13.33", "table1", "table2", "table3"} returned
             **    {true, false, true} then the operation was successful on table1 and table3 and failed for table2
             */
+
+            string[] message = new string[] { "Backup Utility", "You have started a Backup" };
+            showMessageFormWithDispose(message, 4000);
+
 
             // initialise backup object containing data for this operation
             SQLBackup backup = new SQLBackup(args[1], args[2], args[3], args[4]);
@@ -95,6 +114,13 @@ namespace SQLBackup
                 }
             }
 
+
+            if (all_success)
+            {
+                string[] successMessage =  { "Backup Utility", "Success" }; 
+                showMessageFormWithDispose(successMessage, 3000);
+            }
+
             return success;
         }
         private SQLBackup(string op_type, string connection_string, string backup_dir, string active_folder)
@@ -134,11 +160,11 @@ namespace SQLBackup
                     this.operation = "restore";
                     this.overwrite = true;
                     break;
-                case "SelectiveAdditive":
+                case "SelectedAdditive":
                     this.operation = "restore";
                     this.overwrite = false;
                     break;
-                case "SelectiveOverwrite":
+                case "SelectedOverwrite":
                     this.operation = "restore";
                     this.overwrite = true;
                     break;

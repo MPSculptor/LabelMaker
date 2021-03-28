@@ -2678,8 +2678,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // profilesToolStripMenuItem2
             // 
@@ -2818,14 +2819,14 @@
             // backupToolStripMenuItem1
             // 
             this.backupToolStripMenuItem1.Name = "backupToolStripMenuItem1";
-            this.backupToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.backupToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
             this.backupToolStripMenuItem1.Text = "Backup";
             this.backupToolStripMenuItem1.Click += new System.EventHandler(this.backupToolStripMenuItem1_Click);
             // 
             // listTablesToolStripMenuItem
             // 
             this.listTablesToolStripMenuItem.Name = "listTablesToolStripMenuItem";
-            this.listTablesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listTablesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.listTablesToolStripMenuItem.Text = "List Tables";
             this.listTablesToolStripMenuItem.Click += new System.EventHandler(this.listTablesToolStripMenuItem_Click);
             // 

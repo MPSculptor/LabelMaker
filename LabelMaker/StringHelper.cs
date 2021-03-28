@@ -12,7 +12,8 @@ internal static class StringHelper
 	//----------------------------------------------------------------------------------
 	public static string SubstringSpecial(this string self, int start, int end)
 	{
-		return self.Substring(start, end - start);
+        try { return self.Substring(start, end - start); }
+        catch { return self; }
 	}
 
 	//------------------------------------------------------------------------------------

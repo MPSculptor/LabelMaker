@@ -55,6 +55,7 @@ namespace LabelMaker
             tableProfilesTableAdapter.Fill(databaseLabelsDataSetProfiles.TableProfiles);
             
             this.BackColor = Color.DarkGray;
+            needBackup.doI = false;
 
             colourQueueTab("first");
             resizeToScreen();
@@ -2449,6 +2450,7 @@ namespace LabelMaker
                         updateMainDetails(rowToRemove);
                     }
                     tabControlMain.SelectedTab = tabPageManual;
+                    needBackup.doI = true;
                 }
                 catch (System.Exception ex)
                 {
@@ -2490,6 +2492,7 @@ namespace LabelMaker
                 {
                     tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
                     //MessageBox.Show("Updated Database Entry");
+                    needBackup.doI = true;
                 }
                 catch (System.Exception ex)
                 {
@@ -2538,6 +2541,7 @@ namespace LabelMaker
                 {
                     tablePlantsTableAdapter.Update(databaseLabelsDataSet.TablePlants);
                     //MessageBox.Show("Updated Database Entry");
+                    needBackup.doI = true;
                 }
                 catch (System.Exception ex)
                 {
@@ -7615,12 +7619,6 @@ namespace LabelMaker
         private void button1_Click_5(object sender, EventArgs e)
         {
             
-            //sort by customer
-            sortAuto("Customer");
-            //colourAutoDataGrid();
-            //fillAutoListBox();
-            //checkSKUs();
-
             createAddressList("visible","Address");
 
             //set numbers to 1
@@ -7651,7 +7649,7 @@ namespace LabelMaker
             }
             int rememberCustomers = count;
             //gather names and counts
-            string[,] customers = new string[count,3];
+            string[,] customers = new string[count,4];
             customer = "";
             count = 0;
             int plantCount = 0;
@@ -7666,6 +7664,8 @@ namespace LabelMaker
                     customers[count, 0] = (dataGridViewAuto.Rows[i].Cells[11].Value.ToString().Trim() + " " + dataGridViewAuto.Rows[i].Cells[12].Value.ToString().Trim()); // Adds Shipping Customer
                     customers[count, 1] = plantCount.ToString();
                     customers[count, 2] = dataGridViewAuto.Rows[i].Cells[1].Value.ToString();
+                    customers[count, 3]  = dataGridViewAuto.Rows[i].Cells[5].Value.ToString();
+
                     count++;
                 }
                 else
@@ -7696,7 +7696,7 @@ namespace LabelMaker
                     //MessageBox.Show("Adding - " + customers[i, 0]);
                     for (int j = 0; j<= dataGridViewAuto.RowCount - 2; j++)
                     {
-                        if (dataGridViewAuto.Rows[j].Cells[5].Value.ToString() == customers[i,0])
+                        if (dataGridViewAuto.Rows[j].Cells[5].Value.ToString() == customers[i,3])
                         {
                             //MessageBox.Show("Found "+ customers[i, 0]);
 
@@ -8894,6 +8894,24 @@ namespace LabelMaker
         {
             //Cleans up the Addresses in the DataGrid. Doesn't save changes in case the cleanup is imperfect.
 
+            for (int x = 0; x < dataGridViewAuto.Rows.Count - 1; x++)
+            {
+                var row = dataGridViewAuto.Rows[x];
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value.ToString().Contains(",,"))
+                    {
+                        int i = cell.ColumnIndex;
+                        string s = cell.Value.ToString();
+                        int p = s.IndexOf(",,");
+                        string ss = s;
+                        s = s.SubstringSpecial(0, p - 1) + s.Substring(p + 2);
+                        MessageBox.Show(s + " , " + s);
+                        dataGridViewAuto.Rows[x].Cells[i].Value = s;
+                    }
+                }
+            }
+
             for (int i =0;i<dataGridViewAuto.RowCount - 1; i++)
             {
                 Boolean sameShippingAsBilling = true; // to stop it replacing Billing name with Shipping name
@@ -9824,6 +9842,12 @@ namespace LabelMaker
             #region --Label Preview --
             //Resize components in tabPagePreview on clicked routine to save time here
             #endregion
+            #region --Autolabel--
+            #endregion
+            string size = "small";
+            if (newWidth >= 1200) { size = "medium"; }
+            if (newWidth >= 1500) { size = "large"; }
+
             #region -- Queues --
             int border = 4;
             Point gridStart = new Point(border,border);
@@ -10010,6 +10034,26 @@ namespace LabelMaker
             FormInformation Tables = new FormInformation(AllNames);
             Tables.Show();
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gotoBackup();
+            formMain.ActiveForm.Close();
+        }
+        
+        private void gotoBackup()
+        {
+            // needBackup.doI = true if database has been changed (currently only Plants)
+            if (needBackup.doI)
+            {
+                DialogResult yesNo =  MessageBox.Show("You have un-backed up changes in the database, do you want to backup now ?", "Backup database ?", MessageBoxButtons.YesNo);
+                if (yesNo == DialogResult.Yes)
+                {
+                    // ### Add backup here ###
+                    MessageBox.Show("This should be where the Back Up routine is");
+                }
+            }
         }
     }
 }

@@ -229,6 +229,24 @@ namespace LabelMaker
 
             return TableNames;
         }
+
+        private void radioButtonRestoreTablesOver_CheckedChanged(object sender, EventArgs e)
+        {
+            if (labelRestoreFile.Text== "none selected")
+            {
+                radioButtonBackup.Select();
+                MessageBox.Show("You need to select a Restore File First", "Choose restore File");
+            }
+        }
+
+        private void radioButtonRestoreTablesAdd_CheckedChanged(object sender, EventArgs e)
+        {
+            if (labelRestoreFile.Text == "none selected")
+            {
+                radioButtonBackup.Select();
+                MessageBox.Show("You need to select a Restore File First", "Choose restore File");
+            }
+        }
     }
     }
 
