@@ -355,6 +355,8 @@
     </Content>
     <Content Include="NewIcon.ico" />
     <Content Include="PictureFiles\info.jpg" />
+    <Content Include="PictureFiles\Splash.png" />
+    <None Include="Resources\splash.bmp" />
     <None Include="Resources\Image1.bmp" />
     <None Include="PictureFiles\search.bmp" />
     <None Include="PictureFiles\redarrow.jpg" />

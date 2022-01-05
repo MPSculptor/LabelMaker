@@ -294,7 +294,17 @@ namespace LabelMaker
 
             if (fontName == "") { fontName = "Arial"; }
             float ffontSize = fontSize;
-            FontFamily fFont = new FontFamily(fontName);
+            FontFamily fFont = new FontFamily("Arial");
+            //catch if font isn't installed
+            try
+            {
+                fFont = new FontFamily(fontName);
+            }
+            catch 
+            {
+                fFont = new FontFamily("Arial");
+            }
+
             FontStyle ffontStyle = new FontStyle();
 
             switch (fontForm)

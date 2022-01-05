@@ -39,7 +39,8 @@ namespace LabelMaker
             PerPixelAlphaForm splash = new PerPixelAlphaForm();
             try
             {
-                Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
+                //Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
+                Bitmap picture = new Bitmap(LabelMaker.Properties.Resources.Splash);
                 splash.SelectBitmap(picture);
             }
             catch
