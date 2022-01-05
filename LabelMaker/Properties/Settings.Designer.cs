@@ -27,7 +27,7 @@ namespace LabelMaker.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DatabaseLabel" +
-            "s.mdf;Integrated Security=True")]
+            "s.mdf;Integrated Security=SSPI")]
         public string DatabaseLabelsConnectionString {
             get {
                 return ((string)(this["DatabaseLabelsConnectionString"]));

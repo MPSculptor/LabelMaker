@@ -44,7 +44,7 @@ namespace LabelMaker
             }
             catch
             {
-                Bitmap picture = new Bitmap(@"C:\LabelMaker\PictureFiles\splash.png");
+                Bitmap picture = new Bitmap(@"C:\Users\leesabarrett\LabelMaker\PictureFiles\splash.png");
                 splash.SelectBitmap(picture);
             }
             
@@ -322,6 +322,7 @@ namespace LabelMaker
                     foundSize = true;
                 }
             }
+
             if (foundSize) { pDialog.PrinterSettings.DefaultPageSettings.PaperSize = pSFound; }
             //MessageBox.Show("Set PaperSize to " + pSFound.PaperName.ToString()); } // only set if found it
             else { MessageBox.Show("Couldn't find correct paper size so leaving as the default", "Failed Paper Size"); }
@@ -8909,6 +8910,7 @@ namespace LabelMaker
                         MessageBox.Show(s + " , " + s);
                         dataGridViewAuto.Rows[x].Cells[i].Value = s;
                     }
+                    if (String.IsNullOrEmpty(cell.Value.ToString())) { dataGridViewAuto.Rows[x].Cells[x].Value = " "; }
                 }
             }
 
@@ -9503,7 +9505,8 @@ namespace LabelMaker
         private void showSplashScreen()
         {
             PerPixelAlphaForm splash = new PerPixelAlphaForm();
-            Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
+            //Bitmap picture = new Bitmap(@"D:\LabelMaker\LabelMaker\PictureFiles\splash.png");
+            Bitmap picture = new Bitmap(@"C:Users\leesabarrett\LabelMaker\PictureFiles\splash.png");
             splash.SelectBitmap(picture);
             splash.Show();
             Thread.Sleep(750);
@@ -10054,6 +10057,11 @@ namespace LabelMaker
                     MessageBox.Show("This should be where the Back Up routine is");
                 }
             }
+        }
+
+        private void tablePlantsBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

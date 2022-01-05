@@ -1539,26 +1539,25 @@ namespace LabelMaker.DatabaseLabelsDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[TablePlants] WHERE (([Id] = @Original_Id) AND ((@IsNull_GenusC" +
-                "ross = 1 AND [GenusCross] IS NULL) OR ([GenusCross] = @Original_GenusCross)) AND" +
-                " ((@IsNull_Genus = 1 AND [Genus] IS NULL) OR ([Genus] = @Original_Genus)) AND ((" +
-                "@IsNull_SpeciesCross = 1 AND [SpeciesCross] IS NULL) OR ([SpeciesCross] = @Origi" +
-                "nal_SpeciesCross)) AND ((@IsNull_Species = 1 AND [Species] IS NULL) OR ([Species" +
-                "] = @Original_Species)) AND ((@IsNull_Variety = 1 AND [Variety] IS NULL) OR ([Va" +
-                "riety] = @Original_Variety)) AND ((@IsNull_Common = 1 AND [Common] IS NULL) OR (" +
-                "[Common] = @Original_Common)) AND ((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU]" +
-                " = @Original_SKU)) AND ((@IsNull_Desc = 1 AND [Desc] IS NULL) OR ([Desc] = @Orig" +
-                "inal_Desc)) AND ((@IsNull_PotSize = 1 AND [PotSize] IS NULL) OR ([PotSize] = @Or" +
-                "iginal_PotSize)) AND ([ColourQueue] = @Original_ColourQueue) AND ((@IsNull_Barco" +
-                "de = 1 AND [Barcode] IS NULL) OR ([Barcode] = @Original_Barcode)) AND ((@IsNull_" +
-                "Picture1 = 1 AND [Picture1] IS NULL) OR ([Picture1] = @Original_Picture1)) AND (" +
-                "(@IsNull_Picture2 = 1 AND [Picture2] IS NULL) OR ([Picture2] = @Original_Picture" +
-                "2)) AND ((@IsNull_Picture3 = 1 AND [Picture3] IS NULL) OR ([Picture3] = @Origina" +
-                "l_Picture3)) AND ((@IsNull_Picture4 = 1 AND [Picture4] IS NULL) OR ([Picture4] =" +
-                " @Original_Picture4)) AND ([AGM] = @Original_AGM) AND ([LabelColour] = @Original" +
-                "_LabelColour) AND ([Hide] = @Original_Hide) AND ((@IsNull_notes = 1 AND [notes] " +
-                "IS NULL) OR ([notes] = @Original_notes)) AND ([LabelStock] = @Original_LabelStoc" +
-                "k))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [TablePlants] WHERE (([Id] = @Original_Id) AND ((@IsNull_GenusCross =" +
+                " 1 AND [GenusCross] IS NULL) OR ([GenusCross] = @Original_GenusCross)) AND ((@Is" +
+                "Null_Genus = 1 AND [Genus] IS NULL) OR ([Genus] = @Original_Genus)) AND ((@IsNul" +
+                "l_SpeciesCross = 1 AND [SpeciesCross] IS NULL) OR ([SpeciesCross] = @Original_Sp" +
+                "eciesCross)) AND ((@IsNull_Species = 1 AND [Species] IS NULL) OR ([Species] = @O" +
+                "riginal_Species)) AND ((@IsNull_Variety = 1 AND [Variety] IS NULL) OR ([Variety]" +
+                " = @Original_Variety)) AND ((@IsNull_Common = 1 AND [Common] IS NULL) OR ([Commo" +
+                "n] = @Original_Common)) AND ((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Or" +
+                "iginal_SKU)) AND ((@IsNull_Desc = 1 AND [Desc] IS NULL) OR ([Desc] = @Original_D" +
+                "esc)) AND ((@IsNull_PotSize = 1 AND [PotSize] IS NULL) OR ([PotSize] = @Original" +
+                "_PotSize)) AND ([ColourQueue] = @Original_ColourQueue) AND ((@IsNull_Barcode = 1" +
+                " AND [Barcode] IS NULL) OR ([Barcode] = @Original_Barcode)) AND ((@IsNull_Pictur" +
+                "e1 = 1 AND [Picture1] IS NULL) OR ([Picture1] = @Original_Picture1)) AND ((@IsNu" +
+                "ll_Picture2 = 1 AND [Picture2] IS NULL) OR ([Picture2] = @Original_Picture2)) AN" +
+                "D ((@IsNull_Picture3 = 1 AND [Picture3] IS NULL) OR ([Picture3] = @Original_Pict" +
+                "ure3)) AND ((@IsNull_Picture4 = 1 AND [Picture4] IS NULL) OR ([Picture4] = @Orig" +
+                "inal_Picture4)) AND ([AGM] = @Original_AGM) AND ([LabelColour] = @Original_Label" +
+                "Colour) AND ([Hide] = @Original_Hide) AND ((@IsNull_notes = 1 AND [notes] IS NUL" +
+                "L) OR ([notes] = @Original_notes)) AND ([LabelStock] = @Original_LabelStock))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GenusCross", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GenusCross", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1598,7 +1597,7 @@ namespace LabelMaker.DatabaseLabelsDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LabelStock", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TablePlants] ([GenusCross], [Genus], [SpeciesCross], [Species], [Variety], [Common], [SKU], [Desc], [PotSize], [ColourQueue], [Barcode], [Picture1], [Picture2], [Picture3], [Picture4], [AGM], [LabelColour], [Hide], [notes], [LabelStock]) VALUES (@GenusCross, @Genus, @SpeciesCross, @Species, @Variety, @Common, @SKU, @Desc, @PotSize, @ColourQueue, @Barcode, @Picture1, @Picture2, @Picture3, @Picture4, @AGM, @LabelColour, @Hide, @notes, @LabelStock);
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [TablePlants] ([GenusCross], [Genus], [SpeciesCross], [Species], [Variety], [Common], [SKU], [Desc], [PotSize], [ColourQueue], [Barcode], [Picture1], [Picture2], [Picture3], [Picture4], [AGM], [LabelColour], [Hide], [notes], [LabelStock]) VALUES (@GenusCross, @Genus, @SpeciesCross, @Species, @Variety, @Common, @SKU, @Desc, @PotSize, @ColourQueue, @Barcode, @Picture1, @Picture2, @Picture3, @Picture4, @AGM, @LabelColour, @Hide, @notes, @LabelStock);
 SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM TablePlants WHERE (Id = SCOPE_IDENTITY()) ORDER BY Genus, Species, Variety";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GenusCross", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GenusCross", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1623,34 +1622,34 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LabelStock", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabelStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TablePlants] SET [GenusCross] = @GenusCross, [Genus] = @Genus, [Spe" +
-                "ciesCross] = @SpeciesCross, [Species] = @Species, [Variety] = @Variety, [Common]" +
-                " = @Common, [SKU] = @SKU, [Desc] = @Desc, [PotSize] = @PotSize, [ColourQueue] = " +
-                "@ColourQueue, [Barcode] = @Barcode, [Picture1] = @Picture1, [Picture2] = @Pictur" +
-                "e2, [Picture3] = @Picture3, [Picture4] = @Picture4, [AGM] = @AGM, [LabelColour] " +
-                "= @LabelColour, [Hide] = @Hide, [notes] = @notes, [LabelStock] = @LabelStock WHE" +
-                "RE (([Id] = @Original_Id) AND ((@IsNull_GenusCross = 1 AND [GenusCross] IS NULL)" +
-                " OR ([GenusCross] = @Original_GenusCross)) AND ((@IsNull_Genus = 1 AND [Genus] I" +
-                "S NULL) OR ([Genus] = @Original_Genus)) AND ((@IsNull_SpeciesCross = 1 AND [Spec" +
-                "iesCross] IS NULL) OR ([SpeciesCross] = @Original_SpeciesCross)) AND ((@IsNull_S" +
-                "pecies = 1 AND [Species] IS NULL) OR ([Species] = @Original_Species)) AND ((@IsN" +
-                "ull_Variety = 1 AND [Variety] IS NULL) OR ([Variety] = @Original_Variety)) AND (" +
-                "(@IsNull_Common = 1 AND [Common] IS NULL) OR ([Common] = @Original_Common)) AND " +
-                "((@IsNull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Original_SKU)) AND ((@IsNull_D" +
-                "esc = 1 AND [Desc] IS NULL) OR ([Desc] = @Original_Desc)) AND ((@IsNull_PotSize " +
-                "= 1 AND [PotSize] IS NULL) OR ([PotSize] = @Original_PotSize)) AND ([ColourQueue" +
-                "] = @Original_ColourQueue) AND ((@IsNull_Barcode = 1 AND [Barcode] IS NULL) OR (" +
-                "[Barcode] = @Original_Barcode)) AND ((@IsNull_Picture1 = 1 AND [Picture1] IS NUL" +
-                "L) OR ([Picture1] = @Original_Picture1)) AND ((@IsNull_Picture2 = 1 AND [Picture" +
-                "2] IS NULL) OR ([Picture2] = @Original_Picture2)) AND ((@IsNull_Picture3 = 1 AND" +
-                " [Picture3] IS NULL) OR ([Picture3] = @Original_Picture3)) AND ((@IsNull_Picture" +
-                "4 = 1 AND [Picture4] IS NULL) OR ([Picture4] = @Original_Picture4)) AND ([AGM] =" +
-                " @Original_AGM) AND ([LabelColour] = @Original_LabelColour) AND ([Hide] = @Origi" +
-                "nal_Hide) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Original_n" +
-                "otes)) AND ([LabelStock] = @Original_LabelStock));\r\nSELECT Id, GenusCross, Genus" +
-                ", SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Bar" +
-                "code, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, Lab" +
-                "elStock FROM TablePlants WHERE (Id = @Id) ORDER BY Genus, Species, Variety";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [TablePlants] SET [GenusCross] = @GenusCross, [Genus] = @Genus, [SpeciesCr" +
+                "oss] = @SpeciesCross, [Species] = @Species, [Variety] = @Variety, [Common] = @Co" +
+                "mmon, [SKU] = @SKU, [Desc] = @Desc, [PotSize] = @PotSize, [ColourQueue] = @Colou" +
+                "rQueue, [Barcode] = @Barcode, [Picture1] = @Picture1, [Picture2] = @Picture2, [P" +
+                "icture3] = @Picture3, [Picture4] = @Picture4, [AGM] = @AGM, [LabelColour] = @Lab" +
+                "elColour, [Hide] = @Hide, [notes] = @notes, [LabelStock] = @LabelStock WHERE (([" +
+                "Id] = @Original_Id) AND ((@IsNull_GenusCross = 1 AND [GenusCross] IS NULL) OR ([" +
+                "GenusCross] = @Original_GenusCross)) AND ((@IsNull_Genus = 1 AND [Genus] IS NULL" +
+                ") OR ([Genus] = @Original_Genus)) AND ((@IsNull_SpeciesCross = 1 AND [SpeciesCro" +
+                "ss] IS NULL) OR ([SpeciesCross] = @Original_SpeciesCross)) AND ((@IsNull_Species" +
+                " = 1 AND [Species] IS NULL) OR ([Species] = @Original_Species)) AND ((@IsNull_Va" +
+                "riety = 1 AND [Variety] IS NULL) OR ([Variety] = @Original_Variety)) AND ((@IsNu" +
+                "ll_Common = 1 AND [Common] IS NULL) OR ([Common] = @Original_Common)) AND ((@IsN" +
+                "ull_SKU = 1 AND [SKU] IS NULL) OR ([SKU] = @Original_SKU)) AND ((@IsNull_Desc = " +
+                "1 AND [Desc] IS NULL) OR ([Desc] = @Original_Desc)) AND ((@IsNull_PotSize = 1 AN" +
+                "D [PotSize] IS NULL) OR ([PotSize] = @Original_PotSize)) AND ([ColourQueue] = @O" +
+                "riginal_ColourQueue) AND ((@IsNull_Barcode = 1 AND [Barcode] IS NULL) OR ([Barco" +
+                "de] = @Original_Barcode)) AND ((@IsNull_Picture1 = 1 AND [Picture1] IS NULL) OR " +
+                "([Picture1] = @Original_Picture1)) AND ((@IsNull_Picture2 = 1 AND [Picture2] IS " +
+                "NULL) OR ([Picture2] = @Original_Picture2)) AND ((@IsNull_Picture3 = 1 AND [Pict" +
+                "ure3] IS NULL) OR ([Picture3] = @Original_Picture3)) AND ((@IsNull_Picture4 = 1 " +
+                "AND [Picture4] IS NULL) OR ([Picture4] = @Original_Picture4)) AND ([AGM] = @Orig" +
+                "inal_AGM) AND ([LabelColour] = @Original_LabelColour) AND ([Hide] = @Original_Hi" +
+                "de) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Original_notes))" +
+                " AND ([LabelStock] = @Original_LabelStock));\r\nSELECT Id, GenusCross, Genus, Spec" +
+                "iesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, " +
+                "Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStoc" +
+                "k FROM TablePlants WHERE (Id = @Id) ORDER BY Genus, Species, Variety";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GenusCross", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GenusCross", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Genus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Genus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1724,7 +1723,7 @@ SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM dbo.TablePlants  ORDER BY Genus ASC, Species ASC, Variety ASC";
+            this._commandCollection[0].CommandText = @"SELECT Id, GenusCross, Genus, SpeciesCross, Species, Variety, Common, SKU, [Desc], PotSize, ColourQueue, Barcode, Picture1, Picture2, Picture3, Picture4, AGM, LabelColour, Hide, notes, LabelStock FROM TablePlants  ORDER BY Genus ASC, Species ASC, Variety ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;

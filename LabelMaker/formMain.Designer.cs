@@ -1059,12 +1059,12 @@
             this.LabelsLabelCategoriesTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelCategoriesTableAdapter();
             this.LabelsLabelFieldsTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.LabelsLabelFieldsTableAdapter();
             this.PrintersTableAdapter = new LabelMaker.DatabaseLabelsDataSetLabelNamesTableAdapters.PrintersTableAdapter();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseLabelsDataSetDefaults = new LabelMaker.DatabaseLabelsDataSetDefaults();
-            this.defaultsTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter();
             this.tableAddressQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet3TableAdapters.TableAddressQueueTableAdapter();
             this.tableMainQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet2TableAdapters.TableMainQueueTableAdapter();
             this.tablePassportQueueTableAdapter = new LabelMaker.DatabaseLabelsDataSet4TableAdapters.TablePassportQueueTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseLabelsDataSetDefaults = new LabelMaker.DatabaseLabelsDataSetDefaults();
+            this.defaultsTableAdapter1 = new LabelMaker.DatabaseLabelsDataSetDefaultsTableAdapters.DefaultsTableAdapter();
             this.tablePlantsTableAdapter = new LabelMaker.DatabaseLabelsDataSetTableAdapters.TablePlantsTableAdapter();
             this.tabControlQueue.SuspendLayout();
             this.tabPageMainQueue.SuspendLayout();
@@ -2426,7 +2426,7 @@
             this.labelLabelQueueRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 843);
             this.labelLabelQueueRemove.Name = "labelLabelQueueRemove";
-            this.labelLabelQueueRemove.Size = new System.Drawing.Size(16, 16);
+            this.labelLabelQueueRemove.Size = new System.Drawing.Size(15, 16);
             this.labelLabelQueueRemove.TabIndex = 7;
             this.labelLabelQueueRemove.Text = "0";
             // 
@@ -2436,7 +2436,7 @@
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label80.Location = new System.Drawing.Point(16, 843);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(190, 16);
+            this.label80.Size = new System.Drawing.Size(189, 16);
             this.label80.TabIndex = 6;
             this.label80.Text = "Labels to Remove from Queue";
             // 
@@ -2446,7 +2446,7 @@
             this.labelLabelStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 819);
             this.labelLabelStockRemove.Name = "labelLabelStockRemove";
-            this.labelLabelStockRemove.Size = new System.Drawing.Size(16, 16);
+            this.labelLabelStockRemove.Size = new System.Drawing.Size(15, 16);
             this.labelLabelStockRemove.TabIndex = 5;
             this.labelLabelStockRemove.Text = "0";
             // 
@@ -2456,7 +2456,7 @@
             this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label78.Location = new System.Drawing.Point(16, 819);
             this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(184, 16);
+            this.label78.Size = new System.Drawing.Size(183, 16);
             this.label78.TabIndex = 4;
             this.label78.Text = "Labels to Remove from Stock";
             // 
@@ -2466,7 +2466,7 @@
             this.labelLabelStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLabelStocks.Location = new System.Drawing.Point(206, 795);
             this.labelLabelStocks.Name = "labelLabelStocks";
-            this.labelLabelStocks.Size = new System.Drawing.Size(16, 16);
+            this.labelLabelStocks.Size = new System.Drawing.Size(15, 16);
             this.labelLabelStocks.TabIndex = 3;
             this.labelLabelStocks.Text = "0";
             // 
@@ -2476,7 +2476,7 @@
             this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label76.Location = new System.Drawing.Point(16, 795);
             this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(154, 16);
+            this.label76.Size = new System.Drawing.Size(153, 16);
             this.label76.TabIndex = 2;
             this.label76.Text = "Potential Labels in Stock";
             // 
@@ -2514,7 +2514,7 @@
             this.labelRemoveMissing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRemoveMissing.Location = new System.Drawing.Point(215, 611);
             this.labelRemoveMissing.Name = "labelRemoveMissing";
-            this.labelRemoveMissing.Size = new System.Drawing.Size(16, 16);
+            this.labelRemoveMissing.Size = new System.Drawing.Size(15, 16);
             this.labelRemoveMissing.TabIndex = 12;
             this.labelRemoveMissing.Text = "0";
             // 
@@ -2524,7 +2524,7 @@
             this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label81.Location = new System.Drawing.Point(22, 611);
             this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(190, 16);
+            this.label81.Size = new System.Drawing.Size(189, 16);
             this.label81.TabIndex = 11;
             this.label81.Text = "Entries to Remove from Queue";
             // 
@@ -2556,7 +2556,7 @@
             this.labelMissingPictures.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMissingPictures.Location = new System.Drawing.Point(215, 585);
             this.labelMissingPictures.Name = "labelMissingPictures";
-            this.labelMissingPictures.Size = new System.Drawing.Size(16, 16);
+            this.labelMissingPictures.Size = new System.Drawing.Size(15, 16);
             this.labelMissingPictures.TabIndex = 2;
             this.labelMissingPictures.Text = "0";
             // 
@@ -2566,7 +2566,7 @@
             this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label77.Location = new System.Drawing.Point(22, 585);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(174, 16);
+            this.label77.Size = new System.Drawing.Size(173, 16);
             this.label77.TabIndex = 1;
             this.label77.Text = "Entries with Missing Pictures";
             // 
@@ -2635,7 +2635,7 @@
             this.label174.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label174.Location = new System.Drawing.Point(38, 441);
             this.label174.Name = "label174";
-            this.label174.Size = new System.Drawing.Size(271, 16);
+            this.label174.Size = new System.Drawing.Size(270, 16);
             this.label174.TabIndex = 1;
             this.label174.Text = "Lines Only Found on the Colour Queue";
             // 
@@ -2646,7 +2646,7 @@
             this.label173.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label173.Location = new System.Drawing.Point(38, 10);
             this.label173.Name = "label173";
-            this.label173.Size = new System.Drawing.Size(259, 16);
+            this.label173.Size = new System.Drawing.Size(258, 16);
             this.label173.TabIndex = 0;
             this.label173.Text = "Lines Only Found on the Main Queue";
             // 
@@ -2678,7 +2678,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -4796,6 +4796,7 @@
             // 
             this.tablePlantsBindingSource.DataMember = "TablePlants";
             this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
+            this.tablePlantsBindingSource.CurrentChanged += new System.EventHandler(this.tablePlantsBindingSource_CurrentChanged);
             // 
             // databaseLabelsDataSet
             // 
@@ -5951,6 +5952,7 @@
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.BackColor = System.Drawing.Color.White;
             this.bindingNavigatorPositionItem.Enabled = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -11014,6 +11016,18 @@
             // 
             this.PrintersTableAdapter.ClearBeforeFill = true;
             // 
+            // tableAddressQueueTableAdapter
+            // 
+            this.tableAddressQueueTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableMainQueueTableAdapter
+            // 
+            this.tableMainQueueTableAdapter.ClearBeforeFill = true;
+            // 
+            // tablePassportQueueTableAdapter
+            // 
+            this.tablePassportQueueTableAdapter.ClearBeforeFill = true;
+            // 
             // bindingSource1
             // 
             this.bindingSource1.DataSource = this.databaseLabelsDataSetDefaults;
@@ -11027,18 +11041,6 @@
             // defaultsTableAdapter1
             // 
             this.defaultsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // tableAddressQueueTableAdapter
-            // 
-            this.tableAddressQueueTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableMainQueueTableAdapter
-            // 
-            this.tableMainQueueTableAdapter.ClearBeforeFill = true;
-            // 
-            // tablePassportQueueTableAdapter
-            // 
-            this.tablePassportQueueTableAdapter.ClearBeforeFill = true;
             // 
             // tablePlantsTableAdapter
             // 
