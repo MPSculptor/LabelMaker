@@ -5740,6 +5740,7 @@ namespace LabelMaker
             dataGridViewAuto.Refresh();
             fillAutoListBox();
             checkSKUs();
+            updateCustomerTotals();
         }
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -5898,6 +5899,7 @@ namespace LabelMaker
 
             sortAutoListBox();
             colourAutoDataGrid();
+            updateCustomerTotals();
 
         }
 
@@ -6095,7 +6097,7 @@ namespace LabelMaker
                 swapAutoByName(locked, name, listBoxAuto.SelectedIndex);
 
             }
-
+            updateCustomerTotals();
         }
 
         private void swapAutoByName(Boolean locked, string name, int index)
@@ -6208,6 +6210,7 @@ namespace LabelMaker
                 //reset customer to prevent confusion with next manual entry
                 textBoxCustomerName.Text = "";
                 textBoxOrderNumber.Text = "";
+                
             }
             else
             {
@@ -10060,9 +10063,28 @@ namespace LabelMaker
             }
         }
 
-        private void tablePlantsBindingSource_CurrentChanged(object sender, EventArgs e)
+       
+
+        private void updateCustomerTotals()
         {
-            
+            labelCustTotal.Text = listBoxAuto.Items.Count.ToString();
+            int Lock = 0;
+            int Unlock = 0;
+            string check = "";
+            for (int i = 0; i < listBoxAuto.Items.Count; i++)
+            {
+                check = listBoxAuto.Items[i].ToString();
+                if (check.Substring(0,1) == "#") { Lock++; }
+                else { Unlock++; }
+            }
+            labelCustLocked.Text = Lock.ToString();
+            labelCustUnlocked.Text = Unlock.ToString();
+
+        }
+
+        private void listBoxAuto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

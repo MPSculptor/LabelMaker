@@ -280,6 +280,12 @@
             this.buttonNewProfile = new System.Windows.Forms.Button();
             this.buttonAssignProfile = new System.Windows.Forms.Button();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
+            this.labelCustUnlocked = new System.Windows.Forms.Label();
+            this.label213 = new System.Windows.Forms.Label();
+            this.labelCustLocked = new System.Windows.Forms.Label();
+            this.label211 = new System.Windows.Forms.Label();
+            this.labelCustTotal = new System.Windows.Forms.Label();
+            this.label209 = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
             this.buttonAddressClean = new System.Windows.Forms.Button();
             this.comboBoxAutoPrinters = new System.Windows.Forms.ComboBox();
@@ -2426,7 +2432,7 @@
             this.labelLabelQueueRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLabelQueueRemove.Location = new System.Drawing.Point(206, 843);
             this.labelLabelQueueRemove.Name = "labelLabelQueueRemove";
-            this.labelLabelQueueRemove.Size = new System.Drawing.Size(15, 16);
+            this.labelLabelQueueRemove.Size = new System.Drawing.Size(16, 16);
             this.labelLabelQueueRemove.TabIndex = 7;
             this.labelLabelQueueRemove.Text = "0";
             // 
@@ -2436,7 +2442,7 @@
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label80.Location = new System.Drawing.Point(16, 843);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(189, 16);
+            this.label80.Size = new System.Drawing.Size(190, 16);
             this.label80.TabIndex = 6;
             this.label80.Text = "Labels to Remove from Queue";
             // 
@@ -2446,7 +2452,7 @@
             this.labelLabelStockRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLabelStockRemove.Location = new System.Drawing.Point(206, 819);
             this.labelLabelStockRemove.Name = "labelLabelStockRemove";
-            this.labelLabelStockRemove.Size = new System.Drawing.Size(15, 16);
+            this.labelLabelStockRemove.Size = new System.Drawing.Size(16, 16);
             this.labelLabelStockRemove.TabIndex = 5;
             this.labelLabelStockRemove.Text = "0";
             // 
@@ -2456,7 +2462,7 @@
             this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label78.Location = new System.Drawing.Point(16, 819);
             this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(183, 16);
+            this.label78.Size = new System.Drawing.Size(184, 16);
             this.label78.TabIndex = 4;
             this.label78.Text = "Labels to Remove from Stock";
             // 
@@ -2466,7 +2472,7 @@
             this.labelLabelStocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLabelStocks.Location = new System.Drawing.Point(206, 795);
             this.labelLabelStocks.Name = "labelLabelStocks";
-            this.labelLabelStocks.Size = new System.Drawing.Size(15, 16);
+            this.labelLabelStocks.Size = new System.Drawing.Size(16, 16);
             this.labelLabelStocks.TabIndex = 3;
             this.labelLabelStocks.Text = "0";
             // 
@@ -2476,7 +2482,7 @@
             this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label76.Location = new System.Drawing.Point(16, 795);
             this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(153, 16);
+            this.label76.Size = new System.Drawing.Size(154, 16);
             this.label76.TabIndex = 2;
             this.label76.Text = "Potential Labels in Stock";
             // 
@@ -2514,7 +2520,7 @@
             this.labelRemoveMissing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRemoveMissing.Location = new System.Drawing.Point(215, 611);
             this.labelRemoveMissing.Name = "labelRemoveMissing";
-            this.labelRemoveMissing.Size = new System.Drawing.Size(15, 16);
+            this.labelRemoveMissing.Size = new System.Drawing.Size(16, 16);
             this.labelRemoveMissing.TabIndex = 12;
             this.labelRemoveMissing.Text = "0";
             // 
@@ -2524,7 +2530,7 @@
             this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label81.Location = new System.Drawing.Point(22, 611);
             this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(189, 16);
+            this.label81.Size = new System.Drawing.Size(190, 16);
             this.label81.TabIndex = 11;
             this.label81.Text = "Entries to Remove from Queue";
             // 
@@ -2556,7 +2562,7 @@
             this.labelMissingPictures.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMissingPictures.Location = new System.Drawing.Point(215, 585);
             this.labelMissingPictures.Name = "labelMissingPictures";
-            this.labelMissingPictures.Size = new System.Drawing.Size(15, 16);
+            this.labelMissingPictures.Size = new System.Drawing.Size(16, 16);
             this.labelMissingPictures.TabIndex = 2;
             this.labelMissingPictures.Text = "0";
             // 
@@ -2566,7 +2572,7 @@
             this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label77.Location = new System.Drawing.Point(22, 585);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(173, 16);
+            this.label77.Size = new System.Drawing.Size(174, 16);
             this.label77.TabIndex = 1;
             this.label77.Text = "Entries with Missing Pictures";
             // 
@@ -2635,7 +2641,7 @@
             this.label174.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label174.Location = new System.Drawing.Point(38, 441);
             this.label174.Name = "label174";
-            this.label174.Size = new System.Drawing.Size(270, 16);
+            this.label174.Size = new System.Drawing.Size(271, 16);
             this.label174.TabIndex = 1;
             this.label174.Text = "Lines Only Found on the Colour Queue";
             // 
@@ -2646,7 +2652,7 @@
             this.label173.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label173.Location = new System.Drawing.Point(38, 10);
             this.label173.Name = "label173";
-            this.label173.Size = new System.Drawing.Size(258, 16);
+            this.label173.Size = new System.Drawing.Size(259, 16);
             this.label173.TabIndex = 0;
             this.label173.Text = "Lines Only Found on the Main Queue";
             // 
@@ -3062,6 +3068,12 @@
             // 
             // tabPageAuto
             // 
+            this.tabPageAuto.Controls.Add(this.labelCustUnlocked);
+            this.tabPageAuto.Controls.Add(this.label213);
+            this.tabPageAuto.Controls.Add(this.labelCustLocked);
+            this.tabPageAuto.Controls.Add(this.label211);
+            this.tabPageAuto.Controls.Add(this.labelCustTotal);
+            this.tabPageAuto.Controls.Add(this.label209);
             this.tabPageAuto.Controls.Add(this.button18);
             this.tabPageAuto.Controls.Add(this.buttonAddressClean);
             this.tabPageAuto.Controls.Add(this.comboBoxAutoPrinters);
@@ -3103,6 +3115,63 @@
             this.tabPageAuto.TabIndex = 1;
             this.tabPageAuto.Text = "     AutoLabel      ";
             this.tabPageAuto.UseVisualStyleBackColor = true;
+            // 
+            // labelCustUnlocked
+            // 
+            this.labelCustUnlocked.AutoSize = true;
+            this.labelCustUnlocked.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustUnlocked.Location = new System.Drawing.Point(928, 895);
+            this.labelCustUnlocked.Name = "labelCustUnlocked";
+            this.labelCustUnlocked.Size = new System.Drawing.Size(21, 24);
+            this.labelCustUnlocked.TabIndex = 42;
+            this.labelCustUnlocked.Text = "0";
+            // 
+            // label213
+            // 
+            this.label213.AutoSize = true;
+            this.label213.Location = new System.Drawing.Point(929, 882);
+            this.label213.Name = "label213";
+            this.label213.Size = new System.Drawing.Size(53, 13);
+            this.label213.TabIndex = 41;
+            this.label213.Text = "Unlocked";
+            // 
+            // labelCustLocked
+            // 
+            this.labelCustLocked.AutoSize = true;
+            this.labelCustLocked.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustLocked.Location = new System.Drawing.Point(928, 850);
+            this.labelCustLocked.Name = "labelCustLocked";
+            this.labelCustLocked.Size = new System.Drawing.Size(21, 24);
+            this.labelCustLocked.TabIndex = 40;
+            this.labelCustLocked.Text = "0";
+            // 
+            // label211
+            // 
+            this.label211.AutoSize = true;
+            this.label211.Location = new System.Drawing.Point(929, 837);
+            this.label211.Name = "label211";
+            this.label211.Size = new System.Drawing.Size(43, 13);
+            this.label211.TabIndex = 39;
+            this.label211.Text = "Locked";
+            // 
+            // labelCustTotal
+            // 
+            this.labelCustTotal.AutoSize = true;
+            this.labelCustTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustTotal.Location = new System.Drawing.Point(928, 805);
+            this.labelCustTotal.Name = "labelCustTotal";
+            this.labelCustTotal.Size = new System.Drawing.Size(21, 24);
+            this.labelCustTotal.TabIndex = 38;
+            this.labelCustTotal.Text = "0";
+            // 
+            // label209
+            // 
+            this.label209.AutoSize = true;
+            this.label209.Location = new System.Drawing.Point(927, 792);
+            this.label209.Name = "label209";
+            this.label209.Size = new System.Drawing.Size(31, 13);
+            this.label209.TabIndex = 37;
+            this.label209.Text = "Total";
             // 
             // button18
             // 
@@ -3417,6 +3486,7 @@
             this.listBoxAuto.Size = new System.Drawing.Size(189, 615);
             this.listBoxAuto.TabIndex = 10;
             this.listBoxAuto.Click += new System.EventHandler(this.listBoxAuto_Click);
+            this.listBoxAuto.SelectedIndexChanged += new System.EventHandler(this.listBoxAuto_SelectedIndexChanged);
             // 
             // buttonSortAutoPlant
             // 
@@ -4796,7 +4866,6 @@
             // 
             this.tablePlantsBindingSource.DataMember = "TablePlants";
             this.tablePlantsBindingSource.DataSource = this.databaseLabelsDataSet;
-            this.tablePlantsBindingSource.CurrentChanged += new System.EventHandler(this.tablePlantsBindingSource_CurrentChanged);
             // 
             // databaseLabelsDataSet
             // 
@@ -5952,7 +6021,6 @@
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.BackColor = System.Drawing.Color.White;
             this.bindingNavigatorPositionItem.Enabled = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -12240,6 +12308,12 @@
         private System.Windows.Forms.ToolStripMenuItem tripleLabelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem paperSizesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listTablesToolStripMenuItem;
+        private System.Windows.Forms.Label labelCustUnlocked;
+        private System.Windows.Forms.Label label213;
+        private System.Windows.Forms.Label labelCustLocked;
+        private System.Windows.Forms.Label label211;
+        private System.Windows.Forms.Label labelCustTotal;
+        private System.Windows.Forms.Label label209;
     }
 }
 
